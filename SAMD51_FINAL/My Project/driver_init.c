@@ -230,9 +230,9 @@ void ModemData_CLOCK_init(void)
 void ModemData_init(void)
 {
 	ModemData_CLOCK_init();
-	//ModemDataCommInit();
+	ModemDataCommInit();
 	//usart_sync_init(&USART_3, SERCOM3, (void *)NULL);
-	ModemUsartOsInit();
+	//ModemUsartOsInit();
 	ModemData_PORT_init();
 }
 
@@ -442,8 +442,6 @@ void system_init(void)
 	EVENT_SYSTEM_0_init();
 
 	FLASH_0_init();
-
-	//USART_2_init();
 
 	SerialDebug_init();
 	

@@ -16,8 +16,8 @@
 
 static MDM_TEST_STATES mdmTestState = MDM_AT_TEST;
 static uint8_t RxDataBuff[2];
-static uint8_t RxCnt;
-uint8_t printBuff[30];
+uint8_t printBuff[40];
+uint8_t rxEcho[2];
 struct usart_os_descriptor MODEM_USART_DATA;
 uint8_t                    MODEM_USART_DATA_buffer[2048];
 
@@ -40,18 +40,17 @@ void ModemDataCommInit(void)
 	
 	initStatus = _usart_async_init(&MODEM_DATA,SERCOM3);
 	
-	/* Enabled the UART Interrupts */
-	_usart_async_set_irq_state(&DEBUG_PRINT,USART_ASYNC_RX_DONE,true);
-	#if 0
-	//_usart_async_set_irq_state(&DEBUG_PRINT,USART_ASYNC_BYTE_SENT,true);
-	_usart_async_set_irq_state(&DEBUG_PRINT,USART_ASYNC_TX_DONE,true);
-	_usart_async_set_irq_state(&DEBUG_PRINT,USART_ASYNC_ERROR,true);
-	_usart_async_enable_tx_done_irq(&DEBUG_PRINT);
+	/* Enable all of the UART interrupts for SERCOM3 */
+	#if 1
+	_usart_async_set_irq_state(&MODEM_DATA,USART_ASYNC_BYTE_SENT,true);
+	_usart_async_set_irq_state(&MODEM_DATA,USART_ASYNC_TX_DONE,true);
+	_usart_async_set_irq_state(&MODEM_DATA,USART_ASYNC_ERROR,true);
+	_usart_async_enable_tx_done_irq(&MODEM_DATA);
 	#endif
 	
 	if(initStatus == ERR_NONE)
 	{
-		sprintf(printBuff,"SERCOM3 initialized\r\n");
+		sprintf(printBuff,"MODEM DATA UART (SERCOM3) initialized\r\n");
 		SerialDebugPrint(printBuff,sizeof(printBuff));
 	}
 	else
@@ -59,6 +58,46 @@ void ModemDataCommInit(void)
 		sprintf(printBuff,"SERCOM3 not initialized\r\n");
 		SerialDebugPrint(printBuff,sizeof(printBuff));
 	}
+}
+
+
+void SERCOM3_0_Handler( void )
+{
+	/* DRE: TX Data Register Empty */
+	sprintf(printBuff,"Modem Data Tx Data Reg Empty CallBack\r\n");
+	SerialDebugPrint(printBuff,sizeof(printBuff));
+	
+	hri_sercomusart_clear_interrupt_DRE_bit(SERCOM3);
+	/* Disable the TX Data reg empty interrupt after transmitting the first set of data */
+	SERCOM3->USART.INTENCLR.bit.DRE = 1;
+}
+
+void SERCOM3_1_Handler(void )
+{
+	/* TXC : Transmit Complete */
+	sprintf(printBuff,"Modem Data Tx byte Complete Callback\r\n");
+	SerialDebugPrint(printBuff,sizeof(printBuff));
+	hri_sercomusart_clear_interrupt_TXC_bit(SERCOM3);
+}
+
+/* This interrupt will be called if SAMD51 receives any data from Modem 
+ * through SERCOM3 UART Interafce.
+ */
+void SERCOM3_2_Handler( void )
+{
+	/* RXC : Receive Complete */
+	sprintf(printBuff,"Modem Data Rx Complete Callback\r\n");
+	SerialDebugPrint(printBuff,sizeof(printBuff));
+
+	sprintf(printBuff,"Successfully Received a char from Modem\r\n");
+	SerialDebugPrint(printBuff,sizeof(printBuff));
+	
+	hri_sercomusart_clear_interrupt_RXC_bit(SERCOM3);
+	
+	while (!_usart_async_is_byte_received(&MODEM_DATA));
+	
+	RxDataBuff[0] = _usart_async_read_byte(&MODEM_DATA);
+	SerialDebugPrint(RxDataBuff[0],1);
 }
 
 
@@ -76,128 +115,11 @@ int32_t ReadResponseFromModem(uint8_t *RecvdData,const int32_t length)
 }
 #endif
 
-void ModemControllerSchedule(void)
-{
-	uint8_t Response[30];
-	uint32_t writeCnt;
-	uint32_t readCnt;
-	uint8_t printBuff[50];
-	
-	if(getModemPowerStatus() == MDM_PWR_FULLY_OPERATIONAL)
-	{		
-		switch(mdmTestState)
-		{
-			case MDM_AT_TEST:
-			{
-#if 1
-				writeCnt = sendCommandToModem((uint8_t*)"AT\r\n",4);
-				//sprintf(printBuff,"Transmitted %d char to Modem \r\n",writeCnt);
-				//SerialDebugPrint((uint8_t*)printBuff,sizeof(printBuff));
-				//mdmTestState = MDM_AT_IDLE;
-				vTaskDelay(5000);
-#endif
-			}
-			break;
-			
-			case MDM_AT_IDLE:
-			{
-				
-			}
-			break;
-			
-			case MDM_SET_SLEEP_SETTINGS:
-			{
-				//sprintf(printBuff,"Inside MDM_SET_SLEEP_SETTINGS\r\n");
-				//SerialDebugPrint((uint8_t*)printBuff,sizeof(printBuff));
-				
-				writeCnt = sendCommandToModem((uint8_t*)"AT+KSLEEP=2\r\n",13);
-				sprintf(printBuff,"Transmitted %d char to Modem for sleep settings \r\n",writeCnt);
-				SerialDebugPrint((uint8_t*)printBuff,sizeof(printBuff));
-				vTaskDelay(100);
-				readCnt = ReadResponseFromModem(Response,3);
-				
-				if(readCnt > 0)
-				{
-					sprintf(printBuff,"Read %d char from Modem.\r\n",readCnt);
-					SerialDebugPrint(printBuff,sizeof(printBuff));
-					
-					if((Response[0] == 'O') &&
-					(Response[1] == 'K'))
-					{
-						sprintf(printBuff,"OK Response received\r\n");
-						SerialDebugPrint(printBuff,sizeof(printBuff));
-						mdmTestState = MDM_WRITE_MODE;
-					}
-					else
-					{
-						sprintf(printBuff,"No Proper Response.\r\n");
-						SerialDebugPrint(printBuff,sizeof(printBuff));
-					}
-				}
-				else
-				{
-					SerialDebugPrint("Response not read\r\n",19);
-				}
-			}
-			break;
-			
-			case MDM_WRITE_MODE:
-			{
-				sprintf(printBuff,"Inside MDM_SET_SLEEP_SETTINGS\r\n");
-				SerialDebugPrint((uint8_t*)printBuff,sizeof(printBuff));
-								
-				writeCnt = sendCommandToModem((uint8_t*)"AT+CGSN=?\r\n",11);
-				sprintf(printBuff,"Transmitted %d char to Modem \r\n",writeCnt);
-				SerialDebugPrint((uint8_t*)printBuff,sizeof(printBuff));
-				vTaskDelay(50);
-				mdmTestState = MDM_READ_MODE;
-			}
-			break;
 
-			case MDM_READ_MODE:
-			{
-				sprintf(printBuff,"Inside MDM_SET_SLEEP_SETTINGS\r\n");
-				SerialDebugPrint((uint8_t*)printBuff,sizeof(printBuff));
-								
-				readCnt = ReadResponseFromModem(Response,3);
-				
-				if(readCnt > 0)
-				{
-					sprintf(printBuff,"Read %d char from Modem.\r\n",readCnt);
-					SerialDebugPrint(printBuff,sizeof(printBuff));
-					
-					if((Response[0] == 'O') &&
-					(Response[0] == 'K'))
-					{
-						sprintf(printBuff,"OK Response received\r\n");
-						SerialDebugPrint(printBuff,sizeof(printBuff));
-					}
-					else
-					{
-						sprintf(printBuff,"No Proper Response.\r\n");
-						SerialDebugPrint(printBuff,sizeof(printBuff));
-					}
-					
-					mdmTestState = MDM_WRITE_MODE;
-				}
-				else
-				{
-					SerialDebugPrint("Response not read\r\n",19);
-					mdmTestState = MDM_WRITE_MODE;
-				}
-				
-				vTaskDelay(500);
-			}
-			break;
-		}
-	}
-	else
-	{
-		/* Do Nothing */
-	}
-	
-}
 
+/*****************************************************************************************************
+***********************************Below code, Not used as of now*************************************
+******************************************************************************************************/
 
 /* Interrupt Handlers */
 void ModemDataTxByteSentCallBack(struct _usart_async_device *device)
@@ -225,35 +147,7 @@ void ModemDataErrorCallBack(struct _usart_async_device *device)
 	hri_sercomusart_clear_INTFLAG_ERROR_bit(device);
 }
 
-void SERCOM3_0_Handler( void )
-{
-	/* DRE: Data Register Empty */
-	SerialDebugPrint((uint8_t*)"Modem Tx Data Reg Empty CallBack\r\n",33);
-	//SERCOM3->USART.INTENCLR.bit.DRE = 1;
-	hri_sercomusart_clear_interrupt_DRE_bit(SERCOM3);
-}
 
-void SERCOM3_1_Handler(void )
-{
-	SerialDebugPrint((uint8_t*)"Modem Tx Complete Callback\r\n",19);
-	hri_sercomusart_clear_interrupt_TXC_bit(SERCOM3);
-}
-
-void SERCOM3_2_Handler( void )
-{
-	SerialDebugPrint((uint8_t*)"Modem Rx Complete CallBack\r\n",19);
-	hri_sercomusart_clear_interrupt_RXC_bit(SERCOM3);
-	
-	while (!_usart_async_is_byte_received(&MODEM_DATA));
-	
-	RxDataBuff[RxCnt] = _usart_async_read_byte(&MODEM_DATA);
-	RxCnt++;
-	
-	if(RxCnt > 1)
-	{
-		RxCnt = 0;
-	}
-}
 
 void UsartsendCommandToModem(const uint8_t *const TxData,const uint16_t length)
 {

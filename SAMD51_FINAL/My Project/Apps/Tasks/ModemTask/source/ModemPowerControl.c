@@ -22,14 +22,72 @@ static TimerHandle_t xPowerOnWaitTimer;
 static BaseType_t PowerOnWaitTimerStarted;
 static bool PowerOnWaitTimerExpired;
 
-static void PowerOnWaitTimerCallBack(void* param);
+/* Perform the HL7618RD modem power on sequence */
+/* I FEEL LIKE SOMETHING WRONG HERE */
 
+void modemPowerInit(void)
+{
+	gpio_set_pin_direction(MODEM_ON, GPIO_DIRECTION_OUT);
+	gpio_set_pin_function(MODEM_ON, GPIO_PIN_FUNCTION_OFF);
+	//gpio_set_pin_pull_mode(MODEM_ON, GPIO_PULL_UP);
+	gpio_set_pin_level(MODEM_ON,false);
+
+	gpio_set_pin_direction(MODEM_RESET, GPIO_DIRECTION_OUT);
+	gpio_set_pin_function(MODEM_RESET, GPIO_PIN_FUNCTION_OFF);
+	//gpio_set_pin_pull_mode(MODEM_RESET, GPIO_PULL_UP);
+	gpio_set_pin_level(MODEM_RESET,false);
+
+	gpio_set_pin_direction(MODEM_DTR, GPIO_DIRECTION_OUT);
+	gpio_set_pin_function(MODEM_DTR, GPIO_PIN_FUNCTION_OFF);
+	//gpio_set_pin_pull_mode(MODEM_DTR, GPIO_PULL_UP);
+	gpio_set_pin_level(MODEM_DTR,false);
+	delay_ms(500);
+	
+	/* Give a short 50 ms positive pulse on MODEM ON Pin */
+	gpio_set_pin_level(MODEM_ON,true);
+	delay_ms(50);
+	
+	/* make MODEM ON to default level */
+	gpio_set_pin_level(MODEM_ON,false);
+	delay_ms(3000);
+	
+	SerialDebugPrint((uint8_t*)"Modem Power On initialization Completed\r\n",41);
+}
+
+
+
+
+
+
+
+
+/*****************************************************************************************************
+********************* Below code not used as of now***************************************************
+******************************************************************************************************/
 void modemPwrInit(void)
 {
 
     ModemPwrState = MDM_PWR_SHUTDOWN;
     PowerOnSuccessfull = false;
 }
+
+static void PowerOnWaitTimerCallBack(void* param);
+
+
+
+static void PowerOnWaitTimerCallBack(void* param)
+{
+	SerialDebugPrint((uint8_t*)"Power On Wait Timer Expired\r\n",29);
+	PowerOnWaitTimerExpired = true;
+	PowerOnSuccessfull = true;
+	ModemPwrState = MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS;
+}
+
+MODEM_POWER_STATES_T getModemPowerStatus(void)
+{
+	return ModemPwrState;
+}
+
 
 void modemPwrStateSchedule(void)
 {
@@ -177,38 +235,4 @@ void modemPwrStateSchedule(void)
         default:
         break;
     }
-}
-
-static void PowerOnWaitTimerCallBack(void* param)
-{
-    SerialDebugPrint((uint8_t*)"Power On Wait Timer Expired\r\n",29);
-    PowerOnWaitTimerExpired = true;
-    PowerOnSuccessfull = true;
-    ModemPwrState = MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS;
-}
-
-MODEM_POWER_STATES_T getModemPowerStatus(void)
-{
-	return ModemPwrState;
-}
-
-void modemPowerInit(void)
-{
-	gpio_set_pin_direction(MODEM_ON, GPIO_DIRECTION_OUT);
-	gpio_set_pin_function(MODEM_ON, GPIO_PIN_FUNCTION_OFF);
-	gpio_set_pin_pull_mode(MODEM_ON, GPIO_PULL_UP);
-	gpio_set_pin_level(MODEM_ON,false);
-	delay_ms(1000);
-
-	gpio_set_pin_direction(MODEM_RESET, GPIO_DIRECTION_OUT);
-	gpio_set_pin_function(MODEM_RESET, GPIO_PIN_FUNCTION_OFF);
-	gpio_set_pin_pull_mode(MODEM_RESET, GPIO_PULL_UP);
-	gpio_set_pin_level(MODEM_RESET,true);
-	delay_ms(1000);
-
-	gpio_set_pin_direction(MODEM_DTR, GPIO_DIRECTION_OUT);
-	gpio_set_pin_function(MODEM_DTR, GPIO_PIN_FUNCTION_OFF);
-	gpio_set_pin_pull_mode(MODEM_DTR, GPIO_PULL_UP);
-	gpio_set_pin_level(MODEM_DTR,false);
-	delay_ms(7000);
 }

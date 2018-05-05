@@ -18,9 +18,11 @@ typedef enum
 
 void SerialDebugPrintInit(void);
 void SerialDebugStateMachine(void);
+#if 0
 void SerialDebugTxByteSentCallBack(struct _usart_async_device *device);
 void SerialDebugTxDoneCallBack(struct _usart_async_device *device);
 void SerialDebugRxDoneCallBack(struct _usart_async_device *device,uint8_t data);
 void SerialDebugErrorCallBack(struct _usart_async_device *device);
+#endif
 void SerialDebugPrint(const uint8_t *const dataToPrint,const uint16_t length);
 #endif /* SERIALDEBUG_H_ */
