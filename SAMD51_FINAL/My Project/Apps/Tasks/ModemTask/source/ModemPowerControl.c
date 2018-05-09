@@ -48,7 +48,7 @@ void modemPowerInit(void)
 	delay_ms(50);
 	
 	/* make MODEM ON to default level */
-	gpio_set_pin_level(MODEM_ON,false);
+	//gpio_set_pin_level(MODEM_ON,false);
 	delay_ms(3000);
 	
 	SerialDebugPrint((uint8_t*)"Modem Power On initialization Completed\r\n",41);

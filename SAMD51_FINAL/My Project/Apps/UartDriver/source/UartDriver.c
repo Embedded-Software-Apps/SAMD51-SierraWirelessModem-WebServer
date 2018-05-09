@@ -5,7 +5,7 @@
  *  Author: anilj
  */ 
 #include "Apps/UartDriver/include/UartDriver.h"
-
+uint8_t TxBuf[10] = {0};
 int32_t usart_async_write(struct _usart_async_device *const device,const uint8_t *const buf, const uint16_t length)
 {
 	uint32_t offset = 0;
@@ -13,6 +13,7 @@ int32_t usart_async_write(struct _usart_async_device *const device,const uint8_t
 	while (!_usart_async_is_byte_sent(device));
 	
 	do {
+		TxBuf[offset] = buf[offset];
 		_usart_async_write_byte(device, buf[offset]);
 		while (!_usart_async_is_byte_sent(device))
 		;

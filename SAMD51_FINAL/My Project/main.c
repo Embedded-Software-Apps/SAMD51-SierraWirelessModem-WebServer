@@ -43,7 +43,10 @@ int main(void)
 		 * call back will be called if any data received from modem */
 		
 		sendCommandToModem((uint8_t*)"AT\r",3);
-		delay_ms(4000);
+		delay_ms(6000);
+		
+		sendCommandToModem((uint8_t*)"AT+CGSN\r",8);
+		delay_ms(6000);
 	}
 }
 
@@ -85,8 +88,4 @@ int main(void)
 	}
 	
 	
-	/* The execution won't reach here ideally */
-	for( ;; );
-	return 0;
-}
-#endif
+	/* The ex

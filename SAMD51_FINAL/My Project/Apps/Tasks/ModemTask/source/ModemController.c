@@ -42,10 +42,11 @@ void ModemDataCommInit(void)
 	
 	/* Enable all of the UART interrupts for SERCOM3 */
 	#if 1
-	_usart_async_set_irq_state(&MODEM_DATA,USART_ASYNC_BYTE_SENT,true);
-	_usart_async_set_irq_state(&MODEM_DATA,USART_ASYNC_TX_DONE,true);
-	_usart_async_set_irq_state(&MODEM_DATA,USART_ASYNC_ERROR,true);
-	_usart_async_enable_tx_done_irq(&MODEM_DATA);
+	//_usart_async_set_irq_state(&MODEM_DATA,USART_ASYNC_BYTE_SENT,true);
+	//_usart_async_set_irq_state(&MODEM_DATA,USART_ASYNC_TX_DONE,true);
+	//_usart_async_set_irq_state(&MODEM_DATA,USART_ASYNC_ERROR,true);
+	//_usart_async_enable_tx_done_irq(&MODEM_DATA);
+	_usart_async_set_irq_state(&MODEM_DATA,USART_ASYNC_RX_DONE,true);
 	#endif
 	
 	if(initStatus == ERR_NONE)
@@ -69,7 +70,7 @@ void SERCOM3_0_Handler( void )
 	
 	hri_sercomusart_clear_interrupt_DRE_bit(SERCOM3);
 	/* Disable the TX Data reg empty interrupt after transmitting the first set of data */
-	SERCOM3->USART.INTENCLR.bit.DRE = 1;
+	//SERCOM3->USART.INTENCLR.bit.DRE = 1;
 }
 
 void SERCOM3_1_Handler(void )
@@ -85,19 +86,28 @@ void SERCOM3_1_Handler(void )
  */
 void SERCOM3_2_Handler( void )
 {
+	static uint8_t cnt=0;
 	/* RXC : Receive Complete */
-	sprintf(printBuff,"Modem Data Rx Complete Callback\r\n");
-	SerialDebugPrint(printBuff,sizeof(printBuff));
+	//sprintf(printBuff,"Modem Data Rx Complete Callback\r\n");
+	//SerialDebugPrint(printBuff,sizeof(printBuff));
 
-	sprintf(printBuff,"Successfully Received a char from Modem\r\n");
-	SerialDebugPrint(printBuff,sizeof(printBuff));
+	//sprintf(printBuff,"Successfully Received a char from Modem\r\n");
+	//SerialDebugPrint(printBuff,sizeof(printBuff));
 	
 	hri_sercomusart_clear_interrupt_RXC_bit(SERCOM3);
 	
 	while (!_usart_async_is_byte_received(&MODEM_DATA));
 	
-	RxDataBuff[0] = _usart_async_read_byte(&MODEM_DATA);
-	SerialDebugPrint(RxDataBuff[0],1);
+	if(cnt < 2)
+	{
+		RxDataBuff[cnt] = _usart_async_read_byte(&MODEM_DATA);
+		cnt++;
+	}
+	else
+	{
+		SerialDebugPrint(RxDataBuff,2);
+		cnt = 0;
+	}
 }
 
 

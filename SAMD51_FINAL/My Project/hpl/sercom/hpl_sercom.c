@@ -224,7 +224,7 @@ int32_t _usart_async_init(struct _usart_async_device *const device, void *const 
 	device->hw = hw;
 	_sercom_init_irq_param(hw, (void *)device);
 	uint8_t irq = _sercom_get_irq_num(hw);
-#if 1
+#if 0
 	for (uint32_t i = 0; i < 4; i++) {
 		NVIC_DisableIRQ((IRQn_Type)irq);
 		NVIC_ClearPendingIRQ((IRQn_Type)irq);
@@ -232,7 +232,7 @@ int32_t _usart_async_init(struct _usart_async_device *const device, void *const 
 		irq++;
 	}
 #endif
-#if 0
+#if 1
 		irq = irq +2;
 		NVIC_DisableIRQ((IRQn_Type)irq);
 		NVIC_ClearPendingIRQ((IRQn_Type)irq);
