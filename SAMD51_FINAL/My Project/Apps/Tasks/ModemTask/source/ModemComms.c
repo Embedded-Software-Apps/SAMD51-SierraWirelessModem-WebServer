@@ -76,9 +76,9 @@ void mdmComms_ParseModemResponse(AT_CMD_TYPE cmd,uint8_t* resp)
 
 /*============================================================================
 **
-** Function Name:      sendCommandToModem
+** Function Name:      mdmComms_GetModemResponse
 **
-** Description:        Transmits Data to Modem
+** Description:        Gets the parsed modem response
 **
 **===========================================================================*/
 void mdmComms_GetModemResponse(AT_CMD_TYPE cmd,uint8_t* response)
