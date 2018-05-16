@@ -8,6 +8,7 @@
 #include "Apps/Common/Common.h"
 #include "Apps/Tasks/ModemTask/include/ModemPowerControl.h"
 #include "Apps/Tasks/ModemTask/include/ModemController.h"
+#include "Apps/Tasks/ModemTask/include/ModemComms.h"
 #include <string.h>
 
 /* FreeRTOS.org includes. */
@@ -17,6 +18,7 @@
 BaseType_t DispatchTaskStatus;
 BaseType_t ModemTaskStatus;
 uint8_t printBuff[50];
+char rxReadBuf[50];
 
 int main(void)
 {
@@ -41,12 +43,14 @@ int main(void)
 		 * Only the TX data register interrupt is disabled. 
 		 * Rx data complete Interrupt is still active and the corresponding
 		 * call back will be called if any data received from modem */
+		SendATCommandToModem(CMD_AT_CGSN);
+		delay_ms(500);
 		
-		sendCommandToModem((uint8_t*)"AT\r",3);
-		delay_ms(6000);
-		
-		sendCommandToModem((uint8_t*)"AT+CGSN\r",8);
-		delay_ms(6000);
+		memset(rxReadBuf,0,50);
+		mdmComms_GetModemResponse(CMD_AT_CGSN,rxReadBuf);
+		SerialDebugPrint(rxReadBuf,15);
+		delay_ms(5000);		
+
 	}
 }
 
@@ -88,4 +92,8 @@ int main(void)
 	}
 	
 	
-	/* The ex
+	/* The execution won't reach here ideally */
+	for( ;; );
+	return 0;
+}
+#endif

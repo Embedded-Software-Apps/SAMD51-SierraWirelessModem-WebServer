@@ -34,16 +34,7 @@ typedef enum
 	MDM_AT_IDLE
 }MDM_TEST_STATES;
 
-void ModemDataCommInit(void);
-uint32_t sendCommandToModem(const uint8_t *const TxData,const uint16_t length);
-int32_t ReadResponseFromModem(uint8_t *RecvdData,const int32_t length);
-void ModemDataTxByteSentCallBack(struct _usart_async_device *device);
-void ModemDataTxDoneCallBack(struct _usart_async_device *device);
-void ModemDataRxDoneCallBack(struct _usart_async_device *device,uint8_t data);
-void ModemDataErrorCallBack(struct _usart_async_device *device);
-void UsartsendCommandToModem(const uint8_t *const TxData,const uint16_t length);
-int32_t UsartReadResponseFromModem(uint8_t *RecvdData,const int32_t length);
-void ModemUsartOsInit(void);
-void ModemUsartOsTest(void);
-
+void mdmCtrlr_DataCommInit(void);
+uint32_t mdmCtrlr_SendDataToModem(const uint8_t *const TxData,const uint16_t length);
+void mdmCtrlr_ReadResponseFromModem(uint8_t *const buf, const uint16_t length);
 #endif /* MODEMCONTROLLER_H_ */
