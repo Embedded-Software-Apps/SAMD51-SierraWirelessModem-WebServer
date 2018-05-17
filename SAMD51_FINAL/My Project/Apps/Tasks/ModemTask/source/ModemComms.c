@@ -13,6 +13,7 @@
 
 static uint8_t printBuff[40];
 
+/* Data structure for storing command parameters */
 static const MODEM_COMM_TYPE ModemComms[10] = \
 {
 	/* AT */
