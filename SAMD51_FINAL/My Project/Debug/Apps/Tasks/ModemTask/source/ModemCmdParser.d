@@ -1,7 +1,7 @@
-Apps/Tasks/ModemTask/source/ModemComms.d \
- Apps/Tasks/ModemTask/source/ModemComms.o: \
- ../Apps/Tasks/ModemTask/source/ModemComms.c \
- ../Apps/Tasks/ModemTask/include/ModemComms.h \
+Apps/Tasks/ModemTask/source/ModemCmdParser.d \
+ Apps/Tasks/ModemTask/source/ModemCmdParser.o: \
+ ../Apps/Tasks/ModemTask/source/ModemCmdParser.c \
+ ../Apps/Tasks/ModemTask/include/ModemCmdParser.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdint.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\stdint.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\_default_types.h \
@@ -163,9 +163,22 @@ Apps/Tasks/ModemTask/source/ModemComms.d \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
  ../hal/utils/include/utils_ringbuffer.h ../hal/utils/include/compiler.h \
- ../hal/utils/include/utils_assert.h
+ ../hal/utils/include/utils_assert.h \
+ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h \
+ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h \
+ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\newlib.h \
+ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\config.h \
+ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\ieeefp.h \
+ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\reent.h \
+ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h \
+ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_types.h \
+ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\_types.h \
+ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\lock.h \
+ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\cdefs.h \
+ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h \
+ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h
 
-../Apps/Tasks/ModemTask/include/ModemComms.h:
+../Apps/Tasks/ModemTask/include/ModemCmdParser.h:
 
 e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdint.h:
 
@@ -592,3 +605,29 @@ E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/sam.h:
 ../hal/utils/include/compiler.h:
 
 ../hal/utils/include/utils_assert.h:
+
+e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h:
+
+e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h:
+
+e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\newlib.h:
+
+e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\config.h:
+
+e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\ieeefp.h:
+
+e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\reent.h:
+
+e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h:
+
+e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_types.h:
+
+e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\_types.h:
+
+e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\lock.h:
+
+e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\cdefs.h:
+
+e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h:
+
+e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h:

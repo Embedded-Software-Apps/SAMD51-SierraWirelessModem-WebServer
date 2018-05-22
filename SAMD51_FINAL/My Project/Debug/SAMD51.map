@@ -2244,361 +2244,346 @@ Discarded input sections
  .ARM.attributes
                 0x00000000       0x37 Apps/Tasks/DispatchTask/source/DispatchTask.o
  COMMON         0x00000000       0x35 Apps/Tasks/DispatchTask/source/DispatchTask.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemComms.o
- .text          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemComms.o
- .data          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemComms.o
- .bss           0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x8b0 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x22 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x87 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x51 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0xef Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x6a Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x1df Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x16d Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x22 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x5b Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x28 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0xaf Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0xfe7 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x706 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0xb5b Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x3c0 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x336 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x3b7 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x668 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000     0x143f Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0xf20 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x67b Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x6d7 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x172 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x395 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x3a Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x72a Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0xb12 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x5ad Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0xcdf Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x9b9 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x2a3 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x893 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x1ea Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x8f4 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x216 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x3f9 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x620 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x10d Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0xb8 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000     0x1df7 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000     0x2e69 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000     0x11ed Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x752 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000     0x180c Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x930 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000     0x1ad8 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0xe7 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000     0x13e6 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x36a Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x94 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0xdc Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0xe2 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0xdc Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x46 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x4c Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0xc4 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x7d5 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x106 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x7c Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0xc2e Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x46 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x25b Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x170 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x7c Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0xbe Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x4c Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x82 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x1a3 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x46 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x6a Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x46 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x88 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x46 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x24e Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x76 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x3a Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x2e Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x196 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x16f Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x25d Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x25d Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x25d Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x25d Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x25d Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x25d Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x58 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x711 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0xfa Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0xfa Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0xfa Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0xfa Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0xfa Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0xfa Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x148 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x124 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x106 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0xee Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0xee Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x2e Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x46a Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x3a Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x5e5 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000     0x30c7 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0xcf Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x10 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x10 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0xca Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x1c Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0xac Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x10 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x1e7 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x182 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x15a Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0xc2 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x10 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x1f Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x45c Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0xb5 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x8c Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x86 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x58 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x35 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x9c Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x58 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x1f Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x43 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x20 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x187 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000      0x353 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000000       0x35 Apps/Tasks/ModemTask/source/ModemComms.o
- .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemControl.o
- .text          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemControl.o
- .data          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemControl.o
- .bss           0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemControl.o
- .debug_info    0x00000000       0x21 Apps/Tasks/ModemTask/source/ModemControl.o
- .debug_abbrev  0x00000000       0x13 Apps/Tasks/ModemTask/source/ModemControl.o
- .debug_aranges
-                0x00000000       0x18 Apps/Tasks/ModemTask/source/ModemControl.o
- .debug_macro   0x00000000       0x11 Apps/Tasks/ModemTask/source/ModemControl.o
- .debug_macro   0x00000000      0x8b0 Apps/Tasks/ModemTask/source/ModemControl.o
- .debug_line    0x00000000       0x4e Apps/Tasks/ModemTask/source/ModemControl.o
- .debug_str     0x00000000     0x25a0 Apps/Tasks/ModemTask/source/ModemControl.o
- .comment       0x00000000       0x5a Apps/Tasks/ModemTask/source/ModemControl.o
- .ARM.attributes
-                0x00000000       0x37 Apps/Tasks/ModemTask/source/ModemControl.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .text          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .data          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .bss           0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x8b0 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x22 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x87 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x51 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0xef Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x6a Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x1df Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x16d Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x22 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x5b Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x28 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0xaf Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0xfe7 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x706 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0xb5b Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x3c0 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x336 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x3b7 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x668 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000     0x143f Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0xf20 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x67b Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x6d7 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x172 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x395 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x3a Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x72a Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0xb12 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x5ad Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0xcdf Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x9b9 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x2a3 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x893 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x1ea Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x8f4 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x216 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x3f9 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x620 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x10d Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0xb8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000     0x1df7 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000     0x2e69 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000     0x11ed Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x752 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000     0x180c Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x930 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000     0x1ad8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0xe7 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000     0x13e6 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x36a Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x94 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0xdc Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0xe2 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0xdc Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x46 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x4c Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0xc4 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x7d5 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x106 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x7c Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0xc2e Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x46 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x25b Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x170 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x7c Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0xbe Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x4c Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x82 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x1a3 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x46 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x6a Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x46 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x88 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x46 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x24e Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x76 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x3a Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x2e Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x196 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x16f Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x25d Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x25d Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x25d Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x25d Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x25d Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x25d Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x58 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x711 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0xfa Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0xfa Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0xfa Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0xfa Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0xfa Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0xfa Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x148 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x124 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x106 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0xee Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0xee Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x2e Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x46a Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x3a Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x5e5 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000     0x30c7 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0xcf Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x10 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x10 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0xca Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x1c Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x16 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0xac Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x10 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x1e7 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x182 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x15a Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0xc2 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x10 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x1f Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x45c Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0xb5 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x8c Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x86 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x58 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x35 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x9c Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x58 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x1f Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x43 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x20 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x187 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000      0x353 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000000       0x35 Apps/Tasks/ModemTask/source/ModemCmdParser.o
  .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemController.o
  .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemController.o
  .group         0x00000000        0x8 Apps/Tasks/ModemTask/source/ModemController.o
@@ -23064,8 +23049,7 @@ LOAD Apps/LedControl/source/ledPwmControl.o
 LOAD Apps/SelectInputs/source/selectInputs.o
 LOAD Apps/SensorAdcInputs/source/SensorAdcInputs.o
 LOAD Apps/Tasks/DispatchTask/source/DispatchTask.o
-LOAD Apps/Tasks/ModemTask/source/ModemComms.o
-LOAD Apps/Tasks/ModemTask/source/ModemControl.o
+LOAD Apps/Tasks/ModemTask/source/ModemCmdParser.o
 LOAD Apps/Tasks/ModemTask/source/ModemController.o
 LOAD Apps/Tasks/ModemTask/source/ModemPowerControl.o
 LOAD Apps/Tasks/ModemTask/source/ModemTask.o
@@ -23157,15 +23141,15 @@ LOAD e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc
                 0x00000000                exception_table
  *(.text .text.* .gnu.linkonce.t.*)
  .text          0x00000264       0x6c e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtbegin.o
- .text.mdmComms_ParseModemResponse
-                0x000002d0       0x54 Apps/Tasks/ModemTask/source/ModemComms.o
-                0x000002d0                mdmComms_ParseModemResponse
+ .text.mdmParser_ParseModemResponse
+                0x000002d0       0x54 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+                0x000002d0                mdmParser_ParseModemResponse
  .text.SendATCommandToModem
-                0x00000324       0x20 Apps/Tasks/ModemTask/source/ModemComms.o
+                0x00000324       0x20 Apps/Tasks/ModemTask/source/ModemCmdParser.o
                 0x00000324                SendATCommandToModem
- .text.mdmComms_GetModemResponse
-                0x00000344       0x18 Apps/Tasks/ModemTask/source/ModemComms.o
-                0x00000344                mdmComms_GetModemResponse
+ .text.mdmParser_GetModemResponse
+                0x00000344       0x18 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+                0x00000344                mdmParser_GetModemResponse
  .text.mdmCtrlr_DataCommInit
                 0x0000035c       0xac Apps/Tasks/ModemTask/source/ModemController.o
                 0x0000035c                mdmCtrlr_DataCommInit
@@ -23780,9 +23764,9 @@ LOAD e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc
  *(.glue_7)
  .glue_7        0x00002aac        0x0 linker stubs
  *(.rodata .rodata* .gnu.linkonce.r.*)
- .rodata        0x00002aac       0xc8 Apps/Tasks/ModemTask/source/ModemComms.o
+ .rodata        0x00002aac       0xc8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
  .rodata.str1.4
-                0x00002b74        0xd Apps/Tasks/ModemTask/source/ModemComms.o
+                0x00002b74        0xd Apps/Tasks/ModemTask/source/ModemCmdParser.o
  *fill*         0x00002b81        0x3 
  .rodata.str1.4
                 0x00002b84       0x93 Apps/Tasks/ModemTask/source/ModemController.o
@@ -24025,7 +24009,7 @@ OUTPUT(SAMD51.elf elf32-littlearm)
  .ARM.attributes
                 0x0000001e       0x2e e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtbegin.o
  .ARM.attributes
-                0x0000004c       0x37 Apps/Tasks/ModemTask/source/ModemComms.o
+                0x0000004c       0x37 Apps/Tasks/ModemTask/source/ModemCmdParser.o
  .ARM.attributes
                 0x00000083       0x37 Apps/Tasks/ModemTask/source/ModemController.o
  .ARM.attributes
@@ -24124,7 +24108,7 @@ OUTPUT(SAMD51.elf elf32-littlearm)
                 0x00000a81       0x1e e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtn.o
 
 .comment        0x00000000       0x59
- .comment       0x00000000       0x59 Apps/Tasks/ModemTask/source/ModemComms.o
+ .comment       0x00000000       0x59 Apps/Tasks/ModemTask/source/ModemCmdParser.o
                                  0x5a (size before relaxing)
  .comment       0x00000059       0x5a Apps/Tasks/ModemTask/source/ModemController.o
  .comment       0x00000059       0x5a Apps/Tasks/ModemTask/source/ModemPowerControl.o
@@ -24172,7 +24156,7 @@ OUTPUT(SAMD51.elf elf32-littlearm)
  .comment       0x00000059       0x5a thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
 
 .debug_info     0x00000000    0x4d788
- .debug_info    0x00000000     0x142d Apps/Tasks/ModemTask/source/ModemComms.o
+ .debug_info    0x00000000     0x142d Apps/Tasks/ModemTask/source/ModemCmdParser.o
  .debug_info    0x0000142d     0x3867 Apps/Tasks/ModemTask/source/ModemController.o
  .debug_info    0x00004c94     0x1dee Apps/Tasks/ModemTask/source/ModemPowerControl.o
  .debug_info    0x00006a82      0xc83 Apps/Tasks/ModemTask/source/ModemTask.o
@@ -24219,7 +24203,7 @@ OUTPUT(SAMD51.elf elf32-littlearm)
  .debug_info    0x0004a676     0x3112 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
 
 .debug_abbrev   0x00000000     0x72f4
- .debug_abbrev  0x00000000      0x244 Apps/Tasks/ModemTask/source/ModemComms.o
+ .debug_abbrev  0x00000000      0x244 Apps/Tasks/ModemTask/source/ModemCmdParser.o
  .debug_abbrev  0x00000244      0x319 Apps/Tasks/ModemTask/source/ModemController.o
  .debug_abbrev  0x0000055d      0x35b Apps/Tasks/ModemTask/source/ModemPowerControl.o
  .debug_abbrev  0x000008b8      0x269 Apps/Tasks/ModemTask/source/ModemTask.o
@@ -24266,7 +24250,7 @@ OUTPUT(SAMD51.elf elf32-littlearm)
  .debug_abbrev  0x00006e77      0x47d thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
 
 .debug_loc      0x00000000    0x1720b
- .debug_loc     0x00000000      0x1ce Apps/Tasks/ModemTask/source/ModemComms.o
+ .debug_loc     0x00000000      0x1ce Apps/Tasks/ModemTask/source/ModemCmdParser.o
  .debug_loc     0x000001ce      0x229 Apps/Tasks/ModemTask/source/ModemController.o
  .debug_loc     0x000003f7      0xec1 Apps/Tasks/ModemTask/source/ModemPowerControl.o
  .debug_loc     0x000012b8       0x5f Apps/Tasks/ModemTask/source/ModemTask.o
@@ -24313,7 +24297,7 @@ OUTPUT(SAMD51.elf elf32-littlearm)
 
 .debug_aranges  0x00000000     0x1710
  .debug_aranges
-                0x00000000       0x30 Apps/Tasks/ModemTask/source/ModemComms.o
+                0x00000000       0x30 Apps/Tasks/ModemTask/source/ModemCmdParser.o
  .debug_aranges
                 0x00000030       0x48 Apps/Tasks/ModemTask/source/ModemController.o
  .debug_aranges
@@ -24404,7 +24388,7 @@ OUTPUT(SAMD51.elf elf32-littlearm)
                 0x00001570      0x1a0 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
 
 .debug_ranges   0x00000000     0x1c10
- .debug_ranges  0x00000000       0x20 Apps/Tasks/ModemTask/source/ModemComms.o
+ .debug_ranges  0x00000000       0x20 Apps/Tasks/ModemTask/source/ModemCmdParser.o
  .debug_ranges  0x00000020       0x38 Apps/Tasks/ModemTask/source/ModemController.o
  .debug_ranges  0x00000058       0x30 Apps/Tasks/ModemTask/source/ModemPowerControl.o
  .debug_ranges  0x00000088       0x10 Apps/Tasks/ModemTask/source/ModemTask.o
@@ -24451,10 +24435,10 @@ OUTPUT(SAMD51.elf elf32-littlearm)
  .debug_ranges  0x000019a0      0x270 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
 
 .debug_macro    0x00000000    0x15e4d
- .debug_macro   0x00000000      0x994 Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000994       0x7e Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000a12       0x1c Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_macro   0x00000a2e       0x10 Apps/Tasks/ModemTask/source/ModemComms.o
+ .debug_macro   0x00000000      0x994 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000994       0x7e Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000a12       0x1c Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_macro   0x00000a2e       0x10 Apps/Tasks/ModemTask/source/ModemCmdParser.o
  .debug_macro   0x00000a3e      0xa40 Apps/Tasks/ModemTask/source/ModemController.o
  .debug_macro   0x0000147e      0x188 Apps/Tasks/ModemTask/source/ModemController.o
  .debug_macro   0x00001606       0x22 Apps/Tasks/ModemTask/source/ModemController.o
@@ -24531,147 +24515,147 @@ OUTPUT(SAMD51.elf elf32-littlearm)
  .debug_macro   0x00015b11      0x32c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
  .debug_macro   0x00015e3d       0x10 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
 
-.debug_line     0x00000000    0x256b3
- .debug_line    0x00000000     0x104f Apps/Tasks/ModemTask/source/ModemComms.o
- .debug_line    0x0000104f     0x118c Apps/Tasks/ModemTask/source/ModemController.o
- .debug_line    0x000021db      0xe0c Apps/Tasks/ModemTask/source/ModemPowerControl.o
- .debug_line    0x00002fe7      0xdd4 Apps/Tasks/ModemTask/source/ModemTask.o
- .debug_line    0x00003dbb      0xb29 Apps/UartDriver/source/UartDriver.o
- .debug_line    0x000048e4      0xf67 Apps/SerialDebug/SerialDebug.o
- .debug_line    0x0000584b      0xf37 atmel_start.o
- .debug_line    0x00006782      0x7ae Device_Startup/startup_samd51.o
- .debug_line    0x00006f30     0x1475 driver_init.o
- .debug_line    0x000083a5      0xb77 hal/src/hal_ac_sync.o
- .debug_line    0x00008f1c      0xc64 hal/src/hal_adc_sync.o
- .debug_line    0x00009b80      0xad8 hal/src/hal_atomic.o
- .debug_line    0x0000a658      0xba2 hal/src/hal_dac_sync.o
- .debug_line    0x0000b1fa      0xb0c hal/src/hal_delay.o
- .debug_line    0x0000bd06      0xb19 hal/src/hal_evsys.o
- .debug_line    0x0000c81f      0xb4a hal/src/hal_ext_irq.o
- .debug_line    0x0000d369      0xd44 hal/src/hal_flash.o
- .debug_line    0x0000e0ad      0xb9a hal/src/hal_pwm.o
- .debug_line    0x0000ec47      0xcec hal/src/hal_timer.o
- .debug_line    0x0000f933      0xaac hal/utils/src/utils_assert.o
- .debug_line    0x000103df      0xb40 hal/utils/src/utils_list.o
- .debug_line    0x00010f1f      0xb4c hal/utils/src/utils_ringbuffer.o
- .debug_line    0x00011a6b      0xd11 hpl/ac/hpl_ac.o
- .debug_line    0x0001277c     0x1343 hpl/adc/hpl_adc.o
- .debug_line    0x00013abf      0xbfe hpl/core/hpl_core_m4.o
- .debug_line    0x000146bd      0xb7f hpl/core/hpl_init.o
- .debug_line    0x0001523c      0xdf2 hpl/dac/hpl_dac.o
- .debug_line    0x0001602e      0xdee hpl/dmac/hpl_dmac.o
- .debug_line    0x00016e1c      0xbef hpl/eic/hpl_eic.o
- .debug_line    0x00017a0b      0xbaf hpl/evsys/hpl_evsys.o
- .debug_line    0x000185ba      0xb6f hpl/gclk/hpl_gclk.o
- .debug_line    0x00019129      0xacf hpl/mclk/hpl_mclk.o
- .debug_line    0x00019bf8     0x1122 hpl/nvmctrl/hpl_nvmctrl.o
- .debug_line    0x0001ad1a      0xaf7 hpl/osc32kctrl/hpl_osc32kctrl.o
- .debug_line    0x0001b811      0xbd7 hpl/oscctrl/hpl_oscctrl.o
- .debug_line    0x0001c3e8      0xb6c hpl/ramecc/hpl_ramecc.o
- .debug_line    0x0001cf54     0x2907 hpl/sercom/hpl_sercom.o
- .debug_line    0x0001f85b      0xb41 hpl/systick/hpl_systick.o
- .debug_line    0x0002039c      0xd65 hpl/tcc/hpl_tcc.o
- .debug_line    0x00021101     0x1077 hpl/tc/hpl_tc.o
- .debug_line    0x00022178      0xcf2 hpl/wdt/hpl_wdt.o
- .debug_line    0x00022e6a     0x113b main.o
- .debug_line    0x00023fa5      0x470 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
- .debug_line    0x00024415      0x4d3 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
- .debug_line    0x000248e8      0xdcb thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+.debug_line     0x00000000    0x256bf
+ .debug_line    0x00000000     0x1057 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .debug_line    0x00001057     0x118c Apps/Tasks/ModemTask/source/ModemController.o
+ .debug_line    0x000021e3      0xe0c Apps/Tasks/ModemTask/source/ModemPowerControl.o
+ .debug_line    0x00002fef      0xdd4 Apps/Tasks/ModemTask/source/ModemTask.o
+ .debug_line    0x00003dc3      0xb29 Apps/UartDriver/source/UartDriver.o
+ .debug_line    0x000048ec      0xf67 Apps/SerialDebug/SerialDebug.o
+ .debug_line    0x00005853      0xf37 atmel_start.o
+ .debug_line    0x0000678a      0x7ae Device_Startup/startup_samd51.o
+ .debug_line    0x00006f38     0x1475 driver_init.o
+ .debug_line    0x000083ad      0xb77 hal/src/hal_ac_sync.o
+ .debug_line    0x00008f24      0xc64 hal/src/hal_adc_sync.o
+ .debug_line    0x00009b88      0xad8 hal/src/hal_atomic.o
+ .debug_line    0x0000a660      0xba2 hal/src/hal_dac_sync.o
+ .debug_line    0x0000b202      0xb0c hal/src/hal_delay.o
+ .debug_line    0x0000bd0e      0xb19 hal/src/hal_evsys.o
+ .debug_line    0x0000c827      0xb4a hal/src/hal_ext_irq.o
+ .debug_line    0x0000d371      0xd44 hal/src/hal_flash.o
+ .debug_line    0x0000e0b5      0xb9a hal/src/hal_pwm.o
+ .debug_line    0x0000ec4f      0xcec hal/src/hal_timer.o
+ .debug_line    0x0000f93b      0xaac hal/utils/src/utils_assert.o
+ .debug_line    0x000103e7      0xb40 hal/utils/src/utils_list.o
+ .debug_line    0x00010f27      0xb4c hal/utils/src/utils_ringbuffer.o
+ .debug_line    0x00011a73      0xd11 hpl/ac/hpl_ac.o
+ .debug_line    0x00012784     0x1343 hpl/adc/hpl_adc.o
+ .debug_line    0x00013ac7      0xbfe hpl/core/hpl_core_m4.o
+ .debug_line    0x000146c5      0xb7f hpl/core/hpl_init.o
+ .debug_line    0x00015244      0xdf2 hpl/dac/hpl_dac.o
+ .debug_line    0x00016036      0xdee hpl/dmac/hpl_dmac.o
+ .debug_line    0x00016e24      0xbef hpl/eic/hpl_eic.o
+ .debug_line    0x00017a13      0xbaf hpl/evsys/hpl_evsys.o
+ .debug_line    0x000185c2      0xb6f hpl/gclk/hpl_gclk.o
+ .debug_line    0x00019131      0xacf hpl/mclk/hpl_mclk.o
+ .debug_line    0x00019c00     0x1122 hpl/nvmctrl/hpl_nvmctrl.o
+ .debug_line    0x0001ad22      0xaf7 hpl/osc32kctrl/hpl_osc32kctrl.o
+ .debug_line    0x0001b819      0xbd7 hpl/oscctrl/hpl_oscctrl.o
+ .debug_line    0x0001c3f0      0xb6c hpl/ramecc/hpl_ramecc.o
+ .debug_line    0x0001cf5c     0x2907 hpl/sercom/hpl_sercom.o
+ .debug_line    0x0001f863      0xb41 hpl/systick/hpl_systick.o
+ .debug_line    0x000203a4      0xd65 hpl/tcc/hpl_tcc.o
+ .debug_line    0x00021109     0x1077 hpl/tc/hpl_tc.o
+ .debug_line    0x00022180      0xcf2 hpl/wdt/hpl_wdt.o
+ .debug_line    0x00022e72     0x113f main.o
+ .debug_line    0x00023fb1      0x470 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
+ .debug_line    0x00024421      0x4d3 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
+ .debug_line    0x000248f4      0xdcb thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
 
-.debug_str      0x00000000   0x1051a2
- .debug_str     0x00000000    0xe17c1 Apps/Tasks/ModemTask/source/ModemComms.o
-                              0xe1de1 (size before relaxing)
- .debug_str     0x000e17c1     0x1c20 Apps/Tasks/ModemTask/source/ModemController.o
+.debug_str      0x00000000   0x1051ad
+ .debug_str     0x00000000    0xe17cc Apps/Tasks/ModemTask/source/ModemCmdParser.o
+                              0xe1dec (size before relaxing)
+ .debug_str     0x000e17cc     0x1c20 Apps/Tasks/ModemTask/source/ModemController.o
                               0xe3932 (size before relaxing)
- .debug_str     0x000e33e1      0xe18 Apps/Tasks/ModemTask/source/ModemPowerControl.o
+ .debug_str     0x000e33ec      0xe18 Apps/Tasks/ModemTask/source/ModemPowerControl.o
                               0xdefa8 (size before relaxing)
- .debug_str     0x000e41f9      0x14c Apps/Tasks/ModemTask/source/ModemTask.o
+ .debug_str     0x000e4204      0x14c Apps/Tasks/ModemTask/source/ModemTask.o
                               0xe10c0 (size before relaxing)
- .debug_str     0x000e4345       0x70 Apps/UartDriver/source/UartDriver.o
+ .debug_str     0x000e4350       0x70 Apps/UartDriver/source/UartDriver.o
                               0xd9292 (size before relaxing)
- .debug_str     0x000e43b5      0x598 Apps/SerialDebug/SerialDebug.o
+ .debug_str     0x000e43c0      0x598 Apps/SerialDebug/SerialDebug.o
                               0xde99f (size before relaxing)
- .debug_str     0x000e494d       0x4a atmel_start.o
+ .debug_str     0x000e4958       0x4a atmel_start.o
                               0xdef8e (size before relaxing)
- .debug_str     0x000e4997      0xb9f Device_Startup/startup_samd51.o
+ .debug_str     0x000e49a2      0xb9f Device_Startup/startup_samd51.o
                               0xd8956 (size before relaxing)
- .debug_str     0x000e5536     0x1ae6 driver_init.o
+ .debug_str     0x000e5541     0x1ae6 driver_init.o
                               0xe0e0c (size before relaxing)
- .debug_str     0x000e701c       0xc5 hal/src/hal_ac_sync.o
+ .debug_str     0x000e7027       0xc5 hal/src/hal_ac_sync.o
                               0xd97d6 (size before relaxing)
- .debug_str     0x000e70e1      0x3d3 hal/src/hal_adc_sync.o
+ .debug_str     0x000e70ec      0x3d3 hal/src/hal_adc_sync.o
                               0xd9777 (size before relaxing)
- .debug_str     0x000e74b4       0x63 hal/src/hal_atomic.o
+ .debug_str     0x000e74bf       0x63 hal/src/hal_atomic.o
                               0xd918b (size before relaxing)
- .debug_str     0x000e7517       0xc2 hal/src/hal_dac_sync.o
+ .debug_str     0x000e7522       0xc2 hal/src/hal_dac_sync.o
                               0xd9361 (size before relaxing)
- .debug_str     0x000e75d9       0x92 hal/src/hal_delay.o
+ .debug_str     0x000e75e4       0x92 hal/src/hal_delay.o
                               0xd91f5 (size before relaxing)
- .debug_str     0x000e766b       0xca hal/src/hal_evsys.o
+ .debug_str     0x000e7676       0xca hal/src/hal_evsys.o
                               0xd9261 (size before relaxing)
- .debug_str     0x000e7735       0xec hal/src/hal_ext_irq.o
+ .debug_str     0x000e7740       0xec hal/src/hal_ext_irq.o
                               0xd925e (size before relaxing)
- .debug_str     0x000e7821      0x1cf hal/src/hal_flash.o
+ .debug_str     0x000e782c      0x1cf hal/src/hal_flash.o
                               0xd99b1 (size before relaxing)
- .debug_str     0x000e79f0      0x185 hal/src/hal_pwm.o
+ .debug_str     0x000e79fb      0x185 hal/src/hal_pwm.o
                               0xd9916 (size before relaxing)
- .debug_str     0x000e7b75      0x1ef hal/src/hal_timer.o
+ .debug_str     0x000e7b80      0x1ef hal/src/hal_timer.o
                               0xd9a40 (size before relaxing)
- .debug_str     0x000e7d64       0x2a hal/utils/src/utils_assert.o
+ .debug_str     0x000e7d6f       0x2a hal/utils/src/utils_assert.o
                               0xd919b (size before relaxing)
- .debug_str     0x000e7d8e       0x31 hal/utils/src/utils_list.o
+ .debug_str     0x000e7d99       0x31 hal/utils/src/utils_list.o
                               0xd9245 (size before relaxing)
- .debug_str     0x000e7dbf       0x35 hal/utils/src/utils_ringbuffer.o
+ .debug_str     0x000e7dca       0x35 hal/utils/src/utils_ringbuffer.o
                               0xd922f (size before relaxing)
- .debug_str     0x000e7df4      0xda1 hpl/ac/hpl_ac.o
+ .debug_str     0x000e7dff      0xda1 hpl/ac/hpl_ac.o
                               0xda332 (size before relaxing)
- .debug_str     0x000e8b95     0x6d01 hpl/adc/hpl_adc.o
+ .debug_str     0x000e8ba0     0x6d01 hpl/adc/hpl_adc.o
                               0xe0d98 (size before relaxing)
- .debug_str     0x000ef896       0xd1 hpl/core/hpl_core_m4.o
+ .debug_str     0x000ef8a1       0xd1 hpl/core/hpl_core_m4.o
                               0xdab93 (size before relaxing)
- .debug_str     0x000ef967     0x2db2 hpl/core/hpl_init.o
+ .debug_str     0x000ef972     0x2db2 hpl/core/hpl_init.o
                               0xdd1b2 (size before relaxing)
- .debug_str     0x000f2719      0x64e hpl/dac/hpl_dac.o
+ .debug_str     0x000f2724      0x64e hpl/dac/hpl_dac.o
                               0xda2d8 (size before relaxing)
- .debug_str     0x000f2d67     0x132d hpl/dmac/hpl_dmac.o
+ .debug_str     0x000f2d72     0x132d hpl/dmac/hpl_dmac.o
                               0xe3418 (size before relaxing)
- .debug_str     0x000f4094     0x1082 hpl/eic/hpl_eic.o
+ .debug_str     0x000f409f     0x1082 hpl/eic/hpl_eic.o
                               0xdd43c (size before relaxing)
- .debug_str     0x000f5116     0x265e hpl/evsys/hpl_evsys.o
+ .debug_str     0x000f5121     0x265e hpl/evsys/hpl_evsys.o
                               0xe0fe7 (size before relaxing)
- .debug_str     0x000f7774      0xbbe hpl/gclk/hpl_gclk.o
+ .debug_str     0x000f777f      0xbbe hpl/gclk/hpl_gclk.o
                               0xd9e90 (size before relaxing)
- .debug_str     0x000f8332       0x47 hpl/mclk/hpl_mclk.o
+ .debug_str     0x000f833d       0x47 hpl/mclk/hpl_mclk.o
                               0xda168 (size before relaxing)
- .debug_str     0x000f8379     0x1033 hpl/nvmctrl/hpl_nvmctrl.o
+ .debug_str     0x000f8384     0x1033 hpl/nvmctrl/hpl_nvmctrl.o
                               0xddfaf (size before relaxing)
- .debug_str     0x000f93ac      0x4d9 hpl/osc32kctrl/hpl_osc32kctrl.o
+ .debug_str     0x000f93b7      0x4d9 hpl/osc32kctrl/hpl_osc32kctrl.o
                               0xd9671 (size before relaxing)
- .debug_str     0x000f9885      0xcd9 hpl/oscctrl/hpl_oscctrl.o
+ .debug_str     0x000f9890      0xcd9 hpl/oscctrl/hpl_oscctrl.o
                               0xdab25 (size before relaxing)
- .debug_str     0x000fa55e      0x25d hpl/ramecc/hpl_ramecc.o
+ .debug_str     0x000fa569      0x25d hpl/ramecc/hpl_ramecc.o
                               0xda034 (size before relaxing)
- .debug_str     0x000fa7bb     0x531a hpl/sercom/hpl_sercom.o
+ .debug_str     0x000fa7c6     0x531a hpl/sercom/hpl_sercom.o
                               0xe0865 (size before relaxing)
- .debug_str     0x000ffad5       0xcd hpl/systick/hpl_systick.o
+ .debug_str     0x000ffae0       0xcd hpl/systick/hpl_systick.o
                               0xd91e3 (size before relaxing)
- .debug_str     0x000ffba2     0x1d50 hpl/tcc/hpl_tcc.o
+ .debug_str     0x000ffbad     0x1d50 hpl/tcc/hpl_tcc.o
                               0xdd053 (size before relaxing)
- .debug_str     0x001018f2     0x159f hpl/tc/hpl_tc.o
+ .debug_str     0x001018fd     0x159f hpl/tc/hpl_tc.o
                               0xdc610 (size before relaxing)
- .debug_str     0x00102e91      0x452 hpl/wdt/hpl_wdt.o
+ .debug_str     0x00102e9c      0x452 hpl/wdt/hpl_wdt.o
                               0xd972b (size before relaxing)
- .debug_str     0x001032e3       0xee main.o
-                              0xe2344 (size before relaxing)
- .debug_str     0x001033d1      0x248 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
+ .debug_str     0x001032ee       0xee main.o
+                              0xe2349 (size before relaxing)
+ .debug_str     0x001033dc      0x248 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
                                0xa5b3 (size before relaxing)
- .debug_str     0x00103619      0x81a thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
+ .debug_str     0x00103624      0x81a thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
                                0x84ae (size before relaxing)
- .debug_str     0x00103e33     0x136f thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+ .debug_str     0x00103e3e     0x136f thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
                                0xd91f (size before relaxing)
 
 .debug_frame    0x00000000     0x39ac
- .debug_frame   0x00000000       0x68 Apps/Tasks/ModemTask/source/ModemComms.o
+ .debug_frame   0x00000000       0x68 Apps/Tasks/ModemTask/source/ModemCmdParser.o
  .debug_frame   0x00000068       0xd0 Apps/Tasks/ModemTask/source/ModemController.o
  .debug_frame   0x00000138       0x88 Apps/Tasks/ModemTask/source/ModemPowerControl.o
  .debug_frame   0x000001c0       0x30 Apps/Tasks/ModemTask/source/ModemTask.o

@@ -31,11 +31,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  13 .debug_macro  00015e4d  00000000  00000000  0008f11e  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_line   000256b3  00000000  00000000  000a4f6b  2**0
+ 14 .debug_line   000256bf  00000000  00000000  000a4f6b  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_str    001051a2  00000000  00000000  000ca61e  2**0
+ 15 .debug_str    001051ad  00000000  00000000  000ca62a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_frame  000039ac  00000000  00000000  001cf7c0  2**2
+ 16 .debug_frame  000039ac  00000000  00000000  001cf7d8  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -146,21 +146,21 @@ void ModemTask( void *ModemTaskParam)
      2c8:	00003234 	.word	0x00003234
      2cc:	00000000 	.word	0x00000000
 
-000002d0 <mdmComms_ParseModemResponse>:
+000002d0 <mdmParser_ParseModemResponse>:
 **
 ** Description:        Transmits Data to Modem
 **
 **===========================================================================*/
-void mdmComms_ParseModemResponse(AT_CMD_TYPE cmd,uint8_t* resp)
+void mdmParser_ParseModemResponse(AT_CMD_TYPE cmd,uint8_t* resp)
 {
      2d0:	b5f0      	push	{r4, r5, r6, r7, lr}
      2d2:	b08f      	sub	sp, #60	; 0x3c
      2d4:	460d      	mov	r5, r1
 	uint8_t Buffer[50];
 	uint8_t parseCnt = 0;
-	MODEM_COMM_TYPE cmdData = ModemComms[cmd];
+	MODEM_CMD_DATA cmdData = ModemCmdData[cmd];
      2d6:	eb00 0080 	add.w	r0, r0, r0, lsl #2
-     2da:	4b10      	ldr	r3, [pc, #64]	; (31c <mdmComms_ParseModemResponse+0x4c>)
+     2da:	4b10      	ldr	r3, [pc, #64]	; (31c <mdmParser_ParseModemResponse+0x4c>)
      2dc:	eb03 0080 	add.w	r0, r3, r0, lsl #2
      2e0:	7844      	ldrb	r4, [r0, #1]
      2e2:	7886      	ldrb	r6, [r0, #2]
@@ -169,14 +169,14 @@ void mdmComms_ParseModemResponse(AT_CMD_TYPE cmd,uint8_t* resp)
 	mdmCtrlr_ReadResponseFromModem(Buffer,cmdData.ResponseLength);
      2e4:	7c01      	ldrb	r1, [r0, #16]
      2e6:	a801      	add	r0, sp, #4
-     2e8:	4b0d      	ldr	r3, [pc, #52]	; (320 <mdmComms_ParseModemResponse+0x50>)
+     2e8:	4b0d      	ldr	r3, [pc, #52]	; (320 <mdmParser_ParseModemResponse+0x50>)
      2ea:	4798      	blx	r3
 	
 	while(startIndex < (cmdData.valid.validDataCount + cmdData.valid.startIndex))
      2ec:	4627      	mov	r7, r4
      2ee:	1930      	adds	r0, r6, r4
      2f0:	4284      	cmp	r4, r0
-     2f2:	da10      	bge.n	316 <mdmComms_ParseModemResponse+0x46>
+     2f2:	da10      	bge.n	316 <mdmParser_ParseModemResponse+0x46>
      2f4:	4623      	mov	r3, r4
 	{
 		resp[startIndex - cmdData.valid.startIndex] = Buffer[startIndex];
@@ -191,7 +191,7 @@ void mdmComms_ParseModemResponse(AT_CMD_TYPE cmd,uint8_t* resp)
 	while(startIndex < (cmdData.valid.validDataCount + cmdData.valid.startIndex))
      306:	4623      	mov	r3, r4
      308:	4284      	cmp	r4, r0
-     30a:	dbf4      	blt.n	2f6 <mdmComms_ParseModemResponse+0x26>
+     30a:	dbf4      	blt.n	2f6 <mdmParser_ParseModemResponse+0x26>
 	}
 	
 	/* Null terminate the string */
@@ -204,7 +204,7 @@ void mdmComms_ParseModemResponse(AT_CMD_TYPE cmd,uint8_t* resp)
      314:	bdf0      	pop	{r4, r5, r6, r7, pc}
 	while(startIndex < (cmdData.valid.validDataCount + cmdData.valid.startIndex))
      316:	4623      	mov	r3, r4
-     318:	e7f8      	b.n	30c <mdmComms_ParseModemResponse+0x3c>
+     318:	e7f8      	b.n	30c <mdmParser_ParseModemResponse+0x3c>
      31a:	bf00      	nop
      31c:	00002aac 	.word	0x00002aac
      320:	000004f5 	.word	0x000004f5
@@ -212,7 +212,7 @@ void mdmComms_ParseModemResponse(AT_CMD_TYPE cmd,uint8_t* resp)
 00000324 <SendATCommandToModem>:
 {
      324:	b508      	push	{r3, lr}
-	mdmCtrlr_SendDataToModem(ModemComms[atCmd].AtString,ModemComms[atCmd].CmdLength);
+	mdmCtrlr_SendDataToModem(ModemCmdData[atCmd].AtString,ModemCmdData[atCmd].CmdLength);
      326:	4b05      	ldr	r3, [pc, #20]	; (33c <SendATCommandToModem+0x18>)
      328:	0082      	lsls	r2, r0, #2
      32a:	1811      	adds	r1, r2, r0
@@ -226,17 +226,17 @@ void mdmComms_ParseModemResponse(AT_CMD_TYPE cmd,uint8_t* resp)
      33c:	00002aac 	.word	0x00002aac
      340:	000004cd 	.word	0x000004cd
 
-00000344 <mdmComms_GetModemResponse>:
+00000344 <mdmParser_GetModemResponse>:
 **
 ** Description:        Gets the parsed modem response
 **
 **===========================================================================*/
-void mdmComms_GetModemResponse(AT_CMD_TYPE cmd,uint8_t* response)
-{	
+void mdmParser_GetModemResponse(AT_CMD_TYPE cmd,uint8_t* response)
+{
      344:	b508      	push	{r3, lr}
-	ModemComms[cmd].ParseResponse(cmd,response);
+	ModemCmdData[cmd].ParseResponse(cmd,response);
      346:	eb00 0280 	add.w	r2, r0, r0, lsl #2
-     34a:	4b03      	ldr	r3, [pc, #12]	; (358 <mdmComms_GetModemResponse+0x14>)
+     34a:	4b03      	ldr	r3, [pc, #12]	; (358 <mdmParser_GetModemResponse+0x14>)
      34c:	eb03 0382 	add.w	r3, r3, r2, lsl #2
      350:	68db      	ldr	r3, [r3, #12]
      352:	4798      	blx	r3
@@ -6676,7 +6676,7 @@ int main(void)
     270c:	4620      	mov	r0, r4
     270e:	4b0c      	ldr	r3, [pc, #48]	; (2740 <main+0x54>)
     2710:	4798      	blx	r3
-		mdmComms_GetModemResponse(CMD_AT_CGSN,rxReadBuf);
+		mdmParser_GetModemResponse(CMD_AT_CGSN,rxReadBuf);
     2712:	4621      	mov	r1, r4
     2714:	4630      	mov	r0, r6
     2716:	4b0b      	ldr	r3, [pc, #44]	; (2744 <main+0x58>)
@@ -7184,7 +7184,7 @@ static void prvResetNextTaskUnblockTime(void)
     2aa8:	d1f9      	bne.n	2a9e <strcpy+0x2>
     2aaa:	4770      	bx	lr
 
-00002aac <ModemComms>:
+00002aac <ModemCmdData>:
     2aac:	0500 0002 2b74 0000 0003 0000 02d1 0000     ....t+..........
     2abc:	0009 0000 0a01 000f 2b78 0000 0008 0000     ........x+......
     2acc:	02d1 0000 001f 0000 0000 0000 0000 0000     ................

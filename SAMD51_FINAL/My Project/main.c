@@ -8,7 +8,7 @@
 #include "Apps/Common/Common.h"
 #include "Apps/Tasks/ModemTask/include/ModemPowerControl.h"
 #include "Apps/Tasks/ModemTask/include/ModemController.h"
-#include "Apps/Tasks/ModemTask/include/ModemComms.h"
+#include "Apps/Tasks/ModemTask/include/ModemCmdParser.h"
 #include <string.h>
 
 /* FreeRTOS.org includes. */
@@ -47,7 +47,7 @@ int main(void)
 		delay_ms(500);
 		
 		memset(rxReadBuf,0,50);
-		mdmComms_GetModemResponse(CMD_AT_CGSN,rxReadBuf);
+		mdmParser_GetModemResponse(CMD_AT_CGSN,rxReadBuf);
 		SerialDebugPrint(rxReadBuf,15);
 		delay_ms(5000);		
 

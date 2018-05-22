@@ -551,10 +551,7 @@
     <Compile Include="Apps\Tasks\DispatchTask\source\DispatchTask.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\include\ModemComms.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\include\ModemControl.h">
+    <Compile Include="Apps\Tasks\ModemTask\include\ModemCmdParser.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Apps\Tasks\ModemTask\include\ModemController.h">
@@ -566,10 +563,7 @@
     <Compile Include="Apps\Tasks\ModemTask\include\ModemTask.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\source\ModemComms.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\source\ModemControl.c">
+    <Compile Include="Apps\Tasks\ModemTask\source\ModemCmdParser.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Apps\Tasks\ModemTask\source\ModemController.c">

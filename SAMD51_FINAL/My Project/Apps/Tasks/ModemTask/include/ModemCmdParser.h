@@ -1,13 +1,13 @@
 /*
- * ModemComms.h
+ * ModemCmdParser.h
  *
- * Created: 5/12/2018 7:43:35 PM
+ * Created: 5/22/2018 11:31:22 AM
  *  Author: anilj
  */ 
 
 
-#ifndef MODEMCOMMS_H_
-#define MODEMCOMMS_H_
+#ifndef MODEMCMDPARSER_H_
+#define MODEMCMDPARSER_H_
 
 #include <stdint.h>
 #include <stddef.h>
@@ -34,16 +34,19 @@ typedef struct
 	void (*ParseResponse)(AT_CMD_TYPE,uint8_t* response);
 	uint8_t ResponseLength;
 	
-}MODEM_COMM_TYPE;
+}MODEM_CMD_DATA;
 
 
 typedef enum
 {
 	MODEM_TX,
-	MODEM_RX	
+	MODEM_RX
 }MDM_COMMS_TEST;
 
 void SendATCommandToModem(AT_CMD_TYPE atCmd);
-void mdmComms_ParseModemResponse(AT_CMD_TYPE cmd,uint8_t *response);
-void mdmComms_GetModemResponse(AT_CMD_TYPE cmd,uint8_t *response);
-#endif /* MODEMCOMMS_H_ */
+void mdmParser_ParseModemResponse(AT_CMD_TYPE cmd,uint8_t *response);
+void mdmParser_GetModemResponse(AT_CMD_TYPE cmd,uint8_t *response);
+
+
+
+#endif /* MODEMCMDPARSER_H_ */
