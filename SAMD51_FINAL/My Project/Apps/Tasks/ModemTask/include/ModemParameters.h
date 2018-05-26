@@ -22,6 +22,7 @@ typedef enum
 			
 }TEST_MODEM_BASE_PARAMS;
 
+/* HTTP initiation commands */
 typedef enum
 {
 	AT_KPATTERN,
