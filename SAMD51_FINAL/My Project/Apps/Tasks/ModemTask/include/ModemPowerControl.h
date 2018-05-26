@@ -9,6 +9,7 @@
 #ifndef MODEMPOWERCONTROL_H_
 #define MODEMPOWERCONTROL_H_
 
+/* Power states for modem controller */
 typedef enum
 {
 	MDM_PWR_SHUTDOWN,
