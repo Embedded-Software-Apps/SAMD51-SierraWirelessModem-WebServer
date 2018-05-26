@@ -31,6 +31,7 @@ int main(void)
 	/* Initialize the HL7618RD modem power signals */
 	modemPowerInit();
 	
+	/* Initiate the HTTP connection to server */
 	mdmParam_InitiateConnection();
 	
 	while (1)
