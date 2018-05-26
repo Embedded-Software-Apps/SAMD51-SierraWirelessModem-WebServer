@@ -113,9 +113,10 @@ C_SRCS +=  \
 ../Apps/SelectInputs/source/selectInputs.c \
 ../Apps/SensorAdcInputs/source/SensorAdcInputs.c \
 ../Apps/Tasks/DispatchTask/source/DispatchTask.c \
-../Apps/Tasks/ModemTask/source/ModemComms.c \
-../Apps/Tasks/ModemTask/source/ModemControl.c \
+../Apps/Tasks/ModemTask/source/ModemCmdParser.c \
+../Apps/Tasks/ModemTask/source/ModemConnection.c \
 ../Apps/Tasks/ModemTask/source/ModemController.c \
+../Apps/Tasks/ModemTask/source/ModemParameters.c \
 ../Apps/Tasks/ModemTask/source/ModemPowerControl.c \
 ../Apps/Tasks/ModemTask/source/ModemTask.c \
 ../Apps/UartDriver/source/UartDriver.c \
@@ -199,9 +200,10 @@ Apps/LedControl/source/ledPwmControl.o \
 Apps/SelectInputs/source/selectInputs.o \
 Apps/SensorAdcInputs/source/SensorAdcInputs.o \
 Apps/Tasks/DispatchTask/source/DispatchTask.o \
-Apps/Tasks/ModemTask/source/ModemComms.o \
-Apps/Tasks/ModemTask/source/ModemControl.o \
+Apps/Tasks/ModemTask/source/ModemCmdParser.o \
+Apps/Tasks/ModemTask/source/ModemConnection.o \
 Apps/Tasks/ModemTask/source/ModemController.o \
+Apps/Tasks/ModemTask/source/ModemParameters.o \
 Apps/Tasks/ModemTask/source/ModemPowerControl.o \
 Apps/Tasks/ModemTask/source/ModemTask.o \
 Apps/UartDriver/source/UartDriver.o \
@@ -278,9 +280,10 @@ Apps/LedControl/source/ledPwmControl.o \
 Apps/SelectInputs/source/selectInputs.o \
 Apps/SensorAdcInputs/source/SensorAdcInputs.o \
 Apps/Tasks/DispatchTask/source/DispatchTask.o \
-Apps/Tasks/ModemTask/source/ModemComms.o \
-Apps/Tasks/ModemTask/source/ModemControl.o \
+Apps/Tasks/ModemTask/source/ModemCmdParser.o \
+Apps/Tasks/ModemTask/source/ModemConnection.o \
 Apps/Tasks/ModemTask/source/ModemController.o \
+Apps/Tasks/ModemTask/source/ModemParameters.o \
 Apps/Tasks/ModemTask/source/ModemPowerControl.o \
 Apps/Tasks/ModemTask/source/ModemTask.o \
 Apps/UartDriver/source/UartDriver.o \
@@ -357,9 +360,10 @@ Apps/LedControl/source/ledPwmControl.d \
 Apps/SelectInputs/source/selectInputs.d \
 Apps/SensorAdcInputs/source/SensorAdcInputs.d \
 Apps/Tasks/DispatchTask/source/DispatchTask.d \
-Apps/Tasks/ModemTask/source/ModemComms.d \
-Apps/Tasks/ModemTask/source/ModemControl.d \
+Apps/Tasks/ModemTask/source/ModemCmdParser.d \
+Apps/Tasks/ModemTask/source/ModemConnection.d \
 Apps/Tasks/ModemTask/source/ModemController.d \
+Apps/Tasks/ModemTask/source/ModemParameters.d \
 Apps/Tasks/ModemTask/source/ModemPowerControl.d \
 Apps/Tasks/ModemTask/source/ModemTask.d \
 Apps/UartDriver/source/UartDriver.d \
@@ -436,9 +440,10 @@ Apps/LedControl/source/ledPwmControl.d \
 Apps/SelectInputs/source/selectInputs.d \
 Apps/SensorAdcInputs/source/SensorAdcInputs.d \
 Apps/Tasks/DispatchTask/source/DispatchTask.d \
-Apps/Tasks/ModemTask/source/ModemComms.d \
-Apps/Tasks/ModemTask/source/ModemControl.d \
+Apps/Tasks/ModemTask/source/ModemCmdParser.d \
+Apps/Tasks/ModemTask/source/ModemConnection.d \
 Apps/Tasks/ModemTask/source/ModemController.d \
+Apps/Tasks/ModemTask/source/ModemParameters.d \
 Apps/Tasks/ModemTask/source/ModemPowerControl.d \
 Apps/Tasks/ModemTask/source/ModemTask.d \
 Apps/UartDriver/source/UartDriver.d \
@@ -523,6 +528,8 @@ LINKER_SCRIPT_DEP+=  \
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

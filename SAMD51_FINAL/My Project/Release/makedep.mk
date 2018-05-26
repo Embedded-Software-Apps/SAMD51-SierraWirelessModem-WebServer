@@ -16,11 +16,13 @@ Apps\SensorAdcInputs\source\SensorAdcInputs.c
 
 Apps\Tasks\DispatchTask\source\DispatchTask.c
 
-Apps\Tasks\ModemTask\source\ModemComms.c
+Apps\Tasks\ModemTask\source\ModemCmdParser.c
 
-Apps\Tasks\ModemTask\source\ModemControl.c
+Apps\Tasks\ModemTask\source\ModemConnection.c
 
 Apps\Tasks\ModemTask\source\ModemController.c
+
+Apps\Tasks\ModemTask\source\ModemParameters.c
 
 Apps\Tasks\ModemTask\source\ModemPowerControl.c
 

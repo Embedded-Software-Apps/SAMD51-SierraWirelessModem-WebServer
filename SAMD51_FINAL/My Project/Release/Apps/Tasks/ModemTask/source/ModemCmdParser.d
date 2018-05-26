@@ -1,7 +1,7 @@
-main.d main.o: .././main.c ../atmel_start.h ../driver_init.h \
- ../atmel_start_pins.h ../hal/include/hal_gpio.h \
- ../hal/include/hpl_gpio.h ../hal/utils/include/compiler.h \
- e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stddef.h \
+Apps/Tasks/ModemTask/source/ModemCmdParser.d \
+ Apps/Tasks/ModemTask/source/ModemCmdParser.o: \
+ ../Apps/Tasks/ModemTask/source/ModemCmdParser.c \
+ ../Apps/Tasks/ModemTask/include/ModemCmdParser.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdint.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\stdint.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\_default_types.h \
@@ -9,6 +9,10 @@ main.d main.o: .././main.c ../atmel_start.h ../driver_init.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_newlib_version.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_intsup.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_stdint.h \
+ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stddef.h \
+ ../Apps/Tasks/ModemTask/include/ModemController.h ../driver_init.h \
+ ../atmel_start_pins.h ../hal/include/hal_gpio.h \
+ ../hal/include/hpl_gpio.h ../hal/utils/include/compiler.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdbool.h \
  ../hal/utils/include/parts.h \
  E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/samd51.h \
@@ -141,7 +145,7 @@ main.d main.o: .././main.c ../atmel_start.h ../driver_init.h \
  ../hal/include/hpl_pwm.h ../hpl/tc/hpl_tc_base.h \
  ../hal/include/hpl_timer.h ../hal/include/hal_timer.h \
  ../hal/utils/include/utils_list.h ../hpl/tcc/hpl_tcc.h \
- ../hal/include/hal_wdt.h ../hal/include/hpl_wdt.h ../rtos_start.h \
+ ../hal/include/hal_wdt.h ../hal/include/hpl_wdt.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h \
  ../Config/FreeRTOSConfig.h ../Config/peripheral_clk_config.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h \
@@ -151,25 +155,15 @@ main.d main.o: .././main.c ../atmel_start.h ../driver_init.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/mpu_wrappers.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h \
+ ../hal/include/hal_usart_os.h ../thirdparty/RTOS/hal_rtos.h \
+ ../hal/include/hpl_core.h ../hpl/core/hpl_core_port.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/rtos_port.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
- ../thirdparty/RTOS/hal_rtos.h ../hal/include/hpl_core.h \
- ../hpl/core/hpl_core_port.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/rtos_port.h \
- .././Apps/SerialDebug/SerialDebug.h \
- .././Apps/Tasks/DispatchTask/include/DispatchTask.h \
- .././Apps/Tasks/ModemTask/include/ModemTask.h \
- .././Apps/LedControl/include/ledControl.h \
- ../apps/LedControl/include/ledConfig.h \
- ../apps/LedControl/include/ledControl.h ../driver_init.h \
- ../hal/utils/include/utils.h .././Apps/Common/Common.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
- .././Apps/Tasks/ModemTask/include/ModemPowerControl.h \
- .././Apps/Tasks/ModemTask/include/ModemController.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
- .././Apps/Tasks/ModemTask/include/ModemCmdParser.h \
- .././Apps/Tasks/ModemTask/include/ModemParameters.h \
+ ../hal/utils/include/utils_ringbuffer.h ../hal/utils/include/compiler.h \
+ ../hal/utils/include/utils_assert.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\newlib.h \
@@ -184,19 +178,7 @@ main.d main.o: .././main.c ../atmel_start.h ../driver_init.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h
 
-../atmel_start.h:
-
-../driver_init.h:
-
-../atmel_start_pins.h:
-
-../hal/include/hal_gpio.h:
-
-../hal/include/hpl_gpio.h:
-
-../hal/utils/include/compiler.h:
-
-e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stddef.h:
+../Apps/Tasks/ModemTask/include/ModemCmdParser.h:
 
 e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdint.h:
 
@@ -211,6 +193,20 @@ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\inclu
 e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_intsup.h:
 
 e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_stdint.h:
+
+e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stddef.h:
+
+../Apps/Tasks/ModemTask/include/ModemController.h:
+
+../driver_init.h:
+
+../atmel_start_pins.h:
+
+../hal/include/hal_gpio.h:
+
+../hal/include/hpl_gpio.h:
+
+../hal/utils/include/compiler.h:
 
 e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdbool.h:
 
@@ -566,8 +562,6 @@ E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/sam.h:
 
 ../hal/include/hpl_wdt.h:
 
-../rtos_start.h:
-
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h:
 
 ../Config/FreeRTOSConfig.h:
@@ -588,9 +582,7 @@ E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/sam.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h:
 
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
+../hal/include/hal_usart_os.h:
 
 ../thirdparty/RTOS/hal_rtos.h:
 
@@ -600,37 +592,19 @@ E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/sam.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/rtos_port.h:
 
-.././Apps/SerialDebug/SerialDebug.h:
-
-.././Apps/Tasks/DispatchTask/include/DispatchTask.h:
-
-.././Apps/Tasks/ModemTask/include/ModemTask.h:
-
-.././Apps/LedControl/include/ledControl.h:
-
-../apps/LedControl/include/ledConfig.h:
-
-../apps/LedControl/include/ledControl.h:
-
-../driver_init.h:
-
-../hal/utils/include/utils.h:
-
-.././Apps/Common/Common.h:
-
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
 
-.././Apps/Tasks/ModemTask/include/ModemPowerControl.h:
-
-.././Apps/Tasks/ModemTask/include/ModemController.h:
-
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
 
-.././Apps/Tasks/ModemTask/include/ModemCmdParser.h:
+../hal/utils/include/utils_ringbuffer.h:
 
-.././Apps/Tasks/ModemTask/include/ModemParameters.h:
+../hal/utils/include/compiler.h:
+
+../hal/utils/include/utils_assert.h:
 
 e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h:
 

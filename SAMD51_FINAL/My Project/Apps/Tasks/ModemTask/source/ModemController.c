@@ -102,11 +102,14 @@ void SERCOM3_1_Handler(void )
 ** Description:        RXC : Receive Complete Interrupt
 **
 **===========================================================================*/
+
 void SERCOM3_2_Handler( void )
 {
-	uint8_t rcvdChar = 0;
+	uint8_t rcvdChar;
+	
 	while (!_usart_async_is_byte_received(&MODEM_DATA));
 	rcvdChar = _usart_async_read_byte(&MODEM_DATA);
+	
 	ringbuffer_put(&RxRingBuffer, rcvdChar);
 }
 
@@ -130,8 +133,10 @@ uint32_t mdmCtrlr_SendDataToModem(const uint8_t *const TxData,const uint16_t len
 ** Description:        Transmits Data to Modem
 **
 **===========================================================================*/
-void mdmCtrlr_ReadResponseFromModem(uint8_t *const buf, const uint16_t length)
+bool mdmCtrlr_ReadResponseFromModem(uint8_t *const buf, const uint16_t length)
 {
+	bool status = false;
+	
 	uint8_t readCnt = 0;
 	if (ringbuffer_num(&RxRingBuffer) >= length)
 	{
@@ -140,6 +145,24 @@ void mdmCtrlr_ReadResponseFromModem(uint8_t *const buf, const uint16_t length)
 		{
 			ringbuffer_get(&RxRingBuffer, &buf[readCnt++]);
 		}
+		status = true;
 		CRITICAL_SECTION_LEAVE()
+	}
+	else
+	{
+		/* Data is not available at Rx Buffer */
+		status = false;
 	}	
+}
+
+/*============================================================================
+**
+** Function Name:      mdmCtrlr_FlushRxBuffer
+**
+** Description:        Flushes the Rx Ring Buffer
+**
+**===========================================================================*/
+void mdmCtrlr_FlushRxBuffer(void)
+{
+	ringbuffer_flush(&RxRingBuffer);
 }

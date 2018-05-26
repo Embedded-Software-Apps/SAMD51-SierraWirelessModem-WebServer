@@ -12,11 +12,18 @@
 #include <stdint.h>
 #include <stddef.h>
 
+#define TOTAL_MODEM_CMDS (20)
+
 typedef enum
 {
 	CMD_AT,
 	CMD_AT_CGSN,
-	CMD_AT_WCARRIER
+	CMD_AT_WCARRIER,
+	CMD_AT_IPR,
+	CMD_AT_CPIN,
+	CMD_AT_CGREG,
+	CMD_AT_KGSN,
+	CMD_AT_ATE
 }AT_CMD_TYPE;
 
 typedef struct
@@ -36,17 +43,8 @@ typedef struct
 	
 }MODEM_CMD_DATA;
 
-
-typedef enum
-{
-	MODEM_TX,
-	MODEM_RX
-}MDM_COMMS_TEST;
-
 void SendATCommandToModem(AT_CMD_TYPE atCmd);
 void mdmParser_ParseModemResponse(AT_CMD_TYPE cmd,uint8_t *response);
-void mdmParser_GetModemResponse(AT_CMD_TYPE cmd,uint8_t *response);
-
-
+void mdmParser_GetModemResponse(AT_CMD_TYPE cmd,uint8_t* response,uint8_t* respLength);
 
 #endif /* MODEMCMDPARSER_H_ */

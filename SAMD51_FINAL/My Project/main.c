@@ -9,6 +9,7 @@
 #include "Apps/Tasks/ModemTask/include/ModemPowerControl.h"
 #include "Apps/Tasks/ModemTask/include/ModemController.h"
 #include "Apps/Tasks/ModemTask/include/ModemCmdParser.h"
+#include "Apps/Tasks/ModemTask/include/ModemParameters.h"
 #include <string.h>
 
 /* FreeRTOS.org includes. */
@@ -19,6 +20,8 @@ BaseType_t DispatchTaskStatus;
 BaseType_t ModemTaskStatus;
 uint8_t printBuff[50];
 char rxReadBuf[50];
+uint8_t length;
+void uartTest();
 
 int main(void)
 {
@@ -28,33 +31,30 @@ int main(void)
 	/* Initialize the HL7618RD modem power signals */
 	modemPowerInit();
 	
+	mdmParam_InitiateConnection();
+	
 	while (1)
 	{
-		/* Transmit "AT\r" to modem on every 4 seconds...
-		 * If we receive any char from modem, debug message
-		 * will be printed on the console saying data received
-		 * from modem.
-		 */
 		
-		/* Transmit data register empty interrupt is disabled after
-		 * transmitting the first message to modem so that we can see
-		 * the debug message in serial terminal if any data received back
-		 * from modem.
-		 * Only the TX data register interrupt is disabled. 
-		 * Rx data complete Interrupt is still active and the corresponding
-		 * call back will be called if any data received from modem */
-		SendATCommandToModem(CMD_AT_CGSN);
-		delay_ms(500);
 		
-		memset(rxReadBuf,0,50);
-		mdmParser_GetModemResponse(CMD_AT_CGSN,rxReadBuf);
-		SerialDebugPrint(rxReadBuf,15);
-		delay_ms(5000);		
-
+		uartTest();
+		
+	
 	}
 }
 
-
+void uartTest()
+{
+		SendATCommandToModem(CMD_AT_CGSN); //359998070228764
+		delay_ms(2000);
+		
+		memset(rxReadBuf,0,50);
+		mdmParser_GetModemResponse(CMD_AT_CGSN,rxReadBuf,&length);
+		
+		SerialDebugPrint(rxReadBuf,length);
+		SerialDebugPrint("\r\n",2);
+		delay_ms(3000);
+}
 /* Below code needs to be enabled */
 
 

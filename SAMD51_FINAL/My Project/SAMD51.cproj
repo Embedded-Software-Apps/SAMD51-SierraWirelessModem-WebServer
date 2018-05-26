@@ -554,7 +554,16 @@
     <Compile Include="Apps\Tasks\ModemTask\include\ModemCmdParser.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Apps\Tasks\ModemTask\include\ModemConnection.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Apps\Tasks\ModemTask\include\ModemConnectionConfig.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Apps\Tasks\ModemTask\include\ModemController.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Apps\Tasks\ModemTask\include\ModemParameters.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Apps\Tasks\ModemTask\include\ModemPowerControl.h">
@@ -566,7 +575,13 @@
     <Compile Include="Apps\Tasks\ModemTask\source\ModemCmdParser.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Apps\Tasks\ModemTask\source\ModemConnection.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Apps\Tasks\ModemTask\source\ModemController.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Apps\Tasks\ModemTask\source\ModemParameters.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Apps\Tasks\ModemTask\source\ModemPowerControl.c">
