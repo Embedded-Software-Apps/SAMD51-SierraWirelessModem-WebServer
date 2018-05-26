@@ -47,6 +47,7 @@ int main(void)
 	}
 }
 
+/* Uart Test code */
 void uartTest()
 {
 		SendATCommandToModem(CMD_AT_CGSN); //359998070228764
@@ -59,6 +60,8 @@ void uartTest()
 		SerialDebugPrint("\r\n",2);
 		delay_ms(3000);
 }
+
+
 /* Below code needs to be enabled */
 
 
