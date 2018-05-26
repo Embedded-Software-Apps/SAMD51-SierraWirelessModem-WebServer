@@ -23,6 +23,8 @@ char rxReadBuf[50];
 uint8_t length;
 void uartTest();
 
+/* Mile Stone 1 */
+
 int main(void)
 {
 	/* Initializes MCU, drivers and middleware */
