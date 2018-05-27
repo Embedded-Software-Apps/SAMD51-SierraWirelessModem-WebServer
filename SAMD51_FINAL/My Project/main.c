@@ -35,17 +35,19 @@ int main(void)
 	modemPowerInit();
 	
 	/* Initiate the HTTP connection to server */
-	mdmParam_InitiateConnection();
+	//mdmParam_InitiateConnection();
 	
 	while (1)
 	{
-		
-		
-		uartTest();
-		
+		mdmParser_SendCommandToModem(CMD_AT);
+		delay_ms(2000);
+		mdmParser_ProcessModemResponse();
+		delay_ms(2000);
 	
 	}
 }
+
+
 
 /* Uart Test code */
 void uartTest()

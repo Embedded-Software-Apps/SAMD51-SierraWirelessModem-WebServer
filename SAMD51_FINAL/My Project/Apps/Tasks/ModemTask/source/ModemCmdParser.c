@@ -6,12 +6,11 @@
  */ 
 #include "Apps/Tasks/ModemTask/include/ModemCmdParser.h"
 #include "Apps/Tasks/ModemTask/include/ModemController.h"
+#include "Apps/Common/Common.h"
 #include "driver_init.h"
 
 #include <hal_usart_os.h>
 #include <string.h>
-
-static uint8_t printBuff[40];
 
 /* Data structure for storing command parameters */
 static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
@@ -19,85 +18,100 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 	/* AT */
 	{
 		CMD_AT,
-		{5,2},
 		"AT\r",
-		3,
-		mdmParser_ParseModemResponse,
-		9
+		THREE,
+		TWO,
+		defaultFunctionPointer,
+		ELEVEN
 	},
 
 	/* AT + CGSN*/
 	{
 		CMD_AT_CGSN,
-		{10,15},
 		"AT+CGSN\r",
-		8,
-		mdmParser_ParseModemResponse,
-		31
+		EIGHT,
+		FIFTEEN,
+		defaultFunctionPointer,
+		THIRTY_ONE
 	},
 	
 	/* AT+WCARRIER */
 	{
 		CMD_AT_WCARRIER,
-		{11,3},
 		"AT+WCARRIER\r",
-		12,
-		mdmParser_ParseModemResponse,
-		20
+		TWELEVE,
+		THREE,
+		defaultFunctionPointer,
+		TWENTY
 	},
 	
 	/* AT+IPR */
 	{
 		CMD_AT_IPR,
-		{6+8,6},
 		"AT+IPR?\r",
-		8,
-		mdmParser_ParseModemResponse,
-		29
+		EIGHT,
+		SIX,
+		defaultFunctionPointer,
+		TWENTY_NINE
 	},
 	
 	/* AT+CPIN */
 	{
 		CMD_AT_CPIN,
-		{7,5},
 		"AT+CPIN?\r",
-		8,
-		mdmParser_ParseModemResponse,
-		30
+		FIVE,
+		EIGHT,
+		defaultFunctionPointer,
+		THIRTY
 	},
 	
 	/* AT+CGREG */
 	{
 		CMD_AT_CGREG,
-		{10,1},
 		"AT+CGREG?\r",
-		10,
-		mdmParser_ParseModemResponse,
-		28
+		TEN,
+		ELEVEN,
+		defaultFunctionPointer,
+		TWENTY_EIGHT
 	},
 	
-	/* AT+CGREG */
+	/* AT+KGSN */
 	{
 		CMD_AT_KGSN,
-		{7,14},
 		"AT+KGSN=3\r",
-		10,
-		mdmParser_ParseModemResponse,
-		38
+		TEN,
+		FOURTEEN,
+		defaultFunctionPointer,
+		THIRTY_EIGHT
 	},
 	
 	/* ATE0 */
 	{
 		CMD_AT_ATE,
-		{0,2},
 		"ATE1\r",
-		5,
-		mdmParser_ParseModemResponse,
-		4
+		FIVE,
+		TWO,
+		defaultFunctionPointer,
+		FOUR
+	},
+
+	/* Default */
+	{
+		CMD_AT_MAX,
+		"",
+		ZERO,
+		ZERO,
+		defaultFunctionPointer,
+		ZERO
 	}
 
 };
 
+/* Last send Command */
+static AT_CMD_TYPE lastSendATCommand = CMD_AT_MAX;
+static uint8_t responseDataBuffer[40];
+
+static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response);
 /*============================================================================
 **
 ** Function Name:      sendCommandToModem
@@ -105,9 +119,10 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 ** Description:        Transmits Data to Modem
 **
 **===========================================================================*/
-void SendATCommandToModem(AT_CMD_TYPE atCmd)
+void mdmParser_SendCommandToModem(AT_CMD_TYPE atCmd)
 {
 	mdmCtrlr_SendDataToModem(ModemCmdData[atCmd].AtString,ModemCmdData[atCmd].CmdLength);
+	lastSendATCommand = atCmd;
 }
 
 /*============================================================================
@@ -123,26 +138,6 @@ void mdmParser_ParseModemResponse(AT_CMD_TYPE cmd,uint8_t* resp)
 	uint8_t Buffer[50];
 	uint8_t parseCnt = 0;
 	MODEM_CMD_DATA cmdData = ModemCmdData[cmd];
-	uint8_t startIndex = cmdData.valid.startIndex;
-	
-	readStatus = mdmCtrlr_ReadResponseFromModem(Buffer,cmdData.ResponseLength);
-	
-	if(readStatus != false)
-	{
-		while(startIndex < (cmdData.valid.validDataCount + cmdData.valid.startIndex))
-		{
-			resp[startIndex - cmdData.valid.startIndex] = Buffer[startIndex];
-			startIndex++;
-		}
-		
-		/* Null terminate the string */
-		resp[startIndex - cmdData.valid.startIndex] = '\0';		
-	}
-	else
-	{
-		/* Not able to read the data from Rx Buffer. Parsing Failed. */
-		SerialDebugPrint("Problem in Parsing \r\n",20);
-	}
 	
 	mdmCtrlr_FlushRxBuffer();
 }
@@ -156,6 +151,125 @@ void mdmParser_ParseModemResponse(AT_CMD_TYPE cmd,uint8_t* resp)
 **===========================================================================*/
 void mdmParser_GetModemResponse(AT_CMD_TYPE cmd,uint8_t* response,uint8_t* respLength)
 {
-	ModemCmdData[cmd].ParseResponse(cmd,response);
-	*respLength = ModemCmdData[cmd].valid.validDataCount;
+	//ModemCmdData[cmd].ParseResponse(cmd,response);
+	*respLength = ModemCmdData[cmd].validDataCnt;
+}
+
+/*============================================================================
+**
+** Function Name:      mdmComms_GetModemResponse
+**
+** Description:        Gets the parsed modem response
+**
+**===========================================================================*/
+void mdmParser_ProcessModemResponse(void)
+{
+	if(false != mdmParser_solicitedCmdParser(lastSendATCommand,responseDataBuffer))
+	{
+		SerialDebugPrint("Successfully Received modem response data\r\n",40);
+		SerialDebugPrint(responseDataBuffer,ModemCmdData[lastSendATCommand].validDataCnt);
+		SerialDebugPrint("\r\n",2);
+		lastSendATCommand = CMD_AT_MAX;
+	}
+	else
+	{
+		SerialDebugPrint("Failed to Receive modem response data\r\n",40);
+		lastSendATCommand = CMD_AT_MAX;
+	}
+}
+
+/*============================================================================
+**
+** Function Name:      mdmComms_GetModemResponse
+**
+** Description:        Gets the parsed modem response
+**
+**===========================================================================*/
+static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
+{
+	bool readStatus = false;
+	bool parseStatus = false;
+	uint8_t dataBuffer[60];
+	uint8_t parseCnt=0;
+	MODEM_CMD_DATA cmdData = ModemCmdData[cmd];
+
+	/* command length + /r/n */
+	uint8_t dataStartIndex = (cmdData.CmdLength + 2);
+
+	readStatus = mdmCtrlr_ReadResponseFromModem(dataBuffer,cmdData.ResponseLength);
+
+	if(readStatus != false)
+	{
+		SerialDebugPrint(dataBuffer,cmdData.ResponseLength);
+		if(VERIFIED_EQUAL == strncmp(cmdData.AtString, dataBuffer, cmdData.CmdLength))
+		{
+			/* Command response is correctly identified */
+			SerialDebugPrint("Successfully parsed the command string\r\n",40);
+
+			/* Extract the data part from modem response */
+			while(parseCnt < cmdData.validDataCnt)
+			{
+				response[parseCnt] = dataBuffer[dataStartIndex + parseCnt];
+				parseCnt++;
+			}
+			response[parseCnt] = '\0';
+			parseStatus = true;
+			SerialDebugPrint("Successfully updated the cmd response data to buffer\r\n",50);
+		}
+		else
+		{
+			SerialDebugPrint("Failed to verify the command string\r\n",40);
+			parseStatus = false;
+		}
+	}
+	else
+	{
+		SerialDebugPrint("Read from modem controller is failed\r\n",40);
+		parseStatus = false;
+	}
+
+	mdmCtrlr_FlushRxBuffer();
+
+	return parseStatus;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void defaultFunctionPointer(void)
+{
+
 }
