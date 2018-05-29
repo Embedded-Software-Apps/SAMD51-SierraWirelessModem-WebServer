@@ -41,8 +41,6 @@ typedef struct
 	uint8_t respLen;
 }CONNECT_DATA;
 
-bool MdmParam_CustomizeGeneralSettings(void);
-bool MdmParam_TestModemBaseParameters(void);
 
 void mdmParam_InitiateConnection(void);
 #endif /* MODEMPARAMETERS_H_ */

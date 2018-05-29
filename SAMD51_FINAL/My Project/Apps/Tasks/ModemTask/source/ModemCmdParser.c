@@ -95,6 +95,16 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		(FIVE + TWO + CRLF_CHAR_LEN)
 	},
 
+	/* Connection Initialization Commands */
+	{
+		CMD_AT_KHTTP_CFG,
+		"AT+KHTTPCFG=3,\"ingest1.response.cloud\"\r\n",
+		40,
+		TWELEVE,
+		defaultFunctionPointer,
+		(40 + TWELEVE + CRLF_CHAR_LEN)
+	},
+
 	/* Default */
 	{
 		CMD_AT_MAX,
@@ -165,17 +175,20 @@ void mdmParser_GetModemResponse(AT_CMD_TYPE cmd,uint8_t* response,uint8_t* respL
 **===========================================================================*/
 void mdmParser_ProcessModemResponse(void)
 {
-	if(false != mdmParser_solicitedCmdParser(lastSendATCommand,responseDataBuffer))
+	if(lastSendATCommand != CMD_AT_MAX)
 	{
-		//SerialDebugPrint("Successfully Received modem response data\r\n",45);
-		SerialDebugPrint(responseDataBuffer,ModemCmdData[lastSendATCommand].validDataCnt);
-		SerialDebugPrint("\r\n",2);
-		lastSendATCommand = CMD_AT_MAX;
-	}
-	else
-	{
-		SerialDebugPrint("Failed to Receive modem response data\r\n",40);
-		lastSendATCommand = CMD_AT_MAX;
+		if(false != mdmParser_solicitedCmdParser(lastSendATCommand,responseDataBuffer))
+		{
+			//SerialDebugPrint("Successfully Received modem response data\r\n",45);
+			SerialDebugPrint(responseDataBuffer,ModemCmdData[lastSendATCommand].validDataCnt);
+			SerialDebugPrint("\r\n",2);
+			lastSendATCommand = CMD_AT_MAX;
+		}
+		else
+		{
+			SerialDebugPrint("Failed to Receive modem response data\r\n",40);
+			lastSendATCommand = CMD_AT_MAX;
+		}
 	}
 }
 
@@ -234,6 +247,17 @@ static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
 	return parseStatus;
 }
 
+/*============================================================================
+**
+** Function Name:      mdmComms_GetModemResponse
+**
+** Description:        Gets the parsed modem response
+**
+**===========================================================================*/
+static bool mdmParser_CheckForUnSolicitedResponses(void)
+{
+
+}
 
 
 

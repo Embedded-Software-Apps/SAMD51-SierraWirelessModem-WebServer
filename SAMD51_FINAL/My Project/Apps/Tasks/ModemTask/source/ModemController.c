@@ -171,6 +171,24 @@ bool mdmCtrlr_ReadResponseFromModem(uint8_t *const buf, const uint16_t length)
 ** Description:        Flushes the Rx Ring Buffer
 **
 **===========================================================================*/
+bool mdmCtrlr_CheckForUnSolicitedResponses(void)
+{
+/*	uint8_t readCnt = 0;
+	uint8_t
+
+	if (ringbuffer_num(&RxRingBuffer) >= 0)
+	{
+		while(readCnt < (RxRingBuffer.write_index-RxRingBuffer.write_index)
+	}*/
+}
+
+/*============================================================================
+**
+** Function Name:      mdmCtrlr_FlushRxBuffer
+**
+** Description:        Flushes the Rx Ring Buffer
+**
+**===========================================================================*/
 void mdmCtrlr_FlushRxBuffer(void)
 {
 	ringbuffer_flush(&RxRingBuffer);

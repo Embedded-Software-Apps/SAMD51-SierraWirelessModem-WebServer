@@ -28,6 +28,7 @@ typedef enum
 	CMD_AT_CGREG,
 	CMD_AT_KGSN,
 	CMD_AT_ATE,
+	CMD_AT_KHTTP_CFG,
 	CMD_AT_MAX
 }AT_CMD_TYPE;
 

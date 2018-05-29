@@ -10,6 +10,7 @@
 #define RESPONSE_BUFFER_SIZE (40)
 
 uint8_t connectResponse[620];
+static uint8_t sessionID = 0;
 
 static CONNECT_DATA connectData[6] = \
 {
@@ -26,6 +27,7 @@ static void sendAT_KCNXCFG(void);
 static void sendAT_KCNXTIMER(void);
 static void sendAT_KHTTPCFG(void);
 static void sendAT_KHTTPHEADER(void);
+static void parseSessionId(uint8_t* response);
 /*============================================================================
 **
 ** Function Name:      MdmParam_CustomizeGeneralSettings
@@ -207,6 +209,7 @@ static void sendAT_KHTTPCFG(void)
 	delay_ms(1000);
 	memset(connectResponse,'\0',620);
 	mdmCtrlr_ReadResponseFromModem(connectResponse,connectData[AT_KHTTPCFG].respLen);
+	parseSessionId(connectResponse);
 	mdmCtrlr_FlushRxBuffer();
 	SerialDebugPrint(connectResponse,strlen(connectResponse));
 	SerialDebugPrint("\r\n",2);
@@ -224,4 +227,9 @@ static void sendAT_KHTTPHEADER(void)
 	SerialDebugPrint(connectResponse,strlen(connectResponse));
 	SerialDebugPrint("\r\n",2);
 	delay_ms(2000);
+}
+
+static void parseSessionId(uint8_t* response)
+{
+	sessionID = response[54];
 }
