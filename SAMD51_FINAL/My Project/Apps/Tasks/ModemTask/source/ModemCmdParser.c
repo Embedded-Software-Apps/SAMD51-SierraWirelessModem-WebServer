@@ -121,6 +121,7 @@ static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response);
 **===========================================================================*/
 void mdmParser_SendCommandToModem(AT_CMD_TYPE atCmd)
 {
+	mdmCtrlr_FlushRxBuffer();
 	mdmCtrlr_SendDataToModem(ModemCmdData[atCmd].AtString,ModemCmdData[atCmd].CmdLength);
 	lastSendATCommand = atCmd;
 }

@@ -21,7 +21,6 @@ BaseType_t ModemTaskStatus;
 uint8_t printBuff[50];
 char rxReadBuf[50];
 uint8_t length;
-void uartTest();
 
 /* Mile Stone 1 */
 /* Started working in Dev Branch */
@@ -35,7 +34,7 @@ int main(void)
 	modemPowerInit();
 	
 	/* Initiate the HTTP connection to server */
-	//mdmParam_InitiateConnection();
+	mdmParam_InitiateConnection();
 	
 	while (1)
 	{
@@ -46,25 +45,6 @@ int main(void)
 	
 	}
 }
-
-
-
-/* Uart Test code */
-void uartTest()
-{
-		SendATCommandToModem(CMD_AT_CGSN); //359998070228764
-		delay_ms(2000);
-		
-		memset(rxReadBuf,0,50);
-		mdmParser_GetModemResponse(CMD_AT_CGSN,rxReadBuf,&length);
-		
-		SerialDebugPrint(rxReadBuf,length);
-		SerialDebugPrint("\r\n",2);
-		delay_ms(3000);
-}
-
-
-/* Below code needs to be enabled */
 
 
 /*****************************************************************************************************
