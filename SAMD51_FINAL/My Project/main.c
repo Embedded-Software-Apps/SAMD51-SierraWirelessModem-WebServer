@@ -39,7 +39,7 @@ int main(void)
 	
 	while (1)
 	{
-		mdmParser_SendCommandToModem(CMD_AT);
+		mdmParser_SendCommandToModem(CMD_AT_CGREG);
 		delay_ms(2000);
 		mdmParser_ProcessModemResponse();
 		delay_ms(2000);

@@ -22,7 +22,7 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		THREE,
 		TWO,
 		defaultFunctionPointer,
-		ELEVEN
+		(THREE + TWO + CRLF_CHAR_LEN)
 	},
 
 	/* AT + CGSN*/
@@ -32,7 +32,7 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		EIGHT,
 		FIFTEEN,
 		defaultFunctionPointer,
-		THIRTY_ONE
+		(EIGHT + FIFTEEN + CRLF_CHAR_LEN)
 	},
 	
 	/* AT+WCARRIER */
@@ -42,7 +42,7 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		TWELEVE,
 		THREE,
 		defaultFunctionPointer,
-		TWENTY
+		(TWELEVE + THREE + CRLF_CHAR_LEN)
 	},
 	
 	/* AT+IPR */
@@ -50,9 +50,9 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		CMD_AT_IPR,
 		"AT+IPR?\r",
 		EIGHT,
-		SIX,
+		TWELEVE,
 		defaultFunctionPointer,
-		TWENTY_NINE
+		(EIGHT + TWELEVE + CRLF_CHAR_LEN)
 	},
 	
 	/* AT+CPIN */
@@ -62,7 +62,7 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		FIVE,
 		EIGHT,
 		defaultFunctionPointer,
-		THIRTY
+		(FIVE + EIGHT + CRLF_CHAR_LEN)
 	},
 	
 	/* AT+CGREG */
@@ -72,7 +72,7 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		TEN,
 		ELEVEN,
 		defaultFunctionPointer,
-		TWENTY_EIGHT
+		(TEN + ELEVEN + CRLF_CHAR_LEN)
 	},
 	
 	/* AT+KGSN */
@@ -80,9 +80,9 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		CMD_AT_KGSN,
 		"AT+KGSN=3\r",
 		TEN,
-		FOURTEEN,
+		TWENTY_ONE,
 		defaultFunctionPointer,
-		THIRTY_EIGHT
+		(TEN + TWENTY_ONE + CRLF_CHAR_LEN)
 	},
 	
 	/* ATE0 */
@@ -92,7 +92,7 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		FIVE,
 		TWO,
 		defaultFunctionPointer,
-		FOUR
+		(FIVE + TWO + CRLF_CHAR_LEN)
 	},
 
 	/* Default */
@@ -166,7 +166,7 @@ void mdmParser_ProcessModemResponse(void)
 {
 	if(false != mdmParser_solicitedCmdParser(lastSendATCommand,responseDataBuffer))
 	{
-		SerialDebugPrint("Successfully Received modem response data\r\n",40);
+		//SerialDebugPrint("Successfully Received modem response data\r\n",45);
 		SerialDebugPrint(responseDataBuffer,ModemCmdData[lastSendATCommand].validDataCnt);
 		SerialDebugPrint("\r\n",2);
 		lastSendATCommand = CMD_AT_MAX;
@@ -200,11 +200,11 @@ static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
 
 	if(readStatus != false)
 	{
-		SerialDebugPrint(dataBuffer,cmdData.ResponseLength);
+		//SerialDebugPrint(dataBuffer,cmdData.ResponseLength);
 		if(VERIFIED_EQUAL == strncmp(cmdData.AtString, dataBuffer, cmdData.CmdLength))
 		{
 			/* Command response is correctly identified */
-			SerialDebugPrint("Successfully parsed the command string\r\n",40);
+			//SerialDebugPrint("Successfully parsed the command string\r\n",40);
 
 			/* Extract the data part from modem response */
 			while(parseCnt < cmdData.validDataCnt)
@@ -214,7 +214,7 @@ static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
 			}
 			response[parseCnt] = '\0';
 			parseStatus = true;
-			SerialDebugPrint("Successfully updated the cmd response data to buffer\r\n",50);
+			//SerialDebugPrint("Successfully updated the cmd response data to buffer\r\n",50);
 		}
 		else
 		{

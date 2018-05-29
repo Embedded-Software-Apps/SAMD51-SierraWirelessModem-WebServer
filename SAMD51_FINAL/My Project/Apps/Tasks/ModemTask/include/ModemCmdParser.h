@@ -14,6 +14,8 @@
 #include "Apps/Common/Common.h"
 
 #define TOTAL_MODEM_CMDS (20)
+#define CRLF_CHAR_LEN (4)  
+
 typedef void (*ParseResponse)(void);
 
 typedef enum

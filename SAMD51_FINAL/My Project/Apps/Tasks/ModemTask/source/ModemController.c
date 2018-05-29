@@ -14,6 +14,8 @@
 #include "Apps\UartDriver\include\UartDriver.h"
 
 #define SIZE_MODEM_RX_DATA_BUF (2048)
+#define ENABLE_SERCOM3_RX_DEBUG (0)
+
 static uint8_t RxDataBuff[2];
 uint8_t printBuff[40];
 uint8_t rxEcho[2];
@@ -105,12 +107,19 @@ void SERCOM3_1_Handler(void )
 
 void SERCOM3_2_Handler( void )
 {
-	uint8_t rcvdChar;
+	uint8_t rcvdChar[2];
+	uint8_t rxPrint[2];
 	
 	while (!_usart_async_is_byte_received(&MODEM_DATA));
-	rcvdChar = _usart_async_read_byte(&MODEM_DATA);
+	rcvdChar[0] = _usart_async_read_byte(&MODEM_DATA);
 	
-	ringbuffer_put(&RxRingBuffer, rcvdChar);
+#if ENABLE_SERCOM3_RX_DEBUG
+	rcvdChar[1] = '\0';
+	sprintf((char*)rxPrint,"%s",rcvdChar);
+	SerialDebugPrint(rxPrint,sizeof(rxPrint));
+#endif
+	
+	ringbuffer_put(&RxRingBuffer, rcvdChar[0]);
 }
 
 /*============================================================================
