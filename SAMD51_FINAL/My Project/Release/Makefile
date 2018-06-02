@@ -118,6 +118,7 @@ C_SRCS +=  \
 ../Apps/Tasks/ModemTask/source/ModemController.c \
 ../Apps/Tasks/ModemTask/source/ModemParameters.c \
 ../Apps/Tasks/ModemTask/source/ModemPowerControl.c \
+../Apps/Tasks/ModemTask/source/ModemResponseHandles.c \
 ../Apps/Tasks/ModemTask/source/ModemTask.c \
 ../Apps/UartDriver/source/UartDriver.c \
 ../Apps/SerialDebug/SerialDebug.c \
@@ -205,6 +206,7 @@ Apps/Tasks/ModemTask/source/ModemConnection.o \
 Apps/Tasks/ModemTask/source/ModemController.o \
 Apps/Tasks/ModemTask/source/ModemParameters.o \
 Apps/Tasks/ModemTask/source/ModemPowerControl.o \
+Apps/Tasks/ModemTask/source/ModemResponseHandles.o \
 Apps/Tasks/ModemTask/source/ModemTask.o \
 Apps/UartDriver/source/UartDriver.o \
 Apps/SerialDebug/SerialDebug.o \
@@ -285,6 +287,7 @@ Apps/Tasks/ModemTask/source/ModemConnection.o \
 Apps/Tasks/ModemTask/source/ModemController.o \
 Apps/Tasks/ModemTask/source/ModemParameters.o \
 Apps/Tasks/ModemTask/source/ModemPowerControl.o \
+Apps/Tasks/ModemTask/source/ModemResponseHandles.o \
 Apps/Tasks/ModemTask/source/ModemTask.o \
 Apps/UartDriver/source/UartDriver.o \
 Apps/SerialDebug/SerialDebug.o \
@@ -365,6 +368,7 @@ Apps/Tasks/ModemTask/source/ModemConnection.d \
 Apps/Tasks/ModemTask/source/ModemController.d \
 Apps/Tasks/ModemTask/source/ModemParameters.d \
 Apps/Tasks/ModemTask/source/ModemPowerControl.d \
+Apps/Tasks/ModemTask/source/ModemResponseHandles.d \
 Apps/Tasks/ModemTask/source/ModemTask.d \
 Apps/UartDriver/source/UartDriver.d \
 Apps/SerialDebug/SerialDebug.d \
@@ -445,6 +449,7 @@ Apps/Tasks/ModemTask/source/ModemConnection.d \
 Apps/Tasks/ModemTask/source/ModemController.d \
 Apps/Tasks/ModemTask/source/ModemParameters.d \
 Apps/Tasks/ModemTask/source/ModemPowerControl.d \
+Apps/Tasks/ModemTask/source/ModemResponseHandles.d \
 Apps/Tasks/ModemTask/source/ModemTask.d \
 Apps/UartDriver/source/UartDriver.d \
 Apps/SerialDebug/SerialDebug.d \
@@ -528,6 +533,8 @@ LINKER_SCRIPT_DEP+=  \
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

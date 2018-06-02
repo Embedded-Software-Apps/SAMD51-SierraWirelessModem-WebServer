@@ -75,6 +75,15 @@ void SerialDebugPrint(const uint8_t *const dataToPrint,const uint16_t length)
 	usart_async_write(&DEBUG_PRINT, dataToPrint, length);
 }
 
+
+void ConsoleDebugPrint(const uint8_t *const dataToPrint)
+{
+	uint8_t dbgBuffer[100];
+	memset(dbgBuffer,'\0',100);
+	sprintf((int8_t*)dbgBuffer,"%s %s",dataToPrint,"\r\n");
+	SerialDebugPrint(dbgBuffer,strlen(dbgBuffer));
+	delay_ms(250);
+}
 /* UART Rx Interrupt Handler */ 
 /*
  **** Just echo back the char entered on the serial terminal****

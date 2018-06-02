@@ -157,6 +157,7 @@ Apps/Tasks/ModemTask/source/ModemCmdParser.d \
  ../hal/include/hal_wdt.h ../hal/include/hpl_wdt.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h \
+ ../Apps/Tasks/ModemTask/include/ModemResponseHandles.h \
  ../hal/include/hal_usart_os.h ../thirdparty/RTOS/hal_rtos.h \
  ../hal/include/hpl_core.h ../hpl/core/hpl_core_port.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/rtos_port.h \
@@ -587,6 +588,8 @@ E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/sam.h:
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h:
+
+../Apps/Tasks/ModemTask/include/ModemResponseHandles.h:
 
 ../hal/include/hal_usart_os.h:
 

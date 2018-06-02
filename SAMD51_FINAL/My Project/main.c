@@ -33,16 +33,16 @@ int main(void)
 	/* Initialize the HL7618RD modem power signals */
 	modemPowerInit();
 	
-	/* Initiate the HTTP connection to server */
-	mdmParam_InitiateConnection();
-	
 	while (1)
 	{
-		mdmParser_SendCommandToModem(CMD_AT_CGREG);
+		mdmParser_SendCommandToModem(CMD_AT);
 		delay_ms(2000);
 		mdmParser_ProcessModemResponse();
+		mdmParser_SendCommandToModem(CMD_AT_CGSN);
 		delay_ms(2000);
-	
+		mdmParser_ProcessModemResponse();
+		delay_ms(1000);
+		DBG_PRINT("Testing DBG_PRINT");
 	}
 }
 

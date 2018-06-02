@@ -6,6 +6,7 @@
  */ 
 #include "Apps/Tasks/ModemTask/include/ModemCmdParser.h"
 #include "Apps/Tasks/ModemTask/include/ModemController.h"
+#include "Apps/Tasks/ModemTask/include/ModemResponseHandles.h"
 #include "Apps/Common/Common.h"
 #include "driver_init.h"
 
@@ -19,109 +20,110 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 	{
 		CMD_AT,
 		"AT\r",
-		THREE,
-		TWO,
-		defaultFunctionPointer,
-		(THREE + TWO + CRLF_CHAR_LEN)
+		INT_THREE,
+		INT_TWO,
+		mdmResp_AtRespHandler,
+		(INT_THREE + INT_TWO + CRLF_CHAR_LEN)
 	},
 
 	/* AT + CGSN*/
 	{
 		CMD_AT_CGSN,
 		"AT+CGSN\r",
-		EIGHT,
-		FIFTEEN,
-		defaultFunctionPointer,
-		(EIGHT + FIFTEEN + CRLF_CHAR_LEN)
+		INT_EIGHT,
+		INT_FIFTEEN,
+		mdmResp_IMEIRespHandler,
+		(INT_EIGHT + INT_FIFTEEN + CRLF_CHAR_LEN)
 	},
 	
 	/* AT+WCARRIER */
 	{
 		CMD_AT_WCARRIER,
 		"AT+WCARRIER\r",
-		TWELEVE,
-		THREE,
+		INT_TWELEVE,
+		INT_THREE,
 		defaultFunctionPointer,
-		(TWELEVE + THREE + CRLF_CHAR_LEN)
+		(INT_TWELEVE + INT_THREE + CRLF_CHAR_LEN)
 	},
 	
 	/* AT+IPR */
 	{
 		CMD_AT_IPR,
 		"AT+IPR?\r",
-		EIGHT,
-		TWELEVE,
+		INT_EIGHT,
+		INT_TWELEVE,
 		defaultFunctionPointer,
-		(EIGHT + TWELEVE + CRLF_CHAR_LEN)
+		(INT_EIGHT + INT_TWELEVE + CRLF_CHAR_LEN)
 	},
 	
 	/* AT+CPIN */
 	{
 		CMD_AT_CPIN,
 		"AT+CPIN?\r",
-		FIVE,
-		EIGHT,
+		INT_FIVE,
+		INT_EIGHT,
 		defaultFunctionPointer,
-		(FIVE + EIGHT + CRLF_CHAR_LEN)
+		(INT_FIVE + INT_EIGHT + CRLF_CHAR_LEN)
 	},
 	
 	/* AT+CGREG */
 	{
 		CMD_AT_CGREG,
 		"AT+CGREG?\r",
-		TEN,
-		ELEVEN,
+		INT_TEN,
+		INT_ELEVEN,
 		defaultFunctionPointer,
-		(TEN + ELEVEN + CRLF_CHAR_LEN)
+		(INT_TEN + INT_ELEVEN + CRLF_CHAR_LEN)
 	},
 	
 	/* AT+KGSN */
 	{
 		CMD_AT_KGSN,
 		"AT+KGSN=3\r",
-		TEN,
-		TWENTY_ONE,
+		INT_TEN,
+		INT_TWENTY_ONE,
 		defaultFunctionPointer,
-		(TEN + TWENTY_ONE + CRLF_CHAR_LEN)
+		(INT_TEN + INT_TWENTY_ONE + CRLF_CHAR_LEN)
 	},
 	
 	/* ATE0 */
 	{
 		CMD_AT_ATE,
 		"ATE1\r",
-		FIVE,
-		TWO,
+		INT_FIVE,
+		INT_TWO,
 		defaultFunctionPointer,
-		(FIVE + TWO + CRLF_CHAR_LEN)
+		(INT_FIVE + INT_TWO + CRLF_CHAR_LEN)
 	},
 
 	/* Connection Initialization Commands */
 	{
 		CMD_AT_KHTTP_CFG,
 		"AT+KHTTPCFG=3,\"ingest1.response.cloud\"\r\n",
-		40,
-		TWELEVE,
+		INT_FOURTY,
+		INT_TWELEVE,
 		defaultFunctionPointer,
-		(40 + TWELEVE + CRLF_CHAR_LEN)
+		(INT_FOURTY + INT_TWELEVE + CRLF_CHAR_LEN)
 	},
 
 	/* Default */
 	{
 		CMD_AT_MAX,
 		"",
-		ZERO,
-		ZERO,
+		INT_ZERO,
+		INT_ZERO,
 		defaultFunctionPointer,
-		ZERO
+		INT_ZERO
 	}
 
 };
 
 /* Last send Command */
 static AT_CMD_TYPE lastSendATCommand = CMD_AT_MAX;
-static uint8_t responseDataBuffer[40];
+static uint8_t responseDataBuffer[MAX_RESPONSE_SIZE];
 
 static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response);
+
 /*============================================================================
 **
 ** Function Name:      sendCommandToModem
@@ -138,36 +140,6 @@ void mdmParser_SendCommandToModem(AT_CMD_TYPE atCmd)
 
 /*============================================================================
 **
-** Function Name:      sendCommandToModem
-**
-** Description:        Transmits Data to Modem
-**
-**===========================================================================*/
-void mdmParser_ParseModemResponse(AT_CMD_TYPE cmd,uint8_t* resp)
-{
-	bool readStatus = false;
-	uint8_t Buffer[50];
-	uint8_t parseCnt = 0;
-	MODEM_CMD_DATA cmdData = ModemCmdData[cmd];
-	
-	mdmCtrlr_FlushRxBuffer();
-}
-
-/*============================================================================
-**
-** Function Name:      mdmComms_GetModemResponse
-**
-** Description:        Gets the parsed modem response
-**
-**===========================================================================*/
-void mdmParser_GetModemResponse(AT_CMD_TYPE cmd,uint8_t* response,uint8_t* respLength)
-{
-	//ModemCmdData[cmd].ParseResponse(cmd,response);
-	*respLength = ModemCmdData[cmd].validDataCnt;
-}
-
-/*============================================================================
-**
 ** Function Name:      mdmComms_GetModemResponse
 **
 ** Description:        Gets the parsed modem response
@@ -175,13 +147,15 @@ void mdmParser_GetModemResponse(AT_CMD_TYPE cmd,uint8_t* response,uint8_t* respL
 **===========================================================================*/
 void mdmParser_ProcessModemResponse(void)
 {
+	MODEM_CMD_DATA cmdData = ModemCmdData[lastSendATCommand];
+
 	if(lastSendATCommand != CMD_AT_MAX)
 	{
 		if(false != mdmParser_solicitedCmdParser(lastSendATCommand,responseDataBuffer))
 		{
-			//SerialDebugPrint("Successfully Received modem response data\r\n",45);
-			SerialDebugPrint(responseDataBuffer,ModemCmdData[lastSendATCommand].validDataCnt);
-			SerialDebugPrint("\r\n",2);
+			cmdData.respHandler(responseDataBuffer,cmdData.validDataCnt);
+			//SerialDebugPrint(responseDataBuffer,ModemCmdData[lastSendATCommand].validDataCnt);
+			//SerialDebugPrint("\r\n",2);
 			lastSendATCommand = CMD_AT_MAX;
 		}
 		else
@@ -257,44 +231,18 @@ static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
 static bool mdmParser_CheckForUnSolicitedResponses(void)
 {
 
+
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-void defaultFunctionPointer(void)
+/*============================================================================
+**
+** Function Name:      mdmComms_GetModemResponse
+**
+** Description:        Gets the parsed modem response
+**
+**===========================================================================*/
+void defaultFunctionPointer(uint8_t* response, uint8_t length)
 {
 
 }
+
