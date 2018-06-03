@@ -109,7 +109,7 @@ void mdmResp_KhttpCfgHandler(uint8_t* response, uint8_t length)
 	SerialDebugPrint(response,length);
 	DEBUG_PRINT("\r\n");
 
-	sessionID = response[12];
+	sessionID = response[11];
 	mdmParser_SetKhttpHeaderString(&sessionID);
 }
 

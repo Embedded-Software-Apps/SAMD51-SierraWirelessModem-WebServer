@@ -45,7 +45,7 @@ int main(void)
 
 	while (1)
 	{
-		//sendPacketToServer();
+		sendPacketToServer();
 
 	}
 }

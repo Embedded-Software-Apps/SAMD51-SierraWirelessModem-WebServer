@@ -147,7 +147,7 @@ bool MdmParam_TestModemBaseParameters(void)
 
 void mdmParam_InitiateConnection(void)
 {
-	//closeExistingConnections();
+	closeExistingConnections();
 	sendAT_KPATTERN();
 	sendAT_KCNXCFG();
 	sendAT_KCNXTIMER();
@@ -233,41 +233,41 @@ void sendPacketToServer(void)
 static void sendAT_KPATTERN(void)
 {
 	mdmParser_SendCommandToModem(CMD_AT_KPATTERN);
-	delay_ms(1000);
+	delay_ms(2000);
 	mdmParser_ProcessModemResponse();
-	delay_ms(1000);
+	delay_ms(2000);
 }
 
 static void sendAT_KCNXCFG(void)
 {
 	mdmParser_SendCommandToModem(CMD_AT_KCNXCFG);
-	delay_ms(1000);
+	delay_ms(2000);
 	mdmParser_ProcessModemResponse();
-	delay_ms(1000);
+	delay_ms(2000);
 }
 
 static void sendAT_KCNXTIMER(void)
 {
 	mdmParser_SendCommandToModem(CMD_AT_KCNXTIMER);
-	delay_ms(1000);
+	delay_ms(2000);
 	mdmParser_ProcessModemResponse();
-	delay_ms(1000);
+	delay_ms(2000);
 }
 
 static void sendAT_KHTTPCFG(void)
 {
 	mdmParser_SendCommandToModem(CMD_AT_KHTTP_CFG);
-	delay_ms(1000);
+	delay_ms(2000);
 	mdmParser_ProcessModemResponse();
-	delay_ms(1000);
+	delay_ms(2000);
 }
 
 static void sendAT_KHTTPHEADER(void)
 {
 	mdmParser_SendCommandToModem(CMD_AT_KHTTP_HEADER);
-	delay_ms(1000);
+	delay_ms(2000);
 	mdmParser_ProcessModemResponse();
-	delay_ms(1000);
+	delay_ms(2000);
 }
 
 

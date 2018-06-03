@@ -206,19 +206,19 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 	{
 		CMD_AT_KPATTERN,
 		"AT+KPATTERN=\"--EOF--Pattern--\"\r",
-		INT_THIRTY_TWO,
+		INT_THIRTY_ONE,
 		INT_TWO,
 		mdmResp_KPatternHandler,
-		(INT_THIRTY_TWO + INT_TWO + CRLF_CHAR_LEN)
+		(INT_THIRTY_ONE + INT_TWO + CRLF_CHAR_LEN)
 	},
 
 	{
 		CMD_AT_KCNXCFG,
 		"AT+KCNXCFG=3, \"GPRS\",\"VZWINTERNET\"\r",
-		INT_THIRTY_SIX,
+		INT_THIRTY_FIVE,
 		INT_TWO,
 		mdmResp_KcnxCfgHandler,
-		(INT_THIRTY_SIX + INT_TWO + CRLF_CHAR_LEN)
+		(INT_THIRTY_FIVE + INT_TWO + CRLF_CHAR_LEN)
 	},
 
 	{
@@ -321,7 +321,7 @@ void mdmParser_ProcessModemResponse(void)
 ** Description:        Gets the parsed modem response
 **
 **===========================================================================*/
-static uint8_t* dataBuffer = NULL;
+static uint8_t dataBuffer[700];
 static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
 {
 	bool readStatus = false;
@@ -428,7 +428,7 @@ void mdmParser_SetKhttpHeaderString(uint8_t* sessionID)
 {
 	switch (*sessionID)
 	{
-		case 1:
+		case 49:
 		{
 			kHttpHeaderString[15] = '1';
 			kHttpGetString[12] = '1';
@@ -436,7 +436,7 @@ void mdmParser_SetKhttpHeaderString(uint8_t* sessionID)
 		}
 		break;
 
-		case 2:
+		case 50:
 		{
 			kHttpHeaderString[15] = '2';
 			kHttpGetString[12] = '2';
@@ -444,7 +444,7 @@ void mdmParser_SetKhttpHeaderString(uint8_t* sessionID)
 		}
 		break;
 
-		case 3:
+		case 51:
 		{
 			kHttpHeaderString[15] = '3';
 			kHttpGetString[12] = '3';
@@ -452,7 +452,7 @@ void mdmParser_SetKhttpHeaderString(uint8_t* sessionID)
 		}
 		break;
 
-		case 4:
+		case 52:
 		{
 			kHttpHeaderString[15] = '4';
 			kHttpGetString[12] = '4';
@@ -460,7 +460,7 @@ void mdmParser_SetKhttpHeaderString(uint8_t* sessionID)
 		}
 		break;
 
-		case 5:
+		case 53:
 		{
 			kHttpHeaderString[15] = '5';
 			kHttpGetString[12] = '5';
@@ -468,7 +468,7 @@ void mdmParser_SetKhttpHeaderString(uint8_t* sessionID)
 		}
 		break;
 
-		case 6:
+		case 54:
 		{
 			kHttpHeaderString[15] = '6';
 			kHttpGetString[12] = '6';
@@ -476,7 +476,7 @@ void mdmParser_SetKhttpHeaderString(uint8_t* sessionID)
 		}
 		break;
 
-		case 7:
+		case 55:
 		{
 			kHttpHeaderString[15] = '7';
 			kHttpGetString[12] = '7';
@@ -484,7 +484,7 @@ void mdmParser_SetKhttpHeaderString(uint8_t* sessionID)
 		}
 		break;
 
-		case 8:
+		case 56:
 		{
 			kHttpHeaderString[15] = '8';
 			kHttpGetString[12] = '8';
