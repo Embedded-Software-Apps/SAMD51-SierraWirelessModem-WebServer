@@ -7,6 +7,7 @@
 #include "Apps/Tasks/ModemTask/include/ModemCmdParser.h"
 #include "Apps/Tasks/ModemTask/include/ModemController.h"
 #include "Apps/Tasks/ModemTask/include/ModemResponseHandles.h"
+#include "Apps/SerialDebug/SerialDebug.h"
 #include "Apps/Common/Common.h"
 #include "driver_init.h"
 
@@ -106,6 +107,96 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		(INT_FOURTY + INT_TWELEVE + CRLF_CHAR_LEN)
 	},
 
+	{
+		CMD_AT_KHTTP_CLOSE_1,
+		"AT+KHTTPCLOSE=1,0\r",
+		INT_EIGHTEEN,
+		INT_TWO,
+		mdmResp_KhttpCloseHandler,
+		(INT_EIGHTEEN + INT_TWO + CRLF_CHAR_LEN)
+	},
+
+	{
+		CMD_AT_KHTTP_CLOSE_2,
+		"AT+KHTTPCLOSE=2,0\r",
+		INT_EIGHTEEN,
+		INT_TWO,
+		mdmResp_KhttpCloseHandler,
+		(INT_EIGHTEEN + INT_TWO + CRLF_CHAR_LEN)
+	},
+
+	{
+		CMD_AT_KHTTP_CLOSE_3,
+		"AT+KHTTPCLOSE=3,0\r",
+		INT_EIGHTEEN,
+		INT_TWO,
+		mdmResp_KhttpCloseHandler,
+		(INT_EIGHTEEN + INT_TWO + CRLF_CHAR_LEN)
+	},
+
+	{
+		CMD_AT_KHTTP_CLOSE_4,
+		"AT+KHTTPCLOSE=4,0\r",
+		INT_EIGHTEEN,
+		INT_TWO,
+		mdmResp_KhttpCloseHandler,
+		(INT_EIGHTEEN + INT_TWO + CRLF_CHAR_LEN)
+	},
+
+	{
+		CMD_AT_KHTTP_CLOSE_5,
+		"AT+KHTTPCLOSE=5,0\r",
+		INT_EIGHTEEN,
+		INT_TWO,
+		mdmResp_KhttpCloseHandler,
+		(INT_EIGHTEEN + INT_TWO + CRLF_CHAR_LEN)
+	},
+
+	{
+		CMD_AT_KHTTP_CLOSE_6,
+		"AT+KHTTPCLOSE=6,0\r",
+		INT_EIGHTEEN,
+		INT_TWO,
+		mdmResp_KhttpCloseHandler,
+		(INT_EIGHTEEN + INT_TWO + CRLF_CHAR_LEN)
+	},
+
+	{
+		CMD_AT_KHTTP_CLOSE_7,
+		"AT+KHTTPCLOSE=7,0\r",
+		INT_EIGHTEEN,
+		INT_TWO,
+		mdmResp_KhttpCloseHandler,
+		(INT_EIGHTEEN + INT_TWO + CRLF_CHAR_LEN)
+	},
+
+	{
+		CMD_AT_KHTTP_CLOSE_8,
+		"AT+KHTTPCLOSE=8,0\r",
+		INT_EIGHTEEN,
+		INT_TWO,
+		mdmResp_KhttpCloseHandler,
+		(INT_EIGHTEEN + INT_TWO + CRLF_CHAR_LEN)
+	},
+
+	{
+		CMD_AT_KHTTP_CLOSE_9,
+		"AT+KHTTPCLOSE=9,0\r",
+		INT_EIGHTEEN,
+		INT_TWO,
+		mdmResp_KhttpCloseHandler,
+		(INT_EIGHTEEN + INT_TWO + CRLF_CHAR_LEN)
+	},
+
+	{
+		CMD_AT_KHTTP_CLOSE_10,
+		"AT+KHTTPCLOSE=10,0\r",
+		INT_NINETEEN,
+		INT_TWO,
+		mdmResp_KhttpCloseHandler,
+		(INT_NINETEEN + INT_TWO + CRLF_CHAR_LEN)
+	},
+
 	/* Default */
 	{
 		CMD_AT_MAX,
@@ -121,7 +212,7 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 /* Last send Command */
 static AT_CMD_TYPE lastSendATCommand = CMD_AT_MAX;
 static uint8_t responseDataBuffer[MAX_RESPONSE_SIZE];
-
+static bool isPrevCmdRespProcessed = true;
 static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response);
 
 /*============================================================================
@@ -136,6 +227,8 @@ void mdmParser_SendCommandToModem(AT_CMD_TYPE atCmd)
 	mdmCtrlr_FlushRxBuffer();
 	mdmCtrlr_SendDataToModem(ModemCmdData[atCmd].AtString,ModemCmdData[atCmd].CmdLength);
 	lastSendATCommand = atCmd;
+	mdmParser_SetLastCmdProcessed(false);
+	delay_ms(1000);
 }
 
 /*============================================================================
@@ -153,16 +246,18 @@ void mdmParser_ProcessModemResponse(void)
 	{
 		if(false != mdmParser_solicitedCmdParser(lastSendATCommand,responseDataBuffer))
 		{
-			cmdData.respHandler(responseDataBuffer,cmdData.validDataCnt);
-			//SerialDebugPrint(responseDataBuffer,ModemCmdData[lastSendATCommand].validDataCnt);
-			//SerialDebugPrint("\r\n",2);
-			lastSendATCommand = CMD_AT_MAX;
+			if(lastSendATCommand == cmdData.AtCmd)
+			{
+				cmdData.respHandler(responseDataBuffer,cmdData.validDataCnt);
+				mdmParser_SetLastCmdProcessed(true);
+			}
 		}
 		else
 		{
-			SerialDebugPrint("Failed to Receive modem response data\r\n",40);
-			lastSendATCommand = CMD_AT_MAX;
+			DBG_PRINT("Expected modem response is not received");
 		}
+
+		lastSendATCommand = CMD_AT_MAX;
 	}
 }
 
@@ -192,7 +287,6 @@ static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
 		if(VERIFIED_EQUAL == strncmp(cmdData.AtString, dataBuffer, cmdData.CmdLength))
 		{
 			/* Command response is correctly identified */
-			//SerialDebugPrint("Successfully parsed the command string\r\n",40);
 
 			/* Extract the data part from modem response */
 			while(parseCnt < cmdData.validDataCnt)
@@ -202,7 +296,6 @@ static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
 			}
 			response[parseCnt] = '\0';
 			parseStatus = true;
-			//SerialDebugPrint("Successfully updated the cmd response data to buffer\r\n",50);
 		}
 		else
 		{
@@ -244,5 +337,29 @@ static bool mdmParser_CheckForUnSolicitedResponses(void)
 void defaultFunctionPointer(uint8_t* response, uint8_t length)
 {
 
+}
+
+/*============================================================================
+**
+** Function Name:      mdmComms_GetModemResponse
+**
+** Description:        Gets the parsed modem response
+**
+**===========================================================================*/
+void mdmParser_SetLastCmdProcessed(bool status)
+{
+	isPrevCmdRespProcessed = status;
+}
+
+/*============================================================================
+**
+** Function Name:      mdmComms_GetModemResponse
+**
+** Description:        Gets the parsed modem response
+**
+**===========================================================================*/
+bool mdmParser_IsLastCmdProcessed(void)
+{
+	return isPrevCmdRespProcessed;
 }
 

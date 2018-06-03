@@ -32,3 +32,17 @@ void mdmResp_IMEIRespHandler(uint8_t* response, uint8_t length)
 	SerialDebugPrint(response,length);
 	SerialDebugPrint("\r\n",2);
 }
+
+/*============================================================================
+**
+** Function Name:      mdmComms_GetModemResponse
+**
+** Description:        Gets the parsed modem response
+**
+**===========================================================================*/
+void mdmResp_KhttpCloseHandler(uint8_t* response, uint8_t length)
+{
+	DEBUG_PRINT("In KHTTP CLOSE handler");
+	SerialDebugPrint(response,length);
+	DEBUG_PRINT("\r\n");
+}

@@ -10,6 +10,7 @@
 #include "Apps/Tasks/ModemTask/include/ModemController.h"
 #include "Apps/Tasks/ModemTask/include/ModemCmdParser.h"
 #include "Apps/Tasks/ModemTask/include/ModemParameters.h"
+#include "Apps/Tasks/ModemTask/include/ModemConnection.h"
 #include <string.h>
 
 /* FreeRTOS.org includes. */
@@ -33,16 +34,22 @@ int main(void)
 	/* Initialize the HL7618RD modem power signals */
 	modemPowerInit();
 	
+	mdmParser_SetLastCmdProcessed(true);
+
 	while (1)
 	{
-		mdmParser_SendCommandToModem(CMD_AT);
-		delay_ms(2000);
+		if (mdmParser_IsLastCmdProcessed() != false)
+		{
+			DBG_PRINT("Sending CLOSE Command");
+			MdmCnct_HttpConnectionStateMachine();
+		}
+
 		mdmParser_ProcessModemResponse();
-		mdmParser_SendCommandToModem(CMD_AT_CGSN);
+/*		mdmParser_SendCommandToModem(CMD_AT_CGSN);
 		delay_ms(2000);
 		mdmParser_ProcessModemResponse();
 		delay_ms(1000);
-		DBG_PRINT("Testing DBG_PRINT");
+		DBG_PRINT("Testing DBG_PRINT");*/
 	}
 }
 

@@ -171,6 +171,8 @@ main.d main.o: .././main.c ../atmel_start.h ../driver_init.h \
  .././Apps/Tasks/ModemTask/include/ModemCmdParser.h \
  ../Apps/Common/Common.h \
  .././Apps/Tasks/ModemTask/include/ModemParameters.h \
+ .././Apps/Tasks/ModemTask/include/ModemConnection.h \
+ ../Apps/SerialDebug/SerialDebug.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\newlib.h \
@@ -634,6 +636,10 @@ E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/sam.h:
 ../Apps/Common/Common.h:
 
 .././Apps/Tasks/ModemTask/include/ModemParameters.h:
+
+.././Apps/Tasks/ModemTask/include/ModemConnection.h:
+
+../Apps/SerialDebug/SerialDebug.h:
 
 e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h:
 

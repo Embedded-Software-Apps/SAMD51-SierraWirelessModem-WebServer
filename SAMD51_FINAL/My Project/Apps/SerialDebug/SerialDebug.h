@@ -9,6 +9,7 @@
 #ifndef SERIALDEBUG_H_
 #define SERIALDEBUG_H_
 
+#include <stdint.h>
 typedef enum
 {
 	SERIAL_DEBUG_TEST_READ,

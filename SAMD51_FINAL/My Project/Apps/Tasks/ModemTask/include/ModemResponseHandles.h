@@ -14,5 +14,6 @@
 
 void mdmResp_AtRespHandler(uint8_t* response, uint8_t length);
 void mdmResp_IMEIRespHandler(uint8_t* response, uint8_t length);
+void mdmResp_KhttpCloseHandler(uint8_t* response, uint8_t length);
 
 #endif /* MODEMRESPONSEHANDLES_H_ */
