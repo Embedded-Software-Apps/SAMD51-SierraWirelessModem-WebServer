@@ -39,18 +39,14 @@ int main(void)
 	
 	mdmParser_SetLastCmdProcessed(true);
 
+	mdmParam_InitiateConnection();
+
+	DEBUG_PRINT("Completed the connection intialization");
+
 	while (1)
 	{
-		if (mdmParser_IsLastCmdProcessed() != false)
-		{
-			mdmParser_SendCommandToModem(CMD_AT);
-			delay_ms(2000);
-			mdmParser_ProcessModemResponse();
-			delay_ms(1000);
-			mdmParser_SendCommandToModem(CMD_AT_CGSN);
-			delay_ms(2000);
-			mdmParser_ProcessModemResponse();
-		}
+		//sendPacketToServer();
+
 	}
 }
 

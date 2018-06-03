@@ -14,7 +14,7 @@
 #include <stdbool.h>
 #include "Apps/Common/Common.h"
 
-#define TOTAL_MODEM_CMDS (20)
+#define TOTAL_MODEM_CMDS (60)
 #define CRLF_CHAR_LEN (4)
 #define MAX_RESPONSE_SIZE (700)
 
@@ -43,6 +43,11 @@ typedef enum
 	CMD_AT_KHTTP_CLOSE_8 = 16,
 	CMD_AT_KHTTP_CLOSE_9 = 17,
 	CMD_AT_KHTTP_CLOSE_10 = 18,
+	CMD_AT_KPATTERN = 19,
+	CMD_AT_KCNXCFG = 20,
+	CMD_AT_KCNXTIMER = 21,
+	CMD_AT_KHTTP_HEADER = 22,
+	CMD_AT_KHTTP_GET = 23,
 	CMD_AT_MAX
 }AT_CMD_TYPE;
 
@@ -65,5 +70,6 @@ void defaultFunctionPointer(uint8_t* response, uint8_t length);
 void mdmParser_ProcessModemResponse(void);
 void mdmParser_SetLastCmdProcessed(bool status);
 bool mdmParser_IsLastCmdProcessed(void);
+void mdmParser_SetKhttpHeaderString(uint8_t* sessionID);
 
 #endif /* MODEMCMDPARSER_H_ */

@@ -14,6 +14,12 @@
 #include <hal_usart_os.h>
 #include <string.h>
 
+static uint8_t kHttpHeaderString[INT_SEVENTEEN] = {'A','T','+','K','H','T','T','P','H','E','A','D','E','R','=','0','\r'};
+
+static uint8_t kHttpGetString[INT_FIFTEEN] = {'A','T','+','K','H','T','T','P','G','E','T','=','0',',','\0'};
+
+static uint8_t kHttpGetCompleteData[60] = {0};
+
 /* Data structure for storing command parameters */
 static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 {
@@ -100,11 +106,11 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 	/* Connection Initialization Commands */
 	{
 		CMD_AT_KHTTP_CFG,
-		"AT+KHTTPCFG=3,\"ingest1.response.cloud\"\r\n",
-		INT_FOURTY,
+		"AT+KHTTPCFG=3,\"ingest1.response.cloud\"\r",
+		INT_THIRTY_NINE,
 		INT_TWELEVE,
-		defaultFunctionPointer,
-		(INT_FOURTY + INT_TWELEVE + CRLF_CHAR_LEN)
+		mdmResp_KhttpCfgHandler,
+		(INT_THIRTY_NINE + INT_TWELEVE + CRLF_CHAR_LEN)
 	},
 
 	{
@@ -197,6 +203,51 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		(INT_NINETEEN + INT_TWO + CRLF_CHAR_LEN)
 	},
 
+	{
+		CMD_AT_KPATTERN,
+		"AT+KPATTERN=\"--EOF--Pattern--\"\r",
+		INT_THIRTY_TWO,
+		INT_TWO,
+		mdmResp_KPatternHandler,
+		(INT_THIRTY_TWO + INT_TWO + CRLF_CHAR_LEN)
+	},
+
+	{
+		CMD_AT_KCNXCFG,
+		"AT+KCNXCFG=3, \"GPRS\",\"VZWINTERNET\"\r",
+		INT_THIRTY_SIX,
+		INT_TWO,
+		mdmResp_KcnxCfgHandler,
+		(INT_THIRTY_SIX + INT_TWO + CRLF_CHAR_LEN)
+	},
+
+	{
+		CMD_AT_KCNXTIMER,
+		"AT+KCNXTIMER=3,60,2,70,60\r",
+		INT_TWENTY_SIX,
+		INT_TWO,
+		mdmResp_KcnxTimerHandler,
+		(INT_TWENTY_SIX + INT_TWO + CRLF_CHAR_LEN)
+	},
+
+	{
+		CMD_AT_KHTTP_HEADER,
+		kHttpHeaderString,
+		INT_SEVENTEEN,
+		INT_SEVEN,
+		mdmResp_KhttpHeaderHandler,
+		(INT_SEVENTEEN + INT_SEVEN + CRLF_CHAR_LEN)
+	},
+
+	{
+		CMD_AT_KHTTP_GET,
+		kHttpGetCompleteData,
+		INT_FIFTY_EIGHT,
+		620,
+		mdmResp_KhttpGetHandler,
+		(INT_FIFTY_EIGHT + 620 + CRLF_CHAR_LEN)
+	},
+
 	/* Default */
 	{
 		CMD_AT_MAX,
@@ -225,6 +276,8 @@ static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response);
 void mdmParser_SendCommandToModem(AT_CMD_TYPE atCmd)
 {
 	mdmCtrlr_FlushRxBuffer();
+	SerialDebugPrint(ModemCmdData[atCmd].AtString,ModemCmdData[atCmd].CmdLength);
+	DEBUG_PRINT("\r\n");
 	mdmCtrlr_SendDataToModem(ModemCmdData[atCmd].AtString,ModemCmdData[atCmd].CmdLength);
 	lastSendATCommand = atCmd;
 	mdmParser_SetLastCmdProcessed(false);
@@ -268,11 +321,12 @@ void mdmParser_ProcessModemResponse(void)
 ** Description:        Gets the parsed modem response
 **
 **===========================================================================*/
+static uint8_t* dataBuffer = NULL;
 static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
 {
 	bool readStatus = false;
 	bool parseStatus = false;
-	uint8_t dataBuffer[60];
+	//uint8_t dataBuffer[700];
 	uint8_t parseCnt=0;
 	MODEM_CMD_DATA cmdData = ModemCmdData[cmd];
 
@@ -362,4 +416,95 @@ bool mdmParser_IsLastCmdProcessed(void)
 {
 	return isPrevCmdRespProcessed;
 }
+
+/*============================================================================
+**
+** Function Name:      mdmComms_GetModemResponse
+**
+** Description:        Gets the parsed modem response
+**
+**===========================================================================*/
+void mdmParser_SetKhttpHeaderString(uint8_t* sessionID)
+{
+	switch (*sessionID)
+	{
+		case 1:
+		{
+			kHttpHeaderString[15] = '1';
+			kHttpGetString[12] = '1';
+			DEBUG_PRINT("Session ID - 1");
+		}
+		break;
+
+		case 2:
+		{
+			kHttpHeaderString[15] = '2';
+			kHttpGetString[12] = '2';
+			DEBUG_PRINT("Session ID - 2");
+		}
+		break;
+
+		case 3:
+		{
+			kHttpHeaderString[15] = '3';
+			kHttpGetString[12] = '3';
+			DEBUG_PRINT("Session ID - 3");
+		}
+		break;
+
+		case 4:
+		{
+			kHttpHeaderString[15] = '4';
+			kHttpGetString[12] = '4';
+			DEBUG_PRINT("Session ID - 4");
+		}
+		break;
+
+		case 5:
+		{
+			kHttpHeaderString[15] = '5';
+			kHttpGetString[12] = '5';
+			DEBUG_PRINT("Session ID - 5");
+		}
+		break;
+
+		case 6:
+		{
+			kHttpHeaderString[15] = '6';
+			kHttpGetString[12] = '6';
+			DEBUG_PRINT("Session ID - 6");
+		}
+		break;
+
+		case 7:
+		{
+			kHttpHeaderString[15] = '7';
+			kHttpGetString[12] = '7';
+			DEBUG_PRINT("Session ID - 7");
+		}
+		break;
+
+		case 8:
+		{
+			kHttpHeaderString[15] = '8';
+			kHttpGetString[12] = '8';
+			DEBUG_PRINT("Session ID - 8");
+		}
+		break;
+
+		default:
+		{
+			DEBUG_PRINT("Session ID value exceeds the max value");
+		}
+		break;
+	}
+
+	DEBUG_PRINT("KHTTP HEADER String is ");
+	SerialDebugPrint(kHttpHeaderString,17);
+	DEBUG_PRINT("\r\n");
+
+	strncpy(kHttpGetCompleteData,kHttpGetString,15);
+	strncat(kHttpGetCompleteData,"\"?i=359998070228764&d=A1Y52XA2Y36&b=42&s=2\"\r",44);
+}
+
 

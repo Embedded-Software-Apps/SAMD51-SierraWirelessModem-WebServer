@@ -6,11 +6,13 @@
  */ 
 #include "Apps/Tasks/ModemTask/include/ModemCmdParser.h"
 #include "Apps/Tasks/ModemTask/include/ModemParameters.h"
+#include "Apps/Tasks/ModemTask/include/ModemResponseHandles.h"
+#include "Apps/SerialDebug/SerialDebug.h"
 
 #define RESPONSE_BUFFER_SIZE (40)
 
 uint8_t connectResponse[620];
-static uint8_t sessionID = 0;
+
 
 static CONNECT_DATA connectData[6] = \
 {
@@ -27,7 +29,7 @@ static void sendAT_KCNXCFG(void);
 static void sendAT_KCNXTIMER(void);
 static void sendAT_KHTTPCFG(void);
 static void sendAT_KHTTPHEADER(void);
-static void parseSessionId(uint8_t* response);
+static void closeExistingConnections(void);
 /*============================================================================
 **
 ** Function Name:      MdmParam_CustomizeGeneralSettings
@@ -145,6 +147,7 @@ bool MdmParam_TestModemBaseParameters(void)
 
 void mdmParam_InitiateConnection(void)
 {
+	//closeExistingConnections();
 	sendAT_KPATTERN();
 	sendAT_KCNXCFG();
 	sendAT_KCNXTIMER();
@@ -154,82 +157,117 @@ void mdmParam_InitiateConnection(void)
 }
 
 
+static void closeExistingConnections(void)
+{
+	mdmParser_SendCommandToModem(CMD_AT_KHTTP_CLOSE_1);
+	delay_ms(1000);
+	mdmParser_ProcessModemResponse();
+	delay_ms(1000);
+
+	mdmParser_SendCommandToModem(CMD_AT_KHTTP_CLOSE_2);
+	delay_ms(1000);
+	mdmParser_ProcessModemResponse();
+	delay_ms(1000);
+
+	mdmParser_SendCommandToModem(CMD_AT_KHTTP_CLOSE_3);
+	delay_ms(1000);
+	mdmParser_ProcessModemResponse();
+	delay_ms(1000);
+
+	mdmParser_SendCommandToModem(CMD_AT_KHTTP_CLOSE_4);
+	delay_ms(1000);
+	mdmParser_ProcessModemResponse();
+	delay_ms(1000);
+
+	mdmParser_SendCommandToModem(CMD_AT_KHTTP_CLOSE_5);
+	delay_ms(1000);
+	mdmParser_ProcessModemResponse();
+	delay_ms(1000);
+
+	mdmParser_SendCommandToModem(CMD_AT_KHTTP_CLOSE_6);
+	delay_ms(1000);
+	mdmParser_ProcessModemResponse();
+	delay_ms(1000);
+
+	mdmParser_SendCommandToModem(CMD_AT_KHTTP_CLOSE_7);
+	delay_ms(1000);
+	mdmParser_ProcessModemResponse();
+	delay_ms(1000);
+
+	mdmParser_SendCommandToModem(CMD_AT_KHTTP_CLOSE_8);
+	delay_ms(1000);
+	mdmParser_ProcessModemResponse();
+	delay_ms(1000);
+
+	mdmParser_SendCommandToModem(CMD_AT_KHTTP_CLOSE_9);
+	delay_ms(1000);
+	mdmParser_ProcessModemResponse();
+	delay_ms(1000);
+
+	mdmParser_SendCommandToModem(CMD_AT_KHTTP_CLOSE_10);
+	delay_ms(1000);
+	mdmParser_ProcessModemResponse();
+	delay_ms(1000);
+}
+
+
 void sendPacketToServer(void)
 {
-	mdmCtrlr_SendDataToModem(connectData[AT_KHTTPGET].CmdString,connectData[AT_KHTTPGET].CmdLen);
-	delay_ms(1000);
-	memset(connectResponse,'\0',620);
-	mdmCtrlr_ReadResponseFromModem(connectResponse,connectData[AT_KHTTPGET].respLen);
-	mdmCtrlr_FlushRxBuffer();
-	SerialDebugPrint(connectResponse,strlen(connectResponse));
-	SerialDebugPrint("\r\n",2);
-	delay_ms(2000);
+	if ((getHeaderResponseOkStatus() == true) &&
+	    (getDataPacketOkStatus() == true))
+	{
+		mdmParser_SendCommandToModem(CMD_AT_KHTTP_GET);
+		delay_ms(6000);
+		setDataPacketOkStatus(false);
+		DEBUG_PRINT("Data sent to server");
+		mdmParser_ProcessModemResponse();
+		delay_ms(2000);
+	}
+	else
+	{
+		DEBUG_PRINT("Data NOT sent to server");
+	}
 	
 }
 
 static void sendAT_KPATTERN(void)
 {
-	mdmCtrlr_SendDataToModem(connectData[AT_KPATTERN].CmdString,connectData[AT_KPATTERN].CmdLen);
+	mdmParser_SendCommandToModem(CMD_AT_KPATTERN);
 	delay_ms(1000);
-	memset(connectResponse,'\0',620);
-	mdmCtrlr_ReadResponseFromModem(connectResponse,connectData[AT_KPATTERN].respLen);
-	mdmCtrlr_FlushRxBuffer();
-	SerialDebugPrint(connectResponse,strlen(connectResponse));
-	SerialDebugPrint("\r\n",2);
-	delay_ms(2000);
+	mdmParser_ProcessModemResponse();
+	delay_ms(1000);
 }
 
 static void sendAT_KCNXCFG(void)
 {
-	mdmCtrlr_SendDataToModem(connectData[AT_KCNXCFG].CmdString,connectData[AT_KCNXCFG].CmdLen);
+	mdmParser_SendCommandToModem(CMD_AT_KCNXCFG);
 	delay_ms(1000);
-	memset(connectResponse,'\0',620);
-	mdmCtrlr_ReadResponseFromModem(connectResponse,connectData[AT_KCNXCFG].respLen);
-	mdmCtrlr_FlushRxBuffer();
-	SerialDebugPrint(connectResponse,strlen(connectResponse));
-	SerialDebugPrint("\r\n",2);
-	delay_ms(2000);
+	mdmParser_ProcessModemResponse();
+	delay_ms(1000);
 }
 
 static void sendAT_KCNXTIMER(void)
 {
-	mdmCtrlr_SendDataToModem(connectData[AT_KCNXTIMER].CmdString,connectData[AT_KCNXTIMER].CmdLen);
+	mdmParser_SendCommandToModem(CMD_AT_KCNXTIMER);
 	delay_ms(1000);
-	memset(connectResponse,'\0',620);
-	mdmCtrlr_ReadResponseFromModem(connectResponse,connectData[AT_KCNXTIMER].respLen);
-	mdmCtrlr_FlushRxBuffer();
-	SerialDebugPrint(connectResponse,strlen(connectResponse));
-	SerialDebugPrint("\r\n",2);
-	delay_ms(2000);
+	mdmParser_ProcessModemResponse();
+	delay_ms(1000);
 }
 
 static void sendAT_KHTTPCFG(void)
 {
-	mdmCtrlr_SendDataToModem(connectData[AT_KHTTPCFG].CmdString,connectData[AT_KHTTPCFG].CmdLen);
+	mdmParser_SendCommandToModem(CMD_AT_KHTTP_CFG);
 	delay_ms(1000);
-	memset(connectResponse,'\0',620);
-	mdmCtrlr_ReadResponseFromModem(connectResponse,connectData[AT_KHTTPCFG].respLen);
-	parseSessionId(connectResponse);
-	mdmCtrlr_FlushRxBuffer();
-	SerialDebugPrint(connectResponse,strlen(connectResponse));
-	SerialDebugPrint("\r\n",2);
-	delay_ms(2000);
+	mdmParser_ProcessModemResponse();
+	delay_ms(1000);
 }
-
 
 static void sendAT_KHTTPHEADER(void)
 {
-	mdmCtrlr_SendDataToModem(connectData[AT_KHTTPHEADER].CmdString,connectData[AT_KHTTPHEADER].CmdLen);
+	mdmParser_SendCommandToModem(CMD_AT_KHTTP_HEADER);
 	delay_ms(1000);
-	memset(connectResponse,'\0',620);
-	mdmCtrlr_ReadResponseFromModem(connectResponse,connectData[AT_KHTTPHEADER].respLen);
-	mdmCtrlr_FlushRxBuffer();
-	SerialDebugPrint(connectResponse,strlen(connectResponse));
-	SerialDebugPrint("\r\n",2);
-	delay_ms(2000);
+	mdmParser_ProcessModemResponse();
+	delay_ms(1000);
 }
 
-static void parseSessionId(uint8_t* response)
-{
-	sessionID = response[54];
-}
+
