@@ -48,6 +48,7 @@ void modemPowerInit(void)
 	delay_ms(3000);
 	
 	SerialDebugPrint((uint8_t*)"Modem Power On initialization Completed\r\n",41);
+	DEBUG_PRINT("\r\n");
 }
 
 void performModemReset(void)

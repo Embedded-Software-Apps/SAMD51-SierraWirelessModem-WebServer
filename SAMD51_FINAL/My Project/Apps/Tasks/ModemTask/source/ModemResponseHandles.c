@@ -48,8 +48,19 @@ void mdmResp_IMEIRespHandler(uint8_t* response, uint8_t length)
 **===========================================================================*/
 void mdmResp_KhttpCloseHandler(uint8_t* response, uint8_t length)
 {
-	DEBUG_PRINT("In KHTTP CLOSE handler");
-	SerialDebugPrint(response,length);
+	//DEBUG_PRINT("In KHTTP CLOSE handler");
+
+	if(response[0] == 'O')
+	{
+		SerialDebugPrint(response,length);
+		DEBUG_PRINT("\r\nClosed an active connection");
+	}
+	else
+	{
+		DEBUG_PRINT("There is no connection established with this session ID...");
+		DEBUG_PRINT("Checking for an active connection with next session ID...\n");
+	}
+
 	DEBUG_PRINT("\r\n");
 }
 
@@ -150,9 +161,10 @@ void mdmResp_KhttpHeaderHandler(uint8_t* response, uint8_t length)
 void mdmResp_KhttpGetHandler(uint8_t* response, uint8_t length)
 {
 	DEBUG_PRINT("In KHTTP GET handler");
+	DEBUG_PRINT("RECIEVED RESPONSE FROM WEB SERVER");
 	SerialDebugPrint(response,length);
 	dataPacketSentOk = true;
-	DEBUG_PRINT("\r\n");
+	DEBUG_PRINT("\r\n\n");
 }
 
 /*============================================================================

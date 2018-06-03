@@ -243,9 +243,9 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		CMD_AT_KHTTP_GET,
 		kHttpGetCompleteData,
 		INT_FIFTY_EIGHT,
-		620,
+		500,
 		mdmResp_KhttpGetHandler,
-		(INT_FIFTY_EIGHT + 620 + CRLF_CHAR_LEN)
+		(INT_FIFTY_EIGHT + 500 + CRLF_CHAR_LEN)
 	},
 
 	/* Default */
@@ -275,9 +275,13 @@ static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response);
 **===========================================================================*/
 void mdmParser_SendCommandToModem(AT_CMD_TYPE atCmd)
 {
+	if(atCmd == CMD_AT_KHTTP_GET)
+	{
+		SerialDebugPrint("\r\n",2);
+	}
 	mdmCtrlr_FlushRxBuffer();
 	SerialDebugPrint(ModemCmdData[atCmd].AtString,ModemCmdData[atCmd].CmdLength);
-	DEBUG_PRINT("\r\n");
+	DEBUG_PRINT("\r\n\n");
 	mdmCtrlr_SendDataToModem(ModemCmdData[atCmd].AtString,ModemCmdData[atCmd].CmdLength);
 	lastSendATCommand = atCmd;
 	mdmParser_SetLastCmdProcessed(false);
@@ -307,7 +311,11 @@ void mdmParser_ProcessModemResponse(void)
 		}
 		else
 		{
-			DEBUG_PRINT("Expected modem response is not received");
+			//DEBUG_PRINT("Expected modem response is not received");
+			if (lastSendATCommand == CMD_AT_KHTTP_GET)
+			{
+				DEBUG_PRINT("No Response from Web Sever....Posting data to sever is failed");
+			}
 		}
 
 		lastSendATCommand = CMD_AT_MAX;
@@ -321,12 +329,11 @@ void mdmParser_ProcessModemResponse(void)
 ** Description:        Gets the parsed modem response
 **
 **===========================================================================*/
-static uint8_t dataBuffer[700];
 static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
 {
 	bool readStatus = false;
 	bool parseStatus = false;
-	//uint8_t dataBuffer[700];
+	uint8_t dataBuffer[700];
 	uint8_t parseCnt=0;
 	MODEM_CMD_DATA cmdData = ModemCmdData[cmd];
 
@@ -353,13 +360,13 @@ static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
 		}
 		else
 		{
-			SerialDebugPrint("Failed to verify the command string\r\n",40);
+			//SerialDebugPrint("Failed to verify the command string\r\n",40);
 			parseStatus = false;
 		}
 	}
 	else
 	{
-		SerialDebugPrint("Read from modem controller is failed\r\n",40);
+		//SerialDebugPrint("Read from modem controller is failed\r\n",40);
 		parseStatus = false;
 	}
 
@@ -504,7 +511,7 @@ void mdmParser_SetKhttpHeaderString(uint8_t* sessionID)
 	DEBUG_PRINT("\r\n");
 
 	strncpy(kHttpGetCompleteData,kHttpGetString,15);
-	strncat(kHttpGetCompleteData,"\"?i=359998070228764&d=A1Y52XA2Y36&b=42&s=2\"\r",44);
+	strncat(kHttpGetCompleteData,"\"?i=359998070228764&d=A1Y52XA2Y36&b=36&s=2\"\r",44);
 }
 
 

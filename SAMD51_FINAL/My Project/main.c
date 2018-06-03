@@ -41,7 +41,7 @@ int main(void)
 
 	mdmParam_InitiateConnection();
 
-	DEBUG_PRINT("Completed the connection intialization");
+	DEBUG_PRINT("Successfully Completed the connection initialization. HTTP Connection is established..\r\n\n");
 
 	while (1)
 	{

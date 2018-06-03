@@ -213,19 +213,19 @@ static void closeExistingConnections(void)
 
 void sendPacketToServer(void)
 {
-	if ((getHeaderResponseOkStatus() == true) &&
-	    (getDataPacketOkStatus() == true))
+	if (getHeaderResponseOkStatus() == true)
 	{
 		mdmParser_SendCommandToModem(CMD_AT_KHTTP_GET);
-		delay_ms(6000);
+		delay_ms(9000);
 		setDataPacketOkStatus(false);
-		DEBUG_PRINT("Data sent to server");
+		DEBUG_PRINT("Posted the data to server...Waiting for Web Server Response");
 		mdmParser_ProcessModemResponse();
 		delay_ms(2000);
 	}
 	else
 	{
-		DEBUG_PRINT("Data NOT sent to server");
+		//DEBUG_PRINT("No Response from Web Sever. Posting data to sever is failed");
+		delay_ms(10000);
 	}
 	
 }
