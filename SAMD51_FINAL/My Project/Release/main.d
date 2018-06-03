@@ -158,7 +158,7 @@ main.d main.o: .././main.c ../atmel_start.h ../driver_init.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/rtos_port.h \
  .././Apps/SerialDebug/SerialDebug.h \
  .././Apps/Tasks/DispatchTask/include/DispatchTask.h \
- .././Apps/Tasks/ModemTask/include/ModemTask.h \
+ .././Apps/Tasks/ModemTask/include/ModemTxTask.h \
  .././Apps/LedControl/include/ledControl.h \
  ../apps/LedControl/include/ledConfig.h \
  ../apps/LedControl/include/ledControl.h ../driver_init.h \
@@ -607,7 +607,7 @@ E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/sam.h:
 
 .././Apps/Tasks/DispatchTask/include/DispatchTask.h:
 
-.././Apps/Tasks/ModemTask/include/ModemTask.h:
+.././Apps/Tasks/ModemTask/include/ModemTxTask.h:
 
 .././Apps/LedControl/include/ledControl.h:
 

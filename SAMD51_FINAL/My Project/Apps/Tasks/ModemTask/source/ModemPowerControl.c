@@ -29,17 +29,14 @@ void modemPowerInit(void)
 {
 	gpio_set_pin_direction(MODEM_ON, GPIO_DIRECTION_OUT);
 	gpio_set_pin_function(MODEM_ON, GPIO_PIN_FUNCTION_OFF);
-	//gpio_set_pin_pull_mode(MODEM_ON, GPIO_PULL_UP);
 	gpio_set_pin_level(MODEM_ON,false);
 
 	gpio_set_pin_direction(MODEM_RESET, GPIO_DIRECTION_OUT);
 	gpio_set_pin_function(MODEM_RESET, GPIO_PIN_FUNCTION_OFF);
-	//gpio_set_pin_pull_mode(MODEM_RESET, GPIO_PULL_UP);
 	gpio_set_pin_level(MODEM_RESET,false);
 
 	gpio_set_pin_direction(MODEM_DTR, GPIO_DIRECTION_OUT);
 	gpio_set_pin_function(MODEM_DTR, GPIO_PIN_FUNCTION_OFF);
-	//gpio_set_pin_pull_mode(MODEM_DTR, GPIO_PULL_UP);
 	gpio_set_pin_level(MODEM_DTR,false);
 	delay_ms(500);
 	
@@ -48,12 +45,23 @@ void modemPowerInit(void)
 	delay_ms(50);
 	
 	/* make MODEM ON to default level */
-	//gpio_set_pin_level(MODEM_ON,false);
 	delay_ms(3000);
 	
 	SerialDebugPrint((uint8_t*)"Modem Power On initialization Completed\r\n",41);
 }
 
+void performModemReset(void)
+{
+	gpio_set_pin_direction(MODEM_ON, GPIO_DIRECTION_OUT);
+	gpio_set_pin_function(MODEM_ON, GPIO_PIN_FUNCTION_OFF);
+	gpio_set_pin_level(MODEM_ON,true);
+	delay_ms(500);
+	gpio_set_pin_direction(MODEM_RESET, GPIO_DIRECTION_OUT);
+	gpio_set_pin_function(MODEM_RESET, GPIO_PIN_FUNCTION_OFF);
+	gpio_set_pin_level(MODEM_RESET,true);
+	delay_ms(30);
+	DEBUG_PRINT("Modem Reset Completed");
+}
 
 
 

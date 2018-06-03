@@ -30,6 +30,6 @@ void SerialDebugPrint(const uint8_t *const dataToPrint,const uint16_t length);
 void ConsoleDebugPrint(const uint8_t *const dataToPrint);
 
 /* Debug Print Macro */
-#define DBG_PRINT(str) (ConsoleDebugPrint(str))
+#define DEBUG_PRINT(str) (ConsoleDebugPrint(str))
 
 #endif /* SERIALDEBUG_H_ */

@@ -254,7 +254,7 @@ void mdmParser_ProcessModemResponse(void)
 		}
 		else
 		{
-			DBG_PRINT("Expected modem response is not received");
+			DEBUG_PRINT("Expected modem response is not received");
 		}
 
 		lastSendATCommand = CMD_AT_MAX;

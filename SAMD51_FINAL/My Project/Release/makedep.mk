@@ -28,7 +28,9 @@ Apps\Tasks\ModemTask\source\ModemPowerControl.c
 
 Apps\Tasks\ModemTask\source\ModemResponseHandles.c
 
-Apps\Tasks\ModemTask\source\ModemTask.c
+Apps\Tasks\ModemTask\source\ModemRxTask.c
+
+Apps\Tasks\ModemTask\source\ModemTxTask.c
 
 Apps\UartDriver\source\UartDriver.c
 

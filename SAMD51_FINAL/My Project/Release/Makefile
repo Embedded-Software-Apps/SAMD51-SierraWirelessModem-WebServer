@@ -119,7 +119,8 @@ C_SRCS +=  \
 ../Apps/Tasks/ModemTask/source/ModemParameters.c \
 ../Apps/Tasks/ModemTask/source/ModemPowerControl.c \
 ../Apps/Tasks/ModemTask/source/ModemResponseHandles.c \
-../Apps/Tasks/ModemTask/source/ModemTask.c \
+../Apps/Tasks/ModemTask/source/ModemRxTask.c \
+../Apps/Tasks/ModemTask/source/ModemTxTask.c \
 ../Apps/UartDriver/source/UartDriver.c \
 ../Apps/SerialDebug/SerialDebug.c \
 ../atmel_start.c \
@@ -207,7 +208,8 @@ Apps/Tasks/ModemTask/source/ModemController.o \
 Apps/Tasks/ModemTask/source/ModemParameters.o \
 Apps/Tasks/ModemTask/source/ModemPowerControl.o \
 Apps/Tasks/ModemTask/source/ModemResponseHandles.o \
-Apps/Tasks/ModemTask/source/ModemTask.o \
+Apps/Tasks/ModemTask/source/ModemRxTask.o \
+Apps/Tasks/ModemTask/source/ModemTxTask.o \
 Apps/UartDriver/source/UartDriver.o \
 Apps/SerialDebug/SerialDebug.o \
 atmel_start.o \
@@ -288,7 +290,8 @@ Apps/Tasks/ModemTask/source/ModemController.o \
 Apps/Tasks/ModemTask/source/ModemParameters.o \
 Apps/Tasks/ModemTask/source/ModemPowerControl.o \
 Apps/Tasks/ModemTask/source/ModemResponseHandles.o \
-Apps/Tasks/ModemTask/source/ModemTask.o \
+Apps/Tasks/ModemTask/source/ModemRxTask.o \
+Apps/Tasks/ModemTask/source/ModemTxTask.o \
 Apps/UartDriver/source/UartDriver.o \
 Apps/SerialDebug/SerialDebug.o \
 atmel_start.o \
@@ -369,7 +372,8 @@ Apps/Tasks/ModemTask/source/ModemController.d \
 Apps/Tasks/ModemTask/source/ModemParameters.d \
 Apps/Tasks/ModemTask/source/ModemPowerControl.d \
 Apps/Tasks/ModemTask/source/ModemResponseHandles.d \
-Apps/Tasks/ModemTask/source/ModemTask.d \
+Apps/Tasks/ModemTask/source/ModemRxTask.d \
+Apps/Tasks/ModemTask/source/ModemTxTask.d \
 Apps/UartDriver/source/UartDriver.d \
 Apps/SerialDebug/SerialDebug.d \
 atmel_start.d \
@@ -450,7 +454,8 @@ Apps/Tasks/ModemTask/source/ModemController.d \
 Apps/Tasks/ModemTask/source/ModemParameters.d \
 Apps/Tasks/ModemTask/source/ModemPowerControl.d \
 Apps/Tasks/ModemTask/source/ModemResponseHandles.d \
-Apps/Tasks/ModemTask/source/ModemTask.d \
+Apps/Tasks/ModemTask/source/ModemRxTask.d \
+Apps/Tasks/ModemTask/source/ModemTxTask.d \
 Apps/UartDriver/source/UartDriver.d \
 Apps/SerialDebug/SerialDebug.d \
 atmel_start.d \
@@ -533,6 +538,8 @@ LINKER_SCRIPT_DEP+=  \
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

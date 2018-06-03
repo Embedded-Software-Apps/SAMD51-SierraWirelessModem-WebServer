@@ -41,7 +41,7 @@ void SerialDebugErrorCallBack(struct _usart_async_device *device)
 	hri_sercomusart_clear_INTFLAG_ERROR_bit(device);
 }
 
-struct _usart_async_device DEBUG_PRINT = 
+struct _usart_async_device SERIAL_DEBUG_PRINT =
 {
 	.hw = SERCOM5,
 	.irq.handler = NULL,
@@ -56,7 +56,7 @@ void SerialDebugPrintInit(void)
 {
 	uint32_t initStatus;
 	
-	initStatus = _usart_async_init(&DEBUG_PRINT,SERCOM5);
+	initStatus = _usart_async_init(&SERIAL_DEBUG_PRINT,SERCOM5);
 	
 	if(initStatus != ERR_NONE)
 	{
@@ -64,15 +64,15 @@ void SerialDebugPrintInit(void)
 	}
 	
 	/* Enable only the UART RX Interrupt */
-	_usart_async_set_irq_state(&DEBUG_PRINT,USART_ASYNC_RX_DONE,true);
+	_usart_async_set_irq_state(&SERIAL_DEBUG_PRINT,USART_ASYNC_RX_DONE,true);
 }
 
 
 void SerialDebugPrint(const uint8_t *const dataToPrint,const uint16_t length)
 {
-	_usart_async_enable(&DEBUG_PRINT);
+	_usart_async_enable(&SERIAL_DEBUG_PRINT);
 	
-	usart_async_write(&DEBUG_PRINT, dataToPrint, length);
+	usart_async_write(&SERIAL_DEBUG_PRINT, dataToPrint, length);
 }
 
 
@@ -93,9 +93,9 @@ void SERCOM5_2_Handler( void )
 	//SerialDebugPrint((uint8_t*)"Serial Rx Complete CallBack\r\n",19);
 	hri_sercomusart_clear_interrupt_RXC_bit(SERCOM5);
 	
-	while (!_usart_async_is_byte_received(&DEBUG_PRINT));
+	while (!_usart_async_is_byte_received(&SERIAL_DEBUG_PRINT));
 	
-	rcvdChar[0] = _usart_async_read_byte(&DEBUG_PRINT);
+	rcvdChar[0] = _usart_async_read_byte(&SERIAL_DEBUG_PRINT);
 	rcvdChar[1] = '\0';
 	sprintf((char*)printBuf,"%s",rcvdChar);
 	SerialDebugPrint(printBuf,sizeof(printBuf));

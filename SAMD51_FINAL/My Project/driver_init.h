@@ -83,7 +83,7 @@ extern struct usart_sync_descriptor USART_2;
 
 extern struct usart_sync_descriptor USART_3;
 
-extern struct _usart_async_device DEBUG_PRINT;
+extern struct _usart_async_device SERIAL_DEBUG_PRINT;
 
 extern struct pwm_descriptor PWM_0;
 

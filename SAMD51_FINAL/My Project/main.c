@@ -3,7 +3,7 @@
 
 #include "Apps/SerialDebug/SerialDebug.h"
 #include "Apps/Tasks/DispatchTask/include/DispatchTask.h"
-#include "Apps/Tasks/ModemTask/include/ModemTask.h"
+#include "Apps/Tasks/ModemTask/include/ModemTxTask.h"
 #include "Apps/LedControl/include/ledControl.h"
 #include "Apps/Common/Common.h"
 #include "Apps/Tasks/ModemTask/include/ModemPowerControl.h"
@@ -31,6 +31,9 @@ int main(void)
 	/* Initializes MCU, drivers and middleware */
 	atmel_start_init();
 	
+	/* Reset the modem */
+	//performModemReset();
+
 	/* Initialize the HL7618RD modem power signals */
 	modemPowerInit();
 	
@@ -40,16 +43,14 @@ int main(void)
 	{
 		if (mdmParser_IsLastCmdProcessed() != false)
 		{
-			DBG_PRINT("Sending CLOSE Command");
-			MdmCnct_HttpConnectionStateMachine();
+			mdmParser_SendCommandToModem(CMD_AT);
+			delay_ms(2000);
+			mdmParser_ProcessModemResponse();
+			delay_ms(1000);
+			mdmParser_SendCommandToModem(CMD_AT_CGSN);
+			delay_ms(2000);
+			mdmParser_ProcessModemResponse();
 		}
-
-		mdmParser_ProcessModemResponse();
-/*		mdmParser_SendCommandToModem(CMD_AT_CGSN);
-		delay_ms(2000);
-		mdmParser_ProcessModemResponse();
-		delay_ms(1000);
-		DBG_PRINT("Testing DBG_PRINT");*/
 	}
 }
 

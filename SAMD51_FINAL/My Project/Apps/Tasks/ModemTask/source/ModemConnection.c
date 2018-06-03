@@ -25,7 +25,7 @@ void MdmCnct_HttpConnectionStateMachine(void)
         case MDM_HTTP_DISCONNECTED:
         {
         	gHttpMainState = MDM_HTTP_CONNECTION_IN_PROGRESS;
-        	DBG_PRINT("In MDM_HTTP_DISCONNECTED");
+        	DEBUG_PRINT("In MDM_HTTP_DISCONNECTED");
         }
         break;
 
@@ -77,14 +77,14 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
         	{
         		if(false != mdmParser_IsLastCmdProcessed())
         		{
-        			DBG_PRINT("Closing Connection");
+        			DEBUG_PRINT("Closing Connection");
         			mdmParser_SendCommandToModem(CMD_AT_KHTTP_CLOSE_1 + sessionIDIndex);
         			sessionIDIndex++;
         		}
         	}
         	else
         	{
-        		DBG_PRINT("Closed all connections");
+        		DEBUG_PRINT("Closed all connections");
         		sessionIDIndex = 0;
         		gHttpCnctnPrgrsSubstate = CONNECT_IN_PROGRESS_SET_EOF_PATTERN;
         	}
@@ -93,7 +93,7 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
 
         case CONNECT_IN_PROGRESS_SET_EOF_PATTERN:
         {
-        	DBG_PRINT("In CONNECT_IN_PROGRESS_SET_EOF_PATTERN");
+        	DEBUG_PRINT("In CONNECT_IN_PROGRESS_SET_EOF_PATTERN");
         	gHttpCnctnPrgrsSubstate = CONNECT_IN_PROGRESS_SET_ACCESS_POINT;
         }
         break;

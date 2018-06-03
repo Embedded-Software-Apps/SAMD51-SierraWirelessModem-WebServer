@@ -572,7 +572,10 @@
     <Compile Include="Apps\Tasks\ModemTask\include\ModemResponseHandles.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\include\ModemTask.h">
+    <Compile Include="Apps\Tasks\ModemTask\include\ModemRxTask.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Apps\Tasks\ModemTask\include\ModemTxTask.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Apps\Tasks\ModemTask\source\ModemCmdParser.c">
@@ -593,7 +596,10 @@
     <Compile Include="Apps\Tasks\ModemTask\source\ModemResponseHandles.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\source\ModemTask.c">
+    <Compile Include="Apps\Tasks\ModemTask\source\ModemRxTask.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Apps\Tasks\ModemTask\source\ModemTxTask.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Apps\UartDriver\include\UartDriver.h">

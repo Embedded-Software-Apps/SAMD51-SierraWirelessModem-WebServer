@@ -5,6 +5,7 @@
  *  Author: anilj
  */ 
 #include "Apps/Tasks/ModemTask/include/ModemResponseHandles.h"
+#include "Apps/SerialDebug/SerialDebug.h"
 /*============================================================================
 **
 ** Function Name:      mdmComms_GetModemResponse

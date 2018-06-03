@@ -32,5 +32,6 @@ void modemPwrInit(void);
 void modemPwrStateSchedule(void);
 MODEM_POWER_STATES_T getModemPowerStatus(void);
 void modemPowerInit(void);
+void performModemReset(void);
 
 #endif /* MODEMPOWERCONTROL_H_ */
