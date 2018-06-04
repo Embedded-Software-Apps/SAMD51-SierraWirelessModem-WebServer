@@ -146,7 +146,7 @@ bool mdmCtrlr_ReadResponseFromModem(uint8_t *const buf, const uint16_t length)
 {
 	bool status = false;
 	
-	uint8_t readCnt = 0;
+	uint16_t readCnt = 0;
 	if (ringbuffer_num(&RxRingBuffer) >= length)
 	{
 		CRITICAL_SECTION_ENTER()
