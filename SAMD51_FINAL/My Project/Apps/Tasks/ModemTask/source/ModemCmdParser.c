@@ -338,7 +338,6 @@ void mdmParser_ProcessModemResponse(void)
 ** Description:        Gets the parsed modem response
 **
 **===========================================================================*/
-static uint8_t* debugBuff = NULL;
 static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
 {
 	bool readStatus = false;
@@ -351,7 +350,6 @@ static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
 	uint8_t dataStartIndex = (cmdData.CmdLength + 2);
 
 	readStatus = mdmCtrlr_ReadResponseFromModem(dataBuffer,cmdData.ResponseLength);
-	//memcpy(debugBuff,dataBuffer,cmdData.ResponseLength);
 	if(lastSendATCommand == CMD_AT_KHTTP_GET)
 	{
 		SerialDebugPrint(dataBuffer,cmdData.ResponseLength);

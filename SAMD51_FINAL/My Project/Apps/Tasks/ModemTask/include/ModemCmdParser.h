@@ -58,9 +58,9 @@ typedef struct
 	AT_CMD_TYPE AtCmd;
 	uint8_t* AtString;
 	INTEGER_T CmdLength;
-	INTEGER_T validDataCnt;
+	uint16_t validDataCnt;
 	ResponseHandler respHandler;
-	INTEGER_T ResponseLength;
+	uint16_t ResponseLength;
 	
 }MODEM_CMD_DATA;
 

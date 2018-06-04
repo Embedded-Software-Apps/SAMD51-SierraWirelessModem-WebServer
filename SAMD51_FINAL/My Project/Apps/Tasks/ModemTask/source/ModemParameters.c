@@ -169,7 +169,7 @@ static void closeExistingConnections(void)
 	mdmParser_ProcessModemResponse();
 	delay_ms(1000);
 
-	mdmParser_SendCommandToModem(CMD_AT_KHTTP_CLOSE_3);
+	/*mdmParser_SendCommandToModem(CMD_AT_KHTTP_CLOSE_3);
 	delay_ms(1000);
 	mdmParser_ProcessModemResponse();
 	delay_ms(1000);
@@ -207,7 +207,7 @@ static void closeExistingConnections(void)
 	mdmParser_SendCommandToModem(CMD_AT_KHTTP_CLOSE_10);
 	delay_ms(1000);
 	mdmParser_ProcessModemResponse();
-	delay_ms(1000);
+	delay_ms(1000);*/
 }
 
 
