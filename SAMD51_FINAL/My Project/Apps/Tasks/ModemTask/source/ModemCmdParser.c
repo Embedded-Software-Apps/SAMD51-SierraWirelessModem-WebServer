@@ -248,6 +248,15 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		(INT_FIFTY_EIGHT + 500 + CRLF_CHAR_LEN)
 	},
 
+	{
+		CMD_AT_TERMINATE_HEADER,
+		"--EOF--Pattern--\r",
+		INT_SEVENTEEN,
+		INT_TWO,
+		mdmResp_KhttpGetHandler,
+		(INT_SEVENTEEN + INT_TWO + CRLF_CHAR_LEN)
+	},
+
 	/* Default */
 	{
 		CMD_AT_MAX,
@@ -311,7 +320,7 @@ void mdmParser_ProcessModemResponse(void)
 		}
 		else
 		{
-			//DEBUG_PRINT("Expected modem response is not received");
+			DEBUG_PRINT("Expected modem response is not received");
 			if (lastSendATCommand == CMD_AT_KHTTP_GET)
 			{
 				DEBUG_PRINT("No Response from Web Sever....Posting data to sever is failed");

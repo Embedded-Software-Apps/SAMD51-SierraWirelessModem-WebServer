@@ -20,6 +20,7 @@ void mdmResp_KcnxTimerHandler(uint8_t* response, uint8_t length);
 void mdmResp_KhttpCfgHandler(uint8_t* response, uint8_t length);
 void mdmResp_KhttpHeaderHandler(uint8_t* response, uint8_t length);
 void mdmResp_KhttpGetHandler(uint8_t* response, uint8_t length);
+void mdmResp_TerminateHeaderHandler(uint8_t* response, uint8_t length);
 void parseSessionId(uint8_t* response);
 bool getHeaderResponseOkStatus(void);
 #endif /* MODEMRESPONSEHANDLES_H_ */

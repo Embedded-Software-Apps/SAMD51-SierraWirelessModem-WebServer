@@ -213,7 +213,7 @@ static void closeExistingConnections(void)
 
 void sendPacketToServer(void)
 {
-	if (getHeaderResponseOkStatus() == true)
+	if (getDataPacketOkStatus() == true)
 	{
 		mdmParser_SendCommandToModem(CMD_AT_KHTTP_GET);
 		delay_ms(9000);

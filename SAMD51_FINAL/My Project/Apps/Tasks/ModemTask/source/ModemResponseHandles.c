@@ -11,6 +11,8 @@
 static uint8_t sessionID = 0;
 bool headerResponseOk = false;
 bool dataPacketSentOk = false;
+
+static void SendEOFPattern(void);
 /*============================================================================
 **
 ** Function Name:      mdmComms_GetModemResponse
@@ -140,8 +142,8 @@ void mdmResp_KhttpHeaderHandler(uint8_t* response, uint8_t length)
 	if(0==memcmp(response,"CONNECT",7))
 	{
 		headerResponseOk = true;
-		dataPacketSentOk = true;
 		DEBUG_PRINT("Header Response Ok");
+		SendEOFPattern();
 	}
 	else
 	{
@@ -166,6 +168,22 @@ void mdmResp_KhttpGetHandler(uint8_t* response, uint8_t length)
 	dataPacketSentOk = true;
 	DEBUG_PRINT("\r\n\n");
 }
+
+/*============================================================================
+**
+** Function Name:      mdmComms_GetModemResponse
+**
+** Description:        Gets the parsed modem response
+**
+**===========================================================================*/
+void mdmResp_TerminateHeaderHandler(uint8_t* response, uint8_t length)
+{
+	DEBUG_PRINT("In TERMINATE HEADER handler");
+	SerialDebugPrint(response,length);
+	DEBUG_PRINT("\r\n");
+	dataPacketSentOk = true;
+}
+
 
 /*============================================================================
 **
@@ -216,3 +234,17 @@ void setDataPacketOkStatus(bool status)
 	dataPacketSentOk = status;
 }
 
+/*============================================================================
+**
+** Function Name:      mdmComms_GetModemResponse
+**
+** Description:        Gets the parsed modem response
+**
+**===========================================================================*/
+static void SendEOFPattern(void)
+{
+	mdmParser_SendCommandToModem(CMD_AT_TERMINATE_HEADER);
+	delay_ms(2000);
+	mdmParser_ProcessModemResponse();
+	delay_ms(2000);
+}
