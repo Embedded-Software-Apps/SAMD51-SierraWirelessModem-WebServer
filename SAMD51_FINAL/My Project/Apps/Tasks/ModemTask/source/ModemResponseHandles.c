@@ -167,8 +167,9 @@ void mdmResp_KhttpHeaderHandler(uint8_t* response, uint8_t length)
 **===========================================================================*/
 void mdmResp_KhttpGetHandler(uint8_t* response, uint8_t length)
 {
-	DEBUG_PRINT("In KHTTP GET handler");
-	DEBUG_PRINT("RECIEVED RESPONSE FROM WEB SERVER");
+	DEBUG_PRINT("\r\n\n");
+	DEBUG_PRINT("In KHTTP GET handler\r\n");
+	DEBUG_PRINT("SUCCESSFULLY RECIEVED THE 200 OK RESPONSE FROM WEB SERVER");
 	SerialDebugPrint(response,length);
 	dataPacketSentOk = true;
 	DEBUG_PRINT("\r\n\n");

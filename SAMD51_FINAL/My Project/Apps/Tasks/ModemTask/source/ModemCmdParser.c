@@ -243,9 +243,9 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		CMD_AT_KHTTP_GET,
 		kHttpGetCompleteData,
 		INT_FIFTY_EIGHT,
-		500,
+		630,
 		mdmResp_KhttpGetHandler,
-		(INT_FIFTY_EIGHT + 500 + CRLF_CHAR_LEN)
+		(INT_FIFTY_EIGHT + 630 + CRLF_CHAR_LEN)
 	},
 
 	{
