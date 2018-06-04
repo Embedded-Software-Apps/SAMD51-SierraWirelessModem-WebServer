@@ -39,17 +39,13 @@ int main(void)
 	
 	mdmParser_SetLastCmdProcessed(true);
 
-	//mdmParam_InitiateConnection();
+	mdmParam_InitiateConnection();
 
-	//DEBUG_PRINT("Successfully Completed the connection initialization. HTTP Connection is established..\r\n\n");
+	DEBUG_PRINT("Successfully Completed the connection initialization. HTTP Connection is established..\r\n\n");
 
 	while (1)
 	{
-		//sendPacketToServer();
-		mdmParser_SendCommandToModem(CMD_AT);
-		delay_ms(2000);
-		mdmParser_ProcessModemResponse();
-		delay_ms(2000);
+		sendPacketToServer();
 
 	}
 }

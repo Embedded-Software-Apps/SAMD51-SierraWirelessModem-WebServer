@@ -143,7 +143,12 @@ void mdmResp_KhttpHeaderHandler(uint8_t* response, uint8_t length)
 	{
 		headerResponseOk = true;
 		DEBUG_PRINT("Header Response Ok");
-		SendEOFPattern();
+		mdmCtrlr_SendDataToModem("--EOF--Pattern--",16);
+		
+		//SendEOFPattern();
+		delay_ms(1000);
+		mdmCtrlr_FlushRxBuffer();
+		dataPacketSentOk = true;
 	}
 	else
 	{

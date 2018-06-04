@@ -250,11 +250,11 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 
 	{
 		CMD_AT_TERMINATE_HEADER,
-		"--EOF--Pattern--\r",
-		INT_SEVENTEEN,
+		"--EOF--Pattern--",
+		INT_SIXTEEN,
 		INT_TWO,
 		mdmResp_KhttpGetHandler,
-		(INT_SEVENTEEN + INT_TWO + CRLF_CHAR_LEN)
+		(INT_SIXTEEN + INT_TWO + CRLF_CHAR_LEN)
 	},
 
 	/* Default */
@@ -338,6 +338,7 @@ void mdmParser_ProcessModemResponse(void)
 ** Description:        Gets the parsed modem response
 **
 **===========================================================================*/
+static uint8_t* debugBuff = NULL;
 static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
 {
 	bool readStatus = false;
@@ -350,6 +351,17 @@ static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
 	uint8_t dataStartIndex = (cmdData.CmdLength + 2);
 
 	readStatus = mdmCtrlr_ReadResponseFromModem(dataBuffer,cmdData.ResponseLength);
+	//memcpy(debugBuff,dataBuffer,cmdData.ResponseLength);
+	if(lastSendATCommand == CMD_AT_KHTTP_GET)
+	{
+		SerialDebugPrint(dataBuffer,cmdData.ResponseLength);
+		delay_ms(4000);
+		parseStatus = true;
+		
+	}
+	else
+	{
+		
 
 	if(readStatus != false)
 	{
@@ -378,7 +390,7 @@ static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
 		//SerialDebugPrint("Read from modem controller is failed\r\n",40);
 		parseStatus = false;
 	}
-
+	}
 	mdmCtrlr_FlushRxBuffer();
 
 	return parseStatus;
