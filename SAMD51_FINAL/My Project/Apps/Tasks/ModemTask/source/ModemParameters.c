@@ -218,7 +218,7 @@ void sendPacketToServer(void)
 		mdmParser_SendCommandToModem(CMD_AT_KHTTP_GET);
 		delay_ms(9000);
 		setDataPacketOkStatus(false);
-		DEBUG_PRINT("Posted the data to server...Waiting for Web Server Response");
+		DEBUG_PRINT("Posted the data to server...Waiting for Web Server Response\r\n");
 		mdmParser_ProcessModemResponse();
 		delay_ms(2000);
 	}

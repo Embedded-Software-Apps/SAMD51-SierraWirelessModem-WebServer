@@ -56,6 +56,15 @@ void mdmResp_KhttpCloseHandler(uint8_t* response, uint8_t length)
 	{
 		SerialDebugPrint(response,length);
 		DEBUG_PRINT("\r\nClosed an active connection");
+		mdmParser_SendCommandToModem(CMD_AT_KCNX_DOWN);
+		delay_ms(1000);
+		mdmParser_ProcessModemResponse();
+		delay_ms(500);
+		mdmParser_SendCommandToModem(CMD_AT_CGATT);
+		delay_ms(1000);
+		mdmParser_ProcessModemResponse();
+		delay_ms(500);
+		mdmCtrlr_FlushRxBuffer();
 	}
 	else
 	{
@@ -168,11 +177,8 @@ void mdmResp_KhttpHeaderHandler(uint8_t* response, uint8_t length)
 void mdmResp_KhttpGetHandler(uint8_t* response, uint8_t length)
 {
 	DEBUG_PRINT("\r\n\n");
-	DEBUG_PRINT("In KHTTP GET handler\r\n");
-	DEBUG_PRINT("SUCCESSFULLY RECIEVED THE 200 OK RESPONSE FROM WEB SERVER");
-	SerialDebugPrint(response,length);
+	//SerialDebugPrint(response,length);
 	dataPacketSentOk = true;
-	DEBUG_PRINT("\r\n\n");
 }
 
 /*============================================================================

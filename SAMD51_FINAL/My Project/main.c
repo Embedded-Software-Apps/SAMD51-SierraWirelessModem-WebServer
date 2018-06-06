@@ -37,6 +37,8 @@ int main(void)
 	/* Initialize the HL7618RD modem power signals */
 	modemPowerInit();
 	
+	//EnableWatchDog();
+
 	mdmParser_SetLastCmdProcessed(true);
 
 	mdmParam_InitiateConnection();
@@ -46,6 +48,8 @@ int main(void)
 	while (1)
 	{
 		sendPacketToServer();
+
+		//wdt_feed(&WDT_0);
 
 	}
 }

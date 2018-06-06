@@ -11,6 +11,7 @@
 #include "thirdparty\RTOS\freertos\FreeRTOSV10.0.0\Source\portable\GCC\ARM_CM4F\portmacro.h"
 #include "atmel_start_pins.h"
 #include "Apps/Common/Common.h"
+#include "driver_init.h"
 #include "Apps/Tasks/ModemTask/include/ModemPowerControl.h"
 #include <stdbool.h>
 
@@ -65,7 +66,11 @@ void performModemReset(void)
 }
 
 
-
+void EnableWatchDog(void)
+{
+	wdt_set_timeout_period(&WDT_0, 10000, 5000);
+	wdt_enable(&WDT_0);
+}
 
 
 

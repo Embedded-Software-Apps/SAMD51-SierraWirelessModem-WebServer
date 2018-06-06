@@ -243,9 +243,9 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		CMD_AT_KHTTP_GET,
 		kHttpGetCompleteData,
 		INT_FIFTY_EIGHT,
-		630,
+		75,
 		mdmResp_KhttpGetHandler,
-		(INT_FIFTY_EIGHT + 630 + CRLF_CHAR_LEN)
+		(INT_FIFTY_EIGHT +75 + CRLF_CHAR_LEN)
 	},
 
 	{
@@ -255,6 +255,24 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		INT_TWO,
 		mdmResp_KhttpGetHandler,
 		(INT_SIXTEEN + INT_TWO + CRLF_CHAR_LEN)
+	},
+
+	{
+		CMD_AT_KCNX_DOWN,
+		"AT+KCNXDOWN=3,1\r",
+		INT_SIXTEEN,
+		INT_TWO,
+		defaultFunctionPointer,
+		(INT_SIXTEEN + INT_TWO + CRLF_CHAR_LEN)
+	},
+
+	{
+		CMD_AT_CGATT,
+		"AT+CGATT=0\r",
+		INT_ELEVEN,
+		INT_TWO,
+		defaultFunctionPointer,
+		(INT_ELEVEN + INT_TWO + CRLF_CHAR_LEN)
 	},
 
 	/* Default */
@@ -274,7 +292,7 @@ static AT_CMD_TYPE lastSendATCommand = CMD_AT_MAX;
 static uint8_t responseDataBuffer[MAX_RESPONSE_SIZE];
 static bool isPrevCmdRespProcessed = true;
 static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response);
-
+static void mdmParser_PerformErrorRecovery(void);
 /*============================================================================
 **
 ** Function Name:      sendCommandToModem
@@ -321,9 +339,12 @@ void mdmParser_ProcessModemResponse(void)
 		else
 		{
 			DEBUG_PRINT("Expected modem response is not received");
+
 			if (lastSendATCommand == CMD_AT_KHTTP_GET)
 			{
 				DEBUG_PRINT("No Response from Web Sever....Posting data to sever is failed");
+				DEBUG_PRINT("Performing the Error Recovery Procedures..");
+				mdmParser_PerformErrorRecovery();
 			}
 		}
 
@@ -350,16 +371,16 @@ static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
 	uint8_t dataStartIndex = (cmdData.CmdLength + 2);
 
 	readStatus = mdmCtrlr_ReadResponseFromModem(dataBuffer,cmdData.ResponseLength);
-	if(lastSendATCommand == CMD_AT_KHTTP_GET)
+
+	if(cmd == CMD_AT_KHTTP_GET)
 	{
 		SerialDebugPrint(dataBuffer,cmdData.ResponseLength);
-		delay_ms(4000);
+		SerialDebugPrint("\r\n",2);
+		delay_ms(500);
 		parseStatus = true;
-		
 	}
 	else
 	{
-		
 
 	if(readStatus != false)
 	{
@@ -389,6 +410,7 @@ static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
 		parseStatus = false;
 	}
 	}
+
 	mdmCtrlr_FlushRxBuffer();
 
 	return parseStatus;
@@ -407,6 +429,30 @@ static bool mdmParser_CheckForUnSolicitedResponses(void)
 
 }
 
+/*============================================================================
+**
+** Function Name:      mdmComms_GetModemResponse
+**
+** Description:        Gets the parsed modem response
+**
+**===========================================================================*/
+static void mdmParser_PerformErrorRecovery(void)
+{
+	mdmParser_SendCommandToModem(CMD_AT_KHTTP_CLOSE_1);
+	delay_ms(1000);
+	mdmParser_ProcessModemResponse();
+
+	mdmParser_SendCommandToModem(CMD_AT_KCNX_DOWN);
+	delay_ms(1000);
+	mdmParser_ProcessModemResponse();
+
+	mdmParser_SendCommandToModem(CMD_AT_CGATT);
+	delay_ms(1000);
+	mdmParser_ProcessModemResponse();
+	delay_ms(3000);
+	DEBUG_PRINT("Rebooting the system......");
+	while(1);
+}
 /*============================================================================
 **
 ** Function Name:      mdmComms_GetModemResponse

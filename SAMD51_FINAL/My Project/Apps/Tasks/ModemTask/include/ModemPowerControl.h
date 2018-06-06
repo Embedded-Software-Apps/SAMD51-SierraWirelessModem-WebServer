@@ -29,6 +29,7 @@ typedef enum
 #define MODEM_DTR GPIO(GPIO_PORTA, 16)
 
 void modemPwrInit(void);
+void EnableWatchDog(void);
 void modemPwrStateSchedule(void);
 MODEM_POWER_STATES_T getModemPowerStatus(void);
 void modemPowerInit(void);
