@@ -216,11 +216,11 @@ void sendPacketToServer(void)
 	if (getDataPacketOkStatus() == true)
 	{
 		mdmParser_SendCommandToModem(CMD_AT_KHTTP_GET);
-		delay_ms(9000);
+		delay_ms(6000);
 		setDataPacketOkStatus(false);
 		DEBUG_PRINT("Posted the data to server...Waiting for Web Server Response\r\n");
 		mdmParser_ProcessModemResponse();
-		delay_ms(2000);
+		delay_ms(500);
 	}
 	else
 	{

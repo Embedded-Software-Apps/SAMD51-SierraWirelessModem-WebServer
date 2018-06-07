@@ -243,9 +243,9 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		CMD_AT_KHTTP_GET,
 		kHttpGetCompleteData,
 		INT_FIFTY_EIGHT,
-		606,
+		191,
 		mdmResp_KhttpGetHandler,
-		(INT_FIFTY_EIGHT +606 + CRLF_CHAR_LEN)
+		(INT_FIFTY_EIGHT +191 + CRLF_CHAR_LEN)
 	},
 
 	{
@@ -370,14 +370,13 @@ static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
 	/* command length + /r/n */
 	uint8_t dataStartIndex = (cmdData.CmdLength + 2);
 
-	memset(dataBuffer,'\0',700);
 	readStatus = mdmCtrlr_ReadResponseFromModem(dataBuffer,cmdData.ResponseLength);
 
     if((false != readStatus) &&
 	 (cmd == CMD_AT_KHTTP_GET))
 	{
     	DEBUG_PRINT("Received new response from server...\r\n");
-		SerialDebugPrint(dataBuffer,strlen(dataBuffer));
+		SerialDebugPrint(dataBuffer,cmdData.ResponseLength);
 		SerialDebugPrint("\r\n",2);
 		delay_ms(500);
 		parseStatus = true;
