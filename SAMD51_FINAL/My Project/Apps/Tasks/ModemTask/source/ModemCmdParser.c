@@ -243,9 +243,9 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		CMD_AT_KHTTP_GET,
 		kHttpGetCompleteData,
 		INT_FIFTY_EIGHT,
-		75,
+		606,
 		mdmResp_KhttpGetHandler,
-		(INT_FIFTY_EIGHT +75 + CRLF_CHAR_LEN)
+		(INT_FIFTY_EIGHT +606 + CRLF_CHAR_LEN)
 	},
 
 	{
@@ -370,15 +370,28 @@ static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
 	/* command length + /r/n */
 	uint8_t dataStartIndex = (cmdData.CmdLength + 2);
 
+	memset(dataBuffer,'\0',700);
 	readStatus = mdmCtrlr_ReadResponseFromModem(dataBuffer,cmdData.ResponseLength);
 
-	if(cmd == CMD_AT_KHTTP_GET)
+    if((false != readStatus) &&
+	 (cmd == CMD_AT_KHTTP_GET))
 	{
-		SerialDebugPrint(dataBuffer,cmdData.ResponseLength);
+    	DEBUG_PRINT("Received new response from server...\r\n");
+		SerialDebugPrint(dataBuffer,strlen(dataBuffer));
 		SerialDebugPrint("\r\n",2);
 		delay_ms(500);
 		parseStatus = true;
 	}
+    else if((cmd == CMD_AT_KHTTP_GET) &&
+	       (false == readStatus))
+    {
+    	DEBUG_PRINT("Modem Hanged. Data is not transmitted to server");
+    	delay_ms(500);
+		SerialDebugPrint("\r\n",2);
+		parseStatus = true;
+		DEBUG_PRINT("Performing the auto recovery");
+		mdmParser_PerformErrorRecovery();
+    }
 	else
 	{
 
@@ -450,8 +463,10 @@ static void mdmParser_PerformErrorRecovery(void)
 	delay_ms(1000);
 	mdmParser_ProcessModemResponse();
 	delay_ms(3000);
-	DEBUG_PRINT("Rebooting the system......");
-	while(1);
+
+	mdmParam_InitiateConnection();
+	DEBUG_PRINT("Closed and Reopened the session......");
+	DEBUG_PRINT("Auto recovery completed......");
 }
 /*============================================================================
 **
