@@ -18,6 +18,8 @@ Apps\SensorAdcInputs\source\SensorAdcInputs.c
 
 Apps\Tasks\DispatchTask\source\DispatchTask.c
 
+Apps\Tasks\ModemTask\source\ModemBasicTest.c
+
 Apps\Tasks\ModemTask\source\ModemCmdParser.c
 
 Apps\Tasks\ModemTask\source\ModemConnection.c

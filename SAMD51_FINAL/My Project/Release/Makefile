@@ -114,6 +114,7 @@ C_SRCS +=  \
 ../Apps/SelectInputs/source/selectInputs.c \
 ../Apps/SensorAdcInputs/source/SensorAdcInputs.c \
 ../Apps/Tasks/DispatchTask/source/DispatchTask.c \
+../Apps/Tasks/ModemTask/source/ModemBasicTest.c \
 ../Apps/Tasks/ModemTask/source/ModemCmdParser.c \
 ../Apps/Tasks/ModemTask/source/ModemConnection.c \
 ../Apps/Tasks/ModemTask/source/ModemController.c \
@@ -205,6 +206,7 @@ Apps/LedControl/source/ledPwmControl.o \
 Apps/SelectInputs/source/selectInputs.o \
 Apps/SensorAdcInputs/source/SensorAdcInputs.o \
 Apps/Tasks/DispatchTask/source/DispatchTask.o \
+Apps/Tasks/ModemTask/source/ModemBasicTest.o \
 Apps/Tasks/ModemTask/source/ModemCmdParser.o \
 Apps/Tasks/ModemTask/source/ModemConnection.o \
 Apps/Tasks/ModemTask/source/ModemController.o \
@@ -289,6 +291,7 @@ Apps/LedControl/source/ledPwmControl.o \
 Apps/SelectInputs/source/selectInputs.o \
 Apps/SensorAdcInputs/source/SensorAdcInputs.o \
 Apps/Tasks/DispatchTask/source/DispatchTask.o \
+Apps/Tasks/ModemTask/source/ModemBasicTest.o \
 Apps/Tasks/ModemTask/source/ModemCmdParser.o \
 Apps/Tasks/ModemTask/source/ModemConnection.o \
 Apps/Tasks/ModemTask/source/ModemController.o \
@@ -373,6 +376,7 @@ Apps/LedControl/source/ledPwmControl.d \
 Apps/SelectInputs/source/selectInputs.d \
 Apps/SensorAdcInputs/source/SensorAdcInputs.d \
 Apps/Tasks/DispatchTask/source/DispatchTask.d \
+Apps/Tasks/ModemTask/source/ModemBasicTest.d \
 Apps/Tasks/ModemTask/source/ModemCmdParser.d \
 Apps/Tasks/ModemTask/source/ModemConnection.d \
 Apps/Tasks/ModemTask/source/ModemController.d \
@@ -457,6 +461,7 @@ Apps/LedControl/source/ledPwmControl.d \
 Apps/SelectInputs/source/selectInputs.d \
 Apps/SensorAdcInputs/source/SensorAdcInputs.d \
 Apps/Tasks/DispatchTask/source/DispatchTask.d \
+Apps/Tasks/ModemTask/source/ModemBasicTest.d \
 Apps/Tasks/ModemTask/source/ModemCmdParser.d \
 Apps/Tasks/ModemTask/source/ModemConnection.d \
 Apps/Tasks/ModemTask/source/ModemController.d \
@@ -548,6 +553,8 @@ LINKER_SCRIPT_DEP+=  \
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

@@ -1,9 +1,13 @@
-/*
+
+/*=======================================================================================
  * ModemPowerControl.c
  *
- * Created: 4/21/2018 9:07:31 PM
- *  Author: toani
- */ 
+ * Implements the power strategies for Sierra wireless modem
+ *======================================================================================*/
+
+/****************************************************************************************
+ INCLUDE FILES
+*****************************************************************************************/
 #include "thirdparty\RTOS\freertos\FreeRTOSV10.0.0\Source\include\FreeRTOS.h"
 #include "apps\Tasks\ModemTask\include\ModemPowerControl.h"
 #include "Apps\SerialDebug\SerialDebug.h"
@@ -15,17 +19,22 @@
 #include "Apps/Tasks/ModemTask/include/ModemPowerControl.h"
 #include <stdbool.h>
 
-
-#define POWER_ON_WAIT_TIMER pdMS_TO_TICKS(7000) 
-
+/******************************************************************************************
+************************************STATIC VARIABLES***************************************
+*******************************************************************************************/
 static MODEM_POWER_STATES_T ModemPwrState;
 static TimerHandle_t xPowerOnWaitTimer;
 static BaseType_t PowerOnWaitTimerStarted;
 static bool PowerOnWaitTimerExpired;
-
-/* Perform the HL7618RD modem power on sequence */
-/* I FEEL LIKE SOMETHING WRONG HERE */
-
+#define POWER_ON_WAIT_TIMER pdMS_TO_TICKS(7000)
+/*******************************************************************************
+*
+* NAME: modemPowerInit
+*
+* DESCRIPTION: This function converts a given signed integer(16-bit or 32-bit)
+*               into a string and returns the string.
+*
+********************************************************************************/
 void modemPowerInit(void)
 {
 	gpio_set_pin_direction(MODEM_ON, GPIO_DIRECTION_OUT);

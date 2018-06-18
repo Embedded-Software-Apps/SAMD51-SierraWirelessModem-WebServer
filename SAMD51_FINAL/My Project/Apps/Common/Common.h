@@ -130,4 +130,10 @@ typedef enum
 
 bool PowerOnSuccessfull;
 
+
+/* System Time Parameters */
+uint32_t sysTimeFirst;
+uint32_t sysTimeFinal;
+uint32_t getSystemTime(void);
+
 #endif /* COMMON_H_ */

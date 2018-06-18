@@ -170,7 +170,6 @@ void TIMER_7_init(void);
 
 void WDT_0_CLOCK_init(void);
 void WDT_0_init(void);
-
 /**
  * \brief Perform system initialization, initialize pins and clocks for
  * peripherals

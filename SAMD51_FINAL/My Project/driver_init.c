@@ -264,6 +264,11 @@ void delay_driver_init(void)
 	delay_init(SysTick);
 }
 
+uint32_t getSystemTime(void)
+{
+	return _system_time_get(SysTick);
+}
+
 void PWM_0_PORT_init(void)
 {
 }

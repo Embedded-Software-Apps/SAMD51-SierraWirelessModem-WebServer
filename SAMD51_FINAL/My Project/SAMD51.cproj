@@ -554,6 +554,9 @@
     <Compile Include="Apps\Tasks\DispatchTask\source\DispatchTask.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Apps\Tasks\ModemTask\include\ModemBasicTest.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Apps\Tasks\ModemTask\include\ModemCmdParser.h">
       <SubType>compile</SubType>
     </Compile>
@@ -579,6 +582,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Apps\Tasks\ModemTask\include\ModemTxTask.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Apps\Tasks\ModemTask\source\ModemBasicTest.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Apps\Tasks\ModemTask\source\ModemCmdParser.c">

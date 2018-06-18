@@ -31,6 +31,11 @@ int main(void)
     /* Initializes MCU, drivers and middleware */
     atmel_start_init();
 
+    sysTimeFirst = getSystemTime();
+    delay_ms(1000);
+    sysTimeFinal = getSystemTime() - sysTimeFirst;
+	
+
     /* Create Dispatch Task */
     DispatchTaskStatus = xTaskCreate( DispatchTask, "DispatchTask", 150, NULL, 2, xDispatchTaskHandle );
 
