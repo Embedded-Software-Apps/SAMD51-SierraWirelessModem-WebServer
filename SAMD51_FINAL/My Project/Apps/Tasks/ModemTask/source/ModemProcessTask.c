@@ -13,7 +13,7 @@
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h"
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h"
 
-void ModemTask( void *ModemTaskParam)
+void ModemProcessTask( void *ModemTaskParam)
 {
 	const TickType_t xDelayMs = pdMS_TO_TICKS(10UL);
 	DEBUG_PRINT("Entering Modem Process Task");

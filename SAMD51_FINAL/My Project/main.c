@@ -31,8 +31,6 @@ int main(void)
     /* Initializes MCU, drivers and middleware */
     atmel_start_init();
 
-    DEBUG_PRINT("Initialized the drivers");
-
     /* Create Dispatch Task */
     DispatchTaskStatus = xTaskCreate( DispatchTask, "DispatchTask", 150, NULL, 2, NULL );
 
@@ -43,7 +41,7 @@ int main(void)
     ModemRxTaskStatus = xTaskCreate( ModemRxTask, "ModemRxTask", 150, NULL, 2, NULL);
 
     /* Create Modem Process Task */
-    ModemProcessTaskStatus = xTaskCreate( ModemTask, "ModemProcessTask", 150, NULL, 1, NULL);
+    ModemProcessTaskStatus = xTaskCreate( ModemProcessTask, "ModemProcessTask", 150, NULL, 1, NULL);
 
     if((DispatchTaskStatus == pdPASS) &&
        (ModemProcessTaskStatus == pdPASS) &&

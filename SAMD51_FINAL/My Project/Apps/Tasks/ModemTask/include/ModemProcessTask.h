@@ -10,7 +10,7 @@
 #define MODEMPROCESSTASK_H_
 
 
-void ModemTask(void *ModemTaskParam);
+void ModemProcessTask(void *ModemTaskParam);
 
 
 #endif /* MODEMPROCESSTASK_H_ */

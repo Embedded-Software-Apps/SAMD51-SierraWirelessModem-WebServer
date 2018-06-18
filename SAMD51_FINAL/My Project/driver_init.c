@@ -429,6 +429,8 @@ void system_init(void)
 {
 	init_mcu();
 
+	delay_driver_init();
+
 	AC_0_init();
 
 	ADC_0_init();
@@ -446,8 +448,6 @@ void system_init(void)
 	SerialDebug_init();
 	
 	ModemData_init();
-
-	delay_driver_init();
 
 	PWM_0_init();
 
