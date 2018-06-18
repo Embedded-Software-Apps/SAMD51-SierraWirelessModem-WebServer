@@ -106,6 +106,7 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../Apps/Common/FreeRtosHooks.c \
 ../Apps/JsonParser/source/JsonPacket.c \
 ../Apps/JsonParser/source/parson.c \
 ../Apps/LedControl/source/ledControl.c \
@@ -196,6 +197,7 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+Apps/Common/FreeRtosHooks.o \
 Apps/JsonParser/source/JsonPacket.o \
 Apps/JsonParser/source/parson.o \
 Apps/LedControl/source/ledControl.o \
@@ -279,6 +281,7 @@ thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
 
 OBJS_AS_ARGS +=  \
+Apps/Common/FreeRtosHooks.o \
 Apps/JsonParser/source/JsonPacket.o \
 Apps/JsonParser/source/parson.o \
 Apps/LedControl/source/ledControl.o \
@@ -362,6 +365,7 @@ thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
 
 C_DEPS +=  \
+Apps/Common/FreeRtosHooks.d \
 Apps/JsonParser/source/JsonPacket.d \
 Apps/JsonParser/source/parson.d \
 Apps/LedControl/source/ledControl.d \
@@ -445,6 +449,7 @@ thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.d \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.d
 
 C_DEPS_AS_ARGS +=  \
+Apps/Common/FreeRtosHooks.d \
 Apps/JsonParser/source/JsonPacket.d \
 Apps/JsonParser/source/parson.d \
 Apps/LedControl/source/ledControl.d \
@@ -705,6 +710,15 @@ LINKER_SCRIPT_DEP+=  \
 
 
 
+
+
+
+Apps/Common/%.o: ../Apps/Common/%.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)E:\Softwares\AtmelStudio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAMD51J20A__ -DNDEBUG  -I"E:\Softwares\AtmelStudio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include" -I"../stdio_redirect" -I"../Config" -I".." -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/ac" -I"../hpl/adc" -I"../hpl/core" -I"../hpl/dac" -I"../hpl/dmac" -I"../hpl/eic" -I"../hpl/evsys" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/nvmctrl" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/ramecc" -I"../hpl/sercom" -I"../hpl/systick" -I"../hpl/tc" -I"../hpl/tcc" -I"../hpl/wdt" -I"../hri" -I"../thirdparty/RTOS" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/module_config"  -Os -ffunction-sections -mlong-calls -Wall -mcpu=cortex-m4 -c -std=gnu99 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
 
 Apps/JsonParser/source/%.o: ../Apps/JsonParser/source/%.c
 	@echo Building file: $<

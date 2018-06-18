@@ -32,16 +32,16 @@ int main(void)
     atmel_start_init();
 
     /* Create Dispatch Task */
-    DispatchTaskStatus = xTaskCreate( DispatchTask, "DispatchTask", 150, NULL, 2, NULL );
+    DispatchTaskStatus = xTaskCreate( DispatchTask, "DispatchTask", 150, NULL, 2, xDispatchTaskHandle );
 
     /* Create Modem Tx Task */
-    ModemTxTaskStatus = xTaskCreate( ModemTxTask, "ModemTask", 150, NULL, 1, NULL );
+    ModemTxTaskStatus = xTaskCreate( ModemTxTask, "ModemTask", 150, NULL, 1, xModemTxTaskHandle );
 
     /* Create Modem Rx Task */
-    ModemRxTaskStatus = xTaskCreate( ModemRxTask, "ModemRxTask", 150, NULL, 2, NULL);
+    ModemRxTaskStatus = xTaskCreate( ModemRxTask, "ModemRxTask", 150, NULL, 2, xModemRxTaskHandle);
 
     /* Create Modem Process Task */
-    ModemProcessTaskStatus = xTaskCreate( ModemProcessTask, "ModemProcessTask", 150, NULL, 1, NULL);
+    ModemProcessTaskStatus = xTaskCreate( ModemProcessTask, "ModemProcessTask", 150, NULL, 1, xModemProcessTaskHandle);
 
     if((DispatchTaskStatus == pdPASS) &&
        (ModemProcessTaskStatus == pdPASS) &&

@@ -509,6 +509,9 @@
     <Compile Include="Apps\Common\Common.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="Apps\Common\FreeRtosHooks.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Apps\JsonParser\include\JsonPacket.h">
       <SubType>compile</SubType>
     </Compile>

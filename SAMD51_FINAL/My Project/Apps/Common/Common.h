@@ -11,6 +11,8 @@
 
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h"
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h"
+#include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h"
+#include "Apps/SerialDebug/SerialDebug.h"
 #include <stdbool.h>
 
 #define MAX_DATA_QUEUE_SIZE (5)
@@ -29,6 +31,24 @@ typedef enum
 }SENSOR_INDEX_T;
 
 QueueHandle_t xDataQueue;
+
+/* Task Priorities */
+#define TASK_PRIORITY_1 (1)
+
+#define TASK_PRIORITY_2 (2)
+
+#define TASK_PRIORITY_3 (3)
+
+/* Task Handles */
+
+TaskHandle_t xModemProcessTaskHandle;
+
+TaskHandle_t xModemTxTaskHandle;
+
+TaskHandle_t xModemRxTaskHandle;
+
+TaskHandle_t xDispatchTaskHandle;
+
 
 typedef struct  
 {

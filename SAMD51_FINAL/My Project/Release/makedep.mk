@@ -2,6 +2,8 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+Apps\Common\FreeRtosHooks.c
+
 Apps\JsonParser\source\JsonPacket.c
 
 Apps\JsonParser\source\parson.c
