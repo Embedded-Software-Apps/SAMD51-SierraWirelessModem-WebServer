@@ -10,7 +10,7 @@
 #define MODEMRXTASK_H_
 
 
-
+void modemRxTaskSchedule(void);
 
 
 #endif /* MODEMRXTASK_H_ */

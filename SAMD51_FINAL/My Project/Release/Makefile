@@ -118,6 +118,7 @@ C_SRCS +=  \
 ../Apps/Tasks/ModemTask/source/ModemController.c \
 ../Apps/Tasks/ModemTask/source/ModemParameters.c \
 ../Apps/Tasks/ModemTask/source/ModemPowerControl.c \
+../Apps/Tasks/ModemTask/source/ModemProcessTask.c \
 ../Apps/Tasks/ModemTask/source/ModemResponseHandles.c \
 ../Apps/Tasks/ModemTask/source/ModemRxTask.c \
 ../Apps/Tasks/ModemTask/source/ModemTxTask.c \
@@ -207,6 +208,7 @@ Apps/Tasks/ModemTask/source/ModemConnection.o \
 Apps/Tasks/ModemTask/source/ModemController.o \
 Apps/Tasks/ModemTask/source/ModemParameters.o \
 Apps/Tasks/ModemTask/source/ModemPowerControl.o \
+Apps/Tasks/ModemTask/source/ModemProcessTask.o \
 Apps/Tasks/ModemTask/source/ModemResponseHandles.o \
 Apps/Tasks/ModemTask/source/ModemRxTask.o \
 Apps/Tasks/ModemTask/source/ModemTxTask.o \
@@ -289,6 +291,7 @@ Apps/Tasks/ModemTask/source/ModemConnection.o \
 Apps/Tasks/ModemTask/source/ModemController.o \
 Apps/Tasks/ModemTask/source/ModemParameters.o \
 Apps/Tasks/ModemTask/source/ModemPowerControl.o \
+Apps/Tasks/ModemTask/source/ModemProcessTask.o \
 Apps/Tasks/ModemTask/source/ModemResponseHandles.o \
 Apps/Tasks/ModemTask/source/ModemRxTask.o \
 Apps/Tasks/ModemTask/source/ModemTxTask.o \
@@ -371,6 +374,7 @@ Apps/Tasks/ModemTask/source/ModemConnection.d \
 Apps/Tasks/ModemTask/source/ModemController.d \
 Apps/Tasks/ModemTask/source/ModemParameters.d \
 Apps/Tasks/ModemTask/source/ModemPowerControl.d \
+Apps/Tasks/ModemTask/source/ModemProcessTask.d \
 Apps/Tasks/ModemTask/source/ModemResponseHandles.d \
 Apps/Tasks/ModemTask/source/ModemRxTask.d \
 Apps/Tasks/ModemTask/source/ModemTxTask.d \
@@ -453,6 +457,7 @@ Apps/Tasks/ModemTask/source/ModemConnection.d \
 Apps/Tasks/ModemTask/source/ModemController.d \
 Apps/Tasks/ModemTask/source/ModemParameters.d \
 Apps/Tasks/ModemTask/source/ModemPowerControl.d \
+Apps/Tasks/ModemTask/source/ModemProcessTask.d \
 Apps/Tasks/ModemTask/source/ModemResponseHandles.d \
 Apps/Tasks/ModemTask/source/ModemRxTask.d \
 Apps/Tasks/ModemTask/source/ModemTxTask.d \
@@ -538,6 +543,8 @@ LINKER_SCRIPT_DEP+=  \
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

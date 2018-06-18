@@ -13,7 +13,43 @@
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h"
 #include <stdbool.h>
 
+/* FreeRTOS.org includes. */
+#include "FreeRTOS.h"
+#include "task.h"
+#include "semphr.h"
+/*
+ ******* FreeRTOS Specific Common Definitions *******
+ */
+
+/* Max Queue Size */
 #define MAX_DATA_QUEUE_SIZE (5)
+
+/* Task Priorities */
+#define TASK_PRIORITY_1 (1)
+#define TASK_PRIORITY_2 (2)
+#define TASK_PRIORITY_3 (3)
+
+
+/* Task Handles */
+TaskHandle_t xModemProcessTaskHandle;
+TaskHandle_t xModemTxTaskHandle;
+TaskHandle_t xModemRxTaskHandle;
+TaskHandle_t xDispatchTaskHandle;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 typedef enum
 {

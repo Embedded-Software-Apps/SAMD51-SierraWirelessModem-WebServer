@@ -11,6 +11,10 @@
 #include "Apps/Tasks/ModemTask/include/ModemCmdParser.h"
 #include "Apps/Tasks/ModemTask/include/ModemParameters.h"
 #include "Apps/Tasks/ModemTask/include/ModemConnection.h"
+#include "Apps/Tasks/ModemTask/include/ModemRxTask.h"
+#include "Apps/Tasks/ModemTask/include/ModemProcessTask.h"
+#include "Apps/Tasks/ModemTask/include/ModemTxTask.h"
+#include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h"
 #include <string.h>
 
 /* FreeRTOS.org includes. */
@@ -18,79 +22,83 @@
 #include "task.h"
 
 BaseType_t DispatchTaskStatus;
-BaseType_t ModemTaskStatus;
-uint8_t printBuff[50];
-char rxReadBuf[50];
-uint8_t length;
-
-/* Mile Stone 1 */
-/* Started working in Dev Branch */
+BaseType_t ModemProcessTaskStatus;
+BaseType_t ModemTxTaskStatus;
+BaseType_t ModemRxTaskStatus;
 
 int main(void)
 {
-	/* Initializes MCU, drivers and middleware */
-	atmel_start_init();
-	
-	/* Reset the modem */
-	//performModemReset();
+    /* Initializes MCU, drivers and middleware */
+    atmel_start_init();
 
-	/* Initialize the HL7618RD modem power signals */
-	modemPowerInit();
-	
-	//EnableWatchDog();
+#if 1
+    /* Create the tasks */
+    DispatchTaskStatus     = xTaskCreate( dispatchTaskSchedule, "DispatchTask", 100, NULL, 1, NULL);
+    ModemProcessTaskStatus = xTaskCreate( modemProcessTaskSchedule, "ModemProcessTask", 100, NULL, 1, NULL);
+    //ModemTxTaskStatus      = xTaskCreate( modemTxTaskSchedule, "ModemTxTask", 100, NULL, 2, NULL);
+    //ModemRxTaskStatus      = xTaskCreate( modemRxTaskSchedule, "ModemRxTask", 100, NULL, 2, NULL);
 
-	mdmParser_SetLastCmdProcessed(true);
+    ModemTxTaskStatus  = pdPASS;
+    ModemRxTaskStatus = pdPASS;
 
-	mdmParam_InitiateConnection();
+    if((DispatchTaskStatus == pdPASS) &&
+       (ModemProcessTaskStatus == pdPASS) &&
+       (ModemTxTaskStatus == pdPASS) &&
+       (ModemRxTaskStatus == pdPASS))
+    {
+    	DEBUG_PRINT("Successfully Created the Tasks");
+    	vTaskStartScheduler();
+    }
+    else
+    {
+    	DEBUG_PRINT("Failed to create tasks");
+    }
+#endif
 
-	DEBUG_PRINT("Successfully Completed the connection initialization. HTTP Connection is established..\r\n\n");
+    DEBUG_PRINT("Error: Scheduler exited");
+    /* The execution won't reach here ideally */
+    for( ;; );
 
-	while (1)
-	{
-		sendPacketToServer();
-
-		//wdt_feed(&WDT_0);
-
-	}
+    return 0;
 }
 
 
 /*****************************************************************************************************
 ********Need to add below part to main() function, once modem communication issue is resolved*********
-******************************************************************************************************/	
+******************************************************************************************************/ 
 #if 0
-	/* Create the Message Queue */
-	xDataQueue = xQueueCreate( MAX_DATA_QUEUE_SIZE, sizeof(Message_Type));
-	
-	if (xDataQueue != NULL)
-	{
-		/* Create the Dispatch Task */
-		DispatchTaskStatus = xTaskCreate( DispatchTask, "DispatchTask", 150, NULL, 2, NULL );
+    /* Create the Message Queue */
+    xDataQueue = xQueueCreate( MAX_DATA_QUEUE_SIZE, sizeof(Message_Type));
+    
+    if (xDataQueue != NULL)
+    {
+        /* Create the Dispatch Task */
+        DispatchTaskStatus = xTaskCreate( DispatchTask, "DispatchTask", 150, NULL, 2, NULL );
 
-		/* Create the Modem Task */
-		ModemTaskStatus = xTaskCreate( ModemTask, "ModemTask", 150, NULL, 2, NULL );
-		
-		/* Start the scheduler to start the tasks executing. */
-		if((DispatchTaskStatus == pdPASS) &&
-		(ModemTaskStatus == pdPASS))
-		{
-			SerialDebugPrint((uint8_t*)"Tasks Created successfully.\r\n",29);
-			vTaskStartScheduler();
-		}
-		else
-		{
-			SerialDebugPrint((uint8_t*)"Tasks can't be Created.\r\n",25);
-		}
+        /* Create the Modem Task */
+        ModemTaskStatus = xTaskCreate( ModemTask, "ModemTask", 150, NULL, 2, NULL );
+        
+        /* Start the scheduler to start the tasks executing. */
+        if((DispatchTaskStatus == pdPASS) &&
+        (ModemTaskStatus == pdPASS))
+        {
+            SerialDebugPrint((uint8_t*)"Tasks Created successfully.\r\n",29);
+            vTaskStartScheduler();
+        }
+        else
+        {
+            SerialDebugPrint((uint8_t*)"Tasks can't be Created.\r\n",25);
+        }
 
-	}
-	else
-	{
-		SerialDebugPrint((uint8_t*)"Message Queue can't be Created.\r\n",35);
-	}
-	
-	
-	/* The execution won't reach here ideally */
-	for( ;; );
-	return 0;
+    }
+    else
+    {
+        SerialDebugPrint((uint8_t*)"Message Queue can't be Created.\r\n",35);
+    }
+    
+    
+    /* The execution won't reach here ideally */
+    for( ;; );
+    return 0;
 }
 #endif

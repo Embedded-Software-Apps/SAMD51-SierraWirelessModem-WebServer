@@ -23,6 +23,21 @@ int dispatchCnt;
 BaseType_t xQueuePushStatus;
 Message_Type msg1 = {SENSOR_0,100,200,30};
 
+
+
+void dispatchTaskSchedule(void)
+{
+	const TickType_t xDelayMs = pdMS_TO_TICKS(1000UL);
+	DEBUG_PRINT("Entering Dispatch Task");
+
+	while(1)
+	{
+		DEBUG_PRINT("Running Dispatch Task");
+		vTaskDelay(xDelayMs);
+	}
+}
+
+
 void DispatchTask( void *DispatchTaskParam)
 {
     /* Create the 6 second periodic auto reload timer.

@@ -116,7 +116,7 @@ void assert_triggered(const char *file, uint32_t line);
 // <q> Use tickless idle
 // <id> freertos_use_tickless_idle
 #ifndef configUSE_TICKLESS_IDLE
-#define configUSE_TICKLESS_IDLE 0
+#define configUSE_TICKLESS_IDLE 1
 #endif
 
 // <q> Use trace facility
