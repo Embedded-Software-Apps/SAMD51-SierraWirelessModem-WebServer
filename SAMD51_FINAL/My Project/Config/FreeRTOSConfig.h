@@ -41,7 +41,7 @@ void assert_triggered(const char *file, uint32_t line);
 // <i> Default: 2400
 // <id> freertos_total_heap_size
 #ifndef configTOTAL_HEAP_SIZE
-#define configTOTAL_HEAP_SIZE ((size_t)(3400))
+#define configTOTAL_HEAP_SIZE ((size_t)(7168)) /* 6 KB */
 #endif
 
 // <q> Enable mutex
@@ -116,7 +116,7 @@ void assert_triggered(const char *file, uint32_t line);
 // <q> Use tickless idle
 // <id> freertos_use_tickless_idle
 #ifndef configUSE_TICKLESS_IDLE
-#define configUSE_TICKLESS_IDLE 1
+#define configUSE_TICKLESS_IDLE 0
 #endif
 
 // <q> Use trace facility

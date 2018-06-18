@@ -141,10 +141,6 @@ Apps/Tasks/ModemTask/source/ModemPowerControl.d \
  ../hal/utils/include/utils_assert.h ../Apps/Common/Common.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  ../driver_init.h ../atmel_start_pins.h ../hal/include/hal_delay.h \
  ../hal/include/hpl_irq.h ../hal/include/hpl_reset.h \
  ../hal/include/hpl_sleep.h ../hal/include/hal_init.h \
@@ -501,14 +497,6 @@ E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/sam.h:
 ../Apps/Common/Common.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
 

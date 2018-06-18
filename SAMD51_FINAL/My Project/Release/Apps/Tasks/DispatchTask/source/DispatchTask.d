@@ -161,13 +161,9 @@ Apps/Tasks/DispatchTask/source/DispatchTask.d \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/portmacro.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/mpu_wrappers.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/timers.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
  ../Apps/SerialDebug/SerialDebug.h
 
@@ -545,19 +541,11 @@ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\inclu
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
 
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h:
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/timers.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/timers.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
 

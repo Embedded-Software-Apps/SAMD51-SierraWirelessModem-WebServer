@@ -569,9 +569,6 @@
     <Compile Include="Apps\Tasks\ModemTask\include\ModemPowerControl.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\include\ModemProcessTask.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="Apps\Tasks\ModemTask\include\ModemResponseHandles.h">
       <SubType>compile</SubType>
     </Compile>

@@ -9,7 +9,7 @@
 #ifndef MODEMTXTASK_H_
 #define MODEMTXTASK_H_
 
-void modemTxTaskSchedule(void);
+void ModemTxTask( void *ModemTaskParam);
 
 
 

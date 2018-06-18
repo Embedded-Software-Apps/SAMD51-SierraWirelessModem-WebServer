@@ -17,7 +17,6 @@
 #define ENABLE_SERCOM3_RX_DEBUG (0)
 
 static uint8_t RxDataBuff[2];
-uint8_t printBuff[40];
 uint8_t rxEcho[2];
 uint8_t  ModemRxDatabuffer[SIZE_MODEM_RX_DATA_BUF];
 
@@ -57,13 +56,11 @@ void mdmCtrlr_DataCommInit(void)
 		/* Enable all of the UART interrupts for SERCOM3 */
 		_usart_async_set_irq_state(&MODEM_DATA,USART_ASYNC_RX_DONE,true);
 		_usart_async_enable(&MODEM_DATA);
-		sprintf(printBuff,"MODEM DATA UART (SERCOM3) initialized\r\n");
-		SerialDebugPrint(printBuff,sizeof(printBuff));
+		DEBUG_PRINT("MODEM DATA UART (SERCOM3) initialized");
 	}
 	else
 	{
-		sprintf(printBuff,"SERCOM3 not initialized\r\n");
-		SerialDebugPrint(printBuff,sizeof(printBuff));
+		DEBUG_PRINT("Failed to initialize the MODEM DATA UART");
 	}
 }
 
@@ -77,8 +74,6 @@ void mdmCtrlr_DataCommInit(void)
 void SERCOM3_0_Handler( void )
 {
 	/* DRE: TX Data Register Empty */
-	sprintf(printBuff,"Modem Data Tx Data Reg Empty CallBack\r\n");
-	SerialDebugPrint(printBuff,sizeof(printBuff));
 	hri_sercomusart_clear_interrupt_DRE_bit(SERCOM3);
 }
 
@@ -92,8 +87,6 @@ void SERCOM3_0_Handler( void )
 void SERCOM3_1_Handler(void )
 {
 	/* TXC : Transmit Complete */
-	sprintf(printBuff,"Modem Data Tx byte Complete Callback\r\n");
-	SerialDebugPrint(printBuff,sizeof(printBuff));
 	hri_sercomusart_clear_interrupt_TXC_bit(SERCOM3);
 }
 

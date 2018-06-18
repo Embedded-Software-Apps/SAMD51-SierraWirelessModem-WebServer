@@ -77,13 +77,13 @@ bool MdmParam_TestModemBaseParameters(void)
 			
 			if(memcmp(&responseBuffer,"OK",respLength) == 0)
 			{
-				sprintf(debugPrintBuff,"Verified the UART Communication with Modem.\r\n");
-				SerialDebugPrint(debugPrintBuff,sizeof(debugPrintBuff));
+				//sprintf(debugPrintBuff,"Verified the UART Communication with Modem.\r\n");
+				//SerialDebugPrint(debugPrintBuff,sizeof(debugPrintBuff));
 			}
 			else
 			{
-				sprintf(debugPrintBuff,"Not able to verify the UART Communication with Modem.\r\n");
-				SerialDebugPrint(debugPrintBuff,sizeof(debugPrintBuff));				
+				//sprintf(debugPrintBuff,"Not able to verify the UART Communication with Modem.\r\n");
+				//SerialDebugPrint(debugPrintBuff,sizeof(debugPrintBuff));
 			}
 			
 			testMdmBasicParam = TEST_NETWORK_REG_STATUS;
@@ -101,13 +101,13 @@ bool MdmParam_TestModemBaseParameters(void)
 			
 			if(memcmp(&responseBuffer,"READY",respLength) == 0)
 			{
-				sprintf(debugPrintBuff,"Verified the Network Registration.\r\n");
-				SerialDebugPrint(debugPrintBuff,sizeof(debugPrintBuff));
+				//sprintf(debugPrintBuff,"Verified the Network Registration.\r\n");
+				//SerialDebugPrint(debugPrintBuff,sizeof(debugPrintBuff));
 			}
 			else
 			{
-				sprintf(debugPrintBuff,"Not able to verify the Network Registration.\r\n");
-				SerialDebugPrint(debugPrintBuff,sizeof(debugPrintBuff));
+				//sprintf(debugPrintBuff,"Not able to verify the Network Registration.\r\n");
+				//SerialDebugPrint(debugPrintBuff,sizeof(debugPrintBuff));
 			}
 			
 			testMdmBasicParam = TEST_UART_BAUDARTE;

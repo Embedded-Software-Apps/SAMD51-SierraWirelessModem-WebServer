@@ -20,11 +20,6 @@ Apps/Tasks/ModemTask/source/ModemCmdParser.d \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/portmacro.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/mpu_wrappers.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  ../Apps/Tasks/ModemTask/include/ModemController.h ../driver_init.h \
  ../atmel_start_pins.h ../hal/include/hal_gpio.h \
  ../hal/include/hpl_gpio.h ../hal/utils/include/compiler.h \
@@ -161,11 +156,16 @@ Apps/Tasks/ModemTask/source/ModemCmdParser.d \
  ../hal/utils/include/utils_list.h ../hpl/tcc/hpl_tcc.h \
  ../hal/include/hal_wdt.h ../hal/include/hpl_wdt.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h \
  ../Apps/Tasks/ModemTask/include/ModemResponseHandles.h \
  ../Apps/SerialDebug/SerialDebug.h ../hal/include/hal_usart_os.h \
  ../thirdparty/RTOS/hal_rtos.h ../hal/include/hpl_core.h \
  ../hpl/core/hpl_core_port.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/rtos_port.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
  ../hal/utils/include/utils_ringbuffer.h ../hal/utils/include/compiler.h \
  ../hal/utils/include/utils_assert.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h \
@@ -219,16 +219,6 @@ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-ea
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/portmacro.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/mpu_wrappers.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
 
@@ -598,6 +588,8 @@ E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/sam.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
 
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h:
+
 ../Apps/Tasks/ModemTask/include/ModemResponseHandles.h:
 
 ../Apps/SerialDebug/SerialDebug.h:
@@ -611,6 +603,14 @@ E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/sam.h:
 ../hpl/core/hpl_core_port.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/rtos_port.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
 
 ../hal/utils/include/utils_ringbuffer.h:
 

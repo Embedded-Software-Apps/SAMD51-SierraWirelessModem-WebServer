@@ -31,15 +31,19 @@ int main(void)
     /* Initializes MCU, drivers and middleware */
     atmel_start_init();
 
-#if 1
-    /* Create the tasks */
-    DispatchTaskStatus     = xTaskCreate( dispatchTaskSchedule, "DispatchTask", 100, NULL, 1, NULL);
-    ModemProcessTaskStatus = xTaskCreate( modemProcessTaskSchedule, "ModemProcessTask", 100, NULL, 1, NULL);
-    //ModemTxTaskStatus      = xTaskCreate( modemTxTaskSchedule, "ModemTxTask", 100, NULL, 2, NULL);
-    //ModemRxTaskStatus      = xTaskCreate( modemRxTaskSchedule, "ModemRxTask", 100, NULL, 2, NULL);
+    DEBUG_PRINT("Initialized the drivers");
 
-    ModemTxTaskStatus  = pdPASS;
-    ModemRxTaskStatus = pdPASS;
+    /* Create Dispatch Task */
+    DispatchTaskStatus = xTaskCreate( DispatchTask, "DispatchTask", 150, NULL, 2, NULL );
+
+    /* Create Modem Tx Task */
+    ModemTxTaskStatus = xTaskCreate( ModemTxTask, "ModemTask", 150, NULL, 1, NULL );
+
+    /* Create Modem Rx Task */
+    ModemRxTaskStatus = xTaskCreate( ModemRxTask, "ModemRxTask", 150, NULL, 2, NULL);
+
+    /* Create Modem Process Task */
+    ModemProcessTaskStatus = xTaskCreate( ModemTask, "ModemProcessTask", 150, NULL, 1, NULL);
 
     if((DispatchTaskStatus == pdPASS) &&
        (ModemProcessTaskStatus == pdPASS) &&
@@ -53,7 +57,6 @@ int main(void)
     {
     	DEBUG_PRINT("Failed to create tasks");
     }
-#endif
 
     DEBUG_PRINT("Error: Scheduler exited");
     /* The execution won't reach here ideally */
@@ -61,44 +64,3 @@ int main(void)
 
     return 0;
 }
-
-
-/*****************************************************************************************************
-********Need to add below part to main() function, once modem communication issue is resolved*********
-******************************************************************************************************/ 
-#if 0
-    /* Create the Message Queue */
-    xDataQueue = xQueueCreate( MAX_DATA_QUEUE_SIZE, sizeof(Message_Type));
-    
-    if (xDataQueue != NULL)
-    {
-        /* Create the Dispatch Task */
-        DispatchTaskStatus = xTaskCreate( DispatchTask, "DispatchTask", 150, NULL, 2, NULL );
-
-        /* Create the Modem Task */
-        ModemTaskStatus = xTaskCreate( ModemTask, "ModemTask", 150, NULL, 2, NULL );
-        
-        /* Start the scheduler to start the tasks executing. */
-        if((DispatchTaskStatus == pdPASS) &&
-        (ModemTaskStatus == pdPASS))
-        {
-            SerialDebugPrint((uint8_t*)"Tasks Created successfully.\r\n",29);
-            vTaskStartScheduler();
-        }
-        else
-        {
-            SerialDebugPrint((uint8_t*)"Tasks can't be Created.\r\n",25);
-        }
-
-    }
-    else
-    {
-        SerialDebugPrint((uint8_t*)"Message Queue can't be Created.\r\n",35);
-    }
-    
-    
-    /* The execution won't reach here ideally */
-    for( ;; );
-    return 0;
-}
-#endif

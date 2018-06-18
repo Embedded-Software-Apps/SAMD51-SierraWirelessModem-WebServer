@@ -9,6 +9,6 @@
 #ifndef DISPATCHTASK_H_
 #define DISPATCHTASK_H_
 
-void dispatchTaskSchedule(void);
+void DispatchTask( void *DispatchTaskParam);
 
 #endif /* DISPATCHTASK_H_ */

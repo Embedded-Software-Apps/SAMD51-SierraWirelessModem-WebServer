@@ -586,8 +586,6 @@ void mdmParser_SetKhttpHeaderString(uint8_t* sessionID)
 	}
 
 	DEBUG_PRINT("KHTTP HEADER String is ");
-	SerialDebugPrint(kHttpHeaderString,17);
-	DEBUG_PRINT("\r\n");
 
 	strncpy(kHttpGetCompleteData,kHttpGetString,15);
 	strncat(kHttpGetCompleteData,"\"?i=359998070228764&d=A1Y52XA2Y36&b=36&s=2\"\r",44);

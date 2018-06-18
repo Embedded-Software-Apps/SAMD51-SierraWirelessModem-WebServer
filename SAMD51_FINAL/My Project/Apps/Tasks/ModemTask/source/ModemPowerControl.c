@@ -48,7 +48,7 @@ void modemPowerInit(void)
 	/* make MODEM ON to default level */
 	delay_ms(3000);
 	
-	SerialDebugPrint((uint8_t*)"Modem Power On initialization Completed\r\n",41);
+	DEBUG_PRINT("Modem Power On initialization Completed");
 	DEBUG_PRINT("\r\n");
 }
 
@@ -91,7 +91,6 @@ static void PowerOnWaitTimerCallBack(void* param);
 
 static void PowerOnWaitTimerCallBack(void* param)
 {
-	SerialDebugPrint((uint8_t*)"Power On Wait Timer Expired\r\n",29);
 	PowerOnWaitTimerExpired = true;
 	PowerOnSuccessfull = true;
 	ModemPwrState = MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS;
@@ -212,7 +211,6 @@ void modemPwrStateSchedule(void)
             /* If the power on start timer is expired, hopefully modem should be up */
             if(PowerOnWaitTimerExpired == true)
             {
-                SerialDebugPrint((uint8_t*)"Modem Fully Operational.\r\n",26);
 				ModemPwrState = MDM_PWR_FULLY_OPERATIONAL;
             }
             else
