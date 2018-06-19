@@ -144,7 +144,20 @@ Apps/SerialDebug/SerialDebug.d Apps/SerialDebug/SerialDebug.o: \
  ../hal/utils/include/utils_list.h ../hpl/tcc/hpl_tcc.h \
  ../hal/include/hal_wdt.h ../hal/include/hpl_wdt.h \
  ../hal/utils/include/utils.h ../Apps/SerialDebug/SerialDebug.h \
- ../Apps/UartDriver/include/UartDriver.h \
+ ../Apps/UartDriver/include/UartDriver.h ../Apps/Common/Common.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h \
+ ../Config/FreeRTOSConfig.h ../Config/peripheral_clk_config.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/portable.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/deprecated_definitions.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/portmacro.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/mpu_wrappers.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h \
+ ../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\newlib.h \
@@ -557,6 +570,36 @@ C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/
 ../Apps/SerialDebug/SerialDebug.h:
 
 ../Apps/UartDriver/include/UartDriver.h:
+
+../Apps/Common/Common.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h:
+
+../Config/FreeRTOSConfig.h:
+
+../Config/peripheral_clk_config.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/portable.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/deprecated_definitions.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/portmacro.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/mpu_wrappers.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h:
+
+../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h:
 

@@ -140,8 +140,7 @@ uint32_t getSystemTime(void);
 /* IPC Mechanisms */
 QueueHandle_t AtTransmitQueue;
 QueueHandle_t AtReceiveQueue;
-SemaphoreHandle_t AtTxQueueLoadMutex;
-SemaphoreHandle_t DebugPrintMutex;
+SemaphoreHandle_t AtTxQueueLoadSemaphore;
 #define MAX_TX_QUEUE_SIZE (1)
 #define MAX_RX_QUEUE_SIZE (1)
 

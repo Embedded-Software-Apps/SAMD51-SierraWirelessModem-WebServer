@@ -22,7 +22,10 @@ Apps/Tasks/ModemTask/source/ModemParameters.d \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h \
+ ../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h \
  ../Apps/SerialDebug/SerialDebug.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  ../Apps/Tasks/ModemTask/include/ModemParameters.h \
  ../Apps/Tasks/ModemTask/include/ModemResponseHandles.h
 
@@ -70,7 +73,13 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gc
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h:
 
+../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h:
+
 ../Apps/SerialDebug/SerialDebug.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
 
 ../Apps/Tasks/ModemTask/include/ModemParameters.h:
 

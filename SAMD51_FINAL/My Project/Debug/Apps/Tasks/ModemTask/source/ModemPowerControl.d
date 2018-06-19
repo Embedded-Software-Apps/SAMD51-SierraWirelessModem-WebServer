@@ -142,25 +142,29 @@ Apps/Tasks/ModemTask/source/ModemPowerControl.d \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
- ../Apps/SerialDebug/SerialDebug.h ../driver_init.h ../atmel_start_pins.h \
- ../hal/include/hal_delay.h ../hal/include/hpl_irq.h \
- ../hal/include/hpl_reset.h ../hal/include/hpl_sleep.h \
- ../hal/include/hal_init.h ../hal/include/hpl_init.h \
- ../hal/include/hal_io.h ../hal/include/hal_sleep.h \
- ../hal/include/hal_ac_sync.h ../hal/include/hpl_ac_sync.h \
- ../hal/include/hpl_irq.h ../hal/include/hal_adc_sync.h \
- ../hal/include/hpl_adc_sync.h ../hal/include/hpl_missing_features.h \
- ../hal/include/hal_dac_sync.h ../hal/include/hpl_dac_sync.h \
- ../hal/include/hal_ext_irq.h ../hal/include/hpl_ext_irq.h \
- ../hal/include/hal_evsys.h ../hal/include/hpl_evsys.h \
- ../hal/include/hal_flash.h ../hal/include/hpl_flash.h \
- ../hal/include/hal_usart_sync.h ../hal/include/hal_io.h \
- ../hal/include/hpl_usart_sync.h ../hal/include/hpl_usart.h \
- ../hal/include/hpl_usart_async.h ../hal/include/hpl_usart.h \
- ../hal/include/hal_pwm.h ../hal/include/hpl_pwm.h \
- ../hpl/tc/hpl_tc_base.h ../hal/include/hpl_timer.h \
- ../hal/include/hal_timer.h ../hal/utils/include/utils_list.h \
- ../hpl/tcc/hpl_tcc.h ../hal/include/hal_wdt.h ../hal/include/hpl_wdt.h \
+ ../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h \
+ ../Apps/SerialDebug/SerialDebug.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
+ ../driver_init.h ../atmel_start_pins.h ../hal/include/hal_delay.h \
+ ../hal/include/hpl_irq.h ../hal/include/hpl_reset.h \
+ ../hal/include/hpl_sleep.h ../hal/include/hal_init.h \
+ ../hal/include/hpl_init.h ../hal/include/hal_io.h \
+ ../hal/include/hal_sleep.h ../hal/include/hal_ac_sync.h \
+ ../hal/include/hpl_ac_sync.h ../hal/include/hpl_irq.h \
+ ../hal/include/hal_adc_sync.h ../hal/include/hpl_adc_sync.h \
+ ../hal/include/hpl_missing_features.h ../hal/include/hal_dac_sync.h \
+ ../hal/include/hpl_dac_sync.h ../hal/include/hal_ext_irq.h \
+ ../hal/include/hpl_ext_irq.h ../hal/include/hal_evsys.h \
+ ../hal/include/hpl_evsys.h ../hal/include/hal_flash.h \
+ ../hal/include/hpl_flash.h ../hal/include/hal_usart_sync.h \
+ ../hal/include/hal_io.h ../hal/include/hpl_usart_sync.h \
+ ../hal/include/hpl_usart.h ../hal/include/hpl_usart_async.h \
+ ../hal/include/hpl_usart.h ../hal/include/hal_pwm.h \
+ ../hal/include/hpl_pwm.h ../hpl/tc/hpl_tc_base.h \
+ ../hal/include/hpl_timer.h ../hal/include/hal_timer.h \
+ ../hal/utils/include/utils_list.h ../hpl/tcc/hpl_tcc.h \
+ ../hal/include/hal_wdt.h ../hal/include/hpl_wdt.h \
  ../Apps/Tasks/ModemTask/include/ModemPowerControl.h
 
 ../thirdparty\RTOS\freertos\FreeRTOSV10.0.0\Source\include\FreeRTOS.h:
@@ -503,7 +507,13 @@ C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
 
+../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h:
+
 ../Apps/SerialDebug/SerialDebug.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
 
 ../driver_init.h:
 

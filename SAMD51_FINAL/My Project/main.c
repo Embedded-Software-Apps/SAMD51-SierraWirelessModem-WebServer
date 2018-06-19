@@ -81,7 +81,7 @@ int main(void)
     {
     	DEBUG_PRINT("Successfully Created the Tasks");
 
-    	if(false != createQueuesAndSemaphores)
+    	if(false != createQueuesAndSemaphores())
     	{
     		vTaskStartScheduler();
     	}
@@ -123,13 +123,11 @@ bool createQueuesAndSemaphores(void)
     {
     	DEBUG_PRINT("Tx & Rx Queues are created");
 
-    	AtTxQueueLoadMutex = xSemaphoreCreateMutex();
-		DebugPrintMutex    = xSemaphoreCreateMutex();
+    	AtTxQueueLoadSemaphore = xSemaphoreCreateBinary();
 		
-		if((AtTxQueueLoadMutex != NULL) &&
-		   (DebugPrintMutex    != NULL))
+		if((AtTxQueueLoadSemaphore != NULL))
 		{
-			DEBUG_PRINT("Mutexes are created");
+			DEBUG_PRINT("Semaphores are created");
 		}
 		else
 		{

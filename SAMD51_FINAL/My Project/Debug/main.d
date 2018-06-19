@@ -166,15 +166,16 @@ main.d main.o: .././main.c ../atmel_start.h ../driver_init.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
- ../Apps/SerialDebug/SerialDebug.h \
+ ../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h \
+ ../Apps/Common/Common.h ../Apps/SerialDebug/SerialDebug.h \
  .././Apps/Tasks/ModemTask/include/ModemPowerControl.h \
  .././Apps/Tasks/ModemTask/include/ModemController.h \
  .././Apps/Tasks/ModemTask/include/ModemCmdParser.h \
- ../Apps/Common/Common.h \
  .././Apps/Tasks/ModemTask/include/ModemParameters.h \
  .././Apps/Tasks/ModemTask/include/ModemConnection.h \
  .././Apps/Tasks/ModemTask/include/ModemRxTask.h \
  .././Apps/Tasks/ModemTask/include/ModemProcessTask.h \
+ .././Apps/Tasks/ModemTask/include/ModemDiagTask.h \
  .././thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h \
@@ -188,7 +189,8 @@ main.d main.o: .././main.c ../atmel_start.h ../driver_init.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\lock.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\cdefs.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h
 
 ../atmel_start.h:
 
@@ -630,6 +632,10 @@ C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
 
+../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h:
+
+../Apps/Common/Common.h:
+
 ../Apps/SerialDebug/SerialDebug.h:
 
 .././Apps/Tasks/ModemTask/include/ModemPowerControl.h:
@@ -638,8 +644,6 @@ C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/
 
 .././Apps/Tasks/ModemTask/include/ModemCmdParser.h:
 
-../Apps/Common/Common.h:
-
 .././Apps/Tasks/ModemTask/include/ModemParameters.h:
 
 .././Apps/Tasks/ModemTask/include/ModemConnection.h:
@@ -647,6 +651,8 @@ C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/
 .././Apps/Tasks/ModemTask/include/ModemRxTask.h:
 
 .././Apps/Tasks/ModemTask/include/ModemProcessTask.h:
+
+.././Apps/Tasks/ModemTask/include/ModemDiagTask.h:
 
 .././thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
 
@@ -675,3 +681,5 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:

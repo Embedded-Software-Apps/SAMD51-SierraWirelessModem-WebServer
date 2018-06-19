@@ -22,7 +22,10 @@ Apps/Tasks/ModemTask/source/ModemCmdParser.d \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h \
+ ../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h \
  ../Apps/SerialDebug/SerialDebug.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  ../Apps/Tasks/ModemTask/include/ModemController.h ../driver_init.h \
  ../atmel_start_pins.h ../hal/include/hal_gpio.h \
  ../hal/include/hpl_gpio.h ../hal/utils/include/compiler.h \
@@ -163,8 +166,6 @@ Apps/Tasks/ModemTask/source/ModemCmdParser.d \
  ../hal/include/hpl_core.h ../hpl/core/hpl_core_port.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/rtos_port.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
  ../hal/utils/include/utils_ringbuffer.h ../hal/utils/include/compiler.h \
  ../hal/utils/include/utils_assert.h \
@@ -226,7 +227,13 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gc
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h:
 
+../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h:
+
 ../Apps/SerialDebug/SerialDebug.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
 
 ../Apps/Tasks/ModemTask/include/ModemController.h:
 
@@ -605,10 +612,6 @@ C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/rtos_port.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
 

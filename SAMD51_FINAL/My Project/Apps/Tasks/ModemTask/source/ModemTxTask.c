@@ -29,13 +29,15 @@ static void ModemTx_SendCommandToModem(AT_CMD_TYPE atCmd);
 void ModemTxTask( void *ModemTaskParam)
 {
 	const TickType_t xDelayMs = pdMS_TO_TICKS(1000UL);
-
+	xSemaphoreGive(AtTxQueueLoadSemaphore);
 	while(1)
 	{
 		if(getModemPowerStatus() == MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS)
 		{
 			ModemTxTaskSchedule();
 			kickWatchDog();
+			DEBUG_PRINT("Running Modem Tx Task successfully");
+			vTaskDelay(xDelayMs);
 		}
 	}
 }
@@ -49,9 +51,16 @@ void ModemTxTask( void *ModemTaskParam)
 ********************************************************************************/
 static void ModemTxTaskSchedule(void)
 {
-	xQueueReceive( AtTransmitQueue, &AtTxQueueReceivedData, portMAX_DELAY );
-	ModemTx_SendCommandToModem(AtTxQueueReceivedData.atCmd);
-	DEBUG_PRINT("Transmitted a command to Modem");
+	if (uxQueueMessagesWaiting(AtTransmitQueue) != 0)
+	{
+		if(pdPASS == xSemaphoreTake(AtTxQueueLoadSemaphore, 0))
+		{
+			xQueueReceive( AtTransmitQueue, &AtTxQueueReceivedData, portMAX_DELAY );
+			ModemTx_SendCommandToModem(AtTxQueueReceivedData.atCmd);
+			DEBUG_PRINT("Transmitted a command to Modem");
+			xSemaphoreGive(AtTxQueueLoadSemaphore);
+		}
+	}
 }
 
 /*============================================================================

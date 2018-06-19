@@ -30,6 +30,7 @@ static void ModemDiagSchedule(void);
 ********************************************************************************/
 void ModemDiagTask( void *ModemTaskParam)
 {
+	const TickType_t xDelayMs = pdMS_TO_TICKS(3500UL);
 	ModemDiagInit();
 
 	while(1)
@@ -37,6 +38,8 @@ void ModemDiagTask( void *ModemTaskParam)
 		if(getModemPowerStatus() == MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS)
 		{
 			ModemDiagSchedule();
+			DEBUG_PRINT("Running Diag Process Task successfully");
+			vTaskDelay(xDelayMs);
 		}
 	}
 }
@@ -73,19 +76,27 @@ static void ModemDiagSchedule(void)
 		{
 			if (uxQueueMessagesWaiting(AtTransmitQueue) == 0)
 			{
-				TxMsgQueueData.atCmd = CMD_AT;
-				TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
-
-				if(TxQueuePushStatus == pdPASS)
+				if(pdPASS == xSemaphoreTake(AtTxQueueLoadSemaphore, 0))
 				{
-					DEBUG_PRINT("Sent the Diag data to Tx Task");
-					vTaskDelay(DiagDelayMs);
-					ModemDiagState = MODEM_DIAG_GET_IMEI;
+					TxMsgQueueData.atCmd = CMD_AT_CGSN;
+					TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
+
+					if(TxQueuePushStatus == pdPASS)
+					{
+						DEBUG_PRINT("Sent the Diag data to Tx Task");
+						xSemaphoreGive(AtTxQueueLoadSemaphore);
+						vTaskDelay(DiagDelayMs);
+						ModemDiagState = MODEM_DIAG_GET_IMEI;
+					}
+					else
+					{
+						DEBUG_PRINT("Failed to sent the Diag data to Tx Task");
+						vTaskDelay(DiagDelayMs);
+					}
 				}
 				else
 				{
-					DEBUG_PRINT("Failed to sent the Diag data to Tx Task");
-					vTaskDelay(DiagDelayMs);
+					DEBUG_PRINT("Couldn't obtain the semaphore");
 				}
 			}
 
