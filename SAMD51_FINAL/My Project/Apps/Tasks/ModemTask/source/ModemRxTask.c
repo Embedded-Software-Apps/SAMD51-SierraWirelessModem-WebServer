@@ -13,7 +13,6 @@
 void ModemRxTask( void *ModemTaskParam)
 {
 	const TickType_t xDelayMs = pdMS_TO_TICKS(3000UL);
-	DEBUG_PRINT("Entering Modem Rx Task");
 
 	while(1)
 	{

@@ -1,9 +1,12 @@
-/*
+/*=======================================================================================
  * ModemProcessTask.c
  *
- * Created: 6/17/2018 8:31:21 AM
- *  Author: anilj
- */ 
+ * Handles all the major state machines for managing the modem
+ *======================================================================================*/
+
+/****************************************************************************************
+ INCLUDE FILES
+*****************************************************************************************/
 #include <hal_delay.h>
 #include <stdio.h>
 #include <string.h>
@@ -13,15 +16,35 @@
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h"
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h"
 
+/******************************************************************************************
+************************************STATIC VARIABLES***************************************
+*******************************************************************************************/
+
+
+
+/*******************************************************************************
+*
+* NAME       : getModemPowerState
+*
+* DESCRIPTION: This function converts a given signed integer(16-bit or 32-bit)
+*               into a string and returns the string.
+*
+********************************************************************************/
 void ModemProcessTask( void *ModemTaskParam)
 {
 	const TickType_t xDelayMs = pdMS_TO_TICKS(5000UL);
-	DEBUG_PRINT("Entering Modem Process Task");
+
+	modemPowerStateInit();
 
 	while(1)
 	{
-		DEBUG_PRINT("Running Modem Process Task successfully");
-		vTaskDelay(xDelayMs);
+		modemPowerSchedule();
+
+		if(getModemPowerStatus() == MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS)
+		{
+			DEBUG_PRINT("Running Modem Process Task successfully");
+			vTaskDelay(xDelayMs);
+		}
 	}
 }
 

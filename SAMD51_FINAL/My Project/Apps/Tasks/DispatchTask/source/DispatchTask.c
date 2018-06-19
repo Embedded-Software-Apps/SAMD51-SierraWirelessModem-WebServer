@@ -20,7 +20,6 @@ void DispatchTask( void *DispatchTaskParam)
 	TickType_t xLastWakeTime;
 	const TickType_t xDelayMs = pdMS_TO_TICKS(10000UL);
 	xLastWakeTime = xTaskGetTickCount();
-	DEBUG_PRINT("Entering Dispatch Task");
 
 	while(1)
 	{

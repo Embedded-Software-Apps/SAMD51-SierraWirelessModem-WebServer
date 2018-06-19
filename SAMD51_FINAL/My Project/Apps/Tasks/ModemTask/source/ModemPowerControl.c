@@ -23,96 +23,49 @@
 ************************************STATIC VARIABLES***************************************
 *******************************************************************************************/
 static MODEM_POWER_STATES_T ModemPwrState;
+static MODEM_POWER_ON_SUBSTATES_T ModemPwrOnSubState;
 static TimerHandle_t xPowerOnWaitTimer;
 static BaseType_t PowerOnWaitTimerStarted;
 static bool PowerOnWaitTimerExpired;
-#define POWER_ON_WAIT_TIMER pdMS_TO_TICKS(7000)
+
 /*******************************************************************************
 *
-* NAME: modemPowerInit
+* NAME       : getModemPowerState
 *
-* DESCRIPTION: This function converts a given signed integer(16-bit or 32-bit)
-*               into a string and returns the string.
+* DESCRIPTION: Gets the current Modem Power State.
 *
 ********************************************************************************/
-void modemPowerInit(void)
-{
-	gpio_set_pin_direction(MODEM_ON, GPIO_DIRECTION_OUT);
-	gpio_set_pin_function(MODEM_ON, GPIO_PIN_FUNCTION_OFF);
-	gpio_set_pin_level(MODEM_ON,false);
-
-	gpio_set_pin_direction(MODEM_RESET, GPIO_DIRECTION_OUT);
-	gpio_set_pin_function(MODEM_RESET, GPIO_PIN_FUNCTION_OFF);
-	gpio_set_pin_level(MODEM_RESET,false);
-
-	gpio_set_pin_direction(MODEM_DTR, GPIO_DIRECTION_OUT);
-	gpio_set_pin_function(MODEM_DTR, GPIO_PIN_FUNCTION_OFF);
-	gpio_set_pin_level(MODEM_DTR,false);
-	delay_ms(500);
-	
-	/* Give a short 50 ms positive pulse on MODEM ON Pin */
-	gpio_set_pin_level(MODEM_ON,true);
-	delay_ms(50);
-	
-	/* make MODEM ON to default level */
-	delay_ms(3000);
-	
-	DEBUG_PRINT("Modem Power On initialization Completed");
-	DEBUG_PRINT("\r\n");
-}
-
-void performModemReset(void)
-{
-	gpio_set_pin_direction(MODEM_ON, GPIO_DIRECTION_OUT);
-	gpio_set_pin_function(MODEM_ON, GPIO_PIN_FUNCTION_OFF);
-	gpio_set_pin_level(MODEM_ON,true);
-	delay_ms(500);
-	gpio_set_pin_direction(MODEM_RESET, GPIO_DIRECTION_OUT);
-	gpio_set_pin_function(MODEM_RESET, GPIO_PIN_FUNCTION_OFF);
-	gpio_set_pin_level(MODEM_RESET,true);
-	delay_ms(30);
-	DEBUG_PRINT("Modem Reset Completed");
-}
-
-
-void EnableWatchDog(void)
-{
-	wdt_set_timeout_period(&WDT_0, 10000, 5000);
-	wdt_enable(&WDT_0);
-}
-
-
-
-
-/*****************************************************************************************************
-********************* Below code not used as of now***************************************************
-******************************************************************************************************/
-void modemPwrInit(void)
-{
-
-    ModemPwrState = MDM_PWR_SHUTDOWN;
-    PowerOnSuccessfull = false;
-}
-
-static void PowerOnWaitTimerCallBack(void* param);
-
-
-
-static void PowerOnWaitTimerCallBack(void* param)
-{
-	PowerOnWaitTimerExpired = true;
-	PowerOnSuccessfull = true;
-	ModemPwrState = MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS;
-}
-
 MODEM_POWER_STATES_T getModemPowerStatus(void)
 {
 	return ModemPwrState;
 }
 
-
-void modemPwrStateSchedule(void)
+/*******************************************************************************
+*
+* NAME       : modemPowerStateInit
+*
+* DESCRIPTION: Initializes the Modem Power State Machines
+*
+********************************************************************************/
+void modemPowerStateInit(void)
 {
+    ModemPwrState = MDM_PWR_SHUTDOWN;
+    ModemPwrOnSubState = MDM_PWR_ALL_SIG_INIT;
+}
+
+/*******************************************************************************
+*
+* NAME       : modemPowerSchedule
+*
+* DESCRIPTION: Modem Power - Main State Machine Function
+*
+********************************************************************************/
+void modemPowerSchedule(void)
+{
+	const TickType_t ModemSigInitDelay = pdMS_TO_TICKS(500UL);
+	const TickType_t ModemOnBurstDelay = pdMS_TO_TICKS(50UL);
+	const TickType_t ModemOnWaitDelay = pdMS_TO_TICKS(3000UL);
+
     switch(ModemPwrState)
     {
         case MDM_PWR_SHUTDOWN:
@@ -120,47 +73,54 @@ void modemPwrStateSchedule(void)
             /* Turn on the HL7588 modem by providing an active low 
              * signal at POWER_ON_N pin of modem.
              */
-#if 1
-            gpio_set_pin_direction(MODEM_ON, GPIO_DIRECTION_OUT);
-            gpio_set_pin_function(MODEM_ON, GPIO_PIN_FUNCTION_OFF);
-			gpio_set_pin_pull_mode(MODEM_ON, GPIO_PULL_UP);
-            gpio_set_pin_level(MODEM_ON,false); 
-            
-			gpio_set_pin_direction(MODEM_RESET, GPIO_DIRECTION_OUT);
-			gpio_set_pin_function(MODEM_RESET, GPIO_PIN_FUNCTION_OFF);
-			gpio_set_pin_pull_mode(MODEM_RESET, GPIO_PULL_UP);
-			gpio_set_pin_level(MODEM_RESET,true);
-			
-			gpio_set_pin_direction(MODEM_DTR, GPIO_DIRECTION_OUT);
-			gpio_set_pin_function(MODEM_DTR, GPIO_PIN_FUNCTION_OFF);
-			gpio_set_pin_pull_mode(MODEM_DTR, GPIO_PULL_UP);
-			gpio_set_pin_level(MODEM_DTR,false);
-#endif
-            /* As per the technical specification document of HL7588,
-             * it takes 7 seconds for the modem to activate the UART link
-             * to receive AT commands from SAMD51.
-             * Start the 7 seconds timer in this state.
-             */
-             xPowerOnWaitTimer = xTimerCreate("PowerOnWaitTimer",POWER_ON_WAIT_TIMER,pdFALSE,0,PowerOnWaitTimerCallBack);
-             PowerOnWaitTimerExpired = false;
-             if(xPowerOnWaitTimer != NULL)
-             {
-                 PowerOnWaitTimerStarted = xTimerStart(xPowerOnWaitTimer,0);
-                 
-                 if(PowerOnWaitTimerStarted == pdPASS)
-                 {
-                     //SerialDebugPrint((uint8_t*)"Power on wait timer is started\r\n",33);
-                     ModemPwrState = MDM_PWR_UART_LINK_OPERATIONAL;
-                 }
-                 else
-                 {
-                      //SerialDebugPrint((uint8_t*)"Power on wait timer can't be started\r\n",39);
-                 }
-             }
-             else
-             {
-                 //SerialDebugPrint((uint8_t*)"Power on wait timer can't be created\r\n",39);
-             }  
+            switch(ModemPwrOnSubState)
+            {
+                case MDM_PWR_ALL_SIG_INIT:
+                {
+                    gpio_set_pin_direction(MODEM_ON, GPIO_DIRECTION_OUT);
+                    gpio_set_pin_function(MODEM_ON, GPIO_PIN_FUNCTION_OFF);
+                    gpio_set_pin_level(MODEM_ON,false);
+
+                    gpio_set_pin_direction(MODEM_RESET, GPIO_DIRECTION_OUT);
+                    gpio_set_pin_function(MODEM_RESET, GPIO_PIN_FUNCTION_OFF);
+                    gpio_set_pin_level(MODEM_RESET,false);
+
+                    gpio_set_pin_direction(MODEM_DTR, GPIO_DIRECTION_OUT);
+                    gpio_set_pin_function(MODEM_DTR, GPIO_PIN_FUNCTION_OFF);
+                    gpio_set_pin_level(MODEM_DTR,false);
+
+                    ModemPwrOnSubState = MDM_PWR_MDM_ON_SIG_LOW;
+                    vTaskDelay(ModemSigInitDelay);
+                }
+                break;
+
+                case MDM_PWR_MDM_ON_SIG_LOW:
+                {
+                	/* Give a short 50 ms positive pulse on MODEM ON Pin */
+                	gpio_set_pin_level(MODEM_ON,true);
+                	ModemPwrOnSubState = MDM_PWR_MDM_ON_SIG_HIGH;
+                	vTaskDelay(ModemOnBurstDelay);
+                }
+                break;
+
+                case MDM_PWR_MDM_ON_SIG_HIGH:
+                {
+                	/* Wait untill the modem is powered on */
+                	ModemPwrOnSubState = MDM_PWR_ON_COMPLETED;
+                	vTaskDelay(ModemOnWaitDelay);
+                }
+                break;
+
+                case MDM_PWR_ON_COMPLETED:
+                {
+                	//DEBUG_PRINT("Modem Powered On");
+                	ModemPwrState = MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS;
+                }
+                break;
+
+                default:
+                break;
+            }
         }
         break;
         
@@ -194,20 +154,19 @@ void modemPwrStateSchedule(void)
              * The UART1_CTS pin needs to be populated in PCB for implementing
              * this functionality.
              *
-             * If the UART link between SAMD and modem is operational, volatage
-             * on this pin will be transitioned from logic 0 to logic 1.
+             * If the UART link between SAMD and modem is operational,
+             * voltage on this pin will be transitioned from logic 0 to logic 1.
              */
-#if 0
-			if(gpio_get_pin_level(MODEM_DTR))
-			{
-				//SerialDebugPrint((uint8_t*)"Modem UART Link is operational.\r\n",33);
-				ModemPwrState = MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS;
-			}
-			else
-			{
-				//SerialDebugPrint((uint8_t*)"Modem UART Link is not operational.\r\n",37);
-			}
-#endif
+			#if 0
+            if(gpio_get_pin_level(MODEM_DTR))
+            {
+                ModemPwrState = MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS;
+            }
+            else
+            {
+
+            }
+			#endif
         }
         break;
         
@@ -217,24 +176,10 @@ void modemPwrStateSchedule(void)
              * We may need to improve here once the above mentioned pins are 
              * populated in PCB.
              */
-            /* If the power on start timer is expired, hopefully modem should be up */
-            if(PowerOnWaitTimerExpired == true)
-            {
-				ModemPwrState = MDM_PWR_FULLY_OPERATIONAL;
-            }
-            else
-            {
-                //SerialDebugPrint((uint8_t*)"Timer not expired\r\n",19);
-            }       
+        	//DEBUG_PRINT("Modem is ready for AT commands");
         }
         break;
-
-        case MDM_PWR_FULLY_OPERATIONAL:
-        {
-	        
-        }
-        break;
-		        
+                
         case MDM_PWR_RESET_MODEM:
         {
             
@@ -256,4 +201,26 @@ void modemPwrStateSchedule(void)
         default:
         break;
     }
+}
+
+
+
+void performModemReset(void)
+{
+    gpio_set_pin_direction(MODEM_ON, GPIO_DIRECTION_OUT);
+    gpio_set_pin_function(MODEM_ON, GPIO_PIN_FUNCTION_OFF);
+    gpio_set_pin_level(MODEM_ON,true);
+    delay_ms(500);
+    gpio_set_pin_direction(MODEM_RESET, GPIO_DIRECTION_OUT);
+    gpio_set_pin_function(MODEM_RESET, GPIO_PIN_FUNCTION_OFF);
+    gpio_set_pin_level(MODEM_RESET,true);
+    delay_ms(30);
+    DEBUG_PRINT("Modem Reset Completed");
+}
+
+
+void EnableWatchDog(void)
+{
+    wdt_set_timeout_period(&WDT_0, 10000, 5000);
+    wdt_enable(&WDT_0);
 }
