@@ -154,7 +154,15 @@ driver_init.d driver_init.o: .././driver_init.c .././driver_init.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/portmacro.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/mpu_wrappers.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h \
+ .././atmel_start.h .././rtos_start.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
+ ../thirdparty/RTOS/hal_rtos.h ../hal/include/hpl_core.h \
+ ../hpl/core/hpl_core_port.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/rtos_port.h
 
 .././driver_init.h:
 
@@ -569,3 +577,23 @@ E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/sam.h:
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h:
+
+.././atmel_start.h:
+
+.././rtos_start.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
+
+../thirdparty/RTOS/hal_rtos.h:
+
+../hal/include/hpl_core.h:
+
+../hpl/core/hpl_core_port.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/rtos_port.h:

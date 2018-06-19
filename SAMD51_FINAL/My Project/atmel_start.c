@@ -1,22 +1,40 @@
+/*=======================================================================================
+ * atmel_start.c
+ *
+ * Implements the MCU and WDT initialization functions.
+ *======================================================================================*/
+
+/****************************************************************************************
+ INCLUDE FILES
+*****************************************************************************************/
 #include <atmel_start.h>
 #include "Apps/SerialDebug/SerialDebug.h"
 
+/******************************************************************************************
+************************************STATIC VARIABLES***************************************
+*******************************************************************************************/
 WdtDelay cfgSystemWdt[3] =
 {
-    {WDT_TIMEOUT_FAST,500},
-    {WDT_TIMEOUT_NORMAL,4096},
-    {WDT_TIMEOUT_DELAYED,10000},
+    {WDT_TIMEOUT_FAST,WDT_1_SEC_TIMEOUT},
+    {WDT_TIMEOUT_NORMAL,WDT_3_SEC_TIMEOUT},
+    {WDT_TIMEOUT_DELAYED,WDT_10_SEC_TIMEOUT},
 };
 
-/**
- * Initializes MCU, drivers and middleware in the project
-**/
+static bool bForcedResetRequested = false;
+
+/*******************************************************************************
+*
+* NAME       : atmel_start_init
+*
+* DESCRIPTION: Initializes MCU, drivers and middleware in the project.
+*
+********************************************************************************/
 void atmel_start_init(void)
 {
     system_init();
     delay_ms(1000);
 
-    /* Enable the WDT with 1 second timeout */
+    /* Enable the WDT with 10 second timeout as of now */
     enableWatchDogTimer();
 }
 
@@ -52,7 +70,7 @@ void configureWatchDogTimeOut(WDT_TIMEOUT_TYPE type)
 ********************************************************************************/
 void enableWatchDogTimer(void)
 {
-	configureWatchDogTimeOut(WDT_TIMEOUT_NORMAL);
+	configureWatchDogTimeOut(WDT_TIMEOUT_DELAYED);
     
 	if(0 == wdt_enable(&WDT_0))
     {
@@ -66,13 +84,26 @@ void enableWatchDogTimer(void)
 
 /*******************************************************************************
 *
-* NAME       : enableWatchDogTimer
+* NAME       : kickWatchDog
 *
-* DESCRIPTION: Enable the WDT
+* DESCRIPTION: Restart the WDT
 *
 ********************************************************************************/
-void kickWatchDog(void)
-{
-	wdt_feed(&WDT_0);
+int32_t kickWatchDog(void)
+{	
+	int32_t status = ERR_NONE;
+
+	if(bForcedResetRequested == false)
+	{
+		status = wdt_feed(&WDT_0);
+		//DEBUG_PRINT("Kicked WDT");
+	}
+	else
+	{
+		status = ERR_DENIED;
+		//DEBUG_PRINT("Not able to Kick WDT");
+	}
+
+	return status;
 }
 
