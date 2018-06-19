@@ -4,7 +4,7 @@
 WdtDelay cfgSystemWdt[3] =
 {
     {WDT_TIMEOUT_FAST,500},
-    {WDT_TIMEOUT_NORMAL,1000},
+    {WDT_TIMEOUT_NORMAL,4096},
     {WDT_TIMEOUT_DELAYED,10000},
 };
 
@@ -29,15 +29,17 @@ void atmel_start_init(void)
 ********************************************************************************/
 void configureWatchDogTimeOut(WDT_TIMEOUT_TYPE type)
 {
-	int32_t status;
+	int32_t cfgstatus;
+	
+	cfgstatus =  wdt_set_timeout_period(&WDT_0, WDT_FREQ, cfgSystemWdt[type].timeOutValue);
 
-	if(0 == wdt_set_timeout_period(&WDT_0, WDT_FREQ, cfgSystemWdt[type].timeOutValue))
+	if(0 == cfgstatus)
 	{
-		DEBUG_PRINT("Set the WDT timeout successfully");
+		//DEBUG_PRINT("Set the WDT timeout successfully");
 	}
 	else
 	{
-		DEBUG_PRINT("Failed to set the WDT time out");
+		//DEBUG_PRINT("Failed to set the WDT time out");
 	}
 }
 
@@ -50,15 +52,16 @@ void configureWatchDogTimeOut(WDT_TIMEOUT_TYPE type)
 ********************************************************************************/
 void enableWatchDogTimer(void)
 {
-    if(0 == wdt_enable(&WDT_0))
+	configureWatchDogTimeOut(WDT_TIMEOUT_NORMAL);
+    
+	if(0 == wdt_enable(&WDT_0))
     {
-    	DEBUG_PRINT("Enabled the WDT");
+    	//DEBUG_PRINT("Enabled the WDT");
     }
     else
     {
-    	DEBUG_PRINT("Failed to enable WDT");
+    	//DEBUG_PRINT("Failed to enable WDT");
     }
-	configureWatchDogTimeOut(WDT_TIMEOUT_DELAYED);
 }
 
 /*******************************************************************************

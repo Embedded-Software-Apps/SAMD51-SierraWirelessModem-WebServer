@@ -16,6 +16,7 @@
 
 #include "Apps/SerialDebug/SerialDebug.h"
 #include "Apps/Tasks/ModemTask/include/ModemController.h"
+#include "atmel_start.h"
 
 struct timer_descriptor TIMER_0;
 struct timer_descriptor TIMER_1;
@@ -480,6 +481,6 @@ void system_init(void)
 	TIMER_6_init();
 
 	TIMER_7_init();
-
+	
 	WDT_0_init();
 }

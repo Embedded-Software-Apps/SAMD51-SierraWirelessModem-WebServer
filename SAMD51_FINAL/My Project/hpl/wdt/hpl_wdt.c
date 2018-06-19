@@ -131,6 +131,8 @@ int32_t _wdt_set_timeout_period(struct wdt_dev *const dev, const uint32_t clk_ra
 	/* Sanity check arguments */
 	ASSERT(dev && dev->hw);
 
+    hri_wdt_clear_CTRLA_ENABLE_bit(dev->hw);
+	hri_wdt_clear_CTRLA_ALWAYSON_bit(dev->hw);
 	if (hri_wdt_get_CTRLA_ALWAYSON_bit(dev->hw) || hri_wdt_get_CTRLA_ENABLE_bit(dev->hw)) {
 		return ERR_DENIED;
 	} else {
