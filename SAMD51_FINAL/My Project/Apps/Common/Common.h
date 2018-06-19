@@ -15,8 +15,6 @@
 #include "Apps/SerialDebug/SerialDebug.h"
 #include <stdbool.h>
 
-#define MAX_DATA_QUEUE_SIZE (5)
-
 typedef enum
 {
 	SENSOR_0,
@@ -135,5 +133,17 @@ bool PowerOnSuccessfull;
 uint32_t sysTimeFirst;
 uint32_t sysTimeFinal;
 uint32_t getSystemTime(void);
+
+/* IPC Mechanisms */
+QueueHandle_t AtTransmitQueue;
+QueueHandle_t AtReceiveQueue;
+
+#define MAX_TX_QUEUE_SIZE (2)
+#define MAX_RX_QUEUE_SIZE (5)
+
+typedef struct
+{
+	
+}AtTxMsgType;
 
 #endif /* COMMON_H_ */

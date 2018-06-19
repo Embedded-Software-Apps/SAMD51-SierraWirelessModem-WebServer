@@ -171,6 +171,7 @@ main.d main.o: .././main.c ../atmel_start.h ../driver_init.h \
  .././Apps/Tasks/ModemTask/include/ModemController.h \
  .././Apps/Tasks/ModemTask/include/ModemCmdParser.h \
  ../Apps/Common/Common.h \
+ ../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h \
  .././Apps/Tasks/ModemTask/include/ModemParameters.h \
  .././Apps/Tasks/ModemTask/include/ModemConnection.h \
  .././Apps/Tasks/ModemTask/include/ModemRxTask.h \
@@ -639,6 +640,8 @@ E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/sam.h:
 .././Apps/Tasks/ModemTask/include/ModemCmdParser.h:
 
 ../Apps/Common/Common.h:
+
+../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h:
 
 .././Apps/Tasks/ModemTask/include/ModemParameters.h:
 

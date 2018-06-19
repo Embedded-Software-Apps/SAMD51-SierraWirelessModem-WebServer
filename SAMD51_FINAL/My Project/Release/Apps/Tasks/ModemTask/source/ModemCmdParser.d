@@ -23,6 +23,7 @@ Apps/Tasks/ModemTask/source/ModemCmdParser.d \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h \
  ../Apps/SerialDebug/SerialDebug.h \
+ ../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h \
  ../Apps/Tasks/ModemTask/include/ModemController.h ../driver_init.h \
  ../atmel_start_pins.h ../hal/include/hal_gpio.h \
  ../hal/include/hpl_gpio.h ../hal/utils/include/compiler.h \
@@ -227,6 +228,8 @@ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-ea
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h:
 
 ../Apps/SerialDebug/SerialDebug.h:
+
+../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h:
 
 ../Apps/Tasks/ModemTask/include/ModemController.h:
 

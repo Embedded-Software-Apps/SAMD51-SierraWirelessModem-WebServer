@@ -6,6 +6,7 @@
  */ 
 #include "Apps/Tasks/ModemTask/include/ModemConnection.h"
 #include "Apps/Tasks/ModemTask/include/ModemCmdParser.h"
+#include "Apps/Tasks/ModemTask/include/ModemAtCommandSet.h"
 
 /* Global variables */
 static HTTP_CONNECT_STATES_T gHttpMainState;

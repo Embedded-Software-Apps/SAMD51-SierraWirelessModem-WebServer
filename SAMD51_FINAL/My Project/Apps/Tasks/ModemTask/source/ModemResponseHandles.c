@@ -34,6 +34,18 @@ void mdmResp_AtRespHandler(uint8_t* response, uint8_t length)
 ** Description:        Gets the parsed modem response
 **
 **===========================================================================*/
+void defaultFunctionPointer(uint8_t* response, uint8_t length)
+{
+
+}
+
+/*============================================================================
+**
+** Function Name:      mdmComms_GetModemResponse
+**
+** Description:        Gets the parsed modem response
+**
+**===========================================================================*/
 void mdmResp_IMEIRespHandler(uint8_t* response, uint8_t length)
 {
 	SerialDebugPrint("In CGSN handler\r\n",18);

@@ -1,3 +1,16 @@
+
+/*=======================================================================================
+ * main.c
+ *
+ * Starting point for the application
+ *  - Initializes the drivers and middle wares.
+ *  - Implements the task creation.
+ *  - Starts the Free RTOS scheduler.
+ *======================================================================================*/
+
+/****************************************************************************************
+ INCLUDE FILES
+*****************************************************************************************/
 #include <atmel_start.h>
 #include <hal_delay.h>
 
@@ -21,11 +34,24 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
-BaseType_t DispatchTaskStatus;
-BaseType_t ModemProcessTaskStatus;
-BaseType_t ModemTxTaskStatus;
-BaseType_t ModemRxTaskStatus;
+/******************************************************************************************
+************************************STATIC VARIABLES***************************************
+*******************************************************************************************/
+static BaseType_t DispatchTaskStatus;
+static BaseType_t ModemProcessTaskStatus;
+static BaseType_t ModemTxTaskStatus;
+static BaseType_t ModemRxTaskStatus;
 
+/*******************************************************************************
+*
+* NAME       : main
+*
+* DESCRIPTION:  Starting point for the application
+*                - Initializes the drivers and middle wares.
+*                - Implements the task creation.
+*                - Starts the Free RTOS scheduler.
+*
+********************************************************************************/
 int main(void)
 {
     /* Initializes MCU, drivers and middleware */
@@ -57,8 +83,23 @@ int main(void)
     }
 
     DEBUG_PRINT("Error: Scheduler exited");
+
     /* The execution won't reach here ideally */
     for( ;; );
 
     return 0;
+}
+
+/*******************************************************************************
+*
+* NAME       : createQueuesAndSemaphores
+*
+* DESCRIPTION:  Creats the Queues and Semaphores
+*
+********************************************************************************/
+bool createQueuesAndSemaphores(void)
+{
+    /* Create the Message Queue */
+    AtTransmitQueue = xQueueCreate( MAX_TX_QUEUE_SIZE, sizeof(Message_Type));
+
 }

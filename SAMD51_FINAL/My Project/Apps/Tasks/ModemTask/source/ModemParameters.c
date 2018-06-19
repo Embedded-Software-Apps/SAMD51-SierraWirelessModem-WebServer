@@ -8,6 +8,7 @@
 #include "Apps/Tasks/ModemTask/include/ModemParameters.h"
 #include "Apps/Tasks/ModemTask/include/ModemResponseHandles.h"
 #include "Apps/SerialDebug/SerialDebug.h"
+#include "Apps/Tasks/ModemTask/include/ModemAtCommandSet.h"
 
 #define RESPONSE_BUFFER_SIZE (40)
 
