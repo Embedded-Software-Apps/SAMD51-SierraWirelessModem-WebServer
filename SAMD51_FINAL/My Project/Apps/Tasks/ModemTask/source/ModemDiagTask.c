@@ -11,14 +11,16 @@
 #include "apps/Tasks/ModemTask/include/ModemPowerControl.h"
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h"
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h"
+#include "Apps/Tasks/ModemTask/include/ModemDiagTask.h"
 
 /******************************************************************************************
 ************************************STATIC VARIABLES***************************************
 *******************************************************************************************/
-static AtTxMsgType AtTxQueueReceivedData;
+MODEM_DIAG_STATES_T ModemDiagState;
 
-static void ModemTxTaskSchedule(void);
-static void ModemTx_SendCommandToModem(AT_CMD_TYPE atCmd);
+
+static void ModemDiagInit(void);
+static void ModemDiagSchedule(void);
 /*******************************************************************************
 *
 * NAME       : getModemPowerState
@@ -26,16 +28,15 @@ static void ModemTx_SendCommandToModem(AT_CMD_TYPE atCmd);
 * DESCRIPTION: Gets the current Modem Power State.
 *
 ********************************************************************************/
-void ModemTxTask( void *ModemTaskParam)
+void ModemDiagTask( void *ModemTaskParam)
 {
-	const TickType_t xDelayMs = pdMS_TO_TICKS(1000UL);
+	ModemDiagInit();
 
 	while(1)
 	{
 		if(getModemPowerStatus() == MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS)
 		{
-			ModemTxTaskSchedule();
-			kickWatchDog();
+			ModemDiagSchedule();
 		}
 	}
 }
@@ -47,26 +48,67 @@ void ModemTxTask( void *ModemTaskParam)
 * DESCRIPTION: Gets the current Modem Power State.
 *
 ********************************************************************************/
-static void ModemTxTaskSchedule(void)
+static void ModemDiagInit(void)
 {
-	xQueueReceive( AtTransmitQueue, &AtTxQueueReceivedData, portMAX_DELAY );
-	ModemTx_SendCommandToModem(AtTxQueueReceivedData.atCmd);
-	DEBUG_PRINT("Transmitted a command to Modem");
+	ModemDiagState = MODEM_DIAG_TEST_AT;
 }
 
-/*============================================================================
-**
-** Function Name:      sendCommandToModem
-**
-** Description:        Transmits Data to Modem
-**
-**===========================================================================*/
-static void ModemTx_SendCommandToModem(AT_CMD_TYPE atCmd)
+/*******************************************************************************
+*
+* NAME       : getModemPowerState
+*
+* DESCRIPTION: Gets the current Modem Power State.
+*
+********************************************************************************/
+static void ModemDiagSchedule(void)
 {
-	MODEM_CMD_DATA ModemCmdData;
-	getModemCommandData(atCmd, &ModemCmdData);
-	mdmCtrlr_FlushRxBuffer();
-	mdmCtrlr_SendDataToModem(ModemCmdData.AtString,ModemCmdData.CmdLength);
-	mdmParser_SetLastSentAtCommand(atCmd);
-	mdmParser_SetLastCmdProcessed(false);
+	const TickType_t QueuePushDelayMs = pdMS_TO_TICKS(100UL);
+	const TickType_t DiagDelayMs = pdMS_TO_TICKS(500UL);
+	BaseType_t TxQueuePushStatus;
+	AtTxMsgType TxMsgQueueData;
+
+	switch(ModemDiagState)
+	{
+		case MODEM_DIAG_TEST_AT:
+		{
+			if (uxQueueMessagesWaiting(AtTransmitQueue) == 0)
+			{
+				TxMsgQueueData.atCmd = CMD_AT;
+				TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
+
+				if(TxQueuePushStatus == pdPASS)
+				{
+					DEBUG_PRINT("Sent the Diag data to Tx Task");
+					vTaskDelay(DiagDelayMs);
+					ModemDiagState = MODEM_DIAG_GET_IMEI;
+				}
+				else
+				{
+					DEBUG_PRINT("Failed to sent the Diag data to Tx Task");
+					vTaskDelay(DiagDelayMs);
+				}
+			}
+
+		}
+		break;
+
+		case MODEM_DIAG_GET_IMEI:
+		{
+
+		}
+		break;
+
+		case MODEM_DIAG_GET_SERIAL:
+		{
+
+		}
+		break;
+
+		case MODEM_DIAG_GET_CARRIER:
+		{
+
+		}
+		break;
+
+	}
 }

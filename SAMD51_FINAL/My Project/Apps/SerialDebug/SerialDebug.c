@@ -8,10 +8,11 @@
 #include "utils.h"
 #include "Apps/SerialDebug/SerialDebug.h"
 #include "Apps/UartDriver/include/UartDriver.h"
+#include "Apps/Common/Common.h"
 #include <hpl_usart_async.h>
 #include <string.h>
 #include <stdio.h>
-
+#include "portmacro.h"
 /* Initialize the UART Serial Debug interface and register the call backs */
 
 uint8_t printBuf[5];

@@ -27,13 +27,14 @@
 #include "Apps/Tasks/ModemTask/include/ModemRxTask.h"
 #include "Apps/Tasks/ModemTask/include/ModemProcessTask.h"
 #include "Apps/Tasks/ModemTask/include/ModemTxTask.h"
+#include "Apps/Tasks/ModemTask/include/ModemDiagTask.h"
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h"
 #include <string.h>
 
 /* FreeRTOS.org includes. */
 #include "FreeRTOS.h"
 #include "task.h"
-
+#include "queue.h"
 /******************************************************************************************
 ************************************STATIC VARIABLES***************************************
 *******************************************************************************************/
@@ -41,7 +42,7 @@ static BaseType_t DispatchTaskStatus;
 static BaseType_t ModemProcessTaskStatus;
 static BaseType_t ModemTxTaskStatus;
 static BaseType_t ModemRxTaskStatus;
-
+static BaseType_t ModemDiagTaskStatus;
 /*******************************************************************************
 *
 * NAME       : main
@@ -69,13 +70,25 @@ int main(void)
     /* Create Modem Process Task */
     ModemProcessTaskStatus = xTaskCreate( ModemProcessTask, "ModemProcessTask", 150, NULL, 1, xModemProcessTaskHandle);
 
+    /* Create Modem Diagnostics Task */
+    ModemDiagTaskStatus = xTaskCreate( ModemDiagTask, "ModemDiagTask", 150, NULL, 1, xModemDiagTaskHandle);
+
     if((DispatchTaskStatus == pdPASS) &&
        (ModemProcessTaskStatus == pdPASS) &&
        (ModemTxTaskStatus == pdPASS) &&
-       (ModemRxTaskStatus == pdPASS))
+       (ModemRxTaskStatus == pdPASS) &&
+	   (ModemDiagTaskStatus == pdPASS))
     {
     	DEBUG_PRINT("Successfully Created the Tasks");
-    	vTaskStartScheduler();
+
+    	if(false != createQueuesAndSemaphores)
+    	{
+    		vTaskStartScheduler();
+    	}
+    	else
+    	{
+    		DEBUG_PRINT("Free RTOS Scheduler not started");
+    	}
     }
     else
     {
@@ -99,7 +112,32 @@ int main(void)
 ********************************************************************************/
 bool createQueuesAndSemaphores(void)
 {
-    /* Create the Message Queue */
-    AtTransmitQueue = xQueueCreate( MAX_TX_QUEUE_SIZE, sizeof(Message_Type));
+	bool status = true;
 
+    /* Create the Message Queues */
+    AtTransmitQueue = xQueueCreate(MAX_TX_QUEUE_SIZE, sizeof(AtTxMsgType));
+    AtReceiveQueue  = xQueueCreate(MAX_RX_QUEUE_SIZE, sizeof(AtRxMsgType));
+
+    if((AtTransmitQueue != NULL) &&
+       (AtReceiveQueue  != NULL))
+    {
+    	DEBUG_PRINT("Tx & Rx Queues are created");
+
+    	AtTxQueueLoadMutex = xSemaphoreCreateMutex();
+		DebugPrintMutex    = xSemaphoreCreateMutex();
+		
+		if((AtTxQueueLoadMutex != NULL) &&
+		   (DebugPrintMutex    != NULL))
+		{
+			DEBUG_PRINT("Mutexes are created");
+		}
+		else
+		{
+			status = false;
+		}
+    }
+    else
+    {
+    	status = false;
+    }
 }

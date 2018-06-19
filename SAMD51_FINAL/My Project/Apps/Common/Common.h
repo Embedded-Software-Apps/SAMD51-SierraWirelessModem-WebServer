@@ -12,7 +12,9 @@
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h"
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h"
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h"
+#include "Apps/Tasks/ModemTask/include/ModemAtCommandSet.h"
 #include "Apps/SerialDebug/SerialDebug.h"
+#include "semphr.h"
 #include <stdbool.h>
 
 typedef enum
@@ -47,6 +49,7 @@ TaskHandle_t xModemRxTaskHandle;
 
 TaskHandle_t xDispatchTaskHandle;
 
+TaskHandle_t xModemDiagTaskHandle;
 
 typedef struct  
 {
@@ -137,13 +140,20 @@ uint32_t getSystemTime(void);
 /* IPC Mechanisms */
 QueueHandle_t AtTransmitQueue;
 QueueHandle_t AtReceiveQueue;
-
-#define MAX_TX_QUEUE_SIZE (2)
-#define MAX_RX_QUEUE_SIZE (5)
+SemaphoreHandle_t AtTxQueueLoadMutex;
+SemaphoreHandle_t DebugPrintMutex;
+#define MAX_TX_QUEUE_SIZE (1)
+#define MAX_RX_QUEUE_SIZE (1)
 
 typedef struct
 {
-	
+	AT_CMD_TYPE atCmd;
 }AtTxMsgType;
 
+typedef struct
+{
+	AT_CMD_TYPE atCmd;
+}AtRxMsgType;
+
+bool createQueuesAndSemaphores(void);
 #endif /* COMMON_H_ */

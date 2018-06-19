@@ -18,7 +18,10 @@ Apps/Common/FreeRtosHooks.d Apps/Common/FreeRtosHooks.o: \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h \
+ ../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h \
  ../Apps/SerialDebug/SerialDebug.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdbool.h
 
 ../Apps/Common/Common.h:
@@ -61,6 +64,12 @@ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\inclu
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h:
 
+../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h:
+
 ../Apps/SerialDebug/SerialDebug.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
 
 e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdbool.h:

@@ -224,3 +224,28 @@ bool mdmParser_IsLastCmdProcessed(void)
 {
 	return isPrevCmdRespProcessed;
 }
+
+/*============================================================================
+**
+** Function Name:      mdmComms_GetModemResponse
+**
+** Description:        Gets the parsed modem response
+**
+**===========================================================================*/
+void mdmParser_SetLastSentAtCommand(AT_CMD_TYPE cmd)
+{
+	lastSendATCommand = cmd;
+}
+
+/*============================================================================
+**
+** Function Name:      mdmComms_GetModemResponse
+**
+** Description:        Gets the parsed modem response
+**
+**===========================================================================*/
+AT_CMD_TYPE mdmParser_GetLastSentAtCommand(void)
+{
+	return lastSendATCommand;
+}
+

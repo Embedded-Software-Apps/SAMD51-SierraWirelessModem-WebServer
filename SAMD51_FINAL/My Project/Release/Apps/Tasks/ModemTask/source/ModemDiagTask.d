@@ -1,7 +1,8 @@
-Apps/Tasks/ModemTask/source/ModemTxTask.d \
- Apps/Tasks/ModemTask/source/ModemTxTask.o: \
- ../Apps/Tasks/ModemTask/source/ModemTxTask.c ../hal/include/hal_delay.h \
- ../hal/include/hpl_irq.h ../hal/utils/include/compiler.h \
+Apps/Tasks/ModemTask/source/ModemDiagTask.d \
+ Apps/Tasks/ModemTask/source/ModemDiagTask.o: \
+ ../Apps/Tasks/ModemTask/source/ModemDiagTask.c \
+ ../hal/include/hal_delay.h ../hal/include/hpl_irq.h \
+ ../hal/utils/include/compiler.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stddef.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdint.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\stdint.h \
@@ -166,7 +167,8 @@ Apps/Tasks/ModemTask/source/ModemTxTask.d \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  ../apps/Tasks/ModemTask/include/ModemPowerControl.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h \
+ ../Apps/Tasks/ModemTask/include/ModemDiagTask.h
 
 ../hal/include/hal_delay.h:
 
@@ -557,3 +559,5 @@ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\inclu
 ../apps/Tasks/ModemTask/include/ModemPowerControl.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h:
+
+../Apps/Tasks/ModemTask/include/ModemDiagTask.h:

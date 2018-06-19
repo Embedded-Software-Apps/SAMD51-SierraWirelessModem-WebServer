@@ -21,5 +21,7 @@ void mdmParser_GetModemResponse(AT_CMD_TYPE cmd,uint8_t* response,uint8_t* respL
 void mdmParser_ProcessModemResponse(void);
 void mdmParser_SetLastCmdProcessed(bool status);
 bool mdmParser_IsLastCmdProcessed(void);
+void mdmParser_SetLastSentAtCommand(AT_CMD_TYPE cmd);
+AT_CMD_TYPE mdmParser_GetLastSentAtCommand(void);
 
 #endif /* MODEMCMDPARSER_H_ */
