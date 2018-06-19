@@ -106,8 +106,6 @@ extern struct timer_descriptor TIMER_6;
 
 extern struct timer_descriptor TIMER_7;
 
-extern struct wdt_descriptor WDT_0;
-
 void AC_0_PORT_init(void);
 void AC_0_CLOCK_init(void);
 void AC_0_init(void);

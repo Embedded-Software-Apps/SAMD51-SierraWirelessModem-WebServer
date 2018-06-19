@@ -427,7 +427,15 @@ void WDT_0_CLOCK_init(void)
 void WDT_0_init(void)
 {
 	WDT_0_CLOCK_init();
-	wdt_init(&WDT_0, WDT);
+
+	if(0 == wdt_init(&WDT_0, WDT))
+	{
+		DEBUG_PRINT("WDT Initialised");
+	}
+	else
+	{
+		DEBUG_PRINT("WDT Failed to initialize");
+	}
 }
 
 void system_init(void)

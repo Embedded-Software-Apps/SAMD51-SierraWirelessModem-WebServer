@@ -24,7 +24,7 @@
 // <id> rtc_1khz_selection
 #ifndef CONF_RTCCTRL_1KHZ
 
-#define CONF_RTCCTRL_1KHZ 0
+#define CONF_RTCCTRL_1KHZ 1
 
 #endif
 
@@ -139,7 +139,7 @@
 // <i> Indicates whether configuration for OSCULP32K is enabled or not
 // <id> enable_osculp32k
 #ifndef CONF_OSCULP32K_CONFIG
-#define CONF_OSCULP32K_CONFIG 0
+#define CONF_OSCULP32K_CONFIG 1
 #endif
 
 // <h> 32kHz Ultra Low Power Internal Oscillator Control
@@ -148,7 +148,7 @@
 // <i> Indicates whether Oscillator Calibration is enabled or not
 // <id> osculp32k_calib_enable
 #ifndef CONF_OSCULP32K_CALIB_ENABLE
-#define CONF_OSCULP32K_CALIB_ENABLE 0
+#define CONF_OSCULP32K_CALIB_ENABLE 1
 #endif
 
 // <o> Oscillator Calibration <0x0-0x3F>

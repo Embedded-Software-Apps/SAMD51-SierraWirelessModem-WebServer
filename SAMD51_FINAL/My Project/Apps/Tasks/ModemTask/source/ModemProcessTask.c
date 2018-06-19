@@ -32,19 +32,19 @@
 ********************************************************************************/
 void ModemProcessTask( void *ModemTaskParam)
 {
-	const TickType_t xDelayMs = pdMS_TO_TICKS(5000UL);
+    const TickType_t xDelayMs = pdMS_TO_TICKS(5000UL);
 
-	modemPowerStateInit();
+    modemPowerStateInit();
 
-	while(1)
-	{
-		modemPowerSchedule();
+    while(1)
+    {
+        modemPowerSchedule();
 
-		if(getModemPowerStatus() == MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS)
-		{
-			DEBUG_PRINT("Running Modem Process Task successfully");
-			vTaskDelay(xDelayMs);
-		}
-	}
+        if(getModemPowerStatus() == MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS)
+        {
+            DEBUG_PRINT("Running Modem Process Task successfully");
+            vTaskDelay(xDelayMs);
+        }
+    }
 }
 

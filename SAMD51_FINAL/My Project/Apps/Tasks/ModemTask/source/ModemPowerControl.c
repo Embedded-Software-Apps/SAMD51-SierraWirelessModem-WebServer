@@ -24,6 +24,8 @@
 *******************************************************************************************/
 static MODEM_POWER_STATES_T ModemPwrState;
 static MODEM_POWER_ON_SUBSTATES_T ModemPwrOnSubState;
+static MODEM_RESET_SUBSTATES_T ModemResetSubState;
+static MODEM_FORCED_OFF_SUBSTATES_T ModemForcedOffSubState;
 static TimerHandle_t xPowerOnWaitTimer;
 static BaseType_t PowerOnWaitTimerStarted;
 static bool PowerOnWaitTimerExpired;
@@ -37,7 +39,7 @@ static bool PowerOnWaitTimerExpired;
 ********************************************************************************/
 MODEM_POWER_STATES_T getModemPowerStatus(void)
 {
-	return ModemPwrState;
+    return ModemPwrState;
 }
 
 /*******************************************************************************
@@ -51,6 +53,8 @@ void modemPowerStateInit(void)
 {
     ModemPwrState = MDM_PWR_SHUTDOWN;
     ModemPwrOnSubState = MDM_PWR_ALL_SIG_INIT;
+    ModemResetSubState = MDM_PWR_RESET_DEASSERT;
+    ModemForcedOffSubState = MDM_PWR_FORCED_OFF_CMPLTD;
 }
 
 /*******************************************************************************
@@ -62,9 +66,10 @@ void modemPowerStateInit(void)
 ********************************************************************************/
 void modemPowerSchedule(void)
 {
-	const TickType_t ModemSigInitDelay = pdMS_TO_TICKS(500UL);
-	const TickType_t ModemOnBurstDelay = pdMS_TO_TICKS(50UL);
-	const TickType_t ModemOnWaitDelay = pdMS_TO_TICKS(3000UL);
+    const TickType_t ModemSigInitDelay = pdMS_TO_TICKS(500UL);
+    const TickType_t ModemOnBurstDelay = pdMS_TO_TICKS(50UL);
+    const TickType_t ModemOnWaitDelay = pdMS_TO_TICKS(3000UL);
+    const TickType_t ModemResetWaitDelay = pdMS_TO_TICKS(25UL);
 
     switch(ModemPwrState)
     {
@@ -96,25 +101,25 @@ void modemPowerSchedule(void)
 
                 case MDM_PWR_MDM_ON_SIG_LOW:
                 {
-                	/* Give a short 50 ms positive pulse on MODEM ON Pin */
-                	gpio_set_pin_level(MODEM_ON,true);
-                	ModemPwrOnSubState = MDM_PWR_MDM_ON_SIG_HIGH;
-                	vTaskDelay(ModemOnBurstDelay);
+                    /* Give a short 50 ms positive pulse on MODEM ON Pin */
+                    gpio_set_pin_level(MODEM_ON,true);
+                    ModemPwrOnSubState = MDM_PWR_MDM_ON_SIG_HIGH;
+                    vTaskDelay(ModemOnBurstDelay);
                 }
                 break;
 
                 case MDM_PWR_MDM_ON_SIG_HIGH:
                 {
-                	/* Wait untill the modem is powered on */
-                	ModemPwrOnSubState = MDM_PWR_ON_COMPLETED;
-                	vTaskDelay(ModemOnWaitDelay);
+                    /* Wait untill the modem is powered on */
+                    ModemPwrOnSubState = MDM_PWR_ON_COMPLETED;
+                    vTaskDelay(ModemOnWaitDelay);
                 }
                 break;
 
                 case MDM_PWR_ON_COMPLETED:
                 {
-                	//DEBUG_PRINT("Modem Powered On");
-                	ModemPwrState = MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS;
+                    //DEBUG_PRINT("Modem Powered On");
+                    ModemPwrState = MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS;
                 }
                 break;
 
@@ -157,7 +162,7 @@ void modemPowerSchedule(void)
              * If the UART link between SAMD and modem is operational,
              * voltage on this pin will be transitioned from logic 0 to logic 1.
              */
-			#if 0
+            #if 0
             if(gpio_get_pin_level(MODEM_DTR))
             {
                 ModemPwrState = MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS;
@@ -166,7 +171,7 @@ void modemPowerSchedule(void)
             {
 
             }
-			#endif
+            #endif
         }
         break;
         
@@ -176,19 +181,75 @@ void modemPowerSchedule(void)
              * We may need to improve here once the above mentioned pins are 
              * populated in PCB.
              */
-        	//DEBUG_PRINT("Modem is ready for AT commands");
+            //DEBUG_PRINT("Modem is ready for AT commands");
         }
         break;
                 
         case MDM_PWR_RESET_MODEM:
         {
-            
+            switch(ModemResetSubState)
+            {
+                case MDM_PWR_RESET_ASSERT:
+                {
+                    gpio_set_pin_direction(MODEM_RESET, GPIO_DIRECTION_OUT);
+                    gpio_set_pin_function(MODEM_RESET, GPIO_PIN_FUNCTION_OFF);
+                    gpio_set_pin_level(MODEM_RESET,true);
+                    ModemResetSubState = MDM_PWR_RESET_DEASSERT;
+                    vTaskDelay(ModemResetWaitDelay);
+                }
+                break;
+
+                case MDM_PWR_RESET_DEASSERT:
+                {
+                    gpio_set_pin_direction(MODEM_RESET, GPIO_DIRECTION_OUT);
+                    gpio_set_pin_function(MODEM_RESET, GPIO_PIN_FUNCTION_OFF);
+                    gpio_set_pin_level(MODEM_RESET,false);
+
+                    /* Power On the Modem after reset */
+                    ModemPwrState = MDM_PWR_SHUTDOWN;
+                    ModemPwrOnSubState = MDM_PWR_ALL_SIG_INIT;
+                }
+                break;
+
+                default:
+                break;
+            }
         }
         break;
 
-        case MDM_PWR_POWER_OFF:
+        case MDM_PWR_NORMAL_POWER_OFF:
         {
             /* Send AT+CPWROFF */
+        }
+        break;
+
+        case MDM_PWR_FORCED_POWER_OFF:
+        {
+            switch(ModemForcedOffSubState)
+            {
+                case MDM_PWR_FORCED_OFF_INIT:
+                {
+                    gpio_set_pin_direction(MODEM_ON, GPIO_DIRECTION_OUT);
+                    gpio_set_pin_function(MODEM_ON, GPIO_PIN_FUNCTION_OFF);
+                    gpio_set_pin_level(MODEM_ON,false);
+
+                    gpio_set_pin_direction(MODEM_RESET, GPIO_DIRECTION_OUT);
+                    gpio_set_pin_function(MODEM_RESET, GPIO_PIN_FUNCTION_OFF);
+                    gpio_set_pin_level(MODEM_RESET,true);
+                    ModemForcedOffSubState = MDM_PWR_FORCED_OFF_CMPLTD;
+                    vTaskDelay(ModemResetWaitDelay);
+                }
+                break;
+
+                case MDM_PWR_FORCED_OFF_CMPLTD:
+                {
+                    /* Wait Here until next power on*/
+                }
+                break;
+
+                default:
+                break;
+            }
         }
         break;
                 
@@ -201,26 +262,4 @@ void modemPowerSchedule(void)
         default:
         break;
     }
-}
-
-
-
-void performModemReset(void)
-{
-    gpio_set_pin_direction(MODEM_ON, GPIO_DIRECTION_OUT);
-    gpio_set_pin_function(MODEM_ON, GPIO_PIN_FUNCTION_OFF);
-    gpio_set_pin_level(MODEM_ON,true);
-    delay_ms(500);
-    gpio_set_pin_direction(MODEM_RESET, GPIO_DIRECTION_OUT);
-    gpio_set_pin_function(MODEM_RESET, GPIO_PIN_FUNCTION_OFF);
-    gpio_set_pin_level(MODEM_RESET,true);
-    delay_ms(30);
-    DEBUG_PRINT("Modem Reset Completed");
-}
-
-
-void EnableWatchDog(void)
-{
-    wdt_set_timeout_period(&WDT_0, 10000, 5000);
-    wdt_enable(&WDT_0);
 }

@@ -16,11 +16,12 @@
 
 void ModemTxTask( void *ModemTaskParam)
 {
-	const TickType_t xDelayMs = pdMS_TO_TICKS(6000UL);
+	const TickType_t xDelayMs = pdMS_TO_TICKS(1000UL);
 
 	while(1)
 	{
 		DEBUG_PRINT("Running Modem Tx Task successfully");
 		vTaskDelay(xDelayMs);
+		kickWatchDog();
 	}
 }
