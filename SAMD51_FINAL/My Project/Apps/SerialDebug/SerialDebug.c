@@ -82,7 +82,6 @@ void ConsoleDebugPrint(const uint8_t *const dataToPrint)
 	memset(dbgBuffer,'\0',100);
 	sprintf((int8_t*)dbgBuffer,"%s %s",dataToPrint,"\r\n");
 	SerialDebugPrint(dbgBuffer,strlen(dbgBuffer));
-	delay_ms(250);
 }
 /* UART Rx Interrupt Handler */ 
 /*

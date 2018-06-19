@@ -2,6 +2,8 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+Apps\Common\FreeRtosHooks.c
+
 Apps\JsonParser\source\JsonPacket.c
 
 Apps\JsonParser\source\parson.c
@@ -16,6 +18,8 @@ Apps\SensorAdcInputs\source\SensorAdcInputs.c
 
 Apps\Tasks\DispatchTask\source\DispatchTask.c
 
+Apps\Tasks\ModemTask\source\ModemBasicTest.c
+
 Apps\Tasks\ModemTask\source\ModemCmdParser.c
 
 Apps\Tasks\ModemTask\source\ModemConnection.c
@@ -25,6 +29,8 @@ Apps\Tasks\ModemTask\source\ModemController.c
 Apps\Tasks\ModemTask\source\ModemParameters.c
 
 Apps\Tasks\ModemTask\source\ModemPowerControl.c
+
+Apps\Tasks\ModemTask\source\ModemProcessTask.c
 
 Apps\Tasks\ModemTask\source\ModemResponseHandles.c
 

@@ -17,13 +17,14 @@
 
 void DispatchTask( void *DispatchTaskParam)
 {
-	const TickType_t xDelayMs = pdMS_TO_TICKS(20UL);
+	TickType_t xLastWakeTime;
+	const TickType_t xDelayMs = pdMS_TO_TICKS(10000UL);
+	xLastWakeTime = xTaskGetTickCount();
 	DEBUG_PRINT("Entering Dispatch Task");
 
 	while(1)
 	{
 		DEBUG_PRINT("Running Dispatch Task successfully");
-		vTaskDelay(xDelayMs);
+		vTaskDelayUntil( &xLastWakeTime, xDelayMs);
 	}
-
 }

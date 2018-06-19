@@ -20,9 +20,11 @@ Apps/Tasks/ModemTask/source/ModemParameters.d \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/portmacro.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/mpu_wrappers.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h \
+ ../Apps/SerialDebug/SerialDebug.h \
  ../Apps/Tasks/ModemTask/include/ModemParameters.h \
- ../Apps/Tasks/ModemTask/include/ModemResponseHandles.h \
- ../Apps/SerialDebug/SerialDebug.h
+ ../Apps/Tasks/ModemTask/include/ModemResponseHandles.h
 
 ../Apps/Tasks/ModemTask/include/ModemCmdParser.h:
 
@@ -64,8 +66,12 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gc
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
 
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h:
+
+../Apps/SerialDebug/SerialDebug.h:
+
 ../Apps/Tasks/ModemTask/include/ModemParameters.h:
 
 ../Apps/Tasks/ModemTask/include/ModemResponseHandles.h:
-
-../Apps/SerialDebug/SerialDebug.h:

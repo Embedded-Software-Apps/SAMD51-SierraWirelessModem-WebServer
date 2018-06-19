@@ -15,7 +15,7 @@
 
 void ModemProcessTask( void *ModemTaskParam)
 {
-	const TickType_t xDelayMs = pdMS_TO_TICKS(10UL);
+	const TickType_t xDelayMs = pdMS_TO_TICKS(5000UL);
 	DEBUG_PRINT("Entering Modem Process Task");
 
 	while(1)

@@ -106,6 +106,7 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../Apps/Common/FreeRtosHooks.c \
 ../Apps/JsonParser/source/JsonPacket.c \
 ../Apps/JsonParser/source/parson.c \
 ../Apps/LedControl/source/ledControl.c \
@@ -113,11 +114,13 @@ C_SRCS +=  \
 ../Apps/SelectInputs/source/selectInputs.c \
 ../Apps/SensorAdcInputs/source/SensorAdcInputs.c \
 ../Apps/Tasks/DispatchTask/source/DispatchTask.c \
+../Apps/Tasks/ModemTask/source/ModemBasicTest.c \
 ../Apps/Tasks/ModemTask/source/ModemCmdParser.c \
 ../Apps/Tasks/ModemTask/source/ModemConnection.c \
 ../Apps/Tasks/ModemTask/source/ModemController.c \
 ../Apps/Tasks/ModemTask/source/ModemParameters.c \
 ../Apps/Tasks/ModemTask/source/ModemPowerControl.c \
+../Apps/Tasks/ModemTask/source/ModemProcessTask.c \
 ../Apps/Tasks/ModemTask/source/ModemResponseHandles.c \
 ../Apps/Tasks/ModemTask/source/ModemRxTask.c \
 ../Apps/Tasks/ModemTask/source/ModemTxTask.c \
@@ -195,6 +198,7 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+Apps/Common/FreeRtosHooks.o \
 Apps/JsonParser/source/JsonPacket.o \
 Apps/JsonParser/source/parson.o \
 Apps/LedControl/source/ledControl.o \
@@ -202,11 +206,13 @@ Apps/LedControl/source/ledPwmControl.o \
 Apps/SelectInputs/source/selectInputs.o \
 Apps/SensorAdcInputs/source/SensorAdcInputs.o \
 Apps/Tasks/DispatchTask/source/DispatchTask.o \
+Apps/Tasks/ModemTask/source/ModemBasicTest.o \
 Apps/Tasks/ModemTask/source/ModemCmdParser.o \
 Apps/Tasks/ModemTask/source/ModemConnection.o \
 Apps/Tasks/ModemTask/source/ModemController.o \
 Apps/Tasks/ModemTask/source/ModemParameters.o \
 Apps/Tasks/ModemTask/source/ModemPowerControl.o \
+Apps/Tasks/ModemTask/source/ModemProcessTask.o \
 Apps/Tasks/ModemTask/source/ModemResponseHandles.o \
 Apps/Tasks/ModemTask/source/ModemRxTask.o \
 Apps/Tasks/ModemTask/source/ModemTxTask.o \
@@ -277,6 +283,7 @@ thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
 
 OBJS_AS_ARGS +=  \
+Apps/Common/FreeRtosHooks.o \
 Apps/JsonParser/source/JsonPacket.o \
 Apps/JsonParser/source/parson.o \
 Apps/LedControl/source/ledControl.o \
@@ -284,11 +291,13 @@ Apps/LedControl/source/ledPwmControl.o \
 Apps/SelectInputs/source/selectInputs.o \
 Apps/SensorAdcInputs/source/SensorAdcInputs.o \
 Apps/Tasks/DispatchTask/source/DispatchTask.o \
+Apps/Tasks/ModemTask/source/ModemBasicTest.o \
 Apps/Tasks/ModemTask/source/ModemCmdParser.o \
 Apps/Tasks/ModemTask/source/ModemConnection.o \
 Apps/Tasks/ModemTask/source/ModemController.o \
 Apps/Tasks/ModemTask/source/ModemParameters.o \
 Apps/Tasks/ModemTask/source/ModemPowerControl.o \
+Apps/Tasks/ModemTask/source/ModemProcessTask.o \
 Apps/Tasks/ModemTask/source/ModemResponseHandles.o \
 Apps/Tasks/ModemTask/source/ModemRxTask.o \
 Apps/Tasks/ModemTask/source/ModemTxTask.o \
@@ -359,6 +368,7 @@ thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
 
 C_DEPS +=  \
+Apps/Common/FreeRtosHooks.d \
 Apps/JsonParser/source/JsonPacket.d \
 Apps/JsonParser/source/parson.d \
 Apps/LedControl/source/ledControl.d \
@@ -366,11 +376,13 @@ Apps/LedControl/source/ledPwmControl.d \
 Apps/SelectInputs/source/selectInputs.d \
 Apps/SensorAdcInputs/source/SensorAdcInputs.d \
 Apps/Tasks/DispatchTask/source/DispatchTask.d \
+Apps/Tasks/ModemTask/source/ModemBasicTest.d \
 Apps/Tasks/ModemTask/source/ModemCmdParser.d \
 Apps/Tasks/ModemTask/source/ModemConnection.d \
 Apps/Tasks/ModemTask/source/ModemController.d \
 Apps/Tasks/ModemTask/source/ModemParameters.d \
 Apps/Tasks/ModemTask/source/ModemPowerControl.d \
+Apps/Tasks/ModemTask/source/ModemProcessTask.d \
 Apps/Tasks/ModemTask/source/ModemResponseHandles.d \
 Apps/Tasks/ModemTask/source/ModemRxTask.d \
 Apps/Tasks/ModemTask/source/ModemTxTask.d \
@@ -441,6 +453,7 @@ thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.d \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.d
 
 C_DEPS_AS_ARGS +=  \
+Apps/Common/FreeRtosHooks.d \
 Apps/JsonParser/source/JsonPacket.d \
 Apps/JsonParser/source/parson.d \
 Apps/LedControl/source/ledControl.d \
@@ -448,11 +461,13 @@ Apps/LedControl/source/ledPwmControl.d \
 Apps/SelectInputs/source/selectInputs.d \
 Apps/SensorAdcInputs/source/SensorAdcInputs.d \
 Apps/Tasks/DispatchTask/source/DispatchTask.d \
+Apps/Tasks/ModemTask/source/ModemBasicTest.d \
 Apps/Tasks/ModemTask/source/ModemCmdParser.d \
 Apps/Tasks/ModemTask/source/ModemConnection.d \
 Apps/Tasks/ModemTask/source/ModemController.d \
 Apps/Tasks/ModemTask/source/ModemParameters.d \
 Apps/Tasks/ModemTask/source/ModemPowerControl.d \
+Apps/Tasks/ModemTask/source/ModemProcessTask.d \
 Apps/Tasks/ModemTask/source/ModemResponseHandles.d \
 Apps/Tasks/ModemTask/source/ModemRxTask.d \
 Apps/Tasks/ModemTask/source/ModemTxTask.d \
@@ -698,6 +713,19 @@ LINKER_SCRIPT_DEP+=  \
 
 
 
+
+
+
+
+
+
+
+Apps/Common/%.o: ../Apps/Common/%.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAMD51J20A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include" -I"../stdio_redirect" -I"../Config" -I".." -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/ac" -I"../hpl/adc" -I"../hpl/core" -I"../hpl/dac" -I"../hpl/dmac" -I"../hpl/eic" -I"../hpl/evsys" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/nvmctrl" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/ramecc" -I"../hpl/sercom" -I"../hpl/systick" -I"../hpl/tc" -I"../hpl/tcc" -I"../hpl/wdt" -I"../hri" -I"../thirdparty/RTOS" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/module_config"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m4 -c -std=gnu99 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
 
 Apps/JsonParser/source/%.o: ../Apps/JsonParser/source/%.c
 	@echo Building file: $<
