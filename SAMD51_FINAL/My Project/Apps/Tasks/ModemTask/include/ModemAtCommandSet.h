@@ -63,8 +63,29 @@ typedef struct
 	uint16_t validDataCnt;
 	ResponseHandler respHandler;
 	uint16_t ResponseLength;
-	
 }MODEM_CMD_DATA;
+
+typedef enum
+{
+	DISPATCH_TASK = 0,
+	MODEM_PROCESS_TASK,
+	MODEM_TX_TASK,
+	MODEM_RX_TASK,
+	MODEM_DIAG_TASK
+}TASK_ID_TYPE;
+
+typedef struct
+{
+	TASK_ID_TYPE taskID;
+	AT_CMD_TYPE atCmd;
+	uint32_t pData;
+}AtTxMsgType;
+
+
+typedef struct
+{
+	AT_CMD_TYPE atCmd;
+}AtRxMsgType;
 
 void getModemCommandData(AT_CMD_TYPE cmd, MODEM_CMD_DATA* cmdData);
 void mdmParser_SetKhttpHeaderString(uint8_t* sessionID);

@@ -77,12 +77,24 @@ void SerialDebugPrint(const uint8_t *const dataToPrint,const uint16_t length)
 }
 
 
-void ConsoleDebugPrint(const uint8_t *const dataToPrint)
+void SerialStringPrint(const uint8_t *const dataToPrint)
 {
 	uint8_t dbgBuffer[100];
 	memset(dbgBuffer,'\0',100);
 	sprintf((int8_t*)dbgBuffer,"%s %s",dataToPrint,"\r\n");
 	SerialDebugPrint(dbgBuffer,strlen(dbgBuffer));
+}
+
+void ConsoleDebugPrint(const uint8_t *const txt, uint32_t intData)
+{
+	uint8_t dbgBuffer[100];
+	memset(dbgBuffer,'\0',100);
+
+	if(intData != 0)
+	{
+		sprintf((int8_t*)dbgBuffer,"%s - %d \r\n",txt,intData);
+		SerialDebugPrint(dbgBuffer,strlen(dbgBuffer));
+	}
 }
 /* UART Rx Interrupt Handler */ 
 /*

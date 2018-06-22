@@ -144,15 +144,11 @@ SemaphoreHandle_t AtTxQueueLoadSemaphore;
 #define MAX_TX_QUEUE_SIZE (1)
 #define MAX_RX_QUEUE_SIZE (1)
 
-typedef struct
+typedef enum
 {
-	AT_CMD_TYPE atCmd;
-}AtTxMsgType;
-
-typedef struct
-{
-	AT_CMD_TYPE atCmd;
-}AtRxMsgType;
+	OP_TX_MODE,
+	OP_RX_MODE
+}TASK_OPERATION_MODE;
 
 bool createQueuesAndSemaphores(void);
 #endif /* COMMON_H_ */

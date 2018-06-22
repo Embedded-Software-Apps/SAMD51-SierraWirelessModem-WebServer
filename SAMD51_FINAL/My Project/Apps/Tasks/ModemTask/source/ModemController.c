@@ -12,6 +12,12 @@
 #include "Apps\Tasks\ModemTask\include\ModemPowerControl.h"
 #include "Apps\SerialDebug\SerialDebug.h"
 #include "Apps\UartDriver\include\UartDriver.h"
+#include "Apps/Common/Common.h"
+
+/* FreeRTOS.org includes. */
+#include "FreeRTOS.h"
+#include "task.h"
+#include "semphr.h"
 
 #define SIZE_MODEM_RX_DATA_BUF (2048)
 #define ENABLE_SERCOM3_RX_DEBUG (0)
@@ -20,7 +26,7 @@ static uint8_t RxDataBuff[2];
 uint8_t rxEcho[2];
 uint8_t  ModemRxDatabuffer[SIZE_MODEM_RX_DATA_BUF];
 
-struct _usart_async_device MODEM_DATA =
+struct _usart_async_device MODEM_SERCOM3_UART =
 {
 	.hw = SERCOM3,
 	.irq.handler = NULL,
@@ -44,7 +50,7 @@ void mdmCtrlr_DataCommInit(void)
 {
 	uint32_t initStatus;
 	
-	initStatus = _usart_async_init(&MODEM_DATA,SERCOM3);
+	initStatus = _usart_async_init(&MODEM_SERCOM3_UART,SERCOM3);
 	
 	if(initStatus == ERR_NONE)
 	{
@@ -54,8 +60,8 @@ void mdmCtrlr_DataCommInit(void)
 	if(initStatus == ERR_NONE)
 	{
 		/* Enable all of the UART interrupts for SERCOM3 */
-		_usart_async_set_irq_state(&MODEM_DATA,USART_ASYNC_RX_DONE,true);
-		_usart_async_enable(&MODEM_DATA);
+		_usart_async_set_irq_state(&MODEM_SERCOM3_UART,USART_ASYNC_RX_DONE,true);
+		_usart_async_enable(&MODEM_SERCOM3_UART);
 		DEBUG_PRINT("MODEM DATA UART (SERCOM3) initialized");
 	}
 	else
@@ -102,9 +108,10 @@ void SERCOM3_2_Handler( void )
 {
 	uint8_t rcvdChar[2];
 	uint8_t rxPrint[2];
+	BaseType_t xHigherPriorityTaskWoken;
 	
-	while (!_usart_async_is_byte_received(&MODEM_DATA));
-	rcvdChar[0] = _usart_async_read_byte(&MODEM_DATA);
+	while (!_usart_async_is_byte_received(&MODEM_SERCOM3_UART));
+	rcvdChar[0] = _usart_async_read_byte(&MODEM_SERCOM3_UART);
 	
 #if ENABLE_SERCOM3_RX_DEBUG
 	rcvdChar[1] = '\0';
@@ -113,6 +120,18 @@ void SERCOM3_2_Handler( void )
 #endif
 	
 	ringbuffer_put(&RxRingBuffer, rcvdChar[0]);
+
+	/* Send a notification directly to the handler task. */
+	vTaskNotifyGiveFromISR( /* The handle of the task to which the notification
+							is being sent.  The handle was saved when the task
+							was created. */
+							xModemRxTaskHandle,
+
+							/* xHigherPriorityTaskWoken is used in the usual
+							way. */
+							&xHigherPriorityTaskWoken );
+
+	portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 }
 
 /*============================================================================
@@ -124,8 +143,8 @@ void SERCOM3_2_Handler( void )
 **===========================================================================*/
 uint32_t mdmCtrlr_SendDataToModem(const uint8_t *const TxData,const uint16_t length)
 {
-	_usart_async_enable(&MODEM_DATA);
-	return usart_async_write(&MODEM_DATA, TxData, length);
+	_usart_async_enable(&MODEM_SERCOM3_UART);
+	return usart_async_write(&MODEM_SERCOM3_UART, TxData, length);
 }
 
 /*============================================================================

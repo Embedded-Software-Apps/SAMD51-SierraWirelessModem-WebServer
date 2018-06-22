@@ -57,6 +57,7 @@ static void ModemTxTaskSchedule(void)
 		{
 			xQueueReceive( AtTransmitQueue, &AtTxQueueReceivedData, portMAX_DELAY );
 			ModemTx_SendCommandToModem(AtTxQueueReceivedData.atCmd);
+			ConsoleDebugPrint("Task ID",AtTxQueueReceivedData.taskID);
 			DEBUG_PRINT("Transmitted a command to Modem");
 			xSemaphoreGive(AtTxQueueLoadSemaphore);
 		}

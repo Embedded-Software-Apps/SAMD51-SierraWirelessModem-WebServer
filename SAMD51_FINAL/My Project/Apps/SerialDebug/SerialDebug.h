@@ -27,9 +27,9 @@ void SerialDebugRxDoneCallBack(struct _usart_async_device *device,uint8_t data);
 void SerialDebugErrorCallBack(struct _usart_async_device *device);
 #endif
 void SerialDebugPrint(const uint8_t *const dataToPrint,const uint16_t length);
-void ConsoleDebugPrint(const uint8_t *const dataToPrint);
-
+void SerialStringPrint(const uint8_t *const dataToPrint);
+void ConsoleDebugPrint(const uint8_t *const txt, uint32_t intData);
 /* Debug Print Macro */
-#define DEBUG_PRINT(str) (ConsoleDebugPrint(str))
+#define DEBUG_PRINT(str) (SerialStringPrint(str))
 
 #endif /* SERIALDEBUG_H_ */
