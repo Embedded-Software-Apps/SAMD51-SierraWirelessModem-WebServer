@@ -31,7 +31,8 @@ Apps/Tasks/ModemTask/source/ModemRxTask.d \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\cdefs.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdbool.h \
  ../apps/Tasks/ModemTask/include/ModemPowerControl.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h \
+ ../Apps/Tasks/ModemTask/include/ModemCmdParser.h
 
 ../Apps/SerialDebug/SerialDebug.h:
 
@@ -96,3 +97,5 @@ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-ea
 ../apps/Tasks/ModemTask/include/ModemPowerControl.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h:
+
+../Apps/Tasks/ModemTask/include/ModemCmdParser.h:

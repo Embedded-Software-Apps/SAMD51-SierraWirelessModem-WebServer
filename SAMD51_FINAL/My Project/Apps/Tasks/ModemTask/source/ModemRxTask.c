@@ -9,25 +9,40 @@
 #include "apps/Tasks/ModemTask/include/ModemPowerControl.h"
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h"
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h"
+#include "Apps/Tasks/ModemTask/include/ModemCmdParser.h"
+
+static uint8_t responseDataBuffer[MAX_RESPONSE_SIZE];
 
 void ModemRxTask( void *ModemTaskParam)
 {
 	const TickType_t xDelayMs = pdMS_TO_TICKS(3000UL);
 	const TickType_t xMaxExpectedBlockTime = pdMS_TO_TICKS(3000);
 	BaseType_t xResult;
-	uint32_t responseLen;
+	AT_CMD_TYPE atCmd;
+	MODEM_CMD_DATA cmdData;
 
 	while(1)
 	{
 		/* Wait to receive a notification sent directly to this task from the
 		interrupt handler. */
-		xResult = xTaskNotifyWait(0,ULONG_MAX,&responseLen,portMAX_DELAY);
+		xResult = xTaskNotifyWait(0,ULONG_MAX,&atCmd,portMAX_DELAY);
+		getModemCommandData(atCmd, &cmdData);
 
 		if(xResult == pdPASS)
 		{
 			DEBUG_PRINT("Notification Received to Rx Task");
-			ConsoleDebugPrint("Response length",responseLen);
+			ConsoleDebugPrint("Response length",cmdData.ResponseLength);
 
+			if(false != mdmParser_solicitedCmdParser(cmdData.AtCmd,responseDataBuffer))
+			{
+				DEBUG_PRINT("Inside solicited parser");
+				cmdData.respHandler(responseDataBuffer,cmdData.validDataCnt);
+				mdmParser_SetLastCmdProcessed(true);
+			}
+			else
+			{
+				DEBUG_PRINT("Outside solicited parser");
+			}
 		}
 		else
 		{

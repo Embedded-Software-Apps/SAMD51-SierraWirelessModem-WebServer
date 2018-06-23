@@ -19,7 +19,6 @@
 static AT_CMD_TYPE lastSendATCommand = CMD_AT_MAX;
 static uint8_t responseDataBuffer[MAX_RESPONSE_SIZE];
 static bool isPrevCmdRespProcessed = true;
-static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response);
 static void mdmParser_PerformErrorRecovery(void);
 
 /*============================================================================
@@ -81,6 +80,10 @@ void mdmParser_ProcessModemResponse(void)
 
 		lastSendATCommand = CMD_AT_MAX;
 	}
+	else
+	{
+		DEBUG_PRINT("Error : Process response failed - Last Command Invalid");
+	}
 }
 
 /*============================================================================
@@ -90,7 +93,7 @@ void mdmParser_ProcessModemResponse(void)
 ** Description:        Gets the parsed modem response
 **
 **===========================================================================*/
-static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
+bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
 {
 	bool readStatus = false;
 	bool parseStatus = false;
@@ -104,28 +107,6 @@ static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
 	uint8_t dataStartIndex = (cmdData.CmdLength + 2);
 
 	readStatus = mdmCtrlr_ReadResponseFromModem(dataBuffer,cmdData.ResponseLength);
-
-    if((false != readStatus) &&
-	 (cmd == CMD_AT_KHTTP_GET))
-	{
-    	DEBUG_PRINT("Received new response from server...\r\n");
-		SerialDebugPrint(dataBuffer,cmdData.ResponseLength);
-		SerialDebugPrint("\r\n",2);
-		delay_ms(500);
-		parseStatus = true;
-	}
-    else if((cmd == CMD_AT_KHTTP_GET) &&
-	       (false == readStatus))
-    {
-    	DEBUG_PRINT("Modem Hanged. Data is not transmitted to server");
-    	delay_ms(500);
-		SerialDebugPrint("\r\n",2);
-		parseStatus = true;
-		DEBUG_PRINT("Performing the auto recovery");
-		mdmParser_PerformErrorRecovery();
-    }
-	else
-	{
 
 	if(readStatus != false)
 	{
@@ -145,15 +126,12 @@ static bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
 		}
 		else
 		{
-			//SerialDebugPrint("Failed to verify the command string\r\n",40);
 			parseStatus = false;
 		}
 	}
 	else
 	{
-		//SerialDebugPrint("Read from modem controller is failed\r\n",40);
 		parseStatus = false;
-	}
 	}
 
 	mdmCtrlr_FlushRxBuffer();
