@@ -36,7 +36,7 @@ void ModemTxTask( void *ModemTaskParam)
 		{
 			ModemTxTaskSchedule();
 			kickWatchDog();
-			DEBUG_PRINT("Running Modem Tx Task successfully");
+			//DEBUG_PRINT("Running Modem Tx Task successfully");
 			vTaskDelay(xDelayMs);
 		}
 	}

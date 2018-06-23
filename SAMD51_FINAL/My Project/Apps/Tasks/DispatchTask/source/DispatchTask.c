@@ -23,7 +23,7 @@ void DispatchTask( void *DispatchTaskParam)
 
 	while(1)
 	{
-		DEBUG_PRINT("Running Dispatch Task successfully");
+		//DEBUG_PRINT("Running Dispatch Task successfully");
 		vTaskDelayUntil( &xLastWakeTime, xDelayMs);
 	}
 }

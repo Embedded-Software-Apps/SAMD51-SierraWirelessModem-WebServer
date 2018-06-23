@@ -36,7 +36,7 @@ void ModemRxTask( void *ModemTaskParam)
 			DEBUG_PRINT("Notification Not Received to Rx Task");
 		}
 
-		DEBUG_PRINT("Running Modem Rx Task successfully");
+		//DEBUG_PRINT("Running Modem Rx Task successfully");
 		//vTaskDelay(xDelayMs);
 	}
 }
