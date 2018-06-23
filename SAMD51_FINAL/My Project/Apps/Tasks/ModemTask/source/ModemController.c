@@ -114,6 +114,7 @@ void SERCOM3_2_Handler( void )
 	BaseType_t xHigherPriorityTaskWoken;
 	uint32_t ulValue;
 	MODEM_CMD_DATA cmdData;
+	AT_CMD_TYPE lastCmd;
 	
 	while (!_usart_async_is_byte_received(&MODEM_SERCOM3_UART));
 	rcvdChar[0] = _usart_async_read_byte(&MODEM_SERCOM3_UART);
@@ -125,15 +126,23 @@ void SERCOM3_2_Handler( void )
 #endif
 	
 	ringbuffer_put(&RxRingBuffer, rcvdChar[0]);
-	getModemCommandData(mdmParser_GetLastSentAtCommand(), &cmdData);
+	lastCmd = mdmParser_GetLastSentAtCommand();
 
-	if(cmdData.ResponseLength >= ringbuffer_num(&RxRingBuffer))
+	if(lastCmd != CMD_AT_MAX)
 	{
-		/* Send a notification directly to the handler task. */
-	    xTaskNotifyFromISR( xModemRxTaskHandle, cmdData.ResponseLength, eSetValueWithOverwrite, &xHigherPriorityTaskWoken );
+		getModemCommandData(lastCmd, &cmdData);
 
-		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+		if(cmdData.ResponseLength >= ringbuffer_num(&RxRingBuffer))
+		{
+			/* Send a notification directly to the handler task. */
+		    xTaskNotifyFromISR( xModemRxTaskHandle, cmdData.ResponseLength, eSetValueWithOverwrite, &xHigherPriorityTaskWoken );
+
+			portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+
+			mdmParser_SetLastSentAtCommand(CMD_AT_MAX);
+		}
 	}
+
 }
 
 /*============================================================================

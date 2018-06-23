@@ -26,7 +26,8 @@ void ModemRxTask( void *ModemTaskParam)
 		if(xResult == pdPASS)
 		{
 			DEBUG_PRINT("Notification Received to Rx Task");
-			ConsoleDebugPrint("Response length",responseLen);			
+			ConsoleDebugPrint("Response length",responseLen);
+
 		}
 		else
 		{
