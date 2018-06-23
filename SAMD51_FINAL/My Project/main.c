@@ -59,19 +59,19 @@ int main(void)
     atmel_start_init();	
 
     /* Create Dispatch Task */
-    DispatchTaskStatus = xTaskCreate( DispatchTask, "DispatchTask", 150, NULL, 2, xDispatchTaskHandle );
+    DispatchTaskStatus = xTaskCreate( DispatchTask, "DispatchTask", 150, NULL, 2, &xDispatchTaskHandle );
 
     /* Create Modem Tx Task */
-    ModemTxTaskStatus = xTaskCreate( ModemTxTask, "ModemTask", 150, NULL, 1, xModemTxTaskHandle );
+    ModemTxTaskStatus = xTaskCreate( ModemTxTask, "ModemTask", 150, NULL, 1, &xModemTxTaskHandle );
 
     /* Create Modem Rx Task */
-    ModemRxTaskStatus = xTaskCreate( ModemRxTask, "ModemRxTask", 150, NULL, 2, xModemRxTaskHandle);
+    ModemRxTaskStatus = xTaskCreate( ModemRxTask, "ModemRxTask", 150, NULL, 2, &xModemRxTaskHandle);
 
     /* Create Modem Process Task */
-    ModemProcessTaskStatus = xTaskCreate( ModemProcessTask, "ModemProcessTask", 150, NULL, 1, xModemProcessTaskHandle);
+    ModemProcessTaskStatus = xTaskCreate( ModemProcessTask, "ModemProcessTask", 150, NULL, 1, &xModemProcessTaskHandle);
 
     /* Create Modem Diagnostics Task */
-    ModemDiagTaskStatus = xTaskCreate( ModemDiagTask, "ModemDiagTask", 150, NULL, 1, xModemDiagTaskHandle);
+    ModemDiagTaskStatus = xTaskCreate( ModemDiagTask, "ModemDiagTask", 150, NULL, 1, &xModemDiagTaskHandle);
 
     if((DispatchTaskStatus == pdPASS) &&
        (ModemProcessTaskStatus == pdPASS) &&

@@ -190,7 +190,10 @@ Apps/Tasks/ModemTask/source/ModemController.d \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
  ../Apps\Tasks\ModemTask\include\ModemPowerControl.h \
  ../Apps\SerialDebug\SerialDebug.h \
- ../Apps\UartDriver\include\UartDriver.h
+ ../Apps\UartDriver\include\UartDriver.h ../Apps/Common/Common.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
+ ../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h \
+ ../Apps/SerialDebug/SerialDebug.h
 
 ../hal/include/hal_usart_sync.h:
 
@@ -669,3 +672,11 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 ../Apps\SerialDebug\SerialDebug.h:
 
 ../Apps\UartDriver\include\UartDriver.h:
+
+../Apps/Common/Common.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
+
+../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h:
+
+../Apps/SerialDebug/SerialDebug.h:

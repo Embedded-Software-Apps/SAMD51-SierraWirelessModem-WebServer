@@ -25,7 +25,7 @@
 static uint8_t RxDataBuff[2];
 uint8_t rxEcho[2];
 uint8_t  ModemRxDatabuffer[SIZE_MODEM_RX_DATA_BUF];
-
+static uint32_t prior = 0;
 struct _usart_async_device MODEM_SERCOM3_UART =
 {
 	.hw = SERCOM3,
@@ -49,7 +49,6 @@ struct ringbuffer RxRingBuffer;
 void mdmCtrlr_DataCommInit(void)
 {
 	uint32_t initStatus;
-	
 	initStatus = _usart_async_init(&MODEM_SERCOM3_UART,SERCOM3);
 	
 	if(initStatus == ERR_NONE)
@@ -63,6 +62,9 @@ void mdmCtrlr_DataCommInit(void)
 		_usart_async_set_irq_state(&MODEM_SERCOM3_UART,USART_ASYNC_RX_DONE,true);
 		_usart_async_enable(&MODEM_SERCOM3_UART);
 		DEBUG_PRINT("MODEM DATA UART (SERCOM3) initialized");
+		prior = NVIC_GetPriority(60);
+		ConsoleDebugPrint("SERCOM3 PRIORITY", prior);
+		
 	}
 	else
 	{
@@ -109,6 +111,7 @@ void SERCOM3_2_Handler( void )
 	uint8_t rcvdChar[2];
 	uint8_t rxPrint[2];
 	BaseType_t xHigherPriorityTaskWoken;
+	uint32_t ulValue;
 	
 	while (!_usart_async_is_byte_received(&MODEM_SERCOM3_UART));
 	rcvdChar[0] = _usart_async_read_byte(&MODEM_SERCOM3_UART);
@@ -122,14 +125,7 @@ void SERCOM3_2_Handler( void )
 	ringbuffer_put(&RxRingBuffer, rcvdChar[0]);
 
 	/* Send a notification directly to the handler task. */
-	vTaskNotifyGiveFromISR( /* The handle of the task to which the notification
-							is being sent.  The handle was saved when the task
-							was created. */
-							xModemRxTaskHandle,
-
-							/* xHigherPriorityTaskWoken is used in the usual
-							way. */
-							&xHigherPriorityTaskWoken );
+    xTaskNotifyFromISR( xModemRxTaskHandle, ulValue, eIncrement, &xHigherPriorityTaskWoken );
 
 	portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 }

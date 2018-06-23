@@ -236,9 +236,10 @@ int32_t _usart_async_init(struct _usart_async_device *const device, void *const 
 		irq = irq +2;
 		NVIC_DisableIRQ((IRQn_Type)irq);
 		NVIC_ClearPendingIRQ((IRQn_Type)irq);
+		NVIC_SetPriority((IRQn_Type)irq, (1UL << __NVIC_PRIO_BITS) - 1UL);
 		NVIC_EnableIRQ((IRQn_Type)irq);
 #endif
-
+	//ConsoleDebugPrint("SERCOM3 PRIOR", NVIC_GetPriority(irq));
 	return ERR_NONE;
 }
 
