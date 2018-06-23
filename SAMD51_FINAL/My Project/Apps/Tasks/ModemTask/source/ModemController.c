@@ -13,6 +13,7 @@
 #include "Apps\SerialDebug\SerialDebug.h"
 #include "Apps\UartDriver\include\UartDriver.h"
 #include "Apps/Common/Common.h"
+#include "Apps/Tasks/ModemTask/include/ModemAtCommandSet.h"
 
 /* FreeRTOS.org includes. */
 #include "FreeRTOS.h"
@@ -112,6 +113,7 @@ void SERCOM3_2_Handler( void )
 	uint8_t rxPrint[2];
 	BaseType_t xHigherPriorityTaskWoken;
 	uint32_t ulValue;
+	MODEM_CMD_DATA cmdData;
 	
 	while (!_usart_async_is_byte_received(&MODEM_SERCOM3_UART));
 	rcvdChar[0] = _usart_async_read_byte(&MODEM_SERCOM3_UART);
@@ -123,11 +125,15 @@ void SERCOM3_2_Handler( void )
 #endif
 	
 	ringbuffer_put(&RxRingBuffer, rcvdChar[0]);
+	getModemCommandData(mdmParser_GetLastSentAtCommand(), &cmdData);
 
-	/* Send a notification directly to the handler task. */
-    xTaskNotifyFromISR( xModemRxTaskHandle, ulValue, eIncrement, &xHigherPriorityTaskWoken );
+	if(cmdData.ResponseLength >= ringbuffer_num(&RxRingBuffer))
+	{
+		/* Send a notification directly to the handler task. */
+	    xTaskNotifyFromISR( xModemRxTaskHandle, cmdData.ResponseLength, eSetValueWithOverwrite, &xHigherPriorityTaskWoken );
 
-	portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+		portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
+	}
 }
 
 /*============================================================================

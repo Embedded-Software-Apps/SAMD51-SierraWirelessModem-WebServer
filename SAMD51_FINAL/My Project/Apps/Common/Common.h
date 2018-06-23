@@ -15,6 +15,7 @@
 #include "Apps/Tasks/ModemTask/include/ModemAtCommandSet.h"
 #include "Apps/SerialDebug/SerialDebug.h"
 #include "semphr.h"
+#include "limits.h"
 #include <stdbool.h>
 
 typedef enum
