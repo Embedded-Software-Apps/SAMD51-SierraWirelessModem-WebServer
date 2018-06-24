@@ -16,7 +16,7 @@ static uint8_t responseDataBuffer[MAX_RESPONSE_SIZE];
 void ModemRxTask( void *ModemTaskParam)
 {
 	const TickType_t xDelayMs = pdMS_TO_TICKS(3000UL);
-	const TickType_t xMaxExpectedBlockTime = pdMS_TO_TICKS(3000);
+	const TickType_t xMaxExpectedBlockTime = pdMS_TO_TICKS(500);
 	BaseType_t xResult;
 	AT_CMD_TYPE atCmd;
 	MODEM_CMD_DATA cmdData;
@@ -25,7 +25,7 @@ void ModemRxTask( void *ModemTaskParam)
 	{
 		/* Wait to receive a notification sent directly to this task from the
 		interrupt handler. */
-		xResult = xTaskNotifyWait(0,ULONG_MAX,&atCmd,portMAX_DELAY);
+		xResult = xTaskNotifyWait(0,ULONG_MAX,&atCmd,xMaxExpectedBlockTime);
 		getModemCommandData(atCmd, &cmdData);
 
 		if(xResult == pdPASS)
