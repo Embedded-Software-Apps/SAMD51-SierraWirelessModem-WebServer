@@ -35,7 +35,6 @@ void ModemRxTask( void *ModemTaskParam)
 
 			if(false != mdmParser_solicitedCmdParser(cmdData.AtCmd,responseDataBuffer))
 			{
-				DEBUG_PRINT("Inside solicited parser");
 				cmdData.respHandler(responseDataBuffer,cmdData.validDataCnt);
 				mdmParser_SetLastCmdProcessed(true);
 			}
@@ -51,8 +50,6 @@ void ModemRxTask( void *ModemTaskParam)
 			be necessary to perform some error recovery operations. */
 			DEBUG_PRINT("Notification Not Received to Rx Task");
 		}
-
-		//DEBUG_PRINT("Running Modem Rx Task successfully");
-		//vTaskDelay(xDelayMs);
+		kickWatchDog();
 	}
 }

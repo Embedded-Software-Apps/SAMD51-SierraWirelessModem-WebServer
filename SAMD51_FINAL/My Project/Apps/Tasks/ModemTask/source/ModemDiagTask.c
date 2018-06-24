@@ -38,6 +38,7 @@ void ModemDiagTask( void *ModemTaskParam)
 		if(getModemPowerStatus() == MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS)
 		{
 			ModemDiagSchedule();
+			kickWatchDog();
 			//DEBUG_PRINT("Running Diag Process Task successfully");
 			vTaskDelay(xDelayMs);
 		}

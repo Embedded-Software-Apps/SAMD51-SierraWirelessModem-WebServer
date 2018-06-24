@@ -132,14 +132,14 @@ void SERCOM3_2_Handler( void )
 	{
 		getModemCommandData(lastCmd, &cmdData);
 
-		if(cmdData.ResponseLength >= ringbuffer_num(&RxRingBuffer))
+		if(ringbuffer_num(&RxRingBuffer) >= cmdData.ResponseLength)
 		{
 			/* Send a notification directly to the handler task. */
 		    xTaskNotifyFromISR( xModemRxTaskHandle, lastCmd, eSetValueWithOverwrite, &xHigherPriorityTaskWoken );
 
 			portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 
-			//mdmParser_SetLastSentAtCommand(CMD_AT_MAX);
+			mdmParser_SetLastSentAtCommand(CMD_AT_MAX);
 		}
 	}
 

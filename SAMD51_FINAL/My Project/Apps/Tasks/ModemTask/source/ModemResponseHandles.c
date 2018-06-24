@@ -48,10 +48,10 @@ void defaultFunctionPointer(uint8_t* response, uint8_t length)
 **===========================================================================*/
 void mdmResp_IMEIRespHandler(uint8_t* response, uint8_t length)
 {
-	SerialDebugPrint("In CGSN handler\r\n",18);
+	DEBUG_PRINT("In CGSN handler");
 	SerialDebugPrint(response,length);
-	SerialDebugPrint("\r\n",2);
 }
+
 
 /*============================================================================
 **

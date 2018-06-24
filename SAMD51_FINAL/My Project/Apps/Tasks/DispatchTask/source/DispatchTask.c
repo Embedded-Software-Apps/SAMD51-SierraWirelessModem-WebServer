@@ -24,6 +24,7 @@ void DispatchTask( void *DispatchTaskParam)
 	while(1)
 	{
 		//DEBUG_PRINT("Running Dispatch Task successfully");
+		kickWatchDog();
 		vTaskDelayUntil( &xLastWakeTime, xDelayMs);
 	}
 }
