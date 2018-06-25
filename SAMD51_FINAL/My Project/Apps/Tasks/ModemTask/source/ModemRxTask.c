@@ -14,18 +14,20 @@
 void ModemRxTask( void *ModemTaskParam)
 {
 	const TickType_t xDelayMs = pdMS_TO_TICKS(3000UL);
-	const TickType_t xMaxExpectedBlockTime = pdMS_TO_TICKS(4000);
+	const TickType_t xMaxExpectedBlockTime = pdMS_TO_TICKS(2000);
 	BaseType_t xResult;
 	AT_CMD_TYPE atCmd;
 	MODEM_CMD_DATA cmdData;
 	uint8_t* responseBuffer = NULL;
+	AtRxMsgType AtRxQueueReceivedData;
+	AtRxQueueReceivedData.atCmd = CMD_AT_MAX;
 
 	while(1)
 	{
 		/* Wait to receive a notification sent directly to this task from the
 		interrupt handler. */
-		xResult = xTaskNotifyWait(0,ULONG_MAX,&atCmd,xMaxExpectedBlockTime);
-		getModemCommandData(atCmd, &cmdData);
+		xResult = xQueueReceive( AtReceiveQueue, &AtRxQueueReceivedData, xMaxExpectedBlockTime );
+		getModemCommandData(AtRxQueueReceivedData.atCmd, &cmdData);
 
 		if(xResult == pdPASS)
 		{
