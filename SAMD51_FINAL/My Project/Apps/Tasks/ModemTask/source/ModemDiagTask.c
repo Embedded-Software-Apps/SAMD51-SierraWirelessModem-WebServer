@@ -30,19 +30,19 @@ static void ModemDiagSchedule(void);
 ********************************************************************************/
 void ModemDiagTask( void *ModemTaskParam)
 {
-	const TickType_t xDelayMs = pdMS_TO_TICKS(3500UL);
-	ModemDiagInit();
+    const TickType_t xDelayMs = pdMS_TO_TICKS(3500UL);
+    ModemDiagInit();
 
-	while(1)
-	{
-		if(getModemPowerStatus() == MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS)
-		{
-			ModemDiagSchedule();
-			kickWatchDog();
-			DEBUG_PRINT("Running Diag Process Task successfully");
-			vTaskDelay(xDelayMs);
-		}
-	}
+    while(1)
+    {
+        if(getModemPowerStatus() == MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS)
+        {
+            ModemDiagSchedule();
+            kickWatchDog();
+            DEBUG_PRINT("Running Diag Process Task successfully");
+            vTaskDelay(xDelayMs);
+        }
+    }
 }
 
 /*******************************************************************************
@@ -54,7 +54,7 @@ void ModemDiagTask( void *ModemTaskParam)
 ********************************************************************************/
 static void ModemDiagInit(void)
 {
-	ModemDiagState = MODEM_DIAG_TEST_AT;
+    ModemDiagState = MODEM_DIAG_TEST_AT;
 }
 
 /*******************************************************************************
@@ -66,224 +66,189 @@ static void ModemDiagInit(void)
 ********************************************************************************/
 static void ModemDiagSchedule(void)
 {
-	const TickType_t QueuePushDelayMs = pdMS_TO_TICKS(100UL);
-	const TickType_t DiagDelayMs = pdMS_TO_TICKS(2000UL);
-	const TickType_t powerUpDelayMs = pdMS_TO_TICKS(7000UL);
-	BaseType_t TxQueuePushStatus;
-	AtTxMsgType TxMsgQueueData;
+    const TickType_t QueuePushDelayMs = pdMS_TO_TICKS(100UL);
+    const TickType_t DiagDelayMs = pdMS_TO_TICKS(2000UL);
+    const TickType_t powerUpDelayMs = pdMS_TO_TICKS(7000UL);
+    BaseType_t TxQueuePushStatus;
+    AtTxMsgType TxMsgQueueData;
 
-	switch(ModemDiagOpMode)
-	{
-		case OP_TX_MODE:
-		{
-			switch(ModemDiagState)
-			{
-				case MODEM_DIAG_TEST_AT:
-				{
-					vTaskDelay(powerUpDelayMs);
-					if (uxQueueMessagesWaiting(AtTransmitQueue) == 0)
-					{
-						if(pdPASS == xSemaphoreTake(AtTxQueueLoadSemaphore, 0))
-						{
-							TxMsgQueueData.taskID = MODEM_DIAG_TASK;
-							TxMsgQueueData.atCmd = CMD_AT;
-							TxMsgQueueData.pData = NULL;
-							TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
+    switch(ModemDiagOpMode)
+    {
+        case OP_TX_MODE:
+        {
+            if (uxQueueMessagesWaiting(AtTransmitQueue) == 0)
+            {
+                if(pdPASS == xSemaphoreTake(AtTxQueueLoadSemaphore, 0))
+                {
+                    switch(ModemDiagState)
+                    {
+                        case MODEM_DIAG_TEST_AT:
+                        {
+                            TxMsgQueueData.taskID = MODEM_DIAG_TASK;
+                            TxMsgQueueData.atCmd = CMD_AT;
+                            TxMsgQueueData.pData = NULL;
+                            TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
 
-							if(TxQueuePushStatus == pdPASS)
-							{
-								DEBUG_PRINT("Sent the Diag data to Tx Task");
-								xSemaphoreGive(AtTxQueueLoadSemaphore);
-								vTaskDelay(DiagDelayMs);
-								ModemDiagState = MODEM_DIAG_GET_IMEI;
-								ModemDiagOpMode = OP_TX_MODE;
-							}
-							else
-							{
-								DEBUG_PRINT("Failed to sent the Diag data to Tx Task");
-								vTaskDelay(DiagDelayMs);
-							}
-						}
-						else
-						{
-							DEBUG_PRINT("Couldn't obtain the semaphore");
-						}
-					}
-				}
-				break;
+                            if(TxQueuePushStatus == pdPASS)
+                            {
+                                DEBUG_PRINT("Sent the Diag data to Tx Task");
+                                xSemaphoreGive(AtTxQueueLoadSemaphore);
+                                vTaskDelay(DiagDelayMs);
+                                ModemDiagState = MODEM_DIAG_GET_IMEI;
+                                ModemDiagOpMode = OP_TX_MODE;
+                            }
+                            else
+                            {
+                                DEBUG_PRINT("Failed to sent the Diag data to Tx Task");
+                                vTaskDelay(DiagDelayMs);
+                            }
+                        }
+                        break;
 
-				case MODEM_DIAG_GET_IMEI:
-				{
-					if (uxQueueMessagesWaiting(AtTransmitQueue) == 0)
-					{
-						if(pdPASS == xSemaphoreTake(AtTxQueueLoadSemaphore, 0))
-						{
-							TxMsgQueueData.taskID = MODEM_DIAG_TASK;
-							TxMsgQueueData.atCmd = CMD_AT_CGSN;
-							TxMsgQueueData.pData = NULL;
-							TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
+                        case MODEM_DIAG_GET_IMEI:
+                        {
+                            TxMsgQueueData.taskID = MODEM_DIAG_TASK;
+                            TxMsgQueueData.atCmd = CMD_AT_CGSN;
+                            TxMsgQueueData.pData = NULL;
+                            TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
 
-							if(TxQueuePushStatus == pdPASS)
-							{
-								DEBUG_PRINT("Sent the Diag data to Tx Task");
-								xSemaphoreGive(AtTxQueueLoadSemaphore);
-								vTaskDelay(DiagDelayMs);
-								ModemDiagState = MODEM_DIAG_GET_SERIAL;
-								ModemDiagOpMode = OP_TX_MODE;
-							}
-							else
-							{
-								DEBUG_PRINT("Failed to sent the Diag data to Tx Task");
-								vTaskDelay(DiagDelayMs);
-							}
-						}
-						else
-						{
-							DEBUG_PRINT("Couldn't obtain the semaphore");
-						}
-					}
-				}
-				break;
+                            if(TxQueuePushStatus == pdPASS)
+                            {
+                                DEBUG_PRINT("Sent the Diag data to Tx Task");
+                                xSemaphoreGive(AtTxQueueLoadSemaphore);
+                                vTaskDelay(DiagDelayMs);
+                                ModemDiagState = MODEM_DIAG_GET_SERIAL;
+                                ModemDiagOpMode = OP_TX_MODE;
+                            }
+                            else
+                            {
+                                DEBUG_PRINT("Failed to sent the Diag data to Tx Task");
+                                vTaskDelay(DiagDelayMs);
+                            }
+                        }
+                        break;
 
-				case MODEM_DIAG_GET_SERIAL:
-				{
-					if (uxQueueMessagesWaiting(AtTransmitQueue) == 0)
-					{
-						if(pdPASS == xSemaphoreTake(AtTxQueueLoadSemaphore, 0))
-						{
-							TxMsgQueueData.taskID = MODEM_DIAG_TASK;
-							TxMsgQueueData.atCmd = CMD_AT_KGSN;
-							TxMsgQueueData.pData = NULL;
-							TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
+                        case MODEM_DIAG_GET_SERIAL:
+                        {
+                            TxMsgQueueData.taskID = MODEM_DIAG_TASK;
+                            TxMsgQueueData.atCmd = CMD_AT_KGSN;
+                            TxMsgQueueData.pData = NULL;
+                            TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
 
-							if(TxQueuePushStatus == pdPASS)
-							{
-								DEBUG_PRINT("Sent the Diag data to Tx Task");
-								xSemaphoreGive(AtTxQueueLoadSemaphore);
-								vTaskDelay(DiagDelayMs);
-								ModemDiagState = MODEM_DIAG_GET_CARRIER;
-								ModemDiagOpMode = OP_TX_MODE;
-							}
-							else
-							{
-								DEBUG_PRINT("Failed to sent the Diag data to Tx Task");
-								vTaskDelay(DiagDelayMs);
-							}
-						}
-						else
-						{
-							DEBUG_PRINT("Couldn't obtain the semaphore");
-						}
-					}
-				}
-				break;
+                            if(TxQueuePushStatus == pdPASS)
+                            {
+                                DEBUG_PRINT("Sent the Diag data to Tx Task");
+                                xSemaphoreGive(AtTxQueueLoadSemaphore);
+                                vTaskDelay(DiagDelayMs);
+                                ModemDiagState = MODEM_DIAG_GET_CARRIER;
+                                ModemDiagOpMode = OP_TX_MODE;
+                            }
+                            else
+                            {
+                                DEBUG_PRINT("Failed to sent the Diag data to Tx Task");
+                                vTaskDelay(DiagDelayMs);
+                            }
+                        }
+                        break;
 
-				case MODEM_DIAG_GET_CARRIER:
-				{
-					if (uxQueueMessagesWaiting(AtTransmitQueue) == 0)
-					{
-						if(pdPASS == xSemaphoreTake(AtTxQueueLoadSemaphore, 0))
-						{
-							TxMsgQueueData.taskID = MODEM_DIAG_TASK;
-							TxMsgQueueData.atCmd = CMD_AT_WCARRIER;
-							TxMsgQueueData.pData = NULL;
-							TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
+                        case MODEM_DIAG_GET_CARRIER:
+                        {
+                            TxMsgQueueData.taskID = MODEM_DIAG_TASK;
+                            TxMsgQueueData.atCmd = CMD_AT_WCARRIER;
+                            TxMsgQueueData.pData = NULL;
+                            TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
 
-							if(TxQueuePushStatus == pdPASS)
-							{
-								DEBUG_PRINT("Sent the Diag data to Tx Task");
-								xSemaphoreGive(AtTxQueueLoadSemaphore);
-								vTaskDelay(DiagDelayMs);
-								ModemDiagState = MODEM_DIAG_TEST_AT;
-								ModemDiagOpMode = OP_TX_MODE;
-							}
-							else
-							{
-								DEBUG_PRINT("Failed to sent the Diag data to Tx Task");
-								vTaskDelay(DiagDelayMs);
-							}
-						}
-						else
-						{
-							DEBUG_PRINT("Couldn't obtain the semaphore");
-						}
-					}
-				}
-				break;
+                            if(TxQueuePushStatus == pdPASS)
+                            {
+                                DEBUG_PRINT("Sent the Diag data to Tx Task");
+                                xSemaphoreGive(AtTxQueueLoadSemaphore);
+                                vTaskDelay(DiagDelayMs);
+                                ModemDiagState = MODEM_DIAG_TEST_AT;
+                                ModemDiagOpMode = OP_TX_MODE;
+                            }
+                            else
+                            {
+                                DEBUG_PRINT("Failed to sent the Diag data to Tx Task");
+                                vTaskDelay(DiagDelayMs);
+                            }
+                        }
+                        break;
 
-				default:
-				break;
-			}
-		}
-		break;
-
-		case OP_RX_MODE:
-		{
-			switch(ModemDiagState)
-			{
-				case MODEM_DIAG_TEST_AT:
-				{
-
-				}
-				break;
-
-				case MODEM_DIAG_GET_IMEI:
-				{
-
-				}
-				break;
-
-				case MODEM_DIAG_GET_SERIAL:
-				{
-
-				}
-				break;
-
-				case MODEM_DIAG_GET_CARRIER:
-				{
-
-				}
-				break;
-
-				default:
-				break;
-			}
-		}
-		break;
-
-		default:
+                        default:
+                        break;
+                    }
+                }
+            }
+        }
         break;
-	}
+
+        case OP_RX_MODE:
+        {
+            switch(ModemDiagState)
+            {
+                case MODEM_DIAG_TEST_AT:
+                {
+
+                }
+                break;
+
+                case MODEM_DIAG_GET_IMEI:
+                {
+
+                }
+                break;
+
+                case MODEM_DIAG_GET_SERIAL:
+                {
+
+                }
+                break;
+
+                case MODEM_DIAG_GET_CARRIER:
+                {
+
+                }
+                break;
+
+                default:
+                break;
+            }
+        }
+        break;
+
+        default:
+        break;
+    }
 
 
 
 
-	switch(ModemDiagState)
-	{
-		case MODEM_DIAG_TEST_AT:
-		{
+    switch(ModemDiagState)
+    {
+        case MODEM_DIAG_TEST_AT:
+        {
 
 
-		}
-		break;
+        }
+        break;
 
-		case MODEM_DIAG_GET_IMEI:
-		{
+        case MODEM_DIAG_GET_IMEI:
+        {
 
-		}
-		break;
+        }
+        break;
 
-		case MODEM_DIAG_GET_SERIAL:
-		{
+        case MODEM_DIAG_GET_SERIAL:
+        {
 
-		}
-		break;
+        }
+        break;
 
-		case MODEM_DIAG_GET_CARRIER:
-		{
+        case MODEM_DIAG_GET_CARRIER:
+        {
 
-		}
-		break;
+        }
+        break;
 
-	}
+    }
 }
