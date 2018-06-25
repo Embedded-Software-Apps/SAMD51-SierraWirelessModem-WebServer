@@ -11,8 +11,6 @@
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h"
 #include "Apps/Tasks/ModemTask/include/ModemCmdParser.h"
 
-static uint8_t responseDataBuffer[MAX_RESPONSE_SIZE];
-
 void ModemRxTask( void *ModemTaskParam)
 {
 	const TickType_t xDelayMs = pdMS_TO_TICKS(3000UL);
@@ -20,6 +18,7 @@ void ModemRxTask( void *ModemTaskParam)
 	BaseType_t xResult;
 	AT_CMD_TYPE atCmd;
 	MODEM_CMD_DATA cmdData;
+	uint8_t* responseBuffer = NULL;
 
 	while(1)
 	{
@@ -30,21 +29,30 @@ void ModemRxTask( void *ModemTaskParam)
 
 		if(xResult == pdPASS)
 		{
-			DEBUG_PRINT("Notification Received to Rx Task");
-			ConsoleDebugPrint("Response length",cmdData.ResponseLength);
+			responseBuffer = (uint8_t*)pvPortMalloc((cmdData.validDataCnt)*(sizeof(uint8_t)));
 
-#if 0
-			if(false != mdmParser_solicitedCmdParser(cmdData.AtCmd,responseDataBuffer))
+			if(responseBuffer != NULL)
 			{
-				//cmdData.respHandler(responseDataBuffer,cmdData.validDataCnt);
-				DEBUG_PRINT("Called Resp Handler");
-				mdmParser_SetLastCmdProcessed(true);
+				DEBUG_PRINT("Notification Received to Rx Task. Memory Allocated");
+
+				if(false != mdmParser_solicitedCmdParser(cmdData.AtCmd,responseBuffer))
+				{
+					cmdData.respHandler(responseBuffer,cmdData.validDataCnt);
+					DEBUG_PRINT("Called Resp Handler");
+					mdmParser_SetLastCmdProcessed(true);
+				}
+				else
+				{
+					DEBUG_PRINT("ERROR: Solicited Command Parsing Failed");
+				}
+
+				vPortFree(responseBuffer);
 			}
 			else
 			{
-				DEBUG_PRINT("Outside solicited parser");
+				DEBUG_PRINT("Error: Heap Allocation Failed");
 			}
-#endif
+
 		}
 		else
 		{
