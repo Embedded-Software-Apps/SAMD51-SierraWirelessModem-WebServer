@@ -16,7 +16,7 @@ static uint8_t responseDataBuffer[MAX_RESPONSE_SIZE];
 void ModemRxTask( void *ModemTaskParam)
 {
 	const TickType_t xDelayMs = pdMS_TO_TICKS(3000UL);
-	const TickType_t xMaxExpectedBlockTime = pdMS_TO_TICKS(500);
+	const TickType_t xMaxExpectedBlockTime = pdMS_TO_TICKS(4000);
 	BaseType_t xResult;
 	AT_CMD_TYPE atCmd;
 	MODEM_CMD_DATA cmdData;
@@ -33,15 +33,18 @@ void ModemRxTask( void *ModemTaskParam)
 			DEBUG_PRINT("Notification Received to Rx Task");
 			ConsoleDebugPrint("Response length",cmdData.ResponseLength);
 
+#if 0
 			if(false != mdmParser_solicitedCmdParser(cmdData.AtCmd,responseDataBuffer))
 			{
-				cmdData.respHandler(responseDataBuffer,cmdData.validDataCnt);
+				//cmdData.respHandler(responseDataBuffer,cmdData.validDataCnt);
+				DEBUG_PRINT("Called Resp Handler");
 				mdmParser_SetLastCmdProcessed(true);
 			}
 			else
 			{
 				DEBUG_PRINT("Outside solicited parser");
 			}
+#endif
 		}
 		else
 		{

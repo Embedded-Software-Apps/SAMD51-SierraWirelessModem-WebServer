@@ -16,10 +16,20 @@ uint8_t kHttpHeaderString[INT_SEVENTEEN] = {'A','T','+','K','H','T','T','P','H',
 uint8_t kHttpGetString[INT_FIFTEEN] = {'A','T','+','K','H','T','T','P','G','E','T','=','0',',','\0'};
 
 uint8_t kHttpGetCompleteData[60] = {0};
-	
+
 /* Data structure for storing command parameters */
 static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 {
+	/* Default */
+	{
+		CMD_AT_MAX,
+		"",
+		INT_ZERO,
+		INT_ZERO,
+		defaultFunctionPointer,
+		INT_ZERO
+	},
+
 	/* AT */
 	{
 		CMD_AT,
@@ -270,19 +280,10 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		INT_TWO,
 		defaultFunctionPointer,
 		(INT_ELEVEN + INT_TWO + CRLF_CHAR_LEN)
-	},
-
-	/* Default */
-	{
-		CMD_AT_MAX,
-		"",
-		INT_ZERO,
-		INT_ZERO,
-		defaultFunctionPointer,
-		INT_ZERO
 	}
 
 };
+
 
 /*============================================================================
 **

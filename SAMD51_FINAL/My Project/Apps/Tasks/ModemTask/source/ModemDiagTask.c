@@ -39,7 +39,7 @@ void ModemDiagTask( void *ModemTaskParam)
 		{
 			ModemDiagSchedule();
 			kickWatchDog();
-			//DEBUG_PRINT("Running Diag Process Task successfully");
+			DEBUG_PRINT("Running Diag Process Task successfully");
 			vTaskDelay(xDelayMs);
 		}
 	}
