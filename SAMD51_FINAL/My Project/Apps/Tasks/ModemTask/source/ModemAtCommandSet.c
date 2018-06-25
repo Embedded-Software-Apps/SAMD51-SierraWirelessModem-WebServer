@@ -55,9 +55,9 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		CMD_AT_WCARRIER,
 		"AT+WCARRIER\r",
 		INT_TWELEVE,
-		INT_THREE,
-		defaultFunctionPointer,
-		(INT_TWELEVE + INT_THREE + CRLF_CHAR_LEN)
+		INT_FOURTEEN,
+		mdmResp_CarrierRespHandler,
+		(INT_TWELEVE + INT_FOURTEEN + CRLF_CHAR_LEN)
 	},
 
 	/* AT+IPR */
@@ -96,7 +96,7 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		"AT+KGSN=3\r",
 		INT_TEN,
 		INT_TWENTY_ONE,
-		defaultFunctionPointer,
+		mdmResp_SerialNoRespHandler,
 		(INT_TEN + INT_TWENTY_ONE + CRLF_CHAR_LEN)
 	},
 

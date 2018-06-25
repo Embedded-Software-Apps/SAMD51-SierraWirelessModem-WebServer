@@ -29,9 +29,7 @@ void ModemRxTask( void *ModemTaskParam)
 		if(xResult == pdPASS)
 		{
 			DEBUG_PRINT("Notification Received to Rx Task from ISR");
-			ConsoleDebugPrint("Response length",cmdData.ResponseLength);
 
-#if 1
 			if(false != mdmParser_solicitedCmdParser(cmdData.AtCmd))
 			{
 				DEBUG_PRINT("Successfully Parsed the last command");
@@ -39,9 +37,8 @@ void ModemRxTask( void *ModemTaskParam)
 			}
 			else
 			{
-				DEBUG_PRINT("Outside solicited parser");
+				DEBUG_PRINT("ERROR: Command Parsing Failed");
 			}
-#endif
 		}
 		else
 		{

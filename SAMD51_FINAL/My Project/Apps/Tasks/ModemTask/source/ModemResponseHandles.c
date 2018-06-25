@@ -50,9 +50,36 @@ void mdmResp_IMEIRespHandler(uint8_t* response, uint8_t length)
 {
 	DEBUG_PRINT("In CGSN handler");
 	SerialDebugPrint(response,length);
+	SerialDebugPrint("\r\n",2);
 }
 
+/*============================================================================
+**
+** Function Name:      mdmComms_GetModemResponse
+**
+** Description:        Gets the parsed modem response
+**
+**===========================================================================*/
+void mdmResp_CarrierRespHandler(uint8_t* response, uint8_t length)
+{
+	DEBUG_PRINT("In Carrier handler\r\n");
+	SerialDebugPrint(response,length);
+	SerialDebugPrint("\r\n",2);
+}
 
+/*============================================================================
+**
+** Function Name:      mdmComms_GetModemResponse
+**
+** Description:        Gets the parsed modem response
+**
+**===========================================================================*/
+void mdmResp_SerialNoRespHandler(uint8_t* response, uint8_t length)
+{
+	DEBUG_PRINT("In KGSN handler");
+	SerialDebugPrint(response,length);
+	SerialDebugPrint("\r\n",2);
+}
 /*============================================================================
 **
 ** Function Name:      mdmComms_GetModemResponse

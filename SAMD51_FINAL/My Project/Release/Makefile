@@ -185,7 +185,7 @@ C_SRCS +=  \
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/event_groups.c \
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.c \
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.c \
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_1.c \
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_2.c \
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.c \
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/stream_buffer.c \
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.c \
@@ -278,7 +278,7 @@ thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/croutine.o \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/event_groups.o \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o \
-thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_1.o \
+thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_2.o \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/stream_buffer.o \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o \
@@ -364,7 +364,7 @@ thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/croutine.o \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/event_groups.o \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o \
-thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_1.o \
+thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_2.o \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/stream_buffer.o \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o \
@@ -450,7 +450,7 @@ thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/croutine.d \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/event_groups.d \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.d \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.d \
-thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_1.d \
+thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_2.d \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.d \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/stream_buffer.d \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.d \
@@ -536,7 +536,7 @@ thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/croutine.d \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/event_groups.d \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.d \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.d \
-thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_1.d \
+thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_2.d \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.d \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/stream_buffer.d \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.d \

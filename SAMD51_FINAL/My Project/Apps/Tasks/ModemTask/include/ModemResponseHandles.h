@@ -13,6 +13,8 @@
 
 void mdmResp_AtRespHandler(uint8_t* response, uint8_t length);
 void mdmResp_IMEIRespHandler(uint8_t* response, uint8_t length);
+void mdmResp_CarrierRespHandler(uint8_t* response, uint8_t length);
+void mdmResp_SerialNoRespHandler(uint8_t* response, uint8_t length);
 void mdmResp_KhttpCloseHandler(uint8_t* response, uint8_t length);
 void mdmResp_KPatternHandler(uint8_t* response, uint8_t length);
 void mdmResp_KcnxCfgHandler(uint8_t* response, uint8_t length);
