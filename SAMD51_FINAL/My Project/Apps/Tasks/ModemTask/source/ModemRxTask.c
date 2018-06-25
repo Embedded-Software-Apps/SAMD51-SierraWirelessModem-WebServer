@@ -31,7 +31,7 @@ void ModemRxTask( void *ModemTaskParam)
 			DEBUG_PRINT("Notification Received to Rx Task from ISR");
 			ConsoleDebugPrint("Response length",cmdData.ResponseLength);
 
-#if 0
+#if 1
 			if(false != mdmParser_solicitedCmdParser(cmdData.AtCmd))
 			{
 				DEBUG_PRINT("Successfully Parsed the last command");

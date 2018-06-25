@@ -102,15 +102,17 @@ bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd)
 	uint8_t parseCnt=0;
 	MODEM_CMD_DATA cmdData;
 
-	/* command length + /r/n */
-	uint8_t dataStartIndex = (cmdData.CmdLength + 2);
-
 	getModemCommandData(cmd, &cmdData);
 
+	/* command length + /r/n */
+	uint8_t dataStartIndex = (cmdData.CmdLength + 2);
+	
+	//ConsoleDebugPrint("Heap before responseBuffer",xPortGetFreeHeapSize());
 	responseBuffer = (uint8_t*)pvPortMalloc((cmdData.ResponseLength)*(sizeof(uint8_t)));
 
 	if(responseBuffer != NULL)
 	{
+		//ConsoleDebugPrint("Heap after responseBuffer",xPortGetFreeHeapSize());
 		readStatus = mdmCtrlr_ReadResponseFromModem(responseBuffer,cmdData.ResponseLength);
 
 		if(readStatus != false)
@@ -118,10 +120,13 @@ bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd)
 			if(VERIFIED_EQUAL == strncmp(cmdData.AtString, responseBuffer, cmdData.CmdLength))
 			{
 				/* Command response is correctly identified. Allocate memory for parsed data */
+				
+				//ConsoleDebugPrint("Heap before parsedDataBuffer",xPortGetFreeHeapSize());
 				parsedDataBuffer = (uint8_t*)pvPortMalloc((((cmdData.validDataCnt)*(sizeof(uint8_t))) + 1));
 
 				if(parsedDataBuffer != NULL)
 				{
+					//ConsoleDebugPrint("Heap after parsedDataBuffer",xPortGetFreeHeapSize());
 					/* Extract the data part from modem response */
 					while(parseCnt < cmdData.validDataCnt)
 					{

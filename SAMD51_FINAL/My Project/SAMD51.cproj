@@ -1280,7 +1280,7 @@
     <Compile Include="thirdparty\RTOS\freertos\FreeRTOSV10.0.0\Source\portable\GCC\ARM_CM4F\portmacro.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="thirdparty\RTOS\freertos\FreeRTOSV10.0.0\Source\portable\MemMang\heap_1.c">
+    <Compile Include="thirdparty\RTOS\freertos\FreeRTOSV10.0.0\Source\portable\MemMang\heap_2.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="thirdparty\RTOS\freertos\FreeRTOSV10.0.0\Source\queue.c">
