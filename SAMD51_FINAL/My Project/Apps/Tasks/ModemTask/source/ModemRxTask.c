@@ -14,47 +14,34 @@
 void ModemRxTask( void *ModemTaskParam)
 {
 	const TickType_t xDelayMs = pdMS_TO_TICKS(3000UL);
-	const TickType_t xMaxExpectedBlockTime = pdMS_TO_TICKS(2000);
+	const TickType_t xMaxExpectedBlockTime = pdMS_TO_TICKS(4000);
 	BaseType_t xResult;
 	AT_CMD_TYPE atCmd;
 	MODEM_CMD_DATA cmdData;
-	uint8_t* responseBuffer = NULL;
-	AtRxMsgType AtRxQueueReceivedData;
-	AtRxQueueReceivedData.atCmd = CMD_AT_MAX;
 
 	while(1)
 	{
 		/* Wait to receive a notification sent directly to this task from the
 		interrupt handler. */
-		xResult = xQueueReceive( AtReceiveQueue, &AtRxQueueReceivedData, xMaxExpectedBlockTime );
-		getModemCommandData(AtRxQueueReceivedData.atCmd, &cmdData);
+		xResult = xTaskNotifyWait(0,ULONG_MAX,&atCmd,xMaxExpectedBlockTime);
+		getModemCommandData(atCmd, &cmdData);
 
 		if(xResult == pdPASS)
 		{
-			responseBuffer = (uint8_t*)pvPortMalloc((cmdData.validDataCnt)*(sizeof(uint8_t)));
+			DEBUG_PRINT("Notification Received to Rx Task from ISR");
+			ConsoleDebugPrint("Response length",cmdData.ResponseLength);
 
-			if(responseBuffer != NULL)
+#if 0
+			if(false != mdmParser_solicitedCmdParser(cmdData.AtCmd))
 			{
-				DEBUG_PRINT("Notification Received to Rx Task. Memory Allocated");
-
-				if(false != mdmParser_solicitedCmdParser(cmdData.AtCmd,responseBuffer))
-				{
-					cmdData.respHandler(responseBuffer,cmdData.validDataCnt);
-					DEBUG_PRINT("Called Resp Handler");
-					mdmParser_SetLastCmdProcessed(true);
-				}
-				else
-				{
-					DEBUG_PRINT("ERROR: Solicited Command Parsing Failed");
-				}
-
-				vPortFree(responseBuffer);
+				DEBUG_PRINT("Successfully Parsed the last command");
+				mdmParser_SetLastCmdProcessed(true);
 			}
 			else
 			{
-				DEBUG_PRINT("Error: Heap Allocation Failed");
+				DEBUG_PRINT("Outside solicited parser");
 			}
-
+#endif
 		}
 		else
 		{

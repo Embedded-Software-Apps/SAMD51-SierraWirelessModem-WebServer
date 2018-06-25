@@ -115,9 +115,6 @@ void SERCOM3_2_Handler( void )
 	uint32_t ulValue;
 	MODEM_CMD_DATA cmdData;
 	AT_CMD_TYPE lastCmd;
-	AtRxMsgType AtRxQueueData;
-	BaseType_t RxQueuePushStatus;
-	const TickType_t QueuePushDelayMs = pdMS_TO_TICKS(100UL);
 	
 	while (!_usart_async_is_byte_received(&MODEM_SERCOM3_UART));
 	rcvdChar[0] = _usart_async_read_byte(&MODEM_SERCOM3_UART);
@@ -137,16 +134,10 @@ void SERCOM3_2_Handler( void )
 
 		if(ringbuffer_num(&RxRingBuffer) >= cmdData.ResponseLength)
 		{
-			AtRxQueueData.atCmd = lastCmd;
-			if (uxQueueMessagesWaiting(AtReceiveQueue) == 0)
-			{
-				RxQueuePushStatus = xQueueSendToBackFromISR(AtReceiveQueue,&AtRxQueueData,&xHigherPriorityTaskWoken);
+			/* Send a notification directly to the handler task. */
+		    xTaskNotifyFromISR( xModemRxTaskHandle, lastCmd, eSetValueWithOverwrite, &xHigherPriorityTaskWoken );
 
-				if(RxQueuePushStatus == pdPASS)
-				{
-					portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
-				}
-			}
+			portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 
 			mdmParser_SetLastSentAtCommand(CMD_AT_MAX);
 		}

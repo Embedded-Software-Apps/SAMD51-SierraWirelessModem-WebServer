@@ -58,7 +58,7 @@ void mdmParser_ProcessModemResponse(void)
 
 	if(lastSendATCommand != CMD_AT_MAX)
 	{
-		if(false != mdmParser_solicitedCmdParser(lastSendATCommand,responseDataBuffer))
+		if(false != mdmParser_solicitedCmdParser(lastSendATCommand))
 		{
 			if(lastSendATCommand == cmdData.AtCmd)
 			{
@@ -93,45 +93,67 @@ void mdmParser_ProcessModemResponse(void)
 ** Description:        Gets the parsed modem response
 **
 **===========================================================================*/
-bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd,uint8_t* response)
+bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd)
 {
 	bool readStatus = false;
 	bool parseStatus = false;
-	uint8_t dataBuffer[700];
+	uint8_t* responseBuffer = NULL;
+	uint8_t* parsedDataBuffer = NULL;
 	uint8_t parseCnt=0;
-
 	MODEM_CMD_DATA cmdData;
-	getModemCommandData(cmd, &cmdData);
 
 	/* command length + /r/n */
 	uint8_t dataStartIndex = (cmdData.CmdLength + 2);
 
-	readStatus = mdmCtrlr_ReadResponseFromModem(dataBuffer,cmdData.ResponseLength);
+	getModemCommandData(cmd, &cmdData);
 
-	if(readStatus != false)
+	responseBuffer = (uint8_t*)pvPortMalloc((cmdData.ResponseLength)*(sizeof(uint8_t)));
+
+	if(responseBuffer != NULL)
 	{
-		//SerialDebugPrint(dataBuffer,cmdData.ResponseLength);
-		if(VERIFIED_EQUAL == strncmp(cmdData.AtString, dataBuffer, cmdData.CmdLength))
-		{
-			/* Command response is correctly identified */
+		readStatus = mdmCtrlr_ReadResponseFromModem(responseBuffer,cmdData.ResponseLength);
 
-			/* Extract the data part from modem response */
-			while(parseCnt < cmdData.validDataCnt)
+		if(readStatus != false)
+		{
+			if(VERIFIED_EQUAL == strncmp(cmdData.AtString, responseBuffer, cmdData.CmdLength))
 			{
-				response[parseCnt] = dataBuffer[dataStartIndex + parseCnt];
-				parseCnt++;
+				/* Command response is correctly identified. Allocate memory for parsed data */
+				parsedDataBuffer = (uint8_t*)pvPortMalloc((((cmdData.validDataCnt)*(sizeof(uint8_t))) + 1));
+
+				if(parsedDataBuffer != NULL)
+				{
+					/* Extract the data part from modem response */
+					while(parseCnt < cmdData.validDataCnt)
+					{
+						parsedDataBuffer[parseCnt] = responseBuffer[dataStartIndex + parseCnt];
+						parseCnt++;
+					}
+					parsedDataBuffer[parseCnt] = '\0';
+					cmdData.respHandler(parsedDataBuffer,cmdData.validDataCnt);
+					vPortFree(parsedDataBuffer);
+					parseStatus = true;
+				}
+				else
+				{
+					DEBUG_PRINT("Error: Heap allocation for parse data buffer failed");
+				}
 			}
-			response[parseCnt] = '\0';
-			parseStatus = true;
+			else
+			{
+				parseStatus = false;
+				DEBUG_PRINT("Error: Not able to verify the command string during parsing");
+			}
 		}
 		else
 		{
 			parseStatus = false;
+			DEBUG_PRINT("Error: Not able to read data from receive ring buffer during parser");
 		}
+		vPortFree(responseBuffer);
 	}
 	else
 	{
-		parseStatus = false;
+		DEBUG_PRINT("Error: Heap allocation for response data buffer failed");
 	}
 
 	mdmCtrlr_FlushRxBuffer();
