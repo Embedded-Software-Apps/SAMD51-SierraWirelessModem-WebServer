@@ -10,11 +10,10 @@ Apps/Tasks/ModemTask/source/ModemResponseHandles.d \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_intsup.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_stdint.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdbool.h \
- ../Apps/SerialDebug/SerialDebug.h \
- ../Apps/Tasks/ModemTask/include/ModemCmdParser.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stddef.h \
+ ../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h \
  ../Apps/Common/Common.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stddef.h \
  ../Config/FreeRTOSConfig.h ../Config/peripheral_clk_config.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/portable.h \
@@ -24,14 +23,16 @@ Apps/Tasks/ModemTask/source/ModemResponseHandles.d \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h \
- ../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h \
+ ../Apps/SerialDebug/SerialDebug.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include-fixed\limits.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include-fixed\syslimits.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\limits.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\newlib.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\cdefs.h
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\cdefs.h \
+ ../Apps/Tasks/ModemTask/include/ModemCmdParser.h \
+ ../Apps/Tasks/ModemTask/include/ModemDiagTask.h
 
 ../Apps/Tasks/ModemTask/include/ModemResponseHandles.h:
 
@@ -51,15 +52,13 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdbool.h:
 
-../Apps/SerialDebug/SerialDebug.h:
-
-../Apps/Tasks/ModemTask/include/ModemCmdParser.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stddef.h:
+../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h:
 
 ../Apps/Common/Common.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stddef.h:
 
 ../Config/FreeRTOSConfig.h:
 
@@ -81,7 +80,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gc
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h:
 
-../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h:
+../Apps/SerialDebug/SerialDebug.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h:
 
@@ -96,3 +95,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\newlib.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\cdefs.h:
+
+../Apps/Tasks/ModemTask/include/ModemCmdParser.h:
+
+../Apps/Tasks/ModemTask/include/ModemDiagTask.h:

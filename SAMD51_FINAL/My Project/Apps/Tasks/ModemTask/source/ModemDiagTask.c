@@ -255,11 +255,9 @@ static void ModemDiagSchedule(void)
                 case MODEM_DIAG_TEST_AT:
                 {
                 	memcpy(DiagResponseDataBase[MODEM_DIAG_TEST_AT].diagData,cmdResponse.response,cmdResponse.length);
-                	DiagResponseDataBase[MODEM_DIAG_TEST_AT].diagData[cmdResponse.length + 1] = '\0';
+                	DiagResponseDataBase[MODEM_DIAG_TEST_AT].diagData[cmdResponse.length] = '\0';
 
                 	DEBUG_PRINT("Parsed AT response in Diag RX Mode");
-                	SerialDebugPrint(cmdResponse.response,cmdResponse.response);
-                	DEBUG_PRINT("/r/n");
 
                 	vPortFree(cmdResponse.response);
                 	DEBUG_PRINT("Freed Memory");
