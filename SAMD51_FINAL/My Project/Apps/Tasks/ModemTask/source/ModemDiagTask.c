@@ -82,9 +82,9 @@ static void ModemDiagInit(void)
 void ModemDiagUpdateDataBase(CmdResponseType* cmdResponse)
 {
 	DEBUG_PRINT("In Update data base");
-	SerialDebugPrint(cmdResponse->response,cmdResponse->length);
-	vPortFree(cmdResponse->response);
-	 ConsoleDebugPrint("Heap size after free", xPortGetFreeHeapSize());
+	//SerialDebugPrint(cmdResponse->response,cmdResponse->length);
+	//vPortFree(cmdResponse->response);
+	 //ConsoleDebugPrint("Heap size after free", xPortGetFreeHeapSize());
 }
 
 /*******************************************************************************

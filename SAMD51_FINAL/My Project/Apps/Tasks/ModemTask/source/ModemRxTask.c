@@ -14,7 +14,7 @@
 void ModemRxTask( void *ModemTaskParam)
 {
 	const TickType_t xDelayMs = pdMS_TO_TICKS(3000UL);
-	const TickType_t xMaxExpectedBlockTime = pdMS_TO_TICKS(4000);
+	const TickType_t xMaxExpectedBlockTime = pdMS_TO_TICKS(1000);
 	BaseType_t xResult;
 	AT_CMD_TYPE atCmd;
 	MODEM_CMD_DATA cmdData;
@@ -45,7 +45,7 @@ void ModemRxTask( void *ModemTaskParam)
 			/* If this part of the function is reached then an interrupt did not
 			arrive within the expected time, and (in a real application) it may
 			be necessary to perform some error recovery operations. */
-			DEBUG_PRINT("Notification Not Received to Rx Task");
+			//DEBUG_PRINT("Notification Not Received to Rx Task");
 		}
 		kickWatchDog();
 	}
