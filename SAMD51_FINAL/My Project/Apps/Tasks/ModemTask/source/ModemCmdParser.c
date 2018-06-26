@@ -129,7 +129,9 @@ bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd)
 						parseCnt++;
 					}
 					parsedDataBuffer[parseCnt] = '\0';
-					cmdData.respHandler(cmdData.AtCmd,parsedDataBuffer,cmdData.validDataCnt);
+					SerialDebugPrint(&parsedDataBuffer,parseCnt);
+					DEBUG_PRINT("\r\n");
+					//cmdData.respHandler(cmdData.AtCmd,parsedDataBuffer,cmdData.validDataCnt);
 					vPortFree(parsedDataBuffer);
 					parseStatus = true;
 				}
