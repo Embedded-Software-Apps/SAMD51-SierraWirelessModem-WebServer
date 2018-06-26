@@ -99,7 +99,6 @@ typedef struct
 typedef struct
 {
 	AT_CMD_TYPE atCmd;
-	uint8_t* response;
 	uint16_t length;
 
 }CmdResponseType;

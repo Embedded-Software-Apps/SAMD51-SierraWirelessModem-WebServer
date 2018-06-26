@@ -18,7 +18,7 @@ static MODEM_CMD_DATA cmdData;
 static CmdResponseType cmdResponse;
 
 static void SendEOFPattern(void);
-
+static uint8_t responseBuffer[700];
 /*============================================================================
 **
 ** Function Name:      modemResponseHandler
@@ -36,10 +36,11 @@ void modemResponseHandler(AT_CMD_TYPE cmd,uint8_t* response, uint16_t length)
         {
             case AT_CMD_SET_DIAGNOSTICS:
             {
-                cmdResponse.atCmd = cmd;
-                cmdResponse.length = length;
-				DEBUG_PRINT("In Response Handler");
-				SerialDebugPrint(response,length);
+            	cmdResponse.atCmd = cmd;
+            	cmdResponse.length = length;
+            	memset(responseBuffer,0,700);
+            	memcpy(responseBuffer,response,length);
+            	ModemDiagUpdateDataBase(responseBuffer,&cmdResponse);
             }
             break;
 

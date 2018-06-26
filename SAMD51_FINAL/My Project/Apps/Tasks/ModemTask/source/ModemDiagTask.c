@@ -25,6 +25,7 @@ static uint8_t atResponseData[2+1];
 static uint8_t atCgsnResponseData[15+1];
 static uint8_t atKgsnResponseData[14+1];
 static uint8_t atCarrierResponseData[3+1];
+static uint8_t diagResponseBuffer[50];
 
 static DIAG_RESPONSE_DATABASE DiagResponseDataBase[MODEM_DIAG_CMDS_MAX] = \
 {
@@ -36,6 +37,51 @@ static DIAG_RESPONSE_DATABASE DiagResponseDataBase[MODEM_DIAG_CMDS_MAX] = \
 
 static void ModemDiagInit(void);
 static void ModemDiagSchedule(void);
+static MODEM_DIAG_STATES_T ModemDiagStateFromAtCmd(AT_CMD_TYPE cmd);
+
+/*******************************************************************************
+*
+* NAME       : getModemPowerState
+*
+* DESCRIPTION: Gets the current Modem Power State.
+*
+********************************************************************************/
+static MODEM_DIAG_STATES_T ModemDiagStateFromAtCmd(AT_CMD_TYPE cmd)
+{
+	MODEM_DIAG_STATES_T diagState;
+
+    switch(cmd)
+    {
+    	case CMD_AT:
+    	{
+    		diagState = MODEM_DIAG_TEST_AT;
+    	}
+    	break;
+
+    	case CMD_AT_CGSN:
+    	{
+    		diagState = MODEM_DIAG_GET_IMEI;
+    	}
+    	break;
+
+    	case CMD_AT_KGSN:
+    	{
+    		diagState = MODEM_DIAG_GET_SERIAL;
+    	}
+    	break;
+
+    	case CMD_AT_WCARRIER:
+    	{
+    		diagState = MODEM_DIAG_GET_CARRIER;
+    	}
+    	break;
+
+    	default:
+    	break;
+    }
+
+    return diagState;
+}
 /*******************************************************************************
 *
 * NAME       : getModemPowerState
@@ -79,12 +125,10 @@ static void ModemDiagInit(void)
 * DESCRIPTION: Gets the current Modem Power State.
 *
 ********************************************************************************/
-void ModemDiagUpdateDataBase(CmdResponseType* cmdResponse)
+void ModemDiagUpdateDataBase(uint8_t* buffer,CmdResponseType* cmdResponse)
 {
-	DEBUG_PRINT("In Update data base");
-	//SerialDebugPrint(cmdResponse->response,cmdResponse->length);
-	//vPortFree(cmdResponse->response);
-	 //ConsoleDebugPrint("Heap size after free", xPortGetFreeHeapSize());
+	SerialDebugPrint(buffer,cmdResponse->length);
+
 }
 
 /*******************************************************************************
