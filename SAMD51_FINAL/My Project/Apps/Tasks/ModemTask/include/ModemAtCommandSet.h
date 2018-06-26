@@ -61,7 +61,7 @@ typedef enum
 	AT_CMD_SET_MAX
 }AT_CMD_SET;
 
-typedef void (*ResponseHandler)(AT_CMD_TYPE AtCmd, uint8_t* response, uint8_t length);
+typedef void (*ResponseHandler)(AT_CMD_TYPE AtCmd, uint8_t* response, uint16_t length);
 
 typedef struct
 {

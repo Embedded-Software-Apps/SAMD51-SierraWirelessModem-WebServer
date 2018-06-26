@@ -14,6 +14,8 @@
 static uint8_t sessionID = 0;
 bool headerResponseOk = false;
 bool dataPacketSentOk = false;
+static MODEM_CMD_DATA cmdData;
+static CmdResponseType cmdResponse;
 
 static void SendEOFPattern(void);
 
@@ -24,13 +26,8 @@ static void SendEOFPattern(void);
 ** Description:        Gets the parsed modem response
 **
 **===========================================================================*/
-void modemResponseHandler(AT_CMD_TYPE cmd,uint8_t* response, uint8_t length)
+void modemResponseHandler(AT_CMD_TYPE cmd,uint8_t* response, uint16_t length)
 {
-    MODEM_CMD_DATA cmdData;
-    CmdResponseType cmdResponse;
-    BaseType_t QueuePushStatus;
-
-    const TickType_t QueuePushDelayMs = pdMS_TO_TICKS(500UL);
     getModemCommandData(cmd,&cmdData);
 
     if(response != NULL)
@@ -39,9 +36,10 @@ void modemResponseHandler(AT_CMD_TYPE cmd,uint8_t* response, uint8_t length)
         {
             case AT_CMD_SET_DIAGNOSTICS:
             {
-                cmdResponse.atCmd = cmdData.AtCmd;
+                cmdResponse.atCmd = cmd;
                 cmdResponse.length = length;
 				DEBUG_PRINT("In Response Handler");
+				SerialDebugPrint(response,length);
             }
             break;
 
