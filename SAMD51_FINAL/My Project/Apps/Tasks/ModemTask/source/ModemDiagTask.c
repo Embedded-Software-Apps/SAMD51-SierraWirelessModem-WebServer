@@ -296,36 +296,4 @@ static void ModemDiagSchedule(void)
         default:
         break;
     }
-
-
-
-
-    switch(ModemDiagState)
-    {
-        case MODEM_DIAG_TEST_AT:
-        {
-
-
-        }
-        break;
-
-        case MODEM_DIAG_GET_IMEI:
-        {
-
-        }
-        break;
-
-        case MODEM_DIAG_GET_SERIAL:
-        {
-
-        }
-        break;
-
-        case MODEM_DIAG_GET_CARRIER:
-        {
-
-        }
-        break;
-
-    }
 }
