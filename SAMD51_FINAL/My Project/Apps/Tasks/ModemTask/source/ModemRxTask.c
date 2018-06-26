@@ -24,10 +24,10 @@ void ModemRxTask( void *ModemTaskParam)
 		/* Wait to receive a notification sent directly to this task from the
 		interrupt handler. */
 		xResult = xTaskNotifyWait(0,ULONG_MAX,&atCmd,xMaxExpectedBlockTime);
-		getModemCommandData(atCmd, &cmdData);
-
+		
 		if(xResult == pdPASS)
 		{
+			getModemCommandData(atCmd, &cmdData);
 			DEBUG_PRINT("Notification Received to Rx Task from ISR");
 
 			if(false != mdmParser_solicitedCmdParser(cmdData.AtCmd))
