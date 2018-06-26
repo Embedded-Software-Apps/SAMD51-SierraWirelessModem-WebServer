@@ -28,15 +28,14 @@ static uint8_t atCarrierResponseData[3+1];
 
 static DIAG_RESPONSE_DATABASE DiagResponseDataBase[MODEM_DIAG_CMDS_MAX] = \
 {
-	{MODEM_DIAG_TEST_AT, &atResponseData},
-	{MODEM_DIAG_TEST_AT, &atCgsnResponseData},
-	{MODEM_DIAG_TEST_AT, &atKgsnResponseData},
-	{MODEM_DIAG_TEST_AT, &atCarrierResponseData}
+    {MODEM_DIAG_TEST_AT, &atResponseData},
+    {MODEM_DIAG_TEST_AT, &atCgsnResponseData},
+    {MODEM_DIAG_TEST_AT, &atKgsnResponseData},
+    {MODEM_DIAG_TEST_AT, &atCarrierResponseData}
 };
 
 static void ModemDiagInit(void);
 static void ModemDiagSchedule(void);
-static MODEM_DIAG_STATES_T ModemDiagStateFromAtCmd(AT_CMD_TYPE cmd);
 /*******************************************************************************
 *
 * NAME       : getModemPowerState
@@ -80,41 +79,12 @@ static void ModemDiagInit(void)
 * DESCRIPTION: Gets the current Modem Power State.
 *
 ********************************************************************************/
-static MODEM_DIAG_STATES_T ModemDiagStateFromAtCmd(AT_CMD_TYPE cmd)
+void ModemDiagUpdateDataBase(CmdResponseType* cmdResponse)
 {
-	MODEM_DIAG_STATES_T diagState;
-
-    switch(cmd)
-    {
-    	case CMD_AT:
-    	{
-    		diagState = MODEM_DIAG_TEST_AT;
-    	}
-    	break;
-
-    	case CMD_AT_CGSN:
-    	{
-    		diagState = MODEM_DIAG_GET_IMEI;
-    	}
-    	break;
-
-    	case CMD_AT_KGSN:
-    	{
-    		diagState = MODEM_DIAG_GET_SERIAL;
-    	}
-    	break;
-
-    	case CMD_AT_WCARRIER:
-    	{
-    		diagState = MODEM_DIAG_GET_CARRIER;
-    	}
-    	break;
-
-    	default:
-    	break;
-    }
-
-    return diagState;
+	DEBUG_PRINT("In Update data base");
+	SerialDebugPrint(cmdResponse->response,cmdResponse->length);
+	vPortFree(cmdResponse->response);
+	 ConsoleDebugPrint("Heap size after free", xPortGetFreeHeapSize());
 }
 
 /*******************************************************************************
@@ -134,154 +104,97 @@ static void ModemDiagSchedule(void)
     AtTxMsgType TxMsgQueueData;
     CmdResponseType cmdResponse;
 
-    switch(ModemDiagOpMode)
+    if (uxQueueMessagesWaiting(AtTransmitQueue) == 0)
     {
-        case OP_TX_MODE:
+        if(pdPASS == xSemaphoreTake(AtTxQueueLoadSemaphore, 0))
         {
-            if (uxQueueMessagesWaiting(AtTransmitQueue) == 0)
-            {
-                if(pdPASS == xSemaphoreTake(AtTxQueueLoadSemaphore, 0))
-                {
-                    switch(ModemDiagState)
-                    {
-                        case MODEM_DIAG_TEST_AT:
-                        {
-                            TxMsgQueueData.taskID = MODEM_DIAG_TASK;
-                            TxMsgQueueData.atCmd = CMD_AT;
-                            TxMsgQueueData.pData = NULL;
-                            TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
-
-                            if(TxQueuePushStatus == pdPASS)
-                            {
-                                DEBUG_PRINT("Sent the Diag data to Tx Task");
-                                xSemaphoreGive(AtTxQueueLoadSemaphore);
-                                vTaskDelay(DiagDelayMs);
-                                ModemDiagState = MODEM_DIAG_TEST_AT;
-                                ModemDiagOpMode = OP_RX_MODE;
-                            }
-                            else
-                            {
-                                DEBUG_PRINT("Failed to sent the Diag data to Tx Task");
-                                vTaskDelay(DiagDelayMs);
-                            }
-                        }
-                        break;
-
-                        case MODEM_DIAG_GET_IMEI:
-                        {
-                            TxMsgQueueData.taskID = MODEM_DIAG_TASK;
-                            TxMsgQueueData.atCmd = CMD_AT_CGSN;
-                            TxMsgQueueData.pData = NULL;
-                            TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
-
-                            if(TxQueuePushStatus == pdPASS)
-                            {
-                                DEBUG_PRINT("Sent the Diag data to Tx Task");
-                                xSemaphoreGive(AtTxQueueLoadSemaphore);
-                                vTaskDelay(DiagDelayMs);
-                                ModemDiagState = MODEM_DIAG_GET_IMEI;
-                                ModemDiagOpMode = OP_RX_MODE;
-                            }
-                            else
-                            {
-                                DEBUG_PRINT("Failed to sent the Diag data to Tx Task");
-                                vTaskDelay(DiagDelayMs);
-                            }
-                        }
-                        break;
-
-                        case MODEM_DIAG_GET_SERIAL:
-                        {
-                            TxMsgQueueData.taskID = MODEM_DIAG_TASK;
-                            TxMsgQueueData.atCmd = CMD_AT_KGSN;
-                            TxMsgQueueData.pData = NULL;
-                            TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
-
-                            if(TxQueuePushStatus == pdPASS)
-                            {
-                                DEBUG_PRINT("Sent the Diag data to Tx Task");
-                                xSemaphoreGive(AtTxQueueLoadSemaphore);
-                                vTaskDelay(DiagDelayMs);
-                                ModemDiagState = MODEM_DIAG_GET_SERIAL;
-                                ModemDiagOpMode = OP_RX_MODE;
-                            }
-                            else
-                            {
-                                DEBUG_PRINT("Failed to sent the Diag data to Tx Task");
-                                vTaskDelay(DiagDelayMs);
-                            }
-                        }
-                        break;
-
-                        case MODEM_DIAG_GET_CARRIER:
-                        {
-                            TxMsgQueueData.taskID = MODEM_DIAG_TASK;
-                            TxMsgQueueData.atCmd = CMD_AT_WCARRIER;
-                            TxMsgQueueData.pData = NULL;
-                            TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
-
-                            if(TxQueuePushStatus == pdPASS)
-                            {
-                                DEBUG_PRINT("Sent the Diag data to Tx Task");
-                                xSemaphoreGive(AtTxQueueLoadSemaphore);
-                                vTaskDelay(DiagDelayMs);
-                                ModemDiagState = MODEM_DIAG_GET_CARRIER;
-                                ModemDiagOpMode = OP_RX_MODE;
-                            }
-                            else
-                            {
-                                DEBUG_PRINT("Failed to sent the Diag data to Tx Task");
-                                vTaskDelay(DiagDelayMs);
-                            }
-                        }
-                        break;
-
-                        default:
-                        break;
-                    }
-                }
-            }
-        }
-        break;
-
-        case OP_RX_MODE:
-        {
-        	xQueueReceive( DiagResponseQueue, &cmdResponse, QueueWaitDelayMs );
-
-        	ModemDiagState =  ModemDiagStateFromAtCmd(cmdResponse.atCmd);
-
             switch(ModemDiagState)
             {
                 case MODEM_DIAG_TEST_AT:
                 {
-                	memcpy(DiagResponseDataBase[MODEM_DIAG_TEST_AT].diagData,cmdResponse.response,cmdResponse.length);
-                	DiagResponseDataBase[MODEM_DIAG_TEST_AT].diagData[cmdResponse.length] = '\0';
+                    TxMsgQueueData.taskID = MODEM_DIAG_TASK;
+                    TxMsgQueueData.atCmd = CMD_AT;
+                    TxMsgQueueData.pData = NULL;
+                    TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
 
-                	DEBUG_PRINT("Parsed AT response in Diag RX Mode");
-
-                	vPortFree(cmdResponse.response);
-                	DEBUG_PRINT("Freed Memory");
-
-                	ModemDiagState = 100;
-                	ModemDiagOpMode = 10;
+                    if(TxQueuePushStatus == pdPASS)
+                    {
+                        DEBUG_PRINT("Sent the Diag data to Tx Task");
+                        xSemaphoreGive(AtTxQueueLoadSemaphore);
+                        vTaskDelay(DiagDelayMs);
+                        ModemDiagState = MODEM_DIAG_GET_IMEI;
+                    }
+                    else
+                    {
+                        DEBUG_PRINT("Failed to sent the Diag data to Tx Task");
+                        vTaskDelay(DiagDelayMs);
+                    }
                 }
                 break;
 
                 case MODEM_DIAG_GET_IMEI:
                 {
+                    TxMsgQueueData.taskID = MODEM_DIAG_TASK;
+                    TxMsgQueueData.atCmd = CMD_AT_CGSN;
+                    TxMsgQueueData.pData = NULL;
+                    TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
 
+                    if(TxQueuePushStatus == pdPASS)
+                    {
+                        DEBUG_PRINT("Sent the Diag data to Tx Task");
+                        xSemaphoreGive(AtTxQueueLoadSemaphore);
+                        vTaskDelay(DiagDelayMs);
+                        ModemDiagState = MODEM_DIAG_GET_SERIAL;
+                    }
+                    else
+                    {
+                        DEBUG_PRINT("Failed to sent the Diag data to Tx Task");
+                        vTaskDelay(DiagDelayMs);
+                    }
                 }
                 break;
 
                 case MODEM_DIAG_GET_SERIAL:
                 {
+                    TxMsgQueueData.taskID = MODEM_DIAG_TASK;
+                    TxMsgQueueData.atCmd = CMD_AT_KGSN;
+                    TxMsgQueueData.pData = NULL;
+                    TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
 
+                    if(TxQueuePushStatus == pdPASS)
+                    {
+                        DEBUG_PRINT("Sent the Diag data to Tx Task");
+                        xSemaphoreGive(AtTxQueueLoadSemaphore);
+                        vTaskDelay(DiagDelayMs);
+                        ModemDiagState = MODEM_DIAG_GET_CARRIER;
+                    }
+                    else
+                    {
+                        DEBUG_PRINT("Failed to sent the Diag data to Tx Task");
+                        vTaskDelay(DiagDelayMs);
+                    }
                 }
                 break;
 
                 case MODEM_DIAG_GET_CARRIER:
                 {
+                    TxMsgQueueData.taskID = MODEM_DIAG_TASK;
+                    TxMsgQueueData.atCmd = CMD_AT_WCARRIER;
+                    TxMsgQueueData.pData = NULL;
+                    TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
 
+                    if(TxQueuePushStatus == pdPASS)
+                    {
+                        DEBUG_PRINT("Sent the Diag data to Tx Task");
+                        xSemaphoreGive(AtTxQueueLoadSemaphore);
+                        vTaskDelay(DiagDelayMs);
+                        ModemDiagState = 100;
+                    }
+                    else
+                    {
+                        DEBUG_PRINT("Failed to sent the Diag data to Tx Task");
+                        vTaskDelay(DiagDelayMs);
+                    }
                 }
                 break;
 
@@ -289,9 +202,5 @@ static void ModemDiagSchedule(void)
                 break;
             }
         }
-        break;
-
-        default:
-        break;
     }
 }

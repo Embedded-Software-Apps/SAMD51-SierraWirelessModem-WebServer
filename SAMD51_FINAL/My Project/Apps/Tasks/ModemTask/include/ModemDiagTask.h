@@ -32,7 +32,7 @@ typedef struct
 
 
 void ModemDiagTask( void *ModemTaskParam);
-
+void ModemDiagUpdateDataBase(CmdResponseType* cmdResponse);
 
 
 

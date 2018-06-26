@@ -41,19 +41,14 @@ void modemResponseHandler(AT_CMD_TYPE cmd,uint8_t* response, uint8_t length)
             {
                 cmdResponse.atCmd = cmdData.AtCmd;
                 cmdResponse.length = length;
+                ConsoleDebugPrint("Heap size before in handler ", xPortGetFreeHeapSize());
                 cmdResponse.response = (uint8_t*)pvPortMalloc((length)*(sizeof(uint8_t)));
 
-                if ((cmdResponse.response != NULL) &&
-                    (uxQueueMessagesWaiting(DiagResponseQueue) == 0))
+                if (cmdResponse.response != NULL)
                 {
                     memcpy(cmdResponse.response,response,length);
-
-                    QueuePushStatus = xQueueSendToBack(DiagResponseQueue, &cmdResponse, QueuePushDelayMs);
-
-                    if(QueuePushStatus == pdPASS)
-                    {
-                        DEBUG_PRINT("Sent the Diagnostics Response to Diagnostic Task");
-                    }
+                    ConsoleDebugPrint("Heap size after in handler ", xPortGetFreeHeapSize());
+                    ModemDiagUpdateDataBase(&cmdResponse);
                 }
                 else
                 {
