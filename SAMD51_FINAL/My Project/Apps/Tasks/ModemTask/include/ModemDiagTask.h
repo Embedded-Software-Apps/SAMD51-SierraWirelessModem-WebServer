@@ -9,6 +9,9 @@
 #ifndef MODEMDIAGTASK_H_
 #define MODEMDIAGTASK_H_
 
+#include "Apps/Common/Common.h"
+#include "Apps/Tasks/ModemTask/include/ModemAtCommandSet.h"
+
 typedef enum
 {
 	MODEM_DIAG_TEST_AT,
@@ -17,9 +20,12 @@ typedef enum
 	MODEM_DIAG_GET_CARRIER
 }MODEM_DIAG_STATES_T;
 
+typedef struct
+{
+	MODEM_DIAG_STATES_T diagState;
+	uint8_t* diagData;
 
-
-
+}DIAG_RESPONSE_DATABASE;
 
 
 

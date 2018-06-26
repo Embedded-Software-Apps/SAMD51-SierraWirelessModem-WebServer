@@ -29,7 +29,7 @@
             			
             <storageModule moduleId="cdtBuildSystem" version="4.0.0">
                 				
-                <configuration artifactName="${ProjName}" buildProperties="" description="" id="cdt.managedbuild.toolchain.gnu.cross.base.917299044" name="Default" optionalBuildProperties="org.eclipse.cdt.docker.launcher.containerbuild.property.volumes=,org.eclipse.cdt.docker.launcher.containerbuild.property.selectedvolumes=" parent="org.eclipse.cdt.build.core.emptycfg">
+                <configuration artifactName="${ProjName}" buildProperties="" description="" id="cdt.managedbuild.toolchain.gnu.cross.base.917299044" name="Default" optionalBuildProperties="org.eclipse.cdt.docker.launcher.containerbuild.property.selectedvolumes=,org.eclipse.cdt.docker.launcher.containerbuild.property.volumes=" parent="org.eclipse.cdt.build.core.emptycfg">
                     					
                     <folderInfo id="cdt.managedbuild.toolchain.gnu.cross.base.917299044.425051590" name="/" resourcePath="">
                         						
@@ -45,11 +45,23 @@
                             							
                             <tool id="cdt.managedbuild.tool.gnu.cross.c.compiler.119879843" name="Cross GCC Compiler" superClass="cdt.managedbuild.tool.gnu.cross.c.compiler">
                                 								
+                                <option id="gnu.c.compiler.option.include.paths.907118815" superClass="gnu.c.compiler.option.include.paths" valueType="includePath">
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;E:\Freelancing_Work\SAMD51\GitHub\SAMD51-SierraWirelessModem-WebServer\SAMD51_FINAL\My Project&quot;"/>
+                                    								
+                                </option>
+                                								
                                 <inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.29543366" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
                                 							
                             </tool>
                             							
                             <tool id="cdt.managedbuild.tool.gnu.cross.cpp.compiler.1456379328" name="Cross G++ Compiler" superClass="cdt.managedbuild.tool.gnu.cross.cpp.compiler">
+                                								
+                                <option id="gnu.cpp.compiler.option.include.paths.495133719" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;E:\Freelancing_Work\SAMD51\GitHub\SAMD51-SierraWirelessModem-WebServer\SAMD51_FINAL\My Project&quot;"/>
+                                    								
+                                </option>
                                 								
                                 <inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.604830549" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
                                 							
@@ -80,6 +92,12 @@
                             <tool id="cdt.managedbuild.tool.gnu.cross.archiver.1367991353" name="Cross GCC Archiver" superClass="cdt.managedbuild.tool.gnu.cross.archiver"/>
                             							
                             <tool id="cdt.managedbuild.tool.gnu.cross.assembler.235510393" name="Cross GCC Assembler" superClass="cdt.managedbuild.tool.gnu.cross.assembler">
+                                								
+                                <option id="gnu.both.asm.option.include.paths.375230104" superClass="gnu.both.asm.option.include.paths" valueType="includePath">
+                                    									
+                                    <listOptionValue builtIn="false" value="&quot;E:\Freelancing_Work\SAMD51\GitHub\SAMD51-SierraWirelessModem-WebServer\SAMD51_FINAL\My Project&quot;"/>
+                                    								
+                                </option>
                                 								
                                 <inputType id="cdt.managedbuild.tool.gnu.assembler.input.602389700" superClass="cdt.managedbuild.tool.gnu.assembler.input"/>
                                 							

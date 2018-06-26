@@ -8,9 +8,12 @@
 
 #ifndef MODEMRESPONSEHANDLES_H_
 #define MODEMRESPONSEHANDLES_H_
+
 #include <stdint.h>
 #include <stdbool.h>
+#include "Apps/Tasks/ModemTask/include/ModemAtCommandSet.h"
 
+void modemResponseHandler(AT_CMD_TYPE cmd,uint8_t* response, uint8_t length);
 void mdmResp_AtRespHandler(uint8_t* response, uint8_t length);
 void mdmResp_IMEIRespHandler(uint8_t* response, uint8_t length);
 void mdmResp_CarrierRespHandler(uint8_t* response, uint8_t length);

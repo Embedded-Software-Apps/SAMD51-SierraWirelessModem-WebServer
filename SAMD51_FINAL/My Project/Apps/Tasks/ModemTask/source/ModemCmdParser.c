@@ -62,7 +62,7 @@ void mdmParser_ProcessModemResponse(void)
 		{
 			if(lastSendATCommand == cmdData.AtCmd)
 			{
-				cmdData.respHandler(responseDataBuffer,cmdData.validDataCnt);
+				//cmdData.respHandler(responseDataBuffer,cmdData.validDataCnt);
 				mdmParser_SetLastCmdProcessed(true);
 			}
 		}
@@ -129,7 +129,7 @@ bool mdmParser_solicitedCmdParser(AT_CMD_TYPE cmd)
 						parseCnt++;
 					}
 					parsedDataBuffer[parseCnt] = '\0';
-					cmdData.respHandler(parsedDataBuffer,cmdData.validDataCnt);
+					cmdData.respHandler(cmdData.AtCmd,parsedDataBuffer,cmdData.validDataCnt);
 					vPortFree(parsedDataBuffer);
 					parseStatus = true;
 				}

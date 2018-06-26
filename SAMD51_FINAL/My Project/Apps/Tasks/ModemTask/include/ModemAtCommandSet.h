@@ -20,8 +20,9 @@
 /* Supported AT Command Set */
 typedef enum
 {
-	/* Basic Commands */
 	CMD_AT_MAX = 0,
+
+	/* Diagnostics Commands */
 	CMD_AT,
 	CMD_AT_CGSN,
 	CMD_AT_WCARRIER,
@@ -53,11 +54,19 @@ typedef enum
 	CMD_AT_CGATT
 }AT_CMD_TYPE;
 
-typedef void (*ResponseHandler)(uint8_t* response,uint8_t length);
+typedef enum
+{
+	AT_CMD_SET_DIAGNOSTICS,
+	AT_CMD_SET_CONNECTION,
+	AT_CMD_SET_MAX
+}AT_CMD_SET;
+
+typedef void (*ResponseHandler)(AT_CMD_TYPE AtCmd, uint8_t* response, uint8_t length);
 
 typedef struct
 {
 	AT_CMD_TYPE AtCmd;
+	AT_CMD_SET cmdSet;
 	uint8_t* AtString;
 	uint8_t CmdLength;
 	uint16_t validDataCnt;
@@ -86,6 +95,15 @@ typedef struct
 {
 	AT_CMD_TYPE atCmd;
 }AtRxMsgType;
+
+typedef struct
+{
+	AT_CMD_TYPE atCmd;
+	uint8_t* response;
+	uint16_t length;
+
+}CmdResponseType;
+
 
 void getModemCommandData(AT_CMD_TYPE cmd, MODEM_CMD_DATA* cmdData);
 void mdmParser_SetKhttpHeaderString(uint8_t* sessionID);
