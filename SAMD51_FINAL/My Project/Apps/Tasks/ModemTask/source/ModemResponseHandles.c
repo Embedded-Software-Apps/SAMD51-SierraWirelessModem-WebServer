@@ -66,20 +66,6 @@ void modemResponseHandler(AT_CMD_TYPE cmd,uint8_t* response, uint16_t length)
     }
 }
 
-
-/*============================================================================
-**
-** Function Name:      mdmComms_GetModemResponse
-**
-** Description:        Gets the parsed modem response
-**
-**===========================================================================*/
-void mdmResp_AtRespHandler(uint8_t* response, uint8_t length)
-{
-	DEBUG_PRINT("In AT handler\r\n");
-    SerialDebugPrint(response,length);
-}
-
 /*============================================================================
 **
 ** Function Name:      mdmComms_GetModemResponse
@@ -92,44 +78,6 @@ void defaultFunctionPointer(uint8_t* response, uint8_t length)
 
 }
 
-/*============================================================================
-**
-** Function Name:      mdmComms_GetModemResponse
-**
-** Description:        Gets the parsed modem response
-**
-**===========================================================================*/
-void mdmResp_IMEIRespHandler(uint8_t* response, uint8_t length)
-{
-    DEBUG_PRINT("In CGSN handler");
-    SerialDebugPrint(response,length);
-}
-
-/*============================================================================
-**
-** Function Name:      mdmComms_GetModemResponse
-**
-** Description:        Gets the parsed modem response
-**
-**===========================================================================*/
-void mdmResp_CarrierRespHandler(uint8_t* response, uint8_t length)
-{
-    DEBUG_PRINT("In Carrier handler");
-    SerialDebugPrint(response,length);
-}
-
-/*============================================================================
-**
-** Function Name:      mdmComms_GetModemResponse
-**
-** Description:        Gets the parsed modem response
-**
-**===========================================================================*/
-void mdmResp_SerialNoRespHandler(uint8_t* response, uint8_t length)
-{
-    DEBUG_PRINT("In KGSN handler");
-    SerialDebugPrint(response,length);
-}
 /*============================================================================
 **
 ** Function Name:      mdmComms_GetModemResponse

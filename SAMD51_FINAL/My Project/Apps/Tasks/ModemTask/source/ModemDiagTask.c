@@ -19,7 +19,6 @@
 ************************************STATIC VARIABLES***************************************
 *******************************************************************************************/
 MODEM_DIAG_STATES_T ModemDiagState;
-TASK_OPERATION_MODE ModemDiagOpMode;
 
 static uint8_t atResponseData[2+1];
 static uint8_t atCgsnResponseData[15+1];
@@ -127,7 +126,50 @@ static void ModemDiagInit(void)
 ********************************************************************************/
 void ModemDiagUpdateDataBase(uint8_t* buffer,CmdResponseType* cmdResponse)
 {
-	SerialDebugPrint(buffer,cmdResponse->length);
+	MODEM_DIAG_STATES_T ModemDiagState =  ModemDiagStateFromAtCmd(cmdResponse->atCmd);
+
+    switch(ModemDiagState)
+    {
+        case MODEM_DIAG_TEST_AT:
+        {
+        	memcpy(DiagResponseDataBase[MODEM_DIAG_TEST_AT].diagData,buffer,cmdResponse->length);
+        	SerialDebugPrint(DiagResponseDataBase[MODEM_DIAG_TEST_AT].diagData,cmdResponse->length);
+        }
+        break;
+
+        case MODEM_DIAG_GET_IMEI:
+        {
+        	memcpy(DiagResponseDataBase[MODEM_DIAG_GET_IMEI].diagData,buffer,cmdResponse->length);
+        	DEBUG_PRINT("Retrieved the Modem IMEI Number");
+        	SerialDebugPrint(DiagResponseDataBase[MODEM_DIAG_GET_IMEI].diagData,cmdResponse->length);
+        }
+        break;
+
+        case MODEM_DIAG_GET_SERIAL:
+        {
+        	uint8_t startIndex = 7;
+        	uint8_t parseCnt = 0;
+
+			/* Extract the serial No */
+			while(parseCnt <= (cmdResponse->length - startIndex))
+			{
+				DiagResponseDataBase[MODEM_DIAG_GET_SERIAL].diagData[parseCnt] = buffer[startIndex + parseCnt];
+				parseCnt++;
+			}
+			DEBUG_PRINT("Retrieved the Modem serial Number");
+			SerialDebugPrint(DiagResponseDataBase[MODEM_DIAG_GET_SERIAL].diagData,cmdResponse->length);
+        }
+        break;
+
+        case MODEM_DIAG_GET_CARRIER:
+        {
+
+        }
+        break;
+
+        default:
+        break;
+    }
 
 }
 
@@ -210,7 +252,7 @@ static void ModemDiagSchedule(void)
                         DEBUG_PRINT("Sent the Diag data to Tx Task");
                         xSemaphoreGive(AtTxQueueLoadSemaphore);
                         vTaskDelay(DiagDelayMs);
-                        ModemDiagState = MODEM_DIAG_GET_CARRIER;
+                        ModemDiagState = MODEM_DIAG_MAX_STATE;
                     }
                     else
                     {
