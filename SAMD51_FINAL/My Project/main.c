@@ -127,10 +127,12 @@ bool createQueuesAndSemaphores(void)
     	DEBUG_PRINT("Tx & Rx Queues are created");
 
     	AtTxQueueLoadSemaphore = xSemaphoreCreateBinary();
+    	DebugPrintMutex        = xSemaphoreCreateMutex();
 		
-		if((AtTxQueueLoadSemaphore != NULL))
+		if((AtTxQueueLoadSemaphore != NULL) &&
+		   (DebugPrintMutex != NULL))
 		{
-			DEBUG_PRINT("Semaphores are created");
+			DEBUG_PRINT("Semaphores and Mutexes are created");
 		}
 		else
 		{

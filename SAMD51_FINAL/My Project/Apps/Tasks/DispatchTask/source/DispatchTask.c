@@ -18,12 +18,17 @@
 void DispatchTask( void *DispatchTaskParam)
 {
 	TickType_t xLastWakeTime;
-	const TickType_t xDelayMs = pdMS_TO_TICKS(10000UL);
+	const TickType_t xDelayMs = pdMS_TO_TICKS(7000UL);
+	const TickType_t xDebugPrintDelayMs = pdMS_TO_TICKS(500UL);
 	xLastWakeTime = xTaskGetTickCount();
 
 	while(1)
 	{
-		DEBUG_PRINT("Running Dispatch Task successfully");
+        if( xSemaphoreTake( DebugPrintMutex,xDebugPrintDelayMs) == pdTRUE )
+        {
+        	DEBUG_PRINT("Running Dispatch Task successfully");
+        	xSemaphoreGive(DebugPrintMutex);
+        }
 		kickWatchDog();
 		vTaskDelayUntil( &xLastWakeTime, xDelayMs);
 	}

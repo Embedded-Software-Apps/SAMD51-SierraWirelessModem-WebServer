@@ -91,6 +91,7 @@ static MODEM_DIAG_STATES_T ModemDiagStateFromAtCmd(AT_CMD_TYPE cmd)
 void ModemDiagTask( void *ModemTaskParam)
 {
     const TickType_t xDelayMs = pdMS_TO_TICKS(3500UL);
+    const TickType_t xDebugPrintDelayMs = pdMS_TO_TICKS(500UL);
     ModemDiagInit();
 
     while(1)
@@ -99,7 +100,11 @@ void ModemDiagTask( void *ModemTaskParam)
         {
             ModemDiagSchedule();
             kickWatchDog();
-            DEBUG_PRINT("Running Diag Process Task successfully");
+            if( xSemaphoreTake( DebugPrintMutex,xDebugPrintDelayMs) == pdTRUE )
+            {
+            	DEBUG_PRINT("Running Modem Diag Task successfully");
+            	xSemaphoreGive(DebugPrintMutex);
+            }
             vTaskDelay(xDelayMs);
         }
     }

@@ -33,6 +33,7 @@
 void ModemProcessTask( void *ModemTaskParam)
 {
     const TickType_t xDelayMs = pdMS_TO_TICKS(5000UL);
+    const TickType_t xDebugPrintDelayMs = pdMS_TO_TICKS(500UL);
 
     modemPowerStateInit();
 
@@ -42,7 +43,11 @@ void ModemProcessTask( void *ModemTaskParam)
 
         if(getModemPowerStatus() == MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS)
         {
-            DEBUG_PRINT("Running Modem Process Task successfully");
+            if( xSemaphoreTake( DebugPrintMutex,xDebugPrintDelayMs) == pdTRUE )
+            {
+            	DEBUG_PRINT("Running Modem Process Task successfully");
+            	xSemaphoreGive(DebugPrintMutex);
+            }
 			kickWatchDog();
             vTaskDelay(xDelayMs);
         }

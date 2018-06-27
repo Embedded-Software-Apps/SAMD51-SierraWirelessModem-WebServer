@@ -143,6 +143,7 @@ QueueHandle_t AtTransmitQueue;
 QueueHandle_t AtReceiveQueue;
 QueueHandle_t DiagResponseQueue;
 SemaphoreHandle_t AtTxQueueLoadSemaphore;
+SemaphoreHandle_t DebugPrintMutex;
 
 #define MAX_TX_QUEUE_SIZE (1)
 #define MAX_RX_QUEUE_SIZE (1)
