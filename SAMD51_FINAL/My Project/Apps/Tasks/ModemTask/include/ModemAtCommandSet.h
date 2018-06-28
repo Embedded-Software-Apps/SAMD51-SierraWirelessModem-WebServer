@@ -106,5 +106,5 @@ typedef struct
 
 
 void getModemCommandData(AT_CMD_TYPE cmd, MODEM_CMD_DATA* cmdData);
-void mdmParser_SetKhttpHeaderString(uint8_t* sessionID);
+void buildHttpHeaderWithActiveSessionID(const uint8_t* activeSessionId);
 #endif /* MODEMATCOMMANDSET_H_ */

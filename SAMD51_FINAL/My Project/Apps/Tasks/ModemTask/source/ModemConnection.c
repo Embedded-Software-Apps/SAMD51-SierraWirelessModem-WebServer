@@ -22,7 +22,7 @@ static uint8_t currentSessionId;
 static void MdmCnct_CloseActiveConnections(void);
 static AT_CMD_TYPE getCloseActiveSessionCmd(uint8_t sessionID);
 static void MdmCnct_ExtractSessionIdFromConfigResponse(uint8_t* response);
-static void mdmCnct_BuildHttpHeaderWithActiveSessionID(uint8_t* activeSessionId);
+static bool processHttpHeaderResponse(uint8_t* response);
 /*============================================================================
 **
 ** Function Name:      mdmCtrlr_FlushRxBuffer
@@ -74,7 +74,8 @@ void MdmConnect_HttpConnectionSchedule(void)
 
         case MDM_HTTP_CONNECTED:
         {
-
+        	SerialDebugPrint("HTTP CONNECTED",14);
+        	gHttpConnectionState = MDM_HTTP_DISCONNECTION_IN_PROGRESS;
         }
         break;
 
@@ -457,11 +458,67 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
         {
         	if(gHttpConnectOpMode == HTTP_CONNECT_OP_TX_MODE)
         	{
+        		buildHttpHeaderWithActiveSessionID(&currentSessionId);
 
+    		    if (uxQueueMessagesWaiting(AtTransmitQueue) == 0)
+    		    {
+    		        if(pdPASS == xSemaphoreTake(AtTxQueueLoadSemaphore, 0))
+    		        {
+                        TxMsgQueueData.taskID = MODEM_PROCESS_TASK;
+                        TxMsgQueueData.atCmd = CMD_AT_KHTTP_HEADER;
+                        TxMsgQueueData.pData = NULL;
+                        TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
+
+                        if(TxQueuePushStatus == pdPASS)
+                        {
+                            xSemaphoreGive(AtTxQueueLoadSemaphore);
+                            gHttpConnectOpMode = HTTP_CONNECT_OP_RX_MODE;
+                            vTaskDelay(TransmitDelayMs);
+                        }
+                        else
+                        {
+                            DEBUG_PRINT("Failed to sent connection timer cmd to Tx Task");
+                            vTaskDelay(TransmitDelayMs);
+                        }
+    		        }
+    		        else
+    		        {
+    		        	DEBUG_PRINT("Error : Not able to obtain Tx Semapahore");
+    		        }
+    		    }
+    		    else
+    		    {
+    		    	DEBUG_PRINT("Transmit Queue is not empty");
+    		    }
         	}
         	else if(gHttpConnectOpMode == HTTP_CONNECT_OP_RX_MODE)
         	{
+        		if(pdPASS == xQueueReceive( CmdResponseQueue, &ConnectionResponse, ResponseWaittDelayMs))
+				{
+	        		if(ConnectionResponse.atCmd == CMD_AT_KHTTP_HEADER)
+	        		{
+		        		SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
+						SerialDebugPrint("\r\n",2);
 
+						if(false != processHttpHeaderResponse(ConnectionResponse.response))
+						{
+							gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_CLOSE_CONNECTION;
+							gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+							gHttpConnectionState = MDM_HTTP_CONNECTED;
+						}
+						else
+						{
+							gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+						}
+		        		vPortFree(ConnectionResponse.response);
+	        		}
+	        		else
+	        		{
+		        		DEBUG_PRINT("Failed to receive connection response in RX mode");
+		        		gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+		        		vPortFree(ConnectionResponse.response);
+	        		}
+				}
         	}
         	else
         	{
@@ -498,86 +555,24 @@ static void MdmCnct_ExtractSessionIdFromConfigResponse(uint8_t* cfgResponse)
 ** Description:        Flushes the Rx Ring Buffer
 **
 **===========================================================================*/
-static void mdmCnct_BuildHttpHeaderWithActiveSessionID(uint8_t* activeSessionId)
+static bool processHttpHeaderResponse(uint8_t* response)
 {
-	switch (*activeSessionId)
-	{
-		case SESSION_ID_1:
-		{
-			HttpHeaderString[SESSION_ID_POS_IN_HEADER] = '1';
-			kHttpGetString[SESSION_ID_POS_IN_GET_REQ]  = '1';
-		}
-		break;
+	bool status = false;
 
-		case SESSION_ID_2:
-		{
-			HttpHeaderString[SESSION_ID_POS_IN_HEADER] = '2';
-			kHttpGetString[SESSION_ID_POS_IN_GET_REQ]  = '2';
-		}
-		break;
+    if(0==memcmp(response,"CONNECT",7))
+    {
+    	mdmCtrlr_SendDataToModem("--EOF--Pattern--",16);
+    	delay_ms(1000);
+    	mdmCtrlr_FlushRxBuffer();
+    	status = true;
+    }
+    else
+    {
+    	status = false;
+    }
 
-		case SESSION_ID_3:
-		{
-			HttpHeaderString[SESSION_ID_POS_IN_HEADER] = '3';
-			kHttpGetString[SESSION_ID_POS_IN_GET_REQ]  = '3';
-		}
-		break;
-
-		case SESSION_ID_4:
-		{
-			HttpHeaderString[SESSION_ID_POS_IN_HEADER] = '4';
-			kHttpGetString[SESSION_ID_POS_IN_GET_REQ]  = '4';
-		}
-		break;
-
-		case SESSION_ID_5:
-		{
-			HttpHeaderString[SESSION_ID_POS_IN_HEADER] = '5';
-			kHttpGetString[SESSION_ID_POS_IN_GET_REQ]  = '5';
-		}
-		break;
-
-		case SESSION_ID_6:
-		{
-			HttpHeaderString[SESSION_ID_POS_IN_HEADER] = '6';
-			kHttpGetString[SESSION_ID_POS_IN_GET_REQ]  = '6';
-		}
-		break;
-
-		case SESSION_ID_7:
-		{
-			HttpHeaderString[SESSION_ID_POS_IN_HEADER] = '7';
-			kHttpGetString[SESSION_ID_POS_IN_GET_REQ]  = '7';
-		}
-		break;
-
-		case SESSION_ID_8:
-		{
-			HttpHeaderString[SESSION_ID_POS_IN_HEADER] = '8';
-			kHttpGetString[SESSION_ID_POS_IN_GET_REQ]  = '8';
-		}
-		break;
-
-		case SESSION_ID_9:
-		{
-			HttpHeaderString[SESSION_ID_POS_IN_HEADER] = '9';
-			kHttpGetString[SESSION_ID_POS_IN_GET_REQ]  = '9';
-		}
-		break;
-
-		default:
-		{
-			/* Session ID value exceeds. */
-		}
-		break;
-	}
-
-	DEBUG_PRINT("KHTTP HEADER String is ");
-
-	strncpy(kHttpGetCompleteData,kHttpGetString,15);
-	strncat(kHttpGetCompleteData,"\"?i=359998070228764&d=A1Y52XA2Y36&b=36&s=2\"\r",44);
+    return status;
 }
-
 /*============================================================================
 **
 ** Function Name:      mdmCtrlr_FlushRxBuffer

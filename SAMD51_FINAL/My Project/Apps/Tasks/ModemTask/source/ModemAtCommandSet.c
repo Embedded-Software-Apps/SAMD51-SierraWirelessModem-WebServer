@@ -10,8 +10,10 @@
 #include "Apps/Common/Common.h"
 #include "Apps/Tasks/ModemTask/include/ModemAtCommandSet.h"
 #include "Apps/Tasks/ModemTask/include/ModemResponseHandles.h"
+#include "Apps/Tasks/ModemTask/include/ModemConnection.h"
+#include "Apps/Tasks/ModemTask/include/ModemConnectionConfig.h"
 
-uint8_t HttpHeaderString[INT_SEVENTEEN] = {'A','T','+','K','H','T','T','P','H','E','A','D','E','R','=','0','\r'};
+uint8_t HttpHeaderString[INT_SEVENTEEN] = {'A','T','+','K','H','T','T','P','H','E','A','D','E','R','=','X','\r'};
 
 uint8_t kHttpGetString[INT_FIFTEEN] = {'A','T','+','K','H','T','T','P','G','E','T','=','0',',','\0'};
 
@@ -325,93 +327,85 @@ void getModemCommandData(AT_CMD_TYPE cmd, MODEM_CMD_DATA* cmdData)
 	*cmdData = ModemCmdData[cmd];
 }
 
-
 /*============================================================================
 **
-** Function Name:      mdmComms_GetModemResponse
+** Function Name:      mdmCtrlr_FlushRxBuffer
 **
-** Description:        Gets the parsed modem response
+** Description:        Flushes the Rx Ring Buffer
 **
 **===========================================================================*/
-void mdmParser_SetHttpHeaderString(uint8_t* sessionID)
+void buildHttpHeaderWithActiveSessionID(const uint8_t* activeSessionId)
 {
-	switch (*sessionID)
+	switch (*activeSessionId)
 	{
-		case 49:
+		case SESSION_ID_1:
 		{
-			HttpHeaderString[15] = '1';
-			kHttpGetString[12] = '1';
-			DEBUG_PRINT("Session ID - 1");
+			HttpHeaderString[SESSION_ID_POS_IN_HEADER] = '1';
+			kHttpGetString[SESSION_ID_POS_IN_GET_REQ]  = '1';
 		}
 		break;
 
-		case 50:
+		case SESSION_ID_2:
 		{
-			HttpHeaderString[15] = '2';
-			kHttpGetString[12] = '2';
-			DEBUG_PRINT("Session ID - 2");
+			HttpHeaderString[SESSION_ID_POS_IN_HEADER] = '2';
+			kHttpGetString[SESSION_ID_POS_IN_GET_REQ]  = '2';
 		}
 		break;
 
-		case 51:
+		case SESSION_ID_3:
 		{
-			HttpHeaderString[15] = '3';
-			kHttpGetString[12] = '3';
-			DEBUG_PRINT("Session ID - 3");
+			HttpHeaderString[SESSION_ID_POS_IN_HEADER] = '3';
+			kHttpGetString[SESSION_ID_POS_IN_GET_REQ]  = '3';
 		}
 		break;
 
-		case 52:
+		case SESSION_ID_4:
 		{
-			HttpHeaderString[15] = '4';
-			kHttpGetString[12] = '4';
-			DEBUG_PRINT("Session ID - 4");
+			HttpHeaderString[SESSION_ID_POS_IN_HEADER] = '4';
+			kHttpGetString[SESSION_ID_POS_IN_GET_REQ]  = '4';
 		}
 		break;
 
-		case 53:
+		case SESSION_ID_5:
 		{
-			HttpHeaderString[15] = '5';
-			kHttpGetString[12] = '5';
-			DEBUG_PRINT("Session ID - 5");
+			HttpHeaderString[SESSION_ID_POS_IN_HEADER] = '5';
+			kHttpGetString[SESSION_ID_POS_IN_GET_REQ]  = '5';
 		}
 		break;
 
-		case 54:
+		case SESSION_ID_6:
 		{
-			HttpHeaderString[15] = '6';
-			kHttpGetString[12] = '6';
-			DEBUG_PRINT("Session ID - 6");
+			HttpHeaderString[SESSION_ID_POS_IN_HEADER] = '6';
+			kHttpGetString[SESSION_ID_POS_IN_GET_REQ]  = '6';
 		}
 		break;
 
-		case 55:
+		case SESSION_ID_7:
 		{
-			HttpHeaderString[15] = '7';
-			kHttpGetString[12] = '7';
-			DEBUG_PRINT("Session ID - 7");
+			HttpHeaderString[SESSION_ID_POS_IN_HEADER] = '7';
+			kHttpGetString[SESSION_ID_POS_IN_GET_REQ]  = '7';
 		}
 		break;
 
-		case 56:
+		case SESSION_ID_8:
 		{
-			HttpHeaderString[15] = '8';
-			kHttpGetString[12] = '8';
-			DEBUG_PRINT("Session ID - 8");
+			HttpHeaderString[SESSION_ID_POS_IN_HEADER] = '8';
+			kHttpGetString[SESSION_ID_POS_IN_GET_REQ]  = '8';
+		}
+		break;
+
+		case SESSION_ID_9:
+		{
+			HttpHeaderString[SESSION_ID_POS_IN_HEADER] = '9';
+			kHttpGetString[SESSION_ID_POS_IN_GET_REQ]  = '9';
 		}
 		break;
 
 		default:
 		{
-			DEBUG_PRINT("Session ID value exceeds the max value");
+			/* Session ID value exceeds. */
 		}
 		break;
 	}
-
-	DEBUG_PRINT("KHTTP HEADER String is ");
-
-	strncpy(kHttpGetCompleteData,kHttpGetString,15);
-	strncat(kHttpGetCompleteData,"\"?i=359998070228764&d=A1Y52XA2Y36&b=36&s=2\"\r",44);
 }
-
 

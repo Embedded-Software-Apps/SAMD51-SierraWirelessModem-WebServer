@@ -30,7 +30,9 @@ Apps/Tasks/ModemTask/source/ModemAtCommandSet.d \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\newlib.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\cdefs.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdbool.h \
- ../Apps/Tasks/ModemTask/include/ModemResponseHandles.h
+ ../Apps/Tasks/ModemTask/include/ModemResponseHandles.h \
+ ../Apps/Tasks/ModemTask/include/ModemConnection.h \
+ ../Apps/Tasks/ModemTask/include/ModemConnectionConfig.h
 
 ../Apps/Common/Common.h:
 
@@ -93,3 +95,7 @@ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\inclu
 e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdbool.h:
 
 ../Apps/Tasks/ModemTask/include/ModemResponseHandles.h:
+
+../Apps/Tasks/ModemTask/include/ModemConnection.h:
+
+../Apps/Tasks/ModemTask/include/ModemConnectionConfig.h:
