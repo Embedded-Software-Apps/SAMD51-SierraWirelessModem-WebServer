@@ -100,8 +100,9 @@ typedef struct
 {
 	AT_CMD_TYPE atCmd;
 	uint16_t length;
-
+	uint8_t* response;
 }CmdResponseType;
+
 
 
 void getModemCommandData(AT_CMD_TYPE cmd, MODEM_CMD_DATA* cmdData);

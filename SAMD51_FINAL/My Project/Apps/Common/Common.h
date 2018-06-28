@@ -141,13 +141,13 @@ uint32_t getSystemTime(void);
 /* IPC Mechanisms */
 QueueHandle_t AtTransmitQueue;
 QueueHandle_t AtReceiveQueue;
-QueueHandle_t DiagResponseQueue;
+QueueHandle_t CmdResponseQueue;
 SemaphoreHandle_t AtTxQueueLoadSemaphore;
 SemaphoreHandle_t DebugPrintMutex;
 
 #define MAX_TX_QUEUE_SIZE (1)
 #define MAX_RX_QUEUE_SIZE (1)
-#define MAX_DIAG_RESP_QUEUE_SIZE (1)
+#define MAX_CMD_RESP_QUEUE_SIZE (1)
 
 typedef enum
 {

@@ -32,10 +32,23 @@ typedef enum
 	CONNECT_IN_PROGRESS_SET_HTTP_HEADER
 }HTTP_CONNECT_IN_PROGRESS_SUBSTATES_T;
 
+typedef enum
+{
+	HTTP_CONNECT_OP_TX_MODE,
+	HTTP_CONNECT_OP_RX_MODE,
+	HTTP_CONNECT_OP_MAX_MODE
+}HTTP_CONNECT_OPERATIONAL_STATE_T;
+
+typedef enum
+{
+	GET_TOTAL_NO_OF_ACTIVE_CONNECTIONS,
+	CLOSE_ALL_EXISTING_CONNECIONS
+}HTTP_CLOSE_CONNECTIONS_STATE_T;
+
 #define MAX_ACTIVE_SESSION_ID (10)
 
 void MdmCnct_ConnectInProgressSubStateMachine(void);
-void MdmCnct_HttpConnectionStateMachine(void);
-
+void MdmConnect_HttpConnectionSchedule(void);
+void MdmConnect_HttpConnectionInit(void);
 
 #endif /* MODEMCONNECTION_H_ */

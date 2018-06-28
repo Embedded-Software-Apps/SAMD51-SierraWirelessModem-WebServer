@@ -117,12 +117,12 @@ bool createQueuesAndSemaphores(void)
     /* Create the Message Queues */
     AtTransmitQueue    = xQueueCreate(MAX_TX_QUEUE_SIZE, sizeof(AtTxMsgType));
     AtReceiveQueue     = xQueueCreate(MAX_RX_QUEUE_SIZE, sizeof(AtRxMsgType));
-    DiagResponseQueue  = xQueueCreate(MAX_DIAG_RESP_QUEUE_SIZE, sizeof(CmdResponseType));
+    CmdResponseQueue  = xQueueCreate(MAX_CMD_RESP_QUEUE_SIZE, sizeof(CmdResponseType));
 
 
     if((AtTransmitQueue != NULL) &&
        (AtReceiveQueue  != NULL) &&
-	   (DiagResponseQueue != NULL))
+	   (CmdResponseQueue != NULL))
     {
     	DEBUG_PRINT("Tx & Rx Queues are created");
 

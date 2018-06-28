@@ -36,6 +36,7 @@ void ModemProcessTask( void *ModemTaskParam)
     const TickType_t xDebugPrintDelayMs = pdMS_TO_TICKS(500UL);
 
     modemPowerStateInit();
+    MdmConnect_HttpConnectionInit();
 
     while(1)
     {
@@ -48,6 +49,8 @@ void ModemProcessTask( void *ModemTaskParam)
             	DEBUG_PRINT("Running Modem Process Task successfully");
             	xSemaphoreGive(DebugPrintMutex);
             }
+
+            MdmConnect_HttpConnectionSchedule();
 			kickWatchDog();
             vTaskDelay(xDelayMs);
         }

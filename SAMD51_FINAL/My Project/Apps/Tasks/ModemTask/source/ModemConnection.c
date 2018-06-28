@@ -9,9 +9,15 @@
 #include "Apps/Tasks/ModemTask/include/ModemAtCommandSet.h"
 
 /* Global variables */
-static HTTP_CONNECT_STATES_T gHttpMainState;
-static HTTP_CONNECT_IN_PROGRESS_SUBSTATES_T gHttpCnctnPrgrsSubstate;
+static HTTP_CONNECT_STATES_T gHttpConnectionState;
+static HTTP_CONNECT_IN_PROGRESS_SUBSTATES_T gHttpConnectionInProgressSubstate;
+static HTTP_CONNECT_OPERATIONAL_STATE_T gHttpConnectOpMode;
+static HTTP_CLOSE_CONNECTIONS_STATE_T gHttpCloseConnectionsState;
+static uint8_t sessionIdCount = 0;
+static CmdResponseType ConnectionResponse;
 
+static void MdmCnct_CloseActiveConnections(void);
+static AT_CMD_TYPE getCloseActiveSessionCmd(uint8_t sessionID);
 /*============================================================================
 **
 ** Function Name:      mdmCtrlr_FlushRxBuffer
@@ -19,14 +25,34 @@ static HTTP_CONNECT_IN_PROGRESS_SUBSTATES_T gHttpCnctnPrgrsSubstate;
 ** Description:        Flushes the Rx Ring Buffer
 **
 **===========================================================================*/
-void MdmCnct_HttpConnectionStateMachine(void)
+void MdmConnect_HttpConnectionInit(void)
 {
-	switch (gHttpMainState)
+	gHttpConnectionState = MDM_HTTP_DISCONNECTED;
+	gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_CLOSE_CONNECTION;
+	gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+	gHttpCloseConnectionsState = GET_TOTAL_NO_OF_ACTIVE_CONNECTIONS;
+	sessionIdCount = 3;
+
+	ConnectionResponse.atCmd = CMD_AT_MAX;
+	ConnectionResponse.length = 0;
+	ConnectionResponse.response = NULL;
+}
+/*============================================================================
+**
+** Function Name:      mdmCtrlr_FlushRxBuffer
+**
+** Description:        Flushes the Rx Ring Buffer
+**
+**===========================================================================*/
+void MdmConnect_HttpConnectionSchedule(void)
+{
+	switch (gHttpConnectionState)
 	{
         case MDM_HTTP_DISCONNECTED:
         {
-        	gHttpMainState = MDM_HTTP_CONNECTION_IN_PROGRESS;
-        	DEBUG_PRINT("In MDM_HTTP_DISCONNECTED");
+        	gHttpConnectionState = MDM_HTTP_CONNECTION_IN_PROGRESS;
+        	gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_CLOSE_CONNECTION;
+        	gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
         }
         break;
 
@@ -68,58 +94,167 @@ void MdmCnct_HttpConnectionStateMachine(void)
 **===========================================================================*/
 void MdmCnct_ConnectInProgressSubStateMachine(void)
 {
-	static uint8_t sessionIDIndex=0;
+    AtTxMsgType TxMsgQueueData;
+    BaseType_t TxQueuePushStatus;
+    const TickType_t QueuePushDelayMs = pdMS_TO_TICKS(500UL);
+    const TickType_t TransmitDelayMs = pdMS_TO_TICKS(1000UL);
 
-	switch (gHttpCnctnPrgrsSubstate)
+	switch (gHttpConnectionInProgressSubstate)
 	{
         case CONNECT_IN_PROGRESS_CLOSE_CONNECTION:
         {
-        	if(sessionIDIndex < MAX_ACTIVE_SESSION_ID)
+        	if(gHttpConnectOpMode == HTTP_CONNECT_OP_TX_MODE)
         	{
-        		if(false != mdmParser_IsLastCmdProcessed())
+        		if(sessionIdCount > 0)
         		{
-        			DEBUG_PRINT("Closing Connection");
-        			mdmParser_SendCommandToModem(CMD_AT_KHTTP_CLOSE_1 + sessionIDIndex);
-        			sessionIDIndex++;
+        		    if (uxQueueMessagesWaiting(AtTransmitQueue) == 0)
+        		    {
+        		        if(pdPASS == xSemaphoreTake(AtTxQueueLoadSemaphore, 0))
+        		        {
+                            TxMsgQueueData.taskID = MODEM_PROCESS_TASK;
+                            TxMsgQueueData.atCmd = getCloseActiveSessionCmd(sessionIdCount);
+                            TxMsgQueueData.pData = NULL;
+                            TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
+
+                            if(TxQueuePushStatus == pdPASS)
+                            {
+                                xSemaphoreGive(AtTxQueueLoadSemaphore);
+                                DEBUG_PRINT("Sent the Session Close request to Tx Task");
+                                gHttpConnectOpMode = HTTP_CONNECT_OP_RX_MODE;
+                                vTaskDelay(TransmitDelayMs);
+                            }
+                            else
+                            {
+                                DEBUG_PRINT("Failed to sent the Session Close request to Tx Task");
+                                vTaskDelay(TransmitDelayMs);
+                            }
+        		        }
+        		    }
         		}
+        		else
+        		{
+        			DEBUG_PRINT("No More Active Connections to close");
+        			gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_SET_EOF_PATTERN;
+        		}
+
+        	}
+        	else if(gHttpConnectOpMode == HTTP_CONNECT_OP_RX_MODE)
+        	{
+        		xQueueReceive( CmdResponseQueue, &ConnectionResponse, portMAX_DELAY );
+
+        		if(ConnectionResponse.atCmd == getCloseActiveSessionCmd(sessionIdCount))
+        		{
+        			DEBUG_PRINT("Received a connection response in RX Mode");
+
+        			if(sessionIdCount > 0)
+        			{
+        				sessionIdCount--;
+        				gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+        				SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
+        			}
+        			else
+        			{
+        				gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_SET_EOF_PATTERN;
+        			}
+        			vPortFree(ConnectionResponse.response);
+        		}
+        		else
+        		{
+        			DEBUG_PRINT("Failed to receive connection response in RX mode");
+        			gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+        			vPortFree(ConnectionResponse.response);
+        		}
+
         	}
         	else
         	{
-        		DEBUG_PRINT("Closed all connections");
-        		sessionIDIndex = 0;
-        		gHttpCnctnPrgrsSubstate = CONNECT_IN_PROGRESS_SET_EOF_PATTERN;
+
         	}
         }
         break;
 
         case CONNECT_IN_PROGRESS_SET_EOF_PATTERN:
         {
-        	DEBUG_PRINT("In CONNECT_IN_PROGRESS_SET_EOF_PATTERN");
-        	gHttpCnctnPrgrsSubstate = CONNECT_IN_PROGRESS_SET_ACCESS_POINT;
+        	if(gHttpConnectOpMode == HTTP_CONNECT_OP_TX_MODE)
+        	{
+
+        	}
+        	else if(gHttpConnectOpMode == HTTP_CONNECT_OP_RX_MODE)
+        	{
+
+        	}
+        	else
+        	{
+
+        	}
         }
         break;
 
         case CONNECT_IN_PROGRESS_SET_ACCESS_POINT:
         {
+        	if(gHttpConnectOpMode == HTTP_CONNECT_OP_TX_MODE)
+        	{
 
+        	}
+        	else if(gHttpConnectOpMode == HTTP_CONNECT_OP_RX_MODE)
+        	{
+
+        	}
+        	else
+        	{
+
+        	}
         }
         break;
 
         case CONNECT_IN_PROGRESS_SET_CONNECT_TIMERS:
         {
+        	if(gHttpConnectOpMode == HTTP_CONNECT_OP_TX_MODE)
+        	{
 
+        	}
+        	else if(gHttpConnectOpMode == HTTP_CONNECT_OP_RX_MODE)
+        	{
+
+        	}
+        	else
+        	{
+
+        	}
         }
         break;
 
         case CONNECT_IN_PROGRESS_SET_SERVER_ADDRESS:
         {
+        	if(gHttpConnectOpMode == HTTP_CONNECT_OP_TX_MODE)
+        	{
 
+        	}
+        	else if(gHttpConnectOpMode == HTTP_CONNECT_OP_RX_MODE)
+        	{
+
+        	}
+        	else
+        	{
+
+        	}
         }
         break;
 
         case CONNECT_IN_PROGRESS_SET_HTTP_HEADER:
         {
+        	if(gHttpConnectOpMode == HTTP_CONNECT_OP_TX_MODE)
+        	{
 
+        	}
+        	else if(gHttpConnectOpMode == HTTP_CONNECT_OP_RX_MODE)
+        	{
+
+        	}
+        	else
+        	{
+
+        	}
         }
         break;
 
@@ -127,4 +262,94 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
         break;
 	}
 
+}
+
+/*============================================================================
+**
+** Function Name:      mdmCtrlr_FlushRxBuffer
+**
+** Description:        Flushes the Rx Ring Buffer
+**
+**===========================================================================*/
+static void MdmCnct_CloseActiveConnections(void)
+{
+
+}
+
+/*============================================================================
+**
+** Function Name:      mdmCtrlr_FlushRxBuffer
+**
+** Description:        Flushes the Rx Ring Buffer
+**
+**===========================================================================*/
+static AT_CMD_TYPE getCloseActiveSessionCmd(uint8_t sessionID)
+{
+	AT_CMD_TYPE sessionCloseCmd;
+
+	switch(sessionID)
+	{
+		case 1:
+		{
+			sessionCloseCmd = CMD_AT_KHTTP_CLOSE_1;
+		}
+		break;
+
+		case 2:
+		{
+			sessionCloseCmd = CMD_AT_KHTTP_CLOSE_2;
+		}
+		break;
+
+		case 3:
+		{
+			sessionCloseCmd = CMD_AT_KHTTP_CLOSE_3;
+		}
+		break;
+
+		case 4:
+		{
+			sessionCloseCmd = CMD_AT_KHTTP_CLOSE_4;
+		}
+		break;
+
+		case 5:
+		{
+			sessionCloseCmd = CMD_AT_KHTTP_CLOSE_5;
+		}
+		break;
+
+		case 6:
+		{
+			sessionCloseCmd = CMD_AT_KHTTP_CLOSE_6;
+		}
+		break;
+
+		case 7:
+		{
+			sessionCloseCmd = CMD_AT_KHTTP_CLOSE_7;
+		}
+		break;
+
+		case 8:
+		{
+			sessionCloseCmd = CMD_AT_KHTTP_CLOSE_8;
+		}
+		break;
+
+		case 9:
+		{
+			sessionCloseCmd = CMD_AT_KHTTP_CLOSE_9;
+		}
+		break;
+
+		case 10:
+		{
+			sessionCloseCmd = CMD_AT_KHTTP_CLOSE_10;
+		}
+		break;
+
+		default:
+		break;
+	}
 }
