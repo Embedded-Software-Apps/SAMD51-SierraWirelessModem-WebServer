@@ -619,17 +619,24 @@ static void MdmCnct_ConnectedSubStateMachine(void)
 			{
         		if(ConnectionResponse.atCmd == CMD_AT_KHTTP_GET)
         		{
-        			if(false != MdmCnct_validateServerResponse(ConnectionResponse.response))
-        			{
-    	        		SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
-    					SerialDebugPrint("\r\n",2);
-    					SerialDebugPrint("\r\n",2);
-    					gHttpConnectedSubState = CONNECTED_SEND_DATA_PACKETS_TO_SERVER;
-        			}
-        			else
-        			{
-        				gHttpConnectedSubState = CONNECTED_FAULT_IN_PACKET_TRANSMISSION;
-        			}
+					if(ConnectionResponse.length > 23)
+					{
+	        			if(false != MdmCnct_validateServerResponse(ConnectionResponse.response))
+	        			{
+		        			SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
+		        			SerialDebugPrint("\r\n",2);
+		        			SerialDebugPrint("\r\n",2);
+		        			gHttpConnectedSubState = CONNECTED_SEND_DATA_PACKETS_TO_SERVER;
+	        			}
+	        			else
+	        			{
+		        			gHttpConnectedSubState = CONNECTED_FAULT_IN_PACKET_TRANSMISSION;
+	        			}						
+					}
+					else
+					{
+						gHttpConnectedSubState = CONNECTED_FAULT_IN_PACKET_TRANSMISSION;
+					}
 
 	        		vPortFree(ConnectionResponse.response);
 	        		vTaskDelay(reTransmissionDelayMs);
@@ -690,6 +697,8 @@ static bool MdmCnct_validateServerResponse(uint8_t* response)
     {
     	status = false;
     }
+	
+	return status;
 }
 
 /*============================================================================
@@ -751,7 +760,8 @@ static bool MdmCnct_PeformErrorRecovery(void)
         		else
         		{
         			DEBUG_PRINT("No More Active Connections to close");
-        			gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_SET_EOF_PATTERN;
+        			gErrorRecoveryState = BRING_ACTIVE_PDP_CONNECTION_DOWN;
+        			gHttpConnectedSubState = CONNECTED_PEFORM_ERROR_RECOVERY;
         		}
 
         	}

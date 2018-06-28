@@ -24068,7 +24068,7 @@ LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtn.o
                 0x00010000                STACK_SIZE = DEFINED (STACK_SIZE)?STACK_SIZE:DEFINED (__stack_size__)?__stack_size__:0x10000
 
-.text           0x00000000     0x7b58
+.text           0x00000000     0x80b8
                 0x00000000                . = ALIGN (0x4)
                 0x00000000                _sfixed = .
  *(.vectors .vectors.*)
@@ -24106,1077 +24106,1078 @@ LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin
  .text.getCloseActiveSessionCmd
                 0x00000570       0x40 Apps/Tasks/ModemTask/source/ModemConnection.o
  .text.MdmConnect_HttpConnectionInit
-                0x000005b0       0x20 Apps/Tasks/ModemTask/source/ModemConnection.o
+                0x000005b0       0x24 Apps/Tasks/ModemTask/source/ModemConnection.o
                 0x000005b0                MdmConnect_HttpConnectionInit
  .text.MdmCnct_ConnectInProgressSubStateMachine
-                0x000005d0      0x6d8 Apps/Tasks/ModemTask/source/ModemConnection.o
-                0x000005d0                MdmCnct_ConnectInProgressSubStateMachine
+                0x000005d4      0x6b4 Apps/Tasks/ModemTask/source/ModemConnection.o
+                0x000005d4                MdmCnct_ConnectInProgressSubStateMachine
  .text.MdmConnect_HttpConnectionSchedule
-                0x00000ca8      0x1bc Apps/Tasks/ModemTask/source/ModemConnection.o
-                0x00000ca8                MdmConnect_HttpConnectionSchedule
+                0x00000c88      0x5a4 Apps/Tasks/ModemTask/source/ModemConnection.o
+                0x00000c88                MdmConnect_HttpConnectionSchedule
  .text.mdmCtrlr_DataCommInit
-                0x00000e64       0x84 Apps/Tasks/ModemTask/source/ModemController.o
-                0x00000e64                mdmCtrlr_DataCommInit
+                0x0000122c       0x84 Apps/Tasks/ModemTask/source/ModemController.o
+                0x0000122c                mdmCtrlr_DataCommInit
  .text.SERCOM3_0_Handler
-                0x00000ee8        0xc Apps/Tasks/ModemTask/source/ModemController.o
-                0x00000ee8                SERCOM3_0_Handler
+                0x000012b0        0xc Apps/Tasks/ModemTask/source/ModemController.o
+                0x000012b0                SERCOM3_0_Handler
  .text.SERCOM3_1_Handler
-                0x00000ef4        0xc Apps/Tasks/ModemTask/source/ModemController.o
-                0x00000ef4                SERCOM3_1_Handler
+                0x000012bc        0xc Apps/Tasks/ModemTask/source/ModemController.o
+                0x000012bc                SERCOM3_1_Handler
  .text.SERCOM3_2_Handler
-                0x00000f00       0xa0 Apps/Tasks/ModemTask/source/ModemController.o
-                0x00000f00                SERCOM3_2_Handler
+                0x000012c8       0xa0 Apps/Tasks/ModemTask/source/ModemController.o
+                0x000012c8                SERCOM3_2_Handler
  .text.mdmCtrlr_SendDataToModem
-                0x00000fa0       0x28 Apps/Tasks/ModemTask/source/ModemController.o
-                0x00000fa0                mdmCtrlr_SendDataToModem
+                0x00001368       0x28 Apps/Tasks/ModemTask/source/ModemController.o
+                0x00001368                mdmCtrlr_SendDataToModem
  .text.mdmCtrlr_ReadResponseFromModem
-                0x00000fc8       0x54 Apps/Tasks/ModemTask/source/ModemController.o
-                0x00000fc8                mdmCtrlr_ReadResponseFromModem
+                0x00001390       0x54 Apps/Tasks/ModemTask/source/ModemController.o
+                0x00001390                mdmCtrlr_ReadResponseFromModem
  .text.mdmCtrlr_FlushRxBuffer
-                0x0000101c       0x14 Apps/Tasks/ModemTask/source/ModemController.o
-                0x0000101c                mdmCtrlr_FlushRxBuffer
+                0x000013e4       0x14 Apps/Tasks/ModemTask/source/ModemController.o
+                0x000013e4                mdmCtrlr_FlushRxBuffer
  .text.ModemDiagTask
-                0x00001030      0x1ec Apps/Tasks/ModemTask/source/ModemDiagTask.o
-                0x00001030                ModemDiagTask
+                0x000013f8      0x1ec Apps/Tasks/ModemTask/source/ModemDiagTask.o
+                0x000013f8                ModemDiagTask
  .text.ModemDiagUpdateDataBase
-                0x0000121c       0xb8 Apps/Tasks/ModemTask/source/ModemDiagTask.o
-                0x0000121c                ModemDiagUpdateDataBase
+                0x000015e4       0xb8 Apps/Tasks/ModemTask/source/ModemDiagTask.o
+                0x000015e4                ModemDiagUpdateDataBase
  .text.isModemDiagDataBaseUpdated
-                0x000012d4        0xc Apps/Tasks/ModemTask/source/ModemDiagTask.o
-                0x000012d4                isModemDiagDataBaseUpdated
+                0x0000169c        0xc Apps/Tasks/ModemTask/source/ModemDiagTask.o
+                0x0000169c                isModemDiagDataBaseUpdated
  .text.getModemPowerStatus
-                0x000012e0        0xc Apps/Tasks/ModemTask/source/ModemPowerControl.o
-                0x000012e0                getModemPowerStatus
+                0x000016a8        0xc Apps/Tasks/ModemTask/source/ModemPowerControl.o
+                0x000016a8                getModemPowerStatus
  .text.modemPowerStateInit
-                0x000012ec       0x14 Apps/Tasks/ModemTask/source/ModemPowerControl.o
-                0x000012ec                modemPowerStateInit
+                0x000016b4       0x14 Apps/Tasks/ModemTask/source/ModemPowerControl.o
+                0x000016b4                modemPowerStateInit
  .text.modemPowerSchedule
-                0x00001300      0x18c Apps/Tasks/ModemTask/source/ModemPowerControl.o
-                0x00001300                modemPowerSchedule
+                0x000016c8      0x18c Apps/Tasks/ModemTask/source/ModemPowerControl.o
+                0x000016c8                modemPowerSchedule
  .text.ModemProcessTask
-                0x0000148c       0x44 Apps/Tasks/ModemTask/source/ModemProcessTask.o
-                0x0000148c                ModemProcessTask
+                0x00001854       0x44 Apps/Tasks/ModemTask/source/ModemProcessTask.o
+                0x00001854                ModemProcessTask
  .text.modemResponseHandler
-                0x000014d0      0x104 Apps/Tasks/ModemTask/source/ModemResponseHandles.o
-                0x000014d0                modemResponseHandler
+                0x00001898      0x104 Apps/Tasks/ModemTask/source/ModemResponseHandles.o
+                0x00001898                modemResponseHandler
  .text.ModemRxTask
-                0x000015d4       0x60 Apps/Tasks/ModemTask/source/ModemRxTask.o
-                0x000015d4                ModemRxTask
+                0x0000199c       0x60 Apps/Tasks/ModemTask/source/ModemRxTask.o
+                0x0000199c                ModemRxTask
  .text.ModemTxTask
-                0x00001634       0xc4 Apps/Tasks/ModemTask/source/ModemTxTask.o
-                0x00001634                ModemTxTask
+                0x000019fc       0xc4 Apps/Tasks/ModemTask/source/ModemTxTask.o
+                0x000019fc                ModemTxTask
  .text.usart_async_write
-                0x000016f8       0x50 Apps/UartDriver/source/UartDriver.o
-                0x000016f8                usart_async_write
+                0x00001ac0       0x50 Apps/UartDriver/source/UartDriver.o
+                0x00001ac0                usart_async_write
  .text.SerialDebugTxByteSentCallBack
-                0x00001748        0x6 Apps/SerialDebug/SerialDebug.o
-                0x00001748                SerialDebugTxByteSentCallBack
+                0x00001b10        0x6 Apps/SerialDebug/SerialDebug.o
+                0x00001b10                SerialDebugTxByteSentCallBack
  .text.SerialDebugErrorCallBack
-                0x0000174e        0x6 Apps/SerialDebug/SerialDebug.o
-                0x0000174e                SerialDebugErrorCallBack
+                0x00001b16        0x6 Apps/SerialDebug/SerialDebug.o
+                0x00001b16                SerialDebugErrorCallBack
  .text.SerialDebugPrintInit
-                0x00001754       0x28 Apps/SerialDebug/SerialDebug.o
-                0x00001754                SerialDebugPrintInit
+                0x00001b1c       0x28 Apps/SerialDebug/SerialDebug.o
+                0x00001b1c                SerialDebugPrintInit
  .text.SerialDebugPrint
-                0x0000177c       0x28 Apps/SerialDebug/SerialDebug.o
-                0x0000177c                SerialDebugPrint
+                0x00001b44       0x28 Apps/SerialDebug/SerialDebug.o
+                0x00001b44                SerialDebugPrint
  .text.SerialDebugTxDoneCallBack
-                0x000017a4       0x1c Apps/SerialDebug/SerialDebug.o
-                0x000017a4                SerialDebugTxDoneCallBack
+                0x00001b6c       0x1c Apps/SerialDebug/SerialDebug.o
+                0x00001b6c                SerialDebugTxDoneCallBack
  .text.SerialStringPrint
-                0x000017c0        0x2 Apps/SerialDebug/SerialDebug.o
-                0x000017c0                SerialStringPrint
- *fill*         0x000017c2        0x2 
+                0x00001b88        0x2 Apps/SerialDebug/SerialDebug.o
+                0x00001b88                SerialStringPrint
+ *fill*         0x00001b8a        0x2 
  .text.ConsoleDebugPrint
-                0x000017c4       0x48 Apps/SerialDebug/SerialDebug.o
-                0x000017c4                ConsoleDebugPrint
+                0x00001b8c       0x48 Apps/SerialDebug/SerialDebug.o
+                0x00001b8c                ConsoleDebugPrint
  .text.SERCOM5_2_Handler
-                0x0000180c       0x54 Apps/SerialDebug/SerialDebug.o
-                0x0000180c                SERCOM5_2_Handler
+                0x00001bd4       0x54 Apps/SerialDebug/SerialDebug.o
+                0x00001bd4                SERCOM5_2_Handler
  .text.configureWatchDogTimeOut
-                0x00001860       0x40 atmel_start.o
-                0x00001860                configureWatchDogTimeOut
+                0x00001c28       0x40 atmel_start.o
+                0x00001c28                configureWatchDogTimeOut
  .text.enableWatchDogTimer
-                0x000018a0       0x38 atmel_start.o
-                0x000018a0                enableWatchDogTimer
+                0x00001c68       0x38 atmel_start.o
+                0x00001c68                enableWatchDogTimer
  .text.atmel_start_init
-                0x000018d8       0x20 atmel_start.o
-                0x000018d8                atmel_start_init
+                0x00001ca0       0x20 atmel_start.o
+                0x00001ca0                atmel_start_init
  .text.kickWatchDog
-                0x000018f8       0x2c atmel_start.o
-                0x000018f8                kickWatchDog
+                0x00001cc0       0x2c atmel_start.o
+                0x00001cc0                kickWatchDog
  .text.Dummy_Handler
-                0x00001924        0x2 Device_Startup/startup_samd51.o
-                0x00001924                EIC_5_Handler
-                0x00001924                SERCOM0_2_Handler
-                0x00001924                DebugMon_Handler
-                0x00001924                EIC_13_Handler
-                0x00001924                EVSYS_0_Handler
-                0x00001924                TCC1_3_Handler
-                0x00001924                DAC_3_Handler
-                0x00001924                TRNG_Handler
-                0x00001924                HardFault_Handler
-                0x00001924                PDEC_2_Handler
-                0x00001924                EIC_4_Handler
-                0x00001924                AC_Handler
-                0x00001924                TCC2_3_Handler
-                0x00001924                NMI_Handler
-                0x00001924                ADC1_1_Handler
-                0x00001924                EVSYS_3_Handler
-                0x00001924                PDEC_0_Handler
-                0x00001924                QSPI_Handler
-                0x00001924                EIC_3_Handler
-                0x00001924                TAL_0_Handler
-                0x00001924                DAC_2_Handler
-                0x00001924                SERCOM0_0_Handler
-                0x00001924                RTC_Handler
-                0x00001924                UsageFault_Handler
-                0x00001924                SERCOM4_0_Handler
-                0x00001924                EIC_10_Handler
-                0x00001924                SERCOM0_3_Handler
-                0x00001924                EIC_11_Handler
-                0x00001924                EIC_9_Handler
-                0x00001924                OSC32KCTRL_Handler
-                0x00001924                TCC2_1_Handler
-                0x00001924                SUPC_1_Handler
-                0x00001924                TCC0_5_Handler
-                0x00001924                TCC0_6_Handler
-                0x00001924                EVSYS_1_Handler
-                0x00001924                TCC1_4_Handler
-                0x00001924                WDT_Handler
-                0x00001924                EIC_8_Handler
-                0x00001924                EIC_15_Handler
-                0x00001924                SERCOM5_0_Handler
-                0x00001924                OSCCTRL_4_Handler
-                0x00001924                SERCOM4_3_Handler
-                0x00001924                EIC_12_Handler
-                0x00001924                TCC4_2_Handler
-                0x00001924                PAC_Handler
-                0x00001924                USB_0_Handler
-                0x00001924                OSCCTRL_0_Handler
-                0x00001924                EIC_0_Handler
-                0x00001924                OSCCTRL_3_Handler
-                0x00001924                SERCOM4_1_Handler
-                0x00001924                Dummy_Handler
-                0x00001924                TCC2_2_Handler
-                0x00001924                SERCOM5_1_Handler
-                0x00001924                TCC1_1_Handler
-                0x00001924                ADC0_0_Handler
-                0x00001924                SERCOM0_1_Handler
-                0x00001924                OSCCTRL_2_Handler
-                0x00001924                ADC1_0_Handler
-                0x00001924                TCC1_2_Handler
-                0x00001924                USB_1_Handler
-                0x00001924                PM_Handler
-                0x00001924                SERCOM2_3_Handler
-                0x00001924                DAC_4_Handler
-                0x00001924                TCC3_2_Handler
-                0x00001924                TCC0_2_Handler
-                0x00001924                USB_3_Handler
-                0x00001924                PDEC_1_Handler
-                0x00001924                MemManage_Handler
-                0x00001924                TCC4_1_Handler
-                0x00001924                SERCOM5_3_Handler
-                0x00001924                USB_2_Handler
-                0x00001924                SDHC0_Handler
-                0x00001924                SERCOM1_1_Handler
-                0x00001924                I2S_Handler
-                0x00001924                EIC_2_Handler
-                0x00001924                PCC_Handler
-                0x00001924                DAC_0_Handler
-                0x00001924                TCC0_1_Handler
-                0x00001924                SERCOM1_3_Handler
-                0x00001924                EIC_6_Handler
-                0x00001924                OSCCTRL_1_Handler
-                0x00001924                SERCOM1_0_Handler
-                0x00001924                PUKCC_Handler
-                0x00001924                SERCOM2_1_Handler
-                0x00001924                SERCOM1_2_Handler
-                0x00001924                EIC_1_Handler
-                0x00001924                SERCOM4_2_Handler
-                0x00001924                EVSYS_4_Handler
-                0x00001924                EIC_7_Handler
-                0x00001924                SERCOM3_3_Handler
-                0x00001924                ADC0_1_Handler
-                0x00001924                SERCOM2_2_Handler
-                0x00001924                TCC3_1_Handler
-                0x00001924                EIC_14_Handler
-                0x00001924                DAC_1_Handler
-                0x00001924                TAL_1_Handler
-                0x00001924                MCLK_Handler
-                0x00001924                EVSYS_2_Handler
-                0x00001924                SUPC_0_Handler
-                0x00001924                BusFault_Handler
-                0x00001924                FREQM_Handler
-                0x00001924                TCC0_3_Handler
-                0x00001924                TCC0_4_Handler
-                0x00001924                SERCOM2_0_Handler
-                0x00001924                AES_Handler
-                0x00001924                ICM_Handler
- *fill*         0x00001926        0x2 
+                0x00001cec        0x2 Device_Startup/startup_samd51.o
+                0x00001cec                EIC_5_Handler
+                0x00001cec                SERCOM0_2_Handler
+                0x00001cec                DebugMon_Handler
+                0x00001cec                EIC_13_Handler
+                0x00001cec                EVSYS_0_Handler
+                0x00001cec                TCC1_3_Handler
+                0x00001cec                DAC_3_Handler
+                0x00001cec                TRNG_Handler
+                0x00001cec                HardFault_Handler
+                0x00001cec                PDEC_2_Handler
+                0x00001cec                EIC_4_Handler
+                0x00001cec                AC_Handler
+                0x00001cec                TCC2_3_Handler
+                0x00001cec                NMI_Handler
+                0x00001cec                ADC1_1_Handler
+                0x00001cec                EVSYS_3_Handler
+                0x00001cec                PDEC_0_Handler
+                0x00001cec                QSPI_Handler
+                0x00001cec                EIC_3_Handler
+                0x00001cec                TAL_0_Handler
+                0x00001cec                DAC_2_Handler
+                0x00001cec                SERCOM0_0_Handler
+                0x00001cec                RTC_Handler
+                0x00001cec                UsageFault_Handler
+                0x00001cec                SERCOM4_0_Handler
+                0x00001cec                EIC_10_Handler
+                0x00001cec                SERCOM0_3_Handler
+                0x00001cec                EIC_11_Handler
+                0x00001cec                EIC_9_Handler
+                0x00001cec                OSC32KCTRL_Handler
+                0x00001cec                TCC2_1_Handler
+                0x00001cec                SUPC_1_Handler
+                0x00001cec                TCC0_5_Handler
+                0x00001cec                TCC0_6_Handler
+                0x00001cec                EVSYS_1_Handler
+                0x00001cec                TCC1_4_Handler
+                0x00001cec                WDT_Handler
+                0x00001cec                EIC_8_Handler
+                0x00001cec                EIC_15_Handler
+                0x00001cec                SERCOM5_0_Handler
+                0x00001cec                OSCCTRL_4_Handler
+                0x00001cec                SERCOM4_3_Handler
+                0x00001cec                EIC_12_Handler
+                0x00001cec                TCC4_2_Handler
+                0x00001cec                PAC_Handler
+                0x00001cec                USB_0_Handler
+                0x00001cec                OSCCTRL_0_Handler
+                0x00001cec                EIC_0_Handler
+                0x00001cec                OSCCTRL_3_Handler
+                0x00001cec                SERCOM4_1_Handler
+                0x00001cec                Dummy_Handler
+                0x00001cec                TCC2_2_Handler
+                0x00001cec                SERCOM5_1_Handler
+                0x00001cec                TCC1_1_Handler
+                0x00001cec                ADC0_0_Handler
+                0x00001cec                SERCOM0_1_Handler
+                0x00001cec                OSCCTRL_2_Handler
+                0x00001cec                ADC1_0_Handler
+                0x00001cec                TCC1_2_Handler
+                0x00001cec                USB_1_Handler
+                0x00001cec                PM_Handler
+                0x00001cec                SERCOM2_3_Handler
+                0x00001cec                DAC_4_Handler
+                0x00001cec                TCC3_2_Handler
+                0x00001cec                TCC0_2_Handler
+                0x00001cec                USB_3_Handler
+                0x00001cec                PDEC_1_Handler
+                0x00001cec                MemManage_Handler
+                0x00001cec                TCC4_1_Handler
+                0x00001cec                SERCOM5_3_Handler
+                0x00001cec                USB_2_Handler
+                0x00001cec                SDHC0_Handler
+                0x00001cec                SERCOM1_1_Handler
+                0x00001cec                I2S_Handler
+                0x00001cec                EIC_2_Handler
+                0x00001cec                PCC_Handler
+                0x00001cec                DAC_0_Handler
+                0x00001cec                TCC0_1_Handler
+                0x00001cec                SERCOM1_3_Handler
+                0x00001cec                EIC_6_Handler
+                0x00001cec                OSCCTRL_1_Handler
+                0x00001cec                SERCOM1_0_Handler
+                0x00001cec                PUKCC_Handler
+                0x00001cec                SERCOM2_1_Handler
+                0x00001cec                SERCOM1_2_Handler
+                0x00001cec                EIC_1_Handler
+                0x00001cec                SERCOM4_2_Handler
+                0x00001cec                EVSYS_4_Handler
+                0x00001cec                EIC_7_Handler
+                0x00001cec                SERCOM3_3_Handler
+                0x00001cec                ADC0_1_Handler
+                0x00001cec                SERCOM2_2_Handler
+                0x00001cec                TCC3_1_Handler
+                0x00001cec                EIC_14_Handler
+                0x00001cec                DAC_1_Handler
+                0x00001cec                TAL_1_Handler
+                0x00001cec                MCLK_Handler
+                0x00001cec                EVSYS_2_Handler
+                0x00001cec                SUPC_0_Handler
+                0x00001cec                BusFault_Handler
+                0x00001cec                FREQM_Handler
+                0x00001cec                TCC0_3_Handler
+                0x00001cec                TCC0_4_Handler
+                0x00001cec                SERCOM2_0_Handler
+                0x00001cec                AES_Handler
+                0x00001cec                ICM_Handler
+ *fill*         0x00001cee        0x2 
  .text.Reset_Handler
-                0x00001928       0x98 Device_Startup/startup_samd51.o
-                0x00001928                Reset_Handler
+                0x00001cf0       0x98 Device_Startup/startup_samd51.o
+                0x00001cf0                Reset_Handler
  .text.AC_0_CLOCK_init
-                0x000019c0       0x1c driver_init.o
-                0x000019c0                AC_0_CLOCK_init
+                0x00001d88       0x1c driver_init.o
+                0x00001d88                AC_0_CLOCK_init
  .text.AC_0_init
-                0x000019dc       0x20 driver_init.o
-                0x000019dc                AC_0_init
+                0x00001da4       0x20 driver_init.o
+                0x00001da4                AC_0_init
  .text.ADC_0_PORT_init
-                0x000019fc      0x17c driver_init.o
-                0x000019fc                ADC_0_PORT_init
+                0x00001dc4      0x17c driver_init.o
+                0x00001dc4                ADC_0_PORT_init
  .text.ADC_0_CLOCK_init
-                0x00001b78       0x1c driver_init.o
-                0x00001b78                ADC_0_CLOCK_init
+                0x00001f40       0x1c driver_init.o
+                0x00001f40                ADC_0_CLOCK_init
  .text.ADC_0_init
-                0x00001b94       0x2c driver_init.o
-                0x00001b94                ADC_0_init
+                0x00001f5c       0x2c driver_init.o
+                0x00001f5c                ADC_0_init
  .text.ADC_1_CLOCK_init
-                0x00001bc0       0x1c driver_init.o
-                0x00001bc0                ADC_1_CLOCK_init
+                0x00001f88       0x1c driver_init.o
+                0x00001f88                ADC_1_CLOCK_init
  .text.ADC_1_init
-                0x00001bdc       0x24 driver_init.o
-                0x00001bdc                ADC_1_init
+                0x00001fa4       0x24 driver_init.o
+                0x00001fa4                ADC_1_init
  .text.DAC_0_CLOCK_init
-                0x00001c00       0x1c driver_init.o
-                0x00001c00                DAC_0_CLOCK_init
+                0x00001fc8       0x1c driver_init.o
+                0x00001fc8                DAC_0_CLOCK_init
  .text.DAC_0_init
-                0x00001c1c       0x20 driver_init.o
-                0x00001c1c                DAC_0_init
+                0x00001fe4       0x20 driver_init.o
+                0x00001fe4                DAC_0_init
  .text.EXTERNAL_IRQ_0_init
-                0x00001c3c       0x28 driver_init.o
-                0x00001c3c                EXTERNAL_IRQ_0_init
+                0x00002004       0x28 driver_init.o
+                0x00002004                EXTERNAL_IRQ_0_init
  .text.EVENT_SYSTEM_0_init
-                0x00001c64       0x1c driver_init.o
-                0x00001c64                EVENT_SYSTEM_0_init
+                0x0000202c       0x1c driver_init.o
+                0x0000202c                EVENT_SYSTEM_0_init
  .text.FLASH_0_CLOCK_init
-                0x00001c80       0x10 driver_init.o
-                0x00001c80                FLASH_0_CLOCK_init
+                0x00002048       0x10 driver_init.o
+                0x00002048                FLASH_0_CLOCK_init
  .text.FLASH_0_init
-                0x00001c90       0x20 driver_init.o
-                0x00001c90                FLASH_0_init
+                0x00002058       0x20 driver_init.o
+                0x00002058                FLASH_0_init
  .text.ModemData_PORT_init
-                0x00001cb0       0x48 driver_init.o
-                0x00001cb0                ModemData_PORT_init
+                0x00002078       0x48 driver_init.o
+                0x00002078                ModemData_PORT_init
  .text.ModemData_CLOCK_init
-                0x00001cf8       0x24 driver_init.o
-                0x00001cf8                ModemData_CLOCK_init
+                0x000020c0       0x24 driver_init.o
+                0x000020c0                ModemData_CLOCK_init
  .text.ModemData_init
-                0x00001d1c       0x1c driver_init.o
-                0x00001d1c                ModemData_init
+                0x000020e4       0x1c driver_init.o
+                0x000020e4                ModemData_init
  .text.SerialDebug_PORT_init
-                0x00001d38       0x48 driver_init.o
-                0x00001d38                SerialDebug_PORT_init
+                0x00002100       0x48 driver_init.o
+                0x00002100                SerialDebug_PORT_init
  .text.SerialDebug_CLOCK_init
-                0x00001d80       0x24 driver_init.o
-                0x00001d80                SerialDebug_CLOCK_init
+                0x00002148       0x24 driver_init.o
+                0x00002148                SerialDebug_CLOCK_init
  .text.SerialDebug_init
-                0x00001da4       0x1c driver_init.o
-                0x00001da4                SerialDebug_init
+                0x0000216c       0x1c driver_init.o
+                0x0000216c                SerialDebug_init
  .text.delay_driver_init
-                0x00001dc0       0x14 driver_init.o
-                0x00001dc0                delay_driver_init
+                0x00002188       0x14 driver_init.o
+                0x00002188                delay_driver_init
  .text.PWM_0_CLOCK_init
-                0x00001dd4       0x1c driver_init.o
-                0x00001dd4                PWM_0_CLOCK_init
+                0x0000219c       0x1c driver_init.o
+                0x0000219c                PWM_0_CLOCK_init
  .text.PWM_0_init
-                0x00001df0       0x2c driver_init.o
-                0x00001df0                PWM_0_init
+                0x000021b8       0x2c driver_init.o
+                0x000021b8                PWM_0_init
  .text.PWM_1_CLOCK_init
-                0x00001e1c       0x1c driver_init.o
-                0x00001e1c                PWM_1_CLOCK_init
+                0x000021e4       0x1c driver_init.o
+                0x000021e4                PWM_1_CLOCK_init
  .text.PWM_1_init
-                0x00001e38       0x2c driver_init.o
-                0x00001e38                PWM_1_init
+                0x00002200       0x2c driver_init.o
+                0x00002200                PWM_1_init
  .text.PWM_2_CLOCK_init
-                0x00001e64       0x1c driver_init.o
-                0x00001e64                PWM_2_CLOCK_init
+                0x0000222c       0x1c driver_init.o
+                0x0000222c                PWM_2_CLOCK_init
  .text.PWM_2_init
-                0x00001e80       0x2c driver_init.o
-                0x00001e80                PWM_2_init
+                0x00002248       0x2c driver_init.o
+                0x00002248                PWM_2_init
  .text.TIMER_3_CLOCK_init
-                0x00001eac       0x1c driver_init.o
-                0x00001eac                TIMER_3_CLOCK_init
+                0x00002274       0x1c driver_init.o
+                0x00002274                TIMER_3_CLOCK_init
  .text.TIMER_3_init
-                0x00001ec8       0x2c driver_init.o
-                0x00001ec8                TIMER_3_init
+                0x00002290       0x2c driver_init.o
+                0x00002290                TIMER_3_init
  .text.TIMER_4_CLOCK_init
-                0x00001ef4       0x1c driver_init.o
-                0x00001ef4                TIMER_4_CLOCK_init
+                0x000022bc       0x1c driver_init.o
+                0x000022bc                TIMER_4_CLOCK_init
  .text.TIMER_4_init
-                0x00001f10       0x2c driver_init.o
-                0x00001f10                TIMER_4_init
+                0x000022d8       0x2c driver_init.o
+                0x000022d8                TIMER_4_init
  .text.TIMER_5_CLOCK_init
-                0x00001f3c       0x1c driver_init.o
-                0x00001f3c                TIMER_5_CLOCK_init
+                0x00002304       0x1c driver_init.o
+                0x00002304                TIMER_5_CLOCK_init
  .text.TIMER_5_init
-                0x00001f58       0x2c driver_init.o
-                0x00001f58                TIMER_5_init
+                0x00002320       0x2c driver_init.o
+                0x00002320                TIMER_5_init
  .text.TIMER_6_CLOCK_init
-                0x00001f84       0x1c driver_init.o
-                0x00001f84                TIMER_6_CLOCK_init
+                0x0000234c       0x1c driver_init.o
+                0x0000234c                TIMER_6_CLOCK_init
  .text.TIMER_6_init
-                0x00001fa0       0x2c driver_init.o
-                0x00001fa0                TIMER_6_init
+                0x00002368       0x2c driver_init.o
+                0x00002368                TIMER_6_init
  .text.TIMER_7_CLOCK_init
-                0x00001fcc       0x1c driver_init.o
-                0x00001fcc                TIMER_7_CLOCK_init
+                0x00002394       0x1c driver_init.o
+                0x00002394                TIMER_7_CLOCK_init
  .text.TIMER_7_init
-                0x00001fe8       0x2c driver_init.o
-                0x00001fe8                TIMER_7_init
+                0x000023b0       0x2c driver_init.o
+                0x000023b0                TIMER_7_init
  .text.WDT_0_CLOCK_init
-                0x00002014       0x10 driver_init.o
-                0x00002014                WDT_0_CLOCK_init
+                0x000023dc       0x10 driver_init.o
+                0x000023dc                WDT_0_CLOCK_init
  .text.WDT_0_init
-                0x00002024       0x50 driver_init.o
-                0x00002024                WDT_0_init
+                0x000023ec       0x50 driver_init.o
+                0x000023ec                WDT_0_init
  .text.system_init
-                0x00002074      0x120 driver_init.o
-                0x00002074                system_init
+                0x0000243c      0x120 driver_init.o
+                0x0000243c                system_init
  .text.ac_sync_init
-                0x00002194       0x30 hal/src/hal_ac_sync.o
-                0x00002194                ac_sync_init
+                0x0000255c       0x30 hal/src/hal_ac_sync.o
+                0x0000255c                ac_sync_init
  .text.adc_sync_init
-                0x000021c4       0x30 hal/src/hal_adc_sync.o
-                0x000021c4                adc_sync_init
+                0x0000258c       0x30 hal/src/hal_adc_sync.o
+                0x0000258c                adc_sync_init
  .text.atomic_enter_critical
-                0x000021f4        0xe hal/src/hal_atomic.o
-                0x000021f4                atomic_enter_critical
+                0x000025bc        0xe hal/src/hal_atomic.o
+                0x000025bc                atomic_enter_critical
  .text.atomic_leave_critical
-                0x00002202        0xc hal/src/hal_atomic.o
-                0x00002202                atomic_leave_critical
- *fill*         0x0000220e        0x2 
+                0x000025ca        0xc hal/src/hal_atomic.o
+                0x000025ca                atomic_leave_critical
+ *fill*         0x000025d6        0x2 
  .text.dac_sync_init
-                0x00002210       0x40 hal/src/hal_dac_sync.o
-                0x00002210                dac_sync_init
+                0x000025d8       0x40 hal/src/hal_dac_sync.o
+                0x000025d8                dac_sync_init
  .text.delay_init
-                0x00002250       0x14 hal/src/hal_delay.o
-                0x00002250                delay_init
+                0x00002618       0x14 hal/src/hal_delay.o
+                0x00002618                delay_init
  .text.delay_ms
-                0x00002264       0x20 hal/src/hal_delay.o
-                0x00002264                delay_ms
+                0x0000262c       0x20 hal/src/hal_delay.o
+                0x0000262c                delay_ms
  .text.event_system_init
-                0x00002284        0xc hal/src/hal_evsys.o
-                0x00002284                event_system_init
+                0x0000264c        0xc hal/src/hal_evsys.o
+                0x0000264c                event_system_init
  .text.process_ext_irq
-                0x00002290       0x38 hal/src/hal_ext_irq.o
+                0x00002658       0x38 hal/src/hal_ext_irq.o
  .text.ext_irq_init
-                0x000022c8       0x24 hal/src/hal_ext_irq.o
-                0x000022c8                ext_irq_init
+                0x00002690       0x24 hal/src/hal_ext_irq.o
+                0x00002690                ext_irq_init
  .text.flash_ready
-                0x000022ec        0xa hal/src/hal_flash.o
+                0x000026b4        0xa hal/src/hal_flash.o
  .text.flash_error
-                0x000022f6        0xa hal/src/hal_flash.o
+                0x000026be        0xa hal/src/hal_flash.o
  .text.flash_init
-                0x00002300       0x48 hal/src/hal_flash.o
-                0x00002300                flash_init
+                0x000026c8       0x48 hal/src/hal_flash.o
+                0x000026c8                flash_init
  .text.pwm_period_expired
-                0x00002348        0xa hal/src/hal_pwm.o
+                0x00002710        0xa hal/src/hal_pwm.o
  .text.pwm_detect_fault
-                0x00002352        0xa hal/src/hal_pwm.o
+                0x0000271a        0xa hal/src/hal_pwm.o
  .text.pwm_init
-                0x0000235c       0x44 hal/src/hal_pwm.o
-                0x0000235c                pwm_init
+                0x00002724       0x44 hal/src/hal_pwm.o
+                0x00002724                pwm_init
  .text.timer_add_timer_task
-                0x000023a0       0x58 hal/src/hal_timer.o
+                0x00002768       0x58 hal/src/hal_timer.o
  .text.timer_process_counted
-                0x000023f8       0x80 hal/src/hal_timer.o
+                0x000027c0       0x80 hal/src/hal_timer.o
  .text.timer_init
-                0x00002478       0x44 hal/src/hal_timer.o
-                0x00002478                timer_init
- .text.assert   0x000024bc        0x6 hal/utils/src/utils_assert.o
-                0x000024bc                assert
+                0x00002840       0x44 hal/src/hal_timer.o
+                0x00002840                timer_init
+ .text.assert   0x00002884        0x6 hal/utils/src/utils_assert.o
+                0x00002884                assert
  .text.is_list_element
-                0x000024c2       0x20 hal/utils/src/utils_list.o
-                0x000024c2                is_list_element
- *fill*         0x000024e2        0x2 
+                0x0000288a       0x20 hal/utils/src/utils_list.o
+                0x0000288a                is_list_element
+ *fill*         0x000028aa        0x2 
  .text.list_insert_as_head
-                0x000024e4       0x2c hal/utils/src/utils_list.o
-                0x000024e4                list_insert_as_head
+                0x000028ac       0x2c hal/utils/src/utils_list.o
+                0x000028ac                list_insert_as_head
  .text.list_insert_after
-                0x00002510        0x8 hal/utils/src/utils_list.o
-                0x00002510                list_insert_after
+                0x000028d8        0x8 hal/utils/src/utils_list.o
+                0x000028d8                list_insert_after
  .text.list_remove_head
-                0x00002518        0xc hal/utils/src/utils_list.o
-                0x00002518                list_remove_head
+                0x000028e0        0xc hal/utils/src/utils_list.o
+                0x000028e0                list_remove_head
  .text.ringbuffer_init
-                0x00002524       0x50 hal/utils/src/utils_ringbuffer.o
-                0x00002524                ringbuffer_init
+                0x000028ec       0x50 hal/utils/src/utils_ringbuffer.o
+                0x000028ec                ringbuffer_init
  .text.ringbuffer_get
-                0x00002574       0x44 hal/utils/src/utils_ringbuffer.o
-                0x00002574                ringbuffer_get
+                0x0000293c       0x44 hal/utils/src/utils_ringbuffer.o
+                0x0000293c                ringbuffer_get
  .text.ringbuffer_put
-                0x000025b8       0x40 hal/utils/src/utils_ringbuffer.o
-                0x000025b8                ringbuffer_put
+                0x00002980       0x40 hal/utils/src/utils_ringbuffer.o
+                0x00002980                ringbuffer_put
  .text.ringbuffer_num
-                0x000025f8       0x24 hal/utils/src/utils_ringbuffer.o
-                0x000025f8                ringbuffer_num
+                0x000029c0       0x24 hal/utils/src/utils_ringbuffer.o
+                0x000029c0                ringbuffer_num
  .text.ringbuffer_flush
-                0x0000261c       0x24 hal/utils/src/utils_ringbuffer.o
-                0x0000261c                ringbuffer_flush
- .text._sbrk    0x00002640       0x24 hal/utils/src/utils_syscalls.o
-                0x00002640                _sbrk
+                0x000029e4       0x24 hal/utils/src/utils_ringbuffer.o
+                0x000029e4                ringbuffer_flush
+ .text._sbrk    0x00002a08       0x24 hal/utils/src/utils_syscalls.o
+                0x00002a08                _sbrk
  .text._ac_init
-                0x00002664       0x6c hpl/ac/hpl_ac.o
+                0x00002a2c       0x6c hpl/ac/hpl_ac.o
  .text._ac_sync_init
-                0x000026d0       0x2c hpl/ac/hpl_ac.o
-                0x000026d0                _ac_sync_init
+                0x00002a98       0x2c hpl/ac/hpl_ac.o
+                0x00002a98                _ac_sync_init
  .text._adc_init
-                0x000026fc       0x78 hpl/adc/hpl_adc.o
+                0x00002ac4       0x78 hpl/adc/hpl_adc.o
  .text._adc_get_regs
-                0x00002774       0x34 hpl/adc/hpl_adc.o
+                0x00002b3c       0x34 hpl/adc/hpl_adc.o
  .text._adc_sync_init
-                0x000027a8       0x38 hpl/adc/hpl_adc.o
-                0x000027a8                _adc_sync_init
+                0x00002b70       0x38 hpl/adc/hpl_adc.o
+                0x00002b70                _adc_sync_init
  .text._irq_set
-                0x000027e0       0x1c hpl/core/hpl_core_m4.o
-                0x000027e0                _irq_set
+                0x00002ba8       0x1c hpl/core/hpl_core_m4.o
+                0x00002ba8                _irq_set
  .text._get_cycles_for_ms
-                0x000027fc        0xa hpl/core/hpl_core_m4.o
-                0x000027fc                _get_cycles_for_ms
- *fill*         0x00002806        0x2 
+                0x00002bc4        0xa hpl/core/hpl_core_m4.o
+                0x00002bc4                _get_cycles_for_ms
+ *fill*         0x00002bce        0x2 
  .text._init_chip
-                0x00002808       0x50 hpl/core/hpl_init.o
-                0x00002808                _init_chip
+                0x00002bd0       0x50 hpl/core/hpl_init.o
+                0x00002bd0                _init_chip
  .text._dac_init
-                0x00002858       0x68 hpl/dac/hpl_dac.o
+                0x00002c20       0x68 hpl/dac/hpl_dac.o
  .text._dac_sync_init
-                0x000028c0       0x2c hpl/dac/hpl_dac.o
-                0x000028c0                _dac_sync_init
+                0x00002c88       0x2c hpl/dac/hpl_dac.o
+                0x00002c88                _dac_sync_init
  .text._dmac_handler
-                0x000028ec       0x74 hpl/dmac/hpl_dmac.o
+                0x00002cb4       0x74 hpl/dmac/hpl_dmac.o
  .text._dma_init
-                0x00002960       0xe0 hpl/dmac/hpl_dmac.o
-                0x00002960                _dma_init
+                0x00002d28       0xe0 hpl/dmac/hpl_dmac.o
+                0x00002d28                _dma_init
  .text.DMAC_0_Handler
-                0x00002a40        0xc hpl/dmac/hpl_dmac.o
-                0x00002a40                DMAC_0_Handler
+                0x00002e08        0xc hpl/dmac/hpl_dmac.o
+                0x00002e08                DMAC_0_Handler
  .text.DMAC_1_Handler
-                0x00002a4c        0xc hpl/dmac/hpl_dmac.o
-                0x00002a4c                DMAC_1_Handler
+                0x00002e14        0xc hpl/dmac/hpl_dmac.o
+                0x00002e14                DMAC_1_Handler
  .text.DMAC_2_Handler
-                0x00002a58        0xc hpl/dmac/hpl_dmac.o
-                0x00002a58                DMAC_2_Handler
+                0x00002e20        0xc hpl/dmac/hpl_dmac.o
+                0x00002e20                DMAC_2_Handler
  .text.DMAC_3_Handler
-                0x00002a64        0xc hpl/dmac/hpl_dmac.o
-                0x00002a64                DMAC_3_Handler
+                0x00002e2c        0xc hpl/dmac/hpl_dmac.o
+                0x00002e2c                DMAC_3_Handler
  .text.DMAC_4_Handler
-                0x00002a70        0xc hpl/dmac/hpl_dmac.o
-                0x00002a70                DMAC_4_Handler
+                0x00002e38        0xc hpl/dmac/hpl_dmac.o
+                0x00002e38                DMAC_4_Handler
  .text._ext_irq_init
-                0x00002a7c       0x80 hpl/eic/hpl_eic.o
-                0x00002a7c                _ext_irq_init
+                0x00002e44       0x80 hpl/eic/hpl_eic.o
+                0x00002e44                _ext_irq_init
  .text._event_system_init
-                0x00002afc       0x5c hpl/evsys/hpl_evsys.o
-                0x00002afc                _event_system_init
+                0x00002ec4       0x5c hpl/evsys/hpl_evsys.o
+                0x00002ec4                _event_system_init
  .text._gclk_init_generators_by_fref
-                0x00002b58       0xa8 hpl/gclk/hpl_gclk.o
-                0x00002b58                _gclk_init_generators_by_fref
+                0x00002f20       0xa8 hpl/gclk/hpl_gclk.o
+                0x00002f20                _gclk_init_generators_by_fref
  .text._mclk_init
-                0x00002c00        0xc hpl/mclk/hpl_mclk.o
-                0x00002c00                _mclk_init
+                0x00002fc8        0xc hpl/mclk/hpl_mclk.o
+                0x00002fc8                _mclk_init
  .text._nvm_interrupt_handler
-                0x00002c0c       0x2c hpl/nvmctrl/hpl_nvmctrl.o
+                0x00002fd4       0x2c hpl/nvmctrl/hpl_nvmctrl.o
  .text._flash_init
-                0x00002c38       0x78 hpl/nvmctrl/hpl_nvmctrl.o
-                0x00002c38                _flash_init
+                0x00003000       0x78 hpl/nvmctrl/hpl_nvmctrl.o
+                0x00003000                _flash_init
  .text.NVMCTRL_0_Handler
-                0x00002cb0       0x14 hpl/nvmctrl/hpl_nvmctrl.o
-                0x00002cb0                NVMCTRL_0_Handler
+                0x00003078       0x14 hpl/nvmctrl/hpl_nvmctrl.o
+                0x00003078                NVMCTRL_0_Handler
  .text.NVMCTRL_1_Handler
-                0x00002cc4       0x14 hpl/nvmctrl/hpl_nvmctrl.o
-                0x00002cc4                NVMCTRL_1_Handler
+                0x0000308c       0x14 hpl/nvmctrl/hpl_nvmctrl.o
+                0x0000308c                NVMCTRL_1_Handler
  .text._osc32kctrl_init_sources
-                0x00002cd8       0x2c hpl/osc32kctrl/hpl_osc32kctrl.o
-                0x00002cd8                _osc32kctrl_init_sources
+                0x000030a0       0x2c hpl/osc32kctrl/hpl_osc32kctrl.o
+                0x000030a0                _osc32kctrl_init_sources
  .text._oscctrl_init_referenced_generators
-                0x00002d04       0xbc hpl/oscctrl/hpl_oscctrl.o
-                0x00002d04                _oscctrl_init_referenced_generators
+                0x000030cc       0xbc hpl/oscctrl/hpl_oscctrl.o
+                0x000030cc                _oscctrl_init_referenced_generators
  .text.RAMECC_Handler
-                0x00002dc0       0x44 hpl/ramecc/hpl_ramecc.o
-                0x00002dc0                RAMECC_Handler
+                0x00003188       0x44 hpl/ramecc/hpl_ramecc.o
+                0x00003188                RAMECC_Handler
  .text._sercom_get_hardware_index
-                0x00002e04       0x40 hpl/sercom/hpl_sercom.o
+                0x000031cc       0x40 hpl/sercom/hpl_sercom.o
  .text._sercom_get_irq_num
-                0x00002e44       0x14 hpl/sercom/hpl_sercom.o
+                0x0000320c       0x14 hpl/sercom/hpl_sercom.o
  .text._usart_init
-                0x00002e58       0xe4 hpl/sercom/hpl_sercom.o
+                0x00003220       0xe4 hpl/sercom/hpl_sercom.o
  .text._usart_async_init
-                0x00002f3c       0x74 hpl/sercom/hpl_sercom.o
-                0x00002f3c                _usart_async_init
+                0x00003304       0x74 hpl/sercom/hpl_sercom.o
+                0x00003304                _usart_async_init
  .text._usart_async_enable
-                0x00002fb0       0x14 hpl/sercom/hpl_sercom.o
-                0x00002fb0                _usart_async_enable
+                0x00003378       0x14 hpl/sercom/hpl_sercom.o
+                0x00003378                _usart_async_enable
  .text._usart_async_write_byte
-                0x00002fc4        0x6 hpl/sercom/hpl_sercom.o
-                0x00002fc4                _usart_async_write_byte
+                0x0000338c        0x6 hpl/sercom/hpl_sercom.o
+                0x0000338c                _usart_async_write_byte
  .text._usart_async_read_byte
-                0x00002fca        0x8 hpl/sercom/hpl_sercom.o
-                0x00002fca                _usart_async_read_byte
+                0x00003392        0x8 hpl/sercom/hpl_sercom.o
+                0x00003392                _usart_async_read_byte
  .text._usart_async_is_byte_sent
-                0x00002fd2        0xa hpl/sercom/hpl_sercom.o
-                0x00002fd2                _usart_async_is_byte_sent
+                0x0000339a        0xa hpl/sercom/hpl_sercom.o
+                0x0000339a                _usart_async_is_byte_sent
  .text._usart_async_is_byte_received
-                0x00002fdc        0xa hpl/sercom/hpl_sercom.o
-                0x00002fdc                _usart_async_is_byte_received
- *fill*         0x00002fe6        0x2 
+                0x000033a4        0xa hpl/sercom/hpl_sercom.o
+                0x000033a4                _usart_async_is_byte_received
+ *fill*         0x000033ae        0x2 
  .text._usart_async_set_irq_state
-                0x00002fe8       0x6c hpl/sercom/hpl_sercom.o
-                0x00002fe8                _usart_async_set_irq_state
+                0x000033b0       0x6c hpl/sercom/hpl_sercom.o
+                0x000033b0                _usart_async_set_irq_state
  .text._delay_init
-                0x00003054       0x14 hpl/systick/hpl_systick.o
-                0x00003054                _delay_init
+                0x0000341c       0x14 hpl/systick/hpl_systick.o
+                0x0000341c                _delay_init
  .text._delay_cycles
-                0x00003068       0x5c hpl/systick/hpl_systick.o
-                0x00003068                _delay_cycles
+                0x00003430       0x5c hpl/systick/hpl_systick.o
+                0x00003430                _delay_cycles
  .text._get_irq_num
-                0x000030c4       0x60 hpl/tcc/hpl_tcc.o
+                0x0000348c       0x60 hpl/tcc/hpl_tcc.o
  .text._tcc_timer_deinit
-                0x00003124       0x50 hpl/tcc/hpl_tcc.o
-                0x00003124                _tcc_timer_deinit
+                0x000034ec       0x50 hpl/tcc/hpl_tcc.o
+                0x000034ec                _tcc_timer_deinit
  .text._tcc_timer_start
-                0x00003174       0x14 hpl/tcc/hpl_tcc.o
-                0x00003174                _tcc_timer_start
+                0x0000353c       0x14 hpl/tcc/hpl_tcc.o
+                0x0000353c                _tcc_timer_start
  .text._tcc_timer_stop
-                0x00003188       0x14 hpl/tcc/hpl_tcc.o
-                0x00003188                _tcc_timer_stop
+                0x00003550       0x14 hpl/tcc/hpl_tcc.o
+                0x00003550                _tcc_timer_stop
  .text._tcc_timer_set_period
-                0x0000319c        0x6 hpl/tcc/hpl_tcc.o
-                0x0000319c                _tcc_timer_set_period
+                0x00003564        0x6 hpl/tcc/hpl_tcc.o
+                0x00003564                _tcc_timer_set_period
  .text._tcc_timer_get_period
-                0x000031a2        0x6 hpl/tcc/hpl_tcc.o
-                0x000031a2                _tcc_timer_get_period
+                0x0000356a        0x6 hpl/tcc/hpl_tcc.o
+                0x0000356a                _tcc_timer_get_period
  .text._tcc_timer_is_started
-                0x000031a8       0x12 hpl/tcc/hpl_tcc.o
-                0x000031a8                _tcc_timer_is_started
+                0x00003570       0x12 hpl/tcc/hpl_tcc.o
+                0x00003570                _tcc_timer_is_started
  .text.tcc_interrupt_handler
-                0x000031ba       0x18 hpl/tcc/hpl_tcc.o
- *fill*         0x000031d2        0x2 
+                0x00003582       0x18 hpl/tcc/hpl_tcc.o
+ *fill*         0x0000359a        0x2 
  .text._tcc_timer_init
-                0x000031d4      0x16c hpl/tcc/hpl_tcc.o
-                0x000031d4                _tcc_timer_init
+                0x0000359c      0x16c hpl/tcc/hpl_tcc.o
+                0x0000359c                _tcc_timer_init
  .text._tcc_timer_set_irq
-                0x00003340       0x18 hpl/tcc/hpl_tcc.o
-                0x00003340                _tcc_timer_set_irq
+                0x00003708       0x18 hpl/tcc/hpl_tcc.o
+                0x00003708                _tcc_timer_set_irq
  .text._tcc_get_timer
-                0x00003358        0x8 hpl/tcc/hpl_tcc.o
-                0x00003358                _tcc_get_timer
+                0x00003720        0x8 hpl/tcc/hpl_tcc.o
+                0x00003720                _tcc_get_timer
  .text.TCC0_0_Handler
-                0x00003360       0x14 hpl/tcc/hpl_tcc.o
-                0x00003360                TCC0_0_Handler
+                0x00003728       0x14 hpl/tcc/hpl_tcc.o
+                0x00003728                TCC0_0_Handler
  .text.TCC1_0_Handler
-                0x00003374       0x14 hpl/tcc/hpl_tcc.o
-                0x00003374                TCC1_0_Handler
+                0x0000373c       0x14 hpl/tcc/hpl_tcc.o
+                0x0000373c                TCC1_0_Handler
  .text.TCC2_0_Handler
-                0x00003388       0x14 hpl/tcc/hpl_tcc.o
-                0x00003388                TCC2_0_Handler
+                0x00003750       0x14 hpl/tcc/hpl_tcc.o
+                0x00003750                TCC2_0_Handler
  .text.TCC3_0_Handler
-                0x0000339c       0x14 hpl/tcc/hpl_tcc.o
-                0x0000339c                TCC3_0_Handler
+                0x00003764       0x14 hpl/tcc/hpl_tcc.o
+                0x00003764                TCC3_0_Handler
  .text.TCC4_0_Handler
-                0x000033b0       0x14 hpl/tcc/hpl_tcc.o
-                0x000033b0                TCC4_0_Handler
+                0x00003778       0x14 hpl/tcc/hpl_tcc.o
+                0x00003778                TCC4_0_Handler
  .text._tc_timer_start
-                0x000033c4       0x14 hpl/tc/hpl_tc.o
-                0x000033c4                _tc_timer_start
+                0x0000378c       0x14 hpl/tc/hpl_tc.o
+                0x0000378c                _tc_timer_start
  .text._tc_timer_stop
-                0x000033d8       0x14 hpl/tc/hpl_tc.o
-                0x000033d8                _tc_timer_stop
+                0x000037a0       0x14 hpl/tc/hpl_tc.o
+                0x000037a0                _tc_timer_stop
  .text._tc_timer_set_period
-                0x000033ec       0x2e hpl/tc/hpl_tc.o
-                0x000033ec                _tc_timer_set_period
+                0x000037b4       0x2e hpl/tc/hpl_tc.o
+                0x000037b4                _tc_timer_set_period
  .text._tc_timer_get_period
-                0x0000341a       0x30 hpl/tc/hpl_tc.o
-                0x0000341a                _tc_timer_get_period
+                0x000037e2       0x30 hpl/tc/hpl_tc.o
+                0x000037e2                _tc_timer_get_period
  .text._tc_timer_is_started
-                0x0000344a       0x12 hpl/tc/hpl_tc.o
-                0x0000344a                _tc_timer_is_started
+                0x00003812       0x12 hpl/tc/hpl_tc.o
+                0x00003812                _tc_timer_is_started
  .text.tc_interrupt_handler
-                0x0000345c       0x18 hpl/tc/hpl_tc.o
+                0x00003824       0x18 hpl/tc/hpl_tc.o
  .text.tc_pwm_interrupt_handler
-                0x00003474       0x2e hpl/tc/hpl_tc.o
- *fill*         0x000034a2        0x2 
+                0x0000383c       0x2e hpl/tc/hpl_tc.o
+ *fill*         0x0000386a        0x2 
  .text._tc_init_irq_param
-                0x000034a4       0x64 hpl/tc/hpl_tc.o
+                0x0000386c       0x64 hpl/tc/hpl_tc.o
  .text.get_tc_index
-                0x00003508       0x7c hpl/tc/hpl_tc.o
+                0x000038d0       0x7c hpl/tc/hpl_tc.o
  .text._tc_timer_init
-                0x00003584      0x144 hpl/tc/hpl_tc.o
-                0x00003584                _tc_timer_init
+                0x0000394c      0x144 hpl/tc/hpl_tc.o
+                0x0000394c                _tc_timer_init
  .text._tc_timer_deinit
-                0x000036c8       0x7c hpl/tc/hpl_tc.o
-                0x000036c8                _tc_timer_deinit
+                0x00003a90       0x7c hpl/tc/hpl_tc.o
+                0x00003a90                _tc_timer_deinit
  .text._tc_timer_set_irq
-                0x00003744       0x3c hpl/tc/hpl_tc.o
-                0x00003744                _tc_timer_set_irq
+                0x00003b0c       0x3c hpl/tc/hpl_tc.o
+                0x00003b0c                _tc_timer_set_irq
  .text._pwm_init
-                0x00003780      0x118 hpl/tc/hpl_tc.o
-                0x00003780                _pwm_init
+                0x00003b48      0x118 hpl/tc/hpl_tc.o
+                0x00003b48                _pwm_init
  .text._tc_get_timer
-                0x00003898        0x8 hpl/tc/hpl_tc.o
-                0x00003898                _tc_get_timer
+                0x00003c60        0x8 hpl/tc/hpl_tc.o
+                0x00003c60                _tc_get_timer
  .text._tc_get_pwm
-                0x000038a0        0x4 hpl/tc/hpl_tc.o
-                0x000038a0                _tc_get_pwm
+                0x00003c68        0x4 hpl/tc/hpl_tc.o
+                0x00003c68                _tc_get_pwm
  .text.TC0_Handler
-                0x000038a4       0x14 hpl/tc/hpl_tc.o
-                0x000038a4                TC0_Handler
+                0x00003c6c       0x14 hpl/tc/hpl_tc.o
+                0x00003c6c                TC0_Handler
  .text.TC1_Handler
-                0x000038b8       0x14 hpl/tc/hpl_tc.o
-                0x000038b8                TC1_Handler
+                0x00003c80       0x14 hpl/tc/hpl_tc.o
+                0x00003c80                TC1_Handler
  .text.TC2_Handler
-                0x000038cc       0x14 hpl/tc/hpl_tc.o
-                0x000038cc                TC2_Handler
+                0x00003c94       0x14 hpl/tc/hpl_tc.o
+                0x00003c94                TC2_Handler
  .text.TC3_Handler
-                0x000038e0       0x14 hpl/tc/hpl_tc.o
-                0x000038e0                TC3_Handler
+                0x00003ca8       0x14 hpl/tc/hpl_tc.o
+                0x00003ca8                TC3_Handler
  .text.TC4_Handler
-                0x000038f4       0x14 hpl/tc/hpl_tc.o
-                0x000038f4                TC4_Handler
+                0x00003cbc       0x14 hpl/tc/hpl_tc.o
+                0x00003cbc                TC4_Handler
  .text.TC5_Handler
-                0x00003908       0x14 hpl/tc/hpl_tc.o
-                0x00003908                TC5_Handler
+                0x00003cd0       0x14 hpl/tc/hpl_tc.o
+                0x00003cd0                TC5_Handler
  .text._wdt_init
-                0x0000391c       0x6c hpl/wdt/hpl_wdt.o
-                0x0000391c                _wdt_init
+                0x00003ce4       0x6c hpl/wdt/hpl_wdt.o
+                0x00003ce4                _wdt_init
  .text._wdt_set_timeout_period
-                0x00003988      0x11c hpl/wdt/hpl_wdt.o
-                0x00003988                _wdt_set_timeout_period
+                0x00003d50      0x11c hpl/wdt/hpl_wdt.o
+                0x00003d50                _wdt_set_timeout_period
  .text._wdt_enable
-                0x00003aa4       0x3c hpl/wdt/hpl_wdt.o
-                0x00003aa4                _wdt_enable
+                0x00003e6c       0x3c hpl/wdt/hpl_wdt.o
+                0x00003e6c                _wdt_enable
  .text._wdt_feed
-                0x00003ae0       0x30 hpl/wdt/hpl_wdt.o
-                0x00003ae0                _wdt_feed
+                0x00003ea8       0x30 hpl/wdt/hpl_wdt.o
+                0x00003ea8                _wdt_feed
  .text.createQueuesAndSemaphores
-                0x00003b10       0x88 main.o
-                0x00003b10                createQueuesAndSemaphores
- .text.main     0x00003b98      0x110 main.o
-                0x00003b98                main
+                0x00003ed8       0x88 main.o
+                0x00003ed8                createQueuesAndSemaphores
+ .text.main     0x00003f60      0x110 main.o
+                0x00003f60                main
  .text.vListInitialise
-                0x00003ca8       0x16 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
-                0x00003ca8                vListInitialise
+                0x00004070       0x16 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
+                0x00004070                vListInitialise
  .text.vListInitialiseItem
-                0x00003cbe        0x6 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
-                0x00003cbe                vListInitialiseItem
+                0x00004086        0x6 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
+                0x00004086                vListInitialiseItem
  .text.vListInsertEnd
-                0x00003cc4       0x18 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
-                0x00003cc4                vListInsertEnd
+                0x0000408c       0x18 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
+                0x0000408c                vListInsertEnd
  .text.vListInsert
-                0x00003cdc       0x34 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
-                0x00003cdc                vListInsert
+                0x000040a4       0x34 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
+                0x000040a4                vListInsert
  .text.uxListRemove
-                0x00003d10       0x26 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
-                0x00003d10                uxListRemove
- *fill*         0x00003d36        0x2 
+                0x000040d8       0x26 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
+                0x000040d8                uxListRemove
+ *fill*         0x000040fe        0x2 
  .text.prvTaskExitError
-                0x00003d38       0x40 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
+                0x00004100       0x40 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
  .text.prvPortStartFirstTask
-                0x00003d78       0x28 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
+                0x00004140       0x28 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
  .text.vPortEnableVFP
-                0x00003da0       0x14 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
+                0x00004168       0x14 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
  .text.pxPortInitialiseStack
-                0x00003db4       0x2c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
-                0x00003db4                pxPortInitialiseStack
+                0x0000417c       0x2c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
+                0x0000417c                pxPortInitialiseStack
+ *fill*         0x000041a8        0x8 
  .text.SVC_Handler
-                0x00003de0       0x24 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
-                0x00003de0                SVC_Handler
+                0x000041b0       0x24 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
+                0x000041b0                SVC_Handler
  .text.vPortEnterCritical
-                0x00003e04       0x44 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
-                0x00003e04                vPortEnterCritical
+                0x000041d4       0x44 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
+                0x000041d4                vPortEnterCritical
  .text.vPortExitCritical
-                0x00003e48       0x2c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
-                0x00003e48                vPortExitCritical
- *fill*         0x00003e74        0xc 
+                0x00004218       0x2c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
+                0x00004218                vPortExitCritical
+ *fill*         0x00004244        0xc 
  .text.PendSV_Handler
-                0x00003e80       0x64 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
-                0x00003e80                PendSV_Handler
+                0x00004250       0x64 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
+                0x00004250                PendSV_Handler
  .text.SysTick_Handler
-                0x00003ee4       0x30 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
-                0x00003ee4                SysTick_Handler
+                0x000042b4       0x30 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
+                0x000042b4                SysTick_Handler
  .text.vPortSetupTimerInterrupt
-                0x00003f14       0x24 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
-                0x00003f14                vPortSetupTimerInterrupt
+                0x000042e4       0x24 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
+                0x000042e4                vPortSetupTimerInterrupt
  .text.xPortStartScheduler
-                0x00003f38      0x124 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
-                0x00003f38                xPortStartScheduler
+                0x00004308      0x124 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
+                0x00004308                xPortStartScheduler
  .text.vPortValidateInterruptPriority
-                0x0000405c       0x58 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
-                0x0000405c                vPortValidateInterruptPriority
+                0x0000442c       0x58 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
+                0x0000442c                vPortValidateInterruptPriority
  .text.pvPortMalloc
-                0x000040b4       0xd4 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_2.o
-                0x000040b4                pvPortMalloc
+                0x00004484       0xd4 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_2.o
+                0x00004484                pvPortMalloc
  .text.vPortFree
-                0x00004188       0x4c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_2.o
-                0x00004188                vPortFree
+                0x00004558       0x4c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_2.o
+                0x00004558                vPortFree
  .text.prvIsQueueEmpty
-                0x000041d4       0x20 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
+                0x000045a4       0x20 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
  .text.prvCopyDataToQueue
-                0x000041f4       0x80 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
+                0x000045c4       0x80 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
  .text.prvNotifyQueueSetContainer
-                0x00004274       0x84 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
+                0x00004644       0x84 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
  .text.prvCopyDataFromQueue
-                0x000042f8       0x28 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
+                0x000046c8       0x28 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
  .text.prvUnlockQueue
-                0x00004320       0xa8 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
+                0x000046f0       0xa8 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
  .text.xQueueGenericReset
-                0x000043c8       0x90 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
-                0x000043c8                xQueueGenericReset
+                0x00004798       0x90 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
+                0x00004798                xQueueGenericReset
  .text.xQueueGenericCreate
-                0x00004458       0x58 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
-                0x00004458                xQueueGenericCreate
+                0x00004828       0x58 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
+                0x00004828                xQueueGenericCreate
  .text.xQueueGenericSend
-                0x000044b0      0x1dc thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
-                0x000044b0                xQueueGenericSend
+                0x00004880      0x1dc thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
+                0x00004880                xQueueGenericSend
  .text.xQueueCreateMutex
-                0x0000468c       0x2c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
-                0x0000468c                xQueueCreateMutex
+                0x00004a5c       0x2c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
+                0x00004a5c                xQueueCreateMutex
  .text.xQueueGenericSendFromISR
-                0x000046b8      0x108 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
-                0x000046b8                xQueueGenericSendFromISR
+                0x00004a88      0x108 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
+                0x00004a88                xQueueGenericSendFromISR
  .text.xQueueReceive
-                0x000047c0      0x188 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
-                0x000047c0                xQueueReceive
+                0x00004b90      0x188 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
+                0x00004b90                xQueueReceive
  .text.xQueueSemaphoreTake
-                0x00004948      0x1e0 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
-                0x00004948                xQueueSemaphoreTake
+                0x00004d18      0x1e0 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
+                0x00004d18                xQueueSemaphoreTake
  .text.uxQueueMessagesWaiting
-                0x00004b28       0x30 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
-                0x00004b28                uxQueueMessagesWaiting
+                0x00004ef8       0x30 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
+                0x00004ef8                uxQueueMessagesWaiting
  .text.vQueueWaitForMessageRestricted
-                0x00004b58       0x60 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
-                0x00004b58                vQueueWaitForMessageRestricted
+                0x00004f28       0x60 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
+                0x00004f28                vQueueWaitForMessageRestricted
  .text.prvIdleTask
-                0x00004bb8       0x24 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x00004f88       0x24 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
  .text.prvResetNextTaskUnblockTime
-                0x00004bdc       0x2c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x00004fac       0x2c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
  .text.prvAddCurrentTaskToDelayedList
-                0x00004c08       0x80 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x00004fd8       0x80 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
  .text.xTaskCreate
-                0x00004c88      0x1dc thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
-                0x00004c88                xTaskCreate
+                0x00005058      0x1dc thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x00005058                xTaskCreate
  .text.vTaskStartScheduler
-                0x00004e64       0x88 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
-                0x00004e64                vTaskStartScheduler
+                0x00005234       0x88 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x00005234                vTaskStartScheduler
  .text.vTaskSuspendAll
-                0x00004eec       0x14 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
-                0x00004eec                vTaskSuspendAll
+                0x000052bc       0x14 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x000052bc                vTaskSuspendAll
  .text.xTaskGetTickCount
-                0x00004f00        0xc thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
-                0x00004f00                xTaskGetTickCount
+                0x000052d0        0xc thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x000052d0                xTaskGetTickCount
  .text.xTaskIncrementTick
-                0x00004f0c      0x128 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
-                0x00004f0c                xTaskIncrementTick
+                0x000052dc      0x128 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x000052dc                xTaskIncrementTick
  .text.xTaskResumeAll
-                0x00005034      0x10c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
-                0x00005034                xTaskResumeAll
+                0x00005404      0x10c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x00005404                xTaskResumeAll
  .text.vTaskDelayUntil
-                0x00005140       0xac thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
-                0x00005140                vTaskDelayUntil
+                0x00005510       0xac thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x00005510                vTaskDelayUntil
  .text.vTaskDelay
-                0x000051ec       0x58 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
-                0x000051ec                vTaskDelay
+                0x000055bc       0x58 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x000055bc                vTaskDelay
  .text.vTaskSwitchContext
-                0x00005244       0xbc thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
-                0x00005244                vTaskSwitchContext
+                0x00005614       0xbc thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x00005614                vTaskSwitchContext
  .text.vTaskPlaceOnEventList
-                0x00005300       0x3c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
-                0x00005300                vTaskPlaceOnEventList
+                0x000056d0       0x3c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x000056d0                vTaskPlaceOnEventList
  .text.vTaskPlaceOnEventListRestricted
-                0x0000533c       0x44 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
-                0x0000533c                vTaskPlaceOnEventListRestricted
+                0x0000570c       0x44 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x0000570c                vTaskPlaceOnEventListRestricted
  .text.xTaskRemoveFromEventList
-                0x00005380       0x90 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
-                0x00005380                xTaskRemoveFromEventList
+                0x00005750       0x90 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x00005750                xTaskRemoveFromEventList
  .text.vTaskInternalSetTimeOutState
-                0x00005410       0x14 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
-                0x00005410                vTaskInternalSetTimeOutState
+                0x000057e0       0x14 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x000057e0                vTaskInternalSetTimeOutState
  .text.xTaskCheckForTimeOut
-                0x00005424       0x8c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
-                0x00005424                xTaskCheckForTimeOut
+                0x000057f4       0x8c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x000057f4                xTaskCheckForTimeOut
  .text.vTaskMissedYield
-                0x000054b0       0x10 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
-                0x000054b0                vTaskMissedYield
+                0x00005880       0x10 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x00005880                vTaskMissedYield
  .text.xTaskGetSchedulerState
-                0x000054c0       0x20 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
-                0x000054c0                xTaskGetSchedulerState
+                0x00005890       0x20 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x00005890                xTaskGetSchedulerState
  .text.xTaskPriorityInherit
-                0x000054e0       0xa4 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
-                0x000054e0                xTaskPriorityInherit
+                0x000058b0       0xa4 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x000058b0                xTaskPriorityInherit
  .text.xTaskPriorityDisinherit
-                0x00005584       0x9c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
-                0x00005584                xTaskPriorityDisinherit
+                0x00005954       0x9c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x00005954                xTaskPriorityDisinherit
  .text.vTaskPriorityDisinheritAfterTimeout
-                0x00005620       0xac thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
-                0x00005620                vTaskPriorityDisinheritAfterTimeout
+                0x000059f0       0xac thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x000059f0                vTaskPriorityDisinheritAfterTimeout
  .text.pvTaskIncrementMutexHeldCount
-                0x000056cc       0x20 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
-                0x000056cc                pvTaskIncrementMutexHeldCount
+                0x00005a9c       0x20 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x00005a9c                pvTaskIncrementMutexHeldCount
  .text.xTaskNotifyWait
-                0x000056ec       0xb4 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
-                0x000056ec                xTaskNotifyWait
+                0x00005abc       0xb4 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x00005abc                xTaskNotifyWait
  .text.xTaskGenericNotifyFromISR
-                0x000057a0      0x124 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
-                0x000057a0                xTaskGenericNotifyFromISR
+                0x00005b70      0x124 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x00005b70                xTaskGenericNotifyFromISR
  .text.prvInsertTimerInActiveList
-                0x000058c4       0x48 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
+                0x00005c94       0x48 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
  .text.prvCheckForValidListAndQueue
-                0x0000590c       0x4c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
+                0x00005cdc       0x4c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
  .text.xTimerCreateTimerTask
-                0x00005958       0x54 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
-                0x00005958                xTimerCreateTimerTask
+                0x00005d28       0x54 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
+                0x00005d28                xTimerCreateTimerTask
  .text.xTimerGenericCommand
-                0x000059ac       0x6c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
-                0x000059ac                xTimerGenericCommand
+                0x00005d7c       0x6c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
+                0x00005d7c                xTimerGenericCommand
  .text.prvSampleTimeNow
-                0x00005a18       0xac thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
+                0x00005de8       0xac thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
  .text.prvTimerTask
-                0x00005ac4      0x1c8 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
+                0x00005e94      0x1c8 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
  .text.__libc_init_array
-                0x00005c8c       0x48 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-init.o)
-                0x00005c8c                __libc_init_array
- .text.memcmp   0x00005cd4       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-memcmp.o)
-                0x00005cd4                memcmp
- .text.memcpy   0x00005cf2       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-memcpy-stub.o)
-                0x00005cf2                memcpy
- .text.memmove  0x00005d08       0x34 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-memmove.o)
-                0x00005d08                memmove
- .text.memset   0x00005d3c       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-memset.o)
-                0x00005d3c                memset
- .text._free_r  0x00005d4c       0x9c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-freer.o)
-                0x00005d4c                _free_r
+                0x0000605c       0x48 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-init.o)
+                0x0000605c                __libc_init_array
+ .text.memcmp   0x000060a4       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-memcmp.o)
+                0x000060a4                memcmp
+ .text.memcpy   0x000060c2       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-memcpy-stub.o)
+                0x000060c2                memcpy
+ .text.memmove  0x000060d8       0x34 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-memmove.o)
+                0x000060d8                memmove
+ .text.memset   0x0000610c       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-memset.o)
+                0x0000610c                memset
+ .text._free_r  0x0000611c       0x9c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-freer.o)
+                0x0000611c                _free_r
  .text._malloc_r
-                0x00005de8       0xbc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-mallocr.o)
-                0x00005de8                _malloc_r
- .text._sbrk_r  0x00005ea4       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-sbrkr.o)
-                0x00005ea4                _sbrk_r
- .text.sprintf  0x00005ec4       0x48 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-sprintf.o)
-                0x00005ec4                siprintf
-                0x00005ec4                sprintf
- .text.strcpy   0x00005f0c       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-strcpy.o)
-                0x00005f0c                strcpy
- .text          0x00005f1c       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-strlen.o)
-                0x00005f1c                strlen
- .text.strncmp  0x00005f2c       0x24 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-strncmp.o)
-                0x00005f2c                strncmp
- .text.strncpy  0x00005f50       0x2a c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-strncpy.o)
-                0x00005f50                strncpy
+                0x000061b8       0xbc c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-mallocr.o)
+                0x000061b8                _malloc_r
+ .text._sbrk_r  0x00006274       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-sbrkr.o)
+                0x00006274                _sbrk_r
+ .text.sprintf  0x00006294       0x48 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-sprintf.o)
+                0x00006294                siprintf
+                0x00006294                sprintf
+ .text.strcpy   0x000062dc       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-strcpy.o)
+                0x000062dc                strcpy
+ .text          0x000062ec       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-strlen.o)
+                0x000062ec                strlen
+ .text.strncmp  0x000062fc       0x24 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-strncmp.o)
+                0x000062fc                strncmp
+ .text.strncpy  0x00006320       0x2a c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-strncpy.o)
+                0x00006320                strncpy
  .text.__malloc_lock
-                0x00005f7a        0x2 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-mlock.o)
-                0x00005f7a                __malloc_lock
+                0x0000634a        0x2 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-mlock.o)
+                0x0000634a                __malloc_lock
  .text.__malloc_unlock
-                0x00005f7c        0x2 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-mlock.o)
-                0x00005f7c                __malloc_unlock
+                0x0000634c        0x2 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-mlock.o)
+                0x0000634c                __malloc_unlock
  .text.__ssputs_r
-                0x00005f7e       0xb6 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-svfprintf.o)
-                0x00005f7e                __ssputs_r
+                0x0000634e       0xb6 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-svfprintf.o)
+                0x0000634e                __ssputs_r
  .text._svfprintf_r
-                0x00006034      0x1e8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-svfprintf.o)
-                0x00006034                _svfiprintf_r
-                0x00006034                _svfprintf_r
+                0x00006404      0x1e8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-svfprintf.o)
+                0x00006404                _svfiprintf_r
+                0x00006404                _svfprintf_r
  .text._printf_common
-                0x0000621c       0xec c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-vfprintf_i.o)
-                0x0000621c                _printf_common
+                0x000065ec       0xec c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-vfprintf_i.o)
+                0x000065ec                _printf_common
  .text._printf_i
-                0x00006308      0x240 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-vfprintf_i.o)
-                0x00006308                _printf_i
- *fill*         0x00006548        0x8 
- .text          0x00006550       0xa0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-memchr.o)
-                0x00006550                memchr
+                0x000066d8      0x240 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-vfprintf_i.o)
+                0x000066d8                _printf_i
+ *fill*         0x00006918        0x8 
+ .text          0x00006920       0xa0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-memchr.o)
+                0x00006920                memchr
  .text._realloc_r
-                0x000065f0       0x4c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-reallocr.o)
-                0x000065f0                _realloc_r
+                0x000069c0       0x4c c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-reallocr.o)
+                0x000069c0                _realloc_r
  .text._malloc_usable_size_r
-                0x0000663c       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-msizer.o)
-                0x0000663c                _malloc_usable_size_r
+                0x00006a0c       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-msizer.o)
+                0x00006a0c                _malloc_usable_size_r
  *(.glue_7t)
- .glue_7t       0x0000664e        0x0 linker stubs
+ .glue_7t       0x00006a1e        0x0 linker stubs
  *(.glue_7)
- .glue_7        0x0000664e        0x0 linker stubs
+ .glue_7        0x00006a1e        0x0 linker stubs
  *(.rodata .rodata* .gnu.linkonce.r.*)
- *fill*         0x0000664e        0x2 
+ *fill*         0x00006a1e        0x2 
  .rodata.str1.4
-                0x00006650       0x8b Apps/Common/FreeRtosHooks.o
+                0x00006a20       0x8b Apps/Common/FreeRtosHooks.o
                                  0x8f (size before relaxing)
- *fill*         0x000066db        0x1 
- .rodata        0x000066dc      0x4b0 Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
+ *fill*         0x00006aab        0x1 
+ .rodata        0x00006aac      0x4b0 Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
  .rodata.str1.4
-                0x00006b8c      0x20c Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
+                0x00006f5c      0x20c Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
                                 0x210 (size before relaxing)
  .rodata.str1.4
-                0x00006d98       0xeb Apps/Tasks/ModemTask/source/ModemCmdParser.o
+                0x00007168       0xeb Apps/Tasks/ModemTask/source/ModemCmdParser.o
                                  0xef (size before relaxing)
- *fill*         0x00006e83        0x1 
+ *fill*         0x00007253        0x1 
  .rodata.str1.4
-                0x00006e84      0x1bc Apps/Tasks/ModemTask/source/ModemConnection.o
-                                0x1d1 (size before relaxing)
+                0x00007254      0x34c Apps/Tasks/ModemTask/source/ModemConnection.o
+                                0x364 (size before relaxing)
  .rodata.str1.4
-                0x00007040       0x65 Apps/Tasks/ModemTask/source/ModemController.o
- *fill*         0x000070a5        0x3 
+                0x000075a0       0x65 Apps/Tasks/ModemTask/source/ModemController.o
+ *fill*         0x00007605        0x3 
  .rodata.str1.4
-                0x000070a8       0x8a Apps/Tasks/ModemTask/source/ModemDiagTask.o
+                0x00007608       0x8a Apps/Tasks/ModemTask/source/ModemDiagTask.o
                                  0x8e (size before relaxing)
- *fill*         0x00007132        0x2 
+ *fill*         0x00007692        0x2 
  .rodata.str1.4
-                0x00007134      0x250 Apps/Tasks/ModemTask/source/ModemResponseHandles.o
+                0x00007694      0x250 Apps/Tasks/ModemTask/source/ModemResponseHandles.o
                                 0x270 (size before relaxing)
  .rodata.str1.4
-                0x00007384       0x4a Apps/Tasks/ModemTask/source/ModemRxTask.o
- *fill*         0x000073ce        0x2 
+                0x000078e4       0x4a Apps/Tasks/ModemTask/source/ModemRxTask.o
+ *fill*         0x0000792e        0x2 
  .rodata.str1.4
-                0x000073d0       0x2f Apps/SerialDebug/SerialDebug.o
- *fill*         0x000073ff        0x1 
+                0x00007930       0x2f Apps/SerialDebug/SerialDebug.o
+ *fill*         0x0000795f        0x1 
  .rodata.str1.4
-                0x00007400       0x19 atmel_start.o
- *fill*         0x00007419        0x3 
+                0x00007960       0x19 atmel_start.o
+ *fill*         0x00007979        0x3 
  .rodata.str1.4
-                0x0000741c       0x29 driver_init.o
+                0x0000797c       0x29 driver_init.o
                                  0x45 (size before relaxing)
- *fill*         0x00007445        0x3 
+ *fill*         0x000079a5        0x3 
  .rodata.str1.4
-                0x00007448       0x19 hal/src/hal_ac_sync.o
- *fill*         0x00007461        0x3 
+                0x000079a8       0x19 hal/src/hal_ac_sync.o
+ *fill*         0x000079c1        0x3 
  .rodata.str1.4
-                0x00007464       0x1a hal/src/hal_adc_sync.o
- *fill*         0x0000747e        0x2 
+                0x000079c4       0x1a hal/src/hal_adc_sync.o
+ *fill*         0x000079de        0x2 
  .rodata.str1.4
-                0x00007480       0x1a hal/src/hal_dac_sync.o
- *fill*         0x0000749a        0x2 
+                0x000079e0       0x1a hal/src/hal_dac_sync.o
+ *fill*         0x000079fa        0x2 
  .rodata.str1.4
-                0x0000749c       0x17 hal/src/hal_flash.o
- *fill*         0x000074b3        0x1 
+                0x000079fc       0x17 hal/src/hal_flash.o
+ *fill*         0x00007a13        0x1 
  .rodata.str1.4
-                0x000074b4       0x15 hal/src/hal_pwm.o
- *fill*         0x000074c9        0x3 
+                0x00007a14       0x15 hal/src/hal_pwm.o
+ *fill*         0x00007a29        0x3 
  .rodata.str1.4
-                0x000074cc       0x17 hal/src/hal_timer.o
- *fill*         0x000074e3        0x1 
+                0x00007a2c       0x17 hal/src/hal_timer.o
+ *fill*         0x00007a43        0x1 
  .rodata.str1.4
-                0x000074e4       0x1e hal/utils/src/utils_list.o
- *fill*         0x00007502        0x2 
+                0x00007a44       0x1e hal/utils/src/utils_list.o
+ *fill*         0x00007a62        0x2 
  .rodata.str1.4
-                0x00007504       0x24 hal/utils/src/utils_ringbuffer.o
+                0x00007a64       0x24 hal/utils/src/utils_ringbuffer.o
  .rodata.str1.4
-                0x00007528       0x13 hpl/ac/hpl_ac.o
- *fill*         0x0000753b        0x1 
- .rodata        0x0000753c       0x2c hpl/adc/hpl_adc.o
- .rodata.str1.4
-                0x00007568       0x15 hpl/adc/hpl_adc.o
- *fill*         0x0000757d        0x3 
- .rodata.str1.4
-                0x00007580       0x15 hpl/dac/hpl_dac.o
- *fill*         0x00007595        0x3 
- .rodata        0x00007598      0x100 hpl/dmac/hpl_dmac.o
- .rodata        0x00007698      0x104 hpl/evsys/hpl_evsys.o
- .rodata.str1.4
-                0x0000779c       0x1d hpl/nvmctrl/hpl_nvmctrl.o
- *fill*         0x000077b9        0x3 
- .rodata        0x000077bc       0x89 hpl/sercom/hpl_sercom.o
- *fill*         0x00007845        0x3 
- .rodata.str1.4
-                0x00007848       0x1b hpl/sercom/hpl_sercom.o
- *fill*         0x00007863        0x1 
- .rodata        0x00007864       0xc8 hpl/tcc/hpl_tcc.o
- .rodata.str1.4
-                0x0000792c       0x15 hpl/tcc/hpl_tcc.o
- *fill*         0x00007941        0x3 
- .rodata        0x00007944       0x18 hpl/tc/hpl_tc.o
- .rodata.str1.4
-                0x0000795c       0x13 hpl/tc/hpl_tc.o
- *fill*         0x0000796f        0x1 
- .rodata.str1.4
-                0x00007970       0x15 hpl/wdt/hpl_wdt.o
- *fill*         0x00007985        0x3 
- .rodata.str1.4
-                0x00007988       0xfc main.o
- .rodata.str1.4
-                0x00007a84       0x17 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+                0x00007a88       0x13 hpl/ac/hpl_ac.o
  *fill*         0x00007a9b        0x1 
+ .rodata        0x00007a9c       0x2c hpl/adc/hpl_adc.o
  .rodata.str1.4
-                0x00007a9c        0x8 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
+                0x00007ac8       0x15 hpl/adc/hpl_adc.o
+ *fill*         0x00007add        0x3 
+ .rodata.str1.4
+                0x00007ae0       0x15 hpl/dac/hpl_dac.o
+ *fill*         0x00007af5        0x3 
+ .rodata        0x00007af8      0x100 hpl/dmac/hpl_dmac.o
+ .rodata        0x00007bf8      0x104 hpl/evsys/hpl_evsys.o
+ .rodata.str1.4
+                0x00007cfc       0x1d hpl/nvmctrl/hpl_nvmctrl.o
+ *fill*         0x00007d19        0x3 
+ .rodata        0x00007d1c       0x89 hpl/sercom/hpl_sercom.o
+ *fill*         0x00007da5        0x3 
+ .rodata.str1.4
+                0x00007da8       0x1b hpl/sercom/hpl_sercom.o
+ *fill*         0x00007dc3        0x1 
+ .rodata        0x00007dc4       0xc8 hpl/tcc/hpl_tcc.o
+ .rodata.str1.4
+                0x00007e8c       0x15 hpl/tcc/hpl_tcc.o
+ *fill*         0x00007ea1        0x3 
+ .rodata        0x00007ea4       0x18 hpl/tc/hpl_tc.o
+ .rodata.str1.4
+                0x00007ebc       0x13 hpl/tc/hpl_tc.o
+ *fill*         0x00007ecf        0x1 
+ .rodata.str1.4
+                0x00007ed0       0x15 hpl/wdt/hpl_wdt.o
+ *fill*         0x00007ee5        0x3 
+ .rodata.str1.4
+                0x00007ee8       0xfc main.o
+ .rodata.str1.4
+                0x00007fe4       0x17 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+ *fill*         0x00007ffb        0x1 
+ .rodata.str1.4
+                0x00007ffc        0x8 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
  .rodata.__sf_fake_stderr
-                0x00007aa4       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-findfp.o)
-                0x00007aa4                __sf_fake_stderr
+                0x00008004       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-findfp.o)
+                0x00008004                __sf_fake_stderr
  .rodata.__sf_fake_stdin
-                0x00007ac4       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-findfp.o)
-                0x00007ac4                __sf_fake_stdin
+                0x00008024       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-findfp.o)
+                0x00008024                __sf_fake_stdin
  .rodata.__sf_fake_stdout
-                0x00007ae4       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-findfp.o)
-                0x00007ae4                __sf_fake_stdout
+                0x00008044       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-findfp.o)
+                0x00008044                __sf_fake_stdout
  .rodata._svfprintf_r.str1.1
-                0x00007b04       0x11 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-svfprintf.o)
+                0x00008064       0x11 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-svfprintf.o)
  .rodata._printf_i.str1.1
-                0x00007b15       0x22 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-vfprintf_i.o)
+                0x00008075       0x22 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-vfprintf_i.o)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x00007b38                . = ALIGN (0x4)
- *fill*         0x00007b37        0x1 
+                0x00008098                . = ALIGN (0x4)
+ *fill*         0x00008097        0x1 
  *(.init)
- .init          0x00007b38        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crti.o
-                0x00007b38                _init
- .init          0x00007b3c        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtn.o
-                0x00007b44                . = ALIGN (0x4)
-                0x00007b44                __preinit_array_start = .
+ .init          0x00008098        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crti.o
+                0x00008098                _init
+ .init          0x0000809c        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtn.o
+                0x000080a4                . = ALIGN (0x4)
+                0x000080a4                __preinit_array_start = .
  *(.preinit_array)
-                0x00007b44                __preinit_array_end = .
-                0x00007b44                . = ALIGN (0x4)
-                0x00007b44                __init_array_start = .
+                0x000080a4                __preinit_array_end = .
+                0x000080a4                . = ALIGN (0x4)
+                0x000080a4                __init_array_start = .
  *(SORT(.init_array.*))
  *(.init_array)
- .init_array    0x00007b44        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtbegin.o
-                0x00007b48                __init_array_end = .
-                0x00007b48                . = ALIGN (0x4)
+ .init_array    0x000080a4        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtbegin.o
+                0x000080a8                __init_array_end = .
+                0x000080a8                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT(.ctors.*))
  *crtend.o(.ctors)
-                0x00007b48                . = ALIGN (0x4)
+                0x000080a8                . = ALIGN (0x4)
  *(.fini)
- .fini          0x00007b48        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crti.o
-                0x00007b48                _fini
- .fini          0x00007b4c        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtn.o
-                0x00007b54                . = ALIGN (0x4)
-                0x00007b54                __fini_array_start = .
+ .fini          0x000080a8        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crti.o
+                0x000080a8                _fini
+ .fini          0x000080ac        0x8 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtn.o
+                0x000080b4                . = ALIGN (0x4)
+                0x000080b4                __fini_array_start = .
  *(.fini_array)
- .fini_array    0x00007b54        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtbegin.o
+ .fini_array    0x000080b4        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtbegin.o
  *(SORT(.fini_array.*))
-                0x00007b58                __fini_array_end = .
+                0x000080b8                __fini_array_end = .
  *crtbegin.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o) .dtors)
  *(SORT(.dtors.*))
  *crtend.o(.dtors)
-                0x00007b58                . = ALIGN (0x4)
-                0x00007b58                _efixed = .
+                0x000080b8                . = ALIGN (0x4)
+                0x000080b8                _efixed = .
                 [!provide]                PROVIDE (__exidx_start, .)
 
-.vfp11_veneer   0x00007b58        0x0
- .vfp11_veneer  0x00007b58        0x0 linker stubs
+.vfp11_veneer   0x000080b8        0x0
+ .vfp11_veneer  0x000080b8        0x0 linker stubs
 
-.v4_bx          0x00007b58        0x0
- .v4_bx         0x00007b58        0x0 linker stubs
+.v4_bx          0x000080b8        0x0
+ .v4_bx         0x000080b8        0x0 linker stubs
 
-.iplt           0x00007b58        0x0
- .iplt          0x00007b58        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtbegin.o
+.iplt           0x000080b8        0x0
+ .iplt          0x000080b8        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtbegin.o
 
-.eh_frame       0x00007b58        0x0
- .eh_frame      0x00007b58        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtbegin.o
+.eh_frame       0x000080b8        0x0
+ .eh_frame      0x000080b8        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtbegin.o
 
-.rel.dyn        0x00007b58        0x0
- .rel.iplt      0x00007b58        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtbegin.o
+.rel.dyn        0x000080b8        0x0
+ .rel.iplt      0x000080b8        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtbegin.o
 
-.jcr            0x00007b58        0x0
- .jcr           0x00007b58        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtbegin.o
+.jcr            0x000080b8        0x0
+ .jcr           0x000080b8        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtbegin.o
 
-.igot.plt       0x00007b58        0x0
- .igot.plt      0x00007b58        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtbegin.o
+.igot.plt       0x000080b8        0x0
+ .igot.plt      0x000080b8        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtbegin.o
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
                 [!provide]                PROVIDE (__exidx_end, .)
-                0x00007b58                . = ALIGN (0x4)
-                0x00007b58                _etext = .
+                0x000080b8                . = ALIGN (0x4)
+                0x000080b8                _etext = .
 
-.relocate       0x20000000      0x18c load address 0x00007b58
+.relocate       0x20000000      0x18c load address 0x000080b8
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                _srelocate = .
  *(.ramfunc .ramfunc.*)
@@ -25217,7 +25218,7 @@ LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin
                 0x04000000                . = ALIGN (0x8)
                 0x04000000                _eqspi = .
 
-.bss            0x20000190     0x3ce8 load address 0x00007cf0
+.bss            0x20000190     0x3ce8 load address 0x00008250
                 0x20000190                . = ALIGN (0x4)
                 0x20000190                _sbss = .
                 0x20000190                _szero = .
@@ -25227,8 +25228,8 @@ LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin
                 0x200001ac                kHttpGetCompleteData
  .bss           0x200001e8        0x1 Apps/Tasks/ModemTask/source/ModemCmdParser.o
  *fill*         0x200001e9        0x3 
- .bss           0x200001ec       0x11 Apps/Tasks/ModemTask/source/ModemConnection.o
- *fill*         0x200001fd        0x3 
+ .bss           0x200001ec       0x12 Apps/Tasks/ModemTask/source/ModemConnection.o
+ *fill*         0x200001fe        0x2 
  .bss           0x20000200       0x2c Apps/Tasks/ModemTask/source/ModemDiagTask.o
  .bss           0x2000022c        0x4 Apps/Tasks/ModemTask/source/ModemPowerControl.o
  .bss           0x20000230      0x2db Apps/Tasks/ModemTask/source/ModemResponseHandles.o
@@ -25314,7 +25315,7 @@ LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/arm/arm-gnu-toolchain/bin
                 0x20003e78                _ebss = .
                 0x20003e78                _ezero = .
 
-.stack          0x20003e78    0x10000 load address 0x0000b9d8
+.stack          0x20003e78    0x10000 load address 0x0000bf38
                 0x20003e78                . = ALIGN (0x8)
                 0x20003e78                _sstack = .
                 0x20013e78                . = (. + STACK_SIZE)
@@ -25552,181 +25553,181 @@ OUTPUT(SAMD51.elf elf32-littlearm)
  .comment       0x00000059       0x5a thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
  .comment       0x00000059       0x5a thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
 
-.debug_info     0x00000000    0x5b981
+.debug_info     0x00000000    0x5bfa1
  .debug_info    0x00000000      0x3b3 Apps/Common/FreeRtosHooks.o
  .debug_info    0x000003b3      0xbc2 Apps/Tasks/DispatchTask/source/DispatchTask.o
  .debug_info    0x00000f75      0x701 Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
  .debug_info    0x00001676     0x17f5 Apps/Tasks/ModemTask/source/ModemCmdParser.o
- .debug_info    0x00002e6b     0x1289 Apps/Tasks/ModemTask/source/ModemConnection.o
- .debug_info    0x000040f4     0x4300 Apps/Tasks/ModemTask/source/ModemController.o
- .debug_info    0x000083f4     0x13cb Apps/Tasks/ModemTask/source/ModemDiagTask.o
- .debug_info    0x000097bf     0x254c Apps/Tasks/ModemTask/source/ModemPowerControl.o
- .debug_info    0x0000bd0b      0xc6a Apps/Tasks/ModemTask/source/ModemProcessTask.o
- .debug_info    0x0000c975      0xdbc Apps/Tasks/ModemTask/source/ModemResponseHandles.o
- .debug_info    0x0000d731      0x4d2 Apps/Tasks/ModemTask/source/ModemRxTask.o
- .debug_info    0x0000dc03     0x103f Apps/Tasks/ModemTask/source/ModemTxTask.o
- .debug_info    0x0000ec42      0x39d Apps/UartDriver/source/UartDriver.o
- .debug_info    0x0000efdf     0x39b3 Apps/SerialDebug/SerialDebug.o
- .debug_info    0x00012992      0xbfc atmel_start.o
- .debug_info    0x0001358e      0xd73 Device_Startup/startup_samd51.o
- .debug_info    0x00014301     0xc6aa driver_init.o
- .debug_info    0x000209ab      0x4da hal/src/hal_ac_sync.o
- .debug_info    0x00020e85      0xba4 hal/src/hal_adc_sync.o
- .debug_info    0x00021a29      0x1fa hal/src/hal_atomic.o
- .debug_info    0x00021c23      0x47a hal/src/hal_dac_sync.o
- .debug_info    0x0002209d      0x205 hal/src/hal_delay.o
- .debug_info    0x000222a2      0x2af hal/src/hal_evsys.o
- .debug_info    0x00022551      0x37a hal/src/hal_ext_irq.o
- .debug_info    0x000228cb      0xe60 hal/src/hal_flash.o
- .debug_info    0x0002372b      0x7f2 hal/src/hal_pwm.o
- .debug_info    0x00023f1d      0xb28 hal/src/hal_timer.o
- .debug_info    0x00024a45      0x130 hal/utils/src/utils_assert.o
- .debug_info    0x00024b75      0x33a hal/utils/src/utils_list.o
- .debug_info    0x00024eaf      0x33e hal/utils/src/utils_ringbuffer.o
- .debug_info    0x000251ed      0xdca hal/utils/src/utils_syscalls.o
- .debug_info    0x00025fb7     0x1ec9 hpl/ac/hpl_ac.o
- .debug_info    0x00027e80     0x3eb1 hpl/adc/hpl_adc.o
- .debug_info    0x0002bd31      0xba1 hpl/core/hpl_core_m4.o
- .debug_info    0x0002c8d2     0x14a8 hpl/core/hpl_init.o
- .debug_info    0x0002dd7a     0x2578 hpl/dac/hpl_dac.o
- .debug_info    0x000302f2     0x2f57 hpl/dmac/hpl_dmac.o
- .debug_info    0x00033249     0x16f1 hpl/eic/hpl_eic.o
- .debug_info    0x0003493a     0x1080 hpl/evsys/hpl_evsys.o
- .debug_info    0x000359ba      0x98e hpl/gclk/hpl_gclk.o
- .debug_info    0x00036348      0xa1e hpl/mclk/hpl_mclk.o
- .debug_info    0x00036d66     0x486d hpl/nvmctrl/hpl_nvmctrl.o
- .debug_info    0x0003b5d3      0x858 hpl/osc32kctrl/hpl_osc32kctrl.o
- .debug_info    0x0003be2b     0x1994 hpl/oscctrl/hpl_oscctrl.o
- .debug_info    0x0003d7bf      0xbd1 hpl/ramecc/hpl_ramecc.o
- .debug_info    0x0003e390     0xb159 hpl/sercom/hpl_sercom.o
- .debug_info    0x000494e9      0x29f hpl/systick/hpl_systick.o
- .debug_info    0x00049788     0x3471 hpl/tcc/hpl_tcc.o
- .debug_info    0x0004cbf9     0x34b1 hpl/tc/hpl_tc.o
- .debug_info    0x000500aa      0xd1c hpl/wdt/hpl_wdt.o
- .debug_info    0x00050dc6     0x16a0 main.o
- .debug_info    0x00052466      0xbd8 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
- .debug_info    0x0005303e      0x5a3 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
- .debug_info    0x000535e1      0xc6a thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_2.o
- .debug_info    0x0005424b     0x2ba6 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
- .debug_info    0x00056df1     0x312d thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
- .debug_info    0x00059f1e     0x1a63 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
+ .debug_info    0x00002e6b     0x18a9 Apps/Tasks/ModemTask/source/ModemConnection.o
+ .debug_info    0x00004714     0x4300 Apps/Tasks/ModemTask/source/ModemController.o
+ .debug_info    0x00008a14     0x13cb Apps/Tasks/ModemTask/source/ModemDiagTask.o
+ .debug_info    0x00009ddf     0x254c Apps/Tasks/ModemTask/source/ModemPowerControl.o
+ .debug_info    0x0000c32b      0xc6a Apps/Tasks/ModemTask/source/ModemProcessTask.o
+ .debug_info    0x0000cf95      0xdbc Apps/Tasks/ModemTask/source/ModemResponseHandles.o
+ .debug_info    0x0000dd51      0x4d2 Apps/Tasks/ModemTask/source/ModemRxTask.o
+ .debug_info    0x0000e223     0x103f Apps/Tasks/ModemTask/source/ModemTxTask.o
+ .debug_info    0x0000f262      0x39d Apps/UartDriver/source/UartDriver.o
+ .debug_info    0x0000f5ff     0x39b3 Apps/SerialDebug/SerialDebug.o
+ .debug_info    0x00012fb2      0xbfc atmel_start.o
+ .debug_info    0x00013bae      0xd73 Device_Startup/startup_samd51.o
+ .debug_info    0x00014921     0xc6aa driver_init.o
+ .debug_info    0x00020fcb      0x4da hal/src/hal_ac_sync.o
+ .debug_info    0x000214a5      0xba4 hal/src/hal_adc_sync.o
+ .debug_info    0x00022049      0x1fa hal/src/hal_atomic.o
+ .debug_info    0x00022243      0x47a hal/src/hal_dac_sync.o
+ .debug_info    0x000226bd      0x205 hal/src/hal_delay.o
+ .debug_info    0x000228c2      0x2af hal/src/hal_evsys.o
+ .debug_info    0x00022b71      0x37a hal/src/hal_ext_irq.o
+ .debug_info    0x00022eeb      0xe60 hal/src/hal_flash.o
+ .debug_info    0x00023d4b      0x7f2 hal/src/hal_pwm.o
+ .debug_info    0x0002453d      0xb28 hal/src/hal_timer.o
+ .debug_info    0x00025065      0x130 hal/utils/src/utils_assert.o
+ .debug_info    0x00025195      0x33a hal/utils/src/utils_list.o
+ .debug_info    0x000254cf      0x33e hal/utils/src/utils_ringbuffer.o
+ .debug_info    0x0002580d      0xdca hal/utils/src/utils_syscalls.o
+ .debug_info    0x000265d7     0x1ec9 hpl/ac/hpl_ac.o
+ .debug_info    0x000284a0     0x3eb1 hpl/adc/hpl_adc.o
+ .debug_info    0x0002c351      0xba1 hpl/core/hpl_core_m4.o
+ .debug_info    0x0002cef2     0x14a8 hpl/core/hpl_init.o
+ .debug_info    0x0002e39a     0x2578 hpl/dac/hpl_dac.o
+ .debug_info    0x00030912     0x2f57 hpl/dmac/hpl_dmac.o
+ .debug_info    0x00033869     0x16f1 hpl/eic/hpl_eic.o
+ .debug_info    0x00034f5a     0x1080 hpl/evsys/hpl_evsys.o
+ .debug_info    0x00035fda      0x98e hpl/gclk/hpl_gclk.o
+ .debug_info    0x00036968      0xa1e hpl/mclk/hpl_mclk.o
+ .debug_info    0x00037386     0x486d hpl/nvmctrl/hpl_nvmctrl.o
+ .debug_info    0x0003bbf3      0x858 hpl/osc32kctrl/hpl_osc32kctrl.o
+ .debug_info    0x0003c44b     0x1994 hpl/oscctrl/hpl_oscctrl.o
+ .debug_info    0x0003dddf      0xbd1 hpl/ramecc/hpl_ramecc.o
+ .debug_info    0x0003e9b0     0xb159 hpl/sercom/hpl_sercom.o
+ .debug_info    0x00049b09      0x29f hpl/systick/hpl_systick.o
+ .debug_info    0x00049da8     0x3471 hpl/tcc/hpl_tcc.o
+ .debug_info    0x0004d219     0x34b1 hpl/tc/hpl_tc.o
+ .debug_info    0x000506ca      0xd1c hpl/wdt/hpl_wdt.o
+ .debug_info    0x000513e6     0x16a0 main.o
+ .debug_info    0x00052a86      0xbd8 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
+ .debug_info    0x0005365e      0x5a3 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
+ .debug_info    0x00053c01      0xc6a thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_2.o
+ .debug_info    0x0005486b     0x2ba6 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
+ .debug_info    0x00057411     0x312d thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+ .debug_info    0x0005a53e     0x1a63 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
 
-.debug_abbrev   0x00000000     0x93eb
+.debug_abbrev   0x00000000     0x9405
  .debug_abbrev  0x00000000      0x11a Apps/Common/FreeRtosHooks.o
  .debug_abbrev  0x0000011a      0x23e Apps/Tasks/DispatchTask/source/DispatchTask.o
  .debug_abbrev  0x00000358      0x178 Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
  .debug_abbrev  0x000004d0      0x2e1 Apps/Tasks/ModemTask/source/ModemCmdParser.o
- .debug_abbrev  0x000007b1      0x295 Apps/Tasks/ModemTask/source/ModemConnection.o
- .debug_abbrev  0x00000a46      0x3d3 Apps/Tasks/ModemTask/source/ModemController.o
- .debug_abbrev  0x00000e19      0x345 Apps/Tasks/ModemTask/source/ModemDiagTask.o
- .debug_abbrev  0x0000115e      0x365 Apps/Tasks/ModemTask/source/ModemPowerControl.o
- .debug_abbrev  0x000014c3      0x245 Apps/Tasks/ModemTask/source/ModemProcessTask.o
- .debug_abbrev  0x00001708      0x267 Apps/Tasks/ModemTask/source/ModemResponseHandles.o
- .debug_abbrev  0x0000196f      0x172 Apps/Tasks/ModemTask/source/ModemRxTask.o
- .debug_abbrev  0x00001ae1      0x2c7 Apps/Tasks/ModemTask/source/ModemTxTask.o
- .debug_abbrev  0x00001da8      0x185 Apps/UartDriver/source/UartDriver.o
- .debug_abbrev  0x00001f2d      0x34b Apps/SerialDebug/SerialDebug.o
- .debug_abbrev  0x00002278      0x207 atmel_start.o
- .debug_abbrev  0x0000247f      0x171 Device_Startup/startup_samd51.o
- .debug_abbrev  0x000025f0      0x451 driver_init.o
- .debug_abbrev  0x00002a41      0x133 hal/src/hal_ac_sync.o
- .debug_abbrev  0x00002b74      0x177 hal/src/hal_adc_sync.o
- .debug_abbrev  0x00002ceb      0x155 hal/src/hal_atomic.o
- .debug_abbrev  0x00002e40      0x154 hal/src/hal_dac_sync.o
- .debug_abbrev  0x00002f94       0xf9 hal/src/hal_delay.o
- .debug_abbrev  0x0000308d       0xe5 hal/src/hal_evsys.o
- .debug_abbrev  0x00003172      0x18b hal/src/hal_ext_irq.o
- .debug_abbrev  0x000032fd      0x1f0 hal/src/hal_flash.o
- .debug_abbrev  0x000034ed      0x198 hal/src/hal_pwm.o
- .debug_abbrev  0x00003685      0x24c hal/src/hal_timer.o
- .debug_abbrev  0x000038d1       0x9e hal/utils/src/utils_assert.o
- .debug_abbrev  0x0000396f      0x18d hal/utils/src/utils_list.o
- .debug_abbrev  0x00003afc      0x119 hal/utils/src/utils_ringbuffer.o
- .debug_abbrev  0x00003c15      0x269 hal/utils/src/utils_syscalls.o
- .debug_abbrev  0x00003e7e      0x3da hpl/ac/hpl_ac.o
- .debug_abbrev  0x00004258      0x4d0 hpl/adc/hpl_adc.o
- .debug_abbrev  0x00004728      0x292 hpl/core/hpl_core_m4.o
- .debug_abbrev  0x000049ba      0x1df hpl/core/hpl_init.o
- .debug_abbrev  0x00004b99      0x411 hpl/dac/hpl_dac.o
- .debug_abbrev  0x00004faa      0x3dd hpl/dmac/hpl_dmac.o
- .debug_abbrev  0x00005387      0x349 hpl/eic/hpl_eic.o
- .debug_abbrev  0x000056d0      0x2c9 hpl/evsys/hpl_evsys.o
- .debug_abbrev  0x00005999      0x1a3 hpl/gclk/hpl_gclk.o
- .debug_abbrev  0x00005b3c      0x1bd hpl/mclk/hpl_mclk.o
- .debug_abbrev  0x00005cf9      0x5eb hpl/nvmctrl/hpl_nvmctrl.o
- .debug_abbrev  0x000062e4      0x20e hpl/osc32kctrl/hpl_osc32kctrl.o
- .debug_abbrev  0x000064f2      0x26c hpl/oscctrl/hpl_oscctrl.o
- .debug_abbrev  0x0000675e      0x2e8 hpl/ramecc/hpl_ramecc.o
- .debug_abbrev  0x00006a46      0x591 hpl/sercom/hpl_sercom.o
- .debug_abbrev  0x00006fd7      0x196 hpl/systick/hpl_systick.o
- .debug_abbrev  0x0000716d      0x4b2 hpl/tcc/hpl_tcc.o
- .debug_abbrev  0x0000761f      0x52e hpl/tc/hpl_tc.o
- .debug_abbrev  0x00007b4d      0x339 hpl/wdt/hpl_wdt.o
- .debug_abbrev  0x00007e86      0x240 main.o
- .debug_abbrev  0x000080c6      0x221 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
- .debug_abbrev  0x000082e7      0x249 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
- .debug_abbrev  0x00008530      0x2aa thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_2.o
- .debug_abbrev  0x000087da      0x3b6 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
- .debug_abbrev  0x00008b90      0x47d thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
- .debug_abbrev  0x0000900d      0x3de thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
+ .debug_abbrev  0x000007b1      0x2af Apps/Tasks/ModemTask/source/ModemConnection.o
+ .debug_abbrev  0x00000a60      0x3d3 Apps/Tasks/ModemTask/source/ModemController.o
+ .debug_abbrev  0x00000e33      0x345 Apps/Tasks/ModemTask/source/ModemDiagTask.o
+ .debug_abbrev  0x00001178      0x365 Apps/Tasks/ModemTask/source/ModemPowerControl.o
+ .debug_abbrev  0x000014dd      0x245 Apps/Tasks/ModemTask/source/ModemProcessTask.o
+ .debug_abbrev  0x00001722      0x267 Apps/Tasks/ModemTask/source/ModemResponseHandles.o
+ .debug_abbrev  0x00001989      0x172 Apps/Tasks/ModemTask/source/ModemRxTask.o
+ .debug_abbrev  0x00001afb      0x2c7 Apps/Tasks/ModemTask/source/ModemTxTask.o
+ .debug_abbrev  0x00001dc2      0x185 Apps/UartDriver/source/UartDriver.o
+ .debug_abbrev  0x00001f47      0x34b Apps/SerialDebug/SerialDebug.o
+ .debug_abbrev  0x00002292      0x207 atmel_start.o
+ .debug_abbrev  0x00002499      0x171 Device_Startup/startup_samd51.o
+ .debug_abbrev  0x0000260a      0x451 driver_init.o
+ .debug_abbrev  0x00002a5b      0x133 hal/src/hal_ac_sync.o
+ .debug_abbrev  0x00002b8e      0x177 hal/src/hal_adc_sync.o
+ .debug_abbrev  0x00002d05      0x155 hal/src/hal_atomic.o
+ .debug_abbrev  0x00002e5a      0x154 hal/src/hal_dac_sync.o
+ .debug_abbrev  0x00002fae       0xf9 hal/src/hal_delay.o
+ .debug_abbrev  0x000030a7       0xe5 hal/src/hal_evsys.o
+ .debug_abbrev  0x0000318c      0x18b hal/src/hal_ext_irq.o
+ .debug_abbrev  0x00003317      0x1f0 hal/src/hal_flash.o
+ .debug_abbrev  0x00003507      0x198 hal/src/hal_pwm.o
+ .debug_abbrev  0x0000369f      0x24c hal/src/hal_timer.o
+ .debug_abbrev  0x000038eb       0x9e hal/utils/src/utils_assert.o
+ .debug_abbrev  0x00003989      0x18d hal/utils/src/utils_list.o
+ .debug_abbrev  0x00003b16      0x119 hal/utils/src/utils_ringbuffer.o
+ .debug_abbrev  0x00003c2f      0x269 hal/utils/src/utils_syscalls.o
+ .debug_abbrev  0x00003e98      0x3da hpl/ac/hpl_ac.o
+ .debug_abbrev  0x00004272      0x4d0 hpl/adc/hpl_adc.o
+ .debug_abbrev  0x00004742      0x292 hpl/core/hpl_core_m4.o
+ .debug_abbrev  0x000049d4      0x1df hpl/core/hpl_init.o
+ .debug_abbrev  0x00004bb3      0x411 hpl/dac/hpl_dac.o
+ .debug_abbrev  0x00004fc4      0x3dd hpl/dmac/hpl_dmac.o
+ .debug_abbrev  0x000053a1      0x349 hpl/eic/hpl_eic.o
+ .debug_abbrev  0x000056ea      0x2c9 hpl/evsys/hpl_evsys.o
+ .debug_abbrev  0x000059b3      0x1a3 hpl/gclk/hpl_gclk.o
+ .debug_abbrev  0x00005b56      0x1bd hpl/mclk/hpl_mclk.o
+ .debug_abbrev  0x00005d13      0x5eb hpl/nvmctrl/hpl_nvmctrl.o
+ .debug_abbrev  0x000062fe      0x20e hpl/osc32kctrl/hpl_osc32kctrl.o
+ .debug_abbrev  0x0000650c      0x26c hpl/oscctrl/hpl_oscctrl.o
+ .debug_abbrev  0x00006778      0x2e8 hpl/ramecc/hpl_ramecc.o
+ .debug_abbrev  0x00006a60      0x591 hpl/sercom/hpl_sercom.o
+ .debug_abbrev  0x00006ff1      0x196 hpl/systick/hpl_systick.o
+ .debug_abbrev  0x00007187      0x4b2 hpl/tcc/hpl_tcc.o
+ .debug_abbrev  0x00007639      0x52e hpl/tc/hpl_tc.o
+ .debug_abbrev  0x00007b67      0x339 hpl/wdt/hpl_wdt.o
+ .debug_abbrev  0x00007ea0      0x240 main.o
+ .debug_abbrev  0x000080e0      0x221 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
+ .debug_abbrev  0x00008301      0x249 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
+ .debug_abbrev  0x0000854a      0x2aa thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_2.o
+ .debug_abbrev  0x000087f4      0x3b6 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
+ .debug_abbrev  0x00008baa      0x47d thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+ .debug_abbrev  0x00009027      0x3de thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
 
-.debug_loc      0x00000000    0x1ab8d
+.debug_loc      0x00000000    0x1abfe
  .debug_loc     0x00000000       0x6b Apps/Common/FreeRtosHooks.o
  .debug_loc     0x0000006b       0x4d Apps/Tasks/DispatchTask/source/DispatchTask.o
  .debug_loc     0x000000b8       0xa6 Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
  .debug_loc     0x0000015e      0x21d Apps/Tasks/ModemTask/source/ModemCmdParser.o
- .debug_loc     0x0000037b      0x230 Apps/Tasks/ModemTask/source/ModemConnection.o
- .debug_loc     0x000005ab      0x29d Apps/Tasks/ModemTask/source/ModemController.o
- .debug_loc     0x00000848      0x23c Apps/Tasks/ModemTask/source/ModemDiagTask.o
- .debug_loc     0x00000a84      0xe6d Apps/Tasks/ModemTask/source/ModemPowerControl.o
- .debug_loc     0x000018f1       0x41 Apps/Tasks/ModemTask/source/ModemProcessTask.o
- .debug_loc     0x00001932      0x458 Apps/Tasks/ModemTask/source/ModemResponseHandles.o
- .debug_loc     0x00001d8a       0x60 Apps/Tasks/ModemTask/source/ModemRxTask.o
- .debug_loc     0x00001dea       0x89 Apps/Tasks/ModemTask/source/ModemTxTask.o
- .debug_loc     0x00001e73      0x188 Apps/UartDriver/source/UartDriver.o
- .debug_loc     0x00001ffb      0x25b Apps/SerialDebug/SerialDebug.o
- .debug_loc     0x00002256       0xe9 atmel_start.o
- .debug_loc     0x0000233f       0x6b Device_Startup/startup_samd51.o
- .debug_loc     0x000023aa     0x1b5c driver_init.o
- .debug_loc     0x00003f06      0x2a8 hal/src/hal_ac_sync.o
- .debug_loc     0x000041ae      0x870 hal/src/hal_adc_sync.o
- .debug_loc     0x00004a1e       0x13 hal/src/hal_atomic.o
- .debug_loc     0x00004a31      0x377 hal/src/hal_dac_sync.o
- .debug_loc     0x00004da8       0xc3 hal/src/hal_delay.o
- .debug_loc     0x00004e6b      0x1c8 hal/src/hal_evsys.o
- .debug_loc     0x00005033      0x367 hal/src/hal_ext_irq.o
- .debug_loc     0x0000539a      0xe7e hal/src/hal_flash.o
- .debug_loc     0x00006218      0x3ac hal/src/hal_pwm.o
- .debug_loc     0x000065c4      0x725 hal/src/hal_timer.o
- .debug_loc     0x00006ce9      0x29f hal/utils/src/utils_list.o
- .debug_loc     0x00006f88      0x2bd hal/utils/src/utils_ringbuffer.o
- .debug_loc     0x00007245      0x13b hal/utils/src/utils_syscalls.o
- .debug_loc     0x00007380      0x79b hpl/ac/hpl_ac.o
- .debug_loc     0x00007b1b     0x18e6 hpl/adc/hpl_adc.o
- .debug_loc     0x00009401      0x1d7 hpl/core/hpl_core_m4.o
- .debug_loc     0x000095d8       0x64 hpl/core/hpl_init.o
- .debug_loc     0x0000963c      0xb86 hpl/dac/hpl_dac.o
- .debug_loc     0x0000a1c2      0xaa5 hpl/dmac/hpl_dmac.o
- .debug_loc     0x0000ac67      0x1e2 hpl/eic/hpl_eic.o
- .debug_loc     0x0000ae49      0x361 hpl/evsys/hpl_evsys.o
- .debug_loc     0x0000b1aa      0x660 hpl/gclk/hpl_gclk.o
- .debug_loc     0x0000b80a       0x2c hpl/mclk/hpl_mclk.o
- .debug_loc     0x0000b836     0x18d2 hpl/nvmctrl/hpl_nvmctrl.o
- .debug_loc     0x0000d108       0xf6 hpl/osc32kctrl/hpl_osc32kctrl.o
- .debug_loc     0x0000d1fe      0x1fa hpl/oscctrl/hpl_oscctrl.o
- .debug_loc     0x0000d3f8      0x130 hpl/ramecc/hpl_ramecc.o
- .debug_loc     0x0000d528     0x6818 hpl/sercom/hpl_sercom.o
- .debug_loc     0x00013d40      0x160 hpl/systick/hpl_systick.o
- .debug_loc     0x00013ea0      0x70a hpl/tcc/hpl_tcc.o
- .debug_loc     0x000145aa     0x11da hpl/tc/hpl_tc.o
- .debug_loc     0x00015784      0x723 hpl/wdt/hpl_wdt.o
- .debug_loc     0x00015ea7       0x4c main.o
- .debug_loc     0x00015ef3       0x91 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
- .debug_loc     0x00015f84      0x160 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
- .debug_loc     0x000160e4      0x278 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_2.o
- .debug_loc     0x0001635c     0x1b33 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
- .debug_loc     0x00017e8f     0x2089 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
- .debug_loc     0x00019f18      0xc75 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
+ .debug_loc     0x0000037b      0x2a1 Apps/Tasks/ModemTask/source/ModemConnection.o
+ .debug_loc     0x0000061c      0x29d Apps/Tasks/ModemTask/source/ModemController.o
+ .debug_loc     0x000008b9      0x23c Apps/Tasks/ModemTask/source/ModemDiagTask.o
+ .debug_loc     0x00000af5      0xe6d Apps/Tasks/ModemTask/source/ModemPowerControl.o
+ .debug_loc     0x00001962       0x41 Apps/Tasks/ModemTask/source/ModemProcessTask.o
+ .debug_loc     0x000019a3      0x458 Apps/Tasks/ModemTask/source/ModemResponseHandles.o
+ .debug_loc     0x00001dfb       0x60 Apps/Tasks/ModemTask/source/ModemRxTask.o
+ .debug_loc     0x00001e5b       0x89 Apps/Tasks/ModemTask/source/ModemTxTask.o
+ .debug_loc     0x00001ee4      0x188 Apps/UartDriver/source/UartDriver.o
+ .debug_loc     0x0000206c      0x25b Apps/SerialDebug/SerialDebug.o
+ .debug_loc     0x000022c7       0xe9 atmel_start.o
+ .debug_loc     0x000023b0       0x6b Device_Startup/startup_samd51.o
+ .debug_loc     0x0000241b     0x1b5c driver_init.o
+ .debug_loc     0x00003f77      0x2a8 hal/src/hal_ac_sync.o
+ .debug_loc     0x0000421f      0x870 hal/src/hal_adc_sync.o
+ .debug_loc     0x00004a8f       0x13 hal/src/hal_atomic.o
+ .debug_loc     0x00004aa2      0x377 hal/src/hal_dac_sync.o
+ .debug_loc     0x00004e19       0xc3 hal/src/hal_delay.o
+ .debug_loc     0x00004edc      0x1c8 hal/src/hal_evsys.o
+ .debug_loc     0x000050a4      0x367 hal/src/hal_ext_irq.o
+ .debug_loc     0x0000540b      0xe7e hal/src/hal_flash.o
+ .debug_loc     0x00006289      0x3ac hal/src/hal_pwm.o
+ .debug_loc     0x00006635      0x725 hal/src/hal_timer.o
+ .debug_loc     0x00006d5a      0x29f hal/utils/src/utils_list.o
+ .debug_loc     0x00006ff9      0x2bd hal/utils/src/utils_ringbuffer.o
+ .debug_loc     0x000072b6      0x13b hal/utils/src/utils_syscalls.o
+ .debug_loc     0x000073f1      0x79b hpl/ac/hpl_ac.o
+ .debug_loc     0x00007b8c     0x18e6 hpl/adc/hpl_adc.o
+ .debug_loc     0x00009472      0x1d7 hpl/core/hpl_core_m4.o
+ .debug_loc     0x00009649       0x64 hpl/core/hpl_init.o
+ .debug_loc     0x000096ad      0xb86 hpl/dac/hpl_dac.o
+ .debug_loc     0x0000a233      0xaa5 hpl/dmac/hpl_dmac.o
+ .debug_loc     0x0000acd8      0x1e2 hpl/eic/hpl_eic.o
+ .debug_loc     0x0000aeba      0x361 hpl/evsys/hpl_evsys.o
+ .debug_loc     0x0000b21b      0x660 hpl/gclk/hpl_gclk.o
+ .debug_loc     0x0000b87b       0x2c hpl/mclk/hpl_mclk.o
+ .debug_loc     0x0000b8a7     0x18d2 hpl/nvmctrl/hpl_nvmctrl.o
+ .debug_loc     0x0000d179       0xf6 hpl/osc32kctrl/hpl_osc32kctrl.o
+ .debug_loc     0x0000d26f      0x1fa hpl/oscctrl/hpl_oscctrl.o
+ .debug_loc     0x0000d469      0x130 hpl/ramecc/hpl_ramecc.o
+ .debug_loc     0x0000d599     0x6818 hpl/sercom/hpl_sercom.o
+ .debug_loc     0x00013db1      0x160 hpl/systick/hpl_systick.o
+ .debug_loc     0x00013f11      0x70a hpl/tcc/hpl_tcc.o
+ .debug_loc     0x0001461b     0x11da hpl/tc/hpl_tc.o
+ .debug_loc     0x000157f5      0x723 hpl/wdt/hpl_wdt.o
+ .debug_loc     0x00015f18       0x4c main.o
+ .debug_loc     0x00015f64       0x91 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
+ .debug_loc     0x00015ff5      0x160 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
+ .debug_loc     0x00016155      0x278 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_2.o
+ .debug_loc     0x000163cd     0x1b33 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
+ .debug_loc     0x00017f00     0x2089 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+ .debug_loc     0x00019f89      0xc75 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
 
 .debug_aranges  0x00000000     0x1b58
  .debug_aranges
@@ -25844,64 +25845,64 @@ OUTPUT(SAMD51.elf elf32-littlearm)
  .debug_aranges
                 0x00001ac0       0x98 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
 
-.debug_ranges   0x00000000     0x21f0
+.debug_ranges   0x00000000     0x2220
  .debug_ranges  0x00000000       0x10 Apps/Common/FreeRtosHooks.o
  .debug_ranges  0x00000010       0x10 Apps/Tasks/DispatchTask/source/DispatchTask.o
  .debug_ranges  0x00000020       0x20 Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
  .debug_ranges  0x00000040       0x38 Apps/Tasks/ModemTask/source/ModemCmdParser.o
- .debug_ranges  0x00000078       0x40 Apps/Tasks/ModemTask/source/ModemConnection.o
- .debug_ranges  0x000000b8       0x48 Apps/Tasks/ModemTask/source/ModemController.o
- .debug_ranges  0x00000100       0x50 Apps/Tasks/ModemTask/source/ModemDiagTask.o
- .debug_ranges  0x00000150       0x20 Apps/Tasks/ModemTask/source/ModemPowerControl.o
- .debug_ranges  0x00000170       0x28 Apps/Tasks/ModemTask/source/ModemProcessTask.o
- .debug_ranges  0x00000198       0x78 Apps/Tasks/ModemTask/source/ModemResponseHandles.o
- .debug_ranges  0x00000210       0x10 Apps/Tasks/ModemTask/source/ModemRxTask.o
- .debug_ranges  0x00000220       0x58 Apps/Tasks/ModemTask/source/ModemTxTask.o
- .debug_ranges  0x00000278       0x30 Apps/UartDriver/source/UartDriver.o
- .debug_ranges  0x000002a8       0x50 Apps/SerialDebug/SerialDebug.o
- .debug_ranges  0x000002f8       0x28 atmel_start.o
- .debug_ranges  0x00000320       0x18 Device_Startup/startup_samd51.o
- .debug_ranges  0x00000338      0x190 driver_init.o
- .debug_ranges  0x000004c8       0x48 hal/src/hal_ac_sync.o
- .debug_ranges  0x00000510       0xa0 hal/src/hal_adc_sync.o
- .debug_ranges  0x000005b0       0x20 hal/src/hal_atomic.o
- .debug_ranges  0x000005d0       0x38 hal/src/hal_dac_sync.o
- .debug_ranges  0x00000608       0x28 hal/src/hal_delay.o
- .debug_ranges  0x00000630       0x40 hal/src/hal_evsys.o
- .debug_ranges  0x00000670       0x40 hal/src/hal_ext_irq.o
- .debug_ranges  0x000006b0       0x80 hal/src/hal_flash.o
- .debug_ranges  0x00000730       0x50 hal/src/hal_pwm.o
- .debug_ranges  0x00000780       0xa8 hal/src/hal_timer.o
- .debug_ranges  0x00000828       0x10 hal/utils/src/utils_assert.o
- .debug_ranges  0x00000838       0x58 hal/utils/src/utils_list.o
- .debug_ranges  0x00000890       0x30 hal/utils/src/utils_ringbuffer.o
- .debug_ranges  0x000008c0       0x50 hal/utils/src/utils_syscalls.o
- .debug_ranges  0x00000910       0x78 hpl/ac/hpl_ac.o
- .debug_ranges  0x00000988      0x1f0 hpl/adc/hpl_adc.o
- .debug_ranges  0x00000b78       0x60 hpl/core/hpl_core_m4.o
- .debug_ranges  0x00000bd8       0x10 hpl/core/hpl_init.o
- .debug_ranges  0x00000be8      0x108 hpl/dac/hpl_dac.o
- .debug_ranges  0x00000cf0       0xe8 hpl/dmac/hpl_dmac.o
- .debug_ranges  0x00000dd8       0x20 hpl/eic/hpl_eic.o
- .debug_ranges  0x00000df8       0x40 hpl/evsys/hpl_evsys.o
- .debug_ranges  0x00000e38       0x18 hpl/gclk/hpl_gclk.o
- .debug_ranges  0x00000e50       0x10 hpl/mclk/hpl_mclk.o
- .debug_ranges  0x00000e60      0x108 hpl/nvmctrl/hpl_nvmctrl.o
- .debug_ranges  0x00000f68       0x10 hpl/osc32kctrl/hpl_osc32kctrl.o
- .debug_ranges  0x00000f78       0x18 hpl/oscctrl/hpl_oscctrl.o
- .debug_ranges  0x00000f90       0x38 hpl/ramecc/hpl_ramecc.o
- .debug_ranges  0x00000fc8      0x8e8 hpl/sercom/hpl_sercom.o
- .debug_ranges  0x000018b0       0x38 hpl/systick/hpl_systick.o
- .debug_ranges  0x000018e8       0xf0 hpl/tcc/hpl_tcc.o
- .debug_ranges  0x000019d8      0x138 hpl/tc/hpl_tc.o
- .debug_ranges  0x00001b10       0x40 hpl/wdt/hpl_wdt.o
- .debug_ranges  0x00001b50       0x18 main.o
- .debug_ranges  0x00001b68       0x30 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
- .debug_ranges  0x00001b98       0x70 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
- .debug_ranges  0x00001c08       0x28 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_2.o
- .debug_ranges  0x00001c30      0x268 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
- .debug_ranges  0x00001e98      0x268 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
- .debug_ranges  0x00002100       0xf0 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
+ .debug_ranges  0x00000078       0x70 Apps/Tasks/ModemTask/source/ModemConnection.o
+ .debug_ranges  0x000000e8       0x48 Apps/Tasks/ModemTask/source/ModemController.o
+ .debug_ranges  0x00000130       0x50 Apps/Tasks/ModemTask/source/ModemDiagTask.o
+ .debug_ranges  0x00000180       0x20 Apps/Tasks/ModemTask/source/ModemPowerControl.o
+ .debug_ranges  0x000001a0       0x28 Apps/Tasks/ModemTask/source/ModemProcessTask.o
+ .debug_ranges  0x000001c8       0x78 Apps/Tasks/ModemTask/source/ModemResponseHandles.o
+ .debug_ranges  0x00000240       0x10 Apps/Tasks/ModemTask/source/ModemRxTask.o
+ .debug_ranges  0x00000250       0x58 Apps/Tasks/ModemTask/source/ModemTxTask.o
+ .debug_ranges  0x000002a8       0x30 Apps/UartDriver/source/UartDriver.o
+ .debug_ranges  0x000002d8       0x50 Apps/SerialDebug/SerialDebug.o
+ .debug_ranges  0x00000328       0x28 atmel_start.o
+ .debug_ranges  0x00000350       0x18 Device_Startup/startup_samd51.o
+ .debug_ranges  0x00000368      0x190 driver_init.o
+ .debug_ranges  0x000004f8       0x48 hal/src/hal_ac_sync.o
+ .debug_ranges  0x00000540       0xa0 hal/src/hal_adc_sync.o
+ .debug_ranges  0x000005e0       0x20 hal/src/hal_atomic.o
+ .debug_ranges  0x00000600       0x38 hal/src/hal_dac_sync.o
+ .debug_ranges  0x00000638       0x28 hal/src/hal_delay.o
+ .debug_ranges  0x00000660       0x40 hal/src/hal_evsys.o
+ .debug_ranges  0x000006a0       0x40 hal/src/hal_ext_irq.o
+ .debug_ranges  0x000006e0       0x80 hal/src/hal_flash.o
+ .debug_ranges  0x00000760       0x50 hal/src/hal_pwm.o
+ .debug_ranges  0x000007b0       0xa8 hal/src/hal_timer.o
+ .debug_ranges  0x00000858       0x10 hal/utils/src/utils_assert.o
+ .debug_ranges  0x00000868       0x58 hal/utils/src/utils_list.o
+ .debug_ranges  0x000008c0       0x30 hal/utils/src/utils_ringbuffer.o
+ .debug_ranges  0x000008f0       0x50 hal/utils/src/utils_syscalls.o
+ .debug_ranges  0x00000940       0x78 hpl/ac/hpl_ac.o
+ .debug_ranges  0x000009b8      0x1f0 hpl/adc/hpl_adc.o
+ .debug_ranges  0x00000ba8       0x60 hpl/core/hpl_core_m4.o
+ .debug_ranges  0x00000c08       0x10 hpl/core/hpl_init.o
+ .debug_ranges  0x00000c18      0x108 hpl/dac/hpl_dac.o
+ .debug_ranges  0x00000d20       0xe8 hpl/dmac/hpl_dmac.o
+ .debug_ranges  0x00000e08       0x20 hpl/eic/hpl_eic.o
+ .debug_ranges  0x00000e28       0x40 hpl/evsys/hpl_evsys.o
+ .debug_ranges  0x00000e68       0x18 hpl/gclk/hpl_gclk.o
+ .debug_ranges  0x00000e80       0x10 hpl/mclk/hpl_mclk.o
+ .debug_ranges  0x00000e90      0x108 hpl/nvmctrl/hpl_nvmctrl.o
+ .debug_ranges  0x00000f98       0x10 hpl/osc32kctrl/hpl_osc32kctrl.o
+ .debug_ranges  0x00000fa8       0x18 hpl/oscctrl/hpl_oscctrl.o
+ .debug_ranges  0x00000fc0       0x38 hpl/ramecc/hpl_ramecc.o
+ .debug_ranges  0x00000ff8      0x8e8 hpl/sercom/hpl_sercom.o
+ .debug_ranges  0x000018e0       0x38 hpl/systick/hpl_systick.o
+ .debug_ranges  0x00001918       0xf0 hpl/tcc/hpl_tcc.o
+ .debug_ranges  0x00001a08      0x138 hpl/tc/hpl_tc.o
+ .debug_ranges  0x00001b40       0x40 hpl/wdt/hpl_wdt.o
+ .debug_ranges  0x00001b80       0x18 main.o
+ .debug_ranges  0x00001b98       0x30 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
+ .debug_ranges  0x00001bc8       0x70 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
+ .debug_ranges  0x00001c38       0x28 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_2.o
+ .debug_ranges  0x00001c60      0x268 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
+ .debug_ranges  0x00001ec8      0x268 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+ .debug_ranges  0x00002130       0xf0 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
 
 .debug_macro    0x00000000    0x1b172
  .debug_macro   0x00000000      0x17e Apps/Common/FreeRtosHooks.o
@@ -26036,66 +26037,66 @@ OUTPUT(SAMD51.elf elf32-littlearm)
  .debug_macro   0x0001af95       0x10 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
  .debug_macro   0x0001afa5      0x1cd thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
 
-.debug_line     0x00000000    0x2d8db
+.debug_line     0x00000000    0x2d983
  .debug_line    0x00000000      0x4de Apps/Common/FreeRtosHooks.o
  .debug_line    0x000004de      0xef2 Apps/Tasks/DispatchTask/source/DispatchTask.o
  .debug_line    0x000013d0      0x584 Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
  .debug_line    0x00001954     0x1232 Apps/Tasks/ModemTask/source/ModemCmdParser.o
- .debug_line    0x00002b86      0x716 Apps/Tasks/ModemTask/source/ModemConnection.o
- .debug_line    0x0000329c     0x1303 Apps/Tasks/ModemTask/source/ModemController.o
- .debug_line    0x0000459f      0xfa5 Apps/Tasks/ModemTask/source/ModemDiagTask.o
- .debug_line    0x00005544     0x118c Apps/Tasks/ModemTask/source/ModemPowerControl.o
- .debug_line    0x000066d0      0xf07 Apps/Tasks/ModemTask/source/ModemProcessTask.o
- .debug_line    0x000075d7      0x669 Apps/Tasks/ModemTask/source/ModemResponseHandles.o
- .debug_line    0x00007c40      0x521 Apps/Tasks/ModemTask/source/ModemRxTask.o
- .debug_line    0x00008161      0xf0a Apps/Tasks/ModemTask/source/ModemTxTask.o
- .debug_line    0x0000906b      0xb8c Apps/UartDriver/source/UartDriver.o
- .debug_line    0x00009bf7     0x122b Apps/SerialDebug/SerialDebug.o
- .debug_line    0x0000ae22     0x1011 atmel_start.o
- .debug_line    0x0000be33      0x811 Device_Startup/startup_samd51.o
- .debug_line    0x0000c644     0x15b3 driver_init.o
- .debug_line    0x0000dbf7      0xbda hal/src/hal_ac_sync.o
- .debug_line    0x0000e7d1      0xcc7 hal/src/hal_adc_sync.o
- .debug_line    0x0000f498      0xb3b hal/src/hal_atomic.o
- .debug_line    0x0000ffd3      0xc05 hal/src/hal_dac_sync.o
- .debug_line    0x00010bd8      0xb6f hal/src/hal_delay.o
- .debug_line    0x00011747      0xb7c hal/src/hal_evsys.o
- .debug_line    0x000122c3      0xbad hal/src/hal_ext_irq.o
- .debug_line    0x00012e70      0xda7 hal/src/hal_flash.o
- .debug_line    0x00013c17      0xbfd hal/src/hal_pwm.o
- .debug_line    0x00014814      0xd4f hal/src/hal_timer.o
- .debug_line    0x00015563      0xb0f hal/utils/src/utils_assert.o
- .debug_line    0x00016072      0xba3 hal/utils/src/utils_list.o
- .debug_line    0x00016c15      0xbaf hal/utils/src/utils_ringbuffer.o
- .debug_line    0x000177c4      0x40b hal/utils/src/utils_syscalls.o
- .debug_line    0x00017bcf      0xd74 hpl/ac/hpl_ac.o
- .debug_line    0x00018943     0x13a6 hpl/adc/hpl_adc.o
- .debug_line    0x00019ce9      0xc61 hpl/core/hpl_core_m4.o
- .debug_line    0x0001a94a      0xbe2 hpl/core/hpl_init.o
- .debug_line    0x0001b52c      0xe55 hpl/dac/hpl_dac.o
- .debug_line    0x0001c381      0xe51 hpl/dmac/hpl_dmac.o
- .debug_line    0x0001d1d2      0xc52 hpl/eic/hpl_eic.o
- .debug_line    0x0001de24      0xc12 hpl/evsys/hpl_evsys.o
- .debug_line    0x0001ea36      0xbd2 hpl/gclk/hpl_gclk.o
- .debug_line    0x0001f608      0xb32 hpl/mclk/hpl_mclk.o
- .debug_line    0x0002013a     0x1185 hpl/nvmctrl/hpl_nvmctrl.o
- .debug_line    0x000212bf      0xb60 hpl/osc32kctrl/hpl_osc32kctrl.o
- .debug_line    0x00021e1f      0xc3a hpl/oscctrl/hpl_oscctrl.o
- .debug_line    0x00022a59      0xbcf hpl/ramecc/hpl_ramecc.o
- .debug_line    0x00023628     0x296d hpl/sercom/hpl_sercom.o
- .debug_line    0x00025f95      0xba4 hpl/systick/hpl_systick.o
- .debug_line    0x00026b39      0xdc8 hpl/tcc/hpl_tcc.o
- .debug_line    0x00027901     0x10da hpl/tc/hpl_tc.o
- .debug_line    0x000289db      0xd73 hpl/wdt/hpl_wdt.o
- .debug_line    0x0002974e     0x1383 main.o
- .debug_line    0x0002aad1      0x49c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
- .debug_line    0x0002af6d      0x4ff thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
- .debug_line    0x0002b46c      0x4d2 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_2.o
- .debug_line    0x0002b93e      0xb03 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
- .debug_line    0x0002c441      0xdf1 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
- .debug_line    0x0002d232      0x6a9 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
+ .debug_line    0x00002b86      0x7be Apps/Tasks/ModemTask/source/ModemConnection.o
+ .debug_line    0x00003344     0x1303 Apps/Tasks/ModemTask/source/ModemController.o
+ .debug_line    0x00004647      0xfa5 Apps/Tasks/ModemTask/source/ModemDiagTask.o
+ .debug_line    0x000055ec     0x118c Apps/Tasks/ModemTask/source/ModemPowerControl.o
+ .debug_line    0x00006778      0xf07 Apps/Tasks/ModemTask/source/ModemProcessTask.o
+ .debug_line    0x0000767f      0x669 Apps/Tasks/ModemTask/source/ModemResponseHandles.o
+ .debug_line    0x00007ce8      0x521 Apps/Tasks/ModemTask/source/ModemRxTask.o
+ .debug_line    0x00008209      0xf0a Apps/Tasks/ModemTask/source/ModemTxTask.o
+ .debug_line    0x00009113      0xb8c Apps/UartDriver/source/UartDriver.o
+ .debug_line    0x00009c9f     0x122b Apps/SerialDebug/SerialDebug.o
+ .debug_line    0x0000aeca     0x1011 atmel_start.o
+ .debug_line    0x0000bedb      0x811 Device_Startup/startup_samd51.o
+ .debug_line    0x0000c6ec     0x15b3 driver_init.o
+ .debug_line    0x0000dc9f      0xbda hal/src/hal_ac_sync.o
+ .debug_line    0x0000e879      0xcc7 hal/src/hal_adc_sync.o
+ .debug_line    0x0000f540      0xb3b hal/src/hal_atomic.o
+ .debug_line    0x0001007b      0xc05 hal/src/hal_dac_sync.o
+ .debug_line    0x00010c80      0xb6f hal/src/hal_delay.o
+ .debug_line    0x000117ef      0xb7c hal/src/hal_evsys.o
+ .debug_line    0x0001236b      0xbad hal/src/hal_ext_irq.o
+ .debug_line    0x00012f18      0xda7 hal/src/hal_flash.o
+ .debug_line    0x00013cbf      0xbfd hal/src/hal_pwm.o
+ .debug_line    0x000148bc      0xd4f hal/src/hal_timer.o
+ .debug_line    0x0001560b      0xb0f hal/utils/src/utils_assert.o
+ .debug_line    0x0001611a      0xba3 hal/utils/src/utils_list.o
+ .debug_line    0x00016cbd      0xbaf hal/utils/src/utils_ringbuffer.o
+ .debug_line    0x0001786c      0x40b hal/utils/src/utils_syscalls.o
+ .debug_line    0x00017c77      0xd74 hpl/ac/hpl_ac.o
+ .debug_line    0x000189eb     0x13a6 hpl/adc/hpl_adc.o
+ .debug_line    0x00019d91      0xc61 hpl/core/hpl_core_m4.o
+ .debug_line    0x0001a9f2      0xbe2 hpl/core/hpl_init.o
+ .debug_line    0x0001b5d4      0xe55 hpl/dac/hpl_dac.o
+ .debug_line    0x0001c429      0xe51 hpl/dmac/hpl_dmac.o
+ .debug_line    0x0001d27a      0xc52 hpl/eic/hpl_eic.o
+ .debug_line    0x0001decc      0xc12 hpl/evsys/hpl_evsys.o
+ .debug_line    0x0001eade      0xbd2 hpl/gclk/hpl_gclk.o
+ .debug_line    0x0001f6b0      0xb32 hpl/mclk/hpl_mclk.o
+ .debug_line    0x000201e2     0x1185 hpl/nvmctrl/hpl_nvmctrl.o
+ .debug_line    0x00021367      0xb60 hpl/osc32kctrl/hpl_osc32kctrl.o
+ .debug_line    0x00021ec7      0xc3a hpl/oscctrl/hpl_oscctrl.o
+ .debug_line    0x00022b01      0xbcf hpl/ramecc/hpl_ramecc.o
+ .debug_line    0x000236d0     0x296d hpl/sercom/hpl_sercom.o
+ .debug_line    0x0002603d      0xba4 hpl/systick/hpl_systick.o
+ .debug_line    0x00026be1      0xdc8 hpl/tcc/hpl_tcc.o
+ .debug_line    0x000279a9     0x10da hpl/tc/hpl_tc.o
+ .debug_line    0x00028a83      0xd73 hpl/wdt/hpl_wdt.o
+ .debug_line    0x000297f6     0x1383 main.o
+ .debug_line    0x0002ab79      0x49c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
+ .debug_line    0x0002b015      0x4ff thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
+ .debug_line    0x0002b514      0x4d2 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_2.o
+ .debug_line    0x0002b9e6      0xb03 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
+ .debug_line    0x0002c4e9      0xdf1 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+ .debug_line    0x0002d2da      0x6a9 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
 
-.debug_str      0x00000000   0x1086a7
+.debug_str      0x00000000   0x10873d
  .debug_str     0x00000000     0xa3bd Apps/Common/FreeRtosHooks.o
                                0xa650 (size before relaxing)
  .debug_str     0x0000a3bd    0xd8668 Apps/Tasks/DispatchTask/source/DispatchTask.o
@@ -26104,111 +26105,111 @@ OUTPUT(SAMD51.elf elf32-littlearm)
                                0xaf0b (size before relaxing)
  .debug_str     0x000e3376      0xd9a Apps/Tasks/ModemTask/source/ModemCmdParser.o
                               0xe276c (size before relaxing)
- .debug_str     0x000e4110      0x700 Apps/Tasks/ModemTask/source/ModemConnection.o
-                               0xb166 (size before relaxing)
- .debug_str     0x000e4810     0x12a6 Apps/Tasks/ModemTask/source/ModemController.o
+ .debug_str     0x000e4110      0x796 Apps/Tasks/ModemTask/source/ModemConnection.o
+                               0xb1fc (size before relaxing)
+ .debug_str     0x000e48a6     0x12a6 Apps/Tasks/ModemTask/source/ModemController.o
                               0xe4ac2 (size before relaxing)
- .debug_str     0x000e5ab6      0x30b Apps/Tasks/ModemTask/source/ModemDiagTask.o
+ .debug_str     0x000e5b4c      0x30b Apps/Tasks/ModemTask/source/ModemDiagTask.o
                               0xe2ea0 (size before relaxing)
- .debug_str     0x000e5dc1      0x630 Apps/Tasks/ModemTask/source/ModemPowerControl.o
+ .debug_str     0x000e5e57      0x630 Apps/Tasks/ModemTask/source/ModemPowerControl.o
                               0xe1966 (size before relaxing)
- .debug_str     0x000e63f1       0x43 Apps/Tasks/ModemTask/source/ModemProcessTask.o
+ .debug_str     0x000e6487       0x43 Apps/Tasks/ModemTask/source/ModemProcessTask.o
                               0xe29d7 (size before relaxing)
- .debug_str     0x000e6434      0x203 Apps/Tasks/ModemTask/source/ModemResponseHandles.o
+ .debug_str     0x000e64ca      0x203 Apps/Tasks/ModemTask/source/ModemResponseHandles.o
                                0xabf1 (size before relaxing)
- .debug_str     0x000e6637       0x67 Apps/Tasks/ModemTask/source/ModemRxTask.o
+ .debug_str     0x000e66cd       0x67 Apps/Tasks/ModemTask/source/ModemRxTask.o
                                0xa99b (size before relaxing)
- .debug_str     0x000e669e       0x7e Apps/Tasks/ModemTask/source/ModemTxTask.o
+ .debug_str     0x000e6734       0x7e Apps/Tasks/ModemTask/source/ModemTxTask.o
                               0xe2dcb (size before relaxing)
- .debug_str     0x000e671c       0x70 Apps/UartDriver/source/UartDriver.o
+ .debug_str     0x000e67b2       0x70 Apps/UartDriver/source/UartDriver.o
                               0xd929a (size before relaxing)
- .debug_str     0x000e678c      0x5a0 Apps/SerialDebug/SerialDebug.o
+ .debug_str     0x000e6822      0x5a0 Apps/SerialDebug/SerialDebug.o
                               0xe4240 (size before relaxing)
- .debug_str     0x000e6d2c      0x199 atmel_start.o
+ .debug_str     0x000e6dc2      0x199 atmel_start.o
                               0xdf183 (size before relaxing)
- .debug_str     0x000e6ec5      0xb41 Device_Startup/startup_samd51.o
+ .debug_str     0x000e6f5b      0xb41 Device_Startup/startup_samd51.o
                               0xd895e (size before relaxing)
- .debug_str     0x000e7a06     0x1af9 driver_init.o
+ .debug_str     0x000e7a9c     0x1af9 driver_init.o
                               0xe1db3 (size before relaxing)
- .debug_str     0x000e94ff       0xc5 hal/src/hal_ac_sync.o
+ .debug_str     0x000e9595       0xc5 hal/src/hal_ac_sync.o
                               0xd97de (size before relaxing)
- .debug_str     0x000e95c4      0x3d3 hal/src/hal_adc_sync.o
+ .debug_str     0x000e965a      0x3d3 hal/src/hal_adc_sync.o
                               0xd977f (size before relaxing)
- .debug_str     0x000e9997       0x63 hal/src/hal_atomic.o
+ .debug_str     0x000e9a2d       0x63 hal/src/hal_atomic.o
                               0xd9193 (size before relaxing)
- .debug_str     0x000e99fa       0xc2 hal/src/hal_dac_sync.o
+ .debug_str     0x000e9a90       0xc2 hal/src/hal_dac_sync.o
                               0xd9369 (size before relaxing)
- .debug_str     0x000e9abc       0x92 hal/src/hal_delay.o
+ .debug_str     0x000e9b52       0x92 hal/src/hal_delay.o
                               0xd91fd (size before relaxing)
- .debug_str     0x000e9b4e       0xca hal/src/hal_evsys.o
+ .debug_str     0x000e9be4       0xca hal/src/hal_evsys.o
                               0xd9269 (size before relaxing)
- .debug_str     0x000e9c18       0xec hal/src/hal_ext_irq.o
+ .debug_str     0x000e9cae       0xec hal/src/hal_ext_irq.o
                               0xd9266 (size before relaxing)
- .debug_str     0x000e9d04      0x1cf hal/src/hal_flash.o
+ .debug_str     0x000e9d9a      0x1cf hal/src/hal_flash.o
                               0xd99b9 (size before relaxing)
- .debug_str     0x000e9ed3      0x185 hal/src/hal_pwm.o
+ .debug_str     0x000e9f69      0x185 hal/src/hal_pwm.o
                               0xd991e (size before relaxing)
- .debug_str     0x000ea058      0x1ef hal/src/hal_timer.o
+ .debug_str     0x000ea0ee      0x1ef hal/src/hal_timer.o
                               0xd9a48 (size before relaxing)
- .debug_str     0x000ea247       0x2a hal/utils/src/utils_assert.o
+ .debug_str     0x000ea2dd       0x2a hal/utils/src/utils_assert.o
                               0xd91a3 (size before relaxing)
- .debug_str     0x000ea271       0x31 hal/utils/src/utils_list.o
+ .debug_str     0x000ea307       0x31 hal/utils/src/utils_list.o
                               0xd924d (size before relaxing)
- .debug_str     0x000ea2a2       0x24 hal/utils/src/utils_ringbuffer.o
+ .debug_str     0x000ea338       0x24 hal/utils/src/utils_ringbuffer.o
                               0xd9237 (size before relaxing)
- .debug_str     0x000ea2c6      0x754 hal/utils/src/utils_syscalls.o
+ .debug_str     0x000ea35c      0x754 hal/utils/src/utils_syscalls.o
                                0x73d9 (size before relaxing)
- .debug_str     0x000eaa1a      0x6d5 hpl/ac/hpl_ac.o
+ .debug_str     0x000eaab0      0x6d5 hpl/ac/hpl_ac.o
                               0xda33a (size before relaxing)
- .debug_str     0x000eb0ef     0x6d01 hpl/adc/hpl_adc.o
+ .debug_str     0x000eb185     0x6d01 hpl/adc/hpl_adc.o
                               0xe0da0 (size before relaxing)
- .debug_str     0x000f1df0       0xd1 hpl/core/hpl_core_m4.o
+ .debug_str     0x000f1e86       0xd1 hpl/core/hpl_core_m4.o
                               0xdab9b (size before relaxing)
- .debug_str     0x000f1ec1     0x2db2 hpl/core/hpl_init.o
+ .debug_str     0x000f1f57     0x2db2 hpl/core/hpl_init.o
                               0xdd1ba (size before relaxing)
- .debug_str     0x000f4c73      0x64e hpl/dac/hpl_dac.o
+ .debug_str     0x000f4d09      0x64e hpl/dac/hpl_dac.o
                               0xda2e0 (size before relaxing)
- .debug_str     0x000f52c1     0x132d hpl/dmac/hpl_dmac.o
+ .debug_str     0x000f5357     0x132d hpl/dmac/hpl_dmac.o
                               0xe3420 (size before relaxing)
- .debug_str     0x000f65ee     0x1082 hpl/eic/hpl_eic.o
+ .debug_str     0x000f6684     0x1082 hpl/eic/hpl_eic.o
                               0xdd444 (size before relaxing)
- .debug_str     0x000f7670     0x265e hpl/evsys/hpl_evsys.o
+ .debug_str     0x000f7706     0x265e hpl/evsys/hpl_evsys.o
                               0xe0fef (size before relaxing)
- .debug_str     0x000f9cce      0xbbe hpl/gclk/hpl_gclk.o
+ .debug_str     0x000f9d64      0xbbe hpl/gclk/hpl_gclk.o
                               0xd9e98 (size before relaxing)
- .debug_str     0x000fa88c       0x47 hpl/mclk/hpl_mclk.o
+ .debug_str     0x000fa922       0x47 hpl/mclk/hpl_mclk.o
                               0xda170 (size before relaxing)
- .debug_str     0x000fa8d3     0x101b hpl/nvmctrl/hpl_nvmctrl.o
+ .debug_str     0x000fa969     0x101b hpl/nvmctrl/hpl_nvmctrl.o
                               0xddfb7 (size before relaxing)
- .debug_str     0x000fb8ee      0x542 hpl/osc32kctrl/hpl_osc32kctrl.o
+ .debug_str     0x000fb984      0x542 hpl/osc32kctrl/hpl_osc32kctrl.o
                               0xd96e2 (size before relaxing)
- .debug_str     0x000fbe30      0xcd9 hpl/oscctrl/hpl_oscctrl.o
+ .debug_str     0x000fbec6      0xcd9 hpl/oscctrl/hpl_oscctrl.o
                               0xdab2d (size before relaxing)
- .debug_str     0x000fcb09      0x25d hpl/ramecc/hpl_ramecc.o
+ .debug_str     0x000fcb9f      0x25d hpl/ramecc/hpl_ramecc.o
                               0xda03c (size before relaxing)
- .debug_str     0x000fcd66     0x531a hpl/sercom/hpl_sercom.o
+ .debug_str     0x000fcdfc     0x531a hpl/sercom/hpl_sercom.o
                               0xe08dd (size before relaxing)
- .debug_str     0x00102080       0xbc hpl/systick/hpl_systick.o
+ .debug_str     0x00102116       0xbc hpl/systick/hpl_systick.o
                               0xd91eb (size before relaxing)
- .debug_str     0x0010213c     0x1d50 hpl/tcc/hpl_tcc.o
+ .debug_str     0x001021d2     0x1d50 hpl/tcc/hpl_tcc.o
                               0xdd05b (size before relaxing)
- .debug_str     0x00103e8c     0x159f hpl/tc/hpl_tc.o
+ .debug_str     0x00103f22     0x159f hpl/tc/hpl_tc.o
                               0xdc618 (size before relaxing)
- .debug_str     0x0010542b      0x43c hpl/wdt/hpl_wdt.o
+ .debug_str     0x001054c1      0x43c hpl/wdt/hpl_wdt.o
                               0xd9754 (size before relaxing)
- .debug_str     0x00105867      0x1ca main.o
+ .debug_str     0x001058fd      0x1ca main.o
                               0xe2ad2 (size before relaxing)
- .debug_str     0x00105a31      0x23c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
+ .debug_str     0x00105ac7      0x23c thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/list.o
                                0xa5bc (size before relaxing)
- .debug_str     0x00105c6d      0x81a thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
+ .debug_str     0x00105d03      0x81a thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/port.o
                                0x84b7 (size before relaxing)
- .debug_str     0x00106487      0x3cd thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_2.o
+ .debug_str     0x0010651d      0x3cd thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/MemMang/heap_2.o
                                0xadd3 (size before relaxing)
- .debug_str     0x00106854      0x911 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
+ .debug_str     0x001068ea      0x911 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/queue.o
                                0xbc7f (size before relaxing)
- .debug_str     0x00107165     0x10dd thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
+ .debug_str     0x001071fb     0x10dd thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o
                                0xd9f8 (size before relaxing)
- .debug_str     0x00108242      0x465 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
+ .debug_str     0x001082d8      0x465 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
                                0xbf06 (size before relaxing)
 
 .debug_frame    0x00000000     0x492c
