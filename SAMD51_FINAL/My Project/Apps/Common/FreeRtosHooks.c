@@ -8,15 +8,19 @@
 
 void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName)
 {
-	uint8_t dbgBuffer[100];
-	memset(dbgBuffer,'\0',100);
-
+	uint8_t dbgBuffer[30];
+	uint8_t taskNameBuffer[30];
+	
+	memset(dbgBuffer,'0',30);
+    memset(taskNameBuffer,'0',30);
 	DEBUG_PRINT("**********************************************************");
 	DEBUG_PRINT("***************STACK OVERFLOW DETECTED********************");
 	DEBUG_PRINT("**********************************************************");
 	DEBUG_PRINT("\r\n");
-	sprintf((int8_t*)dbgBuffer," Task Handle - %d ### Task Name - %s",xTask,pcTaskName);
+	sprintf((int8_t*)dbgBuffer,"Task Handle - %d\r\n",xTask);
 	SerialDebugPrint(dbgBuffer,strlen(dbgBuffer));
+	memcpy(taskNameBuffer,pcTaskName,strlen(pcTaskName)+1);
+	SerialDebugPrint(taskNameBuffer,strlen(taskNameBuffer));
 
 	while(1);
 }

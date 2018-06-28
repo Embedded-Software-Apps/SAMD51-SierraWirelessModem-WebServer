@@ -43,6 +43,7 @@ void modemResponseHandler(AT_CMD_TYPE cmd,uint8_t* response, uint16_t length)
             	memset(responseBuffer,0,700);
             	memcpy(responseBuffer,response,length);
             	ModemDiagUpdateDataBase(responseBuffer,&cmdResponse);
+				cmd = CMD_AT_MAX;
             }
             break;
 

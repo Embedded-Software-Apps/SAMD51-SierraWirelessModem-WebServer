@@ -14,7 +14,7 @@
 #include "Apps/Tasks/ModemTask/include/ModemDiagTask.h"
 
 
-#define MODEM_DIAG_CMDS_MAX (9)
+#define MODEM_DIAG_CMDS_MAX (4)
 /******************************************************************************************
 ************************************STATIC VARIABLES***************************************
 *******************************************************************************************/
@@ -25,14 +25,8 @@ static uint8_t atCgsnResponseData[15+1];
 static uint8_t atKgsnResponseData[14+1];
 static uint8_t atCarrierResponseData[3+1];
 static uint8_t diagResponseBuffer[50];
+static bool bModemDiagDataBaseUpdated;
 
-static DIAG_RESPONSE_DATABASE DiagResponseDataBase[MODEM_DIAG_CMDS_MAX] = \
-{
-    {MODEM_DIAG_TEST_AT, &atResponseData},
-    {MODEM_DIAG_TEST_AT, &atCgsnResponseData},
-    {MODEM_DIAG_TEST_AT, &atKgsnResponseData},
-    {MODEM_DIAG_TEST_AT, &atCarrierResponseData}
-};
 
 static void ModemDiagInit(void);
 static void ModemDiagSchedule(void);
@@ -120,6 +114,12 @@ void ModemDiagTask( void *ModemTaskParam)
 static void ModemDiagInit(void)
 {
     ModemDiagState = MODEM_DIAG_TEST_AT;
+	bModemDiagDataBaseUpdated = false;
+	
+    memset(atResponseData,0,sizeof(atResponseData));
+    memset(atCgsnResponseData,0,sizeof(atCgsnResponseData));
+    memset(atKgsnResponseData,0,sizeof(atKgsnResponseData));
+    memset(atCarrierResponseData,0,sizeof(atCarrierResponseData));
 }
 
 /*******************************************************************************
@@ -137,16 +137,16 @@ void ModemDiagUpdateDataBase(uint8_t* buffer,CmdResponseType* cmdResponse)
     {
         case MODEM_DIAG_TEST_AT:
         {
-        	memcpy(DiagResponseDataBase[MODEM_DIAG_TEST_AT].diagData,buffer,cmdResponse->length);
-        	SerialDebugPrint(DiagResponseDataBase[MODEM_DIAG_TEST_AT].diagData,cmdResponse->length);
+        	memcpy(atResponseData,buffer,sizeof(atResponseData));
+        	SerialDebugPrint(atResponseData,sizeof(atResponseData));
         }
         break;
 
         case MODEM_DIAG_GET_IMEI:
         {
-        	memcpy(DiagResponseDataBase[MODEM_DIAG_GET_IMEI].diagData,buffer,cmdResponse->length);
+        	memcpy(atCgsnResponseData,buffer,sizeof(atCgsnResponseData));
         	DEBUG_PRINT("Retrieved the Modem IMEI Number");
-        	SerialDebugPrint(DiagResponseDataBase[MODEM_DIAG_GET_IMEI].diagData,cmdResponse->length);
+        	SerialDebugPrint(atCgsnResponseData,sizeof(atCgsnResponseData));
         }
         break;
 
@@ -158,11 +158,12 @@ void ModemDiagUpdateDataBase(uint8_t* buffer,CmdResponseType* cmdResponse)
 			/* Extract the serial No */
 			while(parseCnt <= (cmdResponse->length - startIndex))
 			{
-				DiagResponseDataBase[MODEM_DIAG_GET_SERIAL].diagData[parseCnt] = buffer[startIndex + parseCnt];
+				atKgsnResponseData[parseCnt] = buffer[startIndex + parseCnt];
 				parseCnt++;
 			}
 			DEBUG_PRINT("Retrieved the Modem serial Number");
-			SerialDebugPrint(DiagResponseDataBase[MODEM_DIAG_GET_SERIAL].diagData,cmdResponse->length);
+			SerialDebugPrint(atKgsnResponseData,sizeof(atKgsnResponseData));
+			bModemDiagDataBaseUpdated = true;
         }
         break;
 
@@ -294,4 +295,16 @@ static void ModemDiagSchedule(void)
             }
         }
     }
+}
+
+/*******************************************************************************
+*
+* NAME       : getModemPowerState
+*
+* DESCRIPTION: Gets the current Modem Power State.
+*
+********************************************************************************/
+bool isModemDiagDataBaseUpdated(void)
+{
+	return bModemDiagDataBaseUpdated;
 }

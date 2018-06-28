@@ -50,9 +50,12 @@ void MdmConnect_HttpConnectionSchedule(void)
 	{
         case MDM_HTTP_DISCONNECTED:
         {
-        	gHttpConnectionState = MDM_HTTP_CONNECTION_IN_PROGRESS;
-        	gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_CLOSE_CONNECTION;
-        	gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+			if(isModemDiagDataBaseUpdated() != false)
+			{
+	        	gHttpConnectionState = MDM_HTTP_CONNECTION_IN_PROGRESS;
+	        	gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_CLOSE_CONNECTION;
+	        	gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+			}
         }
         break;
 

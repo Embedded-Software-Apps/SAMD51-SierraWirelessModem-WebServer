@@ -34,7 +34,7 @@ typedef struct
 
 void ModemDiagTask( void *ModemTaskParam);
 void ModemDiagUpdateDataBase(uint8_t* buffer,CmdResponseType* cmdResponse);
-
+bool isModemDiagDataBaseUpdated(void);
 
 
 #endif /* MODEMDIAGTASK_H_ */

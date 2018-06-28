@@ -23,7 +23,7 @@ void ModemRxTask( void *ModemTaskParam)
 	{
 		/* Wait to receive a notification sent directly to this task from the
 		interrupt handler. */
-		xResult = xTaskNotifyWait(0,ULONG_MAX,&atCmd,xMaxExpectedBlockTime);
+		xResult = xTaskNotifyWait(0,ULONG_MAX,&atCmd,portMAX_DELAY);
 		
 		if(xResult == pdPASS)
 		{
