@@ -575,6 +575,7 @@ static void MdmCnct_ConnectedSubStateMachine(void)
 		case CONNECTED_BUILD_DATA_PACKET_TO_SERVER:
 		{
 			buildDataPacketsToServer();
+			gHttpConnectedSubState = CONNECTED_SEND_DATA_PACKETS_TO_SERVER;
 			vTaskDelay(BuildPacketDelayMs);
 		}
 		break;
