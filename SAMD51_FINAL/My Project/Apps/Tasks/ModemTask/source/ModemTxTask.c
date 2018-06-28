@@ -37,7 +37,6 @@ void ModemTxTask( void *ModemTaskParam)
 		{
 			ModemTxTaskSchedule();
 			kickWatchDog();
-			//DEBUG_PRINT("Running Modem Tx Task successfully");
 			vTaskDelay(xDelayMs);
 		}
 	}
@@ -64,12 +63,6 @@ static void ModemTxTaskSchedule(void)
 			if(xResult == pdPASS)
 			{
 				ModemTx_SendCommandToModem(AtTxQueueReceivedData.atCmd);
-				DEBUG_PRINT("Transmitted a command to Modem");
-				if( xSemaphoreTake( DebugPrintMutex,portMAX_DELAY) == pdTRUE )
-				{
-					DEBUG_PRINT("Transmitted a command to Modem");
-					xSemaphoreGive(DebugPrintMutex);
-				}
 				xSemaphoreGive(AtTxQueueLoadSemaphore);				
 			}
 		}

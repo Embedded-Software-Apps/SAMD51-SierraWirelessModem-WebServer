@@ -40,50 +40,7 @@ void mdmParser_SendCommandToModem(AT_CMD_TYPE atCmd)
 	mdmCtrlr_FlushRxBuffer();
 	mdmCtrlr_SendDataToModem(ModemCmdData.AtString,ModemCmdData.CmdLength);
 	lastSendATCommand = atCmd;
-	mdmParser_SetLastCmdProcessed(false);
 	delay_ms(1000);
-}
-
-/*============================================================================
-**
-** Function Name:      mdmComms_GetModemResponse
-**
-** Description:        Gets the parsed modem response
-**
-**===========================================================================*/
-void mdmParser_ProcessModemResponse(void)
-{
-	MODEM_CMD_DATA cmdData;
-	getModemCommandData(lastSendATCommand, &cmdData);
-
-	if(lastSendATCommand != CMD_AT_MAX)
-	{
-		if(false != mdmParser_solicitedCmdParser(lastSendATCommand))
-		{
-			if(lastSendATCommand == cmdData.AtCmd)
-			{
-				//cmdData.respHandler(responseDataBuffer,cmdData.validDataCnt);
-				mdmParser_SetLastCmdProcessed(true);
-			}
-		}
-		else
-		{
-			DEBUG_PRINT("Expected modem response is not received");
-
-			if (lastSendATCommand == CMD_AT_KHTTP_GET)
-			{
-				DEBUG_PRINT("No Response from Web Sever....Posting data to sever is failed");
-				DEBUG_PRINT("Performing the Error Recovery Procedures..");
-				mdmParser_PerformErrorRecovery();
-			}
-		}
-
-		lastSendATCommand = CMD_AT_MAX;
-	}
-	else
-	{
-		DEBUG_PRINT("Error : Process response failed - Last Command Invalid");
-	}
 }
 
 /*============================================================================

@@ -44,12 +44,6 @@ void ModemProcessTask( void *ModemTaskParam)
 
         if(getModemPowerStatus() == MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS)
         {
-            if( xSemaphoreTake( DebugPrintMutex,xDebugPrintDelayMs) == pdTRUE )
-            {
-            	//DEBUG_PRINT("Running Modem Process Task successfully");
-            	xSemaphoreGive(DebugPrintMutex);
-            }
-
             MdmConnect_HttpConnectionSchedule();
 			kickWatchDog();
             vTaskDelay(xDelayMs);

@@ -24,11 +24,6 @@ void DispatchTask( void *DispatchTaskParam)
 
 	while(1)
 	{
-        if( xSemaphoreTake( DebugPrintMutex,xDebugPrintDelayMs) == pdTRUE )
-        {
-        	//DEBUG_PRINT("Running Dispatch Task successfully");
-        	xSemaphoreGive(DebugPrintMutex);
-        }
 		kickWatchDog();
 		vTaskDelayUntil( &xLastWakeTime, xDelayMs);
 	}

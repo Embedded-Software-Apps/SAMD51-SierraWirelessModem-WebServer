@@ -94,11 +94,6 @@ void ModemDiagTask( void *ModemTaskParam)
         {
             ModemDiagSchedule();
             kickWatchDog();
-            if( xSemaphoreTake( DebugPrintMutex,xDebugPrintDelayMs) == pdTRUE )
-            {
-            	//DEBUG_PRINT("Running Modem Diag Task successfully");
-            	xSemaphoreGive(DebugPrintMutex);
-            }
             vTaskDelay(xDelayMs);
         }
     }
