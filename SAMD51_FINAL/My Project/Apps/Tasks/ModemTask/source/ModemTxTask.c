@@ -16,6 +16,7 @@
 ************************************STATIC VARIABLES***************************************
 *******************************************************************************************/
 static AtTxMsgType AtTxQueueReceivedData;
+static MODEM_CMD_DATA ModemCmdData;
 
 static void ModemTxTaskSchedule(void);
 static void ModemTx_SendCommandToModem(AT_CMD_TYPE atCmd);
@@ -51,20 +52,26 @@ void ModemTxTask( void *ModemTaskParam)
 ********************************************************************************/
 static void ModemTxTaskSchedule(void)
 {
+	BaseType_t xResult;
+	const TickType_t xMaxExpectedBlockTime = pdMS_TO_TICKS(100);
+	
 	if (uxQueueMessagesWaiting(AtTransmitQueue) != 0)
 	{
 		if(pdPASS == xSemaphoreTake(AtTxQueueLoadSemaphore, 0))
 		{
-			xQueueReceive( AtTransmitQueue, &AtTxQueueReceivedData, portMAX_DELAY );
-			ModemTx_SendCommandToModem(AtTxQueueReceivedData.atCmd);
-			ConsoleDebugPrint("Task ID",AtTxQueueReceivedData.taskID);
-			DEBUG_PRINT("Transmitted a command to Modem");
-            if( xSemaphoreTake( DebugPrintMutex,portMAX_DELAY) == pdTRUE )
-            {
-            	DEBUG_PRINT("Transmitted a command to Modem");
-            	xSemaphoreGive(DebugPrintMutex);
-            }
-			xSemaphoreGive(AtTxQueueLoadSemaphore);
+			xResult = xQueueReceive( AtTransmitQueue, &AtTxQueueReceivedData, xMaxExpectedBlockTime);
+			
+			if(xResult == pdPASS)
+			{
+				ModemTx_SendCommandToModem(AtTxQueueReceivedData.atCmd);
+				DEBUG_PRINT("Transmitted a command to Modem");
+				if( xSemaphoreTake( DebugPrintMutex,portMAX_DELAY) == pdTRUE )
+				{
+					DEBUG_PRINT("Transmitted a command to Modem");
+					xSemaphoreGive(DebugPrintMutex);
+				}
+				xSemaphoreGive(AtTxQueueLoadSemaphore);				
+			}
 		}
 	}
 }
@@ -78,7 +85,6 @@ static void ModemTxTaskSchedule(void)
 **===========================================================================*/
 static void ModemTx_SendCommandToModem(AT_CMD_TYPE atCmd)
 {
-	MODEM_CMD_DATA ModemCmdData;
 	getModemCommandData(atCmd, &ModemCmdData);
 	mdmCtrlr_FlushRxBuffer();
 	mdmCtrlr_SendDataToModem(ModemCmdData.AtString,ModemCmdData.CmdLength);

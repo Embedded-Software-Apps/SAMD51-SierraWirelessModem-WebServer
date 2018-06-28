@@ -139,6 +139,7 @@ void ModemDiagUpdateDataBase(uint8_t* buffer,CmdResponseType* cmdResponse)
         {
         	memcpy(atResponseData,buffer,sizeof(atResponseData));
         	SerialDebugPrint(atResponseData,sizeof(atResponseData));
+			SerialDebugPrint("\r\n",2);
         }
         break;
 
@@ -147,6 +148,7 @@ void ModemDiagUpdateDataBase(uint8_t* buffer,CmdResponseType* cmdResponse)
         	memcpy(atCgsnResponseData,buffer,sizeof(atCgsnResponseData));
         	DEBUG_PRINT("Retrieved the Modem IMEI Number");
         	SerialDebugPrint(atCgsnResponseData,sizeof(atCgsnResponseData));
+			SerialDebugPrint("\r\n",2);
         }
         break;
 
@@ -164,6 +166,7 @@ void ModemDiagUpdateDataBase(uint8_t* buffer,CmdResponseType* cmdResponse)
 			bModemDiagDataBaseUpdated = true;
 			DEBUG_PRINT("Retrieved the Modem serial Number");
 			SerialDebugPrint(atKgsnResponseData,sizeof(atKgsnResponseData));
+			SerialDebugPrint("\r\n",2);
 			bModemDiagDataBaseUpdated = true;
         }
         break;

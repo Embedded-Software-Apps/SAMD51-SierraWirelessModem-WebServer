@@ -17,6 +17,7 @@ typedef enum
 	SERIAL_DEBUG_IDLE	
 }SERIAL_TEST;
 
+//#define DEBUG_ON (0)
 
 void SerialDebugPrintInit(void);
 void SerialDebugStateMachine(void);
@@ -30,6 +31,9 @@ void SerialDebugPrint(const uint8_t *const dataToPrint,const uint16_t length);
 void SerialStringPrint(const uint8_t *const dataToPrint);
 void ConsoleDebugPrint(const uint8_t *const txt, uint32_t intData);
 /* Debug Print Macro */
+
+
 #define DEBUG_PRINT(str) (SerialStringPrint(str))
+
 
 #endif /* SERIALDEBUG_H_ */

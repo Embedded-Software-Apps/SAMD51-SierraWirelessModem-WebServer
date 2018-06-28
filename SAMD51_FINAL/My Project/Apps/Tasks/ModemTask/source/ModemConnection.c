@@ -32,7 +32,7 @@ void MdmConnect_HttpConnectionInit(void)
 	gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_CLOSE_CONNECTION;
 	gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
 	gHttpCloseConnectionsState = GET_TOTAL_NO_OF_ACTIVE_CONNECTIONS;
-	sessionIdCount = 3;
+	sessionIdCount = 10;
 
 	ConnectionResponse.atCmd = CMD_AT_MAX;
 	ConnectionResponse.length = 0;
@@ -102,7 +102,8 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
     BaseType_t TxQueuePushStatus;
     const TickType_t QueuePushDelayMs = pdMS_TO_TICKS(500UL);
     const TickType_t TransmitDelayMs = pdMS_TO_TICKS(500UL);
-
+    const TickType_t ResponseWaittDelayMs = pdMS_TO_TICKS(300UL);
+	
 	switch (gHttpConnectionInProgressSubstate)
 	{
         case CONNECT_IN_PROGRESS_CLOSE_CONNECTION:
@@ -156,35 +157,36 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
         	}
         	else if(gHttpConnectOpMode == HTTP_CONNECT_OP_RX_MODE)
         	{
-        		xQueueReceive( CmdResponseQueue, &ConnectionResponse, portMAX_DELAY );
+        		if(pdPASS == xQueueReceive( CmdResponseQueue, &ConnectionResponse, ResponseWaittDelayMs))
+				{
+	        		if(ConnectionResponse.atCmd == getCloseActiveSessionCmd(sessionIdCount))
+	        		{
+		        		if( xSemaphoreTake( DebugPrintMutex,portMAX_DELAY) == pdTRUE )
+		        		{
+			        		DEBUG_PRINT("Received a connection response in RX Mode");
+			        		xSemaphoreGive(DebugPrintMutex);
+		        		}
 
-        		if(ConnectionResponse.atCmd == getCloseActiveSessionCmd(sessionIdCount))
-        		{
-                    if( xSemaphoreTake( DebugPrintMutex,portMAX_DELAY) == pdTRUE )
-                    {
-                    	DEBUG_PRINT("Received a connection response in RX Mode");
-                    	xSemaphoreGive(DebugPrintMutex);
-                    }
-
-        			if(sessionIdCount > 0)
-        			{
-        				sessionIdCount--;
-        				gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
-        				SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
-        			}
-        			else
-        			{
-        				gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_SET_EOF_PATTERN;
-        			}
-        			vPortFree(ConnectionResponse.response);
-        		}
-        		else
-        		{
-        			DEBUG_PRINT("Failed to receive connection response in RX mode");
-        			gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
-        			vPortFree(ConnectionResponse.response);
-        		}
-
+		        		if(sessionIdCount > 0)
+		        		{
+			        		sessionIdCount--;
+			        		gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+			        		SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
+							SerialDebugPrint("\r\n",2);
+		        		}
+		        		else
+		        		{
+			        		gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_SET_EOF_PATTERN;
+		        		}
+		        		vPortFree(ConnectionResponse.response);
+	        		}
+	        		else
+	        		{
+		        		DEBUG_PRINT("Failed to receive connection response in RX mode");
+		        		gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+		        		vPortFree(ConnectionResponse.response);
+	        		}
+				}
         	}
         	else
         	{
@@ -372,4 +374,6 @@ static AT_CMD_TYPE getCloseActiveSessionCmd(uint8_t sessionID)
 		default:
 		break;
 	}
+	
+	return sessionCloseCmd;
 }
