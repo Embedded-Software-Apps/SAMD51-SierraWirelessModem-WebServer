@@ -46,7 +46,7 @@ void ModemProcessTask( void *ModemTaskParam)
         {
             if( xSemaphoreTake( DebugPrintMutex,xDebugPrintDelayMs) == pdTRUE )
             {
-            	DEBUG_PRINT("Running Modem Process Task successfully");
+            	//DEBUG_PRINT("Running Modem Process Task successfully");
             	xSemaphoreGive(DebugPrintMutex);
             }
 

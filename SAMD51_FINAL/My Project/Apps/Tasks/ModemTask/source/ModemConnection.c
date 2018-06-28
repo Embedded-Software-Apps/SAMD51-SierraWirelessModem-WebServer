@@ -7,6 +7,7 @@
 #include "Apps/Tasks/ModemTask/include/ModemConnection.h"
 #include "Apps/Tasks/ModemTask/include/ModemCmdParser.h"
 #include "Apps/Tasks/ModemTask/include/ModemAtCommandSet.h"
+#include "Apps/Common/Common.h"
 
 /* Global variables */
 static HTTP_CONNECT_STATES_T gHttpConnectionState;
@@ -100,7 +101,7 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
     AtTxMsgType TxMsgQueueData;
     BaseType_t TxQueuePushStatus;
     const TickType_t QueuePushDelayMs = pdMS_TO_TICKS(500UL);
-    const TickType_t TransmitDelayMs = pdMS_TO_TICKS(1000UL);
+    const TickType_t TransmitDelayMs = pdMS_TO_TICKS(500UL);
 
 	switch (gHttpConnectionInProgressSubstate)
 	{
@@ -122,7 +123,11 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                             if(TxQueuePushStatus == pdPASS)
                             {
                                 xSemaphoreGive(AtTxQueueLoadSemaphore);
-                                DEBUG_PRINT("Sent the Session Close request to Tx Task");
+                                if( xSemaphoreTake( DebugPrintMutex,portMAX_DELAY) == pdTRUE )
+                                {
+                                	DEBUG_PRINT("Sent the Session Close request to Tx Task");
+                                	xSemaphoreGive(DebugPrintMutex);
+                                }
                                 gHttpConnectOpMode = HTTP_CONNECT_OP_RX_MODE;
                                 vTaskDelay(TransmitDelayMs);
                             }
@@ -132,6 +137,14 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                                 vTaskDelay(TransmitDelayMs);
                             }
         		        }
+        		        else
+        		        {
+        		        	DEBUG_PRINT("Error : Not able to obtain Tx Semapahore");
+        		        }
+        		    }
+        		    else
+        		    {
+        		    	DEBUG_PRINT("Transmit Queue is not empty");
         		    }
         		}
         		else
@@ -147,7 +160,11 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
 
         		if(ConnectionResponse.atCmd == getCloseActiveSessionCmd(sessionIdCount))
         		{
-        			DEBUG_PRINT("Received a connection response in RX Mode");
+                    if( xSemaphoreTake( DebugPrintMutex,portMAX_DELAY) == pdTRUE )
+                    {
+                    	DEBUG_PRINT("Received a connection response in RX Mode");
+                    	xSemaphoreGive(DebugPrintMutex);
+                    }
 
         			if(sessionIdCount > 0)
         			{

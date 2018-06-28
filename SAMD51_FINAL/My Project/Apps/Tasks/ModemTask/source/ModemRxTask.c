@@ -45,7 +45,7 @@ void ModemRxTask( void *ModemTaskParam)
 			/* If this part of the function is reached then an interrupt did not
 			arrive within the expected time, and (in a real application) it may
 			be necessary to perform some error recovery operations. */
-			//DEBUG_PRINT("Notification Not Received to Rx Task");
+			DEBUG_PRINT("Notification Not Received to Rx Task");
 		}
 		kickWatchDog();
 	}

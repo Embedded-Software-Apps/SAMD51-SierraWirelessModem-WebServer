@@ -26,7 +26,7 @@ void DispatchTask( void *DispatchTaskParam)
 	{
         if( xSemaphoreTake( DebugPrintMutex,xDebugPrintDelayMs) == pdTRUE )
         {
-        	DEBUG_PRINT("Running Dispatch Task successfully");
+        	//DEBUG_PRINT("Running Dispatch Task successfully");
         	xSemaphoreGive(DebugPrintMutex);
         }
 		kickWatchDog();

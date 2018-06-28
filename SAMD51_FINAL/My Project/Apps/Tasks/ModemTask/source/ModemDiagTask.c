@@ -96,7 +96,7 @@ void ModemDiagTask( void *ModemTaskParam)
             kickWatchDog();
             if( xSemaphoreTake( DebugPrintMutex,xDebugPrintDelayMs) == pdTRUE )
             {
-            	DEBUG_PRINT("Running Modem Diag Task successfully");
+            	//DEBUG_PRINT("Running Modem Diag Task successfully");
             	xSemaphoreGive(DebugPrintMutex);
             }
             vTaskDelay(xDelayMs);
@@ -161,6 +161,7 @@ void ModemDiagUpdateDataBase(uint8_t* buffer,CmdResponseType* cmdResponse)
 				atKgsnResponseData[parseCnt] = buffer[startIndex + parseCnt];
 				parseCnt++;
 			}
+			bModemDiagDataBaseUpdated = true;
 			DEBUG_PRINT("Retrieved the Modem serial Number");
 			SerialDebugPrint(atKgsnResponseData,sizeof(atKgsnResponseData));
 			bModemDiagDataBaseUpdated = true;
@@ -291,8 +292,15 @@ static void ModemDiagSchedule(void)
                 break;
 
                 default:
+                {
+                	xSemaphoreGive(AtTxQueueLoadSemaphore);
+                }
                 break;
             }
+        }
+        else
+        {
+
         }
     }
 }

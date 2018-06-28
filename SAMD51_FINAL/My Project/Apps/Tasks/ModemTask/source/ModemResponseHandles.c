@@ -49,6 +49,12 @@ void modemResponseHandler(AT_CMD_TYPE cmd,uint8_t* response, uint16_t length)
 
             case AT_CMD_SET_CONNECTION:
             {
+                if( xSemaphoreTake( DebugPrintMutex,portMAX_DELAY) == pdTRUE )
+                {
+                	DEBUG_PRINT("Received Connection response in handle");
+                	xSemaphoreGive(DebugPrintMutex);
+                }
+
                 if (uxQueueMessagesWaiting(CmdResponseQueue) == 0)
                 {
                 	cmdResponse.atCmd = cmd;
