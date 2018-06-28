@@ -18,7 +18,7 @@
 void DispatchTask( void *DispatchTaskParam)
 {
 	TickType_t xLastWakeTime;
-	const TickType_t xDelayMs = pdMS_TO_TICKS(7000UL);
+	const TickType_t xDelayMs = pdMS_TO_TICKS(700UL);
 	const TickType_t xDebugPrintDelayMs = pdMS_TO_TICKS(500UL);
 	xLastWakeTime = xTaskGetTickCount();
 

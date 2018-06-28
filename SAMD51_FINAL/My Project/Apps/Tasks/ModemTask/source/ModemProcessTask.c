@@ -32,7 +32,7 @@
 ********************************************************************************/
 void ModemProcessTask( void *ModemTaskParam)
 {
-    const TickType_t xDelayMs = pdMS_TO_TICKS(5000UL);
+    const TickType_t xDelayMs = pdMS_TO_TICKS(400UL);
     const TickType_t xDebugPrintDelayMs = pdMS_TO_TICKS(500UL);
 
     modemPowerStateInit();

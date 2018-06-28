@@ -29,7 +29,7 @@ static void ModemTx_SendCommandToModem(AT_CMD_TYPE atCmd);
 ********************************************************************************/
 void ModemTxTask( void *ModemTaskParam)
 {
-	const TickType_t xDelayMs = pdMS_TO_TICKS(1000UL);
+	const TickType_t xDelayMs = pdMS_TO_TICKS(100UL);
 	xSemaphoreGive(AtTxQueueLoadSemaphore);
 	while(1)
 	{

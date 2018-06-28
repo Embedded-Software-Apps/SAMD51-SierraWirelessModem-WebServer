@@ -84,7 +84,7 @@ static MODEM_DIAG_STATES_T ModemDiagStateFromAtCmd(AT_CMD_TYPE cmd)
 ********************************************************************************/
 void ModemDiagTask( void *ModemTaskParam)
 {
-    const TickType_t xDelayMs = pdMS_TO_TICKS(3500UL);
+    const TickType_t xDelayMs = pdMS_TO_TICKS(600UL);
     const TickType_t xDebugPrintDelayMs = pdMS_TO_TICKS(500UL);
     ModemDiagInit();
 
