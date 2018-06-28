@@ -45,7 +45,10 @@ typedef enum
 	CLOSE_ALL_EXISTING_CONNECIONS
 }HTTP_CLOSE_CONNECTIONS_STATE_T;
 
-#define MAX_ACTIVE_SESSION_ID (10)
+#define MAX_ACTIVE_SESSION_ID     (10)
+#define SESSION_ID_POSITION       (11)
+#define SESSION_ID_POS_IN_HEADER  (15)
+#define SESSION_ID_POS_IN_GET_REQ (12)
 
 void MdmCnct_ConnectInProgressSubStateMachine(void);
 void MdmConnect_HttpConnectionSchedule(void);

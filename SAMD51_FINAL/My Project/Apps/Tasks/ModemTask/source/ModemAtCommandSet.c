@@ -11,7 +11,7 @@
 #include "Apps/Tasks/ModemTask/include/ModemAtCommandSet.h"
 #include "Apps/Tasks/ModemTask/include/ModemResponseHandles.h"
 
-uint8_t kHttpHeaderString[INT_SEVENTEEN] = {'A','T','+','K','H','T','T','P','H','E','A','D','E','R','=','0','\r'};
+uint8_t HttpHeaderString[INT_SEVENTEEN] = {'A','T','+','K','H','T','T','P','H','E','A','D','E','R','=','0','\r'};
 
 uint8_t kHttpGetString[INT_FIFTEEN] = {'A','T','+','K','H','T','T','P','G','E','T','=','0',',','\0'};
 
@@ -263,7 +263,7 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 	{
 		CMD_AT_KHTTP_HEADER,
 		AT_CMD_SET_CONNECTION,
-		kHttpHeaderString,
+		HttpHeaderString,
 		INT_SEVENTEEN,
 		INT_SEVEN,
 		modemResponseHandler,
@@ -333,13 +333,13 @@ void getModemCommandData(AT_CMD_TYPE cmd, MODEM_CMD_DATA* cmdData)
 ** Description:        Gets the parsed modem response
 **
 **===========================================================================*/
-void mdmParser_SetKhttpHeaderString(uint8_t* sessionID)
+void mdmParser_SetHttpHeaderString(uint8_t* sessionID)
 {
 	switch (*sessionID)
 	{
 		case 49:
 		{
-			kHttpHeaderString[15] = '1';
+			HttpHeaderString[15] = '1';
 			kHttpGetString[12] = '1';
 			DEBUG_PRINT("Session ID - 1");
 		}
@@ -347,7 +347,7 @@ void mdmParser_SetKhttpHeaderString(uint8_t* sessionID)
 
 		case 50:
 		{
-			kHttpHeaderString[15] = '2';
+			HttpHeaderString[15] = '2';
 			kHttpGetString[12] = '2';
 			DEBUG_PRINT("Session ID - 2");
 		}
@@ -355,7 +355,7 @@ void mdmParser_SetKhttpHeaderString(uint8_t* sessionID)
 
 		case 51:
 		{
-			kHttpHeaderString[15] = '3';
+			HttpHeaderString[15] = '3';
 			kHttpGetString[12] = '3';
 			DEBUG_PRINT("Session ID - 3");
 		}
@@ -363,7 +363,7 @@ void mdmParser_SetKhttpHeaderString(uint8_t* sessionID)
 
 		case 52:
 		{
-			kHttpHeaderString[15] = '4';
+			HttpHeaderString[15] = '4';
 			kHttpGetString[12] = '4';
 			DEBUG_PRINT("Session ID - 4");
 		}
@@ -371,7 +371,7 @@ void mdmParser_SetKhttpHeaderString(uint8_t* sessionID)
 
 		case 53:
 		{
-			kHttpHeaderString[15] = '5';
+			HttpHeaderString[15] = '5';
 			kHttpGetString[12] = '5';
 			DEBUG_PRINT("Session ID - 5");
 		}
@@ -379,7 +379,7 @@ void mdmParser_SetKhttpHeaderString(uint8_t* sessionID)
 
 		case 54:
 		{
-			kHttpHeaderString[15] = '6';
+			HttpHeaderString[15] = '6';
 			kHttpGetString[12] = '6';
 			DEBUG_PRINT("Session ID - 6");
 		}
@@ -387,7 +387,7 @@ void mdmParser_SetKhttpHeaderString(uint8_t* sessionID)
 
 		case 55:
 		{
-			kHttpHeaderString[15] = '7';
+			HttpHeaderString[15] = '7';
 			kHttpGetString[12] = '7';
 			DEBUG_PRINT("Session ID - 7");
 		}
@@ -395,7 +395,7 @@ void mdmParser_SetKhttpHeaderString(uint8_t* sessionID)
 
 		case 56:
 		{
-			kHttpHeaderString[15] = '8';
+			HttpHeaderString[15] = '8';
 			kHttpGetString[12] = '8';
 			DEBUG_PRINT("Session ID - 8");
 		}
