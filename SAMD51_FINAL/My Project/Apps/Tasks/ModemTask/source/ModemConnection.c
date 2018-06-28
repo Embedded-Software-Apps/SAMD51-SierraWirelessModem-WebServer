@@ -74,6 +74,7 @@ void MdmConnect_HttpConnectionSchedule(void)
 
         case MDM_HTTP_CONNECTED:
         {
+			mdmCtrlr_FlushRxBuffer();
         	SerialDebugPrint("HTTP CONNECTED",14);
         	gHttpConnectionState = MDM_HTTP_DISCONNECTION_IN_PROGRESS;
         }
@@ -562,7 +563,6 @@ static bool processHttpHeaderResponse(uint8_t* response)
     if(0==memcmp(response,"CONNECT",7))
     {
     	mdmCtrlr_SendDataToModem("--EOF--Pattern--",16);
-    	delay_ms(1000);
     	mdmCtrlr_FlushRxBuffer();
     	status = true;
     }
