@@ -107,4 +107,5 @@ typedef struct
 
 void getModemCommandData(AT_CMD_TYPE cmd, MODEM_CMD_DATA* cmdData);
 void buildHttpHeaderWithActiveSessionID(const uint8_t* activeSessionId);
+void buildDataPacketsToServer(void);
 #endif /* MODEMATCOMMANDSET_H_ */

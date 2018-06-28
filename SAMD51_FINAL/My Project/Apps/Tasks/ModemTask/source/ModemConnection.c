@@ -15,6 +15,7 @@ static HTTP_CONNECT_STATES_T gHttpConnectionState;
 static HTTP_CONNECT_IN_PROGRESS_SUBSTATES_T gHttpConnectionInProgressSubstate;
 static HTTP_CONNECT_OPERATIONAL_STATE_T gHttpConnectOpMode;
 static HTTP_CLOSE_CONNECTIONS_STATE_T gHttpCloseConnectionsState;
+static HTTP_CONNECTED_SUBSTATES_T gHttpConnectedSubState;
 static uint8_t sessionIdCount = 0;
 static CmdResponseType ConnectionResponse;
 static uint8_t currentSessionId;
@@ -23,6 +24,7 @@ static void MdmCnct_CloseActiveConnections(void);
 static AT_CMD_TYPE getCloseActiveSessionCmd(uint8_t sessionID);
 static void MdmCnct_ExtractSessionIdFromConfigResponse(uint8_t* response);
 static bool processHttpHeaderResponse(uint8_t* response);
+static void MdmCnct_ConnectedSubStateMachine(void);
 /*============================================================================
 **
 ** Function Name:      mdmCtrlr_FlushRxBuffer
@@ -36,6 +38,7 @@ void MdmConnect_HttpConnectionInit(void)
 	gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_CLOSE_CONNECTION;
 	gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
 	gHttpCloseConnectionsState = GET_TOTAL_NO_OF_ACTIVE_CONNECTIONS;
+	gHttpConnectedSubState = CONNECTED_INITIALIZE_TRANSMISSION;
 	sessionIdCount = 10;
 
 	ConnectionResponse.atCmd = CMD_AT_MAX;
@@ -74,9 +77,7 @@ void MdmConnect_HttpConnectionSchedule(void)
 
         case MDM_HTTP_CONNECTED:
         {
-			mdmCtrlr_FlushRxBuffer();
-        	SerialDebugPrint("HTTP CONNECTED",14);
-        	gHttpConnectionState = MDM_HTTP_DISCONNECTION_IN_PROGRESS;
+        	MdmCnct_ConnectedSubStateMachine();
         }
         break;
 
@@ -110,8 +111,9 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
     BaseType_t TxQueuePushStatus;
     const TickType_t QueuePushDelayMs = pdMS_TO_TICKS(500UL);
     const TickType_t TransmitDelayMs = pdMS_TO_TICKS(500UL);
-    const TickType_t ResponseWaittDelayMs = pdMS_TO_TICKS(300UL);
-	
+    const TickType_t ResponseWaitDelayMs = pdMS_TO_TICKS(300UL);
+    const TickType_t PacketTransmitDelayMs = pdMS_TO_TICKS(1500UL);
+
 	switch (gHttpConnectionInProgressSubstate)
 	{
         case CONNECT_IN_PROGRESS_CLOSE_CONNECTION:
@@ -165,7 +167,7 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
         	}
         	else if(gHttpConnectOpMode == HTTP_CONNECT_OP_RX_MODE)
         	{
-        		if(pdPASS == xQueueReceive( CmdResponseQueue, &ConnectionResponse, ResponseWaittDelayMs))
+        		if(pdPASS == xQueueReceive( CmdResponseQueue, &ConnectionResponse, ResponseWaitDelayMs))
 				{
 	        		if(ConnectionResponse.atCmd == getCloseActiveSessionCmd(sessionIdCount))
 	        		{
@@ -240,7 +242,7 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
         	}
         	else if(gHttpConnectOpMode == HTTP_CONNECT_OP_RX_MODE)
         	{
-        		if(pdPASS == xQueueReceive( CmdResponseQueue, &ConnectionResponse, ResponseWaittDelayMs))
+        		if(pdPASS == xQueueReceive( CmdResponseQueue, &ConnectionResponse, ResponseWaitDelayMs))
 				{
 	        		if(ConnectionResponse.atCmd == CMD_AT_KPATTERN)
 	        		{
@@ -303,7 +305,7 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
         	}
         	else if(gHttpConnectOpMode == HTTP_CONNECT_OP_RX_MODE)
         	{
-        		if(pdPASS == xQueueReceive( CmdResponseQueue, &ConnectionResponse, ResponseWaittDelayMs))
+        		if(pdPASS == xQueueReceive( CmdResponseQueue, &ConnectionResponse, ResponseWaitDelayMs))
 				{
 	        		if(ConnectionResponse.atCmd == CMD_AT_KCNXCFG)
 	        		{
@@ -366,7 +368,7 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
         	}
         	else if(gHttpConnectOpMode == HTTP_CONNECT_OP_RX_MODE)
         	{
-        		if(pdPASS == xQueueReceive( CmdResponseQueue, &ConnectionResponse, ResponseWaittDelayMs))
+        		if(pdPASS == xQueueReceive( CmdResponseQueue, &ConnectionResponse, ResponseWaitDelayMs))
 				{
 	        		if(ConnectionResponse.atCmd == CMD_AT_KCNXTIMER)
 	        		{
@@ -429,7 +431,7 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
         	}
         	else if(gHttpConnectOpMode == HTTP_CONNECT_OP_RX_MODE)
         	{
-        		if(pdPASS == xQueueReceive( CmdResponseQueue, &ConnectionResponse, ResponseWaittDelayMs))
+        		if(pdPASS == xQueueReceive( CmdResponseQueue, &ConnectionResponse, ResponseWaitDelayMs))
 				{
 	        		if(ConnectionResponse.atCmd == CMD_AT_KHTTP_CFG)
 	        		{
@@ -494,7 +496,7 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
         	}
         	else if(gHttpConnectOpMode == HTTP_CONNECT_OP_RX_MODE)
         	{
-        		if(pdPASS == xQueueReceive( CmdResponseQueue, &ConnectionResponse, ResponseWaittDelayMs))
+        		if(pdPASS == xQueueReceive( CmdResponseQueue, &ConnectionResponse, ResponseWaitDelayMs))
 				{
 	        		if(ConnectionResponse.atCmd == CMD_AT_KHTTP_HEADER)
 	        		{
@@ -506,6 +508,8 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
 							gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_CLOSE_CONNECTION;
 							gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
 							gHttpConnectionState = MDM_HTTP_CONNECTED;
+							gHttpConnectedSubState = CONNECTED_INITIALIZE_TRANSMISSION;
+							vTaskDelay(PacketTransmitDelayMs);
 						}
 						else
 						{
@@ -532,6 +536,119 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
         break;
 	}
 
+}
+
+/*============================================================================
+**
+** Function Name:      mdmCtrlr_FlushRxBuffer
+**
+** Description:        Flushes the Rx Ring Buffer
+**
+**===========================================================================*/
+static void MdmCnct_ConnectedSubStateMachine(void)
+{
+	const TickType_t BuildPacketDelayMs = pdMS_TO_TICKS(500UL);
+	const TickType_t TransmitDelayMs = pdMS_TO_TICKS(2500UL);
+	const TickType_t ResponseWaitDelayMs = pdMS_TO_TICKS(2000UL);
+	const TickType_t reTransmissionDelayMs = pdMS_TO_TICKS(7000UL);
+	const TickType_t QueuePushDelayMs = pdMS_TO_TICKS(500UL);
+
+    AtTxMsgType TxMsgQueueData;
+    BaseType_t TxQueuePushStatus;
+
+
+	switch(gHttpConnectedSubState)
+	{
+		case CONNECTED_INITIALIZE_TRANSMISSION:
+		{
+			mdmCtrlr_FlushRxBuffer();
+			gHttpConnectedSubState = CONNECTED_BUILD_DATA_PACKET_TO_SERVER;
+		}
+		break;
+
+		case CONNECTED_WAIT_FOR_PERIODIC_TIMER_EXPIRY:
+		{
+
+		}
+		break;
+
+		case CONNECTED_BUILD_DATA_PACKET_TO_SERVER:
+		{
+			buildDataPacketsToServer();
+			vTaskDelay(BuildPacketDelayMs);
+		}
+		break;
+
+		case CONNECTED_SEND_DATA_PACKETS_TO_SERVER:
+		{
+		    if (uxQueueMessagesWaiting(AtTransmitQueue) == 0)
+		    {
+		        if(pdPASS == xSemaphoreTake(AtTxQueueLoadSemaphore, 0))
+		        {
+                    TxMsgQueueData.taskID = MODEM_PROCESS_TASK;
+                    TxMsgQueueData.atCmd = CMD_AT_KHTTP_GET;
+                    TxMsgQueueData.pData = NULL;
+                    TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
+
+                    if(TxQueuePushStatus == pdPASS)
+                    {
+                        xSemaphoreGive(AtTxQueueLoadSemaphore);
+                        gHttpConnectedSubState = CONNECTED_RECEIVE_RESPONSE_FROM_SERVER;
+                        vTaskDelay(TransmitDelayMs);
+                    }
+                    else
+                    {
+                        DEBUG_PRINT("Failed to sent connection timer cmd to Tx Task");
+                        vTaskDelay(TransmitDelayMs);
+                    }
+		        }
+		        else
+		        {
+		        	DEBUG_PRINT("Error : Not able to obtain Tx Semapahore");
+		        }
+		    }
+		    else
+		    {
+		    	DEBUG_PRINT("Transmit Queue is not empty");
+		    }
+		}
+		break;
+
+		case CONNECTED_RECEIVE_RESPONSE_FROM_SERVER:
+		{
+    		if(pdPASS == xQueueReceive( CmdResponseQueue, &ConnectionResponse, ResponseWaitDelayMs))
+			{
+        		if(ConnectionResponse.atCmd == CMD_AT_KHTTP_GET)
+        		{
+	        		SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
+					SerialDebugPrint("\r\n",2);
+					gHttpConnectedSubState = CONNECTED_SEND_DATA_PACKETS_TO_SERVER;
+	        		vPortFree(ConnectionResponse.response);
+	        		vTaskDelay(reTransmissionDelayMs);
+        		}
+        		else
+        		{
+	        		DEBUG_PRINT("Failed to receive connection response in RX mode");
+	        		gHttpConnectedSubState = CONNECTED_SEND_DATA_PACKETS_TO_SERVER;
+	        		vPortFree(ConnectionResponse.response);
+	        		vTaskDelay(reTransmissionDelayMs);
+        		}
+			}
+    		else
+    		{
+    			/* Response for the data packet is not received on time */
+    			gHttpConnectedSubState = CONNECTED_FAULT_IN_PACKET_TRANSMISSION;
+    		}
+		}
+		break;
+
+		case CONNECTED_FAULT_IN_PACKET_TRANSMISSION:
+		{
+			gHttpConnectedSubState = CONNECTED_INITIALIZE_TRANSMISSION;
+			vTaskDelay(reTransmissionDelayMs);
+		}
+		break;
+	}
 }
 
 /*============================================================================

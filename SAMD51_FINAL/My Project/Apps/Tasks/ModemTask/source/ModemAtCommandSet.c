@@ -409,3 +409,15 @@ void buildHttpHeaderWithActiveSessionID(const uint8_t* activeSessionId)
 	}
 }
 
+/*============================================================================
+**
+** Function Name:      mdmCtrlr_FlushRxBuffer
+**
+** Description:        Flushes the Rx Ring Buffer
+**
+**===========================================================================*/
+void buildDataPacketsToServer(void)
+{
+	strncpy(kHttpGetCompleteData,kHttpGetString,15);
+	strncat(kHttpGetCompleteData,"\"?i=359998070228764&d=A1Y52XA2Y36&b=36&s=2\"\r",44);
+}
