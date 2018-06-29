@@ -664,7 +664,8 @@ static void MdmCnct_ConnectedSubStateMachine(void)
 			gErrorRecoveryState = CLOSE_ALL_EXISTING_CONNECIONS;
 			sessionIdCount = 5;
 			gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
-			SerialDebugPrint("Performing the Error Recovery\r\n",31);
+			SerialDebugPrint("\r\nPerforming the Error Recovery\r\n",31);
+			SerialDebugPrint("Closing the active connection.\r\n",33);
 			vTaskDelay(QueuePushDelayMs);
 		}
 		break;
@@ -714,7 +715,7 @@ static bool MdmCnct_PeformErrorRecovery(void)
     AtTxMsgType TxMsgQueueData;
     BaseType_t TxQueuePushStatus;
 	const TickType_t TransmitDelayMs = pdMS_TO_TICKS(2500UL);
-	const TickType_t ResponseWaitDelayMs = pdMS_TO_TICKS(2000UL);
+	const TickType_t ResponseWaitDelayMs = pdMS_TO_TICKS(4000UL);
 	const TickType_t QueuePushDelayMs = pdMS_TO_TICKS(500UL);
 
 	switch(gErrorRecoveryState)
@@ -793,6 +794,11 @@ static bool MdmCnct_PeformErrorRecovery(void)
 		        		vPortFree(ConnectionResponse.response);
 	        		}
 				}
+        		else
+        		{
+        			SerialDebugPrint("Problem in Auto Recovery. Rebooting the system....\r\n",41);
+        			requestWatchDogForcedReset();
+        		}
         	}
         	else
         	{
@@ -857,6 +863,11 @@ static bool MdmCnct_PeformErrorRecovery(void)
 		        		gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
 		        		vPortFree(ConnectionResponse.response);
 	        		}
+				}
+				else
+				{
+        			SerialDebugPrint("Problem in Auto Recovery. Rebooting the system....\r\n",41);
+        			requestWatchDogForcedReset();
 				}
 			}
 			else
@@ -923,6 +934,14 @@ static bool MdmCnct_PeformErrorRecovery(void)
 						SerialDebugPrint("Establishing a new connection with server\r\n",43);
 						errorRecoveryCnt++;
 		        		vPortFree(ConnectionResponse.response);
+
+		        		if(errorRecoveryCnt >=3)
+		        		{
+		        			SerialDebugPrint("System is auto recovered for more than 3 times.\r\n",49);
+		        			SerialDebugPrint("Performing a system restart....................\r\n",49);
+		        			errorRecoveryCnt = 0;
+		        			requestWatchDogForcedReset();
+		        		}
 	        		}
 	        		else
 	        		{
@@ -931,6 +950,11 @@ static bool MdmCnct_PeformErrorRecovery(void)
 		        		gHttpConnectedSubState = CONNECTED_PEFORM_ERROR_RECOVERY;
 		        		vPortFree(ConnectionResponse.response);
 	        		}
+				}
+				else
+				{
+        			SerialDebugPrint("Problem in Auto Recovery. Rebooting the system....\r\n",41);
+        			requestWatchDogForcedReset();
 				}
 			}
 			else

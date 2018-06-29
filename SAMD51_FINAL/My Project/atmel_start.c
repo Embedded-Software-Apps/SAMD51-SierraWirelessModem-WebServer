@@ -96,14 +96,24 @@ int32_t kickWatchDog(void)
 	if(bForcedResetRequested == false)
 	{
 		status = wdt_feed(&WDT_0);
-		//DEBUG_PRINT("Kicked WDT");
 	}
 	else
 	{
 		status = ERR_DENIED;
-		//DEBUG_PRINT("Not able to Kick WDT");
 	}
 
 	return status;
 }
 
+/*******************************************************************************
+*
+* NAME       : kickWatchDog
+*
+* DESCRIPTION: Restart the WDT
+*
+********************************************************************************/
+void requestWatchDogForcedReset(void)
+{
+	bForcedResetRequested = true;
+	configureWatchDogTimeOut(WDT_TIMEOUT_FAST);
+}

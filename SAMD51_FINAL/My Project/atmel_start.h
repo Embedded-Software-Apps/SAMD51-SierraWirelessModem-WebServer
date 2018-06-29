@@ -36,6 +36,7 @@ void atmel_start_init(void);
 void configureWatchDogTimeOut(WDT_TIMEOUT_TYPE type);
 int32_t kickWatchDog(void);
 void enableWatchDogTimer(void);
+void requestWatchDogForcedReset(void);
 
 #ifdef __cplusplus
 }

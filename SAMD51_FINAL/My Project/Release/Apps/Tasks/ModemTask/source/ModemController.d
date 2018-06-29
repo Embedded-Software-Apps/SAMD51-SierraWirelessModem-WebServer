@@ -192,6 +192,8 @@ Apps/Tasks/ModemTask/source/ModemController.d \
  ../Apps\SerialDebug\SerialDebug.h \
  ../Apps\UartDriver\include\UartDriver.h ../Apps/Common/Common.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/timers.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
  ../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h \
  ../Apps/SerialDebug/SerialDebug.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include-fixed\limits.h \
@@ -679,6 +681,10 @@ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\inclu
 ../Apps/Common/Common.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/timers.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
 
 ../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h:
 

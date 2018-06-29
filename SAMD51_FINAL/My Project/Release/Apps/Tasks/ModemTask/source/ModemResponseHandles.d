@@ -23,6 +23,8 @@ Apps/Tasks/ModemTask/source/ModemResponseHandles.d \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/timers.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
  ../Apps/SerialDebug/SerialDebug.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
@@ -79,6 +81,10 @@ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-ea
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/timers.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
 
 ../Apps/SerialDebug/SerialDebug.h:
 

@@ -12,6 +12,7 @@
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h"
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h"
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h"
+#include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/timers.h"
 #include "Apps/Tasks/ModemTask/include/ModemAtCommandSet.h"
 #include "Apps/SerialDebug/SerialDebug.h"
 #include "semphr.h"

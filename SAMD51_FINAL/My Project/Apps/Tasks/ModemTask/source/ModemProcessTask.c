@@ -19,8 +19,9 @@
 /******************************************************************************************
 ************************************STATIC VARIABLES***************************************
 *******************************************************************************************/
+#define HOURLY_RESTART_TIMER_LOAD_VALUE pdMS_TO_TICKS(3600000)
 
-
+static void SystemAutoRestartTimerCallBack(void* param);
 
 /*******************************************************************************
 *
@@ -34,9 +35,20 @@ void ModemProcessTask( void *ModemTaskParam)
 {
     const TickType_t xDelayMs = pdMS_TO_TICKS(400UL);
     const TickType_t xDebugPrintDelayMs = pdMS_TO_TICKS(500UL);
+    TimerHandle_t xAutoReloadHourlyTimer;
 
     modemPowerStateInit();
     MdmConnect_HttpConnectionInit();
+
+    xAutoReloadHourlyTimer = xTimerCreate("HourlySystemRestartTimer",HOURLY_RESTART_TIMER_LOAD_VALUE,pdTRUE,0,SystemAutoRestartTimerCallBack);
+
+    if(xAutoReloadHourlyTimer != NULL)
+    {
+    	if(pdPASS == xTimerStart(xAutoReloadHourlyTimer,0))
+    	{
+    		SerialDebugPrint("Hourly Modem Restart timer is started.\r\n",40);
+    	}
+    }
 
     while(1)
     {
@@ -51,3 +63,8 @@ void ModemProcessTask( void *ModemTaskParam)
     }
 }
 
+static void SystemAutoRestartTimerCallBack(void* param)
+{
+	SerialDebugPrint("Hourly System Restart timer expired. Rebooting the system.\r\n",60);
+	requestWatchDogForcedReset();
+}

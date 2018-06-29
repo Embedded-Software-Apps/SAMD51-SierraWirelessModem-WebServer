@@ -163,15 +163,15 @@ Apps/Tasks/DispatchTask/source/DispatchTask.d \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/timers.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
  ../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h \
  ../Apps/SerialDebug/SerialDebug.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include-fixed\limits.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include-fixed\syslimits.h \
- e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\limits.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/timers.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h
+ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\limits.h
 
 ../hal/include/hal_delay.h:
 
@@ -551,6 +551,10 @@ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\inclu
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h:
 
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/timers.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
+
 ../Apps/Tasks/ModemTask/include/ModemAtCommandSet.h:
 
 ../Apps/SerialDebug/SerialDebug.h:
@@ -564,7 +568,3 @@ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-ea
 e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include-fixed\syslimits.h:
 
 e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\limits.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/timers.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
