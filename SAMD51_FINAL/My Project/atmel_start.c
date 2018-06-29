@@ -20,7 +20,7 @@ WdtDelay cfgSystemWdt[3] =
     {WDT_TIMEOUT_DELAYED,WDT_10_SEC_TIMEOUT},
 };
 
-static bool bForcedResetRequested = false;
+static WDT_FORCED_RESET_TYPE ForcedResetRequested = WDT_FORCED_RESET_OFF;
 
 /*******************************************************************************
 *
@@ -33,7 +33,7 @@ void atmel_start_init(void)
 {
     system_init();
     delay_ms(1000);
-
+    ForcedResetRequested = WDT_FORCED_RESET_OFF;
     /* Enable the WDT with 10 second timeout as of now */
     enableWatchDogTimer();
 }
@@ -93,7 +93,7 @@ int32_t kickWatchDog(void)
 {	
 	int32_t status = ERR_NONE;
 
-	if(bForcedResetRequested == false)
+	if(WDT_FORCED_RESET_OFF == ForcedResetRequested)
 	{
 		status = wdt_feed(&WDT_0);
 	}
@@ -114,6 +114,6 @@ int32_t kickWatchDog(void)
 ********************************************************************************/
 void requestWatchDogForcedReset(void)
 {
-	bForcedResetRequested = true;
-	configureWatchDogTimeOut(WDT_TIMEOUT_FAST);
+	ForcedResetRequested = WDT_FORCED_RESET_ON;
+	//configureWatchDogTimeOut(WDT_TIMEOUT_FAST);
 }

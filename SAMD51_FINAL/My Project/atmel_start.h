@@ -20,6 +20,12 @@ typedef enum
     WDT_TIMEOUT_DELAYED,
 }WDT_TIMEOUT_TYPE;
 
+typedef enum
+{
+	WDT_FORCED_RESET_ON,
+	WDT_FORCED_RESET_OFF
+}WDT_FORCED_RESET_TYPE;
+
 
 typedef struct
 {
