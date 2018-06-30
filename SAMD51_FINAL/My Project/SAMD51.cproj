@@ -506,130 +506,130 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Apps\Common\Common.h">
+    <Compile Include="Application\Common\Common.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Common\FreeRtosHooks.c">
+    <Compile Include="Application\Common\FreeRtosHooks.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\JsonParser\include\JsonPacket.h">
+    <Compile Include="Application\JsonParser\include\JsonPacket.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\JsonParser\include\parson.h">
+    <Compile Include="Application\JsonParser\include\parson.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\JsonParser\source\JsonPacket.c">
+    <Compile Include="Application\JsonParser\source\JsonPacket.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\JsonParser\source\parson.c">
+    <Compile Include="Application\JsonParser\source\parson.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\LedControl\include\ledConfig.h">
+    <Compile Include="Application\LedControl\include\ledConfig.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\LedControl\include\ledControl.h">
+    <Compile Include="Application\LedControl\include\ledControl.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\LedControl\source\ledControl.c">
+    <Compile Include="Application\LedControl\source\ledControl.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\LedControl\source\ledPwmControl.c">
+    <Compile Include="Application\LedControl\source\ledPwmControl.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\SelectInputs\include\selectInputs.h">
+    <Compile Include="Application\SelectInputs\include\selectInputs.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\SelectInputs\source\selectInputs.c">
+    <Compile Include="Application\SelectInputs\source\selectInputs.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\SensorAdcInputs\include\SensorAdcInputs.h">
+    <Compile Include="Application\SensorAdcInputs\include\SensorAdcInputs.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\SensorAdcInputs\source\SensorAdcInputs.c">
+    <Compile Include="Application\SensorAdcInputs\source\SensorAdcInputs.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\SensorTask\include\SensorTask.h">
+    <Compile Include="Application\Tasks\SensorTask\include\SensorTask.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\SensorTask\source\SensorTask.c">
+    <Compile Include="Application\Tasks\SensorTask\source\SensorTask.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\include\ModemAtCommandSet.h">
+    <Compile Include="Application\Tasks\ModemTask\include\ModemAtCommandSet.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\include\ModemCmdParser.h">
+    <Compile Include="Application\Tasks\ModemTask\include\ModemCmdParser.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\include\ModemConnection.h">
+    <Compile Include="Application\Tasks\ModemTask\include\ModemConnection.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\include\ModemConnectionConfig.h">
+    <Compile Include="Application\Tasks\ModemTask\include\ModemConnectionConfig.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\include\ModemController.h">
+    <Compile Include="Application\Tasks\ModemTask\include\ModemController.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\include\ModemDiagTask.h">
+    <Compile Include="Application\Tasks\ModemTask\include\ModemDiagTask.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\include\ModemParameters.h">
+    <Compile Include="Application\Tasks\ModemTask\include\ModemParameters.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\include\ModemPowerControl.h">
+    <Compile Include="Application\Tasks\ModemTask\include\ModemPowerControl.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\include\ModemResponseHandles.h">
+    <Compile Include="Application\Tasks\ModemTask\include\ModemResponseHandles.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\include\ModemRxTask.h">
+    <Compile Include="Application\Tasks\ModemTask\include\ModemRxTask.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\include\ModemTxTask.h">
+    <Compile Include="Application\Tasks\ModemTask\include\ModemTxTask.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\source\ModemAtCommandSet.c">
+    <Compile Include="Application\Tasks\ModemTask\source\ModemAtCommandSet.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\source\ModemCmdParser.c">
+    <Compile Include="Application\Tasks\ModemTask\source\ModemCmdParser.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\source\ModemConnection.c">
+    <Compile Include="Application\Tasks\ModemTask\source\ModemConnection.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\source\ModemController.c">
+    <Compile Include="Application\Tasks\ModemTask\source\ModemController.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\source\ModemDiagTask.c">
+    <Compile Include="Application\Tasks\ModemTask\source\ModemDiagTask.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\source\ModemParameters.c">
+    <Compile Include="Application\Tasks\ModemTask\source\ModemParameters.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\source\ModemPowerControl.c">
+    <Compile Include="Application\Tasks\ModemTask\source\ModemPowerControl.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\source\ModemProcessTask.c">
+    <Compile Include="Application\Tasks\ModemTask\source\ModemProcessTask.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\source\ModemResponseHandles.c">
+    <Compile Include="Application\Tasks\ModemTask\source\ModemResponseHandles.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\source\ModemRxTask.c">
+    <Compile Include="Application\Tasks\ModemTask\source\ModemRxTask.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\ModemTask\source\ModemTxTask.c">
+    <Compile Include="Application\Tasks\ModemTask\source\ModemTxTask.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\UartDriver\include\UartDriver.h">
+    <Compile Include="Application\UartDriver\include\UartDriver.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\UartDriver\source\UartDriver.c">
+    <Compile Include="Application\UartDriver\source\UartDriver.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\SerialDebug\SerialDebug.c">
+    <Compile Include="Application\SerialDebug\SerialDebug.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\SerialDebug\SerialDebug.h">
+    <Compile Include="Application\SerialDebug\SerialDebug.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="atmel_start.c">
@@ -1300,31 +1300,31 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Apps\JsonParser\include" />
-    <Folder Include="Apps\JsonParser\source" />
-    <Folder Include="Apps\LedControl" />
-    <Folder Include="Apps\LedControl\include" />
-    <Folder Include="Apps\LedControl\source" />
-    <Folder Include="Apps\Common" />
-    <Folder Include="Apps\CounterInputs" />
-    <Folder Include="Apps\JsonParser" />
-    <Folder Include="Apps\SelectInputs" />
-    <Folder Include="Apps\SelectInputs\include" />
-    <Folder Include="Apps\SelectInputs\source" />
-    <Folder Include="Apps\SensorAdcInputs" />
-    <Folder Include="Apps\SensorAdcInputs\include" />
-    <Folder Include="Apps\SensorAdcInputs\source" />
-    <Folder Include="Apps\Tasks" />
-    <Folder Include="Apps\Tasks\SensorTask\include" />
-    <Folder Include="Apps\Tasks\SensorTask\source" />
-    <Folder Include="Apps\Tasks\ModemTask" />
-    <Folder Include="Apps\Tasks\ModemTask\include" />
-    <Folder Include="Apps\Tasks\ModemTask\source" />
-    <Folder Include="Apps\Tasks\SensorTask" />
-    <Folder Include="Apps\UartDriver" />
-    <Folder Include="Apps\UartDriver\include" />
-    <Folder Include="Apps\UartDriver\source" />
-    <Folder Include="Apps\SerialDebug" />
+    <Folder Include="Application\JsonParser\include" />
+    <Folder Include="Application\JsonParser\source" />
+    <Folder Include="Application\LedControl" />
+    <Folder Include="Application\LedControl\include" />
+    <Folder Include="Application\LedControl\source" />
+    <Folder Include="Application\Common" />
+    <Folder Include="Application\CounterInputs" />
+    <Folder Include="Application\JsonParser" />
+    <Folder Include="Application\SelectInputs" />
+    <Folder Include="Application\SelectInputs\include" />
+    <Folder Include="Application\SelectInputs\source" />
+    <Folder Include="Application\SensorAdcInputs" />
+    <Folder Include="Application\SensorAdcInputs\include" />
+    <Folder Include="Application\SensorAdcInputs\source" />
+    <Folder Include="Application\Tasks" />
+    <Folder Include="Application\Tasks\SensorTask\include" />
+    <Folder Include="Application\Tasks\SensorTask\source" />
+    <Folder Include="Application\Tasks\ModemTask" />
+    <Folder Include="Application\Tasks\ModemTask\include" />
+    <Folder Include="Application\Tasks\ModemTask\source" />
+    <Folder Include="Application\Tasks\SensorTask" />
+    <Folder Include="Application\UartDriver" />
+    <Folder Include="Application\UartDriver\include" />
+    <Folder Include="Application\UartDriver\source" />
+    <Folder Include="Application\SerialDebug" />
     <Folder Include="Config\" />
     <Folder Include="Device_Startup\" />
     <Folder Include="examples\" />
@@ -1338,7 +1338,7 @@
     <Folder Include="hpl\ac\" />
     <Folder Include="hpl\adc\" />
     <Folder Include="hpl\core\" />
-    <Folder Include="Apps" />
+    <Folder Include="Application" />
     <Folder Include="hpl\dac\" />
     <Folder Include="hpl\dmac\" />
     <Folder Include="hpl\eic\" />

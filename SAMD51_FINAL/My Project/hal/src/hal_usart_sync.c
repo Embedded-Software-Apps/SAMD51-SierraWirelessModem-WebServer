@@ -44,7 +44,7 @@
 #include "hal_usart_sync.h"
 #include <utils_assert.h>
 #include <utils.h>
-#include "Apps/SerialDebug/SerialDebug.h"
+#include "Application/SerialDebug/SerialDebug.h"
 #include <stdio.h>
 /**
  * \brief Driver version

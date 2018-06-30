@@ -2,47 +2,47 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-Apps\Common\FreeRtosHooks.c
+Application\Common\FreeRtosHooks.c
 
-Apps\JsonParser\source\JsonPacket.c
+Application\JsonParser\source\JsonPacket.c
 
-Apps\JsonParser\source\parson.c
+Application\JsonParser\source\parson.c
 
-Apps\LedControl\source\ledControl.c
+Application\LedControl\source\ledControl.c
 
-Apps\LedControl\source\ledPwmControl.c
+Application\LedControl\source\ledPwmControl.c
 
-Apps\SelectInputs\source\selectInputs.c
+Application\SelectInputs\source\selectInputs.c
 
-Apps\SensorAdcInputs\source\SensorAdcInputs.c
+Application\SensorAdcInputs\source\SensorAdcInputs.c
 
-Apps\Tasks\SensorTask\source\SensorTask.c
+Application\Tasks\SensorTask\source\SensorTask.c
 
-Apps\Tasks\ModemTask\source\ModemAtCommandSet.c
+Application\Tasks\ModemTask\source\ModemAtCommandSet.c
 
-Apps\Tasks\ModemTask\source\ModemCmdParser.c
+Application\Tasks\ModemTask\source\ModemCmdParser.c
 
-Apps\Tasks\ModemTask\source\ModemConnection.c
+Application\Tasks\ModemTask\source\ModemConnection.c
 
-Apps\Tasks\ModemTask\source\ModemController.c
+Application\Tasks\ModemTask\source\ModemController.c
 
-Apps\Tasks\ModemTask\source\ModemDiagTask.c
+Application\Tasks\ModemTask\source\ModemDiagTask.c
 
-Apps\Tasks\ModemTask\source\ModemParameters.c
+Application\Tasks\ModemTask\source\ModemParameters.c
 
-Apps\Tasks\ModemTask\source\ModemPowerControl.c
+Application\Tasks\ModemTask\source\ModemPowerControl.c
 
-Apps\Tasks\ModemTask\source\ModemProcessTask.c
+Application\Tasks\ModemTask\source\ModemProcessTask.c
 
-Apps\Tasks\ModemTask\source\ModemResponseHandles.c
+Application\Tasks\ModemTask\source\ModemResponseHandles.c
 
-Apps\Tasks\ModemTask\source\ModemRxTask.c
+Application\Tasks\ModemTask\source\ModemRxTask.c
 
-Apps\Tasks\ModemTask\source\ModemTxTask.c
+Application\Tasks\ModemTask\source\ModemTxTask.c
 
-Apps\UartDriver\source\UartDriver.c
+Application\UartDriver\source\UartDriver.c
 
-Apps\SerialDebug\SerialDebug.c
+Application\SerialDebug\SerialDebug.c
 
 atmel_start.c
 

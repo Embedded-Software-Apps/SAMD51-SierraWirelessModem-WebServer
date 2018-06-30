@@ -1,11 +1,11 @@
 Archive member included to satisfy reference by file (symbol)
 
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m\libgcc.a(_arm_addsubdf3.o)
-                              Apps/JsonParser/source/parson.o (__aeabi_dsub)
+                              Application/JsonParser/source/parson.o (__aeabi_dsub)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m\libgcc.a(_arm_muldivdf3.o)
-                              Apps/JsonParser/source/parson.o (__aeabi_dmul)
+                              Application/JsonParser/source/parson.o (__aeabi_dmul)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m\libgcc.a(_arm_cmpdf2.o)
-                              Apps/JsonParser/source/parson.o (__aeabi_dcmpeq)
+                              Application/JsonParser/source/parson.o (__aeabi_dcmpeq)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m\libgcc.a(_arm_fixunsdfsi.o)
                               hpl/sercom/hpl_sercom.o (__aeabi_d2uiz)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m\libgcc.a(_aeabi_uldivmod.o)
@@ -15,27 +15,27 @@ e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m\libgcc.a(_dvmd_tls.o)
                               e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m\libgcc.a(_aeabi_uldivmod.o) (__aeabi_ldiv0)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-errno.o)
-                              Apps/JsonParser/source/parson.o (__errno)
+                              Application/JsonParser/source/parson.o (__errno)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-exit.o)
                               e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/crt0.o (exit)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-fclose.o)
-                              Apps/JsonParser/source/parson.o (fclose)
+                              Application/JsonParser/source/parson.o (fclose)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-fflush.o)
                               e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-fclose.o) (__sflush_r)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-findfp.o)
                               e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-fclose.o) (__sinit)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-fopen.o)
-                              Apps/JsonParser/source/parson.o (fopen)
+                              Application/JsonParser/source/parson.o (fopen)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-fputs.o)
-                              Apps/JsonParser/source/parson.o (fputs)
+                              Application/JsonParser/source/parson.o (fputs)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-fread.o)
-                              Apps/JsonParser/source/parson.o (fread)
+                              Application/JsonParser/source/parson.o (fread)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-fseek.o)
                               e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-fopen.o) (_fseek_r)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-fseeko.o)
                               e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-fseek.o) (_fseeko_r)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-ftell.o)
-                              Apps/JsonParser/source/parson.o (ftell)
+                              Application/JsonParser/source/parson.o (ftell)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-ftello.o)
                               e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-ftell.o) (_ftello_r)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-fwalk.o)
@@ -45,19 +45,19 @@ e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-init.o)
                               e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/crt0.o (__libc_init_array)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-locale.o)
-                              Apps/JsonParser/source/parson.o (__locale_ctype_ptr)
+                              Application/JsonParser/source/parson.o (__locale_ctype_ptr)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-makebuf.o)
                               e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-fseeko.o) (__smakebuf_r)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-malloc.o)
-                              Apps/JsonParser/source/parson.o (malloc)
+                              Application/JsonParser/source/parson.o (malloc)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-mbtowc_r.o)
                               e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-locale.o) (__ascii_mbtowc)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-memcmp.o)
-                              Apps/Tasks/ModemTask/source/ModemConnection.o (memcmp)
+                              Application/Tasks/ModemTask/source/ModemConnection.o (memcmp)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-memcpy-stub.o)
-                              Apps/JsonParser/source/parson.o (memcpy)
+                              Application/JsonParser/source/parson.o (memcpy)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-memmove.o)
-                              Apps/JsonParser/source/parson.o (memmove)
+                              Application/JsonParser/source/parson.o (memmove)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-memset.o)
                               e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/crt0.o (memset)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-freer.o)
@@ -69,13 +69,13 @@ e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-printf.o)
                               hal/utils/src/utils_syscalls.o (printf)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-puts.o)
-                              Apps/JsonParser/source/JsonPacket.o (puts)
+                              Application/JsonParser/source/JsonPacket.o (puts)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-reent.o)
                               e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-openr.o) (errno)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-refill.o)
                               e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-fread.o) (__srefill_r)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-rewind.o)
-                              Apps/JsonParser/source/parson.o (rewind)
+                              Application/JsonParser/source/parson.o (rewind)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-sbrkr.o)
                               e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-mallocr.o) (_sbrk_r)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-setbuf.o)
@@ -83,27 +83,27 @@ e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-setvbuf.o)
                               e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-setbuf.o) (setvbuf)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-sprintf.o)
-                              Apps/Common/FreeRtosHooks.o (sprintf)
+                              Application/Common/FreeRtosHooks.o (sprintf)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-stdio.o)
                               e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-findfp.o) (__sread)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-strcat.o)
-                              Apps/Tasks/ModemTask/source/ModemAtCommandSet.o (strcat)
+                              Application/Tasks/ModemTask/source/ModemAtCommandSet.o (strcat)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-strchr.o)
-                              Apps/JsonParser/source/parson.o (strchr)
+                              Application/JsonParser/source/parson.o (strchr)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-strcmp.o)
-                              Apps/JsonParser/source/parson.o (strcmp)
+                              Application/JsonParser/source/parson.o (strcmp)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-strcpy.o)
-                              Apps/SerialDebug/SerialDebug.o (strcpy)
+                              Application/SerialDebug/SerialDebug.o (strcpy)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-strlen.o)
-                              Apps/Common/FreeRtosHooks.o (strlen)
+                              Application/Common/FreeRtosHooks.o (strlen)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-strncmp.o)
-                              Apps/JsonParser/source/parson.o (strncmp)
+                              Application/JsonParser/source/parson.o (strncmp)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-strncpy.o)
-                              Apps/JsonParser/source/parson.o (strncpy)
+                              Application/JsonParser/source/parson.o (strncpy)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-strstr.o)
-                              Apps/JsonParser/source/parson.o (strstr)
+                              Application/JsonParser/source/parson.o (strstr)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-strtod.o)
-                              Apps/JsonParser/source/parson.o (strtod)
+                              Application/JsonParser/source/parson.o (strtod)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-wbuf.o)
                               e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-fputs.o) (__swbuf_r)
 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-wctomb_r.o)
@@ -172,59 +172,59 @@ Common symbol       size              file
 
 USART_2             0xc               driver_init.o
 TIMER_2             0x20              driver_init.o
-sysTimeFirst        0x4               Apps/Common/FreeRtosHooks.o
+sysTimeFirst        0x4               Application/Common/FreeRtosHooks.o
 PWM_0               0x1c              driver_init.o
 PWM_2               0x1c              driver_init.o
 TIMER_3_task1       0x14              examples/driver_examples.o
-CmdResponseQueue    0x4               Apps/Common/FreeRtosHooks.o
+CmdResponseQueue    0x4               Application/Common/FreeRtosHooks.o
 errno               0x4               e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-reent.o)
 TIMER_7_task1       0x14              examples/driver_examples.o
-xModemTxTaskHandle  0x4               Apps/Common/FreeRtosHooks.o
+xModemTxTaskHandle  0x4               Application/Common/FreeRtosHooks.o
 FLASH_0             0x1c              driver_init.o
 TIMER_5_task2       0x14              examples/driver_examples.o
 TIMER_7             0x20              driver_init.o
-sysTimeFinal        0x4               Apps/Common/FreeRtosHooks.o
+sysTimeFinal        0x4               Application/Common/FreeRtosHooks.o
 printBuff           0x1e              hal/src/hal_usart_sync.o
 TIMER_6_task1       0x14              examples/driver_examples.o
 AC_0                0x4               driver_init.o
 TIMER_5_task1       0x14              examples/driver_examples.o
-rxEcho              0x2               Apps/Tasks/ModemTask/source/ModemController.o
+rxEcho              0x2               Application/Tasks/ModemTask/source/ModemController.o
 xModemProcessTaskHandle
-                    0x4               Apps/Common/FreeRtosHooks.o
+                    0x4               Application/Common/FreeRtosHooks.o
 xModemDiagTaskHandle
-                    0x4               Apps/Common/FreeRtosHooks.o
+                    0x4               Application/Common/FreeRtosHooks.o
 USART_3             0xc               driver_init.o
-xDataQueue          0x4               Apps/Common/FreeRtosHooks.o
-xModemRxTaskHandle  0x4               Apps/Common/FreeRtosHooks.o
+xDataQueue          0x4               Application/Common/FreeRtosHooks.o
+xModemRxTaskHandle  0x4               Application/Common/FreeRtosHooks.o
 ADC_0               0x4               driver_init.o
 TIMER_4             0x20              driver_init.o
 WDT_0               0x4               driver_init.o
-rcvdChar            0x2               Apps/SerialDebug/SerialDebug.o
+rcvdChar            0x2               Application/SerialDebug/SerialDebug.o
 DAC_0               0x14              driver_init.o
 TIMER_1             0x20              driver_init.o
-printBuf            0x5               Apps/SerialDebug/SerialDebug.o
+printBuf            0x5               Application/SerialDebug/SerialDebug.o
 _irq_table          0x224             hpl/core/hpl_core_m4.o
 TIMER_5             0x20              driver_init.o
 TIMER_4_task1       0x14              examples/driver_examples.o
 TIMER_3_task2       0x14              examples/driver_examples.o
-PowerOnSuccessfull  0x1               Apps/Common/FreeRtosHooks.o
-ModemRxDatabuffer   0x800             Apps/Tasks/ModemTask/source/ModemController.o
-AtTransmitQueue     0x4               Apps/Common/FreeRtosHooks.o
-xSensorTaskHandle   0x4               Apps/Common/FreeRtosHooks.o
-DebugPrintMutex     0x4               Apps/Common/FreeRtosHooks.o
+PowerOnSuccessfull  0x1               Application/Common/FreeRtosHooks.o
+ModemRxDatabuffer   0x800             Application/Tasks/ModemTask/source/ModemController.o
+AtTransmitQueue     0x4               Application/Common/FreeRtosHooks.o
+xSensorTaskHandle   0x4               Application/Common/FreeRtosHooks.o
+DebugPrintMutex     0x4               Application/Common/FreeRtosHooks.o
 TIMER_6             0x20              driver_init.o
 TIMER_4_task2       0x14              examples/driver_examples.o
 TIMER_6_task2       0x14              examples/driver_examples.o
-RxRingBuffer        0x10              Apps/Tasks/ModemTask/source/ModemController.o
+RxRingBuffer        0x10              Application/Tasks/ModemTask/source/ModemController.o
 PWM_1               0x1c              driver_init.o
 TIMER_7_task2       0x14              examples/driver_examples.o
 ADC_1               0x4               driver_init.o
 TIMER_3             0x20              driver_init.o
-ModemDiagState      0x1               Apps/Tasks/ModemTask/source/ModemDiagTask.o
+ModemDiagState      0x1               Application/Tasks/ModemTask/source/ModemDiagTask.o
 device              0x10              hpl/ramecc/hpl_ramecc.o
 AtTxQueueLoadSemaphore
-                    0x4               Apps/Common/FreeRtosHooks.o
-AtReceiveQueue      0x4               Apps/Common/FreeRtosHooks.o
+                    0x4               Application/Common/FreeRtosHooks.o
+AtReceiveQueue      0x4               Application/Common/FreeRtosHooks.o
 readBuf             0xa               hal/src/hal_usart_sync.o
 TIMER_0             0x20              driver_init.o
 
@@ -241,331 +241,331 @@ Discarded input sections
  .ARM.exidx     0x00000000        0x8 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/crt0.o
  .ARM.attributes
                 0x00000000       0x1c e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/crt0.o
- .text          0x00000000        0x0 Apps/Common/FreeRtosHooks.o
- .data          0x00000000        0x0 Apps/Common/FreeRtosHooks.o
- .bss           0x00000000        0x0 Apps/Common/FreeRtosHooks.o
- .text          0x00000000        0x0 Apps/JsonParser/source/JsonPacket.o
- .data          0x00000000        0x0 Apps/JsonParser/source/JsonPacket.o
- .bss           0x00000000        0x0 Apps/JsonParser/source/JsonPacket.o
+ .text          0x00000000        0x0 Application/Common/FreeRtosHooks.o
+ .data          0x00000000        0x0 Application/Common/FreeRtosHooks.o
+ .bss           0x00000000        0x0 Application/Common/FreeRtosHooks.o
+ .text          0x00000000        0x0 Application/JsonParser/source/JsonPacket.o
+ .data          0x00000000        0x0 Application/JsonParser/source/JsonPacket.o
+ .bss           0x00000000        0x0 Application/JsonParser/source/JsonPacket.o
  .text.CreateJsonPacket_example
-                0x00000000       0xa4 Apps/JsonParser/source/JsonPacket.o
+                0x00000000       0xa4 Application/JsonParser/source/JsonPacket.o
  .rodata.str1.1
-                0x00000000       0x65 Apps/JsonParser/source/JsonPacket.o
- .comment       0x00000000       0x5a Apps/JsonParser/source/JsonPacket.o
+                0x00000000       0x65 Application/JsonParser/source/JsonPacket.o
+ .comment       0x00000000       0x5a Application/JsonParser/source/JsonPacket.o
  .ARM.attributes
-                0x00000000       0x37 Apps/JsonParser/source/JsonPacket.o
- .text          0x00000000        0x0 Apps/JsonParser/source/parson.o
- .data          0x00000000        0x8 Apps/JsonParser/source/parson.o
- .bss           0x00000000        0x0 Apps/JsonParser/source/parson.o
+                0x00000000       0x37 Application/JsonParser/source/JsonPacket.o
+ .text          0x00000000        0x0 Application/JsonParser/source/parson.o
+ .data          0x00000000        0x8 Application/JsonParser/source/parson.o
+ .bss           0x00000000        0x0 Application/JsonParser/source/parson.o
  .text.json_value_init_string_no_copy
-                0x00000000       0x20 Apps/JsonParser/source/parson.o
+                0x00000000       0x20 Application/JsonParser/source/parson.o
  .text.read_file
-                0x00000000       0xa0 Apps/JsonParser/source/parson.o
+                0x00000000       0xa0 Application/JsonParser/source/parson.o
  .text.json_object_resize
-                0x00000000       0x8c Apps/JsonParser/source/parson.o
+                0x00000000       0x8c Application/JsonParser/source/parson.o
  .text.json_array_resize
-                0x00000000       0x40 Apps/JsonParser/source/parson.o
+                0x00000000       0x40 Application/JsonParser/source/parson.o
  .text.json_array_add
-                0x00000000       0x38 Apps/JsonParser/source/parson.o
+                0x00000000       0x38 Application/JsonParser/source/parson.o
  .text.parson_strndup
-                0x00000000       0x2c Apps/JsonParser/source/parson.o
+                0x00000000       0x2c Application/JsonParser/source/parson.o
  .text.parson_strdup
-                0x00000000       0x1c Apps/JsonParser/source/parson.o
+                0x00000000       0x1c Application/JsonParser/source/parson.o
  .text.json_object_nget_value
-                0x00000000       0x54 Apps/JsonParser/source/parson.o
+                0x00000000       0x54 Application/JsonParser/source/parson.o
  .text.remove_comments
-                0x00000000       0x98 Apps/JsonParser/source/parson.o
+                0x00000000       0x98 Application/JsonParser/source/parson.o
  .text.append_string
-                0x00000000       0x1c Apps/JsonParser/source/parson.o
+                0x00000000       0x1c Application/JsonParser/source/parson.o
  .text.append_indent
-                0x00000000       0x40 Apps/JsonParser/source/parson.o
+                0x00000000       0x40 Application/JsonParser/source/parson.o
  .text.json_serialize_string
-                0x00000000      0x1f0 Apps/JsonParser/source/parson.o
+                0x00000000      0x1f0 Application/JsonParser/source/parson.o
  .text.hex_char_to_int
-                0x00000000       0x2a Apps/JsonParser/source/parson.o
+                0x00000000       0x2a Application/JsonParser/source/parson.o
  .text.parse_utf16_hex
-                0x00000000       0x5c Apps/JsonParser/source/parson.o
+                0x00000000       0x5c Application/JsonParser/source/parson.o
  .text.get_quoted_string
-                0x00000000      0x208 Apps/JsonParser/source/parson.o
+                0x00000000      0x208 Application/JsonParser/source/parson.o
  .text.json_object_get_value
-                0x00000000       0x2c Apps/JsonParser/source/parson.o
+                0x00000000       0x2c Application/JsonParser/source/parson.o
  .text.json_object_add
-                0x00000000       0x7c Apps/JsonParser/source/parson.o
+                0x00000000       0x7c Application/JsonParser/source/parson.o
  .text.json_object_get_count
-                0x00000000        0x6 Apps/JsonParser/source/parson.o
+                0x00000000        0x6 Application/JsonParser/source/parson.o
  .text.json_object_get_name
-                0x00000000       0x14 Apps/JsonParser/source/parson.o
+                0x00000000       0x14 Application/JsonParser/source/parson.o
  .text.json_object_get_value_at
-                0x00000000       0x14 Apps/JsonParser/source/parson.o
+                0x00000000       0x14 Application/JsonParser/source/parson.o
  .text.json_object_get_wrapping_value
-                0x00000000        0x4 Apps/JsonParser/source/parson.o
+                0x00000000        0x4 Application/JsonParser/source/parson.o
  .text.json_object_has_value
-                0x00000000       0x14 Apps/JsonParser/source/parson.o
+                0x00000000       0x14 Application/JsonParser/source/parson.o
  .text.json_object_has_value_of_type
-                0x00000000       0x18 Apps/JsonParser/source/parson.o
+                0x00000000       0x18 Application/JsonParser/source/parson.o
  .text.json_array_get_value
-                0x00000000       0x14 Apps/JsonParser/source/parson.o
+                0x00000000       0x14 Application/JsonParser/source/parson.o
  .text.json_array_get_count
-                0x00000000        0x6 Apps/JsonParser/source/parson.o
+                0x00000000        0x6 Application/JsonParser/source/parson.o
  .text.json_array_get_wrapping_value
-                0x00000000        0x4 Apps/JsonParser/source/parson.o
+                0x00000000        0x4 Application/JsonParser/source/parson.o
  .text.json_value_get_type
-                0x00000000        0xc Apps/JsonParser/source/parson.o
+                0x00000000        0xc Application/JsonParser/source/parson.o
  .text.json_value_get_object
-                0x00000000       0x10 Apps/JsonParser/source/parson.o
+                0x00000000       0x10 Application/JsonParser/source/parson.o
  .text.json_object_get_object
-                0x00000000       0x18 Apps/JsonParser/source/parson.o
+                0x00000000       0x18 Application/JsonParser/source/parson.o
  .text.json_object_dotget_value
-                0x00000000       0x48 Apps/JsonParser/source/parson.o
+                0x00000000       0x48 Application/JsonParser/source/parson.o
  .text.json_object_dothas_value
-                0x00000000       0x14 Apps/JsonParser/source/parson.o
+                0x00000000       0x14 Application/JsonParser/source/parson.o
  .text.json_object_dothas_value_of_type
-                0x00000000       0x18 Apps/JsonParser/source/parson.o
+                0x00000000       0x18 Application/JsonParser/source/parson.o
  .text.json_object_dotget_object
-                0x00000000       0x18 Apps/JsonParser/source/parson.o
+                0x00000000       0x18 Application/JsonParser/source/parson.o
  .text.json_array_get_object
-                0x00000000       0x18 Apps/JsonParser/source/parson.o
+                0x00000000       0x18 Application/JsonParser/source/parson.o
  .text.json_value_get_array
-                0x00000000       0x10 Apps/JsonParser/source/parson.o
+                0x00000000       0x10 Application/JsonParser/source/parson.o
  .text.json_object_get_array
-                0x00000000       0x18 Apps/JsonParser/source/parson.o
+                0x00000000       0x18 Application/JsonParser/source/parson.o
  .text.json_object_dotget_array
-                0x00000000       0x18 Apps/JsonParser/source/parson.o
+                0x00000000       0x18 Application/JsonParser/source/parson.o
  .text.json_array_get_array
-                0x00000000       0x18 Apps/JsonParser/source/parson.o
+                0x00000000       0x18 Application/JsonParser/source/parson.o
  .text.json_value_get_string
-                0x00000000       0x10 Apps/JsonParser/source/parson.o
+                0x00000000       0x10 Application/JsonParser/source/parson.o
  .text.json_object_get_string
-                0x00000000       0x18 Apps/JsonParser/source/parson.o
+                0x00000000       0x18 Application/JsonParser/source/parson.o
  .text.json_object_dotget_string
-                0x00000000       0x18 Apps/JsonParser/source/parson.o
+                0x00000000       0x18 Application/JsonParser/source/parson.o
  .text.json_array_get_string
-                0x00000000       0x18 Apps/JsonParser/source/parson.o
+                0x00000000       0x18 Application/JsonParser/source/parson.o
  .text.json_value_get_number
-                0x00000000       0x14 Apps/JsonParser/source/parson.o
+                0x00000000       0x14 Application/JsonParser/source/parson.o
  .text.json_object_get_number
-                0x00000000       0x18 Apps/JsonParser/source/parson.o
+                0x00000000       0x18 Application/JsonParser/source/parson.o
  .text.json_object_dotget_number
-                0x00000000       0x18 Apps/JsonParser/source/parson.o
+                0x00000000       0x18 Application/JsonParser/source/parson.o
  .text.json_array_get_number
-                0x00000000       0x18 Apps/JsonParser/source/parson.o
+                0x00000000       0x18 Application/JsonParser/source/parson.o
  .text.json_value_get_boolean
-                0x00000000       0x12 Apps/JsonParser/source/parson.o
+                0x00000000       0x12 Application/JsonParser/source/parson.o
  .text.json_object_get_boolean
-                0x00000000       0x18 Apps/JsonParser/source/parson.o
+                0x00000000       0x18 Application/JsonParser/source/parson.o
  .text.json_object_dotget_boolean
-                0x00000000       0x18 Apps/JsonParser/source/parson.o
+                0x00000000       0x18 Application/JsonParser/source/parson.o
  .text.json_array_get_boolean
-                0x00000000       0x18 Apps/JsonParser/source/parson.o
+                0x00000000       0x18 Application/JsonParser/source/parson.o
  .text.json_serialize_to_buffer_r
-                0x00000000      0x2bc Apps/JsonParser/source/parson.o
+                0x00000000      0x2bc Application/JsonParser/source/parson.o
  .text.json_value_get_parent
-                0x00000000        0x6 Apps/JsonParser/source/parson.o
+                0x00000000        0x6 Application/JsonParser/source/parson.o
  .text.json_value_free
-                0x00000000       0x88 Apps/JsonParser/source/parson.o
+                0x00000000       0x88 Application/JsonParser/source/parson.o
  .text.json_value_init_object
-                0x00000000       0x40 Apps/JsonParser/source/parson.o
+                0x00000000       0x40 Application/JsonParser/source/parson.o
  .text.json_value_init_array
-                0x00000000       0x3c Apps/JsonParser/source/parson.o
+                0x00000000       0x3c Application/JsonParser/source/parson.o
  .text.json_value_init_string
-                0x00000000      0x144 Apps/JsonParser/source/parson.o
+                0x00000000      0x144 Application/JsonParser/source/parson.o
  .text.json_value_init_number
-                0x00000000       0x3c Apps/JsonParser/source/parson.o
+                0x00000000       0x3c Application/JsonParser/source/parson.o
  .text.json_value_init_boolean
-                0x00000000       0x24 Apps/JsonParser/source/parson.o
+                0x00000000       0x24 Application/JsonParser/source/parson.o
  .text.json_value_init_null
-                0x00000000       0x1c Apps/JsonParser/source/parson.o
+                0x00000000       0x1c Application/JsonParser/source/parson.o
  .text.parse_value.part.1
-                0x00000000      0x388 Apps/JsonParser/source/parson.o
+                0x00000000      0x388 Application/JsonParser/source/parson.o
  .text.json_parse_string
-                0x00000000       0x30 Apps/JsonParser/source/parson.o
+                0x00000000       0x30 Application/JsonParser/source/parson.o
  .text.json_parse_file
-                0x00000000       0x2c Apps/JsonParser/source/parson.o
+                0x00000000       0x2c Application/JsonParser/source/parson.o
  .text.json_parse_string_with_comments
-                0x00000000       0x60 Apps/JsonParser/source/parson.o
+                0x00000000       0x60 Application/JsonParser/source/parson.o
  .text.json_parse_file_with_comments
-                0x00000000       0x2c Apps/JsonParser/source/parson.o
+                0x00000000       0x2c Application/JsonParser/source/parson.o
  .text.json_value_deep_copy
-                0x00000000      0x170 Apps/JsonParser/source/parson.o
+                0x00000000      0x170 Application/JsonParser/source/parson.o
  .text.json_serialization_size
-                0x00000000       0x24 Apps/JsonParser/source/parson.o
+                0x00000000       0x24 Application/JsonParser/source/parson.o
  .text.json_serialize_to_buffer
-                0x00000000       0x34 Apps/JsonParser/source/parson.o
+                0x00000000       0x34 Application/JsonParser/source/parson.o
  .text.json_serialization_size_pretty
-                0x00000000       0x24 Apps/JsonParser/source/parson.o
+                0x00000000       0x24 Application/JsonParser/source/parson.o
  .text.json_serialize_to_buffer_pretty
-                0x00000000       0x34 Apps/JsonParser/source/parson.o
+                0x00000000       0x34 Application/JsonParser/source/parson.o
  .text.json_free_serialized_string
-                0x00000000        0xc Apps/JsonParser/source/parson.o
+                0x00000000        0xc Application/JsonParser/source/parson.o
  .text.json_serialize_to_string
-                0x00000000       0x44 Apps/JsonParser/source/parson.o
+                0x00000000       0x44 Application/JsonParser/source/parson.o
  .text.json_serialize_to_file
-                0x00000000       0x64 Apps/JsonParser/source/parson.o
+                0x00000000       0x64 Application/JsonParser/source/parson.o
  .text.json_serialize_to_string_pretty
-                0x00000000       0x44 Apps/JsonParser/source/parson.o
+                0x00000000       0x44 Application/JsonParser/source/parson.o
  .text.json_serialize_to_file_pretty
-                0x00000000       0x64 Apps/JsonParser/source/parson.o
+                0x00000000       0x64 Application/JsonParser/source/parson.o
  .text.json_array_remove
-                0x00000000       0x54 Apps/JsonParser/source/parson.o
+                0x00000000       0x54 Application/JsonParser/source/parson.o
  .text.json_array_replace_value
-                0x00000000       0x3c Apps/JsonParser/source/parson.o
+                0x00000000       0x3c Application/JsonParser/source/parson.o
  .text.json_array_replace_string
-                0x00000000       0x40 Apps/JsonParser/source/parson.o
+                0x00000000       0x40 Application/JsonParser/source/parson.o
  .text.json_array_replace_number
-                0x00000000       0x44 Apps/JsonParser/source/parson.o
+                0x00000000       0x44 Application/JsonParser/source/parson.o
  .text.json_array_replace_boolean
-                0x00000000       0x40 Apps/JsonParser/source/parson.o
+                0x00000000       0x40 Application/JsonParser/source/parson.o
  .text.json_array_replace_null
-                0x00000000       0x40 Apps/JsonParser/source/parson.o
+                0x00000000       0x40 Application/JsonParser/source/parson.o
  .text.json_array_clear
-                0x00000000       0x34 Apps/JsonParser/source/parson.o
+                0x00000000       0x34 Application/JsonParser/source/parson.o
  .text.json_array_append_value
-                0x00000000       0x18 Apps/JsonParser/source/parson.o
+                0x00000000       0x18 Application/JsonParser/source/parson.o
  .text.json_array_append_string
-                0x00000000       0x3c Apps/JsonParser/source/parson.o
+                0x00000000       0x3c Application/JsonParser/source/parson.o
  .text.json_array_append_number
-                0x00000000       0x40 Apps/JsonParser/source/parson.o
+                0x00000000       0x40 Application/JsonParser/source/parson.o
  .text.json_array_append_boolean
-                0x00000000       0x3c Apps/JsonParser/source/parson.o
+                0x00000000       0x3c Application/JsonParser/source/parson.o
  .text.json_array_append_null
-                0x00000000       0x3c Apps/JsonParser/source/parson.o
+                0x00000000       0x3c Application/JsonParser/source/parson.o
  .text.json_object_set_value
-                0x00000000       0x74 Apps/JsonParser/source/parson.o
+                0x00000000       0x74 Application/JsonParser/source/parson.o
  .text.json_object_set_string
-                0x00000000       0x24 Apps/JsonParser/source/parson.o
+                0x00000000       0x24 Application/JsonParser/source/parson.o
  .text.json_object_set_number
-                0x00000000       0x24 Apps/JsonParser/source/parson.o
+                0x00000000       0x24 Application/JsonParser/source/parson.o
  .text.json_object_set_boolean
-                0x00000000       0x24 Apps/JsonParser/source/parson.o
+                0x00000000       0x24 Application/JsonParser/source/parson.o
  .text.json_object_set_null
-                0x00000000       0x20 Apps/JsonParser/source/parson.o
+                0x00000000       0x20 Application/JsonParser/source/parson.o
  .text.json_object_dotset_value
-                0x00000000       0xb0 Apps/JsonParser/source/parson.o
+                0x00000000       0xb0 Application/JsonParser/source/parson.o
  .text.json_object_dotset_string
-                0x00000000       0x40 Apps/JsonParser/source/parson.o
+                0x00000000       0x40 Application/JsonParser/source/parson.o
  .text.json_object_dotset_number
-                0x00000000       0x44 Apps/JsonParser/source/parson.o
+                0x00000000       0x44 Application/JsonParser/source/parson.o
  .text.json_object_dotset_boolean
-                0x00000000       0x40 Apps/JsonParser/source/parson.o
+                0x00000000       0x40 Application/JsonParser/source/parson.o
  .text.json_object_dotset_null
-                0x00000000       0x40 Apps/JsonParser/source/parson.o
+                0x00000000       0x40 Application/JsonParser/source/parson.o
  .text.json_object_remove
-                0x00000000       0x7c Apps/JsonParser/source/parson.o
+                0x00000000       0x7c Application/JsonParser/source/parson.o
  .text.json_object_dotremove
-                0x00000000       0x64 Apps/JsonParser/source/parson.o
+                0x00000000       0x64 Application/JsonParser/source/parson.o
  .text.json_object_clear
-                0x00000000       0x3c Apps/JsonParser/source/parson.o
+                0x00000000       0x3c Application/JsonParser/source/parson.o
  .text.json_validate
-                0x00000000       0xec Apps/JsonParser/source/parson.o
+                0x00000000       0xec Application/JsonParser/source/parson.o
  .text.json_value_equals
-                0x00000000      0x17c Apps/JsonParser/source/parson.o
+                0x00000000      0x17c Application/JsonParser/source/parson.o
  .text.json_type
-                0x00000000        0xc Apps/JsonParser/source/parson.o
+                0x00000000        0xc Application/JsonParser/source/parson.o
  .text.json_object
-                0x00000000        0x8 Apps/JsonParser/source/parson.o
+                0x00000000        0x8 Application/JsonParser/source/parson.o
  .text.json_array
-                0x00000000        0x8 Apps/JsonParser/source/parson.o
+                0x00000000        0x8 Application/JsonParser/source/parson.o
  .text.json_string
-                0x00000000        0x8 Apps/JsonParser/source/parson.o
+                0x00000000        0x8 Application/JsonParser/source/parson.o
  .text.json_number
-                0x00000000        0x8 Apps/JsonParser/source/parson.o
+                0x00000000        0x8 Application/JsonParser/source/parson.o
  .text.json_boolean
-                0x00000000        0x8 Apps/JsonParser/source/parson.o
+                0x00000000        0x8 Application/JsonParser/source/parson.o
  .text.json_set_allocation_functions
-                0x00000000        0xc Apps/JsonParser/source/parson.o
+                0x00000000        0xc Application/JsonParser/source/parson.o
  .rodata.str1.1
-                0x00000000      0x119 Apps/JsonParser/source/parson.o
- .comment       0x00000000       0x5a Apps/JsonParser/source/parson.o
+                0x00000000      0x119 Application/JsonParser/source/parson.o
+ .comment       0x00000000       0x5a Application/JsonParser/source/parson.o
  .ARM.attributes
-                0x00000000       0x37 Apps/JsonParser/source/parson.o
- .text          0x00000000        0x0 Apps/LedControl/source/ledControl.o
- .data          0x00000000        0x0 Apps/LedControl/source/ledControl.o
- .bss           0x00000000        0x0 Apps/LedControl/source/ledControl.o
+                0x00000000       0x37 Application/JsonParser/source/parson.o
+ .text          0x00000000        0x0 Application/LedControl/source/ledControl.o
+ .data          0x00000000        0x0 Application/LedControl/source/ledControl.o
+ .bss           0x00000000        0x0 Application/LedControl/source/ledControl.o
  .text.led_Initialise
-                0x00000000       0xe4 Apps/LedControl/source/ledControl.o
+                0x00000000       0xe4 Application/LedControl/source/ledControl.o
  .text.led_PeformLedTest
-                0x00000000       0xd8 Apps/LedControl/source/ledControl.o
- .comment       0x00000000       0x5a Apps/LedControl/source/ledControl.o
+                0x00000000       0xd8 Application/LedControl/source/ledControl.o
+ .comment       0x00000000       0x5a Application/LedControl/source/ledControl.o
  .ARM.attributes
-                0x00000000       0x37 Apps/LedControl/source/ledControl.o
- .text          0x00000000        0x0 Apps/LedControl/source/ledPwmControl.o
- .data          0x00000000        0x0 Apps/LedControl/source/ledPwmControl.o
- .bss           0x00000000        0x0 Apps/LedControl/source/ledPwmControl.o
+                0x00000000       0x37 Application/LedControl/source/ledControl.o
+ .text          0x00000000        0x0 Application/LedControl/source/ledPwmControl.o
+ .data          0x00000000        0x0 Application/LedControl/source/ledPwmControl.o
+ .bss           0x00000000        0x0 Application/LedControl/source/ledPwmControl.o
  .text.led_SetPwmOutput
-                0x00000000       0x98 Apps/LedControl/source/ledPwmControl.o
- .rodata        0x00000000       0x18 Apps/LedControl/source/ledPwmControl.o
- .comment       0x00000000       0x5a Apps/LedControl/source/ledPwmControl.o
+                0x00000000       0x98 Application/LedControl/source/ledPwmControl.o
+ .rodata        0x00000000       0x18 Application/LedControl/source/ledPwmControl.o
+ .comment       0x00000000       0x5a Application/LedControl/source/ledPwmControl.o
  .ARM.attributes
-                0x00000000       0x37 Apps/LedControl/source/ledPwmControl.o
- .text          0x00000000        0x0 Apps/SelectInputs/source/selectInputs.o
- .data          0x00000000        0x0 Apps/SelectInputs/source/selectInputs.o
- .bss           0x00000000        0x0 Apps/SelectInputs/source/selectInputs.o
+                0x00000000       0x37 Application/LedControl/source/ledPwmControl.o
+ .text          0x00000000        0x0 Application/SelectInputs/source/selectInputs.o
+ .data          0x00000000        0x0 Application/SelectInputs/source/selectInputs.o
+ .bss           0x00000000        0x0 Application/SelectInputs/source/selectInputs.o
  .text.gpio_set_pin_pull_mode.constprop.1
-                0x00000000       0x28 Apps/SelectInputs/source/selectInputs.o
+                0x00000000       0x28 Application/SelectInputs/source/selectInputs.o
  .text.gpio_set_pin_direction.constprop.0
-                0x00000000       0x30 Apps/SelectInputs/source/selectInputs.o
+                0x00000000       0x30 Application/SelectInputs/source/selectInputs.o
  .text.selectInputsInit
-                0x00000000       0xb8 Apps/SelectInputs/source/selectInputs.o
- .comment       0x00000000       0x5a Apps/SelectInputs/source/selectInputs.o
+                0x00000000       0xb8 Application/SelectInputs/source/selectInputs.o
+ .comment       0x00000000       0x5a Application/SelectInputs/source/selectInputs.o
  .ARM.attributes
-                0x00000000       0x37 Apps/SelectInputs/source/selectInputs.o
- .text          0x00000000        0x0 Apps/SensorAdcInputs/source/SensorAdcInputs.o
- .data          0x00000000        0x0 Apps/SensorAdcInputs/source/SensorAdcInputs.o
- .bss           0x00000000        0x0 Apps/SensorAdcInputs/source/SensorAdcInputs.o
+                0x00000000       0x37 Application/SelectInputs/source/selectInputs.o
+ .text          0x00000000        0x0 Application/SensorAdcInputs/source/SensorAdcInputs.o
+ .data          0x00000000        0x0 Application/SensorAdcInputs/source/SensorAdcInputs.o
+ .bss           0x00000000        0x0 Application/SensorAdcInputs/source/SensorAdcInputs.o
  .text.sensorAdcInit
-                0x00000000        0x8 Apps/SensorAdcInputs/source/SensorAdcInputs.o
+                0x00000000        0x8 Application/SensorAdcInputs/source/SensorAdcInputs.o
  .text.sensorAdcReadChannel
-                0x00000000       0x50 Apps/SensorAdcInputs/source/SensorAdcInputs.o
- .comment       0x00000000       0x5a Apps/SensorAdcInputs/source/SensorAdcInputs.o
+                0x00000000       0x50 Application/SensorAdcInputs/source/SensorAdcInputs.o
+ .comment       0x00000000       0x5a Application/SensorAdcInputs/source/SensorAdcInputs.o
  .ARM.attributes
-                0x00000000       0x37 Apps/SensorAdcInputs/source/SensorAdcInputs.o
- .text          0x00000000        0x0 Apps/Tasks/SensorTask/source/SensorTask.o
- .data          0x00000000        0x0 Apps/Tasks/SensorTask/source/SensorTask.o
- .bss           0x00000000        0x0 Apps/Tasks/SensorTask/source/SensorTask.o
- .text          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
- .text          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+                0x00000000       0x37 Application/SensorAdcInputs/source/SensorAdcInputs.o
+ .text          0x00000000        0x0 Application/Tasks/SensorTask/source/SensorTask.o
+ .data          0x00000000        0x0 Application/Tasks/SensorTask/source/SensorTask.o
+ .bss           0x00000000        0x0 Application/Tasks/SensorTask/source/SensorTask.o
+ .text          0x00000000        0x0 Application/Tasks/ModemTask/source/ModemAtCommandSet.o
+ .text          0x00000000        0x0 Application/Tasks/ModemTask/source/ModemCmdParser.o
  .text.mdmParser_SendCommandToModem
-                0x00000000       0x54 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+                0x00000000       0x54 Application/Tasks/ModemTask/source/ModemCmdParser.o
  .text.mdmParser_IsLastCmdProcessed
-                0x00000000        0xc Apps/Tasks/ModemTask/source/ModemCmdParser.o
- .text          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemConnection.o
- .data          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemConnection.o
- .text          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemController.o
- .bss           0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemController.o
+                0x00000000        0xc Application/Tasks/ModemTask/source/ModemCmdParser.o
+ .text          0x00000000        0x0 Application/Tasks/ModemTask/source/ModemConnection.o
+ .data          0x00000000        0x0 Application/Tasks/ModemTask/source/ModemConnection.o
+ .text          0x00000000        0x0 Application/Tasks/ModemTask/source/ModemController.o
+ .bss           0x00000000        0x0 Application/Tasks/ModemTask/source/ModemController.o
  .text.mdmCtrlr_CheckForUnSolicitedResponses
-                0x00000000        0x2 Apps/Tasks/ModemTask/source/ModemController.o
- .text          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemDiagTask.o
- .data          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemDiagTask.o
- .text          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemParameters.o
- .data          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemParameters.o
- .bss           0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemParameters.o
- .comment       0x00000000       0x5a Apps/Tasks/ModemTask/source/ModemParameters.o
+                0x00000000        0x2 Application/Tasks/ModemTask/source/ModemController.o
+ .text          0x00000000        0x0 Application/Tasks/ModemTask/source/ModemDiagTask.o
+ .data          0x00000000        0x0 Application/Tasks/ModemTask/source/ModemDiagTask.o
+ .text          0x00000000        0x0 Application/Tasks/ModemTask/source/ModemParameters.o
+ .data          0x00000000        0x0 Application/Tasks/ModemTask/source/ModemParameters.o
+ .bss           0x00000000        0x0 Application/Tasks/ModemTask/source/ModemParameters.o
+ .comment       0x00000000       0x5a Application/Tasks/ModemTask/source/ModemParameters.o
  .ARM.attributes
-                0x00000000       0x37 Apps/Tasks/ModemTask/source/ModemParameters.o
- .text          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemPowerControl.o
- .data          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemPowerControl.o
- .text          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemProcessTask.o
- .data          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemProcessTask.o
- .bss           0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemProcessTask.o
- .text          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemResponseHandles.o
- .data          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemResponseHandles.o
+                0x00000000       0x37 Application/Tasks/ModemTask/source/ModemParameters.o
+ .text          0x00000000        0x0 Application/Tasks/ModemTask/source/ModemPowerControl.o
+ .data          0x00000000        0x0 Application/Tasks/ModemTask/source/ModemPowerControl.o
+ .text          0x00000000        0x0 Application/Tasks/ModemTask/source/ModemProcessTask.o
+ .data          0x00000000        0x0 Application/Tasks/ModemTask/source/ModemProcessTask.o
+ .bss           0x00000000        0x0 Application/Tasks/ModemTask/source/ModemProcessTask.o
+ .text          0x00000000        0x0 Application/Tasks/ModemTask/source/ModemResponseHandles.o
+ .data          0x00000000        0x0 Application/Tasks/ModemTask/source/ModemResponseHandles.o
  .text.defaultFunctionPointer
-                0x00000000        0x2 Apps/Tasks/ModemTask/source/ModemResponseHandles.o
- .text          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemRxTask.o
- .data          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemRxTask.o
- .bss           0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemRxTask.o
- .text          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemTxTask.o
- .data          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemTxTask.o
- .text          0x00000000        0x0 Apps/UartDriver/source/UartDriver.o
- .data          0x00000000        0x0 Apps/UartDriver/source/UartDriver.o
+                0x00000000        0x2 Application/Tasks/ModemTask/source/ModemResponseHandles.o
+ .text          0x00000000        0x0 Application/Tasks/ModemTask/source/ModemRxTask.o
+ .data          0x00000000        0x0 Application/Tasks/ModemTask/source/ModemRxTask.o
+ .bss           0x00000000        0x0 Application/Tasks/ModemTask/source/ModemRxTask.o
+ .text          0x00000000        0x0 Application/Tasks/ModemTask/source/ModemTxTask.o
+ .data          0x00000000        0x0 Application/Tasks/ModemTask/source/ModemTxTask.o
+ .text          0x00000000        0x0 Application/UartDriver/source/UartDriver.o
+ .data          0x00000000        0x0 Application/UartDriver/source/UartDriver.o
  .text.usart_async_read
-                0x00000000       0x38 Apps/UartDriver/source/UartDriver.o
- .text          0x00000000        0x0 Apps/SerialDebug/SerialDebug.o
- .bss           0x00000000        0x0 Apps/SerialDebug/SerialDebug.o
+                0x00000000       0x38 Application/UartDriver/source/UartDriver.o
+ .text          0x00000000        0x0 Application/SerialDebug/SerialDebug.o
+ .bss           0x00000000        0x0 Application/SerialDebug/SerialDebug.o
  .text.SerialDebugRxDoneCallBack
-                0x00000000       0x14 Apps/SerialDebug/SerialDebug.o
+                0x00000000       0x14 Application/SerialDebug/SerialDebug.o
  .text.ConsoleDebugPrint
-                0x00000000       0x48 Apps/SerialDebug/SerialDebug.o
+                0x00000000       0x48 Application/SerialDebug/SerialDebug.o
  .text          0x00000000        0x0 atmel_start.o
  .bss           0x00000000        0x0 atmel_start.o
  .text          0x00000000        0x0 Device_Startup/startup_samd51.o
@@ -2651,27 +2651,27 @@ Linker script and memory map
 LOAD e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crti.o
 LOAD e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtbegin.o
 LOAD e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m/crt0.o
-LOAD Apps/Common/FreeRtosHooks.o
-LOAD Apps/JsonParser/source/JsonPacket.o
-LOAD Apps/JsonParser/source/parson.o
-LOAD Apps/LedControl/source/ledControl.o
-LOAD Apps/LedControl/source/ledPwmControl.o
-LOAD Apps/SelectInputs/source/selectInputs.o
-LOAD Apps/SensorAdcInputs/source/SensorAdcInputs.o
-LOAD Apps/Tasks/SensorTask/source/SensorTask.o
-LOAD Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
-LOAD Apps/Tasks/ModemTask/source/ModemCmdParser.o
-LOAD Apps/Tasks/ModemTask/source/ModemConnection.o
-LOAD Apps/Tasks/ModemTask/source/ModemController.o
-LOAD Apps/Tasks/ModemTask/source/ModemDiagTask.o
-LOAD Apps/Tasks/ModemTask/source/ModemParameters.o
-LOAD Apps/Tasks/ModemTask/source/ModemPowerControl.o
-LOAD Apps/Tasks/ModemTask/source/ModemProcessTask.o
-LOAD Apps/Tasks/ModemTask/source/ModemResponseHandles.o
-LOAD Apps/Tasks/ModemTask/source/ModemRxTask.o
-LOAD Apps/Tasks/ModemTask/source/ModemTxTask.o
-LOAD Apps/UartDriver/source/UartDriver.o
-LOAD Apps/SerialDebug/SerialDebug.o
+LOAD Application/Common/FreeRtosHooks.o
+LOAD Application/JsonParser/source/JsonPacket.o
+LOAD Application/JsonParser/source/parson.o
+LOAD Application/LedControl/source/ledControl.o
+LOAD Application/LedControl/source/ledPwmControl.o
+LOAD Application/SelectInputs/source/selectInputs.o
+LOAD Application/SensorAdcInputs/source/SensorAdcInputs.o
+LOAD Application/Tasks/SensorTask/source/SensorTask.o
+LOAD Application/Tasks/ModemTask/source/ModemAtCommandSet.o
+LOAD Application/Tasks/ModemTask/source/ModemCmdParser.o
+LOAD Application/Tasks/ModemTask/source/ModemConnection.o
+LOAD Application/Tasks/ModemTask/source/ModemController.o
+LOAD Application/Tasks/ModemTask/source/ModemDiagTask.o
+LOAD Application/Tasks/ModemTask/source/ModemParameters.o
+LOAD Application/Tasks/ModemTask/source/ModemPowerControl.o
+LOAD Application/Tasks/ModemTask/source/ModemProcessTask.o
+LOAD Application/Tasks/ModemTask/source/ModemResponseHandles.o
+LOAD Application/Tasks/ModemTask/source/ModemRxTask.o
+LOAD Application/Tasks/ModemTask/source/ModemTxTask.o
+LOAD Application/UartDriver/source/UartDriver.o
+LOAD Application/SerialDebug/SerialDebug.o
 LOAD atmel_start.o
 LOAD Device_Startup/startup_samd51.o
 LOAD Device_Startup/system_samd51.o
@@ -2759,122 +2759,122 @@ LOAD e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc
  *(.text .text.* .gnu.linkonce.t.*)
  .text          0x00000264       0x6c e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtbegin.o
  .text.vApplicationStackOverflowHook
-                0x000002d0       0x60 Apps/Common/FreeRtosHooks.o
+                0x000002d0       0x60 Application/Common/FreeRtosHooks.o
                 0x000002d0                vApplicationStackOverflowHook
  .text.SensorTask
-                0x00000330       0x28 Apps/Tasks/SensorTask/source/SensorTask.o
+                0x00000330       0x28 Application/Tasks/SensorTask/source/SensorTask.o
                 0x00000330                SensorTask
  .text.getModemCommandData
-                0x00000358       0x1c Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
+                0x00000358       0x1c Application/Tasks/ModemTask/source/ModemAtCommandSet.o
                 0x00000358                getModemCommandData
  .text.buildHttpHeaderWithActiveSessionID
-                0x00000374       0x54 Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
+                0x00000374       0x54 Application/Tasks/ModemTask/source/ModemAtCommandSet.o
                 0x00000374                buildHttpHeaderWithActiveSessionID
  .text.buildDataPacketsToServer
-                0x000003c8       0x30 Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
+                0x000003c8       0x30 Application/Tasks/ModemTask/source/ModemAtCommandSet.o
                 0x000003c8                buildDataPacketsToServer
  .text.mdmParser_solicitedCmdParser
-                0x000003f8       0xe8 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+                0x000003f8       0xe8 Application/Tasks/ModemTask/source/ModemCmdParser.o
                 0x000003f8                mdmParser_solicitedCmdParser
  .text.mdmParser_SetLastCmdProcessed
-                0x000004e0        0xc Apps/Tasks/ModemTask/source/ModemCmdParser.o
+                0x000004e0        0xc Application/Tasks/ModemTask/source/ModemCmdParser.o
                 0x000004e0                mdmParser_SetLastCmdProcessed
  .text.mdmParser_SetLastSentAtCommand
-                0x000004ec        0xc Apps/Tasks/ModemTask/source/ModemCmdParser.o
+                0x000004ec        0xc Application/Tasks/ModemTask/source/ModemCmdParser.o
                 0x000004ec                mdmParser_SetLastSentAtCommand
  .text.mdmParser_GetLastSentAtCommand
-                0x000004f8        0xc Apps/Tasks/ModemTask/source/ModemCmdParser.o
+                0x000004f8        0xc Application/Tasks/ModemTask/source/ModemCmdParser.o
                 0x000004f8                mdmParser_GetLastSentAtCommand
  .text.getCloseActiveSessionCmd
-                0x00000504       0x3e Apps/Tasks/ModemTask/source/ModemConnection.o
+                0x00000504       0x3e Application/Tasks/ModemTask/source/ModemConnection.o
  *fill*         0x00000542        0x2 
  .text.MdmConnect_HttpConnectionInit
-                0x00000544       0x24 Apps/Tasks/ModemTask/source/ModemConnection.o
+                0x00000544       0x24 Application/Tasks/ModemTask/source/ModemConnection.o
                 0x00000544                MdmConnect_HttpConnectionInit
  .text.MdmCnct_ConnectInProgressSubStateMachine
-                0x00000568      0x490 Apps/Tasks/ModemTask/source/ModemConnection.o
+                0x00000568      0x490 Application/Tasks/ModemTask/source/ModemConnection.o
                 0x00000568                MdmCnct_ConnectInProgressSubStateMachine
  .text.MdmConnect_HttpConnectionSchedule
-                0x000009f8      0x438 Apps/Tasks/ModemTask/source/ModemConnection.o
+                0x000009f8      0x438 Application/Tasks/ModemTask/source/ModemConnection.o
                 0x000009f8                MdmConnect_HttpConnectionSchedule
  .text.mdmCtrlr_DataCommInit
-                0x00000e30       0x58 Apps/Tasks/ModemTask/source/ModemController.o
+                0x00000e30       0x58 Application/Tasks/ModemTask/source/ModemController.o
                 0x00000e30                mdmCtrlr_DataCommInit
  .text.SERCOM3_0_Handler
-                0x00000e88        0xc Apps/Tasks/ModemTask/source/ModemController.o
+                0x00000e88        0xc Application/Tasks/ModemTask/source/ModemController.o
                 0x00000e88                SERCOM3_0_Handler
  .text.SERCOM3_1_Handler
-                0x00000e94        0xc Apps/Tasks/ModemTask/source/ModemController.o
+                0x00000e94        0xc Application/Tasks/ModemTask/source/ModemController.o
                 0x00000e94                SERCOM3_1_Handler
  .text.SERCOM3_2_Handler
-                0x00000ea0       0x9c Apps/Tasks/ModemTask/source/ModemController.o
+                0x00000ea0       0x9c Application/Tasks/ModemTask/source/ModemController.o
                 0x00000ea0                SERCOM3_2_Handler
  .text.mdmCtrlr_SendDataToModem
-                0x00000f3c       0x28 Apps/Tasks/ModemTask/source/ModemController.o
+                0x00000f3c       0x28 Application/Tasks/ModemTask/source/ModemController.o
                 0x00000f3c                mdmCtrlr_SendDataToModem
  .text.mdmCtrlr_ReadResponseFromModem
-                0x00000f64       0x48 Apps/Tasks/ModemTask/source/ModemController.o
+                0x00000f64       0x48 Application/Tasks/ModemTask/source/ModemController.o
                 0x00000f64                mdmCtrlr_ReadResponseFromModem
  .text.mdmCtrlr_FlushRxBuffer
-                0x00000fac       0x10 Apps/Tasks/ModemTask/source/ModemController.o
+                0x00000fac       0x10 Application/Tasks/ModemTask/source/ModemController.o
                 0x00000fac                mdmCtrlr_FlushRxBuffer
  .text.ModemDiagTask
-                0x00000fbc      0x170 Apps/Tasks/ModemTask/source/ModemDiagTask.o
+                0x00000fbc      0x170 Application/Tasks/ModemTask/source/ModemDiagTask.o
                 0x00000fbc                ModemDiagTask
  .text.ModemDiagUpdateDataBase
-                0x0000112c       0xb8 Apps/Tasks/ModemTask/source/ModemDiagTask.o
+                0x0000112c       0xb8 Application/Tasks/ModemTask/source/ModemDiagTask.o
                 0x0000112c                ModemDiagUpdateDataBase
  .text.isModemDiagDataBaseUpdated
-                0x000011e4        0xc Apps/Tasks/ModemTask/source/ModemDiagTask.o
+                0x000011e4        0xc Application/Tasks/ModemTask/source/ModemDiagTask.o
                 0x000011e4                isModemDiagDataBaseUpdated
  .text.gpio_set_pin_direction.constprop.0
-                0x000011f0       0x28 Apps/Tasks/ModemTask/source/ModemPowerControl.o
+                0x000011f0       0x28 Application/Tasks/ModemTask/source/ModemPowerControl.o
  .text.getModemPowerStatus
-                0x00001218        0xc Apps/Tasks/ModemTask/source/ModemPowerControl.o
+                0x00001218        0xc Application/Tasks/ModemTask/source/ModemPowerControl.o
                 0x00001218                getModemPowerStatus
  .text.modemPowerStateInit
-                0x00001224       0x14 Apps/Tasks/ModemTask/source/ModemPowerControl.o
+                0x00001224       0x14 Application/Tasks/ModemTask/source/ModemPowerControl.o
                 0x00001224                modemPowerStateInit
  .text.modemPowerSchedule
-                0x00001238      0x138 Apps/Tasks/ModemTask/source/ModemPowerControl.o
+                0x00001238      0x138 Application/Tasks/ModemTask/source/ModemPowerControl.o
                 0x00001238                modemPowerSchedule
  .text.SystemAutoRestartTimerCallBack
-                0x00001370       0x1c Apps/Tasks/ModemTask/source/ModemProcessTask.o
+                0x00001370       0x1c Application/Tasks/ModemTask/source/ModemProcessTask.o
  .text.ModemProcessTask
-                0x0000138c       0x84 Apps/Tasks/ModemTask/source/ModemProcessTask.o
+                0x0000138c       0x84 Application/Tasks/ModemTask/source/ModemProcessTask.o
                 0x0000138c                ModemProcessTask
  .text.modemResponseHandler
-                0x00001410       0xd0 Apps/Tasks/ModemTask/source/ModemResponseHandles.o
+                0x00001410       0xd0 Application/Tasks/ModemTask/source/ModemResponseHandles.o
                 0x00001410                modemResponseHandler
  .text.ModemRxTask
-                0x000014e0       0x50 Apps/Tasks/ModemTask/source/ModemRxTask.o
+                0x000014e0       0x50 Application/Tasks/ModemTask/source/ModemRxTask.o
                 0x000014e0                ModemRxTask
  .text.ModemTxTask
-                0x00001530       0xbc Apps/Tasks/ModemTask/source/ModemTxTask.o
+                0x00001530       0xbc Application/Tasks/ModemTask/source/ModemTxTask.o
                 0x00001530                ModemTxTask
  .text.usart_async_write
-                0x000015ec       0x50 Apps/UartDriver/source/UartDriver.o
+                0x000015ec       0x50 Application/UartDriver/source/UartDriver.o
                 0x000015ec                usart_async_write
  .text.SerialDebugTxByteSentCallBack
-                0x0000163c        0x6 Apps/SerialDebug/SerialDebug.o
+                0x0000163c        0x6 Application/SerialDebug/SerialDebug.o
                 0x0000163c                SerialDebugTxByteSentCallBack
  .text.SerialDebugErrorCallBack
-                0x00001642        0x6 Apps/SerialDebug/SerialDebug.o
+                0x00001642        0x6 Application/SerialDebug/SerialDebug.o
                 0x00001642                SerialDebugErrorCallBack
  .text.SerialDebugPrintInit
-                0x00001648       0x2c Apps/SerialDebug/SerialDebug.o
+                0x00001648       0x2c Application/SerialDebug/SerialDebug.o
                 0x00001648                SerialDebugPrintInit
  .text.SerialDebugPrint
-                0x00001674       0x28 Apps/SerialDebug/SerialDebug.o
+                0x00001674       0x28 Application/SerialDebug/SerialDebug.o
                 0x00001674                SerialDebugPrint
  .text.SerialDebugTxDoneCallBack
-                0x0000169c       0x1c Apps/SerialDebug/SerialDebug.o
+                0x0000169c       0x1c Application/SerialDebug/SerialDebug.o
                 0x0000169c                SerialDebugTxDoneCallBack
  .text.SerialStringPrint
-                0x000016b8       0x90 Apps/SerialDebug/SerialDebug.o
+                0x000016b8       0x90 Application/SerialDebug/SerialDebug.o
                 0x000016b8                SerialStringPrint
  .text.SERCOM5_2_Handler
-                0x00001748       0x54 Apps/SerialDebug/SerialDebug.o
+                0x00001748       0x54 Application/SerialDebug/SerialDebug.o
                 0x00001748                SERCOM5_2_Handler
  .text.configureWatchDogTimeOut
                 0x0000179c       0x20 atmel_start.o
@@ -3716,30 +3716,30 @@ LOAD e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc
  .glue_7        0x00005b9e        0x0 linker stubs
  *(.rodata .rodata* .gnu.linkonce.r.*)
  .rodata.str1.1
-                0x00005b9e       0x89 Apps/Common/FreeRtosHooks.o
+                0x00005b9e       0x89 Application/Common/FreeRtosHooks.o
                                  0x8c (size before relaxing)
  *fill*         0x00005c27        0x1 
- .rodata        0x00005c28      0x4b0 Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
+ .rodata        0x00005c28      0x4b0 Application/Tasks/ModemTask/source/ModemAtCommandSet.o
  .rodata.str1.1
-                0x000060d8      0x1ea Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
+                0x000060d8      0x1ea Application/Tasks/ModemTask/source/ModemAtCommandSet.o
                                 0x1eb (size before relaxing)
  .rodata.str1.1
-                0x000062c2       0xeb Apps/Tasks/ModemTask/source/ModemCmdParser.o
+                0x000062c2       0xeb Application/Tasks/ModemTask/source/ModemCmdParser.o
                                  0xee (size before relaxing)
  .rodata.str1.1
-                0x000063ad      0x3c8 Apps/Tasks/ModemTask/source/ModemConnection.o
+                0x000063ad      0x3c8 Application/Tasks/ModemTask/source/ModemConnection.o
                                 0x3dc (size before relaxing)
  .rodata.str1.1
-                0x00006775       0x6a Apps/Tasks/ModemTask/source/ModemDiagTask.o
+                0x00006775       0x6a Application/Tasks/ModemTask/source/ModemDiagTask.o
                                  0x6d (size before relaxing)
  .rodata.str1.1
-                0x000067df       0x56 Apps/Tasks/ModemTask/source/ModemProcessTask.o
+                0x000067df       0x56 Application/Tasks/ModemTask/source/ModemProcessTask.o
  .rodata.str1.1
-                0x00006835       0xa1 Apps/Tasks/ModemTask/source/ModemResponseHandles.o
+                0x00006835       0xa1 Application/Tasks/ModemTask/source/ModemResponseHandles.o
  .rodata.str1.1
-                0x000068d6       0x1e Apps/Tasks/ModemTask/source/ModemRxTask.o
+                0x000068d6       0x1e Application/Tasks/ModemTask/source/ModemRxTask.o
  .rodata.str1.1
-                0x000068f4       0x2c Apps/SerialDebug/SerialDebug.o
+                0x000068f4       0x2c Application/SerialDebug/SerialDebug.o
                                  0x2f (size before relaxing)
  .rodata        0x00006920       0x2c hpl/adc/hpl_adc.o
  .rodata        0x0000694c      0x100 hpl/dmac/hpl_dmac.o
@@ -3841,14 +3841,14 @@ LOAD e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc
                 0x20000000                _srelocate = .
  *(.ramfunc .ramfunc.*)
  *(.data .data.*)
- .data          0x20000000       0x20 Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
+ .data          0x20000000       0x20 Application/Tasks/ModemTask/source/ModemAtCommandSet.o
                 0x20000000                HttpHeaderString
                 0x20000011                kHttpGetString
- .data          0x20000020        0x1 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .data          0x20000020        0x1 Application/Tasks/ModemTask/source/ModemCmdParser.o
  *fill*         0x20000021        0x3 
- .data          0x20000024       0x1c Apps/Tasks/ModemTask/source/ModemController.o
+ .data          0x20000024       0x1c Application/Tasks/ModemTask/source/ModemController.o
                 0x20000024                MODEM_SERCOM3_UART
- .data          0x20000040       0x1c Apps/SerialDebug/SerialDebug.o
+ .data          0x20000040       0x1c Application/SerialDebug/SerialDebug.o
                 0x20000040                SERIAL_DEBUG_PRINT
  .data          0x2000005c        0xd atmel_start.o
                 0x2000005c                cfgSystemWdt
@@ -3885,20 +3885,20 @@ LOAD e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc
                 0x20000190                _szero = .
  *(.bss .bss.*)
  .bss           0x20000190       0x1c e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtbegin.o
- .bss           0x200001ac       0x3c Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
+ .bss           0x200001ac       0x3c Application/Tasks/ModemTask/source/ModemAtCommandSet.o
                 0x200001ac                kHttpGetCompleteData
- .bss           0x200001e8        0x1 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+ .bss           0x200001e8        0x1 Application/Tasks/ModemTask/source/ModemCmdParser.o
  *fill*         0x200001e9        0x3 
- .bss           0x200001ec       0x12 Apps/Tasks/ModemTask/source/ModemConnection.o
- .bss           0x200001fe       0x27 Apps/Tasks/ModemTask/source/ModemDiagTask.o
- .bss           0x20000225        0x4 Apps/Tasks/ModemTask/source/ModemPowerControl.o
+ .bss           0x200001ec       0x12 Application/Tasks/ModemTask/source/ModemConnection.o
+ .bss           0x200001fe       0x27 Application/Tasks/ModemTask/source/ModemDiagTask.o
+ .bss           0x20000225        0x4 Application/Tasks/ModemTask/source/ModemPowerControl.o
  *fill*         0x20000229        0x3 
- .bss           0x2000022c      0x2da Apps/Tasks/ModemTask/source/ModemResponseHandles.o
+ .bss           0x2000022c      0x2da Application/Tasks/ModemTask/source/ModemResponseHandles.o
                 0x20000504                dataPacketSentOk
                 0x20000505                headerResponseOk
  *fill*         0x20000506        0x2 
- .bss           0x20000508       0x1c Apps/Tasks/ModemTask/source/ModemTxTask.o
- .bss           0x20000524        0xa Apps/UartDriver/source/UartDriver.o
+ .bss           0x20000508       0x1c Application/Tasks/ModemTask/source/ModemTxTask.o
+ .bss           0x20000524        0xa Application/UartDriver/source/UartDriver.o
                 0x20000524                TxBuf
  *fill*         0x2000052e        0x2 
  .bss           0x20000530        0x4 hal/src/hal_delay.o
@@ -3921,7 +3921,7 @@ LOAD e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc
                 0x20003448        0x4 e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m\libc_nano.a(lib_a-nano-mallocr.o)
                 0x20003448                __malloc_sbrk_start
  *(COMMON)
- COMMON         0x2000344c       0x38 Apps/Common/FreeRtosHooks.o
+ COMMON         0x2000344c       0x38 Application/Common/FreeRtosHooks.o
                 0x2000344c                sysTimeFirst
                 0x20003450                CmdResponseQueue
                 0x20003454                xModemTxTaskHandle
@@ -3936,13 +3936,13 @@ LOAD e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc
                 0x20003478                DebugPrintMutex
                 0x2000347c                AtTxQueueLoadSemaphore
                 0x20003480                AtReceiveQueue
- COMMON         0x20003484      0x814 Apps/Tasks/ModemTask/source/ModemController.o
+ COMMON         0x20003484      0x814 Application/Tasks/ModemTask/source/ModemController.o
                 0x20003484                rxEcho
                 0x20003486                ModemRxDatabuffer
                 0x20003c88                RxRingBuffer
- COMMON         0x20003c98        0x1 Apps/Tasks/ModemTask/source/ModemDiagTask.o
+ COMMON         0x20003c98        0x1 Application/Tasks/ModemTask/source/ModemDiagTask.o
                 0x20003c98                ModemDiagState
- COMMON         0x20003c99        0x7 Apps/SerialDebug/SerialDebug.o
+ COMMON         0x20003c99        0x7 Application/SerialDebug/SerialDebug.o
                 0x20003c99                rcvdChar
                 0x20003c9b                printBuf
  COMMON         0x20003ca0      0x1ac driver_init.o
@@ -3991,33 +3991,33 @@ OUTPUT(SAMD51.elf elf32-littlearm)
  .ARM.attributes
                 0x0000001e       0x2e e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtbegin.o
  .ARM.attributes
-                0x0000004c       0x37 Apps/Common/FreeRtosHooks.o
+                0x0000004c       0x37 Application/Common/FreeRtosHooks.o
  .ARM.attributes
-                0x00000083       0x37 Apps/Tasks/SensorTask/source/SensorTask.o
+                0x00000083       0x37 Application/Tasks/SensorTask/source/SensorTask.o
  .ARM.attributes
-                0x000000ba       0x37 Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
+                0x000000ba       0x37 Application/Tasks/ModemTask/source/ModemAtCommandSet.o
  .ARM.attributes
-                0x000000f1       0x37 Apps/Tasks/ModemTask/source/ModemCmdParser.o
+                0x000000f1       0x37 Application/Tasks/ModemTask/source/ModemCmdParser.o
  .ARM.attributes
-                0x00000128       0x37 Apps/Tasks/ModemTask/source/ModemConnection.o
+                0x00000128       0x37 Application/Tasks/ModemTask/source/ModemConnection.o
  .ARM.attributes
-                0x0000015f       0x37 Apps/Tasks/ModemTask/source/ModemController.o
+                0x0000015f       0x37 Application/Tasks/ModemTask/source/ModemController.o
  .ARM.attributes
-                0x00000196       0x37 Apps/Tasks/ModemTask/source/ModemDiagTask.o
+                0x00000196       0x37 Application/Tasks/ModemTask/source/ModemDiagTask.o
  .ARM.attributes
-                0x000001cd       0x37 Apps/Tasks/ModemTask/source/ModemPowerControl.o
+                0x000001cd       0x37 Application/Tasks/ModemTask/source/ModemPowerControl.o
  .ARM.attributes
-                0x00000204       0x37 Apps/Tasks/ModemTask/source/ModemProcessTask.o
+                0x00000204       0x37 Application/Tasks/ModemTask/source/ModemProcessTask.o
  .ARM.attributes
-                0x0000023b       0x37 Apps/Tasks/ModemTask/source/ModemResponseHandles.o
+                0x0000023b       0x37 Application/Tasks/ModemTask/source/ModemResponseHandles.o
  .ARM.attributes
-                0x00000272       0x37 Apps/Tasks/ModemTask/source/ModemRxTask.o
+                0x00000272       0x37 Application/Tasks/ModemTask/source/ModemRxTask.o
  .ARM.attributes
-                0x000002a9       0x37 Apps/Tasks/ModemTask/source/ModemTxTask.o
+                0x000002a9       0x37 Application/Tasks/ModemTask/source/ModemTxTask.o
  .ARM.attributes
-                0x000002e0       0x37 Apps/UartDriver/source/UartDriver.o
+                0x000002e0       0x37 Application/UartDriver/source/UartDriver.o
  .ARM.attributes
-                0x00000317       0x37 Apps/SerialDebug/SerialDebug.o
+                0x00000317       0x37 Application/SerialDebug/SerialDebug.o
  .ARM.attributes
                 0x0000034e       0x37 atmel_start.o
  .ARM.attributes
@@ -4152,21 +4152,21 @@ OUTPUT(SAMD51.elf elf32-littlearm)
                 0x0000104d       0x1e e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc/arm-none-eabi/6.3.1/thumb/v7e-m/crtn.o
 
 .comment        0x00000000       0x59
- .comment       0x00000000       0x59 Apps/Common/FreeRtosHooks.o
+ .comment       0x00000000       0x59 Application/Common/FreeRtosHooks.o
                                  0x5a (size before relaxing)
- .comment       0x00000059       0x5a Apps/Tasks/SensorTask/source/SensorTask.o
- .comment       0x00000059       0x5a Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
- .comment       0x00000059       0x5a Apps/Tasks/ModemTask/source/ModemCmdParser.o
- .comment       0x00000059       0x5a Apps/Tasks/ModemTask/source/ModemConnection.o
- .comment       0x00000059       0x5a Apps/Tasks/ModemTask/source/ModemController.o
- .comment       0x00000059       0x5a Apps/Tasks/ModemTask/source/ModemDiagTask.o
- .comment       0x00000059       0x5a Apps/Tasks/ModemTask/source/ModemPowerControl.o
- .comment       0x00000059       0x5a Apps/Tasks/ModemTask/source/ModemProcessTask.o
- .comment       0x00000059       0x5a Apps/Tasks/ModemTask/source/ModemResponseHandles.o
- .comment       0x00000059       0x5a Apps/Tasks/ModemTask/source/ModemRxTask.o
- .comment       0x00000059       0x5a Apps/Tasks/ModemTask/source/ModemTxTask.o
- .comment       0x00000059       0x5a Apps/UartDriver/source/UartDriver.o
- .comment       0x00000059       0x5a Apps/SerialDebug/SerialDebug.o
+ .comment       0x00000059       0x5a Application/Tasks/SensorTask/source/SensorTask.o
+ .comment       0x00000059       0x5a Application/Tasks/ModemTask/source/ModemAtCommandSet.o
+ .comment       0x00000059       0x5a Application/Tasks/ModemTask/source/ModemCmdParser.o
+ .comment       0x00000059       0x5a Application/Tasks/ModemTask/source/ModemConnection.o
+ .comment       0x00000059       0x5a Application/Tasks/ModemTask/source/ModemController.o
+ .comment       0x00000059       0x5a Application/Tasks/ModemTask/source/ModemDiagTask.o
+ .comment       0x00000059       0x5a Application/Tasks/ModemTask/source/ModemPowerControl.o
+ .comment       0x00000059       0x5a Application/Tasks/ModemTask/source/ModemProcessTask.o
+ .comment       0x00000059       0x5a Application/Tasks/ModemTask/source/ModemResponseHandles.o
+ .comment       0x00000059       0x5a Application/Tasks/ModemTask/source/ModemRxTask.o
+ .comment       0x00000059       0x5a Application/Tasks/ModemTask/source/ModemTxTask.o
+ .comment       0x00000059       0x5a Application/UartDriver/source/UartDriver.o
+ .comment       0x00000059       0x5a Application/SerialDebug/SerialDebug.o
  .comment       0x00000059       0x5a atmel_start.o
  .comment       0x00000059       0x5a Device_Startup/startup_samd51.o
  .comment       0x00000059       0x5a driver_init.o

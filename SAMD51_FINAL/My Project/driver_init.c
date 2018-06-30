@@ -14,8 +14,8 @@
 #include <hpl_adc_base.h>
 #include <hpl_usart_async.h>
 
-#include "Apps/SerialDebug/SerialDebug.h"
-#include "Apps/Tasks/ModemTask/include/ModemController.h"
+#include "Application/SerialDebug/SerialDebug.h"
+#include "Application/Tasks/ModemTask/include/ModemController.h"
 #include "atmel_start.h"
 
 struct timer_descriptor TIMER_0;

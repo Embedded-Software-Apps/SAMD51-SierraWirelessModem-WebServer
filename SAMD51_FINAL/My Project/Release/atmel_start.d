@@ -156,7 +156,7 @@ atmel_start.d atmel_start.o: .././atmel_start.c ../atmel_start.h \
  ../thirdparty/RTOS/hal_rtos.h ../hal/include/hpl_core.h \
  ../hpl/core/hpl_core_port.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/rtos_port.h \
- .././Apps/SerialDebug/SerialDebug.h
+ .././Application/SerialDebug/SerialDebug.h
 
 ../atmel_start.h:
 
@@ -574,4 +574,4 @@ E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/sam.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/rtos_port.h:
 
-.././Apps/SerialDebug/SerialDebug.h:
+.././Application/SerialDebug/SerialDebug.h:

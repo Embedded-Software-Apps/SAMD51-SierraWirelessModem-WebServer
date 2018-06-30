@@ -14,22 +14,21 @@
 #include <atmel_start.h>
 #include <hal_delay.h>
 
-#include "Apps/SerialDebug/SerialDebug.h"
-#include "Apps/Tasks/SensorTask/include/SensorTask.h"
-#include "Apps/Tasks/ModemTask/include/ModemTxTask.h"
-#include "Apps/LedControl/include/ledControl.h"
-#include "Apps/Common/Common.h"
-#include "Apps/Tasks/ModemTask/include/ModemPowerControl.h"
-#include "Apps/Tasks/ModemTask/include/ModemController.h"
-#include "Apps/Tasks/ModemTask/include/ModemCmdParser.h"
-#include "Apps/Tasks/ModemTask/include/ModemParameters.h"
-#include "Apps/Tasks/ModemTask/include/ModemConnection.h"
-#include "Apps/Tasks/ModemTask/include/ModemRxTask.h"
-#include "Apps/Tasks/ModemTask/include/ModemProcessTask.h"
-#include "Apps/Tasks/ModemTask/include/ModemTxTask.h"
-#include "Apps/Tasks/ModemTask/include/ModemDiagTask.h"
+#include "Application/SerialDebug/SerialDebug.h"
+#include "Application/Tasks/SensorTask/include/SensorTask.h"
+#include "Application/Tasks/ModemTask/include/ModemTxTask.h"
+#include "Application/LedControl/include/ledControl.h"
+#include "Application/Common/Common.h"
+#include "Application/Tasks/ModemTask/include/ModemPowerControl.h"
+#include "Application/Tasks/ModemTask/include/ModemController.h"
+#include "Application/Tasks/ModemTask/include/ModemCmdParser.h"
+#include "Application/Tasks/ModemTask/include/ModemParameters.h"
+#include "Application/Tasks/ModemTask/include/ModemConnection.h"
+#include "Application/Tasks/ModemTask/include/ModemRxTask.h"
+#include "Application/Tasks/ModemTask/include/ModemProcessTask.h"
+#include "Application/Tasks/ModemTask/include/ModemTxTask.h"
+#include "Application/Tasks/ModemTask/include/ModemDiagTask.h"
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h"
-#include <string.h>
 
 /* FreeRTOS.org includes. */
 #include "FreeRTOS.h"
