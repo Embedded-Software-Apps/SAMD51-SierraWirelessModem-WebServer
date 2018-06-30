@@ -17,7 +17,7 @@ typedef enum
 	SERIAL_DEBUG_IDLE	
 }SERIAL_TEST;
 
-#define DEBUG_ON (1)
+#define SERIAL_DEBUG_ON (1)
 
 void SerialDebugPrintInit(void);
 void SerialDebugStateMachine(void);

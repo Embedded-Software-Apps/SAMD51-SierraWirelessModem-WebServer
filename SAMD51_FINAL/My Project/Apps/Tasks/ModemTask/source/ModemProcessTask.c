@@ -46,7 +46,7 @@ void ModemProcessTask( void *ModemTaskParam)
     {
     	if(pdPASS == xTimerStart(xAutoReloadHourlyTimer,0))
     	{
-    		SerialDebugPrint("Hourly Modem Restart timer is started.\r\n",40);
+    		//DEBUG_PRINT("Hourly Modem Restart timer is started");
     	}
     }
 
@@ -65,6 +65,6 @@ void ModemProcessTask( void *ModemTaskParam)
 
 static void SystemAutoRestartTimerCallBack(void* param)
 {
-	SerialDebugPrint("Hourly System Restart timer expired. Rebooting the system.\r\n",60);
+	DEBUG_PRINT("Hourly System Restart timer expired. Rebooting the system.\r\n");
 	requestWatchDogForcedReset();
 }

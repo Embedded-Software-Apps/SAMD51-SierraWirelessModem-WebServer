@@ -78,7 +78,7 @@ void SerialDebugPrint(const uint8_t *const dataToPrint,const uint16_t length)
 
 void SerialStringPrint(const uint8_t *const dataToPrint)
 {
-	#ifdef DEBUG_ON
+	#ifdef SERIAL_DEBUG_ON
 	
 	uint8_t strLength;
 	const TickType_t printDelayMs = pdMS_TO_TICKS(500UL);

@@ -67,7 +67,7 @@ void MdmConnect_HttpConnectionSchedule(void)
 	        	gHttpConnectionState = MDM_HTTP_CONNECTION_IN_PROGRESS;
 	        	gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_CLOSE_CONNECTION;
 	        	gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
-	        	SerialDebugPrint("Closing Active Connections\r\n",28);
+	        	DEBUG_PRINT("Closing Active Connections");
 			}
         }
         break;
@@ -173,13 +173,11 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
 		        		{
 			        		sessionIdCount--;
 			        		gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
-			        		//SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
-							//SerialDebugPrint("\r\n",2);
 		        		}
 		        		else
 		        		{
 			        		gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_SET_EOF_PATTERN;
-			        		SerialDebugPrint("Closed All Active Connections\r\n",31);
+			        		DEBUG_PRINT("Closed All Active Connections");
 		        		}
 		        		vPortFree(ConnectionResponse.response);
 	        		}
@@ -239,9 +237,9 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
 				{
 	        		if(ConnectionResponse.atCmd == CMD_AT_KPATTERN)
 	        		{
-	        			SerialDebugPrint("EOF Pattern configured\r\n",24);
+	        			DEBUG_PRINT("EOF Pattern configured");
 		        		SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
-						SerialDebugPrint("\r\n",2);
+						DEBUG_PRINT("\r\n");
 						gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_SET_ACCESS_POINT;
 						gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
 
@@ -303,9 +301,9 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
 				{
 	        		if(ConnectionResponse.atCmd == CMD_AT_KCNXCFG)
 	        		{
-	        			SerialDebugPrint("Access Point configured\r\n",25);
+	        			DEBUG_PRINT("Access Point configured");
 		        		SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
-						SerialDebugPrint("\r\n",2);
+		        		DEBUG_PRINT("\r\n");
 						gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_SET_CONNECT_TIMERS;
 						gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
 
@@ -367,9 +365,9 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
 				{
 	        		if(ConnectionResponse.atCmd == CMD_AT_KCNXTIMER)
 	        		{
-	        			SerialDebugPrint("Connection Timers configured\r\n",30);
+	        			DEBUG_PRINT("Connection Timers configured");
 		        		SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
-						SerialDebugPrint("\r\n",2);
+		        		DEBUG_PRINT("\r\n");
 						gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_SET_SERVER_ADDRESS;
 						gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
 
@@ -431,9 +429,9 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
 				{
 	        		if(ConnectionResponse.atCmd == CMD_AT_KHTTP_CFG)
 	        		{
-	        			SerialDebugPrint("Cloud Server configured\r\n",25);
+	        			DEBUG_PRINT("Cloud Server configured");
 		        		SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
-						SerialDebugPrint("\r\n",2);
+		        		DEBUG_PRINT("\r\n");
 						MdmCnct_ExtractSessionIdFromConfigResponse(ConnectionResponse.response);
 						gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_SET_HTTP_HEADER;
 						gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
@@ -498,7 +496,7 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
 	        		if(ConnectionResponse.atCmd == CMD_AT_KHTTP_HEADER)
 	        		{
 		        		SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
-						SerialDebugPrint("\r\n",2);
+		        		DEBUG_PRINT("\r\n");
 
 						if(false != processHttpHeaderResponse(ConnectionResponse.response))
 						{
@@ -506,7 +504,8 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
 							gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
 							gHttpConnectionState = MDM_HTTP_CONNECTED;
 							gHttpConnectedSubState = CONNECTED_INITIALIZE_TRANSMISSION;
-							SerialDebugPrint("Successfully Established the connection with server\r\n",53);
+							DEBUG_PRINT("Successfully Established the connection with server");
+							DEBUG_PRINT("\r\n");
 							vTaskDelay(PacketTransmitDelayMs);
 						}
 						else
@@ -624,8 +623,7 @@ static void MdmCnct_ConnectedSubStateMachine(void)
 	        			if(false != MdmCnct_validateServerResponse(ConnectionResponse.response))
 	        			{
 		        			SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
-		        			SerialDebugPrint("\r\n",2);
-		        			SerialDebugPrint("\r\n",2);
+		        			DEBUG_PRINT("\r\n");
 		        			gHttpConnectedSubState = CONNECTED_SEND_DATA_PACKETS_TO_SERVER;
 	        			}
 	        			else
@@ -664,8 +662,8 @@ static void MdmCnct_ConnectedSubStateMachine(void)
 			gErrorRecoveryState = CLOSE_ALL_EXISTING_CONNECIONS;
 			sessionIdCount = 5;
 			gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
-			SerialDebugPrint("\r\nPerforming the Error Recovery\r\n",31);
-			SerialDebugPrint("Closing the active connection.\r\n",33);
+			DEBUG_PRINT("\r\nPerforming the Error Recovery\r\n");
+			DEBUG_PRINT("Closing the active connection");
 			vTaskDelay(QueuePushDelayMs);
 		}
 		break;
@@ -776,14 +774,12 @@ static bool MdmCnct_PeformErrorRecovery(void)
 		        		{
 			        		sessionIdCount--;
 			        		gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
-			        		//SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
-							//SerialDebugPrint("\r\n",2);
 		        		}
 		        		else
 		        		{
 		        			gErrorRecoveryState = BRING_ACTIVE_PDP_CONNECTION_DOWN;
 		        			gHttpConnectedSubState = CONNECTED_PEFORM_ERROR_RECOVERY;
-			        		SerialDebugPrint("Closed All Active Connections\r\n",31);
+		        			DEBUG_PRINT("Closed All Active Connections");
 		        		}
 		        		vPortFree(ConnectionResponse.response);
 	        		}
@@ -796,7 +792,7 @@ static bool MdmCnct_PeformErrorRecovery(void)
 				}
         		else
         		{
-        			SerialDebugPrint("Problem in Auto Recovery. Rebooting the system....\r\n",41);
+        			DEBUG_PRINT("Problem in Auto Recovery. Rebooting the system....\r\n");
         			requestWatchDogForcedReset();
         		}
         	}
@@ -849,9 +845,9 @@ static bool MdmCnct_PeformErrorRecovery(void)
 				{
 	        		if(ConnectionResponse.atCmd == CMD_AT_KCNX_DOWN)
 	        		{
-	        			SerialDebugPrint("Brought the PDP connection DOWN\r\n",33);
+	        			DEBUG_PRINT("Brought the PDP connection DOWN");
 		        		SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
-						SerialDebugPrint("\r\n",2);
+		        		DEBUG_PRINT("\r\n");
 						gErrorRecoveryState = PDP_PERFORM_PS_CONNECTION_DETACH;
 						gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
 						gHttpConnectedSubState = CONNECTED_PEFORM_ERROR_RECOVERY;
@@ -866,7 +862,7 @@ static bool MdmCnct_PeformErrorRecovery(void)
 				}
 				else
 				{
-        			SerialDebugPrint("Problem in Auto Recovery. Rebooting the system....\r\n",41);
+					DEBUG_PRINT("Problem in Auto Recovery. Rebooting the system....\r\n");
         			requestWatchDogForcedReset();
 				}
 			}
@@ -919,9 +915,9 @@ static bool MdmCnct_PeformErrorRecovery(void)
 				{
 	        		if(ConnectionResponse.atCmd == CMD_AT_CGATT)
 	        		{
-	        			SerialDebugPrint("Detached the PDP PS\r\n",21);
+	        			DEBUG_PRINT("Detached the PDP PS");
 		        		SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
-						SerialDebugPrint("\r\n",2);
+		        		DEBUG_PRINT("\r\n");
 						gErrorRecoveryState = CLOSE_ALL_EXISTING_CONNECIONS;
 						gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
 						gHttpConnectedSubState = CONNECTED_INITIALIZE_TRANSMISSION;
@@ -929,16 +925,16 @@ static bool MdmCnct_PeformErrorRecovery(void)
 						gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_CLOSE_CONNECTION;
 						sessionIdCount = 5;
 
-						SerialDebugPrint("Error Recovery Completed\r\n\r\n",28);
-						SerialDebugPrint("=================================================\r\n\r\n",54);
-						SerialDebugPrint("Establishing a new connection with server\r\n",43);
+						DEBUG_PRINT("Error Recovery Completed\r\n");
+						DEBUG_PRINT("=================================================\r\n");
+						DEBUG_PRINT("Establishing a new connection with server");
 						errorRecoveryCnt++;
 		        		vPortFree(ConnectionResponse.response);
 
 		        		if(errorRecoveryCnt >=3)
 		        		{
-		        			SerialDebugPrint("System is auto recovered for more than 3 times.\r\n",49);
-		        			SerialDebugPrint("Performing a system restart....................\r\n",49);
+		        			DEBUG_PRINT("System is auto recovered for more than 3 times.");
+		        			DEBUG_PRINT("Performing a system restart....................\r\n");
 		        			errorRecoveryCnt = 0;
 		        			requestWatchDogForcedReset();
 		        		}
@@ -953,7 +949,7 @@ static bool MdmCnct_PeformErrorRecovery(void)
 				}
 				else
 				{
-        			SerialDebugPrint("Problem in Auto Recovery. Rebooting the system....\r\n",41);
+					DEBUG_PRINT("Problem in Auto Recovery. Rebooting the system....\r\n");
         			requestWatchDogForcedReset();
 				}
 			}
