@@ -80,12 +80,17 @@ void SerialDebugPrint(const uint8_t *const dataToPrint,const uint16_t length)
 void SerialStringPrint(const uint8_t *const dataToPrint)
 {
 	#ifdef DEBUG_ON
+	const TickType_t printDelayMs = pdMS_TO_TICKS(1500UL);
 	
-	uint8_t dbgBuffer[100];
-	memset(dbgBuffer,'\0',100);
-	sprintf((int8_t*)dbgBuffer,"%s %s",dataToPrint,"\r\n");
-	SerialDebugPrint(dbgBuffer,strlen(dbgBuffer));
-	
+    if( xSemaphoreTake( DebugPrintMutex,printDelayMs) == pdTRUE )
+    {
+    	uint8_t dbgBuffer[200];
+    	memset(dbgBuffer,'\0',200);
+    	sprintf((int8_t*)dbgBuffer,"%s %s",dataToPrint,"\r\n");
+    	SerialDebugPrint(dbgBuffer,strlen(dbgBuffer));
+
+    	xSemaphoreGive(DebugPrintMutex);
+    }
 	#endif
 }
 

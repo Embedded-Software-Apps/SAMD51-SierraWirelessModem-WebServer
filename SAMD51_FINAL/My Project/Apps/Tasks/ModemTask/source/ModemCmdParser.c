@@ -139,33 +139,6 @@ static bool mdmParser_CheckForUnSolicitedResponses(void)
 ** Description:        Gets the parsed modem response
 **
 **===========================================================================*/
-static void mdmParser_PerformErrorRecovery(void)
-{
-	mdmParser_SendCommandToModem(CMD_AT_KHTTP_CLOSE_1);
-	delay_ms(1000);
-	mdmParser_ProcessModemResponse();
-
-	mdmParser_SendCommandToModem(CMD_AT_KCNX_DOWN);
-	delay_ms(1000);
-	mdmParser_ProcessModemResponse();
-
-	mdmParser_SendCommandToModem(CMD_AT_CGATT);
-	delay_ms(1000);
-	mdmParser_ProcessModemResponse();
-	delay_ms(3000);
-
-	mdmParam_InitiateConnection();
-	DEBUG_PRINT("Closed and Reopened the session......");
-	DEBUG_PRINT("Auto recovery completed......");
-}
-
-/*============================================================================
-**
-** Function Name:      mdmComms_GetModemResponse
-**
-** Description:        Gets the parsed modem response
-**
-**===========================================================================*/
 void mdmParser_SetLastCmdProcessed(bool status)
 {
 	isPrevCmdRespProcessed = status;

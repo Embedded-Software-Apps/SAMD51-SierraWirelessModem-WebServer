@@ -79,8 +79,6 @@ int main(void)
        (ModemRxTaskStatus == pdPASS) &&
 	   (ModemDiagTaskStatus == pdPASS))
     {
-    	DEBUG_PRINT("Successfully Created the Tasks");
-
     	if(false != createQueuesAndSemaphores())
     	{
     		vTaskStartScheduler();
@@ -124,15 +122,13 @@ bool createQueuesAndSemaphores(void)
        (AtReceiveQueue  != NULL) &&
 	   (CmdResponseQueue != NULL))
     {
-    	DEBUG_PRINT("Tx & Rx Queues are created");
-
     	AtTxQueueLoadSemaphore = xSemaphoreCreateBinary();
     	DebugPrintMutex        = xSemaphoreCreateMutex();
 		
 		if((AtTxQueueLoadSemaphore != NULL) &&
 		   (DebugPrintMutex != NULL))
 		{
-			DEBUG_PRINT("Semaphores and Mutexes are created");
+			//DEBUG_PRINT("Semaphores and Mutexes are created");
 		}
 		else
 		{

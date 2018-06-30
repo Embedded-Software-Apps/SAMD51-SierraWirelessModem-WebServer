@@ -210,7 +210,6 @@ static void ModemDiagSchedule(void)
 
                     if(TxQueuePushStatus == pdPASS)
                     {
-                        DEBUG_PRINT("Sent the Diag data to Tx Task");
                         xSemaphoreGive(AtTxQueueLoadSemaphore);
                         vTaskDelay(DiagDelayMs);
                         ModemDiagState = MODEM_DIAG_GET_IMEI;
@@ -232,7 +231,6 @@ static void ModemDiagSchedule(void)
 
                     if(TxQueuePushStatus == pdPASS)
                     {
-                        DEBUG_PRINT("Sent the Diag data to Tx Task");
                         xSemaphoreGive(AtTxQueueLoadSemaphore);
                         vTaskDelay(DiagDelayMs);
                         ModemDiagState = MODEM_DIAG_GET_SERIAL;
@@ -254,7 +252,6 @@ static void ModemDiagSchedule(void)
 
                     if(TxQueuePushStatus == pdPASS)
                     {
-                        DEBUG_PRINT("Sent the Diag data to Tx Task");
                         xSemaphoreGive(AtTxQueueLoadSemaphore);
                         vTaskDelay(DiagDelayMs);
                         ModemDiagState = MODEM_DIAG_MAX_STATE;
@@ -276,7 +273,6 @@ static void ModemDiagSchedule(void)
 
                     if(TxQueuePushStatus == pdPASS)
                     {
-                        DEBUG_PRINT("Sent the Diag data to Tx Task");
                         xSemaphoreGive(AtTxQueueLoadSemaphore);
                         vTaskDelay(DiagDelayMs);
                         ModemDiagState = 100;

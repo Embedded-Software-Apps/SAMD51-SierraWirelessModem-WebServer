@@ -62,14 +62,12 @@ void mdmCtrlr_DataCommInit(void)
 		/* Enable all of the UART interrupts for SERCOM3 */
 		_usart_async_set_irq_state(&MODEM_SERCOM3_UART,USART_ASYNC_RX_DONE,true);
 		_usart_async_enable(&MODEM_SERCOM3_UART);
-		DEBUG_PRINT("MODEM DATA UART (SERCOM3) initialized");
+		//DEBUG_PRINT("MODEM DATA UART (SERCOM3) initialized");
 		prior = NVIC_GetPriority(60);
-		ConsoleDebugPrint("SERCOM3 PRIORITY", prior);
-		
 	}
 	else
 	{
-		DEBUG_PRINT("Failed to initialize the MODEM DATA UART");
+		//DEBUG_PRINT("Failed to initialize the MODEM DATA UART");
 	}
 }
 

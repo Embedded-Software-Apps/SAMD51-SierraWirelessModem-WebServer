@@ -431,11 +431,11 @@ void WDT_0_init(void)
 
 	if(0 == wdt_init(&WDT_0, WDT))
 	{
-		DEBUG_PRINT("WDT Initialised");
+		//DEBUG_PRINT("WDT Initialised");
 	}
 	else
 	{
-		DEBUG_PRINT("WDT Failed to initialize");
+		//DEBUG_PRINT("WDT Failed to initialize");
 	}
 }
 
@@ -483,4 +483,6 @@ void system_init(void)
 	TIMER_7_init();
 	
 	WDT_0_init();
+
+	//DEBUG_PRINT("SAMD51 Firmwares are Initialized successfully");
 }
