@@ -76,21 +76,30 @@ void SerialDebugPrint(const uint8_t *const dataToPrint,const uint16_t length)
 	usart_async_write(&SERIAL_DEBUG_PRINT, dataToPrint, length);
 }
 
-
 void SerialStringPrint(const uint8_t *const dataToPrint)
 {
 	#ifdef DEBUG_ON
-	const TickType_t printDelayMs = pdMS_TO_TICKS(1500UL);
 	
+	uint8_t strLength;
+	const TickType_t printDelayMs = pdMS_TO_TICKS(500UL);
+	uint8_t* dbgBuffer = NULL;
+	strLength = strlen(dataToPrint);
+
     if( xSemaphoreTake( DebugPrintMutex,printDelayMs) == pdTRUE )
     {
-    	uint8_t dbgBuffer[200];
-    	memset(dbgBuffer,'\0',200);
-    	sprintf((int8_t*)dbgBuffer,"%s %s",dataToPrint,"\r\n");
-    	SerialDebugPrint(dbgBuffer,strlen(dbgBuffer));
-
+		dbgBuffer = (uint8_t*)pvPortMalloc((strLength)*(sizeof(uint8_t)));
+		
+		if(dbgBuffer != NULL)
+		{
+	    	memset(dbgBuffer,'\0',strLength);
+	    	sprintf((int8_t*)dbgBuffer,"%s",dataToPrint);
+	    	SerialDebugPrint(dbgBuffer,strlen(dbgBuffer));
+			SerialDebugPrint("\r\n",2);
+	    	vPortFree(dbgBuffer);			
+		}
     	xSemaphoreGive(DebugPrintMutex);
     }
+	
 	#endif
 }
 
