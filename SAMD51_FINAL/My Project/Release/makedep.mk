@@ -16,7 +16,7 @@ Apps\SelectInputs\source\selectInputs.c
 
 Apps\SensorAdcInputs\source\SensorAdcInputs.c
 
-Apps\Tasks\DispatchTask\source\DispatchTask.c
+Apps\Tasks\SensorTask\source\SensorTask.c
 
 Apps\Tasks\ModemTask\source\ModemAtCommandSet.c
 

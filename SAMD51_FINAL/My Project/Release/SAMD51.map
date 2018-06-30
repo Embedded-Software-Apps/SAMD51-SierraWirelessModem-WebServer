@@ -203,8 +203,6 @@ rcvdChar            0x2               Apps/SerialDebug/SerialDebug.o
 DAC_0               0x14              driver_init.o
 TIMER_1             0x20              driver_init.o
 printBuf            0x5               Apps/SerialDebug/SerialDebug.o
-xDispatchTaskHandle
-                    0x4               Apps/Common/FreeRtosHooks.o
 _irq_table          0x224             hpl/core/hpl_core_m4.o
 TIMER_5             0x20              driver_init.o
 TIMER_4_task1       0x14              examples/driver_examples.o
@@ -212,6 +210,7 @@ TIMER_3_task2       0x14              examples/driver_examples.o
 PowerOnSuccessfull  0x1               Apps/Common/FreeRtosHooks.o
 ModemRxDatabuffer   0x800             Apps/Tasks/ModemTask/source/ModemController.o
 AtTransmitQueue     0x4               Apps/Common/FreeRtosHooks.o
+xSensorTaskHandle   0x4               Apps/Common/FreeRtosHooks.o
 DebugPrintMutex     0x4               Apps/Common/FreeRtosHooks.o
 TIMER_6             0x20              driver_init.o
 TIMER_4_task2       0x14              examples/driver_examples.o
@@ -520,9 +519,9 @@ Discarded input sections
  .comment       0x00000000       0x5a Apps/SensorAdcInputs/source/SensorAdcInputs.o
  .ARM.attributes
                 0x00000000       0x37 Apps/SensorAdcInputs/source/SensorAdcInputs.o
- .text          0x00000000        0x0 Apps/Tasks/DispatchTask/source/DispatchTask.o
- .data          0x00000000        0x0 Apps/Tasks/DispatchTask/source/DispatchTask.o
- .bss           0x00000000        0x0 Apps/Tasks/DispatchTask/source/DispatchTask.o
+ .text          0x00000000        0x0 Apps/Tasks/SensorTask/source/SensorTask.o
+ .data          0x00000000        0x0 Apps/Tasks/SensorTask/source/SensorTask.o
+ .bss           0x00000000        0x0 Apps/Tasks/SensorTask/source/SensorTask.o
  .text          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
  .text          0x00000000        0x0 Apps/Tasks/ModemTask/source/ModemCmdParser.o
  .text.mdmParser_SendCommandToModem
@@ -2659,7 +2658,7 @@ LOAD Apps/LedControl/source/ledControl.o
 LOAD Apps/LedControl/source/ledPwmControl.o
 LOAD Apps/SelectInputs/source/selectInputs.o
 LOAD Apps/SensorAdcInputs/source/SensorAdcInputs.o
-LOAD Apps/Tasks/DispatchTask/source/DispatchTask.o
+LOAD Apps/Tasks/SensorTask/source/SensorTask.o
 LOAD Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
 LOAD Apps/Tasks/ModemTask/source/ModemCmdParser.o
 LOAD Apps/Tasks/ModemTask/source/ModemConnection.o
@@ -2762,9 +2761,9 @@ LOAD e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc
  .text.vApplicationStackOverflowHook
                 0x000002d0       0x60 Apps/Common/FreeRtosHooks.o
                 0x000002d0                vApplicationStackOverflowHook
- .text.DispatchTask
-                0x00000330       0x28 Apps/Tasks/DispatchTask/source/DispatchTask.o
-                0x00000330                DispatchTask
+ .text.SensorTask
+                0x00000330       0x28 Apps/Tasks/SensorTask/source/SensorTask.o
+                0x00000330                SensorTask
  .text.getModemCommandData
                 0x00000358       0x1c Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
                 0x00000358                getModemCommandData
@@ -3931,9 +3930,9 @@ LOAD e:/softwares/atmelstudio/7.0/toolchain/arm/arm-gnu-toolchain/bin/../lib/gcc
                 0x20003460                xModemDiagTaskHandle
                 0x20003464                xDataQueue
                 0x20003468                xModemRxTaskHandle
-                0x2000346c                xDispatchTaskHandle
-                0x20003470                PowerOnSuccessfull
-                0x20003474                AtTransmitQueue
+                0x2000346c                PowerOnSuccessfull
+                0x20003470                AtTransmitQueue
+                0x20003474                xSensorTaskHandle
                 0x20003478                DebugPrintMutex
                 0x2000347c                AtTxQueueLoadSemaphore
                 0x20003480                AtReceiveQueue
@@ -3994,7 +3993,7 @@ OUTPUT(SAMD51.elf elf32-littlearm)
  .ARM.attributes
                 0x0000004c       0x37 Apps/Common/FreeRtosHooks.o
  .ARM.attributes
-                0x00000083       0x37 Apps/Tasks/DispatchTask/source/DispatchTask.o
+                0x00000083       0x37 Apps/Tasks/SensorTask/source/SensorTask.o
  .ARM.attributes
                 0x000000ba       0x37 Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
  .ARM.attributes
@@ -4155,7 +4154,7 @@ OUTPUT(SAMD51.elf elf32-littlearm)
 .comment        0x00000000       0x59
  .comment       0x00000000       0x59 Apps/Common/FreeRtosHooks.o
                                  0x5a (size before relaxing)
- .comment       0x00000059       0x5a Apps/Tasks/DispatchTask/source/DispatchTask.o
+ .comment       0x00000059       0x5a Apps/Tasks/SensorTask/source/SensorTask.o
  .comment       0x00000059       0x5a Apps/Tasks/ModemTask/source/ModemAtCommandSet.o
  .comment       0x00000059       0x5a Apps/Tasks/ModemTask/source/ModemCmdParser.o
  .comment       0x00000059       0x5a Apps/Tasks/ModemTask/source/ModemConnection.o

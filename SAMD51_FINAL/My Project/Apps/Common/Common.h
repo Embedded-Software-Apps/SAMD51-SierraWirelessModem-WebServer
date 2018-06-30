@@ -49,7 +49,7 @@ TaskHandle_t xModemTxTaskHandle;
 
 TaskHandle_t xModemRxTaskHandle;
 
-TaskHandle_t xDispatchTaskHandle;
+TaskHandle_t xSensorTaskHandle;
 
 TaskHandle_t xModemDiagTaskHandle;
 

@@ -152,11 +152,11 @@ Disassembly of section .text:
      328:	0000546f 	.word	0x0000546f
      32c:	00001675 	.word	0x00001675
 
-00000330 <DispatchTask>:
+00000330 <SensorTask>:
      330:	b573      	push	{r0, r1, r4, r5, r6, lr}
-     332:	4b06      	ldr	r3, [pc, #24]	; (34c <DispatchTask+0x1c>)
-     334:	4e06      	ldr	r6, [pc, #24]	; (350 <DispatchTask+0x20>)
-     336:	4d07      	ldr	r5, [pc, #28]	; (354 <DispatchTask+0x24>)
+     332:	4b06      	ldr	r3, [pc, #24]	; (34c <SensorTask+0x1c>)
+     334:	4e06      	ldr	r6, [pc, #24]	; (350 <SensorTask+0x20>)
+     336:	4d07      	ldr	r5, [pc, #28]	; (354 <SensorTask+0x24>)
      338:	4798      	blx	r3
      33a:	ac02      	add	r4, sp, #8
      33c:	f844 0d04 	str.w	r0, [r4, #-4]!
@@ -164,7 +164,7 @@ Disassembly of section .text:
      342:	f44f 712f 	mov.w	r1, #700	; 0x2bc
      346:	4620      	mov	r0, r4
      348:	47a8      	blx	r5
-     34a:	e7f9      	b.n	340 <DispatchTask+0x10>
+     34a:	e7f9      	b.n	340 <SensorTask+0x10>
      34c:	00004569 	.word	0x00004569
      350:	00001809 	.word	0x00001809
      354:	0000474d 	.word	0x0000474d
@@ -680,7 +680,7 @@ Disassembly of section .text:
      7d4:	4b05      	ldr	r3, [pc, #20]	; (7ec <MdmCnct_ConnectInProgressSubStateMachine+0x284>)
      7d6:	e712      	b.n	5fe <MdmCnct_ConnectInProgressSubStateMachine+0x96>
      7d8:	200001ec 	.word	0x200001ec
-     7dc:	20003474 	.word	0x20003474
+     7dc:	20003470 	.word	0x20003470
      7e0:	000041fd 	.word	0x000041fd
      7e4:	00004049 	.word	0x00004049
      7e8:	00000505 	.word	0x00000505
@@ -867,7 +867,7 @@ Disassembly of section .text:
      9b0:	0000654c 	.word	0x0000654c
      9b4:	00001675 	.word	0x00001675
      9b8:	0000691d 	.word	0x0000691d
-     9bc:	20003474 	.word	0x20003474
+     9bc:	20003470 	.word	0x20003470
      9c0:	000041fd 	.word	0x000041fd
      9c4:	00004049 	.word	0x00004049
      9c8:	00006569 	.word	0x00006569
@@ -1185,7 +1185,7 @@ Disassembly of section .text:
      cac:	00000fad 	.word	0x00000fad
      cb0:	000003c9 	.word	0x000003c9
      cb4:	000047ed 	.word	0x000047ed
-     cb8:	20003474 	.word	0x20003474
+     cb8:	20003470 	.word	0x20003470
      cbc:	000041fd 	.word	0x000041fd
      cc0:	00004049 	.word	0x00004049
      cc4:	00003c21 	.word	0x00003c21
@@ -1641,7 +1641,7 @@ Disassembly of section .text:
     111c:	00006775 	.word	0x00006775
     1120:	000016b9 	.word	0x000016b9
     1124:	00001809 	.word	0x00001809
-    1128:	20003474 	.word	0x20003474
+    1128:	20003470 	.word	0x20003470
 
 0000112c <ModemDiagUpdateDataBase>:
     112c:	780b      	ldrb	r3, [r1, #0]
@@ -2122,7 +2122,7 @@ Disassembly of section .text:
     15ae:	e7ce      	b.n	154e <ModemTxTask+0x1e>
     15b0:	2000347c 	.word	0x2000347c
     15b4:	00003c21 	.word	0x00003c21
-    15b8:	20003474 	.word	0x20003474
+    15b8:	20003470 	.word	0x20003470
     15bc:	00004049 	.word	0x00004049
     15c0:	20000508 	.word	0x20000508
     15c4:	00003edd 	.word	0x00003edd
@@ -5516,7 +5516,7 @@ Disassembly of section .text:
     3364:	bd70      	pop	{r4, r5, r6, pc}
     3366:	bf00      	nop
     3368:	00003bcd 	.word	0x00003bcd
-    336c:	20003474 	.word	0x20003474
+    336c:	20003470 	.word	0x20003470
     3370:	20003480 	.word	0x20003480
     3374:	20003450 	.word	0x20003450
     3378:	2000347c 	.word	0x2000347c
@@ -5607,11 +5607,11 @@ Disassembly of section .text:
     3424:	000017dd 	.word	0x000017dd
     3428:	00004335 	.word	0x00004335
     342c:	20000af0 	.word	0x20000af0
-    3430:	2000346c 	.word	0x2000346c
+    3430:	20003474 	.word	0x20003474
     3434:	00006cb0 	.word	0x00006cb0
     3438:	00000331 	.word	0x00000331
     343c:	20003454 	.word	0x20003454
-    3440:	00006cbd 	.word	0x00006cbd
+    3440:	00006cbb 	.word	0x00006cbb
     3444:	00001531 	.word	0x00001531
     3448:	20003468 	.word	0x20003468
     344c:	00006cc7 	.word	0x00006cc7
@@ -10001,8 +10001,8 @@ Disassembly of section .text:
 00006c90 <CSWTCH.39>:
     6c90:	65615c55 00000068 40003800 40003c00     U\aeh....8.@.<.@
     6ca0:	4101a000 4101c000 42001400 42001800     ...A...A...B...B
-    6cb0:	70736944 68637461 6b736154 646f4d00     DispatchTask.Mod
-    6cc0:	61546d65 4d006b73 6d65646f 61547852     emTask.ModemRxTa
+    6cb0:	736e6553 6154726f 4d006b73 6d65646f     SensorTask.Modem
+    6cc0:	61547854 4d006b73 6d65646f 61547852     TxTask.ModemRxTa
     6cd0:	4d006b73 6d65646f 636f7250 54737365     sk.ModemProcessT
     6ce0:	006b7361 65646f4d 6169446d 73615467     ask.ModemDiagTas
     6cf0:	7246006b 52206565 20534f54 65686353     k.Free RTOS Sche

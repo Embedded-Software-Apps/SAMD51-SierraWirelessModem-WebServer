@@ -548,10 +548,10 @@
     <Compile Include="Apps\SensorAdcInputs\source\SensorAdcInputs.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\DispatchTask\include\DispatchTask.h">
+    <Compile Include="Apps\Tasks\SensorTask\include\SensorTask.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Apps\Tasks\DispatchTask\source\DispatchTask.c">
+    <Compile Include="Apps\Tasks\SensorTask\source\SensorTask.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Apps\Tasks\ModemTask\include\ModemAtCommandSet.h">
@@ -1315,12 +1315,12 @@
     <Folder Include="Apps\SensorAdcInputs\include" />
     <Folder Include="Apps\SensorAdcInputs\source" />
     <Folder Include="Apps\Tasks" />
-    <Folder Include="Apps\Tasks\DispatchTask\include" />
-    <Folder Include="Apps\Tasks\DispatchTask\source" />
+    <Folder Include="Apps\Tasks\SensorTask\include" />
+    <Folder Include="Apps\Tasks\SensorTask\source" />
     <Folder Include="Apps\Tasks\ModemTask" />
     <Folder Include="Apps\Tasks\ModemTask\include" />
     <Folder Include="Apps\Tasks\ModemTask\source" />
-    <Folder Include="Apps\Tasks\DispatchTask" />
+    <Folder Include="Apps\Tasks\SensorTask" />
     <Folder Include="Apps\UartDriver" />
     <Folder Include="Apps\UartDriver\include" />
     <Folder Include="Apps\UartDriver\source" />

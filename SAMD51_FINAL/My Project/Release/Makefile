@@ -48,12 +48,12 @@ SUBDIRS :=  \
 ../Apps/SensorAdcInputs/include \
 ../Apps/SensorAdcInputs/source \
 ../Apps/Tasks \
-../Apps/Tasks/DispatchTask/include \
-../Apps/Tasks/DispatchTask/source \
+../Apps/Tasks/SensorTask/include \
+../Apps/Tasks/SensorTask/source \
 ../Apps/Tasks/ModemTask \
 ../Apps/Tasks/ModemTask/include \
 ../Apps/Tasks/ModemTask/source \
-../Apps/Tasks/DispatchTask \
+../Apps/Tasks/SensorTask \
 ../Apps/UartDriver \
 ../Apps/UartDriver/include \
 ../Apps/UartDriver/source \
@@ -113,7 +113,7 @@ C_SRCS +=  \
 ../Apps/LedControl/source/ledPwmControl.c \
 ../Apps/SelectInputs/source/selectInputs.c \
 ../Apps/SensorAdcInputs/source/SensorAdcInputs.c \
-../Apps/Tasks/DispatchTask/source/DispatchTask.c \
+../Apps/Tasks/SensorTask/source/SensorTask.c \
 ../Apps/Tasks/ModemTask/source/ModemAtCommandSet.c \
 ../Apps/Tasks/ModemTask/source/ModemCmdParser.c \
 ../Apps/Tasks/ModemTask/source/ModemConnection.c \
@@ -206,7 +206,7 @@ Apps/LedControl/source/ledControl.o \
 Apps/LedControl/source/ledPwmControl.o \
 Apps/SelectInputs/source/selectInputs.o \
 Apps/SensorAdcInputs/source/SensorAdcInputs.o \
-Apps/Tasks/DispatchTask/source/DispatchTask.o \
+Apps/Tasks/SensorTask/source/SensorTask.o \
 Apps/Tasks/ModemTask/source/ModemAtCommandSet.o \
 Apps/Tasks/ModemTask/source/ModemCmdParser.o \
 Apps/Tasks/ModemTask/source/ModemConnection.o \
@@ -292,7 +292,7 @@ Apps/LedControl/source/ledControl.o \
 Apps/LedControl/source/ledPwmControl.o \
 Apps/SelectInputs/source/selectInputs.o \
 Apps/SensorAdcInputs/source/SensorAdcInputs.o \
-Apps/Tasks/DispatchTask/source/DispatchTask.o \
+Apps/Tasks/SensorTask/source/SensorTask.o \
 Apps/Tasks/ModemTask/source/ModemAtCommandSet.o \
 Apps/Tasks/ModemTask/source/ModemCmdParser.o \
 Apps/Tasks/ModemTask/source/ModemConnection.o \
@@ -378,7 +378,7 @@ Apps/LedControl/source/ledControl.d \
 Apps/LedControl/source/ledPwmControl.d \
 Apps/SelectInputs/source/selectInputs.d \
 Apps/SensorAdcInputs/source/SensorAdcInputs.d \
-Apps/Tasks/DispatchTask/source/DispatchTask.d \
+Apps/Tasks/SensorTask/source/SensorTask.d \
 Apps/Tasks/ModemTask/source/ModemAtCommandSet.d \
 Apps/Tasks/ModemTask/source/ModemCmdParser.d \
 Apps/Tasks/ModemTask/source/ModemConnection.d \
@@ -464,7 +464,7 @@ Apps/LedControl/source/ledControl.d \
 Apps/LedControl/source/ledPwmControl.d \
 Apps/SelectInputs/source/selectInputs.d \
 Apps/SensorAdcInputs/source/SensorAdcInputs.d \
-Apps/Tasks/DispatchTask/source/DispatchTask.d \
+Apps/Tasks/SensorTask/source/SensorTask.d \
 Apps/Tasks/ModemTask/source/ModemAtCommandSet.d \
 Apps/Tasks/ModemTask/source/ModemCmdParser.d \
 Apps/Tasks/ModemTask/source/ModemConnection.d \
@@ -762,7 +762,7 @@ Apps/SensorAdcInputs/source/%.o: ../Apps/SensorAdcInputs/source/%.c
 	@echo Finished building: $<
 	
 
-Apps/Tasks/DispatchTask/source/%.o: ../Apps/Tasks/DispatchTask/source/%.c
+Apps/Tasks/SensorTask/source/%.o: ../Apps/Tasks/SensorTask/source/%.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
 	$(QUOTE)E:\Softwares\AtmelStudio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAMD51J20A__ -DNDEBUG  -I"E:\Softwares\AtmelStudio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include" -I"../stdio_redirect" -I"../Config" -I".." -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/ac" -I"../hpl/adc" -I"../hpl/core" -I"../hpl/dac" -I"../hpl/dmac" -I"../hpl/eic" -I"../hpl/evsys" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/nvmctrl" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/ramecc" -I"../hpl/sercom" -I"../hpl/systick" -I"../hpl/tc" -I"../hpl/tcc" -I"../hpl/wdt" -I"../hri" -I"../thirdparty/RTOS" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/module_config"  -Os -ffunction-sections -mlong-calls -Wall -mcpu=cortex-m4 -c -std=gnu99 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

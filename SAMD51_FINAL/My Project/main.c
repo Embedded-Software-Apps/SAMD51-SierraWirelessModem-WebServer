@@ -15,7 +15,7 @@
 #include <hal_delay.h>
 
 #include "Apps/SerialDebug/SerialDebug.h"
-#include "Apps/Tasks/DispatchTask/include/DispatchTask.h"
+#include "Apps/Tasks/SensorTask/include/SensorTask.h"
 #include "Apps/Tasks/ModemTask/include/ModemTxTask.h"
 #include "Apps/LedControl/include/ledControl.h"
 #include "Apps/Common/Common.h"
@@ -38,7 +38,7 @@
 /******************************************************************************************
 ************************************STATIC VARIABLES***************************************
 *******************************************************************************************/
-static BaseType_t DispatchTaskStatus;
+static BaseType_t SensorTaskStatus;
 static BaseType_t ModemProcessTaskStatus;
 static BaseType_t ModemTxTaskStatus;
 static BaseType_t ModemRxTaskStatus;
@@ -58,11 +58,11 @@ int main(void)
     /* Initializes MCU, drivers and middleware */
     atmel_start_init();	
 
-    /* Create Dispatch Task */
-    DispatchTaskStatus = xTaskCreate( DispatchTask, "DispatchTask", 150, NULL, 2, &xDispatchTaskHandle );
+    /* Create Sensor Task */
+    SensorTaskStatus = xTaskCreate( SensorTask, "SensorTask", 150, NULL, 2, &xSensorTaskHandle );
 
     /* Create Modem Tx Task */
-    ModemTxTaskStatus = xTaskCreate( ModemTxTask, "ModemTask", 150, NULL, 1, &xModemTxTaskHandle );
+    ModemTxTaskStatus = xTaskCreate( ModemTxTask, "ModemTxTask", 150, NULL, 1, &xModemTxTaskHandle );
 
     /* Create Modem Rx Task */
     ModemRxTaskStatus = xTaskCreate( ModemRxTask, "ModemRxTask", 150, NULL, 2, &xModemRxTaskHandle);
@@ -73,7 +73,7 @@ int main(void)
     /* Create Modem Diagnostics Task */
     ModemDiagTaskStatus = xTaskCreate( ModemDiagTask, "ModemDiagTask", 150, NULL, 1, &xModemDiagTaskHandle);
 
-    if((DispatchTaskStatus == pdPASS) &&
+    if((SensorTaskStatus == pdPASS) &&
        (ModemProcessTaskStatus == pdPASS) &&
        (ModemTxTaskStatus == pdPASS) &&
        (ModemRxTaskStatus == pdPASS) &&

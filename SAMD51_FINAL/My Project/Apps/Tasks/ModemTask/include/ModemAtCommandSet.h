@@ -76,7 +76,7 @@ typedef struct
 
 typedef enum
 {
-	DISPATCH_TASK = 0,
+	SENSOR_TASK = 0,
 	MODEM_PROCESS_TASK,
 	MODEM_TX_TASK,
 	MODEM_RX_TASK,
