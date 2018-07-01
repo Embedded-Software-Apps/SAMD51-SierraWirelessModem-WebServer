@@ -62,6 +62,7 @@ typedef enum
 
 #define MAX_ACTIVE_SESSION_ID     (10)
 #define SESSION_ID_POSITION       (11)
+#define CONNECT_STATUS_POSITION   (53)
 #define SESSION_ID_POS_IN_HEADER  (15)
 #define SESSION_ID_POS_IN_GET_REQ (12)
 

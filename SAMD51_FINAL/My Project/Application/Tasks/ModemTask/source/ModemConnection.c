@@ -19,10 +19,12 @@ static CONNECTION_ERROR_RECOVERY_STATE_T gErrorRecoveryState;
 static uint8_t sessionIdCount = 0;
 static CmdResponseType ConnectionResponse;
 static uint8_t currentSessionId;
+static uint8_t connectionStatus;
 
 static void MdmCnct_CloseActiveConnections(void);
 static AT_CMD_TYPE getCloseActiveSessionCmd(uint8_t sessionID);
 static void MdmCnct_ExtractSessionIdFromConfigResponse(uint8_t* response);
+static bool MdmCnct_VerifyConnectionStatusFromConfigResponse(uint8_t* cfgResponse);
 static bool processHttpHeaderResponse(uint8_t* response);
 static bool validateCommonCommandResponse(uint8_t* response);
 static void MdmCnct_ConnectedSubStateMachine(void);
@@ -585,12 +587,23 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                 {
                     if(ConnectionResponse.atCmd == CMD_AT_KHTTP_CFG)
                     {
-                        DEBUG_PRINT("Cloud Server configured");
+                    	MdmCnct_ExtractSessionIdFromConfigResponse(ConnectionResponse.response);
                         SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
                         DEBUG_PRINT("\r\n");
-                        MdmCnct_ExtractSessionIdFromConfigResponse(ConnectionResponse.response);
-                        gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_SET_HTTP_HEADER;
-                        gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+
+                        if(false != MdmCnct_VerifyConnectionStatusFromConfigResponse(ConnectionResponse.response))
+                        {
+                            DEBUG_PRINT("Connection successful...Cloud Server configured");
+                            gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_SET_HTTP_HEADER;
+                            gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+                        }
+                        else
+                        {
+                        	DEBUG_PRINT("Error : Connection Failure");
+                        	DEBUG_PRINT("Restarting the connection initialization...");
+                        	DEBUG_PRINT("\r\n");
+                        	gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+                        }
                         vPortFree(ConnectionResponse.response);
                     }
                     else
@@ -660,7 +673,6 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                             gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
                             gHttpConnectionState = MDM_HTTP_CONNECTED;
                             gHttpConnectedSubState = CONNECTED_INITIALIZE_TRANSMISSION;
-                            DEBUG_PRINT("Successfully Established the connection with server");
                             DEBUG_PRINT("\r\n");
                             vTaskDelay(PacketTransmitDelayMs);
                         }
@@ -1150,6 +1162,77 @@ static void MdmCnct_ExtractSessionIdFromConfigResponse(uint8_t* cfgResponse)
 
     /* Update the value for current session ID */
     currentSessionId = cfgResponse[SESSION_ID_POSITION];
+}
+
+/*============================================================================
+**
+** Function Name:      mdmCtrlr_FlushRxBuffer
+**
+** Description:        Flushes the Rx Ring Buffer
+**
+**===========================================================================*/
+static bool MdmCnct_VerifyConnectionStatusFromConfigResponse(uint8_t* cfgResponse)
+{
+	bool status = false;
+
+	connectionStatus = cfgResponse[CONNECT_STATUS_POSITION];
+
+	switch(connectionStatus)
+	{
+		case PDP_DISCONNECTED_DUE_TO_NETWORK:
+		{
+			DEBUG_PRINT("Connection Status : DISCONNECTED DUE TO NETWORK");
+			status = false;
+		}
+		break;
+
+		case PDP_CONNECTED:
+		{
+			DEBUG_PRINT("Connection Status : CONNECTED");
+			status = true;
+		}
+		break;
+
+		case PDP_FAILED_TO_CONNECT:
+		{
+			DEBUG_PRINT("Connection Status : FAILED TO CONNECT");
+			status = false;
+		}
+		break;
+
+		case PDP_CLOSED:
+		{
+			DEBUG_PRINT("Connection Status : CONNECTION CLOSED");
+			status = false;
+		}
+		break;
+
+		case PDP_CONNECTION_IN_PROGRESS:
+		{
+			DEBUG_PRINT("Connection Status : CONNECTION IN PROGRESS");
+			status = false;
+		}
+		break;
+
+		case PDP_IDLE_TIMER_STARTED:
+		{
+			DEBUG_PRINT("Connection Status : IDLE TIMER STARTED FOR DISCONNECTION");
+			status = false;
+		}
+		break;
+
+		case PDP_IDLE_TIMER_CANCELLED:
+		{
+			DEBUG_PRINT("Connection Status : IDLE TIMER CANCELLED");
+			status = false;
+		}
+		break;
+
+		default:
+		break;
+	}
+
+	return status;
 }
 
 /*============================================================================
