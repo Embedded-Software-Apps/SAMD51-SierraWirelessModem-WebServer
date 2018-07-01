@@ -133,6 +133,8 @@ void ModemDiagUpdateDataBase(uint8_t* buffer,CmdResponseType* cmdResponse)
         case MODEM_DIAG_TEST_AT:
         {
         	memcpy(atResponseData,buffer,sizeof(atResponseData));
+        	DEBUG_PRINT("Verifying the UART Link status with Modem");
+        	DEBUG_PRINT("SuccessFully verified the UART Link between SAMD51 Controller & Modem");
         	SerialDebugPrint(atResponseData,sizeof(atResponseData));
         	DEBUG_PRINT("\r\n");
         }

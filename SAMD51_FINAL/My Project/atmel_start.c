@@ -115,5 +115,7 @@ int32_t kickWatchDog(void)
 void requestWatchDogForcedReset(void)
 {
 	ForcedResetRequested = WDT_FORCED_RESET_ON;
-	//configureWatchDogTimeOut(WDT_TIMEOUT_FAST);
+	wdt_disable(&WDT_0);
+	configureWatchDogTimeOut(WDT_TIMEOUT_FAST);
+	wdt_enable(&WDT_0);
 }
