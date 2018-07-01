@@ -50,9 +50,9 @@ MODEM_POWER_STATES_T getModemPowerStatus(void)
 ********************************************************************************/
 void modemPowerStateInit(void)
 {
-    ModemPwrState = MDM_PWR_SHUTDOWN;
+    ModemPwrState = MDM_PWR_RESET_MODEM;
     ModemPwrOnSubState = MDM_PWR_ALL_SIG_INIT;
-    ModemResetSubState = MDM_PWR_RESET_DEASSERT;
+    ModemResetSubState = MDM_PWR_RESET_ASSERT;
     ModemForcedOffSubState = MDM_PWR_FORCED_OFF_CMPLTD;
 }
 
@@ -69,6 +69,7 @@ void modemPowerSchedule(void)
     const TickType_t ModemOnBurstDelay = pdMS_TO_TICKS(50UL);
     const TickType_t ModemOnWaitDelay = pdMS_TO_TICKS(3000UL);
     const TickType_t ModemResetWaitDelay = pdMS_TO_TICKS(25UL);
+    const TickType_t ModemResetToPowerOnWaitDelay = pdMS_TO_TICKS(500UL);
 
     switch(ModemPwrState)
     {
@@ -190,6 +191,12 @@ void modemPowerSchedule(void)
             {
                 case MDM_PWR_RESET_ASSERT:
                 {
+                	/* Apply low level pulse on the POWER ON pin */
+                    gpio_set_pin_direction(MODEM_ON, GPIO_DIRECTION_OUT);
+                    gpio_set_pin_function(MODEM_ON, GPIO_PIN_FUNCTION_OFF);
+                    gpio_set_pin_level(MODEM_ON,true);
+
+                    /* Apply low level pulse on the RESET pin for 25 ms */
                     gpio_set_pin_direction(MODEM_RESET, GPIO_DIRECTION_OUT);
                     gpio_set_pin_function(MODEM_RESET, GPIO_PIN_FUNCTION_OFF);
                     gpio_set_pin_level(MODEM_RESET,true);
@@ -207,6 +214,7 @@ void modemPowerSchedule(void)
                     /* Power On the Modem after reset */
                     ModemPwrState = MDM_PWR_SHUTDOWN;
                     ModemPwrOnSubState = MDM_PWR_ALL_SIG_INIT;
+                    vTaskDelay(ModemResetToPowerOnWaitDelay);
                 }
                 break;
 

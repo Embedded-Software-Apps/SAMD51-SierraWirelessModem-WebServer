@@ -33,31 +33,31 @@ LINKER_SCRIPT_DEP:=
 
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
-../Apps/JsonParser/include \
-../Apps/JsonParser/source \
-../Apps/LedControl \
-../Apps/LedControl/include \
-../Apps/LedControl/source \
-../Apps/Common \
-../Apps/CounterInputs \
-../Apps/JsonParser \
-../Apps/SelectInputs \
-../Apps/SelectInputs/include \
-../Apps/SelectInputs/source \
-../Apps/SensorAdcInputs \
-../Apps/SensorAdcInputs/include \
-../Apps/SensorAdcInputs/source \
-../Apps/Tasks \
-../Apps/Tasks/DispatchTask/include \
-../Apps/Tasks/DispatchTask/source \
-../Apps/Tasks/ModemTask \
-../Apps/Tasks/ModemTask/include \
-../Apps/Tasks/ModemTask/source \
-../Apps/Tasks/DispatchTask \
-../Apps/UartDriver \
-../Apps/UartDriver/include \
-../Apps/UartDriver/source \
-../Apps/SerialDebug \
+../Application/JsonParser/include \
+../Application/JsonParser/source \
+../Application/LedControl \
+../Application/LedControl/include \
+../Application/LedControl/source \
+../Application/Common \
+../Application/CounterInputs \
+../Application/JsonParser \
+../Application/SelectInputs \
+../Application/SelectInputs/include \
+../Application/SelectInputs/source \
+../Application/SensorAdcInputs \
+../Application/SensorAdcInputs/include \
+../Application/SensorAdcInputs/source \
+../Application/Tasks \
+../Application/Tasks/SensorTask/include \
+../Application/Tasks/SensorTask/source \
+../Application/Tasks/ModemTask \
+../Application/Tasks/ModemTask/include \
+../Application/Tasks/ModemTask/source \
+../Application/Tasks/SensorTask \
+../Application/UartDriver \
+../Application/UartDriver/include \
+../Application/UartDriver/source \
+../Application/SerialDebug \
 ../Config/ \
 ../Device_Startup/ \
 ../examples/ \
@@ -71,7 +71,7 @@ SUBDIRS :=  \
 ../hpl/ac/ \
 ../hpl/adc/ \
 ../hpl/core/ \
-../Apps \
+../Application \
 ../hpl/dac/ \
 ../hpl/dmac/ \
 ../hpl/eic/ \
@@ -106,27 +106,27 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../Apps/Common/FreeRtosHooks.c \
-../Apps/JsonParser/source/JsonPacket.c \
-../Apps/JsonParser/source/parson.c \
-../Apps/LedControl/source/ledControl.c \
-../Apps/LedControl/source/ledPwmControl.c \
-../Apps/SelectInputs/source/selectInputs.c \
-../Apps/SensorAdcInputs/source/SensorAdcInputs.c \
-../Apps/Tasks/DispatchTask/source/DispatchTask.c \
-../Apps/Tasks/ModemTask/source/ModemAtCommandSet.c \
-../Apps/Tasks/ModemTask/source/ModemCmdParser.c \
-../Apps/Tasks/ModemTask/source/ModemConnection.c \
-../Apps/Tasks/ModemTask/source/ModemController.c \
-../Apps/Tasks/ModemTask/source/ModemDiagTask.c \
-../Apps/Tasks/ModemTask/source/ModemParameters.c \
-../Apps/Tasks/ModemTask/source/ModemPowerControl.c \
-../Apps/Tasks/ModemTask/source/ModemProcessTask.c \
-../Apps/Tasks/ModemTask/source/ModemResponseHandles.c \
-../Apps/Tasks/ModemTask/source/ModemRxTask.c \
-../Apps/Tasks/ModemTask/source/ModemTxTask.c \
-../Apps/UartDriver/source/UartDriver.c \
-../Apps/SerialDebug/SerialDebug.c \
+../Application/Common/FreeRtosHooks.c \
+../Application/JsonParser/source/JsonPacket.c \
+../Application/JsonParser/source/parson.c \
+../Application/LedControl/source/ledControl.c \
+../Application/LedControl/source/ledPwmControl.c \
+../Application/SelectInputs/source/selectInputs.c \
+../Application/SensorAdcInputs/source/SensorAdcInputs.c \
+../Application/Tasks/SensorTask/source/SensorTask.c \
+../Application/Tasks/ModemTask/source/ModemAtCommandSet.c \
+../Application/Tasks/ModemTask/source/ModemCmdParser.c \
+../Application/Tasks/ModemTask/source/ModemConnection.c \
+../Application/Tasks/ModemTask/source/ModemController.c \
+../Application/Tasks/ModemTask/source/ModemDiagTask.c \
+../Application/Tasks/ModemTask/source/ModemParameters.c \
+../Application/Tasks/ModemTask/source/ModemPowerControl.c \
+../Application/Tasks/ModemTask/source/ModemProcessTask.c \
+../Application/Tasks/ModemTask/source/ModemResponseHandles.c \
+../Application/Tasks/ModemTask/source/ModemRxTask.c \
+../Application/Tasks/ModemTask/source/ModemTxTask.c \
+../Application/UartDriver/source/UartDriver.c \
+../Application/SerialDebug/SerialDebug.c \
 ../atmel_start.c \
 ../Device_Startup/startup_samd51.c \
 ../Device_Startup/system_samd51.c \
@@ -199,27 +199,27 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-Apps/Common/FreeRtosHooks.o \
-Apps/JsonParser/source/JsonPacket.o \
-Apps/JsonParser/source/parson.o \
-Apps/LedControl/source/ledControl.o \
-Apps/LedControl/source/ledPwmControl.o \
-Apps/SelectInputs/source/selectInputs.o \
-Apps/SensorAdcInputs/source/SensorAdcInputs.o \
-Apps/Tasks/DispatchTask/source/DispatchTask.o \
-Apps/Tasks/ModemTask/source/ModemAtCommandSet.o \
-Apps/Tasks/ModemTask/source/ModemCmdParser.o \
-Apps/Tasks/ModemTask/source/ModemConnection.o \
-Apps/Tasks/ModemTask/source/ModemController.o \
-Apps/Tasks/ModemTask/source/ModemDiagTask.o \
-Apps/Tasks/ModemTask/source/ModemParameters.o \
-Apps/Tasks/ModemTask/source/ModemPowerControl.o \
-Apps/Tasks/ModemTask/source/ModemProcessTask.o \
-Apps/Tasks/ModemTask/source/ModemResponseHandles.o \
-Apps/Tasks/ModemTask/source/ModemRxTask.o \
-Apps/Tasks/ModemTask/source/ModemTxTask.o \
-Apps/UartDriver/source/UartDriver.o \
-Apps/SerialDebug/SerialDebug.o \
+Application/Common/FreeRtosHooks.o \
+Application/JsonParser/source/JsonPacket.o \
+Application/JsonParser/source/parson.o \
+Application/LedControl/source/ledControl.o \
+Application/LedControl/source/ledPwmControl.o \
+Application/SelectInputs/source/selectInputs.o \
+Application/SensorAdcInputs/source/SensorAdcInputs.o \
+Application/Tasks/SensorTask/source/SensorTask.o \
+Application/Tasks/ModemTask/source/ModemAtCommandSet.o \
+Application/Tasks/ModemTask/source/ModemCmdParser.o \
+Application/Tasks/ModemTask/source/ModemConnection.o \
+Application/Tasks/ModemTask/source/ModemController.o \
+Application/Tasks/ModemTask/source/ModemDiagTask.o \
+Application/Tasks/ModemTask/source/ModemParameters.o \
+Application/Tasks/ModemTask/source/ModemPowerControl.o \
+Application/Tasks/ModemTask/source/ModemProcessTask.o \
+Application/Tasks/ModemTask/source/ModemResponseHandles.o \
+Application/Tasks/ModemTask/source/ModemRxTask.o \
+Application/Tasks/ModemTask/source/ModemTxTask.o \
+Application/UartDriver/source/UartDriver.o \
+Application/SerialDebug/SerialDebug.o \
 atmel_start.o \
 Device_Startup/startup_samd51.o \
 Device_Startup/system_samd51.o \
@@ -285,27 +285,27 @@ thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
 
 OBJS_AS_ARGS +=  \
-Apps/Common/FreeRtosHooks.o \
-Apps/JsonParser/source/JsonPacket.o \
-Apps/JsonParser/source/parson.o \
-Apps/LedControl/source/ledControl.o \
-Apps/LedControl/source/ledPwmControl.o \
-Apps/SelectInputs/source/selectInputs.o \
-Apps/SensorAdcInputs/source/SensorAdcInputs.o \
-Apps/Tasks/DispatchTask/source/DispatchTask.o \
-Apps/Tasks/ModemTask/source/ModemAtCommandSet.o \
-Apps/Tasks/ModemTask/source/ModemCmdParser.o \
-Apps/Tasks/ModemTask/source/ModemConnection.o \
-Apps/Tasks/ModemTask/source/ModemController.o \
-Apps/Tasks/ModemTask/source/ModemDiagTask.o \
-Apps/Tasks/ModemTask/source/ModemParameters.o \
-Apps/Tasks/ModemTask/source/ModemPowerControl.o \
-Apps/Tasks/ModemTask/source/ModemProcessTask.o \
-Apps/Tasks/ModemTask/source/ModemResponseHandles.o \
-Apps/Tasks/ModemTask/source/ModemRxTask.o \
-Apps/Tasks/ModemTask/source/ModemTxTask.o \
-Apps/UartDriver/source/UartDriver.o \
-Apps/SerialDebug/SerialDebug.o \
+Application/Common/FreeRtosHooks.o \
+Application/JsonParser/source/JsonPacket.o \
+Application/JsonParser/source/parson.o \
+Application/LedControl/source/ledControl.o \
+Application/LedControl/source/ledPwmControl.o \
+Application/SelectInputs/source/selectInputs.o \
+Application/SensorAdcInputs/source/SensorAdcInputs.o \
+Application/Tasks/SensorTask/source/SensorTask.o \
+Application/Tasks/ModemTask/source/ModemAtCommandSet.o \
+Application/Tasks/ModemTask/source/ModemCmdParser.o \
+Application/Tasks/ModemTask/source/ModemConnection.o \
+Application/Tasks/ModemTask/source/ModemController.o \
+Application/Tasks/ModemTask/source/ModemDiagTask.o \
+Application/Tasks/ModemTask/source/ModemParameters.o \
+Application/Tasks/ModemTask/source/ModemPowerControl.o \
+Application/Tasks/ModemTask/source/ModemProcessTask.o \
+Application/Tasks/ModemTask/source/ModemResponseHandles.o \
+Application/Tasks/ModemTask/source/ModemRxTask.o \
+Application/Tasks/ModemTask/source/ModemTxTask.o \
+Application/UartDriver/source/UartDriver.o \
+Application/SerialDebug/SerialDebug.o \
 atmel_start.o \
 Device_Startup/startup_samd51.o \
 Device_Startup/system_samd51.o \
@@ -371,27 +371,27 @@ thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.o \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.o
 
 C_DEPS +=  \
-Apps/Common/FreeRtosHooks.d \
-Apps/JsonParser/source/JsonPacket.d \
-Apps/JsonParser/source/parson.d \
-Apps/LedControl/source/ledControl.d \
-Apps/LedControl/source/ledPwmControl.d \
-Apps/SelectInputs/source/selectInputs.d \
-Apps/SensorAdcInputs/source/SensorAdcInputs.d \
-Apps/Tasks/DispatchTask/source/DispatchTask.d \
-Apps/Tasks/ModemTask/source/ModemAtCommandSet.d \
-Apps/Tasks/ModemTask/source/ModemCmdParser.d \
-Apps/Tasks/ModemTask/source/ModemConnection.d \
-Apps/Tasks/ModemTask/source/ModemController.d \
-Apps/Tasks/ModemTask/source/ModemDiagTask.d \
-Apps/Tasks/ModemTask/source/ModemParameters.d \
-Apps/Tasks/ModemTask/source/ModemPowerControl.d \
-Apps/Tasks/ModemTask/source/ModemProcessTask.d \
-Apps/Tasks/ModemTask/source/ModemResponseHandles.d \
-Apps/Tasks/ModemTask/source/ModemRxTask.d \
-Apps/Tasks/ModemTask/source/ModemTxTask.d \
-Apps/UartDriver/source/UartDriver.d \
-Apps/SerialDebug/SerialDebug.d \
+Application/Common/FreeRtosHooks.d \
+Application/JsonParser/source/JsonPacket.d \
+Application/JsonParser/source/parson.d \
+Application/LedControl/source/ledControl.d \
+Application/LedControl/source/ledPwmControl.d \
+Application/SelectInputs/source/selectInputs.d \
+Application/SensorAdcInputs/source/SensorAdcInputs.d \
+Application/Tasks/SensorTask/source/SensorTask.d \
+Application/Tasks/ModemTask/source/ModemAtCommandSet.d \
+Application/Tasks/ModemTask/source/ModemCmdParser.d \
+Application/Tasks/ModemTask/source/ModemConnection.d \
+Application/Tasks/ModemTask/source/ModemController.d \
+Application/Tasks/ModemTask/source/ModemDiagTask.d \
+Application/Tasks/ModemTask/source/ModemParameters.d \
+Application/Tasks/ModemTask/source/ModemPowerControl.d \
+Application/Tasks/ModemTask/source/ModemProcessTask.d \
+Application/Tasks/ModemTask/source/ModemResponseHandles.d \
+Application/Tasks/ModemTask/source/ModemRxTask.d \
+Application/Tasks/ModemTask/source/ModemTxTask.d \
+Application/UartDriver/source/UartDriver.d \
+Application/SerialDebug/SerialDebug.d \
 atmel_start.d \
 Device_Startup/startup_samd51.d \
 Device_Startup/system_samd51.d \
@@ -457,27 +457,27 @@ thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/tasks.d \
 thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/timers.d
 
 C_DEPS_AS_ARGS +=  \
-Apps/Common/FreeRtosHooks.d \
-Apps/JsonParser/source/JsonPacket.d \
-Apps/JsonParser/source/parson.d \
-Apps/LedControl/source/ledControl.d \
-Apps/LedControl/source/ledPwmControl.d \
-Apps/SelectInputs/source/selectInputs.d \
-Apps/SensorAdcInputs/source/SensorAdcInputs.d \
-Apps/Tasks/DispatchTask/source/DispatchTask.d \
-Apps/Tasks/ModemTask/source/ModemAtCommandSet.d \
-Apps/Tasks/ModemTask/source/ModemCmdParser.d \
-Apps/Tasks/ModemTask/source/ModemConnection.d \
-Apps/Tasks/ModemTask/source/ModemController.d \
-Apps/Tasks/ModemTask/source/ModemDiagTask.d \
-Apps/Tasks/ModemTask/source/ModemParameters.d \
-Apps/Tasks/ModemTask/source/ModemPowerControl.d \
-Apps/Tasks/ModemTask/source/ModemProcessTask.d \
-Apps/Tasks/ModemTask/source/ModemResponseHandles.d \
-Apps/Tasks/ModemTask/source/ModemRxTask.d \
-Apps/Tasks/ModemTask/source/ModemTxTask.d \
-Apps/UartDriver/source/UartDriver.d \
-Apps/SerialDebug/SerialDebug.d \
+Application/Common/FreeRtosHooks.d \
+Application/JsonParser/source/JsonPacket.d \
+Application/JsonParser/source/parson.d \
+Application/LedControl/source/ledControl.d \
+Application/LedControl/source/ledPwmControl.d \
+Application/SelectInputs/source/selectInputs.d \
+Application/SensorAdcInputs/source/SensorAdcInputs.d \
+Application/Tasks/SensorTask/source/SensorTask.d \
+Application/Tasks/ModemTask/source/ModemAtCommandSet.d \
+Application/Tasks/ModemTask/source/ModemCmdParser.d \
+Application/Tasks/ModemTask/source/ModemConnection.d \
+Application/Tasks/ModemTask/source/ModemController.d \
+Application/Tasks/ModemTask/source/ModemDiagTask.d \
+Application/Tasks/ModemTask/source/ModemParameters.d \
+Application/Tasks/ModemTask/source/ModemPowerControl.d \
+Application/Tasks/ModemTask/source/ModemProcessTask.d \
+Application/Tasks/ModemTask/source/ModemResponseHandles.d \
+Application/Tasks/ModemTask/source/ModemRxTask.d \
+Application/Tasks/ModemTask/source/ModemTxTask.d \
+Application/UartDriver/source/UartDriver.d \
+Application/SerialDebug/SerialDebug.d \
 atmel_start.d \
 Device_Startup/startup_samd51.d \
 Device_Startup/system_samd51.d \
@@ -727,63 +727,63 @@ LINKER_SCRIPT_DEP+=  \
 
 
 
-Apps/Common/%.o: ../Apps/Common/%.c
+Application/Common/%.o: ../Application/Common/%.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAMD51J20A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include" -I"../stdio_redirect" -I"../Config" -I".." -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/ac" -I"../hpl/adc" -I"../hpl/core" -I"../hpl/dac" -I"../hpl/dmac" -I"../hpl/eic" -I"../hpl/evsys" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/nvmctrl" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/ramecc" -I"../hpl/sercom" -I"../hpl/systick" -I"../hpl/tc" -I"../hpl/tcc" -I"../hpl/wdt" -I"../hri" -I"../thirdparty/RTOS" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/module_config"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m4 -c -std=gnu99 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-Apps/JsonParser/source/%.o: ../Apps/JsonParser/source/%.c
+Application/JsonParser/source/%.o: ../Application/JsonParser/source/%.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAMD51J20A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include" -I"../stdio_redirect" -I"../Config" -I".." -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/ac" -I"../hpl/adc" -I"../hpl/core" -I"../hpl/dac" -I"../hpl/dmac" -I"../hpl/eic" -I"../hpl/evsys" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/nvmctrl" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/ramecc" -I"../hpl/sercom" -I"../hpl/systick" -I"../hpl/tc" -I"../hpl/tcc" -I"../hpl/wdt" -I"../hri" -I"../thirdparty/RTOS" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/module_config"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m4 -c -std=gnu99 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-Apps/LedControl/source/%.o: ../Apps/LedControl/source/%.c
+Application/LedControl/source/%.o: ../Application/LedControl/source/%.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAMD51J20A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include" -I"../stdio_redirect" -I"../Config" -I".." -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/ac" -I"../hpl/adc" -I"../hpl/core" -I"../hpl/dac" -I"../hpl/dmac" -I"../hpl/eic" -I"../hpl/evsys" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/nvmctrl" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/ramecc" -I"../hpl/sercom" -I"../hpl/systick" -I"../hpl/tc" -I"../hpl/tcc" -I"../hpl/wdt" -I"../hri" -I"../thirdparty/RTOS" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/module_config"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m4 -c -std=gnu99 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-Apps/SelectInputs/source/%.o: ../Apps/SelectInputs/source/%.c
+Application/SelectInputs/source/%.o: ../Application/SelectInputs/source/%.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAMD51J20A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include" -I"../stdio_redirect" -I"../Config" -I".." -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/ac" -I"../hpl/adc" -I"../hpl/core" -I"../hpl/dac" -I"../hpl/dmac" -I"../hpl/eic" -I"../hpl/evsys" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/nvmctrl" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/ramecc" -I"../hpl/sercom" -I"../hpl/systick" -I"../hpl/tc" -I"../hpl/tcc" -I"../hpl/wdt" -I"../hri" -I"../thirdparty/RTOS" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/module_config"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m4 -c -std=gnu99 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-Apps/SensorAdcInputs/source/%.o: ../Apps/SensorAdcInputs/source/%.c
+Application/SensorAdcInputs/source/%.o: ../Application/SensorAdcInputs/source/%.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAMD51J20A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include" -I"../stdio_redirect" -I"../Config" -I".." -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/ac" -I"../hpl/adc" -I"../hpl/core" -I"../hpl/dac" -I"../hpl/dmac" -I"../hpl/eic" -I"../hpl/evsys" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/nvmctrl" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/ramecc" -I"../hpl/sercom" -I"../hpl/systick" -I"../hpl/tc" -I"../hpl/tcc" -I"../hpl/wdt" -I"../hri" -I"../thirdparty/RTOS" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/module_config"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m4 -c -std=gnu99 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-Apps/Tasks/DispatchTask/source/%.o: ../Apps/Tasks/DispatchTask/source/%.c
+Application/Tasks/SensorTask/source/%.o: ../Application/Tasks/SensorTask/source/%.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAMD51J20A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include" -I"../stdio_redirect" -I"../Config" -I".." -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/ac" -I"../hpl/adc" -I"../hpl/core" -I"../hpl/dac" -I"../hpl/dmac" -I"../hpl/eic" -I"../hpl/evsys" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/nvmctrl" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/ramecc" -I"../hpl/sercom" -I"../hpl/systick" -I"../hpl/tc" -I"../hpl/tcc" -I"../hpl/wdt" -I"../hri" -I"../thirdparty/RTOS" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/module_config"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m4 -c -std=gnu99 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-Apps/Tasks/ModemTask/source/%.o: ../Apps/Tasks/ModemTask/source/%.c
+Application/Tasks/ModemTask/source/%.o: ../Application/Tasks/ModemTask/source/%.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAMD51J20A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include" -I"../stdio_redirect" -I"../Config" -I".." -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/ac" -I"../hpl/adc" -I"../hpl/core" -I"../hpl/dac" -I"../hpl/dmac" -I"../hpl/eic" -I"../hpl/evsys" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/nvmctrl" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/ramecc" -I"../hpl/sercom" -I"../hpl/systick" -I"../hpl/tc" -I"../hpl/tcc" -I"../hpl/wdt" -I"../hri" -I"../thirdparty/RTOS" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/module_config"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m4 -c -std=gnu99 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-Apps/UartDriver/source/%.o: ../Apps/UartDriver/source/%.c
+Application/UartDriver/source/%.o: ../Application/UartDriver/source/%.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAMD51J20A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include" -I"../stdio_redirect" -I"../Config" -I".." -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/ac" -I"../hpl/adc" -I"../hpl/core" -I"../hpl/dac" -I"../hpl/dmac" -I"../hpl/eic" -I"../hpl/evsys" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/nvmctrl" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/ramecc" -I"../hpl/sercom" -I"../hpl/systick" -I"../hpl/tc" -I"../hpl/tcc" -I"../hpl/wdt" -I"../hri" -I"../thirdparty/RTOS" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/module_config"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m4 -c -std=gnu99 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
-Apps/SerialDebug/%.o: ../Apps/SerialDebug/%.c
+Application/SerialDebug/%.o: ../Application/SerialDebug/%.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAMD51J20A__ -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include" -I"../stdio_redirect" -I"../Config" -I".." -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/ac" -I"../hpl/adc" -I"../hpl/core" -I"../hpl/dac" -I"../hpl/dmac" -I"../hpl/eic" -I"../hpl/evsys" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/nvmctrl" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/ramecc" -I"../hpl/sercom" -I"../hpl/systick" -I"../hpl/tc" -I"../hpl/tcc" -I"../hpl/wdt" -I"../hri" -I"../thirdparty/RTOS" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/module_config"  -O1 -ffunction-sections -mlong-calls -g3 -Wall -mcpu=cortex-m4 -c -std=gnu99 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

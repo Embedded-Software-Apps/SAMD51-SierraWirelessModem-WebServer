@@ -594,6 +594,7 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                         if(false != MdmCnct_VerifyConnectionStatusFromConfigResponse(ConnectionResponse.response))
                         {
                             DEBUG_PRINT("Connection successful...Cloud Server configured");
+							DEBUG_PRINT("\r\n");
                             gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_SET_HTTP_HEADER;
                             gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
                         }
@@ -603,6 +604,8 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                         	DEBUG_PRINT("Restarting the connection initialization...");
                         	DEBUG_PRINT("\r\n");
                         	gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+			                gHttpConnectedSubState = CONNECTED_FAULT_IN_PACKET_TRANSMISSION;
+							gHttpConnectionState =  MDM_HTTP_CONNECTED;
                         }
                         vPortFree(ConnectionResponse.response);
                     }

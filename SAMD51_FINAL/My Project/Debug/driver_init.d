@@ -144,8 +144,9 @@ driver_init.d driver_init.o: .././driver_init.c .././driver_init.h \
  ../hal/include/hal_wdt.h ../hal/include/hpl_wdt.h \
  ../Config/peripheral_clk_config.h ../hal/utils/include/utils.h \
  ../hpl/adc/hpl_adc_base.h ../hal/include/hpl_adc_async.h \
- ../hal/include/hpl_adc_sync.h .././Apps/SerialDebug/SerialDebug.h \
- .././Apps/Tasks/ModemTask/include/ModemController.h ../driver_init.h \
+ ../hal/include/hpl_adc_sync.h .././Application/SerialDebug/SerialDebug.h \
+ .././Application/Tasks/ModemTask/include/ModemController.h \
+ ../driver_init.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h \
  ../Config/FreeRTOSConfig.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h \
@@ -554,9 +555,9 @@ C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/
 
 ../hal/include/hpl_adc_sync.h:
 
-.././Apps/SerialDebug/SerialDebug.h:
+.././Application/SerialDebug/SerialDebug.h:
 
-.././Apps/Tasks/ModemTask/include/ModemController.h:
+.././Application/Tasks/ModemTask/include/ModemController.h:
 
 ../driver_init.h:
 

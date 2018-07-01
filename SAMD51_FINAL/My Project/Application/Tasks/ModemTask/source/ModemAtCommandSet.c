@@ -127,9 +127,9 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		AT_CMD_SET_CONNECTION,
 		"AT+KHTTPCFG=3,\"ingest1.response.cloud\"\r",
 		INT_THIRTY_NINE,
-		73,
+		61,
 		modemResponseHandler,
-		(INT_THIRTY_NINE + 73 + CRLF_CHAR_LEN)
+		(INT_THIRTY_NINE + 61 + CRLF_CHAR_LEN)
 	},
 
 	{

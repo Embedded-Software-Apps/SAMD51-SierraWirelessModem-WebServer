@@ -126,7 +126,7 @@ hal/src/hal_usart_sync.d hal/src/hal_usart_sync.o: \
  ../hal/include/hpl_usart.h ../hal/include/hpl_usart_async.h \
  ../hal/include/hpl_usart.h ../hal/include/hpl_irq.h \
  ../hal/utils/include/utils_assert.h ../hal/utils/include/utils.h \
- ../Apps/SerialDebug/SerialDebug.h \
+ ../Application/SerialDebug/SerialDebug.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\stdio.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\newlib.h \
@@ -463,7 +463,7 @@ C:\Program\ Files\ (x86)\Atmel\Studio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/
 
 ../hal/utils/include/utils.h:
 
-../Apps/SerialDebug/SerialDebug.h:
+../Application/SerialDebug/SerialDebug.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\stdio.h:
 
