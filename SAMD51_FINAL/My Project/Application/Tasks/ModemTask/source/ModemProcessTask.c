@@ -20,9 +20,12 @@
 ************************************STATIC VARIABLES***************************************
 *******************************************************************************************/
 #define HOURLY_RESTART_TIMER_LOAD_VALUE pdMS_TO_TICKS(3600000)
+#define PACKET_SEND_TIMER_LOAD_VALUE pdMS_TO_TICKS(6000)
+static bool packetTransmitPeriodicTimerExpired;
 
 static void SystemAutoRestartTimerCallBack(void* param);
-
+static void packetTransmitPeriodicTimerCallBack(void* param);
+static bool initializeModemTimers(void);
 /*******************************************************************************
 *
 * NAME       : getModemPowerState
@@ -35,19 +38,17 @@ void ModemProcessTask( void *ModemTaskParam)
 {
     const TickType_t xDelayMs = pdMS_TO_TICKS(400UL);
     const TickType_t xDebugPrintDelayMs = pdMS_TO_TICKS(500UL);
-    TimerHandle_t xAutoReloadHourlyTimer;
-
     modemPowerStateInit();
     MdmConnect_HttpConnectionInit();
 
-    xAutoReloadHourlyTimer = xTimerCreate("HourlySystemRestartTimer",HOURLY_RESTART_TIMER_LOAD_VALUE,pdTRUE,0,SystemAutoRestartTimerCallBack);
-
-    if(xAutoReloadHourlyTimer != NULL)
+    if(false == initializeModemTimers())
     {
-    	if(pdPASS == xTimerStart(xAutoReloadHourlyTimer,0))
-    	{
-    		//DEBUG_PRINT("Hourly Modem Restart timer is started");
-    	}
+    	/*
+    	 *  Not able to initialize the modem timers.
+    	 *  Reboot the system.
+    	 */
+    	DEBUG_PRINT("Failed to initialize the modem timers. Rebooting the system");
+    	requestWatchDogForcedReset();
     }
 
     while(1)
@@ -63,6 +64,85 @@ void ModemProcessTask( void *ModemTaskParam)
     }
 }
 
+/*******************************************************************************
+*
+* NAME       : getModemPowerState
+*
+* DESCRIPTION: This function converts a given signed integer(16-bit or 32-bit)
+*               into a string and returns the string.
+*
+********************************************************************************/
+static bool initializeModemTimers(void)
+{
+    TimerHandle_t xAutoReloadHourlyTimer;
+    TimerHandle_t xPacketSendPeriodicTimer;
+    bool status = false;
+    packetTransmitPeriodicTimerExpired = false;
+
+    xAutoReloadHourlyTimer   = xTimerCreate("HourlySystemRestartTimer",HOURLY_RESTART_TIMER_LOAD_VALUE,pdTRUE,0,SystemAutoRestartTimerCallBack);
+    xPacketSendPeriodicTimer = xTimerCreate("PacketTransmitPeriodicTimer",PACKET_SEND_TIMER_LOAD_VALUE,pdTRUE,0,packetTransmitPeriodicTimerCallBack);
+
+    if((xPacketSendPeriodicTimer != NULL) &&
+       (xAutoReloadHourlyTimer != NULL))
+    {
+    	if((pdPASS == xTimerStart(xAutoReloadHourlyTimer,0)) &&
+		   (pdPASS == xTimerStart(xPacketSendPeriodicTimer,0)))
+    	{
+    		DEBUG_PRINT("Modem timers are started");
+    		status = true;
+    	}
+    }
+
+    return status;
+}
+
+/*******************************************************************************
+*
+* NAME       : getModemPowerState
+*
+* DESCRIPTION: This function converts a given signed integer(16-bit or 32-bit)
+*               into a string and returns the string.
+*
+********************************************************************************/
+static void packetTransmitPeriodicTimerCallBack(void* param)
+{
+	packetTransmitPeriodicTimerExpired = true;
+}
+
+/*******************************************************************************
+*
+* NAME       : getModemPowerState
+*
+* DESCRIPTION: This function converts a given signed integer(16-bit or 32-bit)
+*               into a string and returns the string.
+*
+********************************************************************************/
+void clearPacketTransmitTimerExpiryFlag(void)
+{
+	packetTransmitPeriodicTimerExpired = false;
+}
+
+/*******************************************************************************
+*
+* NAME       : getModemPowerState
+*
+* DESCRIPTION: This function converts a given signed integer(16-bit or 32-bit)
+*               into a string and returns the string.
+*
+********************************************************************************/
+bool isPacketTransmitTimerExpired(void)
+{
+	return packetTransmitPeriodicTimerExpired;
+}
+
+/*******************************************************************************
+*
+* NAME       : getModemPowerState
+*
+* DESCRIPTION: This function converts a given signed integer(16-bit or 32-bit)
+*               into a string and returns the string.
+*
+********************************************************************************/
 static void SystemAutoRestartTimerCallBack(void* param)
 {
 	DEBUG_PRINT("Hourly System Restart timer expired. Rebooting the system.\r\n");

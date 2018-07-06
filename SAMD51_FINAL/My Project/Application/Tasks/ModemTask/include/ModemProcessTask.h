@@ -11,6 +11,7 @@
 
 
 void ModemProcessTask(void *ModemTaskParam);
-
+void clearPacketTransmitTimerExpiryFlag(void);
+bool isPacketTransmitTimerExpired(void);
 
 #endif /* MODEMPROCESSTASK_H_ */

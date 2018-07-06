@@ -10,7 +10,9 @@
 #include "Application/Tasks/ModemTask/include/ModemConnectionConfig.h"
 #include "Application/Common/Common.h"
 
-/* Global variables */
+/******************************************************************************************
+************************************STATIC VARIABLES***************************************
+*******************************************************************************************/
 static HTTP_CONNECT_STATES_T gHttpConnectionState;
 static HTTP_CONNECT_IN_PROGRESS_SUBSTATES_T gHttpConnectionInProgressSubstate;
 static HTTP_CONNECT_OPERATIONAL_STATE_T gHttpConnectOpMode;
@@ -771,7 +773,10 @@ static void MdmCnct_ConnectedSubStateMachine(void)
 
         case CONNECTED_IDLE_MONITOR_CONNECTION:
         {
-            gHttpConnectedSubState = CONNECTED_PERIODIC_6SEC_TIMER_EXPIRED;
+            if(false != isPacketTransmitTimerExpired())
+            {
+            	gHttpConnectedSubState = CONNECTED_PERIODIC_6SEC_TIMER_EXPIRED;
+            }
         }
         break;
 
@@ -785,7 +790,7 @@ static void MdmCnct_ConnectedSubStateMachine(void)
         {
             buildDataPacketsToServer();
             gHttpConnectedSubState = CONNECTED_SEND_DATA_PACKETS_TO_SERVER;
-            vTaskDelay(BuildPacketDelayMs);
+            //vTaskDelay(BuildPacketDelayMs);
         }
         break;
 
@@ -836,7 +841,8 @@ static void MdmCnct_ConnectedSubStateMachine(void)
                         {
                             SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
                             DEBUG_PRINT("\r\n");
-                            gHttpConnectedSubState = CONNECTED_SEND_DATA_PACKETS_TO_SERVER;
+                            clearPacketTransmitTimerExpiryFlag();
+                            gHttpConnectedSubState = CONNECTED_IDLE_MONITOR_CONNECTION;
                         }
                         else
                         {
@@ -876,7 +882,7 @@ static void MdmCnct_ConnectedSubStateMachine(void)
             gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
             DEBUG_PRINT("\r\nPerforming the Error Recovery\r\n");
             DEBUG_PRINT("Closing the active connection");
-            vTaskDelay(QueuePushDelayMs);
+            //vTaskDelay(QueuePushDelayMs);
         }
         break;
 
@@ -1008,14 +1014,14 @@ static bool MdmCnct_PeformErrorRecovery(void)
                     if(forcedModemRebootCnt <= 3)
                     {
                     	DEBUG_PRINT("Problem in Auto Recovery.");
-                    	DEBUG_PRINT("Trying to recover the connection through a modem restart....\r\n");
+                    	DEBUG_PRINT("Trying to re-establish the connection through a modem restart....\r\n");
                     	forcedModemRebootCnt++;
                     	performForcedRebootOfModem();
                     }
                     else
                     {
                     	DEBUG_PRINT("Maximum retry count for auto recovery is expired.");
-                    	DEBUG_PRINT("Trying to recover the connection through a whole system restart....\r\n");
+                    	DEBUG_PRINT("Trying to re-establish the connection through a whole system restart....\r\n");
                     	forcedModemRebootCnt = 0;
                     	requestWatchDogForcedReset();
                     }
@@ -1100,14 +1106,14 @@ static bool MdmCnct_PeformErrorRecovery(void)
                     if(forcedModemRebootCnt <= 3)
                     {
                     	DEBUG_PRINT("Problem in Auto Recovery.");
-                    	DEBUG_PRINT("Trying to recover the connection through a modem restart....\r\n");
+                    	DEBUG_PRINT("Trying to re-establish the connection through a modem restart....\r\n");
                     	forcedModemRebootCnt++;
                     	performForcedRebootOfModem();
                     }
                     else
                     {
                     	DEBUG_PRINT("Maximum retry count for auto recovery is expired.");
-                    	DEBUG_PRINT("Trying to recover the connection through a whole system restart....\r\n");
+                    	DEBUG_PRINT("Trying to re-establish the connection through a whole system restart....\r\n");
                     	forcedModemRebootCnt = 0;
                     	requestWatchDogForcedReset();
                     }
@@ -1210,14 +1216,14 @@ static bool MdmCnct_PeformErrorRecovery(void)
                     if(forcedModemRebootCnt <= 3)
                     {
                     	DEBUG_PRINT("Problem in Auto Recovery.");
-                    	DEBUG_PRINT("Trying to recover the connection through a modem restart....\r\n");
+                    	DEBUG_PRINT("Trying to re-establish the connection through a modem restart....\r\n");
                     	forcedModemRebootCnt++;
                     	performForcedRebootOfModem();
                     }
                     else
                     {
                     	DEBUG_PRINT("Maximum retry count for auto recovery is expired.");
-                    	DEBUG_PRINT("Trying to recover the connection through a whole system restart....\r\n");
+                    	DEBUG_PRINT("Trying to re-establish the connection through a whole system restart....\r\n");
                     	forcedModemRebootCnt = 0;
                     	requestWatchDogForcedReset();
                     }
