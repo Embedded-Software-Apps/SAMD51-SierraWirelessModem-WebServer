@@ -196,10 +196,14 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                         vPortFree(ConnectionResponse.response);
                     }
                 }
+                else
+                {
+                    /* Wait untill there is a response received from Rx Task */
+                }
             }
             else
             {
-
+                /* This part will never execute */
             }
         }
         break;
@@ -246,20 +250,20 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                 {
                     if(ConnectionResponse.atCmd == CMD_AT_KCNX_DOWN)
                     {
-                    	if(false != validateCommonCommandResponse(ConnectionResponse.response))
-                    	{
+                        if(false != validateCommonCommandResponse(ConnectionResponse.response))
+                        {
                             DEBUG_PRINT("Brought the PDP connection DOWN");
                             SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
                             DEBUG_PRINT("\r\n");
                             gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
                             gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_PS_CONNECTION_DETACH;
-                    	}
-                    	else
-                    	{
-                    		DEBUG_PRINT("Expected Response Not Received. Retrying...");
-                    		DEBUG_PRINT("\r\n");
-                    		gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
-                    	}
+                        }
+                        else
+                        {
+                            DEBUG_PRINT("Expected Response Not Received. Retrying...");
+                            DEBUG_PRINT("\r\n");
+                            gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+                        }
                         vPortFree(ConnectionResponse.response);
                     }
                     else
@@ -269,10 +273,14 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                         vPortFree(ConnectionResponse.response);
                     }
                 }
+                else
+                {
+                    /* Wait untill there is a response received from Rx Task */                 
+                }
             }
             else
             {
-
+                /* This part will never execute */
             }
         }
         break;
@@ -319,8 +327,8 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                 {
                     if(ConnectionResponse.atCmd == CMD_AT_CGATT)
                     {
-                    	if(false != validateCommonCommandResponse(ConnectionResponse.response))
-                    	{
+                        if(false != validateCommonCommandResponse(ConnectionResponse.response))
+                        {
                             DEBUG_PRINT("Detached the PDP PS");
                             SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
                             DEBUG_PRINT("\r\n");
@@ -330,13 +338,13 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
 
                             gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
                             gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_SET_EOF_PATTERN;
-                    	}
-                    	else
-                    	{
-                    		DEBUG_PRINT("Expected Response Not Received. Retrying...");
-                    		DEBUG_PRINT("\r\n");
-                    		gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
-                    	}
+                        }
+                        else
+                        {
+                            DEBUG_PRINT("Expected Response Not Received. Retrying...");
+                            DEBUG_PRINT("\r\n");
+                            gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+                        }
                         vPortFree(ConnectionResponse.response);
                     }
                     else
@@ -345,6 +353,10 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                         gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
                         vPortFree(ConnectionResponse.response);
                     }
+                }
+                else
+                {
+                    /* Wait untill there is a response received from Rx Task */ 
                 }
             }
             else
@@ -410,6 +422,10 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                         vPortFree(ConnectionResponse.response);
                     }
                 }
+                else
+                {
+                    /* Wait untill there is a response received from Rx Task */ 
+                }
             }
             else
             {
@@ -473,6 +489,10 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                         gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
                         vPortFree(ConnectionResponse.response);
                     }
+                }
+                else
+                {
+                    /* Wait untill there is a response received from Rx Task */ 
                 }
             }
             else
@@ -538,6 +558,10 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                         vPortFree(ConnectionResponse.response);
                     }
                 }
+                else
+                {
+                    /* Wait untill there is a response received from Rx Task */ 
+                }
             }
             else
             {
@@ -587,25 +611,25 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                 {
                     if(ConnectionResponse.atCmd == CMD_AT_KHTTP_CFG)
                     {
-                    	MdmCnct_ExtractSessionIdFromConfigResponse(ConnectionResponse.response);
+                        MdmCnct_ExtractSessionIdFromConfigResponse(ConnectionResponse.response);
                         SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
                         DEBUG_PRINT("\r\n");
 
                         if(false != MdmCnct_VerifyConnectionStatusFromConfigResponse(ConnectionResponse.response))
                         {
                             DEBUG_PRINT("Connection successful...Cloud Server configured");
-							DEBUG_PRINT("\r\n");
+                            DEBUG_PRINT("\r\n");
                             gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_SET_HTTP_HEADER;
                             gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
                         }
                         else
                         {
-                        	DEBUG_PRINT("Error : Connection Failure");
-                        	DEBUG_PRINT("Restarting the connection initialization...");
-                        	DEBUG_PRINT("\r\n");
-                        	gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
-			                gHttpConnectedSubState = CONNECTED_FAULT_IN_PACKET_TRANSMISSION;
-							gHttpConnectionState =  MDM_HTTP_CONNECTED;
+                            DEBUG_PRINT("Error : Connection Failure");
+                            DEBUG_PRINT("Restarting the connection initialization...");
+                            DEBUG_PRINT("\r\n");
+                            gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+                            gHttpConnectedSubState = CONNECTED_FAULT_IN_PACKET_TRANSMISSION;
+                            gHttpConnectionState =  MDM_HTTP_CONNECTED;
                         }
                         vPortFree(ConnectionResponse.response);
                     }
@@ -615,6 +639,10 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                         gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
                         vPortFree(ConnectionResponse.response);
                     }
+                }
+                else
+                {
+                    /* Wait untill there is a response received from Rx Task */ 
                 }
             }
             else
@@ -692,6 +720,10 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                         vPortFree(ConnectionResponse.response);
                     }
                 }
+                else
+                {
+                    /* Wait untill there is a response received from Rx Task */ 
+                }
             }
             else
             {
@@ -730,13 +762,19 @@ static void MdmCnct_ConnectedSubStateMachine(void)
         case CONNECTED_INITIALIZE_TRANSMISSION:
         {
             mdmCtrlr_FlushRxBuffer();
-            gHttpConnectedSubState = CONNECTED_BUILD_DATA_PACKET_TO_SERVER;
+            gHttpConnectedSubState = CONNECTED_IDLE_MONITOR_CONNECTION;
         }
         break;
 
-        case CONNECTED_WAIT_FOR_PERIODIC_TIMER_EXPIRY:
+        case CONNECTED_IDLE_MONITOR_CONNECTION:
         {
+            gHttpConnectedSubState = CONNECTED_PERIODIC_6SEC_TIMER_EXPIRED;
+        }
+        break;
 
+        case CONNECTED_PERIODIC_6SEC_TIMER_EXPIRED:
+        {
+        	gHttpConnectedSubState = CONNECTED_BUILD_DATA_PACKET_TO_SERVER;
         }
         break;
 
@@ -1016,21 +1054,21 @@ static bool MdmCnct_PeformErrorRecovery(void)
                 {
                     if(ConnectionResponse.atCmd == CMD_AT_KCNX_DOWN)
                     {
-                    	if(false != validateCommonCommandResponse(ConnectionResponse.response))
-                    	{
+                        if(false != validateCommonCommandResponse(ConnectionResponse.response))
+                        {
                             DEBUG_PRINT("Brought the PDP connection DOWN");
                             SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
                             DEBUG_PRINT("\r\n");
                             gErrorRecoveryState = PDP_PERFORM_PS_CONNECTION_DETACH;
                             gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
                             gHttpConnectedSubState = CONNECTED_PEFORM_ERROR_RECOVERY;
-                    	}
-                    	else
-                    	{
-                    		DEBUG_PRINT("Expected Response Not Received. Retrying...");
-                    		DEBUG_PRINT("\r\n");
-                    		gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
-                    	}
+                        }
+                        else
+                        {
+                            DEBUG_PRINT("Expected Response Not Received. Retrying...");
+                            DEBUG_PRINT("\r\n");
+                            gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+                        }
                         vPortFree(ConnectionResponse.response);
                     }
                     else
@@ -1095,8 +1133,8 @@ static bool MdmCnct_PeformErrorRecovery(void)
                 {
                     if(ConnectionResponse.atCmd == CMD_AT_CGATT)
                     {
-                    	if(false != validateCommonCommandResponse(ConnectionResponse.response))
-                    	{
+                        if(false != validateCommonCommandResponse(ConnectionResponse.response))
+                        {
                             DEBUG_PRINT("Detached the PDP PS");
                             SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
                             DEBUG_PRINT("\r\n");
@@ -1120,14 +1158,14 @@ static bool MdmCnct_PeformErrorRecovery(void)
                                 errorRecoveryCnt = 0;
                                 requestWatchDogForcedReset();
                             }
-                    	}
-                    	else
-                    	{
-                    		DEBUG_PRINT("Expected Response Not Received. Retrying...");
-                    		DEBUG_PRINT("\r\n");
-                    		gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
-                    		vPortFree(ConnectionResponse.response);
-                    	}
+                        }
+                        else
+                        {
+                            DEBUG_PRINT("Expected Response Not Received. Retrying...");
+                            DEBUG_PRINT("\r\n");
+                            gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+                            vPortFree(ConnectionResponse.response);
+                        }
                     }
                     else
                     {
@@ -1176,66 +1214,66 @@ static void MdmCnct_ExtractSessionIdFromConfigResponse(uint8_t* cfgResponse)
 **===========================================================================*/
 static bool MdmCnct_VerifyConnectionStatusFromConfigResponse(uint8_t* cfgResponse)
 {
-	bool status = false;
+    bool status = false;
 
-	connectionStatus = cfgResponse[CONNECT_STATUS_POSITION];
+    connectionStatus = cfgResponse[CONNECT_STATUS_POSITION];
 
-	switch(connectionStatus)
-	{
-		case PDP_DISCONNECTED_DUE_TO_NETWORK:
-		{
-			DEBUG_PRINT("Connection Status : DISCONNECTED DUE TO NETWORK");
-			status = false;
-		}
-		break;
+    switch(connectionStatus)
+    {
+        case PDP_DISCONNECTED_DUE_TO_NETWORK:
+        {
+            DEBUG_PRINT("Connection Status : DISCONNECTED DUE TO NETWORK");
+            status = false;
+        }
+        break;
 
-		case PDP_CONNECTED:
-		{
-			DEBUG_PRINT("Connection Status : CONNECTED");
-			status = true;
-		}
-		break;
+        case PDP_CONNECTED:
+        {
+            DEBUG_PRINT("Connection Status : CONNECTED");
+            status = true;
+        }
+        break;
 
-		case PDP_FAILED_TO_CONNECT:
-		{
-			DEBUG_PRINT("Connection Status : FAILED TO CONNECT");
-			status = false;
-		}
-		break;
+        case PDP_FAILED_TO_CONNECT:
+        {
+            DEBUG_PRINT("Connection Status : FAILED TO CONNECT");
+            status = false;
+        }
+        break;
 
-		case PDP_CLOSED:
-		{
-			DEBUG_PRINT("Connection Status : CONNECTION CLOSED");
-			status = false;
-		}
-		break;
+        case PDP_CLOSED:
+        {
+            DEBUG_PRINT("Connection Status : CONNECTION CLOSED");
+            status = false;
+        }
+        break;
 
-		case PDP_CONNECTION_IN_PROGRESS:
-		{
-			DEBUG_PRINT("Connection Status : CONNECTION IN PROGRESS");
-			status = false;
-		}
-		break;
+        case PDP_CONNECTION_IN_PROGRESS:
+        {
+            DEBUG_PRINT("Connection Status : CONNECTION IN PROGRESS");
+            status = false;
+        }
+        break;
 
-		case PDP_IDLE_TIMER_STARTED:
-		{
-			DEBUG_PRINT("Connection Status : IDLE TIMER STARTED FOR DISCONNECTION");
-			status = false;
-		}
-		break;
+        case PDP_IDLE_TIMER_STARTED:
+        {
+            DEBUG_PRINT("Connection Status : IDLE TIMER STARTED FOR DISCONNECTION");
+            status = false;
+        }
+        break;
 
-		case PDP_IDLE_TIMER_CANCELLED:
-		{
-			DEBUG_PRINT("Connection Status : IDLE TIMER CANCELLED");
-			status = false;
-		}
-		break;
+        case PDP_IDLE_TIMER_CANCELLED:
+        {
+            DEBUG_PRINT("Connection Status : IDLE TIMER CANCELLED");
+            status = false;
+        }
+        break;
 
-		default:
-		break;
-	}
+        default:
+        break;
+    }
 
-	return status;
+    return status;
 }
 
 /*============================================================================
