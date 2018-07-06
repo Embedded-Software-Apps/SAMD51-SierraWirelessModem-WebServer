@@ -67,7 +67,7 @@ int main(void)
     ModemRxTaskStatus = xTaskCreate( ModemRxTask, "ModemRxTask", 150, NULL, 2, &xModemRxTaskHandle);
 
     /* Create Modem Process Task */
-    ModemProcessTaskStatus = xTaskCreate( ModemProcessTask, "ModemProcessTask", 150, NULL, 1, &xModemProcessTaskHandle);
+    ModemProcessTaskStatus = xTaskCreate( ModemProcessTask, "ModemProcessTask", 150, NULL, 2, &xModemProcessTaskHandle);
 
     /* Create Modem Diagnostics Task */
     ModemDiagTaskStatus = xTaskCreate( ModemDiagTask, "ModemDiagTask", 150, NULL, 1, &xModemDiagTaskHandle);

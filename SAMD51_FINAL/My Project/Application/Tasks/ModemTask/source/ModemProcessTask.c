@@ -36,7 +36,7 @@ static bool initializeModemTimers(void);
 ********************************************************************************/
 void ModemProcessTask( void *ModemTaskParam)
 {
-    const TickType_t xDelayMs = pdMS_TO_TICKS(400UL);
+    const TickType_t xDelayMs = pdMS_TO_TICKS(100UL);
     const TickType_t xDebugPrintDelayMs = pdMS_TO_TICKS(500UL);
     modemPowerStateInit();
     MdmConnect_HttpConnectionInit();

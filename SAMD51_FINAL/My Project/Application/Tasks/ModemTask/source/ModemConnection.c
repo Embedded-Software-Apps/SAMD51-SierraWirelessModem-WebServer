@@ -121,7 +121,7 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
     const TickType_t QueuePushDelayMs = pdMS_TO_TICKS(500UL);
     const TickType_t TransmitDelayMs = pdMS_TO_TICKS(500UL);
     const TickType_t ResponseWaitDelayMs = pdMS_TO_TICKS(4000UL);
-    const TickType_t PacketTransmitDelayMs = pdMS_TO_TICKS(1500UL);
+    const TickType_t PacketTransmitDelayMs = pdMS_TO_TICKS(100UL);
 
     switch (gHttpConnectionInProgressSubstate)
     {
@@ -755,7 +755,7 @@ static void MdmCnct_ConnectedSubStateMachine(void)
     const TickType_t BuildPacketDelayMs = pdMS_TO_TICKS(500UL);
     const TickType_t TransmitDelayMs = pdMS_TO_TICKS(2500UL);
     const TickType_t ResponseWaitDelayMs = pdMS_TO_TICKS(5000UL);
-    const TickType_t reTransmissionDelayMs = pdMS_TO_TICKS(7000UL);
+    const TickType_t reTransmissionDelayMs = pdMS_TO_TICKS(1000UL);
     const TickType_t QueuePushDelayMs = pdMS_TO_TICKS(500UL);
 
     AtTxMsgType TxMsgQueueData;
@@ -931,7 +931,7 @@ static bool MdmCnct_PeformErrorRecovery(void)
     static uint8_t forcedModemRebootCnt = 0;
     AtTxMsgType TxMsgQueueData;
     BaseType_t TxQueuePushStatus;
-    const TickType_t TransmitDelayMs = pdMS_TO_TICKS(2500UL);
+    const TickType_t TransmitDelayMs = pdMS_TO_TICKS(500UL);
     const TickType_t ResponseWaitDelayMs = pdMS_TO_TICKS(4000UL);
     const TickType_t QueuePushDelayMs = pdMS_TO_TICKS(500UL);
 

@@ -191,7 +191,7 @@ static void ModemDiagSchedule(void)
 {
     const TickType_t QueuePushDelayMs = pdMS_TO_TICKS(100UL);
     const TickType_t QueueWaitDelayMs = pdMS_TO_TICKS(2000UL);
-    const TickType_t DiagDelayMs = pdMS_TO_TICKS(2000UL);
+    const TickType_t DiagDelayMs = pdMS_TO_TICKS(500UL);
     const TickType_t powerUpDelayMs = pdMS_TO_TICKS(7000UL);
     BaseType_t TxQueuePushStatus;
     AtTxMsgType TxMsgQueueData;
