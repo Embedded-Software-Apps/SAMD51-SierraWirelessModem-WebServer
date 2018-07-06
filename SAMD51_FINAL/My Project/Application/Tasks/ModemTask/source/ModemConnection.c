@@ -23,6 +23,7 @@ static uint8_t connectionStatus;
 
 static void MdmCnct_CloseActiveConnections(void);
 static AT_CMD_TYPE getCloseActiveSessionCmd(uint8_t sessionID);
+static void performForcedRebootOfModem(void);
 static void MdmCnct_ExtractSessionIdFromConfigResponse(uint8_t* response);
 static bool MdmCnct_VerifyConnectionStatusFromConfigResponse(uint8_t* cfgResponse);
 static bool processHttpHeaderResponse(uint8_t* response);
@@ -260,9 +261,10 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                         }
                         else
                         {
-                            DEBUG_PRINT("Expected Response Not Received. Retrying...");
+                            DEBUG_PRINT("Expected Response Not Received...");
                             DEBUG_PRINT("\r\n");
                             gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+                            performForcedRebootOfModem();
                         }
                         vPortFree(ConnectionResponse.response);
                     }
@@ -341,9 +343,10 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                         }
                         else
                         {
-                            DEBUG_PRINT("Expected Response Not Received. Retrying...");
+                            DEBUG_PRINT("Expected Response Not Received...");
                             DEBUG_PRINT("\r\n");
                             gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+                            performForcedRebootOfModem();
                         }
                         vPortFree(ConnectionResponse.response);
                     }
@@ -749,7 +752,7 @@ static void MdmCnct_ConnectedSubStateMachine(void)
 {
     const TickType_t BuildPacketDelayMs = pdMS_TO_TICKS(500UL);
     const TickType_t TransmitDelayMs = pdMS_TO_TICKS(2500UL);
-    const TickType_t ResponseWaitDelayMs = pdMS_TO_TICKS(4000UL);
+    const TickType_t ResponseWaitDelayMs = pdMS_TO_TICKS(5000UL);
     const TickType_t reTransmissionDelayMs = pdMS_TO_TICKS(7000UL);
     const TickType_t QueuePushDelayMs = pdMS_TO_TICKS(500UL);
 
@@ -919,6 +922,7 @@ static bool MdmCnct_validateServerResponse(uint8_t* response)
 static bool MdmCnct_PeformErrorRecovery(void)
 {
     static uint8_t errorRecoveryCnt = 0;
+    static uint8_t forcedModemRebootCnt = 0;
     AtTxMsgType TxMsgQueueData;
     BaseType_t TxQueuePushStatus;
     const TickType_t TransmitDelayMs = pdMS_TO_TICKS(2500UL);
@@ -1001,8 +1005,20 @@ static bool MdmCnct_PeformErrorRecovery(void)
                 }
                 else
                 {
-                    DEBUG_PRINT("Problem in Auto Recovery. Rebooting the system....\r\n");
-                    requestWatchDogForcedReset();
+                    if(forcedModemRebootCnt <= 3)
+                    {
+                    	DEBUG_PRINT("Problem in Auto Recovery.");
+                    	DEBUG_PRINT("Trying to recover the connection through a modem restart....\r\n");
+                    	forcedModemRebootCnt++;
+                    	performForcedRebootOfModem();
+                    }
+                    else
+                    {
+                    	DEBUG_PRINT("Maximum retry count for auto recovery is expired.");
+                    	DEBUG_PRINT("Trying to recover the connection through a whole system restart....\r\n");
+                    	forcedModemRebootCnt = 0;
+                    	requestWatchDogForcedReset();
+                    }
                 }
             }
             else
@@ -1065,9 +1081,10 @@ static bool MdmCnct_PeformErrorRecovery(void)
                         }
                         else
                         {
-                            DEBUG_PRINT("Expected Response Not Received. Retrying...");
+                            DEBUG_PRINT("Expected Response Not Received...");
                             DEBUG_PRINT("\r\n");
                             gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+                            performForcedRebootOfModem();
                         }
                         vPortFree(ConnectionResponse.response);
                     }
@@ -1080,8 +1097,20 @@ static bool MdmCnct_PeformErrorRecovery(void)
                 }
                 else
                 {
-                    DEBUG_PRINT("Problem in Auto Recovery. Rebooting the system....\r\n");
-                    requestWatchDogForcedReset();
+                    if(forcedModemRebootCnt <= 3)
+                    {
+                    	DEBUG_PRINT("Problem in Auto Recovery.");
+                    	DEBUG_PRINT("Trying to recover the connection through a modem restart....\r\n");
+                    	forcedModemRebootCnt++;
+                    	performForcedRebootOfModem();
+                    }
+                    else
+                    {
+                    	DEBUG_PRINT("Maximum retry count for auto recovery is expired.");
+                    	DEBUG_PRINT("Trying to recover the connection through a whole system restart....\r\n");
+                    	forcedModemRebootCnt = 0;
+                    	requestWatchDogForcedReset();
+                    }
                 }
             }
             else
@@ -1161,10 +1190,11 @@ static bool MdmCnct_PeformErrorRecovery(void)
                         }
                         else
                         {
-                            DEBUG_PRINT("Expected Response Not Received. Retrying...");
+                            DEBUG_PRINT("Expected Response Not Received...");
                             DEBUG_PRINT("\r\n");
                             gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
                             vPortFree(ConnectionResponse.response);
+                            performForcedRebootOfModem();
                         }
                     }
                     else
@@ -1177,8 +1207,20 @@ static bool MdmCnct_PeformErrorRecovery(void)
                 }
                 else
                 {
-                    DEBUG_PRINT("Problem in Auto Recovery. Rebooting the system....\r\n");
-                    requestWatchDogForcedReset();
+                    if(forcedModemRebootCnt <= 3)
+                    {
+                    	DEBUG_PRINT("Problem in Auto Recovery.");
+                    	DEBUG_PRINT("Trying to recover the connection through a modem restart....\r\n");
+                    	forcedModemRebootCnt++;
+                    	performForcedRebootOfModem();
+                    }
+                    else
+                    {
+                    	DEBUG_PRINT("Maximum retry count for auto recovery is expired.");
+                    	DEBUG_PRINT("Trying to recover the connection through a whole system restart....\r\n");
+                    	forcedModemRebootCnt = 0;
+                    	requestWatchDogForcedReset();
+                    }
                 }
             }
             else
@@ -1401,4 +1443,23 @@ static AT_CMD_TYPE getCloseActiveSessionCmd(uint8_t sessionID)
     }
     
     return sessionCloseCmd;
+}
+
+/*============================================================================
+**
+** Function Name:      mdmCtrlr_FlushRxBuffer
+**
+** Description:        Flushes the Rx Ring Buffer
+**
+**===========================================================================*/
+static void performForcedRebootOfModem(void)
+{
+	DEBUG_PRINT("Connection to the server is lost.....");
+	DEBUG_PRINT("Trying to establish the connection to server...Please wait......\r\n");
+
+	/* Perform a physical modem restart */
+	modemPowerStateInit();
+
+	/* Reset the modem connection States */
+	MdmConnect_HttpConnectionInit();
 }

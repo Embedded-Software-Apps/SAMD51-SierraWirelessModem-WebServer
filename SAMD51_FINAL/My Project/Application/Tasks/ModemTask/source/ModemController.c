@@ -140,7 +140,6 @@ void SERCOM3_2_Handler( void )
 			mdmParser_SetLastSentAtCommand(CMD_AT_MAX);
 		}
 	}
-
 }
 
 /*============================================================================
