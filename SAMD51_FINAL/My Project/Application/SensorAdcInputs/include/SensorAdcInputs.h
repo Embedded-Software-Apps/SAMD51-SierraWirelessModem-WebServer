@@ -9,7 +9,7 @@
 #ifndef SENSORADCINPUTS_H_
 #define SENSORADCINPUTS_H_
 
-void sensorAdcInit(void);
+void sensorAdcInitialize(void);
 void sensorAdcReadChannel(const uint8_t channel, uint8_t *const buffer,const uint16_t length);
 
 

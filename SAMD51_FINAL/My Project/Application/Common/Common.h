@@ -22,16 +22,44 @@
 
 typedef enum
 {
-	SENSOR_0,
+	SENSOR_0 = 0,
 	SENSOR_1,
 	SENSOR_2,
 	SENSOR_3,
 	SENSOR_4,
 	SENSOR_5,
 	SENSOR_6,
-	SENSOR_7,
-	SENSOR_8
+	SENSOR_7
 }SENSOR_INDEX_T;
+
+typedef enum
+{
+	SENSOR_0_AIN0 = 0x00,
+	SENSOR_1_AIN1 = 0x01,
+	SENSOR_2_AIN2 = 0x02,
+	SENSOR_3_AIN3 = 0x03,
+	SENSOR_4_AIN4 = 0x04,
+	SENSOR_5_AIN5 = 0x05,
+	SENSOR_6_AIN6 = 0x06,
+	SENSOR_7_AIN7 = 0x07
+}SENSOR_ADC_INPUT;
+
+typedef struct
+{
+	SENSOR_INDEX_T sensor;
+	bool active;
+	uint32_t adcCount;
+	uint8_t voltage;
+}SENSOR_OUTPUT_DATA_TYPE;
+
+typedef struct
+{
+	uint8_t selectLine;
+	SENSOR_ADC_INPUT adcChannel;
+}SENSOR_INPUT_DATA_TYPE;
+
+#define DEFAULT_VALUE    (0)
+#define MAX_SENSOR_COUNT (8)
 
 QueueHandle_t xDataQueue;
 

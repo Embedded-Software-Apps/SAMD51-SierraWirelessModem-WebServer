@@ -171,7 +171,12 @@ Application/Tasks/SensorTask/source/SensorTask.d \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include-fixed\limits.h \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include-fixed\syslimits.h \
- e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\limits.h
+ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\limits.h \
+ ../Application/JsonParser/include/JsonPacket.h \
+ ../Application/SelectInputs/include/selectInputs.h \
+ ../hal/include/hpl_gpio.h ../hpl/port/hpl_gpio_base.h \
+ ../hal/utils/include/utils_assert.h \
+ ../Application/SensorAdcInputs/include/SensorAdcInputs.h
 
 ../hal/include/hal_delay.h:
 
@@ -568,3 +573,15 @@ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-ea
 e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include-fixed\syslimits.h:
 
 e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\limits.h:
+
+../Application/JsonParser/include/JsonPacket.h:
+
+../Application/SelectInputs/include/selectInputs.h:
+
+../hal/include/hpl_gpio.h:
+
+../hpl/port/hpl_gpio_base.h:
+
+../hal/utils/include/utils_assert.h:
+
+../Application/SensorAdcInputs/include/SensorAdcInputs.h:

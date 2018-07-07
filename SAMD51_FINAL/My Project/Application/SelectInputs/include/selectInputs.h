@@ -9,6 +9,8 @@
 #ifndef SELECTINPUTS_H_
 #define SELECTINPUTS_H_
 
+#include "hpl_gpio.h"
+
 /* Select Lines */
 #define SELECT_0 GPIO(GPIO_PORTB, 13)
 #define SELECT_1 GPIO(GPIO_PORTB, 12)
@@ -19,7 +21,7 @@
 #define SELECT_6 GPIO(GPIO_PORTA, 9)
 #define SELECT_7 GPIO(GPIO_PORTA, 8)
 
-void selectInputsInit(void);
+void intializeSensorSelectLines(void);
 
 
 

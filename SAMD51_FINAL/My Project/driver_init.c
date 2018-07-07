@@ -447,9 +447,9 @@ void system_init(void)
 
 	AC_0_init();
 
-	ADC_0_init();
+	//ADC_0_init();
 
-	ADC_1_init();
+	//ADC_1_init();
 
 	DAC_0_init();
 

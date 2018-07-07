@@ -8,7 +8,14 @@
 #include "Application/SelectInputs/include/selectInputs.h"
 #include <hal_gpio.h>
 
-void selectInputsInit(void)
+/*============================================================================
+**
+** Function Name:      intializeSensorSelectLines
+**
+** Description:        Flushes the Rx Ring Buffer
+**
+**===========================================================================*/
+void intializeSensorSelectLines(void)
 {
 	gpio_set_pin_direction(SELECT_0, GPIO_DIRECTION_IN);
 	gpio_set_pin_pull_mode(SELECT_0,GPIO_PULL_UP);
@@ -41,4 +48,16 @@ void selectInputsInit(void)
 	gpio_set_pin_direction(SELECT_7, GPIO_DIRECTION_IN);
 	gpio_set_pin_pull_mode(SELECT_7,GPIO_PULL_UP);
 	gpio_set_pin_function(SELECT_7, GPIO_PIN_FUNCTION_OFF);	
+}
+
+/*============================================================================
+**
+** Function Name:      mdmCtrlr_FlushRxBuffer
+**
+** Description:        Flushes the Rx Ring Buffer
+**
+**===========================================================================*/
+void scanSelectLines(void)
+{
+
 }

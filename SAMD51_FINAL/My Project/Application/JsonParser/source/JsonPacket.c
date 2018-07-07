@@ -4,9 +4,9 @@
  * Created: 4/20/2018 4:50:40 PM
  *  Author: AJOSEPH
  */ 
+#include <stdio.h>
 #include "Application/JsonParser/include/JsonPacket.h"
 #include "Application/JsonParser/include/parson.h"
-#include <stdio.h>
 
 void CreateJsonPacket_example(void) {
 	JSON_Value *root_value = json_value_init_object();
@@ -18,6 +18,7 @@ void CreateJsonPacket_example(void) {
 	json_object_dotset_value(root_object, "contact.emails", json_parse_string("[\"email@example.com\",\"email2@example.com\"]"));
 	serialized_string = json_serialize_to_string_pretty(root_value);
 	puts(serialized_string);
+	//SerialDebugPrint(serialized_string,30);
 	json_free_serialized_string(serialized_string);
 	json_value_free(root_value);
 }

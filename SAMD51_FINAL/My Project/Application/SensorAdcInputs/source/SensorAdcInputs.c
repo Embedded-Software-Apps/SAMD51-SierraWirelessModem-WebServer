@@ -6,11 +6,13 @@
  */ 
 #include "driver_init.h"
 #include "Application/SensorAdcInputs/include/SensorAdcInputs.h"
+#include "Application/Common/Common.h"
 #include <hpl_adc_config.h>
 
-void sensorAdcInit(void)
+void sensorAdcInitialize(void)
 {
-	ADC_0_init();		
+	ADC_0_init();
+
 }
 
 void sensorAdcReadChannel(const uint8_t channel, uint8_t *const buffer,const uint16_t length)
