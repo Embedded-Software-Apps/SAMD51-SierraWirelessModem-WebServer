@@ -165,6 +165,8 @@ Application/Tasks/SensorTask/source/SensorTask.d \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/timers.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
+ ../hal/include/hal_gpio.h ../hal/include/hpl_gpio.h \
+ ../hpl/port/hpl_gpio_base.h ../hal/utils/include/utils_assert.h \
  ../Application/Tasks/ModemTask/include/ModemAtCommandSet.h \
  ../Application/SerialDebug/SerialDebug.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h \
@@ -174,9 +176,8 @@ Application/Tasks/SensorTask/source/SensorTask.d \
  e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\limits.h \
  ../Application/JsonParser/include/JsonPacket.h \
  ../Application/SelectInputs/include/selectInputs.h \
- ../hal/include/hpl_gpio.h ../hpl/port/hpl_gpio_base.h \
- ../hal/utils/include/utils_assert.h \
- ../Application/SensorAdcInputs/include/SensorAdcInputs.h
+ ../Application/SensorAdcInputs/include/SensorAdcInputs.h \
+ ../Application/Tasks/SensorTask/include/SensorTask.h
 
 ../hal/include/hal_delay.h:
 
@@ -560,6 +561,14 @@ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\inclu
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
 
+../hal/include/hal_gpio.h:
+
+../hal/include/hpl_gpio.h:
+
+../hpl/port/hpl_gpio_base.h:
+
+../hal/utils/include/utils_assert.h:
+
 ../Application/Tasks/ModemTask/include/ModemAtCommandSet.h:
 
 ../Application/SerialDebug/SerialDebug.h:
@@ -578,10 +587,6 @@ e:\softwares\atmelstudio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\inclu
 
 ../Application/SelectInputs/include/selectInputs.h:
 
-../hal/include/hpl_gpio.h:
-
-../hpl/port/hpl_gpio_base.h:
-
-../hal/utils/include/utils_assert.h:
-
 ../Application/SensorAdcInputs/include/SensorAdcInputs.h:
+
+../Application/Tasks/SensorTask/include/SensorTask.h:

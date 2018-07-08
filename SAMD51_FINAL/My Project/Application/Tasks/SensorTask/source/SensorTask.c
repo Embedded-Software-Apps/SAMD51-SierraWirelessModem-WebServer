@@ -16,6 +16,7 @@
 #include "Application/JsonParser/include/JsonPacket.h"
 #include "Application/SelectInputs/include/selectInputs.h"
 #include "Application/SensorAdcInputs/include/SensorAdcInputs.h"
+#include "Application/Tasks/SensorTask/include/SensorTask.h"
 
 static void initializeSensorTask(void);
 static void initializeSensorOutputData(void);
@@ -25,6 +26,7 @@ static void initializeSensorInputData(void);
 *******************************************************************************************/
 static SENSOR_OUTPUT_DATA_TYPE sensorOutputData[MAX_SENSOR_COUNT];
 static SENSOR_INPUT_DATA_TYPE sensorInputData[MAX_SENSOR_COUNT];
+static SENSOR_MAIN_STATES_T sensorMainState;
 /*============================================================================
 **
 ** Function Name:      mdmCtrlr_FlushRxBuffer
@@ -42,8 +44,9 @@ void SensorTask( void *SensorTaskParam)
 
 	while(1)
 	{
+		sensorTaskSchedule();
 		kickWatchDog();
-		vTaskDelayUntil( &xLastWakeTime, xDelayMs);
+		//vTaskDelayUntil( &xLastWakeTime, xDelayMs);
 	}
 }
 
@@ -64,6 +67,7 @@ static void initializeSensorTask(void)
 
 	initializeSensorInputData();
 	initializeSensorOutputData();
+	sensorMainState = WAIT_FOR_TRIGGER_FROM_PROCESS_TASK;
 }
 
 /*============================================================================
@@ -160,5 +164,74 @@ static void initializeSensorInputData(void)
 			default:
 			break;
 		}
+	}
+}
+
+/*============================================================================
+**
+** Function Name:      mdmCtrlr_FlushRxBuffer
+**
+** Description:        Flushes the Rx Ring Buffer
+**
+**===========================================================================*/
+void sensorTaskSchedule(void)
+{
+	BaseType_t xResult;
+	static SENSOR_INDEX_T sensorIndex = SENSOR_0;
+	SENSOR_DATA_REQUEST_TYPE request;
+
+	switch(sensorMainState)
+	{
+		case WAIT_FOR_TRIGGER_FROM_PROCESS_TASK:
+		{
+			xResult = xTaskNotifyWait(0,ULONG_MAX,&request,portMAX_DELAY);
+
+			if(xResult == pdPASS)
+			{
+				sensorMainState = SCAN_ALL_OF_THE_SENSOR_SELECT_LINES;
+				DEBUG_PRINT("Notification received in Sensor task");
+			}
+		}
+		break;
+
+		case SCAN_ALL_OF_THE_SENSOR_SELECT_LINES:
+		{
+			if(gpio_get_pin_level(sensorInputData[sensorIndex].selectLine == false))
+			{
+				DEBUG_PRINT("Select Line Low");
+				sensorIndex++;
+
+				if(sensorIndex >= MAX_SENSOR_COUNT)
+				{
+					sensorMainState = FETCH_ADC_READINGS_FOR_ACTIVE_SENSORS;
+				}
+			}
+			else
+			{
+				DEBUG_PRINT("Select Line High");
+			}
+		}
+		break;
+
+		case FETCH_ADC_READINGS_FOR_ACTIVE_SENSORS:
+		{
+
+		}
+		break;
+
+		case BUILD_DATA_FROM_THE_SENSOR_ADC_READINGS:
+		{
+
+		}
+		break;
+
+		case SEND_PACKED_SENSOR_DATA_TO_PROCESS_TASK:
+		{
+
+		}
+		break;
+
+		default:
+		break;
 	}
 }

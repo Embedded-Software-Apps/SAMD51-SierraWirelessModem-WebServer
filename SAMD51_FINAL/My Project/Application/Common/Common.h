@@ -13,6 +13,7 @@
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h"
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h"
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/timers.h"
+#include <hal_gpio.h>
 #include "Application/Tasks/ModemTask/include/ModemAtCommandSet.h"
 #include "Application/SerialDebug/SerialDebug.h"
 #include "semphr.h"
@@ -57,6 +58,12 @@ typedef struct
 	uint8_t selectLine;
 	SENSOR_ADC_INPUT adcChannel;
 }SENSOR_INPUT_DATA_TYPE;
+
+typedef enum
+{
+	SENSOR_DATA_REPEAT_REQUEST,
+	SENSOR_DATA_NEW_REQUEST
+}SENSOR_DATA_REQUEST_TYPE;
 
 #define DEFAULT_VALUE    (0)
 #define MAX_SENSOR_COUNT (8)

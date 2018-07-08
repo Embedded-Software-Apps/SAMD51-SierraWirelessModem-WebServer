@@ -9,6 +9,15 @@
 #ifndef SENSORTASK_H_
 #define SENSORTASK_H_
 
-void SensorTask( void *SensorTaskParam);
+typedef enum
+{
+	WAIT_FOR_TRIGGER_FROM_PROCESS_TASK=0,
+	SCAN_ALL_OF_THE_SENSOR_SELECT_LINES,
+	FETCH_ADC_READINGS_FOR_ACTIVE_SENSORS,
+	BUILD_DATA_FROM_THE_SENSOR_ADC_READINGS,
+	SEND_PACKED_SENSOR_DATA_TO_PROCESS_TASK
+}SENSOR_MAIN_STATES_T;
 
+void SensorTask( void *SensorTaskParam);
+void sensorTaskSchedule(void);
 #endif /* SENSORTASK_H_ */

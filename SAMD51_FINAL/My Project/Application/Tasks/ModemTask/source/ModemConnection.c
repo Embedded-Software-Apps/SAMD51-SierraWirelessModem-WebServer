@@ -761,7 +761,6 @@ static void MdmCnct_ConnectedSubStateMachine(void)
     AtTxMsgType TxMsgQueueData;
     BaseType_t TxQueuePushStatus;
 
-
     switch(gHttpConnectedSubState)
     {
         case CONNECTED_INITIALIZE_TRANSMISSION:
@@ -781,6 +780,14 @@ static void MdmCnct_ConnectedSubStateMachine(void)
         break;
 
         case CONNECTED_PERIODIC_6SEC_TIMER_EXPIRED:
+        {
+        	xTaskNotify(xSensorTaskHandle, SENSOR_DATA_NEW_REQUEST, eSetValueWithOverwrite);
+        	gHttpConnectedSubState = CONNECTED_WAIT_FOR_DATA_FROM_SENSOR_TASK;
+        	DEBUG_PRINT("Notification sent from connection task");
+        }
+        break;
+
+        case CONNECTED_WAIT_FOR_DATA_FROM_SENSOR_TASK:
         {
         	gHttpConnectedSubState = CONNECTED_BUILD_DATA_PACKET_TO_SERVER;
         }
