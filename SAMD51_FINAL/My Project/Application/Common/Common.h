@@ -181,6 +181,7 @@ QueueHandle_t AtReceiveQueue;
 QueueHandle_t CmdResponseQueue;
 SemaphoreHandle_t AtTxQueueLoadSemaphore;
 SemaphoreHandle_t DebugPrintMutex;
+SemaphoreHandle_t SensorScanSemaphore;
 
 #define MAX_TX_QUEUE_SIZE (1)
 #define MAX_RX_QUEUE_SIZE (1)

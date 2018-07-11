@@ -781,7 +781,7 @@ static void MdmCnct_ConnectedSubStateMachine(void)
 
         case CONNECTED_PERIODIC_6SEC_TIMER_EXPIRED:
         {
-        	xTaskNotify(xSensorTaskHandle, SENSOR_DATA_NEW_REQUEST, eSetValueWithOverwrite);
+        	xSemaphoreGive(SensorScanSemaphore);
         	gHttpConnectedSubState = CONNECTED_WAIT_FOR_DATA_FROM_SENSOR_TASK;
         	DEBUG_PRINT("Notification sent from connection task");
         }
@@ -789,7 +789,12 @@ static void MdmCnct_ConnectedSubStateMachine(void)
 
         case CONNECTED_WAIT_FOR_DATA_FROM_SENSOR_TASK:
         {
-        	gHttpConnectedSubState = CONNECTED_BUILD_DATA_PACKET_TO_SERVER;
+			if(pdPASS == xSemaphoreTake(SensorScanSemaphore, portMAX_DELAY))
+			{
+				DEBUG_PRINT("Got the semaphore back in connection task");
+				gHttpConnectedSubState = CONNECTED_BUILD_DATA_PACKET_TO_SERVER;
+			}
+
         }
         break;
 

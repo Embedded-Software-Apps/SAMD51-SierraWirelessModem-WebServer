@@ -184,7 +184,7 @@ void sensorTaskSchedule(void)
 	{
 		case WAIT_FOR_TRIGGER_FROM_PROCESS_TASK:
 		{
-			xResult = xTaskNotifyWait(0,ULONG_MAX,&request,portMAX_DELAY);
+			xResult = xSemaphoreTake(SensorScanSemaphore, portMAX_DELAY);
 
 			if(xResult == pdPASS)
 			{
@@ -196,7 +196,7 @@ void sensorTaskSchedule(void)
 
 		case SCAN_ALL_OF_THE_SENSOR_SELECT_LINES:
 		{
-			if(gpio_get_pin_level(sensorInputData[sensorIndex].selectLine == false))
+			if(gpio_get_pin_level(sensorInputData[sensorIndex].selectLine) == false)
 			{
 				DEBUG_PRINT("Select Line Low");
 				sensorIndex++;
@@ -209,6 +209,13 @@ void sensorTaskSchedule(void)
 			else
 			{
 				DEBUG_PRINT("Select Line High");
+				sensorIndex++;
+
+				if(sensorIndex >= MAX_SENSOR_COUNT)
+				{
+					DEBUG_PRINT("No Sensors Connected");
+					sensorMainState = FETCH_ADC_READINGS_FOR_ACTIVE_SENSORS;
+				}
 			}
 		}
 		break;

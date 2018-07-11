@@ -67,7 +67,7 @@ int main(void)
     ModemRxTaskStatus = xTaskCreate( ModemRxTask, "ModemRxTask", 150, NULL, 2, &xModemRxTaskHandle);
 
     /* Create Modem Process Task */
-    ModemProcessTaskStatus = xTaskCreate( ModemProcessTask, "ModemProcessTask", 150, NULL, 2, &xModemProcessTaskHandle);
+    ModemProcessTaskStatus = xTaskCreate( ModemProcessTask, "ModemProcessTask", 150, NULL, 1, &xModemProcessTaskHandle);
 
     /* Create Modem Diagnostics Task */
     ModemDiagTaskStatus = xTaskCreate( ModemDiagTask, "ModemDiagTask", 150, NULL, 1, &xModemDiagTaskHandle);
@@ -122,10 +122,12 @@ bool createQueuesAndSemaphores(void)
 	   (CmdResponseQueue != NULL))
     {
     	AtTxQueueLoadSemaphore = xSemaphoreCreateBinary();
+    	SensorScanSemaphore    = xSemaphoreCreateBinary();
     	DebugPrintMutex        = xSemaphoreCreateMutex();
 		
 		if((AtTxQueueLoadSemaphore != NULL) &&
-		   (DebugPrintMutex != NULL))
+           (SensorScanSemaphore    != NULL) &&
+		   (DebugPrintMutex        != NULL))
 		{
 			//DEBUG_PRINT("Semaphores and Mutexes are created");
 		}
