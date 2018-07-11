@@ -179,12 +179,13 @@ void sensorTaskSchedule(void)
 	BaseType_t xResult;
 	static SENSOR_INDEX_T sensorIndex = SENSOR_0;
 	SENSOR_DATA_REQUEST_TYPE request;
+	const TickType_t xSensorScanTriggerWaitMs = pdMS_TO_TICKS(500UL);
 
 	switch(sensorMainState)
 	{
 		case WAIT_FOR_TRIGGER_FROM_PROCESS_TASK:
 		{
-			xResult = xSemaphoreTake(SensorScanSemaphore, portMAX_DELAY);
+			xResult = xSemaphoreTake(SensorScanSemaphore, xSensorScanTriggerWaitMs);
 
 			if(xResult == pdPASS)
 			{
@@ -203,7 +204,9 @@ void sensorTaskSchedule(void)
 
 				if(sensorIndex >= MAX_SENSOR_COUNT)
 				{
-					sensorMainState = FETCH_ADC_READINGS_FOR_ACTIVE_SENSORS;
+					sensorMainState = WAIT_FOR_TRIGGER_FROM_PROCESS_TASK;
+					sensorIndex = SENSOR_0;
+					
 				}
 			}
 			else
@@ -214,7 +217,8 @@ void sensorTaskSchedule(void)
 				if(sensorIndex >= MAX_SENSOR_COUNT)
 				{
 					DEBUG_PRINT("No Sensors Connected");
-					sensorMainState = FETCH_ADC_READINGS_FOR_ACTIVE_SENSORS;
+					sensorMainState = WAIT_FOR_TRIGGER_FROM_PROCESS_TASK;
+					sensorIndex = SENSOR_0;
 				}
 			}
 		}

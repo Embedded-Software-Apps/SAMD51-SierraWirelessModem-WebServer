@@ -789,12 +789,10 @@ static void MdmCnct_ConnectedSubStateMachine(void)
 
         case CONNECTED_WAIT_FOR_DATA_FROM_SENSOR_TASK:
         {
-			if(pdPASS == xSemaphoreTake(SensorScanSemaphore, portMAX_DELAY))
-			{
-				DEBUG_PRINT("Got the semaphore back in connection task");
-				gHttpConnectedSubState = CONNECTED_BUILD_DATA_PACKET_TO_SERVER;
-			}
 
+			DEBUG_PRINT("Got the semaphore back in connection task");
+			gHttpConnectedSubState = CONNECTED_BUILD_DATA_PACKET_TO_SERVER;
+		
         }
         break;
 
