@@ -47,6 +47,12 @@ typedef enum
 
 typedef struct
 {
+	SENSOR_INDEX_T sensorIndex;
+	uint8_t adcString[3];
+}SENSOR_DATA_PACK;
+
+typedef struct
+{
 	SENSOR_INDEX_T sensor;
 	bool active;
 	uint32_t adcCount;

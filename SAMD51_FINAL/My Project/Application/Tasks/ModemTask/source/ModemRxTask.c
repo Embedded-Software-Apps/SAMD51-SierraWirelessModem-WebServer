@@ -37,6 +37,8 @@ void ModemRxTask( void *ModemTaskParam)
 			else
 			{
 				DEBUG_PRINT("ERROR: Command Parsing Failed");
+				DEBUG_PRINT("\r\nNot able to auto recover from connection failure...Rebooting....");
+				DEBUG_PRINT("\r\n");
 				requestWatchDogForcedReset();
 			}
 		}

@@ -27,6 +27,7 @@ static void initializeSensorInputData(void);
 static SENSOR_OUTPUT_DATA_TYPE sensorOutputData[MAX_SENSOR_COUNT];
 static SENSOR_INPUT_DATA_TYPE sensorInputData[MAX_SENSOR_COUNT];
 static SENSOR_MAIN_STATES_T sensorMainState;
+static SENSOR_DATA_PACK sensorDataPack[MAX_SENSOR_COUNT];
 /*============================================================================
 **
 ** Function Name:      mdmCtrlr_FlushRxBuffer
@@ -109,6 +110,12 @@ static void initializeSensorInputData(void)
 			{
 				sensorInputData[SENSOR_0].selectLine = SELECT_0;
 				sensorInputData[SENSOR_0].adcChannel = SENSOR_0_AIN0;
+
+				/* Update the sensor pack data */
+				sensorDataPack[SENSOR_0].sensorIndex  = SENSOR_0;
+				sensorDataPack[SENSOR_0].adcString[0] = 'A';
+				sensorDataPack[SENSOR_0].adcString[1] = '0';
+				sensorDataPack[SENSOR_0].adcString[2] = '\0';
 			}
 			break;
 
@@ -116,6 +123,12 @@ static void initializeSensorInputData(void)
 			{
 				sensorInputData[SENSOR_1].selectLine = SELECT_1;
 				sensorInputData[SENSOR_1].adcChannel = SENSOR_1_AIN1;
+
+				/* Update the sensor pack data */
+				sensorDataPack[SENSOR_1].sensorIndex  = SENSOR_1;
+				sensorDataPack[SENSOR_1].adcString[0] = 'A';
+				sensorDataPack[SENSOR_1].adcString[1] = '1';
+				sensorDataPack[SENSOR_1].adcString[2] = '\0';
 			}
 			break;
 
@@ -123,6 +136,12 @@ static void initializeSensorInputData(void)
 			{
 				sensorInputData[SENSOR_2].selectLine = SELECT_2;
 				sensorInputData[SENSOR_2].adcChannel = SENSOR_2_AIN2;
+
+				/* Update the sensor pack data */
+				sensorDataPack[SENSOR_2].sensorIndex  = SENSOR_2;
+				sensorDataPack[SENSOR_2].adcString[0] = 'A';
+				sensorDataPack[SENSOR_2].adcString[1] = '2';
+				sensorDataPack[SENSOR_2].adcString[2] = '\0';
 			}
 			break;
 
@@ -130,6 +149,12 @@ static void initializeSensorInputData(void)
 			{
 				sensorInputData[SENSOR_3].selectLine = SELECT_3;
 				sensorInputData[SENSOR_3].adcChannel = SENSOR_3_AIN3;
+
+				/* Update the sensor pack data */
+				sensorDataPack[SENSOR_3].sensorIndex  = SENSOR_3;
+				sensorDataPack[SENSOR_3].adcString[0] = 'A';
+				sensorDataPack[SENSOR_3].adcString[1] = '3';
+				sensorDataPack[SENSOR_3].adcString[2] = '\0';
 			}
 			break;
 
@@ -137,6 +162,12 @@ static void initializeSensorInputData(void)
 			{
 				sensorInputData[SENSOR_4].selectLine = SELECT_4;
 				sensorInputData[SENSOR_4].adcChannel = SENSOR_4_AIN4;
+
+				/* Update the sensor pack data */
+				sensorDataPack[SENSOR_4].sensorIndex  = SENSOR_4;
+				sensorDataPack[SENSOR_4].adcString[0] = 'A';
+				sensorDataPack[SENSOR_4].adcString[1] = '4';
+				sensorDataPack[SENSOR_4].adcString[2] = '\0';
 			}
 			break;
 
@@ -144,6 +175,12 @@ static void initializeSensorInputData(void)
 			{
 				sensorInputData[SENSOR_5].selectLine = SELECT_5;
 				sensorInputData[SENSOR_5].adcChannel = SENSOR_5_AIN5;
+
+				/* Update the sensor pack data */
+				sensorDataPack[SENSOR_5].sensorIndex  = SENSOR_5;
+				sensorDataPack[SENSOR_5].adcString[0] = 'A';
+				sensorDataPack[SENSOR_5].adcString[1] = '5';
+				sensorDataPack[SENSOR_5].adcString[2] = '\0';
 			}
 			break;
 
@@ -151,6 +188,12 @@ static void initializeSensorInputData(void)
 			{
 				sensorInputData[SENSOR_6].selectLine = SELECT_6;
 				sensorInputData[SENSOR_6].adcChannel = SENSOR_6_AIN6;
+
+				/* Update the sensor pack data */
+				sensorDataPack[SENSOR_6].sensorIndex  = SENSOR_6;
+				sensorDataPack[SENSOR_6].adcString[0] = 'A';
+				sensorDataPack[SENSOR_6].adcString[1] = '6';
+				sensorDataPack[SENSOR_6].adcString[2] = '\0';
 			}
 			break;
 
@@ -158,6 +201,12 @@ static void initializeSensorInputData(void)
 			{
 				sensorInputData[SENSOR_7].selectLine = SELECT_7;
 				sensorInputData[SENSOR_7].adcChannel = SENSOR_7_AIN7;
+
+				/* Update the sensor pack data */
+				sensorDataPack[SENSOR_7].sensorIndex  = SENSOR_7;
+				sensorDataPack[SENSOR_7].adcString[0] = 'A';
+				sensorDataPack[SENSOR_7].adcString[1] = '7';
+				sensorDataPack[SENSOR_7].adcString[2] = '\0';
 			}
 			break;
 
@@ -180,6 +229,8 @@ void sensorTaskSchedule(void)
 	static SENSOR_INDEX_T sensorIndex = SENSOR_0;
 	SENSOR_DATA_REQUEST_TYPE request;
 	const TickType_t xSensorScanTriggerWaitMs = pdMS_TO_TICKS(500UL);
+	uint8_t adcBuffer[2];
+	int32_t bytesRead;
 
 	switch(sensorMainState)
 	{
@@ -199,23 +250,26 @@ void sensorTaskSchedule(void)
 			if(gpio_get_pin_level(sensorInputData[sensorIndex].selectLine) == false)
 			{
 				DEBUG_PRINT("Select Line Low");
+
+				/* Update the active flag for the active sensor */
+				sensorOutputData[sensorIndex].active = true;
 				sensorIndex++;
 
 				if(sensorIndex >= MAX_SENSOR_COUNT)
 				{
-					sensorMainState = WAIT_FOR_TRIGGER_FROM_PROCESS_TASK;
+					sensorMainState = FETCH_ADC_READINGS_FOR_ACTIVE_SENSORS;
 					sensorIndex = SENSOR_0;
-					
 				}
 			}
 			else
 			{
 				DEBUG_PRINT("Select Line High");
+				sensorOutputData[sensorIndex].active = false;
 				sensorIndex++;
 
 				if(sensorIndex >= MAX_SENSOR_COUNT)
 				{
-					sensorMainState = WAIT_FOR_TRIGGER_FROM_PROCESS_TASK;
+					sensorMainState = FETCH_ADC_READINGS_FOR_ACTIVE_SENSORS;
 					sensorIndex = SENSOR_0;
 				}
 			}
@@ -224,6 +278,23 @@ void sensorTaskSchedule(void)
 
 		case FETCH_ADC_READINGS_FOR_ACTIVE_SENSORS:
 		{
+			if(sensorOutputData[sensorIndex].active == true)
+			{
+				bytesRead = sensorAdcReadChannel(sensorInputData[sensorIndex].adcChannel,adcBuffer,2);
+				DEBUG_PRINT("Read ADC data");
+				ConsoleDebugPrint("No of Bytes Read is ",bytesRead);
+				sensorIndex++;
+			}
+			else
+			{
+				sensorIndex++;
+			}
+
+			if(sensorIndex >= MAX_SENSOR_COUNT)
+			{
+				sensorMainState = WAIT_FOR_TRIGGER_FROM_PROCESS_TASK;
+				sensorIndex = SENSOR_0;
+			}
 
 		}
 		break;

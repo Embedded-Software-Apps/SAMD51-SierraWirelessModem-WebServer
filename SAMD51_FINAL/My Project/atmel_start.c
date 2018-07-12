@@ -114,9 +114,9 @@ int32_t kickWatchDog(void)
 ********************************************************************************/
 void requestWatchDogForcedReset(void)
 {
-	DEBUG_PRINT("\r\nNot able to auto recover from connection failure...Rebooting....");
 	DEBUG_PRINT("\r\n");
 	DEBUG_PRINT("#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*#*");
+	DEBUG_PRINT("\r\n");
 	ForcedResetRequested = WDT_FORCED_RESET_ON;
 	wdt_disable(&WDT_0);
 	configureWatchDogTimeOut(WDT_TIMEOUT_FAST);
