@@ -71,5 +71,6 @@ typedef enum
 void MdmCnct_ConnectInProgressSubStateMachine(void);
 void MdmConnect_HttpConnectionSchedule(void);
 void MdmConnect_HttpConnectionInit(void);
+void performForcedErrorRecovery(void);
 
 #endif /* MODEMCONNECTION_H_ */

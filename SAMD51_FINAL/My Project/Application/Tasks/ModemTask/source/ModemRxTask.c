@@ -37,6 +37,7 @@ void ModemRxTask( void *ModemTaskParam)
 			else
 			{
 				DEBUG_PRINT("ERROR: Command Parsing Failed");
+				requestWatchDogForcedReset();
 			}
 		}
 		else

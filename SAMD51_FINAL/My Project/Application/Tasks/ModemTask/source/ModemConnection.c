@@ -783,16 +783,12 @@ static void MdmCnct_ConnectedSubStateMachine(void)
         {
         	xSemaphoreGive(SensorScanSemaphore);
         	gHttpConnectedSubState = CONNECTED_WAIT_FOR_DATA_FROM_SENSOR_TASK;
-        	DEBUG_PRINT("Notification sent from connection task");
         }
         break;
 
         case CONNECTED_WAIT_FOR_DATA_FROM_SENSOR_TASK:
         {
-
-			DEBUG_PRINT("Got the semaphore back in connection task");
 			gHttpConnectedSubState = CONNECTED_BUILD_DATA_PACKET_TO_SERVER;
-		
         }
         break;
 
@@ -800,7 +796,6 @@ static void MdmCnct_ConnectedSubStateMachine(void)
         {
             buildDataPacketsToServer();
             gHttpConnectedSubState = CONNECTED_SEND_DATA_PACKETS_TO_SERVER;
-            //vTaskDelay(BuildPacketDelayMs);
         }
         break;
 
@@ -890,7 +885,7 @@ static void MdmCnct_ConnectedSubStateMachine(void)
             gErrorRecoveryState = CLOSE_ALL_EXISTING_CONNECIONS;
             sessionIdCount = 5;
             gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
-            DEBUG_PRINT("\r\nPerforming the Error Recovery\r\n");
+            DEBUG_PRINT("\r\nConnection interrupted...Performing the Error Recovery....\r\n");
             DEBUG_PRINT("Closing the active connection");
             //vTaskDelay(QueuePushDelayMs);
         }
@@ -1472,6 +1467,24 @@ static void performForcedRebootOfModem(void)
 {
 	DEBUG_PRINT("Connection to the server is lost.....");
 	DEBUG_PRINT("Trying to establish the connection to server...Please wait......\r\n");
+
+	/* Perform a physical modem restart */
+	modemPowerStateInit();
+
+	/* Reset the modem connection States */
+	MdmConnect_HttpConnectionInit();
+}
+
+/*============================================================================
+**
+** Function Name:      mdmCtrlr_FlushRxBuffer
+**
+** Description:        Flushes the Rx Ring Buffer
+**
+**===========================================================================*/
+void performForcedErrorRecovery(void)
+{
+	DEBUG_PRINT("Performing forced error recovery....\r\n");
 
 	/* Perform a physical modem restart */
 	modemPowerStateInit();

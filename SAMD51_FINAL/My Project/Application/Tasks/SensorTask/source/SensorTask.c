@@ -190,7 +190,6 @@ void sensorTaskSchedule(void)
 			if(xResult == pdPASS)
 			{
 				sensorMainState = SCAN_ALL_OF_THE_SENSOR_SELECT_LINES;
-				DEBUG_PRINT("Notification received in Sensor task");
 			}
 		}
 		break;
@@ -216,7 +215,6 @@ void sensorTaskSchedule(void)
 
 				if(sensorIndex >= MAX_SENSOR_COUNT)
 				{
-					DEBUG_PRINT("No Sensors Connected");
 					sensorMainState = WAIT_FOR_TRIGGER_FROM_PROCESS_TASK;
 					sensorIndex = SENSOR_0;
 				}
@@ -246,3 +244,4 @@ void sensorTaskSchedule(void)
 		break;
 	}
 }
+
