@@ -73,6 +73,8 @@ extern struct ac_sync_descriptor AC_0;
 
 extern struct adc_sync_descriptor ADC_0;
 
+extern struct _adc_async_device SENSOR_ADC;
+
 extern struct adc_sync_descriptor ADC_1;
 
 extern struct dac_sync_descriptor DAC_0;

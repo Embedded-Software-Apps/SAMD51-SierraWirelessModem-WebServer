@@ -26,6 +26,8 @@ struct ac_sync_descriptor AC_0;
 
 struct adc_sync_descriptor ADC_0;
 
+struct _adc_async_device SENSOR_ADC;
+
 struct adc_sync_descriptor ADC_1;
 
 struct dac_sync_descriptor DAC_0;
@@ -126,7 +128,16 @@ void ADC_0_init(void)
 {
 	ADC_0_CLOCK_init();
 	ADC_0_PORT_init();
-	adc_sync_init(&ADC_0, ADC0, (void *)NULL);
+	//adc_sync_init(&ADC_0, ADC0, (void *)NULL);
+
+	if(ERR_NONE == _adc_async_init(&SENSOR_ADC,ADC0))
+	{
+		DEBUG_PRINT("Initialized the ADC successfully");
+	}
+	else
+	{
+		DEBUG_PRINT("Failed to initialize ADC");
+	}
 }
 
 void ADC_1_PORT_init(void)
