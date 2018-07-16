@@ -17,14 +17,11 @@ void sensorAdcInitialize(void)
 int32_t sensorAdcReadChannel(const uint8_t channel, uint8_t *const buffer,const uint16_t length)
 {
 	int32_t bytesRead = 0;
-/*	adc_sync_enable_channel(&ADC_0, channel);
+
+	adc_sync_enable_channel(&ADC_0, channel);
 	adc_sync_set_inputs(&ADC_0, channel, 0x19, channel);
 	bytesRead = adc_sync_read_channel(&ADC_0, channel, &buffer[0], length);
-	adc_sync_disable_channel(&ADC_0, channel);*/
-
-	_adc_async_enable_channel(&SENSOR_ADC, channel);
-	_adc_async_set_inputs(&SENSOR_ADC, channel, 0x19, channel);
-	_adc_async_convert(&SENSOR_ADC);
+	adc_sync_disable_channel(&ADC_0, channel);
 
 	return bytesRead;
 }
