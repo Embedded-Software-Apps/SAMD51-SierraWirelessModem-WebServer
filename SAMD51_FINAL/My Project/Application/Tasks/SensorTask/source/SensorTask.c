@@ -249,7 +249,7 @@ void sensorTaskSchedule(void)
 		{
 			if(gpio_get_pin_level(sensorInputData[sensorIndex].selectLine) == false)
 			{
-				DEBUG_PRINT("Select Line Low");
+				ConsoleDebugPrint("Select Line Low  - Port",(sensorIndex+1));
 
 				/* Update the active flag for the active sensor */
 				sensorOutputData[sensorIndex].active = true;
@@ -263,7 +263,7 @@ void sensorTaskSchedule(void)
 			}
 			else
 			{
-				DEBUG_PRINT("Select Line High");
+				ConsoleDebugPrint("Select Line High - Port",(sensorIndex+1));
 				sensorOutputData[sensorIndex].active = false;
 				sensorIndex++;
 
@@ -271,6 +271,7 @@ void sensorTaskSchedule(void)
 				{
 					sensorMainState = FETCH_ADC_READINGS_FOR_ACTIVE_SENSORS;
 					sensorIndex = SENSOR_0;
+					DEBUG_PRINT("\r\n");
 				}
 			}
 		}

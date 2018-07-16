@@ -30,6 +30,8 @@ void SerialDebugErrorCallBack(struct _usart_async_device *device);
 void SerialDebugPrint(const uint8_t *const dataToPrint,const uint16_t length);
 void SerialStringPrint(const uint8_t *const dataToPrint);
 void ConsoleDebugPrint(const uint8_t *const txt, uint32_t intData);
+void printAdcValueToConsole(const uint8_t *const txt, uint32_t intData);
+void printVoltageToConsole(const uint8_t *const txt, uint32_t intData);
 /* Debug Print Macro */
 
 

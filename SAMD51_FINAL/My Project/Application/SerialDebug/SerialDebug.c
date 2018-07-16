@@ -114,6 +114,24 @@ void ConsoleDebugPrint(const uint8_t *const txt, uint32_t intData)
 		SerialDebugPrint(dbgBuffer,strlen(dbgBuffer));
 	}
 }
+
+void printAdcValueToConsole(const uint8_t *const txt, uint32_t intData)
+{
+	uint8_t dbgBuffer[100];
+	memset(dbgBuffer,'\0',100);
+
+	sprintf((int8_t*)dbgBuffer,"%s - %d \r\n",txt,intData);
+	SerialDebugPrint(dbgBuffer,strlen(dbgBuffer));
+}
+
+void printVoltageToConsole(const uint8_t *const txt, uint32_t intData)
+{
+	uint8_t dbgBuffer[100];
+	memset(dbgBuffer,'\0',100);
+
+	sprintf((int8_t*)dbgBuffer,"%s - %dmV \r\n",txt,intData);
+	SerialDebugPrint(dbgBuffer,strlen(dbgBuffer));
+}
 /* UART Rx Interrupt Handler */ 
 /*
  **** Just echo back the char entered on the serial terminal****

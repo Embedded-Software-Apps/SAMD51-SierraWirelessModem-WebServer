@@ -18,6 +18,7 @@ int32_t sensorAdcReadChannel(const uint8_t channel, uint8_t *const buffer,const 
 {
 	int32_t bytesRead = 0;
 	uint16_t adcValue;
+	uint32_t voltageInMv = 0;
 
 	adc_sync_enable_channel(&ADC_0, channel);
 	adc_sync_set_inputs(&ADC_0, channel, 0x19, channel);
@@ -26,8 +27,11 @@ int32_t sensorAdcReadChannel(const uint8_t channel, uint8_t *const buffer,const 
 
 	adcValue = ((buffer[1] << 8) | (buffer[0] & 0x00FF));
 
-	ConsoleDebugPrint("Sensor ",channel+1);
-	ConsoleDebugPrint("Reading ", adcValue);
+	ConsoleDebugPrint("Sensor",channel+1);
+	printAdcValueToConsole("ADC Count", adcValue);
+	voltageInMv = ((adcValue * ADC_CONVERTION_FACTOR)/10000);
+	printVoltageToConsole("Voltage on analog pin",voltageInMv);
+	DEBUG_PRINT("\r\n");
 
 	return bytesRead;
 }
