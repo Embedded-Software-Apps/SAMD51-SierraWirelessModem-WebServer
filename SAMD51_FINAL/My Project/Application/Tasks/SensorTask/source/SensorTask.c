@@ -278,7 +278,7 @@ void sensorTaskSchedule(void)
 
 		case FETCH_ADC_READINGS_FOR_ACTIVE_SENSORS:
 		{
-			if(sensorOutputData[sensorIndex].active == true)
+/*			if(sensorOutputData[sensorIndex].active == true)
 			{
 				bytesRead = sensorAdcReadChannel(sensorInputData[sensorIndex].adcChannel,adcBuffer,2);
 				DEBUG_PRINT("Read ADC data");
@@ -287,6 +287,12 @@ void sensorTaskSchedule(void)
 			}
 			else
 			{
+				sensorIndex++;
+			}*/
+
+			if(sensorIndex < MAX_SENSOR_COUNT)
+			{
+				bytesRead = sensorAdcReadChannel(sensorInputData[sensorIndex].adcChannel,adcBuffer,2);
 				sensorIndex++;
 			}
 

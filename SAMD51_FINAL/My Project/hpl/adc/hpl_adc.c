@@ -210,11 +210,23 @@ static inline void _adc_deinit(void *hw)
  */
 int32_t _adc_sync_init(struct _adc_sync_device *const device, void *const hw)
 {
+	int32_t init_status;
+
 	ASSERT(device);
 
+	init_status = _adc_init(hw, _adc_get_regs((uint32_t)hw));
+	if (init_status) {
+		return init_status;
+	}
 	device->hw = hw;
-
-	return _adc_init(hw, _adc_get_regs((uint32_t)hw));
+	_adc_init_irq_param(hw, device);
+	NVIC_DisableIRQ(_adc_get_irq_num(device) + 0);
+	NVIC_ClearPendingIRQ(_adc_get_irq_num(device) + 0);
+	NVIC_EnableIRQ(_adc_get_irq_num(device) + 0);
+	NVIC_DisableIRQ(_adc_get_irq_num(device) + 1);
+	NVIC_ClearPendingIRQ(_adc_get_irq_num(device) + 1);
+	NVIC_EnableIRQ(_adc_get_irq_num(device) + 1);
+	return ERR_NONE;
 }
 
 /**

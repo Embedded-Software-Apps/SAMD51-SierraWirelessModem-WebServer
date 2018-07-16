@@ -128,9 +128,8 @@ void ADC_0_init(void)
 {
 	ADC_0_CLOCK_init();
 	ADC_0_PORT_init();
-	//adc_sync_init(&ADC_0, ADC0, (void *)NULL);
 
-	if(ERR_NONE == _adc_async_init(&SENSOR_ADC,ADC0))
+	if(ERR_NONE == adc_sync_init(&ADC_0, ADC0, (void *)NULL))
 	{
 		DEBUG_PRINT("Initialized the ADC successfully");
 	}
