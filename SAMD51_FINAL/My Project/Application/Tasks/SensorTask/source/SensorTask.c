@@ -305,7 +305,7 @@ void sensorTaskSchedule(void)
 				}
 				else
 				{
-					adcCountAveraged = ((adcAveragingBuffer[0])/
+					adcCountAveraged = ((adcAveragingBuffer[0] + adcAveragingBuffer[1] + adcAveragingBuffer[2] + adcAveragingBuffer[3])/
 				                        (MAX_ADC_SAMPLES));
 
 					ConsoleDebugPrint("Sensor",sensorIndex+1);

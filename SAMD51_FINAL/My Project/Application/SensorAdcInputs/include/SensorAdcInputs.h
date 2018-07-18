@@ -10,7 +10,7 @@
 #define SENSORADCINPUTS_H_
 
 #define ADC_CONVERTION_FACTOR ((18000000)/4096)
-#define MAX_ADC_SAMPLES (1)
+#define MAX_ADC_SAMPLES (4)
 
 void sensorAdcInitialize(void);
 int32_t sensorAdcReadChannel(const uint8_t channel, uint16_t* result,const uint16_t length);
