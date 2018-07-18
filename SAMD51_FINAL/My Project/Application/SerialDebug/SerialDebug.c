@@ -105,32 +105,50 @@ void SerialStringPrint(const uint8_t *const dataToPrint)
 
 void ConsoleDebugPrint(const uint8_t *const txt, uint32_t intData)
 {
-	uint8_t dbgBuffer[100];
-	memset(dbgBuffer,'\0',100);
+	const TickType_t printDelayMs = pdMS_TO_TICKS(500UL);
 
-	if(intData != 0)
-	{
-		sprintf((int8_t*)dbgBuffer,"%s - %d \r\n",txt,intData);
-		SerialDebugPrint(dbgBuffer,strlen(dbgBuffer));
-	}
+    if( xSemaphoreTake( DebugPrintMutex,printDelayMs) == pdTRUE )
+    {
+    	uint8_t dbgBuffer[100];
+    	memset(dbgBuffer,'\0',100);
+
+    	if(intData != 0)
+    	{
+    		sprintf((int8_t*)dbgBuffer,"%s - %d \r\n",txt,intData);
+    		SerialDebugPrint(dbgBuffer,strlen(dbgBuffer));
+    	}
+    	xSemaphoreGive(DebugPrintMutex);
+    }
 }
 
 void printAdcValueToConsole(const uint8_t *const txt, uint32_t intData)
 {
-	uint8_t dbgBuffer[100];
-	memset(dbgBuffer,'\0',100);
+	const TickType_t printDelayMs = pdMS_TO_TICKS(500UL);
 
-	sprintf((int8_t*)dbgBuffer,"%s - %d \r\n",txt,intData);
-	SerialDebugPrint(dbgBuffer,strlen(dbgBuffer));
+    if( xSemaphoreTake( DebugPrintMutex,printDelayMs) == pdTRUE )
+    {
+    	uint8_t dbgBuffer[100];
+    	memset(dbgBuffer,'\0',100);
+
+    	sprintf((int8_t*)dbgBuffer,"%s - %d \r\n",txt,intData);
+    	SerialDebugPrint(dbgBuffer,strlen(dbgBuffer));
+    	xSemaphoreGive(DebugPrintMutex);
+    }
 }
 
 void printVoltageToConsole(const uint8_t *const txt, uint32_t intData)
 {
-	uint8_t dbgBuffer[100];
-	memset(dbgBuffer,'\0',100);
+	const TickType_t printDelayMs = pdMS_TO_TICKS(500UL);
 
-	sprintf((int8_t*)dbgBuffer,"%s - %dmV \r\n",txt,intData);
-	SerialDebugPrint(dbgBuffer,strlen(dbgBuffer));
+    if( xSemaphoreTake( DebugPrintMutex,printDelayMs) == pdTRUE )
+    {
+    	uint8_t dbgBuffer[100];
+    	memset(dbgBuffer,'\0',100);
+
+    	sprintf((int8_t*)dbgBuffer,"%s - %dmV \r\n",txt,intData);
+    	SerialDebugPrint(dbgBuffer,strlen(dbgBuffer));
+    	xSemaphoreGive(DebugPrintMutex);
+    }
 }
 /* UART Rx Interrupt Handler */ 
 /*
