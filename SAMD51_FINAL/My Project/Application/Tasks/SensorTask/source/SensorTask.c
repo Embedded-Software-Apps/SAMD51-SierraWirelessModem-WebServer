@@ -228,8 +228,12 @@ void sensorTaskSchedule(void)
 	static SENSOR_INDEX_T sensorIndex = SENSOR_0;
 	SENSOR_DATA_REQUEST_TYPE request;
 	const TickType_t xSensorScanTriggerWaitMs = pdMS_TO_TICKS(500UL);
-	uint8_t adcBuffer[2];
 	int32_t bytesRead;
+	uint16_t adcResult = 0;
+	static uint16_t adcAveragingBuffer[MAX_ADC_SAMPLES] = {0};
+	static uint8_t sampleIndex = 0;
+	uint16_t adcCountAveraged = 0;
+	uint32_t voltageInMv = 0;
 
 	switch(sensorMainState)
 	{
@@ -292,8 +296,28 @@ void sensorTaskSchedule(void)
 
 			if(sensorIndex < MAX_SENSOR_COUNT)
 			{
-				bytesRead = sensorAdcReadChannel(sensorInputData[sensorIndex].adcChannel,adcBuffer,2);
-				sensorIndex++;
+				bytesRead = sensorAdcReadChannel(sensorInputData[sensorIndex].adcChannel,&adcResult,2);
+
+				if(sampleIndex < MAX_ADC_SAMPLES)
+				{
+					adcAveragingBuffer[sampleIndex] = adcResult;
+					sampleIndex++;
+				}
+				else
+				{
+					adcCountAveraged = ((adcAveragingBuffer[0])/
+				                        (MAX_ADC_SAMPLES));
+
+					ConsoleDebugPrint("Sensor",sensorIndex+1);
+				    printAdcValueToConsole("ADC Count", adcCountAveraged);
+					voltageInMv = (((adcCountAveraged) * ADC_CONVERTION_FACTOR)/10000);
+					printVoltageToConsole("Voltage on analog pin",voltageInMv);
+					DEBUG_PRINT("\r\n");
+
+					sampleIndex = 0;
+					memset(adcAveragingBuffer,0,MAX_ADC_SAMPLES);
+					sensorIndex++;
+				}
 			}
 
 			if(sensorIndex >= MAX_SENSOR_COUNT)
