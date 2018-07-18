@@ -19,5 +19,13 @@ void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName)
 	sprintf((int8_t*)dbgBuffer,"Task Handle - %d\r\n",xTask);
 	SerialDebugPrint(dbgBuffer,strlen(dbgBuffer));
 
-	while(1);
+	requestWatchDogForcedReset();
+}
+
+void vApplicationMallocFailedHook(void)
+{
+	DEBUG_PRINT("**********************************************************");
+	DEBUG_PRINT("***************MALLOC FAILURE DETECTED********************");
+	DEBUG_PRINT("**********************************************************");
+	requestWatchDogForcedReset();
 }

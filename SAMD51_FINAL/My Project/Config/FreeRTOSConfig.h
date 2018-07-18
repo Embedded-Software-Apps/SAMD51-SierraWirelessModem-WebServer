@@ -97,7 +97,7 @@ void assert_triggered(const char *file, uint32_t line);
 // <q> Use maclloc failed hook
 // <id> freertos_use_malloc_failed_hook
 #ifndef configUSE_MALLOC_FAILED_HOOK
-#define configUSE_MALLOC_FAILED_HOOK 0
+#define configUSE_MALLOC_FAILED_HOOK 1
 #endif
 
 // <q> Use idle hook
