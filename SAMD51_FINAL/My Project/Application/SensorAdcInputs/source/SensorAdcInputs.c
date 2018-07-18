@@ -9,11 +9,25 @@
 #include "Application/Common/Common.h"
 #include <hpl_adc_config.h>
 
+/*==========================================================================================
+**
+** Function Name:      ModemDataCommInit
+**
+** Description:        Initializes the SERCOM3 UART Module for Modem Data.
+**
+**===========================================================================================*/
 void sensorAdcInitialize(void)
 {
 	ADC_0_init();
 }
 
+/*==========================================================================================
+**
+** Function Name:      ModemDataCommInit
+**
+** Description:        Initializes the SERCOM3 UART Module for Modem Data.
+**
+**===========================================================================================*/
 int32_t sensorAdcReadChannel(const uint8_t channel, uint16_t* result,const uint16_t length)
 {
 	int32_t bytesRead = 0;
@@ -26,17 +40,19 @@ int32_t sensorAdcReadChannel(const uint8_t channel, uint16_t* result,const uint1
 	bytesRead = adc_sync_read_channel(&ADC_0, channel, &buffer[0], length);
 	adc_sync_disable_channel(&ADC_0, channel);
 
+	/* calculate the ADC reading from result register data */
 	*result = ((buffer[1] << 8) | (buffer[0] & 0x00FF));
-
-/*	ConsoleDebugPrint("Sensor",channel+1);
-	printAdcValueToConsole("ADC Count", adcValue);
-	voltageInMv = (((*result) * ADC_CONVERTION_FACTOR)/10000);
-	printVoltageToConsole("Voltage on analog pin",voltageInMv);
-	DEBUG_PRINT("\r\n");*/
 
 	return bytesRead;
 }
 
+
+
+/************************************************************************************************************/
+/*
+ * Not using ADC interrupts now.
+ * These are dummy handlers for ADC interrupts.
+ */
 void ADC0_0_Handler(void)
 {
 	DEBUG_PRINT("IN ADC0_0 handler");

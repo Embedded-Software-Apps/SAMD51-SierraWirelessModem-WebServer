@@ -292,35 +292,35 @@ Disassembly of section .text:
      48e:	4604      	mov	r4, r0
      490:	f826 3d04 	strh.w	r3, [r6, #-4]!
      494:	460f      	mov	r7, r1
-     496:	4b11      	ldr	r3, [pc, #68]	; (4dc <sensorAdcReadChannel+0x5c>)
+     496:	800b      	strh	r3, [r1, #0]
      498:	4601      	mov	r1, r0
-     49a:	4628      	mov	r0, r5
-     49c:	4690      	mov	r8, r2
-     49e:	4798      	blx	r3
-     4a0:	4623      	mov	r3, r4
-     4a2:	4621      	mov	r1, r4
-     4a4:	2219      	movs	r2, #25
-     4a6:	4628      	mov	r0, r5
-     4a8:	47c8      	blx	r9
-     4aa:	4632      	mov	r2, r6
-     4ac:	4643      	mov	r3, r8
-     4ae:	4621      	mov	r1, r4
-     4b0:	4628      	mov	r0, r5
-     4b2:	4e0b      	ldr	r6, [pc, #44]	; (4e0 <sensorAdcReadChannel+0x60>)
-     4b4:	47b0      	blx	r6
-     4b6:	4621      	mov	r1, r4
-     4b8:	4606      	mov	r6, r0
-     4ba:	4b0a      	ldr	r3, [pc, #40]	; (4e4 <sensorAdcReadChannel+0x64>)
-     4bc:	4628      	mov	r0, r5
-     4be:	4798      	blx	r3
-     4c0:	f89d 2005 	ldrb.w	r2, [sp, #5]
-     4c4:	f89d 3004 	ldrb.w	r3, [sp, #4]
-     4c8:	4630      	mov	r0, r6
-     4ca:	ea43 2302 	orr.w	r3, r3, r2, lsl #8
-     4ce:	803b      	strh	r3, [r7, #0]
-     4d0:	b003      	add	sp, #12
-     4d2:	e8bd 83f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, pc}
-     4d6:	bf00      	nop
+     49a:	4b10      	ldr	r3, [pc, #64]	; (4dc <sensorAdcReadChannel+0x5c>)
+     49c:	4628      	mov	r0, r5
+     49e:	4690      	mov	r8, r2
+     4a0:	4798      	blx	r3
+     4a2:	4623      	mov	r3, r4
+     4a4:	4621      	mov	r1, r4
+     4a6:	2219      	movs	r2, #25
+     4a8:	4628      	mov	r0, r5
+     4aa:	47c8      	blx	r9
+     4ac:	4632      	mov	r2, r6
+     4ae:	4643      	mov	r3, r8
+     4b0:	4621      	mov	r1, r4
+     4b2:	4628      	mov	r0, r5
+     4b4:	4e0a      	ldr	r6, [pc, #40]	; (4e0 <sensorAdcReadChannel+0x60>)
+     4b6:	47b0      	blx	r6
+     4b8:	4621      	mov	r1, r4
+     4ba:	4606      	mov	r6, r0
+     4bc:	4b09      	ldr	r3, [pc, #36]	; (4e4 <sensorAdcReadChannel+0x64>)
+     4be:	4628      	mov	r0, r5
+     4c0:	4798      	blx	r3
+     4c2:	f89d 2005 	ldrb.w	r2, [sp, #5]
+     4c6:	f89d 3004 	ldrb.w	r3, [sp, #4]
+     4ca:	4630      	mov	r0, r6
+     4cc:	ea43 2302 	orr.w	r3, r3, r2, lsl #8
+     4d0:	803b      	strh	r3, [r7, #0]
+     4d2:	b003      	add	sp, #12
+     4d4:	e8bd 83f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, pc}
      4d8:	20003d74 	.word	0x20003d74
      4dc:	00002879 	.word	0x00002879
      4e0:	00002899 	.word	0x00002899

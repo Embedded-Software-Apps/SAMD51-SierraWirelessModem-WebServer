@@ -9,8 +9,14 @@
 #ifndef SENSORADCINPUTS_H_
 #define SENSORADCINPUTS_H_
 
+/*
+ * ADC conversion factor is actually (1.8/4096).
+ *
+ * Padded with zeros for fixed point arithmetic
+ * to avoid floating points.
+ */
 #define ADC_CONVERTION_FACTOR ((18000000)/4096)
-#define MAX_ADC_SAMPLES (4)
+#define MAX_ADC_SAMPLES (1)
 
 void sensorAdcInitialize(void);
 int32_t sensorAdcReadChannel(const uint8_t channel, uint16_t* result,const uint16_t length);

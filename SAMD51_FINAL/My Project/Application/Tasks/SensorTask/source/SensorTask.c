@@ -285,8 +285,6 @@ void sensorTaskSchedule(void)
 /*			if(sensorOutputData[sensorIndex].active == true)
 			{
 				bytesRead = sensorAdcReadChannel(sensorInputData[sensorIndex].adcChannel,adcBuffer,2);
-				DEBUG_PRINT("Read ADC data");
-				ConsoleDebugPrint("No of Bytes Read is ",bytesRead);
 				sensorIndex++;
 			}
 			else
@@ -294,6 +292,11 @@ void sensorTaskSchedule(void)
 				sensorIndex++;
 			}*/
 
+
+			/* Below code is a temporary logic to test ADC reading.
+			 * After ADC accuracy issue has been resolved,
+			 * ADC will be read only if select line is active.
+			 */
 			if(sensorIndex < MAX_SENSOR_COUNT)
 			{
 				bytesRead = sensorAdcReadChannel(sensorInputData[sensorIndex].adcChannel,&adcResult,2);
@@ -305,12 +308,19 @@ void sensorTaskSchedule(void)
 				}
 				else
 				{
-					adcCountAveraged = ((adcAveragingBuffer[0] + adcAveragingBuffer[1] + adcAveragingBuffer[2] + adcAveragingBuffer[3])/
-				                        (MAX_ADC_SAMPLES));
+					/* Only the first ADC is correct.
+					 * Need to figure out why.
+					 *
+					 * For reading same port multiple times,
+					 *  - Change the value of 'MAX_ADC_SAMPLES'
+					 *  - Add array elements for averaging in below line.
+					 */
+					adcCountAveraged = ((adcAveragingBuffer[0] /*+ adcAveragingBuffer[1] + adcAveragingBuffer[2]*/)/
+							            (MAX_ADC_SAMPLES));
 
 					ConsoleDebugPrint("Sensor",sensorIndex+1);
 				    printAdcValueToConsole("ADC Count", adcCountAveraged);
-					voltageInMv = (((adcCountAveraged) * ADC_CONVERTION_FACTOR)/10000);
+					voltageInMv = (((adcCountAveraged) * ADC_CONVERTION_FACTOR)/10000); /* Floating point arithmetic */
 					printVoltageToConsole("Voltage on analog pin",voltageInMv);
 					DEBUG_PRINT("\r\n");
 
