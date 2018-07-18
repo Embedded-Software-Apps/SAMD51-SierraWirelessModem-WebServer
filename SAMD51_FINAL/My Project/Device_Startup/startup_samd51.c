@@ -28,6 +28,7 @@
  */
 
 #include "samd51.h"
+#include "Application/SerialDebug/SerialDebug.h"
 
 /* Initialize segments */
 extern uint32_t _sfixed;
@@ -543,6 +544,11 @@ void Reset_Handler(void)
  */
 void Dummy_Handler(void)
 {
-        while (1) {
-        }
+    DEBUG_PRINT("Unexpected Interrupt Happened...Waiting for the watch dog timeout");
+
+    while (1)
+    {
+
+    }
 }
+

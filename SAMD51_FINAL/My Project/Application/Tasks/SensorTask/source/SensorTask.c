@@ -47,7 +47,6 @@ void SensorTask( void *SensorTaskParam)
 	{
 		sensorTaskSchedule();
 		kickWatchDog();
-		//vTaskDelayUntil( &xLastWakeTime, xDelayMs);
 	}
 }
 
