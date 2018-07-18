@@ -157,7 +157,7 @@
 // <i> This bit indicates whether the Comparator Offset Compensation is enabled or not (OFFCOMP)
 // <id> adc_arch_offcomp
 #ifndef CONF_ADC_0_OFFCOMP
-#define CONF_ADC_0_OFFCOMP 0
+#define CONF_ADC_0_OFFCOMP 1
 #endif
 
 // <q> Digital Correction Logic Enabled

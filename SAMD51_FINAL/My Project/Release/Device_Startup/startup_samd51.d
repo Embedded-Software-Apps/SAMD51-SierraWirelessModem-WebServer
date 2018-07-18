@@ -102,7 +102,8 @@ Device_Startup/startup_samd51.d Device_Startup/startup_samd51.o: \
  E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/instance/trng.h \
  E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/instance/usb.h \
  E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/instance/wdt.h \
- E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/pio/samd51j20a.h
+ E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/pio/samd51j20a.h \
+ ../Application/SerialDebug/SerialDebug.h
 
 E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/samd51.h:
 
@@ -309,3 +310,5 @@ E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/instance/usb.
 E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/instance/wdt.h:
 
 E:\Softwares\AtmelStudio\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/pio/samd51j20a.h:
+
+../Application/SerialDebug/SerialDebug.h:
