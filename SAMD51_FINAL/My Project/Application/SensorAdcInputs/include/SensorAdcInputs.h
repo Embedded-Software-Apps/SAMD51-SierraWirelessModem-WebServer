@@ -18,6 +18,10 @@
 #define ADC_CONVERTION_FACTOR ((18000000)/4096)
 #define MAX_ADC_SAMPLES (1)
 
+// ADC0.00 - ADC0.07
+// 220K + 100K divider = 320/100, 16 bits
+#define VOLT_SCALE_ADC0 (1.8/65536.0*3.2)
+
 void sensorAdcInitialize(void);
 int32_t sensorAdcReadChannel(const uint8_t channel, uint16_t* result,const uint16_t length);
 

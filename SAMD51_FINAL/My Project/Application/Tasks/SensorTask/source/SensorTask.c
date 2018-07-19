@@ -7,6 +7,7 @@
 #include <hal_delay.h>
 #include <stdio.h>
 #include <string.h>
+#include <math.h>
 #include "Application/Common/Common.h"
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h"
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/timers.h"
@@ -234,6 +235,7 @@ void sensorTaskSchedule(void)
 	static uint8_t sampleIndex = 0;
 	uint16_t adcCountAveraged = 0;
 	uint32_t voltageInMv = 0;
+	double_t voltage = 0;
 
 	switch(sensorMainState)
 	{
@@ -318,11 +320,16 @@ void sensorTaskSchedule(void)
 					adcCountAveraged = ((adcAveragingBuffer[0] /*+ adcAveragingBuffer[1] + adcAveragingBuffer[2]*/)/
 							            (MAX_ADC_SAMPLES));
 
-					ConsoleDebugPrint("Sensor",sensorIndex+1);
+                 /* ConsoleDebugPrint("Sensor",sensorIndex+1);
 				    printAdcValueToConsole("ADC Count", adcCountAveraged);
-					voltageInMv = (((adcCountAveraged) * ADC_CONVERTION_FACTOR)/10000); /* Floating point arithmetic */
+					voltageInMv = (((adcCountAveraged) * ADC_CONVERTION_FACTOR)/10000);  Floating point arithmetic
 					printVoltageToConsole("Voltage on analog pin",voltageInMv);
-					DEBUG_PRINT("\r\n");
+					DEBUG_PRINT("\r\n");*/
+
+					ConsoleDebugPrint("Sensor",sensorIndex+1);
+					printAdcValueToConsole("ADC Count", adcCountAveraged);
+					voltage = ((adcCountAveraged) * (VOLT_SCALE_ADC0));
+					ConsoleDebugPrint("Voltage on analog pin",voltage);
 
 					sampleIndex = 0;
 					memset(adcAveragingBuffer,0,MAX_ADC_SAMPLES);
