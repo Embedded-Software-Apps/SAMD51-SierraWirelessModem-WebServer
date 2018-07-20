@@ -320,16 +320,11 @@ void sensorTaskSchedule(void)
 					adcCountAveraged = ((adcAveragingBuffer[0] /*+ adcAveragingBuffer[1] + adcAveragingBuffer[2]*/)/
 							            (MAX_ADC_SAMPLES));
 
-                 /* ConsoleDebugPrint("Sensor",sensorIndex+1);
+                    ConsoleDebugPrint("Sensor",sensorIndex+1);
 				    printAdcValueToConsole("ADC Count", adcCountAveraged);
-					voltageInMv = (((adcCountAveraged) * ADC_CONVERTION_FACTOR)/10000);  Floating point arithmetic
+					voltageInMv = (((adcCountAveraged) * ADC_CONVERTION_FACTOR)/10000);
 					printVoltageToConsole("Voltage on analog pin",voltageInMv);
-					DEBUG_PRINT("\r\n");*/
-
-					ConsoleDebugPrint("Sensor",sensorIndex+1);
-					printAdcValueToConsole("ADC Count", adcCountAveraged);
-					voltage = ((adcCountAveraged) * (VOLT_SCALE_ADC0));
-					ConsoleDebugPrint("Voltage on analog pin",voltage);
+					DEBUG_PRINT("\r\n");
 
 					sampleIndex = 0;
 					memset(adcAveragingBuffer,0,MAX_ADC_SAMPLES);
