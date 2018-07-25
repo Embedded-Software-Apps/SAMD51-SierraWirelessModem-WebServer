@@ -18,7 +18,7 @@
 // <i>  Defines the bit resolution for the ADC sample values (RESSEL)
 // <id> adc_resolution
 #ifndef CONF_ADC_0_RESSEL
-#define CONF_ADC_0_RESSEL 0x0
+#define CONF_ADC_0_RESSEL 0x1
 #endif
 
 // <o> Reference Selection
@@ -60,7 +60,7 @@
 // <i> In differential mode, the voltage difference between the MUXPOS and MUXNEG inputs will be converted by the ADC. (DIFFMODE)
 // <id> adc_differential_mode
 #ifndef CONF_ADC_0_DIFFMODE
-#define CONF_ADC_0_DIFFMODE 0
+#define CONF_ADC_0_DIFFMODE 1
 #endif
 
 // <o> Positive Mux Input Selection
@@ -143,21 +143,21 @@
 // <i> When enabled, the ADC conversion result is left-adjusted in the RESULT register. The high byte of the 12-bit result will be present in the upper part of the result register. (LEFTADJ)
 // <id> adc_arch_leftadj
 #ifndef CONF_ADC_0_LEFTADJ
-#define CONF_ADC_0_LEFTADJ 0
+#define CONF_ADC_0_LEFTADJ 1
 #endif
 
 // <q> Reference Buffer Offset Compensation Enable
 // <i> The accuracy of the gain stage can be increased by enabling the reference buffer offset compensation. This will decrease the input impedance and thus increase the start-up time of the reference. (REFCOMP)
 // <id> adc_arch_refcomp
 #ifndef CONF_ADC_0_REFCOMP
-#define CONF_ADC_0_REFCOMP 1
+#define CONF_ADC_0_REFCOMP 0
 #endif
 
 // <q>Comparator Offset Compensation Enable
 // <i> This bit indicates whether the Comparator Offset Compensation is enabled or not (OFFCOMP)
 // <id> adc_arch_offcomp
 #ifndef CONF_ADC_0_OFFCOMP
-#define CONF_ADC_0_OFFCOMP 1
+#define CONF_ADC_0_OFFCOMP 0
 #endif
 
 // <q> Digital Correction Logic Enabled
@@ -185,7 +185,7 @@
 // <i> These bits define the division coefficient in 2n steps. (ADJRES)
 // <id> adc_arch_adjres
 #ifndef CONF_ADC_0_ADJRES
-#define CONF_ADC_0_ADJRES 0x0
+#define CONF_ADC_0_ADJRES 0x4
 #endif
 
 // <o.0..10> Number of Samples to be Collected
@@ -203,14 +203,14 @@
 // <i> Define how many samples should be added together.The result will be available in the Result register (SAMPLENUM)
 // <id> adc_arch_samplenum
 #ifndef CONF_ADC_0_SAMPLENUM
-#define CONF_ADC_0_SAMPLENUM 0x0
+#define CONF_ADC_0_SAMPLENUM 0x8
 #endif
 
 // <o> Sampling Time Length <0-63>
 // <i> These bits control the ADC sampling time in number of half CLK_ADC cycles, depending of the prescaler value, thus controlling the ADC input impedance. (SAMPLEN)
 // <id> adc_arch_samplen
 #ifndef CONF_ADC_0_SAMPLEN
-#define CONF_ADC_0_SAMPLEN 0
+#define CONF_ADC_0_SAMPLEN 2
 #endif
 
 // <o> Window Monitor Mode

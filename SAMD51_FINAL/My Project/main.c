@@ -52,13 +52,38 @@ static BaseType_t ModemDiagTaskStatus;
 *                - Starts the Free RTOS scheduler.
 *
 ********************************************************************************/
-
-/* ADC Test Branch Started */
 int main(void)
 {
+	uint16_t resultRead = 0;
+	uint8_t bytesRead = 0;
+
     /* Initializes MCU, drivers and middleware */
     atmel_start_init();	
 
+    bytesRead = sensorAdcReadChannel(0,&resultRead,2);
+
+    DEBUG_PRINT("read Adc");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#if 0
     /* Create Sensor Task */
     SensorTaskStatus = xTaskCreate( SensorTask, "SensorTask", 150, NULL, 2, &xSensorTaskHandle );
 
@@ -95,6 +120,7 @@ int main(void)
     }
 
     DEBUG_PRINT("Error: Scheduler exited");
+#endif
 
     /* The execution won't reach here ideally */
     for( ;; );

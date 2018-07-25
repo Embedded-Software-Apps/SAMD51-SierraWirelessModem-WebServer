@@ -127,16 +127,17 @@ void ADC_0_CLOCK_init(void)
 void ADC_0_init(void)
 {
 	ADC_0_CLOCK_init();
-	ADC_0_PORT_init();
 
 	if(ERR_NONE == adc_sync_init(&ADC_0, ADC0, (void *)NULL))
 	{
-		DEBUG_PRINT("Initialized the ADC successfully");
+		//DEBUG_PRINT("Initialized the ADC successfully");
 	}
 	else
 	{
-		DEBUG_PRINT("Failed to initialize ADC");
+		//DEBUG_PRINT("Failed to initialize ADC");
 	}
+
+	ADC_0_PORT_init();
 }
 
 void ADC_1_PORT_init(void)
@@ -455,42 +456,42 @@ void system_init(void)
 
 	delay_driver_init();
 
-	AC_0_init();
+	//AC_0_init();
 
-	//ADC_0_init();
+	ADC_0_init();
 
 	//ADC_1_init();
 
-	DAC_0_init();
+	//DAC_0_init();
 
-	EXTERNAL_IRQ_0_init();
+	//EXTERNAL_IRQ_0_init();
 
-	EVENT_SYSTEM_0_init();
+	//EVENT_SYSTEM_0_init();
 
-	FLASH_0_init();
+	//FLASH_0_init();
 
 	SerialDebug_init();
 	
 	ModemData_init();
 
-	PWM_0_init();
+	//PWM_0_init();
 
-	PWM_1_init();
+	//PWM_1_init();
 
-	PWM_2_init();
+	//PWM_2_init();
 
-	TIMER_0_init();
-	TIMER_1_init();
-	TIMER_2_init();
-	TIMER_3_init();
+	//TIMER_0_init();
+	//TIMER_1_init();
+	//TIMER_2_init();
+	//TIMER_3_init();
 
-	TIMER_4_init();
+	//TIMER_4_init();
 
-	TIMER_5_init();
+	//TIMER_5_init();
 
-	TIMER_6_init();
+	//TIMER_6_init();
 
-	TIMER_7_init();
+	//TIMER_7_init();
 	
 	WDT_0_init();
 
