@@ -43,8 +43,6 @@ static BaseType_t ModemProcessTaskStatus;
 static BaseType_t ModemTxTaskStatus;
 static BaseType_t ModemRxTaskStatus;
 static BaseType_t ModemDiagTaskStatus;
-static double_t voltage = 0;
-
 
 /*******************************************************************************
 *
@@ -58,42 +56,9 @@ static double_t voltage = 0;
 ********************************************************************************/
 int main(void)
 {
-	uint16_t resultRead = 0;
-	uint8_t bytesRead = 0;
-	uint8_t index=0;
-	
-
     /* Initializes MCU, drivers and middleware */
     atmel_start_init();	
 
-    while(1)
-	{
-		bytesRead = sensorAdcReadChannel(0,&resultRead,2);
-	}
-
-	
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#if 0
     /* Create Sensor Task */
     SensorTaskStatus = xTaskCreate( SensorTask, "SensorTask", 150, NULL, 2, &xSensorTaskHandle );
 
@@ -130,7 +95,6 @@ int main(void)
     }
 
     DEBUG_PRINT("Error: Scheduler exited");
-#endif
 
     /* The execution won't reach here ideally */
     for( ;; );

@@ -37,10 +37,6 @@ int32_t sensorAdcReadChannel(const uint8_t channel, uint16_t* result,const uint1
 	uint8_t buffer[2] = {0};
 	*result = 0;
 	double_t voltageCalculated = 0;
-	double_t voltValue = 0;
-	
-	static uint8_t index = 0;
-	double_t voltageBuffer[4] = {0.0,0.0,0.0,0.0};
 		
 	const TickType_t xAdcConvDelayMs = pdMS_TO_TICKS(10UL);
 
