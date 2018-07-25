@@ -52,6 +52,8 @@ static BaseType_t ModemDiagTaskStatus;
 *                - Starts the Free RTOS scheduler.
 *
 ********************************************************************************/
+
+/* ADC Test Branch Started */
 int main(void)
 {
     /* Initializes MCU, drivers and middleware */
