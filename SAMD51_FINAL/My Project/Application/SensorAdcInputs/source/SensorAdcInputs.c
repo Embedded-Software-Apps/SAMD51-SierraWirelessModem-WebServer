@@ -8,6 +8,8 @@
 #include "Application/SensorAdcInputs/include/SensorAdcInputs.h"
 #include "Application/Common/Common.h"
 #include <hpl_adc_config.h>
+#include <math.h>
+
 
 /*==========================================================================================
 **
@@ -34,6 +36,12 @@ int32_t sensorAdcReadChannel(const uint8_t channel, uint16_t* result,const uint1
 	uint32_t voltageInMv = 0;
 	uint8_t buffer[2] = {0};
 	*result = 0;
+	double_t voltageCalculated = 0;
+	double_t voltValue = 0;
+	
+	static uint8_t index = 0;
+	double_t voltageBuffer[4] = {0.0,0.0,0.0,0.0};
+		
 	const TickType_t xAdcConvDelayMs = pdMS_TO_TICKS(10UL);
 
     adc_sync_enable_channel(&ADC_0, channel);
@@ -42,6 +50,8 @@ int32_t sensorAdcReadChannel(const uint8_t channel, uint16_t* result,const uint1
 	adc_sync_disable_channel(&ADC_0, channel);
 
 	*result = ((buffer[1] << 8) | (buffer[0] & 0x00FF));
+	
+	voltageCalculated = (*result) * (VOLT_SCALE_ADC0);
 
 	return bytesRead;
 }

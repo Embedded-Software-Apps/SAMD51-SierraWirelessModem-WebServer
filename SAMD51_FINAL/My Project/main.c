@@ -13,6 +13,7 @@
 *****************************************************************************************/
 #include <atmel_start.h>
 #include <hal_delay.h>
+#include <math.h>
 
 #include "Application/SerialDebug/SerialDebug.h"
 #include "Application/Tasks/SensorTask/include/SensorTask.h"
@@ -42,6 +43,9 @@ static BaseType_t ModemProcessTaskStatus;
 static BaseType_t ModemTxTaskStatus;
 static BaseType_t ModemRxTaskStatus;
 static BaseType_t ModemDiagTaskStatus;
+static double_t voltage = 0;
+
+
 /*******************************************************************************
 *
 * NAME       : main
@@ -56,14 +60,20 @@ int main(void)
 {
 	uint16_t resultRead = 0;
 	uint8_t bytesRead = 0;
+	uint8_t index=0;
+	
 
     /* Initializes MCU, drivers and middleware */
     atmel_start_init();	
 
-    bytesRead = sensorAdcReadChannel(0,&resultRead,2);
+    while(1)
+	{
+		bytesRead = sensorAdcReadChannel(0,&resultRead,2);
+	}
 
-    DEBUG_PRINT("read Adc");
+	
 
+ 
 
 
 

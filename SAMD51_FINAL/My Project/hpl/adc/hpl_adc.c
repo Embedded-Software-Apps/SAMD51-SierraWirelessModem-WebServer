@@ -178,18 +178,35 @@ static int32_t _adc_init(void *const hw, const uint8_t i)
 	hri_adc_set_CTRLA_SWRST_bit(hw);
 	hri_adc_wait_for_sync(hw, ADC_SYNCBUSY_SWRST);
 
-	hri_adc_write_CTRLB_reg(hw, _adcs[i].ctrl_b);
-	hri_adc_write_REFCTRL_reg(hw, _adcs[i].ref_ctrl);
+	ADC0->CTRLB.reg = 0x0001; //12 bit, left adjusted, single conversion
+	//hri_adc_write_CTRLB_reg(hw, _adcs[i].ctrl_b);
+	
+	ADC0->REFCTRL.reg = 0x03; // REFCOMP disable, VDDANA
+	//hri_adc_write_REFCTRL_reg(hw, _adcs[i].ref_ctrl);
+	
 	hri_adc_write_EVCTRL_reg(hw, _adcs[i].ev_ctrl);
-	hri_adc_write_INPUTCTRL_reg(hw, _adcs[i].input_ctrl);
-	hri_adc_write_AVGCTRL_reg(hw, _adcs[i].avg_ctrl);
-	hri_adc_write_SAMPCTRL_reg(hw, _adcs[i].samp_ctrl);
+	
+	ADC0->INPUTCTRL.reg = 0x1800; // internal ground, single ended mode
+	//hri_adc_write_INPUTCTRL_reg(hw, _adcs[i].input_ctrl);
+	
+	//ADC0->AVGCTRL.reg = 0x22; //4 sample average
+	ADC0->AVGCTRL.reg = 0x49; //512 sample average
+	//hri_adc_write_AVGCTRL_reg(hw, _adcs[i].avg_ctrl);
+	
+	ADC0->SAMPCTRL.reg = 0x06;
+	//hri_adc_write_SAMPCTRL_reg(hw, _adcs[i].samp_ctrl);
+	
 	hri_adc_write_WINLT_reg(hw, _adcs[i].win_lt);
 	hri_adc_write_WINUT_reg(hw, _adcs[i].win_ut);
 	hri_adc_write_GAINCORR_reg(hw, _adcs[i].gain_corr);
 	hri_adc_write_OFFSETCORR_reg(hw, _adcs[i].offset_corr);
 	hri_adc_write_DBGCTRL_reg(hw, _adcs[i].dbg_ctrl);
-	hri_adc_write_CTRLA_reg(hw, _adcs[i].ctrl_a);
+	//hri_adc_write_CTRLA_reg(hw, _adcs[i].ctrl_a);
+	
+	//R2R - 1
+	//DIV64 - 5
+	//ENABLE - 1	 
+	ADC0->CTRLA.reg = 0x85C2;
 
 	return ERR_NONE;
 }
