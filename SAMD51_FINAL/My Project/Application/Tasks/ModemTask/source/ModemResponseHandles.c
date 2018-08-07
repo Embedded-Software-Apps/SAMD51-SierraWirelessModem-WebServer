@@ -29,6 +29,7 @@ static uint8_t responseBuffer[700];
 void modemResponseHandler(AT_CMD_TYPE cmd,uint8_t* response, uint16_t length)
 {
 	BaseType_t CmdResponseQueuePushStatus;
+	BaseType_t FotaResponseQueuePushStatus;
 	const TickType_t QueuePushDelayMs = pdMS_TO_TICKS(100UL);
     getModemCommandData(cmd,&cmdData);
 
@@ -67,6 +68,36 @@ void modemResponseHandler(AT_CMD_TYPE cmd,uint8_t* response, uint16_t length)
                 		else
                 		{
                 			DEBUG_PRINT("Failed to post the connection Response to Queue");
+                		}
+                	}
+                }
+                else
+                {
+                	DEBUG_PRINT("Error : Command Response Queue is not empty");
+                }
+            }
+            break;
+
+            case AT_CMD_SET_FOTA_APP:
+            {
+                if (uxQueueMessagesWaiting(FotaResponseQueue) == 0)
+                {
+                	cmdResponse.atCmd = cmd;
+                	cmdResponse.length = length;
+                	cmdResponse.response = (uint8_t*)pvPortMalloc((length)*(sizeof(uint8_t)));
+
+                	if(cmdResponse.response != NULL)
+                	{
+                		memcpy(cmdResponse.response,response,length);
+                		FotaResponseQueuePushStatus = xQueueSendToBack(FotaResponseQueue, &cmdResponse, QueuePushDelayMs);
+
+                		if(FotaResponseQueuePushStatus == pdPASS)
+                		{
+                			//DEBUG_PRINT("Successfully posted connection Response to Queue");
+                		}
+                		else
+                		{
+                			DEBUG_PRINT("Failed to post the connection Response to Fota Queue");
                 		}
                 	}
                 }

@@ -1,6 +1,8 @@
-main.d main.o: .././main.c ../atmel_start.h ../driver_init.h \
- ../atmel_start_pins.h ../hal/include/hal_gpio.h \
- ../hal/include/hpl_gpio.h ../hal/utils/include/compiler.h \
+Application/Tasks/FotaAppTask/source/FotaAppTask.d \
+ Application/Tasks/FotaAppTask/source/FotaAppTask.o: \
+ ../Application/Tasks/FotaAppTask/source/FotaAppTask.c \
+ ../hal/include/hal_delay.h ../hal/include/hpl_irq.h \
+ ../hal/utils/include/compiler.h \
  f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stddef.h \
  f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdint.h \
  f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\stdint.h \
@@ -122,26 +124,35 @@ main.d main.o: .././main.c ../atmel_start.h ../driver_init.h \
  ../hri/hri_sdhc_d51.h ../hri/hri_sercom_d51.h ../hri/hri_supc_d51.h \
  ../hri/hri_tc_d51.h ../hri/hri_tcc_d51.h ../hri/hri_trng_d51.h \
  ../hri/hri_usb_d51.h ../hri/hri_wdt_d51.h \
- ../hal/utils/include/err_codes.h ../hpl/port/hpl_gpio_base.h \
- ../hal/utils/include/utils_assert.h ../hal/include/hal_delay.h \
- ../hal/include/hpl_irq.h ../hal/include/hpl_reset.h \
- ../hal/include/hpl_sleep.h ../hal/include/hal_init.h \
- ../hal/include/hpl_init.h ../hal/include/hal_io.h \
- ../hal/include/hal_sleep.h ../hal/include/hal_ac_sync.h \
- ../hal/include/hpl_ac_sync.h ../hal/include/hpl_irq.h \
- ../hal/include/hal_adc_sync.h ../hal/include/hpl_adc_sync.h \
- ../hal/include/hpl_missing_features.h ../hal/include/hal_dac_sync.h \
- ../hal/include/hpl_dac_sync.h ../hal/include/hal_ext_irq.h \
- ../hal/include/hpl_ext_irq.h ../hal/include/hal_evsys.h \
- ../hal/include/hpl_evsys.h ../hal/include/hal_flash.h \
- ../hal/include/hpl_flash.h ../hal/include/hal_usart_sync.h \
- ../hal/include/hal_io.h ../hal/include/hpl_usart_sync.h \
- ../hal/include/hpl_usart.h ../hal/include/hpl_usart_async.h \
- ../hal/include/hpl_usart.h ../hal/include/hal_pwm.h \
- ../hal/include/hpl_pwm.h ../hpl/tc/hpl_tc_base.h \
- ../hal/include/hpl_timer.h ../hal/include/hal_timer.h \
- ../hal/utils/include/utils_list.h ../hpl/tcc/hpl_tcc.h \
- ../hal/include/hal_wdt.h ../hal/include/hpl_wdt.h ../rtos_start.h \
+ ../hal/utils/include/err_codes.h ../hal/include/hpl_reset.h \
+ ../hal/include/hpl_sleep.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\stdio.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\newlib.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\config.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\ieeefp.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\cdefs.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdarg.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\reent.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_types.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\_types.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\lock.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\types.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\endian.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\_endian.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\select.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_sigset.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_timeval.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\timespec.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_timespec.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_pthreadtypes.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\types.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\stdio.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h \
+ ../Application/SerialDebug/SerialDebug.h ../Application/Common/Common.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h \
  ../Config/FreeRTOSConfig.h ../Config/peripheral_clk_config.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h \
@@ -149,65 +160,25 @@ main.d main.o: .././main.c ../atmel_start.h ../driver_init.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/deprecated_definitions.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/portmacro.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/mpu_wrappers.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
- ../thirdparty/RTOS/hal_rtos.h ../hal/include/hpl_core.h \
- ../hpl/core/hpl_core_port.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/rtos_port.h \
- f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\math.h \
- f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\reent.h \
- f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h \
- f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\newlib.h \
- f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\config.h \
- f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\ieeefp.h \
- f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_types.h \
- f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\_types.h \
- f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\lock.h \
- f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\cdefs.h \
- f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h \
- .././Application/SerialDebug/SerialDebug.h \
- .././Application/Tasks/SensorTask/include/SensorTask.h \
- .././Application/Tasks/ModemTask/include/ModemTxTask.h \
- .././Application/Tasks/FotaAppTask/include/FotaAppTask.h \
- .././Application/LedControl/include/ledControl.h \
- ../Application/LedControl/include/ledConfig.h \
- ../Application/LedControl/include/ledControl.h ../driver_init.h \
- ../hal/utils/include/utils.h .././Application/Common/Common.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/timers.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
+ ../hal/include/hal_gpio.h ../hal/include/hpl_gpio.h \
+ ../hpl/port/hpl_gpio_base.h ../hal/utils/include/utils_assert.h \
  ../Application/Tasks/ModemTask/include/ModemAtCommandSet.h \
- ../Application/Common/Common.h ../Application/SerialDebug/SerialDebug.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
  f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include-fixed\limits.h \
  f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include-fixed\syslimits.h \
  f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\limits.h \
- f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h \
- f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h \
- f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h \
- .././Application/Tasks/ModemTask/include/ModemPowerControl.h \
- .././Application/Tasks/ModemTask/include/ModemController.h \
- .././Application/Tasks/ModemTask/include/ModemCmdParser.h \
- .././Application/Tasks/ModemTask/include/ModemParameters.h \
- .././Application/Tasks/ModemTask/include/ModemConnection.h \
- .././Application/Tasks/ModemTask/include/ModemRxTask.h \
- .././Application/Tasks/ModemTask/include/ModemProcessTask.h \
- .././Application/Tasks/ModemTask/include/ModemDiagTask.h \
- .././thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h
+ ../Application/Tasks/ModemTask/include/ModemPowerControl.h \
+ ../Application/Tasks/FotaAppTask/include/FotaAppTask.h
 
-../atmel_start.h:
+../hal/include/hal_delay.h:
 
-../driver_init.h:
-
-../atmel_start_pins.h:
-
-../hal/include/hal_gpio.h:
-
-../hal/include/hpl_gpio.h:
+../hal/include/hpl_irq.h:
 
 ../hal/utils/include/compiler.h:
 
@@ -503,85 +474,65 @@ F:\Software_Installations\Atmel_Studio_7\7.0\Packs\atmel\SAMD51_DFP\1.0.70\inclu
 
 ../hal/utils/include/err_codes.h:
 
-../hpl/port/hpl_gpio_base.h:
-
-../hal/utils/include/utils_assert.h:
-
-../hal/include/hal_delay.h:
-
-../hal/include/hpl_irq.h:
-
 ../hal/include/hpl_reset.h:
 
 ../hal/include/hpl_sleep.h:
 
-../hal/include/hal_init.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\stdio.h:
 
-../hal/include/hpl_init.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h:
 
-../hal/include/hal_io.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\newlib.h:
 
-../hal/include/hal_sleep.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\config.h:
 
-../hal/include/hal_ac_sync.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\ieeefp.h:
 
-../hal/include/hpl_ac_sync.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\cdefs.h:
 
-../hal/include/hpl_irq.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdarg.h:
 
-../hal/include/hal_adc_sync.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\reent.h:
 
-../hal/include/hpl_adc_sync.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h:
 
-../hal/include/hpl_missing_features.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_types.h:
 
-../hal/include/hal_dac_sync.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\_types.h:
 
-../hal/include/hpl_dac_sync.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\lock.h:
 
-../hal/include/hal_ext_irq.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\types.h:
 
-../hal/include/hpl_ext_irq.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\endian.h:
 
-../hal/include/hal_evsys.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\_endian.h:
 
-../hal/include/hpl_evsys.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\select.h:
 
-../hal/include/hal_flash.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_sigset.h:
 
-../hal/include/hpl_flash.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_timeval.h:
 
-../hal/include/hal_usart_sync.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\timespec.h:
 
-../hal/include/hal_io.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_timespec.h:
 
-../hal/include/hpl_usart_sync.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_pthreadtypes.h:
 
-../hal/include/hpl_usart.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\types.h:
 
-../hal/include/hpl_usart_async.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\stdio.h:
 
-../hal/include/hpl_usart.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h:
 
-../hal/include/hal_pwm.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h:
 
-../hal/include/hpl_pwm.h:
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h:
 
-../hpl/tc/hpl_tc_base.h:
+../Application/SerialDebug/SerialDebug.h:
 
-../hal/include/hpl_timer.h:
-
-../hal/include/hal_timer.h:
-
-../hal/utils/include/utils_list.h:
-
-../hpl/tcc/hpl_tcc.h:
-
-../hal/include/hal_wdt.h:
-
-../hal/include/hpl_wdt.h:
-
-../rtos_start.h:
+../Application/Common/Common.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h:
 
@@ -599,79 +550,29 @@ F:\Software_Installations\Atmel_Studio_7\7.0\Packs\atmel\SAMD51_DFP\1.0.70\inclu
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/mpu_wrappers.h:
 
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
+
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
-
-../thirdparty/RTOS/hal_rtos.h:
-
-../hal/include/hpl_core.h:
-
-../hpl/core/hpl_core_port.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/rtos_port.h:
-
-f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\math.h:
-
-f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\reent.h:
-
-f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h:
-
-f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\newlib.h:
-
-f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\config.h:
-
-f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\ieeefp.h:
-
-f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_types.h:
-
-f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\_types.h:
-
-f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\lock.h:
-
-f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\cdefs.h:
-
-f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h:
-
-.././Application/SerialDebug/SerialDebug.h:
-
-.././Application/Tasks/SensorTask/include/SensorTask.h:
-
-.././Application/Tasks/ModemTask/include/ModemTxTask.h:
-
-.././Application/Tasks/FotaAppTask/include/FotaAppTask.h:
-
-.././Application/LedControl/include/ledControl.h:
-
-../Application/LedControl/include/ledConfig.h:
-
-../Application/LedControl/include/ledControl.h:
-
-../driver_init.h:
-
-../hal/utils/include/utils.h:
-
-.././Application/Common/Common.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/timers.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
 
+../hal/include/hal_gpio.h:
+
+../hal/include/hpl_gpio.h:
+
+../hpl/port/hpl_gpio_base.h:
+
+../hal/utils/include/utils_assert.h:
+
 ../Application/Tasks/ModemTask/include/ModemAtCommandSet.h:
 
-../Application/Common/Common.h:
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h:
 
-../Application/SerialDebug/SerialDebug.h:
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
 
 f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include-fixed\limits.h:
 
@@ -679,28 +580,6 @@ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib
 
 f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\limits.h:
 
-f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h:
+../Application/Tasks/ModemTask/include/ModemPowerControl.h:
 
-f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h:
-
-f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h:
-
-.././Application/Tasks/ModemTask/include/ModemPowerControl.h:
-
-.././Application/Tasks/ModemTask/include/ModemController.h:
-
-.././Application/Tasks/ModemTask/include/ModemCmdParser.h:
-
-.././Application/Tasks/ModemTask/include/ModemParameters.h:
-
-.././Application/Tasks/ModemTask/include/ModemConnection.h:
-
-.././Application/Tasks/ModemTask/include/ModemRxTask.h:
-
-.././Application/Tasks/ModemTask/include/ModemProcessTask.h:
-
-.././Application/Tasks/ModemTask/include/ModemDiagTask.h:
-
-.././thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
-
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
+../Application/Tasks/FotaAppTask/include/FotaAppTask.h:

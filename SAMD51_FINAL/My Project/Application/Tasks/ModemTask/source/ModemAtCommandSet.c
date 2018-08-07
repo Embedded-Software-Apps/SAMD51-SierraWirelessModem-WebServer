@@ -310,6 +310,76 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		INT_TWO,
 		modemResponseHandler,
 		(INT_ELEVEN + INT_TWO + CRLF_CHAR_LEN)
+	},
+
+	{
+		CMD_AT_WDSS_SET_APN,
+		AT_CMD_SET_FOTA_APP,
+		"AT+WDSS=0,\"VZWINTERNET\"\r",
+		INT_TWENTY_FOUR,
+		INT_TWO,
+		modemResponseHandler,
+		(INT_TWENTY_FOUR + INT_TWO + CRLF_CHAR_LEN)
+	},
+
+	{
+		CMD_AT_WDSS_START_DM_SESSION,
+		AT_CMD_SET_FOTA_APP,
+		"AT+WDSS=1,1\r",
+		INT_TWELEVE,
+		INT_TWO,
+		modemResponseHandler,
+		(INT_TWELEVE + INT_TWO + CRLF_CHAR_LEN)
+	},
+
+	{
+		CMD_AT_WDSI,
+		AT_CMD_SET_FOTA_APP,
+		"AT+WDSI=8191\r",
+		INT_THIRTEEN,
+		INT_TWO,
+		modemResponseHandler,
+		(INT_THIRTEEN + INT_TWO + CRLF_CHAR_LEN)
+	},
+
+	{
+		CMD_AT_WDSC_FW_DOWNLOAD,
+		AT_CMD_SET_FOTA_APP,
+		"AT+WDSC=1,1\r",
+		INT_TWELEVE,
+		INT_TWO,
+		modemResponseHandler,
+		(INT_TWELEVE + INT_TWO + CRLF_CHAR_LEN)
+	},
+
+	{
+		CMD_AT_WDSC_FW_INSTALL,
+		AT_CMD_SET_FOTA_APP,
+		"AT+WDSC=2,1\r",
+		INT_TWELEVE,
+		INT_TWO,
+		modemResponseHandler,
+		(INT_TWELEVE + INT_TWO + CRLF_CHAR_LEN)
+	},
+
+	{
+		CMD_AT_WDSR_ACCEPT_FW_DOWNLOAD,
+		AT_CMD_SET_FOTA_APP,
+		"AT+WDSR=3\r",
+		INT_TEN,
+		INT_TWO,
+		modemResponseHandler,
+		(INT_TEN + INT_TWO + CRLF_CHAR_LEN)
+	},
+
+	{
+		CMD_AT_WDSR_ACCEPT_FW_INSTALL,
+		AT_CMD_SET_FOTA_APP,
+		"AT+WDSR=4\r",
+		INT_TEN,
+		INT_TWO,
+		modemResponseHandler,
+		(INT_TEN + INT_TWO + CRLF_CHAR_LEN)
 	}
 
 };

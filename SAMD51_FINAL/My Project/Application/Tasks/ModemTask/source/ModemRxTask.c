@@ -28,7 +28,6 @@ void ModemRxTask( void *ModemTaskParam)
 		if(xResult == pdPASS)
 		{
 			getModemCommandData(atCmd, &cmdData);
-			//DEBUG_PRINT("Notification Received to Rx Task from ISR");
 
 			if(false != mdmParser_solicitedCmdParser(cmdData.AtCmd))
 			{

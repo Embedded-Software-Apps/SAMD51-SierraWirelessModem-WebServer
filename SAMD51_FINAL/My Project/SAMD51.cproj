@@ -30,15 +30,15 @@
     <EraseKey />
     <AsfFrameworkConfig>
       <framework-data>
-  <options />
-  <configurations />
-  <files />
-  <documentation help="" />
-  <offline-documentation help="" />
-  <dependencies>
-    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.34.1" />
-  </dependencies>
-</framework-data>
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.34.1" />
+        </dependencies>
+      </framework-data>
     </AsfFrameworkConfig>
     <GpdscFilePath>.atmelstart\AtmelStart.gpdsc</GpdscFilePath>
     <atStartFilePath>.atmelstart\atmel_start_config.atstart</atStartFilePath>
@@ -546,6 +546,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Application\SensorAdcInputs\source\SensorAdcInputs.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Application\Tasks\FotaAppTask\include\FotaAppTask.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Application\Tasks\FotaAppTask\source\FotaAppTask.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Application\Tasks\SensorTask\include\SensorTask.h">
@@ -1315,6 +1321,9 @@
     <Folder Include="Application\SensorAdcInputs\include" />
     <Folder Include="Application\SensorAdcInputs\source" />
     <Folder Include="Application\Tasks" />
+    <Folder Include="Application\Tasks\FotaAppTask" />
+    <Folder Include="Application\Tasks\FotaAppTask\include" />
+    <Folder Include="Application\Tasks\FotaAppTask\source" />
     <Folder Include="Application\Tasks\SensorTask\include" />
     <Folder Include="Application\Tasks\SensorTask\source" />
     <Folder Include="Application\Tasks\ModemTask" />

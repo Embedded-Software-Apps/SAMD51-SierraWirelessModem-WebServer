@@ -18,6 +18,7 @@
 #include "Application/SerialDebug/SerialDebug.h"
 #include "Application/Tasks/SensorTask/include/SensorTask.h"
 #include "Application/Tasks/ModemTask/include/ModemTxTask.h"
+#include "Application/Tasks/FotaAppTask/include/FotaAppTask.h"
 #include "Application/LedControl/include/ledControl.h"
 #include "Application/Common/Common.h"
 #include "Application/Tasks/ModemTask/include/ModemPowerControl.h"
@@ -43,6 +44,7 @@ static BaseType_t ModemProcessTaskStatus;
 static BaseType_t ModemTxTaskStatus;
 static BaseType_t ModemRxTaskStatus;
 static BaseType_t ModemDiagTaskStatus;
+static BaseType_t FotaAppTaskStatus;
 
 /*******************************************************************************
 *
@@ -75,12 +77,14 @@ int main(void)
     ModemDiagTaskStatus = xTaskCreate( ModemDiagTask, "ModemDiagTask", 150, NULL, 1, &xModemDiagTaskHandle);
 
     /* Create FOTA Task */
+	FotaAppTaskStatus =  xTaskCreate( FotaAppTask, "FotaAppTask", 100, NULL, 1, &xFotaAppTaskHandle);
 
     if((SensorTaskStatus == pdPASS) &&
        (ModemProcessTaskStatus == pdPASS) &&
        (ModemTxTaskStatus == pdPASS) &&
        (ModemRxTaskStatus == pdPASS) &&
-	   (ModemDiagTaskStatus == pdPASS))
+	   (ModemDiagTaskStatus == pdPASS) &&
+	   (FotaAppTaskStatus == pdPASS))
     {
     	if(false != createQueuesAndSemaphores())
     	{

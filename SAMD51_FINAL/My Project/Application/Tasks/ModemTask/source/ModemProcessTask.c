@@ -55,7 +55,8 @@ void ModemProcessTask( void *ModemTaskParam)
     {
         modemPowerSchedule();
 
-        if(getModemPowerStatus() == MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS)
+        if((getModemPowerStatus() == MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS) &&
+           (false != isFotaVerificationDone()))
         {
             MdmConnect_HttpConnectionSchedule();
 			kickWatchDog();

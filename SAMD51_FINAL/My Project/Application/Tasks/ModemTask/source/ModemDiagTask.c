@@ -90,7 +90,8 @@ void ModemDiagTask( void *ModemTaskParam)
 
     while(1)
     {
-        if(getModemPowerStatus() == MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS)
+        if((getModemPowerStatus() == MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS) &&
+           (false != isFotaVerificationDone()))
         {
             ModemDiagSchedule();
             kickWatchDog();

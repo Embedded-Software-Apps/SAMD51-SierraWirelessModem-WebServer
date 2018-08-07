@@ -16,6 +16,8 @@ Application\SelectInputs\source\selectInputs.c
 
 Application\SensorAdcInputs\source\SensorAdcInputs.c
 
+Application\Tasks\FotaAppTask\source\FotaAppTask.c
+
 Application\Tasks\SensorTask\source\SensorTask.c
 
 Application\Tasks\ModemTask\source\ModemAtCommandSet.c

@@ -95,6 +95,8 @@ TaskHandle_t xSensorTaskHandle;
 
 TaskHandle_t xModemDiagTaskHandle;
 
+TaskHandle_t xFotaAppTaskHandle;
+
 typedef struct  
 {
 	SENSOR_INDEX_T sensor;
@@ -185,6 +187,7 @@ uint32_t getSystemTime(void);
 QueueHandle_t AtTransmitQueue;
 QueueHandle_t AtReceiveQueue;
 QueueHandle_t CmdResponseQueue;
+QueueHandle_t FotaResponseQueue;
 SemaphoreHandle_t AtTxQueueLoadSemaphore;
 SemaphoreHandle_t DebugPrintMutex;
 SemaphoreHandle_t SensorScanSemaphore;

@@ -48,6 +48,9 @@ SUBDIRS :=  \
 ../Application/SensorAdcInputs/include \
 ../Application/SensorAdcInputs/source \
 ../Application/Tasks \
+../Application/Tasks/FotaAppTask \
+../Application/Tasks/FotaAppTask/include \
+../Application/Tasks/FotaAppTask/source \
 ../Application/Tasks/SensorTask/include \
 ../Application/Tasks/SensorTask/source \
 ../Application/Tasks/ModemTask \
@@ -113,6 +116,7 @@ C_SRCS +=  \
 ../Application/LedControl/source/ledPwmControl.c \
 ../Application/SelectInputs/source/selectInputs.c \
 ../Application/SensorAdcInputs/source/SensorAdcInputs.c \
+../Application/Tasks/FotaAppTask/source/FotaAppTask.c \
 ../Application/Tasks/SensorTask/source/SensorTask.c \
 ../Application/Tasks/ModemTask/source/ModemAtCommandSet.c \
 ../Application/Tasks/ModemTask/source/ModemCmdParser.c \
@@ -206,6 +210,7 @@ Application/LedControl/source/ledControl.o \
 Application/LedControl/source/ledPwmControl.o \
 Application/SelectInputs/source/selectInputs.o \
 Application/SensorAdcInputs/source/SensorAdcInputs.o \
+Application/Tasks/FotaAppTask/source/FotaAppTask.o \
 Application/Tasks/SensorTask/source/SensorTask.o \
 Application/Tasks/ModemTask/source/ModemAtCommandSet.o \
 Application/Tasks/ModemTask/source/ModemCmdParser.o \
@@ -292,6 +297,7 @@ Application/LedControl/source/ledControl.o \
 Application/LedControl/source/ledPwmControl.o \
 Application/SelectInputs/source/selectInputs.o \
 Application/SensorAdcInputs/source/SensorAdcInputs.o \
+Application/Tasks/FotaAppTask/source/FotaAppTask.o \
 Application/Tasks/SensorTask/source/SensorTask.o \
 Application/Tasks/ModemTask/source/ModemAtCommandSet.o \
 Application/Tasks/ModemTask/source/ModemCmdParser.o \
@@ -378,6 +384,7 @@ Application/LedControl/source/ledControl.d \
 Application/LedControl/source/ledPwmControl.d \
 Application/SelectInputs/source/selectInputs.d \
 Application/SensorAdcInputs/source/SensorAdcInputs.d \
+Application/Tasks/FotaAppTask/source/FotaAppTask.d \
 Application/Tasks/SensorTask/source/SensorTask.d \
 Application/Tasks/ModemTask/source/ModemAtCommandSet.d \
 Application/Tasks/ModemTask/source/ModemCmdParser.d \
@@ -464,6 +471,7 @@ Application/LedControl/source/ledControl.d \
 Application/LedControl/source/ledPwmControl.d \
 Application/SelectInputs/source/selectInputs.d \
 Application/SensorAdcInputs/source/SensorAdcInputs.d \
+Application/Tasks/FotaAppTask/source/FotaAppTask.d \
 Application/Tasks/SensorTask/source/SensorTask.d \
 Application/Tasks/ModemTask/source/ModemAtCommandSet.d \
 Application/Tasks/ModemTask/source/ModemCmdParser.d \
@@ -601,6 +609,13 @@ Application/SelectInputs/source/selectInputs.o: ../Application/SelectInputs/sour
 	
 
 Application/SensorAdcInputs/source/SensorAdcInputs.o: ../Application/SensorAdcInputs/source/SensorAdcInputs.c
+	@echo Building file: $<
+	@echo Invoking: ARM/GNU C Compiler : 6.3.1
+	$(QUOTE)F:\Software_Installations\Atmel_Studio_7\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAMD51J20A__ -DNDEBUG  -I"F:\Software_Installations\Atmel_Studio_7\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"F:\Software_Installations\Atmel_Studio_7\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include" -I"../stdio_redirect" -I"../Config" -I".." -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/ac" -I"../hpl/adc" -I"../hpl/core" -I"../hpl/dac" -I"../hpl/dmac" -I"../hpl/eic" -I"../hpl/evsys" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/nvmctrl" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/ramecc" -I"../hpl/sercom" -I"../hpl/systick" -I"../hpl/tc" -I"../hpl/tcc" -I"../hpl/wdt" -I"../hri" -I"../thirdparty/RTOS" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/module_config"  -Os -ffunction-sections -mlong-calls -Wall -mcpu=cortex-m4 -c -std=gnu99 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+Application/Tasks/FotaAppTask/source/FotaAppTask.o: ../Application/Tasks/FotaAppTask/source/FotaAppTask.c
 	@echo Building file: $<
 	@echo Invoking: ARM/GNU C Compiler : 6.3.1
 	$(QUOTE)F:\Software_Installations\Atmel_Studio_7\7.0\toolchain\arm\arm-gnu-toolchain\bin\arm-none-eabi-gcc.exe$(QUOTE)  -x c -mthumb -D__SAMD51J20A__ -DNDEBUG  -I"F:\Software_Installations\Atmel_Studio_7\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include" -I"F:\Software_Installations\Atmel_Studio_7\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include" -I"../stdio_redirect" -I"../Config" -I".." -I"../examples" -I"../hal/include" -I"../hal/utils/include" -I"../hpl/ac" -I"../hpl/adc" -I"../hpl/core" -I"../hpl/dac" -I"../hpl/dmac" -I"../hpl/eic" -I"../hpl/evsys" -I"../hpl/gclk" -I"../hpl/mclk" -I"../hpl/nvmctrl" -I"../hpl/osc32kctrl" -I"../hpl/oscctrl" -I"../hpl/pm" -I"../hpl/port" -I"../hpl/ramecc" -I"../hpl/sercom" -I"../hpl/systick" -I"../hpl/tc" -I"../hpl/tcc" -I"../hpl/wdt" -I"../hri" -I"../thirdparty/RTOS" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F" -I"../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/module_config"  -Os -ffunction-sections -mlong-calls -Wall -mcpu=cortex-m4 -c -std=gnu99 -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
