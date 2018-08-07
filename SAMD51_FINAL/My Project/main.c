@@ -123,11 +123,13 @@ bool createQueuesAndSemaphores(void)
     AtTransmitQueue    = xQueueCreate(MAX_TX_QUEUE_SIZE, sizeof(AtTxMsgType));
     AtReceiveQueue     = xQueueCreate(MAX_RX_QUEUE_SIZE, sizeof(AtRxMsgType));
     CmdResponseQueue   = xQueueCreate(MAX_CMD_RESP_QUEUE_SIZE, sizeof(CmdResponseType));
+    FotaResponseQueue  = xQueueCreate(MAX_CMD_RESP_QUEUE_SIZE, sizeof(CmdResponseType));
 
 
     if((AtTransmitQueue != NULL) &&
        (AtReceiveQueue  != NULL) &&
-	   (CmdResponseQueue != NULL))
+	   (CmdResponseQueue != NULL) &&
+	   (FotaResponseQueue != NULL))
     {
     	AtTxQueueLoadSemaphore = xSemaphoreCreateBinary();
     	SensorScanSemaphore    = xSemaphoreCreateBinary();
