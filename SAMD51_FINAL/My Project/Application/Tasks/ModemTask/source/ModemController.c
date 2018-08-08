@@ -213,3 +213,19 @@ void mdmCtrlr_FlushRxBuffer(void)
 {
 	ringbuffer_flush(&RxRingBuffer);
 }
+
+/*============================================================================
+**
+** Function Name:      mdmCtrlr_FlushRxBuffer
+**
+** Description:        Flushes the Rx Ring Buffer
+**
+**===========================================================================*/
+uint32_t mdmCtrlr_GetUnsolicitedResponseLength(void)
+{
+	uint32_t length = 0;
+
+	length = ringbuffer_num(&RxRingBuffer);
+
+	return length;
+}

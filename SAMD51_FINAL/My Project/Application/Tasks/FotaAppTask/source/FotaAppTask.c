@@ -15,6 +15,8 @@
 #include "Application/Tasks/FotaAppTask/include/FotaAppTask.h"
 
 #define FOTA_FWDL_CHECK_TIMER_LOAD_VALUE pdMS_TO_TICKS(86400000)
+#define SERVICE_INDICATION_RESPONSE_LENGTH (12)
+
 static CmdResponseType FotaCommandResponse;
 static FOTA_MAIN_STATES_T FotaMainState;
 static FOTA_APP_OPERATIONAL_STATE_T FotaOperationalMode;
@@ -26,6 +28,7 @@ static void FotaAppInit(void);
 static bool initializeFotaFirmwareDownloadCheckTimer(void);
 static bool validateCommonCommandResponse(uint8_t* response);
 static void FotaAppSchedule(void);
+static DEVICE_SERVICE_INDICATION_TYPE getDeviceServiceIndicationType(void);
 /*******************************************************************************
 *
 * NAME       : getModemPowerState
@@ -540,7 +543,15 @@ static void FotaAppSchedule(void)
 
         case SYSTEM_IS_IN_FIRMWARE_DOWNLOAD_MODE:
         {
-        	bFotaVerificationIsDone = true;
+        	//bFotaVerificationIsDone = true;
+        	if(4 == getDeviceServiceIndicationType())
+        	{
+        		DEBUG_PRINT("Success");
+        	}
+        	else
+        	{
+        		DEBUG_PRINT("Fail");
+        	}
         }
         break;
 
@@ -601,4 +612,40 @@ static bool validateCommonCommandResponse(uint8_t* response)
 bool isFotaVerificationDone(void)
 {
 	return bFotaVerificationIsDone;
+}
+
+/*============================================================================
+**
+** Function Name:      mdmCtrlr_FlushRxBuffer
+**
+** Description:        Flushes the Rx Ring Buffer
+**
+**===========================================================================*/
+static DEVICE_SERVICE_INDICATION_TYPE getDeviceServiceIndicationType(void)
+{
+    uint32_t unsolicitedResponseLength = 0;
+    uint8_t* responseBuffer = NULL;
+    bool readStatus;
+    uint8_t serviceIndicationType = 0;
+
+    while(mdmCtrlr_GetUnsolicitedResponseLength() < SERVICE_INDICATION_RESPONSE_LENGTH);
+
+	unsolicitedResponseLength = mdmCtrlr_GetUnsolicitedResponseLength();
+	responseBuffer = (uint8_t*)pvPortMalloc((unsolicitedResponseLength)*(sizeof(uint8_t)));
+
+	if(responseBuffer != NULL)
+	{
+		readStatus = mdmCtrlr_ReadResponseFromModem(responseBuffer,unsolicitedResponseLength);
+
+		if(readStatus != false)
+		{
+			serviceIndicationType = responseBuffer[9];
+		}
+		else
+		{
+			DEBUG_PRINT("Error: Failed to read service indication response.");
+		}
+	}
+
+	return serviceIndicationType;
 }

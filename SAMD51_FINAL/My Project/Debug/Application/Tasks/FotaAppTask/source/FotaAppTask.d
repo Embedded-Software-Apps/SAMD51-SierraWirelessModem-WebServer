@@ -1,6 +1,6 @@
-Application/Tasks/ModemTask/source/ModemProcessTask.d \
- Application/Tasks/ModemTask/source/ModemProcessTask.o: \
- ../Application/Tasks/ModemTask/source/ModemProcessTask.c \
+Application/Tasks/FotaAppTask/source/FotaAppTask.d \
+ Application/Tasks/FotaAppTask/source/FotaAppTask.o: \
+ ../Application/Tasks/FotaAppTask/source/FotaAppTask.c \
  ../hal/include/hal_delay.h ../hal/include/hpl_irq.h \
  ../hal/utils/include/compiler.h \
  f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stddef.h \
@@ -174,7 +174,7 @@ Application/Tasks/ModemTask/source/ModemProcessTask.d \
  f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include-fixed\syslimits.h \
  f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\limits.h \
  ../Application/Tasks/ModemTask/include/ModemPowerControl.h \
- ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h
+ ../Application/Tasks/FotaAppTask/include/FotaAppTask.h
 
 ../hal/include/hal_delay.h:
 
@@ -582,4 +582,4 @@ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm
 
 ../Application/Tasks/ModemTask/include/ModemPowerControl.h:
 
-../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h:
+../Application/Tasks/FotaAppTask/include/FotaAppTask.h:

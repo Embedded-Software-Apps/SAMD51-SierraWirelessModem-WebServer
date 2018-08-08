@@ -18,4 +18,5 @@ void mdmCtrlr_DataCommInit(void);
 uint32_t mdmCtrlr_SendDataToModem(const uint8_t *const TxData,const uint16_t length);
 void mdmCtrlr_FlushRxBuffer(void);
 bool mdmCtrlr_ReadResponseFromModem(uint8_t *const buf, const uint16_t length);
+uint32_t mdmCtrlr_GetUnsolicitedResponseLength(void);
 #endif /* MODEMCONTROLLER_H_ */
