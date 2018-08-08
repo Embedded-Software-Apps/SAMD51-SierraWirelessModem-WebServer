@@ -131,6 +131,7 @@ static void FotaAppSchedule(void)
     const TickType_t QueuePushDelayMs = pdMS_TO_TICKS(500UL);
     const TickType_t TransmitDelayMs = pdMS_TO_TICKS(500UL);
     const TickType_t ResponseWaitDelayMs = pdMS_TO_TICKS(4000UL);
+    const TickType_t startupDelayMs = pdMS_TO_TICKS(6000UL);
     AtTxMsgType TxMsgQueueData;
     BaseType_t TxQueuePushStatus;
 
@@ -140,6 +141,8 @@ static void FotaAppSchedule(void)
         {
             if(FotaOperationalMode == FOTA_APP_OPERATIONAL_TX_MODE)
             {
+            	vTaskDelay(startupDelayMs);
+
                 if (uxQueueMessagesWaiting(AtTransmitQueue) == 0)
                 {
                     if(pdPASS == xSemaphoreTake(AtTxQueueLoadSemaphore, 0))

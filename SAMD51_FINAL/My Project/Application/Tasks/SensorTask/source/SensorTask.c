@@ -268,7 +268,7 @@ void sensorTaskSchedule(void)
 			}
 			else
 			{
-				ConsoleDebugPrint("Select Line High - Port",(sensorIndex+1));
+				//ConsoleDebugPrint("Select Line High - Port",(sensorIndex+1));
 				sensorOutputData[sensorIndex].active = false;
 				sensorIndex++;
 
@@ -276,7 +276,7 @@ void sensorTaskSchedule(void)
 				{
 					sensorMainState = FETCH_ADC_READINGS_FOR_ACTIVE_SENSORS;
 					sensorIndex = SENSOR_0;
-					DEBUG_PRINT("\r\n");
+					//DEBUG_PRINT("\r\n");
 				}
 			}
 		}
@@ -320,11 +320,11 @@ void sensorTaskSchedule(void)
 					adcCountAveraged = ((adcAveragingBuffer[0] /*+ adcAveragingBuffer[1] + adcAveragingBuffer[2]*/)/
 							            (MAX_ADC_SAMPLES));
 
-                    ConsoleDebugPrint("Sensor",sensorIndex+1);
+/*                    ConsoleDebugPrint("Sensor",sensorIndex+1);
 				    printAdcValueToConsole("ADC Count", adcCountAveraged);
 					voltageInMv = (((adcCountAveraged) * ADC_CONVERTION_FACTOR)/10000);
 					printVoltageToConsole("Voltage on analog pin",voltageInMv);
-					DEBUG_PRINT("\r\n");
+					DEBUG_PRINT("\r\n");*/
 
 					sampleIndex = 0;
 					memset(adcAveragingBuffer,0,MAX_ADC_SAMPLES);
