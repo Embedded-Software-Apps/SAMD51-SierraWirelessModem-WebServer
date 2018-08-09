@@ -16,6 +16,7 @@
 
 #define FOTA_FWDL_CHECK_TIMER_LOAD_VALUE pdMS_TO_TICKS(86400000)
 #define SERVICE_INDICATION_RESPONSE_LENGTH (12)
+#define SERVICE_INDICATION_CMD_LENGTH (9)
 
 static CmdResponseType FotaCommandResponse;
 static FOTA_MAIN_STATES_T FotaMainState;
@@ -627,6 +628,7 @@ static DEVICE_SERVICE_INDICATION_TYPE getDeviceServiceIndicationType(void)
     uint8_t* responseBuffer = NULL;
     bool readStatus;
     uint8_t serviceIndicationType = 0;
+    const uint8_t* serviceIndicationCmdString = "\r\n+WDSI:";
 
     while(mdmCtrlr_GetUnsolicitedResponseLength() < SERVICE_INDICATION_RESPONSE_LENGTH);
 
@@ -639,12 +641,26 @@ static DEVICE_SERVICE_INDICATION_TYPE getDeviceServiceIndicationType(void)
 
 		if(readStatus != false)
 		{
-			serviceIndicationType = responseBuffer[9];
+            if(VERIFIED_EQUAL == strncmp(serviceIndicationCmdString, responseBuffer, SERVICE_INDICATION_CMD_LENGTH))
+            {
+            	serviceIndicationType = responseBuffer[SERVICE_INDICATION_CMD_LENGTH];
+
+            	if(serviceIndicationType > 1)
+            	{
+            		serviceIndicationType = 10;
+            	}
+            }
+            else
+            {
+            	DEBUG_PRINT("Error: Service Indication response is not identified.");
+            }
 		}
 		else
 		{
 			DEBUG_PRINT("Error: Failed to read service indication response.");
 		}
+
+		vPortFree(responseBuffer);
 	}
 
 	return serviceIndicationType;
