@@ -626,9 +626,10 @@ static DEVICE_SERVICE_INDICATION_TYPE getDeviceServiceIndicationType(void)
 {
     uint32_t unsolicitedResponseLength = 0;
     uint8_t* responseBuffer = NULL;
+	uint8_t dataString[2] = {0};
     bool readStatus;
     uint8_t serviceIndicationType = 0;
-    const uint8_t* serviceIndicationCmdString = "\r\n+WDSI:";
+    const uint8_t* serviceIndicationCmdString = "\r\n+WDSI: "; 
 
     while(mdmCtrlr_GetUnsolicitedResponseLength() < SERVICE_INDICATION_RESPONSE_LENGTH);
 
@@ -643,12 +644,18 @@ static DEVICE_SERVICE_INDICATION_TYPE getDeviceServiceIndicationType(void)
 		{
             if(VERIFIED_EQUAL == strncmp(serviceIndicationCmdString, responseBuffer, SERVICE_INDICATION_CMD_LENGTH))
             {
-            	serviceIndicationType = responseBuffer[SERVICE_INDICATION_CMD_LENGTH];
-
-            	if(serviceIndicationType > 1)
-            	{
-            		serviceIndicationType = 10;
-            	}
+				if((responseBuffer[SERVICE_INDICATION_CMD_LENGTH] + 1) != '\r')
+				{
+					dataString[0] = responseBuffer[SERVICE_INDICATION_CMD_LENGTH];
+					dataString[1] = responseBuffer[SERVICE_INDICATION_CMD_LENGTH + 1];	
+				}
+				else
+				{
+					dataString[0] = 0;
+					dataString[1] = responseBuffer[SERVICE_INDICATION_CMD_LENGTH];					
+				}
+				
+	            serviceIndicationType = atoi(dataString);
             }
             else
             {
