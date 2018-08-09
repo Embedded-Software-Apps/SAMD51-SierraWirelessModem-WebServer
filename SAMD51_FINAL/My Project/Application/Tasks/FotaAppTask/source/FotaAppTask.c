@@ -76,7 +76,7 @@ void FotaAppTask( void *FotaTaskParam)
     {
         if(getModemPowerStatus() == MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS)
         {
-        	FotaAppSchedule();
+            FotaAppSchedule();
             kickWatchDog();
             vTaskDelay(xDelayMs);
         }
@@ -138,6 +138,8 @@ static void FotaAppSchedule(void)
     const TickType_t startupDelayMs = pdMS_TO_TICKS(6000UL);
     AtTxMsgType TxMsgQueueData;
     BaseType_t TxQueuePushStatus;
+    DEVICE_SERVICE_INDICATION_TYPE serviceIndicationReceived =\
+    		                 SERVICE_INDICATION_ERROR;
 
     switch(FotaMainState)
     {
@@ -145,7 +147,7 @@ static void FotaAppSchedule(void)
         {
             if(FotaOperationalMode == FOTA_APP_OPERATIONAL_TX_MODE)
             {
-            	vTaskDelay(startupDelayMs);
+                vTaskDelay(startupDelayMs);
 
                 if (uxQueueMessagesWaiting(AtTransmitQueue) == 0)
                 {
@@ -298,10 +300,10 @@ static void FotaAppSchedule(void)
 
         case ACTIVATE_USER_AGREEMENTS_WITH_HOST:
         {
-        	switch(FotaUserAgreementActivationState)
-        	{
-        		case ACTIVATE_USER_AGREEMENT_FOR_FW_DOWNLOAD:
-        		{
+            switch(FotaUserAgreementActivationState)
+            {
+                case ACTIVATE_USER_AGREEMENT_FOR_FW_DOWNLOAD:
+                {
                     if(FotaOperationalMode == FOTA_APP_OPERATIONAL_TX_MODE)
                     {
                         if (uxQueueMessagesWaiting(AtTransmitQueue) == 0)
@@ -377,11 +379,11 @@ static void FotaAppSchedule(void)
                         /* This part will never execute */
                     }
 
-        		}
-        		break;
+                }
+                break;
 
-        		case ACTIVATE_USER_AGREEMENT_FOR_FW_INSTALLATION:
-        		{
+                case ACTIVATE_USER_AGREEMENT_FOR_FW_INSTALLATION:
+                {
                     if(FotaOperationalMode == FOTA_APP_OPERATIONAL_TX_MODE)
                     {
                         if (uxQueueMessagesWaiting(AtTransmitQueue) == 0)
@@ -456,12 +458,12 @@ static void FotaAppSchedule(void)
                     {
                         /* This part will never execute */
                     }
-        		}
-        		break;
+                }
+                break;
 
-        		default:
-        		break;
-        	}
+                default:
+                break;
+            }
 
         }
         break;
@@ -544,14 +546,103 @@ static void FotaAppSchedule(void)
 
         case SYSTEM_IS_IN_FIRMWARE_DOWNLOAD_MODE:
         {
-        	//bFotaVerificationIsDone = true;
-        	if(4 == getDeviceServiceIndicationType())
+        	serviceIndicationReceived = getDeviceServiceIndicationType();
+
+        	if(serviceIndicationReceived != SERVICE_INDICATION_ERROR)
         	{
-        		DEBUG_PRINT("Success");
+            	switch(serviceIndicationReceived)
+            	{
+            		case APN_SET_READY_FOR_DM_SESSION:
+            		{
+            			DEBUG_PRINT("FOTA : APN_SET_READY_FOR_DM_SESSION.\r\n");
+            		}
+            		break;
+
+            		case AIRVANTAGE_ORIGINATED_DM_SESSION_REQUEST:
+            		{
+            			DEBUG_PRINT("FOTA : AIRVANTAGE_ORIGINATED_DM_SESSION_REQUEST.\r\n");
+            		}
+            		break;
+
+            		case AIRVANTAGE_REQUESTS_FOR_FIRMWARE_DOWNLOAD:
+            		{
+            			DEBUG_PRINT("FOTA : AIRVANTAGE_REQUESTS_FOR_FIRMWARE_DOWNLOAD.\r\n");
+            		}
+            		break;
+
+            		case AIRVANTAGE_REQUESTS_FOR_FIRMWARE_INSTALLATION:
+            		{
+            			DEBUG_PRINT("FOTA : AIRVANTAGE_REQUESTS_FOR_FIRMWARE_INSTALLATION.\r\n");
+            		}
+            		break;
+
+            		case STARTING_UP_THE_DM_SESSION_WITH_AIR_VANTAGE:
+            		{
+            			DEBUG_PRINT("FOTA : STARTING_UP_THE_DM_SESSION_WITH_AIR_VANTAGE.\r\n");
+            		}
+            		break;
+
+            		case DM_SESSION_STARTED_TRANSACTIONS_OCCURED:
+            		{
+            			DEBUG_PRINT("FOTA : DM_SESSION_STARTED_TRANSACTIONS_OCCURED.\r\n");
+            		}
+            		break;
+
+            		case DM_SESSION_WITH_AIRVANTAGE_IS_CLOSED:
+            		{
+            			DEBUG_PRINT("FOTA : DM_SESSION_WITH_AIRVANTAGE_IS_CLOSED.\r\n");
+            		}
+            		break;
+
+            		case FIRMWARE_IS_AVAILABLE_FOR_DOWNLOAD:
+            		{
+            			DEBUG_PRINT("FOTA : FIRMWARE_IS_AVAILABLE_FOR_DOWNLOAD.\r\n");
+            		}
+            		break;
+
+            		case FIRMWARE_IS_DOWNLOADED_STORED_IN_FLASH:
+            		{
+            			DEBUG_PRINT("FOTA : FIRMWARE_IS_DOWNLOADED_STORED_IN_FLASH.\r\n");
+            		}
+            		break;
+
+            		case DOWNLOADED_PACKAGE_IS_VERIFIED_AS_CERTIFIED:
+            		{
+            			DEBUG_PRINT("FOTA : DOWNLOADED_PACKAGE_IS_VERIFIED_AS_CERTIFIED.\r\n");
+            		}
+            		break;
+
+            		case STARTING_THE_FIRMWARE_UPDATE:
+            		{
+            			DEBUG_PRINT("FOTA : STARTING_THE_FIRMWARE_UPDATE.\r\n");
+            		}
+            		break;
+
+            		case FAILED_TO_UPDATE_THE_FIRMWARE:
+            		{
+            			DEBUG_PRINT("FOTA : FAILED_TO_UPDATE_THE_FIRMWARE.\r\n");
+            		}
+            		break;
+
+            		case FIRMWARE_UPDATED_SUCCESSFULLY:
+            		{
+            			DEBUG_PRINT("FOTA : FIRMWARE_UPDATED_SUCCESSFULLY.\r\n");
+            		}
+            		break;
+
+            		case DOWNLOAD_IN_PROGRESS_IN_PERCENTAGE:
+            		{
+            			DEBUG_PRINT("FOTA : DOWNLOAD_IN_PROGRESS_IN_PERCENTAGE.\r\n");
+            		}
+            		break;
+
+            		default:
+            		break;
+            	}
         	}
         	else
         	{
-        		DEBUG_PRINT("Fail");
+        		DEBUG_PRINT("Error: Service Indication Parsing is failed");
         	}
         }
         break;
@@ -612,7 +703,7 @@ static bool validateCommonCommandResponse(uint8_t* response)
 **===========================================================================*/
 bool isFotaVerificationDone(void)
 {
-	return bFotaVerificationIsDone;
+    return bFotaVerificationIsDone;
 }
 
 /*============================================================================
@@ -626,49 +717,58 @@ static DEVICE_SERVICE_INDICATION_TYPE getDeviceServiceIndicationType(void)
 {
     uint32_t unsolicitedResponseLength = 0;
     uint8_t* responseBuffer = NULL;
-	uint8_t dataString[2] = {0};
+    uint8_t dataString[2] = {0};
     bool readStatus;
-    uint8_t serviceIndicationType = 0;
+    uint8_t serviceIndicationType = SERVICE_INDICATION_ERROR;
     const uint8_t* serviceIndicationCmdString = "\r\n+WDSI: "; 
 
     while(mdmCtrlr_GetUnsolicitedResponseLength() < SERVICE_INDICATION_RESPONSE_LENGTH);
 
-	unsolicitedResponseLength = mdmCtrlr_GetUnsolicitedResponseLength();
-	responseBuffer = (uint8_t*)pvPortMalloc((unsolicitedResponseLength)*(sizeof(uint8_t)));
+    if(mdmCtrlr_GetUnsolicitedResponseLength() > SERVICE_INDICATION_RESPONSE_LENGTH)
+    {
+    	unsolicitedResponseLength = mdmCtrlr_GetUnsolicitedResponseLength() - SERVICE_INDICATION_RESPONSE_LENGTH;
+    }
+    else
+    {
+    	unsolicitedResponseLength = mdmCtrlr_GetUnsolicitedResponseLength();
+    }
 
-	if(responseBuffer != NULL)
-	{
-		readStatus = mdmCtrlr_ReadResponseFromModem(responseBuffer,unsolicitedResponseLength);
 
-		if(readStatus != false)
-		{
+    responseBuffer = (uint8_t*)pvPortMalloc((unsolicitedResponseLength)*(sizeof(uint8_t)));
+
+    if(responseBuffer != NULL)
+    {
+        readStatus = mdmCtrlr_ReadResponseFromModem(responseBuffer,unsolicitedResponseLength);
+
+        if(readStatus != false)
+        {
             if(VERIFIED_EQUAL == strncmp(serviceIndicationCmdString, responseBuffer, SERVICE_INDICATION_CMD_LENGTH))
             {
-				if((responseBuffer[SERVICE_INDICATION_CMD_LENGTH] + 1) != '\r')
-				{
-					dataString[0] = responseBuffer[SERVICE_INDICATION_CMD_LENGTH];
-					dataString[1] = responseBuffer[SERVICE_INDICATION_CMD_LENGTH + 1];	
-				}
-				else
-				{
-					dataString[0] = 0;
-					dataString[1] = responseBuffer[SERVICE_INDICATION_CMD_LENGTH];					
-				}
-				
-	            serviceIndicationType = atoi(dataString);
+                if((responseBuffer[SERVICE_INDICATION_CMD_LENGTH] + 1) != '\r')
+                {
+                    dataString[0] = responseBuffer[SERVICE_INDICATION_CMD_LENGTH];
+                    dataString[1] = responseBuffer[SERVICE_INDICATION_CMD_LENGTH + 1];  
+                }
+                else
+                {
+                    dataString[0] = 0;
+                    dataString[1] = responseBuffer[SERVICE_INDICATION_CMD_LENGTH];                  
+                }
+                
+                serviceIndicationType = atoi(dataString);
             }
             else
             {
-            	DEBUG_PRINT("Error: Service Indication response is not identified.");
+                DEBUG_PRINT("Error: Service Indication response is not identified.");
             }
-		}
-		else
-		{
-			DEBUG_PRINT("Error: Failed to read service indication response.");
-		}
+        }
+        else
+        {
+            DEBUG_PRINT("Error: Failed to read service indication response.");
+        }
 
-		vPortFree(responseBuffer);
-	}
+        vPortFree(responseBuffer);
+    }
 
-	return serviceIndicationType;
+    return serviceIndicationType;
 }
