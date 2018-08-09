@@ -141,6 +141,7 @@ static void FotaAppSchedule(void)
     BaseType_t TxQueuePushStatus;
     DEVICE_SERVICE_INDICATION_TYPE serviceIndicationReceived =\
     		                 SERVICE_INDICATION_ERROR;
+    static DEVICE_SERVICE_INDICATION_TYPE PrevServiceIndicationReceived = SERVICE_INDICATION_ERROR;
 
     switch(FotaMainState)
     {
@@ -568,12 +569,16 @@ static void FotaAppSchedule(void)
             		case AIRVANTAGE_REQUESTS_FOR_FIRMWARE_DOWNLOAD:
             		{
             			DEBUG_PRINT("FOTA : AIRVANTAGE REQUESTS FOR FIRMWARE DOWNLOAD.\r\n");
+            			FotaMainState = ACCEPT_THE_REQUEST_FOR_FIRMWARE_DOWNLOAD;
+            			FotaOperationalMode = FOTA_APP_OPERATIONAL_TX_MODE;
             		}
             		break;
 
             		case AIRVANTAGE_REQUESTS_FOR_FIRMWARE_INSTALLATION:
             		{
             			DEBUG_PRINT("FOTA : AIRVANTAGE REQUESTS FOR FIRMWARE INSTALLATION.\r\n");
+            			FotaMainState = ACCEPT_THE_REQUEST_FOR_FIRMWARE_INSTALL;
+            			FotaOperationalMode = FOTA_APP_OPERATIONAL_TX_MODE;
             		}
             		break;
 
@@ -592,7 +597,11 @@ static void FotaAppSchedule(void)
             		case DM_SESSION_WITH_AIRVANTAGE_IS_CLOSED:
             		{
             			DEBUG_PRINT("FOTA : DM SESSION WITH AIRVANTAGE IS CLOSED.\r\n");
-            			bFotaVerificationIsDone = true;
+
+            			if(PrevServiceIndicationReceived != DM_SESSION_STARTED_TRANSACTIONS_OCCURED)
+            			{
+                			bFotaVerificationIsDone = true;
+            			}
             		}
             		break;
 
@@ -623,12 +632,14 @@ static void FotaAppSchedule(void)
             		case FAILED_TO_UPDATE_THE_FIRMWARE:
             		{
             			DEBUG_PRINT("FOTA : FAILED TO UPDATE THE FIRMWARE.\r\n");
+            			bFotaVerificationIsDone = true;
             		}
             		break;
 
             		case FIRMWARE_UPDATED_SUCCESSFULLY:
             		{
             			DEBUG_PRINT("FOTA : FIRMWARE UPDATED SUCCESSFULLY.\r\n");
+            			bFotaVerificationIsDone = true;
             		}
             		break;
 
@@ -641,11 +652,166 @@ static void FotaAppSchedule(void)
             		default:
             		break;
             	}
+
+            	PrevServiceIndicationReceived = serviceIndicationReceived;
         	}
         	else
         	{
         		DEBUG_PRINT("Error: Service Indication Parsing is failed");
         	}
+        }
+        break;
+
+        case ACCEPT_THE_REQUEST_FOR_FIRMWARE_DOWNLOAD:
+        {
+            if(FotaOperationalMode == FOTA_APP_OPERATIONAL_TX_MODE)
+            {
+                if (uxQueueMessagesWaiting(AtTransmitQueue) == 0)
+                {
+                    if(pdPASS == xSemaphoreTake(AtTxQueueLoadSemaphore, 0))
+                    {
+                        TxMsgQueueData.taskID = FOTA_APP_TASK;
+                        TxMsgQueueData.atCmd = CMD_AT_WDSR_ACCEPT_FW_DOWNLOAD;
+                        TxMsgQueueData.pData = NULL;
+                        TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
+
+                        if(TxQueuePushStatus == pdPASS)
+                        {
+                            xSemaphoreGive(AtTxQueueLoadSemaphore);
+                            FotaOperationalMode = FOTA_APP_OPERATIONAL_RX_MODE;
+                            vTaskDelay(TransmitDelayMs);
+                        }
+                        else
+                        {
+                            DEBUG_PRINT("Error: Failed to sent FW download acceptance to Tx Task");
+                            vTaskDelay(TransmitDelayMs);
+                        }
+                    }
+                    else
+                    {
+                        DEBUG_PRINT("Error : Not able to obtain Tx Semapahore");
+                    }
+                }
+                else
+                {
+                    DEBUG_PRINT("Transmit Queue is not empty");
+                }
+            }
+            else if(FotaOperationalMode == FOTA_APP_OPERATIONAL_RX_MODE)
+            {
+                if(pdPASS == xQueueReceive( FotaResponseQueue, &FotaCommandResponse, ResponseWaitDelayMs))
+                {
+                    if(FotaCommandResponse.atCmd == CMD_AT_WDSR_ACCEPT_FW_DOWNLOAD)
+                    {
+                        if(false != validateCommonCommandResponse(FotaCommandResponse.response))
+                        {
+                            DEBUG_PRINT("FOTA : Accepted the request for FW Download and sent the acknowledgment to Airvantage");
+                            SerialDebugPrint(FotaCommandResponse.response,FotaCommandResponse.length);
+                            DEBUG_PRINT("\r\n");
+                            FotaOperationalMode = FOTA_APP_OPERATIONAL_TX_MODE;
+                            FotaMainState = SYSTEM_IS_IN_FIRMWARE_DOWNLOAD_MODE;
+                        }
+                        else
+                        {
+                            DEBUG_PRINT("Error:Expected Response Not Received...");
+                            DEBUG_PRINT("\r\n");
+                            FotaOperationalMode = FOTA_APP_OPERATIONAL_TX_MODE;
+                        }
+                        vPortFree(FotaCommandResponse.response);
+                    }
+                    else
+                    {
+                        DEBUG_PRINT("Error:Failed to receive connection response in RX mode");
+                        FotaOperationalMode = FOTA_APP_OPERATIONAL_TX_MODE;
+                        vPortFree(FotaCommandResponse.response);
+                    }
+                }
+                else
+                {
+                    /* Wait untill there is a response received from Rx Task */
+                }
+            }
+            else
+            {
+                /* This part will never execute */
+            }
+
+        }
+        break;
+
+        case ACCEPT_THE_REQUEST_FOR_FIRMWARE_INSTALL:
+        {
+            if(FotaOperationalMode == FOTA_APP_OPERATIONAL_TX_MODE)
+            {
+                if (uxQueueMessagesWaiting(AtTransmitQueue) == 0)
+                {
+                    if(pdPASS == xSemaphoreTake(AtTxQueueLoadSemaphore, 0))
+                    {
+                        TxMsgQueueData.taskID = FOTA_APP_TASK;
+                        TxMsgQueueData.atCmd = CMD_AT_WDSR_ACCEPT_FW_INSTALL;
+                        TxMsgQueueData.pData = NULL;
+                        TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
+
+                        if(TxQueuePushStatus == pdPASS)
+                        {
+                            xSemaphoreGive(AtTxQueueLoadSemaphore);
+                            FotaOperationalMode = FOTA_APP_OPERATIONAL_RX_MODE;
+                            vTaskDelay(TransmitDelayMs);
+                        }
+                        else
+                        {
+                            DEBUG_PRINT("Error: Failed to sent FW install acceptance to Tx Task");
+                            vTaskDelay(TransmitDelayMs);
+                        }
+                    }
+                    else
+                    {
+                        DEBUG_PRINT("Error : Not able to obtain Tx Semapahore");
+                    }
+                }
+                else
+                {
+                    DEBUG_PRINT("Transmit Queue is not empty");
+                }
+            }
+            else if(FotaOperationalMode == FOTA_APP_OPERATIONAL_RX_MODE)
+            {
+                if(pdPASS == xQueueReceive( FotaResponseQueue, &FotaCommandResponse, ResponseWaitDelayMs))
+                {
+                    if(FotaCommandResponse.atCmd == CMD_AT_WDSR_ACCEPT_FW_INSTALL)
+                    {
+                        if(false != validateCommonCommandResponse(FotaCommandResponse.response))
+                        {
+                            DEBUG_PRINT("FOTA : Accepted the request for FW Installation and sent the acknowledgment to Airvantage");
+                            SerialDebugPrint(FotaCommandResponse.response,FotaCommandResponse.length);
+                            DEBUG_PRINT("\r\n");
+                            FotaOperationalMode = FOTA_APP_OPERATIONAL_TX_MODE;
+                            FotaMainState = SYSTEM_IS_IN_FIRMWARE_DOWNLOAD_MODE;
+                        }
+                        else
+                        {
+                            DEBUG_PRINT("Error:Expected Response Not Received...");
+                            DEBUG_PRINT("\r\n");
+                            FotaOperationalMode = FOTA_APP_OPERATIONAL_TX_MODE;
+                        }
+                        vPortFree(FotaCommandResponse.response);
+                    }
+                    else
+                    {
+                        DEBUG_PRINT("Error:Failed to receive connection response in RX mode");
+                        FotaOperationalMode = FOTA_APP_OPERATIONAL_TX_MODE;
+                        vPortFree(FotaCommandResponse.response);
+                    }
+                }
+                else
+                {
+                    /* Wait untill there is a response received from Rx Task */
+                }
+            }
+            else
+            {
+                /* This part will never execute */
+            }
         }
         break;
 
