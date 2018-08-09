@@ -74,7 +74,8 @@ void FotaAppTask( void *FotaTaskParam)
 
     while(1)
     {
-        if(getModemPowerStatus() == MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS)
+        if((getModemPowerStatus() == MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS) &&
+           (false == isFotaVerificationDone()))
         {
             FotaAppSchedule();
             kickWatchDog();
@@ -511,7 +512,7 @@ static void FotaAppSchedule(void)
                     {
                         if(false != validateCommonCommandResponse(FotaCommandResponse.response))
                         {
-                            DEBUG_PRINT("FOTA : Started the DM session with Air Vantage.");
+                            DEBUG_PRINT("FOTA : Initiating the DM session with Air Vantage.");
                             SerialDebugPrint(FotaCommandResponse.response,FotaCommandResponse.length);
                             DEBUG_PRINT("\r\n");
                             FotaOperationalMode = FOTA_APP_OPERATIONAL_TX_MODE;
@@ -554,85 +555,86 @@ static void FotaAppSchedule(void)
             	{
             		case APN_SET_READY_FOR_DM_SESSION:
             		{
-            			DEBUG_PRINT("FOTA : APN_SET_READY_FOR_DM_SESSION.\r\n");
+            			DEBUG_PRINT("FOTA : APN IS SET. READY FOR DM SESSION.\r\n");
             		}
             		break;
 
             		case AIRVANTAGE_ORIGINATED_DM_SESSION_REQUEST:
             		{
-            			DEBUG_PRINT("FOTA : AIRVANTAGE_ORIGINATED_DM_SESSION_REQUEST.\r\n");
+            			DEBUG_PRINT("FOTA : AIRVANTAGE ORIGINATED DM SESSION REQUEST.\r\n");
             		}
             		break;
 
             		case AIRVANTAGE_REQUESTS_FOR_FIRMWARE_DOWNLOAD:
             		{
-            			DEBUG_PRINT("FOTA : AIRVANTAGE_REQUESTS_FOR_FIRMWARE_DOWNLOAD.\r\n");
+            			DEBUG_PRINT("FOTA : AIRVANTAGE REQUESTS FOR FIRMWARE DOWNLOAD.\r\n");
             		}
             		break;
 
             		case AIRVANTAGE_REQUESTS_FOR_FIRMWARE_INSTALLATION:
             		{
-            			DEBUG_PRINT("FOTA : AIRVANTAGE_REQUESTS_FOR_FIRMWARE_INSTALLATION.\r\n");
+            			DEBUG_PRINT("FOTA : AIRVANTAGE REQUESTS FOR FIRMWARE INSTALLATION.\r\n");
             		}
             		break;
 
             		case STARTING_UP_THE_DM_SESSION_WITH_AIR_VANTAGE:
             		{
-            			DEBUG_PRINT("FOTA : STARTING_UP_THE_DM_SESSION_WITH_AIR_VANTAGE.\r\n");
+            			DEBUG_PRINT("FOTA : STARTING UP THE DM SESSION WITH AIRVANTAGE.\r\n");
             		}
             		break;
 
             		case DM_SESSION_STARTED_TRANSACTIONS_OCCURED:
             		{
-            			DEBUG_PRINT("FOTA : DM_SESSION_STARTED_TRANSACTIONS_OCCURED.\r\n");
+            			DEBUG_PRINT("FOTA : DM SESSION STARTED AND TRANSACTIONS OCCURED.\r\n");
             		}
             		break;
 
             		case DM_SESSION_WITH_AIRVANTAGE_IS_CLOSED:
             		{
-            			DEBUG_PRINT("FOTA : DM_SESSION_WITH_AIRVANTAGE_IS_CLOSED.\r\n");
+            			DEBUG_PRINT("FOTA : DM SESSION WITH AIRVANTAGE IS CLOSED.\r\n");
+            			bFotaVerificationIsDone = true;
             		}
             		break;
 
             		case FIRMWARE_IS_AVAILABLE_FOR_DOWNLOAD:
             		{
-            			DEBUG_PRINT("FOTA : FIRMWARE_IS_AVAILABLE_FOR_DOWNLOAD.\r\n");
+            			DEBUG_PRINT("FOTA : FIRMWARE IS AVAILABLE FOR DOWNLOAD.\r\n");
             		}
             		break;
 
             		case FIRMWARE_IS_DOWNLOADED_STORED_IN_FLASH:
             		{
-            			DEBUG_PRINT("FOTA : FIRMWARE_IS_DOWNLOADED_STORED_IN_FLASH.\r\n");
+            			DEBUG_PRINT("FOTA : FIRMWARE IS DOWNLOADED AND STORED IN FLASH.\r\n");
             		}
             		break;
 
             		case DOWNLOADED_PACKAGE_IS_VERIFIED_AS_CERTIFIED:
             		{
-            			DEBUG_PRINT("FOTA : DOWNLOADED_PACKAGE_IS_VERIFIED_AS_CERTIFIED.\r\n");
+            			DEBUG_PRINT("FOTA : DOWNLOADED PACKAGE IS VERIFIED AS CERTIFIED.\r\n");
             		}
             		break;
 
             		case STARTING_THE_FIRMWARE_UPDATE:
             		{
-            			DEBUG_PRINT("FOTA : STARTING_THE_FIRMWARE_UPDATE.\r\n");
+            			DEBUG_PRINT("FOTA : STARTING THE FIRMWARE UPDATE.\r\n");
             		}
             		break;
 
             		case FAILED_TO_UPDATE_THE_FIRMWARE:
             		{
-            			DEBUG_PRINT("FOTA : FAILED_TO_UPDATE_THE_FIRMWARE.\r\n");
+            			DEBUG_PRINT("FOTA : FAILED TO UPDATE THE FIRMWARE.\r\n");
             		}
             		break;
 
             		case FIRMWARE_UPDATED_SUCCESSFULLY:
             		{
-            			DEBUG_PRINT("FOTA : FIRMWARE_UPDATED_SUCCESSFULLY.\r\n");
+            			DEBUG_PRINT("FOTA : FIRMWARE UPDATED SUCCESSFULLY.\r\n");
             		}
             		break;
 
             		case DOWNLOAD_IN_PROGRESS_IN_PERCENTAGE:
             		{
-            			DEBUG_PRINT("FOTA : DOWNLOAD_IN_PROGRESS_IN_PERCENTAGE.\r\n");
+            			DEBUG_PRINT("FOTA : DOWNLOAD IN PROGRESS.\r\n");
             		}
             		break;
 
