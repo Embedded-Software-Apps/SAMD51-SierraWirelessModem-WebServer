@@ -805,10 +805,10 @@ Disassembly of section .text:
      99e:	f8ad 3000 	strh.w	r3, [sp]
      9a2:	47b0      	blx	r6
      9a4:	280b      	cmp	r0, #11
-     9a6:	ddfc      	ble.n	9a2 <FotaAppTask+0x47a>
+     9a6:	d9fc      	bls.n	9a2 <FotaAppTask+0x47a>
      9a8:	47b0      	blx	r6
      9aa:	280c      	cmp	r0, #12
-     9ac:	dd37      	ble.n	a1e <FotaAppTask+0x4f6>
+     9ac:	d937      	bls.n	a1e <FotaAppTask+0x4f6>
      9ae:	47b0      	blx	r6
      9b0:	f1a0 060c 	sub.w	r6, r0, #12
      9b4:	4630      	mov	r0, r6
@@ -817,7 +817,7 @@ Disassembly of section .text:
      9ba:	4681      	mov	r9, r0
      9bc:	2800      	cmp	r0, #0
      9be:	d066      	beq.n	a8e <FotaAppTask+0x566>
-     9c0:	4631      	mov	r1, r6
+     9c0:	b2b1      	uxth	r1, r6
      9c2:	4b46      	ldr	r3, [pc, #280]	; (adc <FotaAppTask+0x5b4>)
      9c4:	4798      	blx	r3
      9c6:	b368      	cbz	r0, a24 <FotaAppTask+0x4fc>

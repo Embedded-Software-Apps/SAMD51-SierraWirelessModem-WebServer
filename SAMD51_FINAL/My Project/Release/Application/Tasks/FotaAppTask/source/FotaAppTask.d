@@ -152,6 +152,9 @@ Application/Tasks/FotaAppTask/source/FotaAppTask.d \
  f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h \
  f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h \
  f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\stdlib.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\stdlib.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\alloca.h \
  ../Application/SerialDebug/SerialDebug.h ../Application/Common/Common.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h \
  ../Config/FreeRTOSConfig.h ../Config/peripheral_clk_config.h \
@@ -174,7 +177,25 @@ Application/Tasks/FotaAppTask/source/FotaAppTask.d \
  f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include-fixed\syslimits.h \
  f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\limits.h \
  ../Application/Tasks/ModemTask/include/ModemPowerControl.h \
- ../Application/Tasks/FotaAppTask/include/FotaAppTask.h
+ ../Application/Tasks/FotaAppTask/include/FotaAppTask.h \
+ ../Application/Tasks/ModemTask/include/ModemController.h \
+ ../driver_init.h ../atmel_start_pins.h ../hal/include/hal_init.h \
+ ../hal/include/hpl_init.h ../hal/include/hal_io.h \
+ ../hal/include/hal_sleep.h ../hal/include/hal_ac_sync.h \
+ ../hal/include/hpl_ac_sync.h ../hal/include/hpl_irq.h \
+ ../hal/include/hal_adc_sync.h ../hal/include/hpl_adc_sync.h \
+ ../hal/include/hpl_missing_features.h ../hal/include/hal_dac_sync.h \
+ ../hal/include/hpl_dac_sync.h ../hal/include/hal_ext_irq.h \
+ ../hal/include/hpl_ext_irq.h ../hal/include/hal_evsys.h \
+ ../hal/include/hpl_evsys.h ../hal/include/hal_flash.h \
+ ../hal/include/hpl_flash.h ../hal/include/hal_usart_sync.h \
+ ../hal/include/hal_io.h ../hal/include/hpl_usart_sync.h \
+ ../hal/include/hpl_usart.h ../hal/include/hpl_usart_async.h \
+ ../hal/include/hpl_usart.h ../hal/include/hal_pwm.h \
+ ../hal/include/hpl_pwm.h ../hpl/tc/hpl_tc_base.h \
+ ../hal/include/hpl_timer.h ../hal/include/hal_timer.h \
+ ../hal/utils/include/utils_list.h ../hpl/tcc/hpl_tcc.h \
+ ../hal/include/hal_wdt.h ../hal/include/hpl_wdt.h
 
 ../hal/include/hal_delay.h:
 
@@ -530,6 +551,12 @@ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm
 
 f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h:
 
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\stdlib.h:
+
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\stdlib.h:
+
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\alloca.h:
+
 ../Application/SerialDebug/SerialDebug.h:
 
 ../Application/Common/Common.h:
@@ -583,3 +610,75 @@ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm
 ../Application/Tasks/ModemTask/include/ModemPowerControl.h:
 
 ../Application/Tasks/FotaAppTask/include/FotaAppTask.h:
+
+../Application/Tasks/ModemTask/include/ModemController.h:
+
+../driver_init.h:
+
+../atmel_start_pins.h:
+
+../hal/include/hal_init.h:
+
+../hal/include/hpl_init.h:
+
+../hal/include/hal_io.h:
+
+../hal/include/hal_sleep.h:
+
+../hal/include/hal_ac_sync.h:
+
+../hal/include/hpl_ac_sync.h:
+
+../hal/include/hpl_irq.h:
+
+../hal/include/hal_adc_sync.h:
+
+../hal/include/hpl_adc_sync.h:
+
+../hal/include/hpl_missing_features.h:
+
+../hal/include/hal_dac_sync.h:
+
+../hal/include/hpl_dac_sync.h:
+
+../hal/include/hal_ext_irq.h:
+
+../hal/include/hpl_ext_irq.h:
+
+../hal/include/hal_evsys.h:
+
+../hal/include/hpl_evsys.h:
+
+../hal/include/hal_flash.h:
+
+../hal/include/hpl_flash.h:
+
+../hal/include/hal_usart_sync.h:
+
+../hal/include/hal_io.h:
+
+../hal/include/hpl_usart_sync.h:
+
+../hal/include/hpl_usart.h:
+
+../hal/include/hpl_usart_async.h:
+
+../hal/include/hpl_usart.h:
+
+../hal/include/hal_pwm.h:
+
+../hal/include/hpl_pwm.h:
+
+../hpl/tc/hpl_tc_base.h:
+
+../hal/include/hpl_timer.h:
+
+../hal/include/hal_timer.h:
+
+../hal/utils/include/utils_list.h:
+
+../hpl/tcc/hpl_tcc.h:
+
+../hal/include/hal_wdt.h:
+
+../hal/include/hpl_wdt.h:

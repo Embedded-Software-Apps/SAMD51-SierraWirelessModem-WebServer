@@ -8,11 +8,14 @@
 #include <hal_delay.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+
 #include "Application/SerialDebug/SerialDebug.h"
 #include "Application/Common/Common.h"
 #include "Application/Tasks/ModemTask/include/ModemPowerControl.h"
 #include "Application/Tasks/ModemTask/include/ModemAtCommandSet.h"
 #include "Application/Tasks/FotaAppTask/include/FotaAppTask.h"
+#include "Application/Tasks/ModemTask/include/ModemController.h"
 
 #define FOTA_FWDL_CHECK_TIMER_LOAD_VALUE pdMS_TO_TICKS(86400000)
 #define SERVICE_INDICATION_RESPONSE_LENGTH (12)
@@ -888,7 +891,7 @@ static DEVICE_SERVICE_INDICATION_TYPE getDeviceServiceIndicationType(void)
     uint8_t dataString[2] = {0};
     bool readStatus;
     DEVICE_SERVICE_INDICATION_TYPE serviceIndicationType = SERVICE_INDICATION_ERROR;
-    const uint8_t* serviceIndicationCmdString = "\r\n+WDSI: "; 
+    const int8_t* serviceIndicationCmdString = (int8_t*)"\r\n+WDSI: "; 
 
     while(mdmCtrlr_GetUnsolicitedResponseLength() < SERVICE_INDICATION_RESPONSE_LENGTH);
 
@@ -910,7 +913,7 @@ static DEVICE_SERVICE_INDICATION_TYPE getDeviceServiceIndicationType(void)
 
         if(readStatus != false)
         {
-            if(VERIFIED_EQUAL == strncmp(serviceIndicationCmdString, responseBuffer, SERVICE_INDICATION_CMD_LENGTH))
+            if(VERIFIED_EQUAL == strncmp((char*)serviceIndicationCmdString, (char*)responseBuffer, SERVICE_INDICATION_CMD_LENGTH))
             {
                 if((responseBuffer[SERVICE_INDICATION_CMD_LENGTH] + 1) != '\r')
                 {
@@ -923,7 +926,7 @@ static DEVICE_SERVICE_INDICATION_TYPE getDeviceServiceIndicationType(void)
                     dataString[1] = responseBuffer[SERVICE_INDICATION_CMD_LENGTH];                  
                 }
                 
-                serviceIndicationType = (DEVICE_SERVICE_INDICATION_TYPE)atoi(dataString);
+                serviceIndicationType = (DEVICE_SERVICE_INDICATION_TYPE)atoi((char*)dataString);
             }
             else
             {
