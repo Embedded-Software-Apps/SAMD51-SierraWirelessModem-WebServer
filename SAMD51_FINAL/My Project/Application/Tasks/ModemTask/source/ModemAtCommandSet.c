@@ -13,11 +13,14 @@
 #include "Application/Tasks/ModemTask/include/ModemConnection.h"
 #include "Application/Tasks/ModemTask/include/ModemConnectionConfig.h"
 
-uint8_t HttpHeaderString[INT_SEVENTEEN] = {'A','T','+','K','H','T','T','P','H','E','A','D','E','R','=','X','\r'};
+static uint8_t HttpHeaderString[INT_SEVENTEEN] = {'A','T','+','K','H','T','T','P','H','E','A','D','E','R','=','X','\r'};
 
-uint8_t kHttpGetString[INT_FIFTEEN] = {'A','T','+','K','H','T','T','P','G','E','T','=','0',',','\0'};
+static uint8_t kHttpGetString[INT_FIFTEEN] = {'A','T','+','K','H','T','T','P','G','E','T','=','0',',','\0'};
 
-uint8_t kHttpGetCompleteData[60] = {0};
+static uint8_t kHttpGetCompleteData[60] = {0};
+
+static uint8_t kHttpAPNDefaultString[INT_THIRTY_FIVE] = "AT+KCNXCFG=3, \"GPRS\",\"VZWINTERNET\"\r";
+
 
 /* Data structure for storing command parameters */
 static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
@@ -245,7 +248,7 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 	{
 		CMD_AT_KCNXCFG,
 		AT_CMD_SET_CONNECTION,
-		"AT+KCNXCFG=3, \"GPRS\",\"VZWINTERNET\"\r",
+		kHttpAPNDefaultString,
 		INT_THIRTY_FIVE,
 		INT_TWO,
 		modemResponseHandler,
@@ -315,11 +318,11 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 	{
 		CMD_AT_CGDCONT,
 		AT_CMD_SET_CONNECTION,
-		"AT+CGDCONT?\r",
+		"AT+CGDCONT\?\r",
 		INT_TWELEVE,
-		288,
+		184,
 		modemResponseHandler,
-		(INT_TWELEVE + 288 + CRLF_CHAR_LEN)
+		(INT_TWELEVE + 184 + CRLF_CHAR_LEN)
 	},
 
 	{
@@ -500,4 +503,29 @@ void buildDataPacketsToServer(void)
 {
 	strncpy(kHttpGetCompleteData,kHttpGetString,15);
 	strncat(kHttpGetCompleteData,"\"?i=359998070228764&d=A1Y52XA2Y36&b=36&s=2\"\r",44);
+}
+
+/*============================================================================
+**
+** Function Name:      mdmCtrlr_FlushRxBuffer
+**
+** Description:        Flushes the Rx Ring Buffer
+**
+**===========================================================================*/
+void retrieveAPNStringFromResponse(uint8_t* cfgResponse)
+{
+	uint8_t SourceStartIndex = 116;
+	uint8_t SourceEndIndex = 126+1;
+	uint8_t DestStartIndex = 22;
+	uint8_t DestEndIndex = 32 + 1;
+	uint8_t apnString[11] = {0};
+
+	for(SourceStartIndex = 116; SourceStartIndex < SourceEndIndex; SourceStartIndex++)
+	{
+		kHttpAPNDefaultString[(DestStartIndex)+(SourceStartIndex-116)] = cfgResponse[SourceStartIndex];
+		apnString[SourceStartIndex - 116] = cfgResponse[SourceStartIndex];
+	}
+
+	SerialDebugPrint(apnString,11);
+	DEBUG_PRINT("\r\n");
 }

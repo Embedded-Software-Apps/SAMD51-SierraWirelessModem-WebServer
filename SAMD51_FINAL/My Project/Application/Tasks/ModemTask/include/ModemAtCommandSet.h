@@ -120,4 +120,5 @@ typedef struct
 void getModemCommandData(AT_CMD_TYPE cmd, MODEM_CMD_DATA* cmdData);
 void buildHttpHeaderWithActiveSessionID(const uint8_t* activeSessionId);
 void buildDataPacketsToServer(void);
+void retrieveAPNStringFromResponse(uint8_t* cfgResponse);
 #endif /* MODEMATCOMMANDSET_H_ */

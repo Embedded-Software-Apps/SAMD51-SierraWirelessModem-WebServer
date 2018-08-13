@@ -480,9 +480,8 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                 {
                     if(ConnectionResponse.atCmd == CMD_AT_CGDCONT)
                     {
-                        DEBUG_PRINT("Retrieved APN string.");
-                        SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
-                        DEBUG_PRINT("\r\n");
+                        DEBUG_PRINT("Retrieved APN string");
+                        retrieveAPNStringFromResponse(ConnectionResponse.response);
                         gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_SET_ACCESS_POINT;
                         gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
 
