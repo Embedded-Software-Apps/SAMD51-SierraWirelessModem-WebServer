@@ -156,6 +156,7 @@ static void FotaAppSchedule(void)
             FotaUserAgreementActivationState = ACTIVATE_USER_AGREEMENT_FOR_FW_DOWNLOAD;
             bFotaVerificationIsDone = false;
             bNewFirmwareInstalled = false;
+            mdmCtrlr_FlushRxBuffer();
         }
         break;
 
@@ -615,19 +616,21 @@ static void FotaAppSchedule(void)
             			if((PrevServiceIndicationReceived != DM_SESSION_STARTED_TRANSACTIONS_OCCURED) &&
             			   (bFotaVerificationIsDone == false))
             			{
+            				mdmCtrlr_FlushRxBuffer();
                 			bFotaVerificationIsDone = true;
-                			FotaMainState = INITIALIZE_TO_DEFAULT_FOTA_SETTINGS;
                 			DEBUG_PRINT("FOTA : FIRMWARE UPDATE IS NOT PERFORMED.");
-                			DEBUG_PRINT("FOTA : INSTALLED FIRMWARE MATCHES WITH LATEST FIRMWARE FROM AIR VANTAGE SERVER.\r\n");
+                			DEBUG_PRINT("FOTA : INSTALLED FIRMWARE MATCHES WITH FIRMWARE FROM AIR VANTAGE SERVER.\r\n");
             			}
             			else if((PrevServiceIndicationReceived == DM_SESSION_STARTED_TRANSACTIONS_OCCURED) &&
             					(bFotaVerificationIsDone == false) &&
 								(bNewFirmwareInstalled == true))
             			{
+            				mdmCtrlr_FlushRxBuffer();
+            				DEBUG_PRINT("FOTA : SUCCESSFULLY INSTALLED THE DOWNLOADED FIRMWARE.\r\n");
+                			DEBUG_PRINT("FOTA : REBOOTING THE DEVICE AFTER A SUCCESSFUL FIRMWARE INSTALLATION.\r\n");
             				bNewFirmwareInstalled = false;
             				bFotaVerificationIsDone = true;
-            				FotaMainState = INITIALIZE_TO_DEFAULT_FOTA_SETTINGS;
-            				DEBUG_PRINT("FOTA : SUCCESSFULLY INSTALLED THE DOWNLOADED FIRMWARE.\r\n");
+                			requestWatchDogForcedReset();
             			}
             			else
             			{
@@ -663,19 +666,23 @@ static void FotaAppSchedule(void)
 
             		case FAILED_TO_UPDATE_THE_FIRMWARE:
             		{
+            			mdmCtrlr_FlushRxBuffer();
             			DEBUG_PRINT("FOTA : FAILED TO UPDATE THE FIRMWARE.\r\n");
+            			DEBUG_PRINT("FOTA : REBOOTING THE DEVICE AFTER A FAILED ATTEMPT OF FIRMWARE INSTALLATION.\r\n");
             			bFotaVerificationIsDone = true;
             			bNewFirmwareInstalled = false;
-            			FotaMainState = INITIALIZE_TO_DEFAULT_FOTA_SETTINGS;
+            			requestWatchDogForcedReset();
             		}
             		break;
 
             		case FIRMWARE_UPDATED_SUCCESSFULLY:
             		{
+            			mdmCtrlr_FlushRxBuffer();
         				DEBUG_PRINT("FOTA : SUCCESSFULLY INSTALLED THE DOWNLOADED FIRMWARE.\r\n");
+            			DEBUG_PRINT("FOTA : REBOOTING THE DEVICE AFTER A SUCCESSFUL FIRMWARE INSTALLATION.\r\n");
             			bFotaVerificationIsDone = true;
             			bNewFirmwareInstalled = true;
-            			FotaMainState = INITIALIZE_TO_DEFAULT_FOTA_SETTINGS;
+            			requestWatchDogForcedReset();
             		}
             		break;
 
