@@ -77,7 +77,7 @@ int main(void)
     ModemDiagTaskStatus = xTaskCreate( ModemDiagTask, "ModemDiagTask", 150, NULL, 1, &xModemDiagTaskHandle);
 
     /* Create FOTA Task */
-	FotaAppTaskStatus =  xTaskCreate( FotaAppTask, "FotaAppTask", 100, NULL, 1, &xFotaAppTaskHandle);
+	FotaAppTaskStatus =  xTaskCreate( FotaAppTask, "FotaAppTask", 150, NULL, 1, &xFotaAppTaskHandle);
 
     if((SensorTaskStatus == pdPASS) &&
        (ModemProcessTaskStatus == pdPASS) &&
