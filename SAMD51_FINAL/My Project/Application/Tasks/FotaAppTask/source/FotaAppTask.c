@@ -628,7 +628,6 @@ static void FotaAppSchedule(void)
             				bFotaVerificationIsDone = true;
             				FotaMainState = INITIALIZE_TO_DEFAULT_FOTA_SETTINGS;
             				DEBUG_PRINT("FOTA : SUCCESSFULLY INSTALLED THE DOWNLOADED FIRMWARE.\r\n");
-            				DEBUG_PRINT("***************FIRMWARE UPDATE SUCCESSFUL***************\r\n");
             			}
             			else
             			{
@@ -665,7 +664,6 @@ static void FotaAppSchedule(void)
             		case FAILED_TO_UPDATE_THE_FIRMWARE:
             		{
             			DEBUG_PRINT("FOTA : FAILED TO UPDATE THE FIRMWARE.\r\n");
-            			DEBUG_PRINT("***************FIRMWARE UPDATE FAILED***************\r\n");
             			bFotaVerificationIsDone = true;
             			bNewFirmwareInstalled = false;
             			FotaMainState = INITIALIZE_TO_DEFAULT_FOTA_SETTINGS;
@@ -675,7 +673,6 @@ static void FotaAppSchedule(void)
             		case FIRMWARE_UPDATED_SUCCESSFULLY:
             		{
         				DEBUG_PRINT("FOTA : SUCCESSFULLY INSTALLED THE DOWNLOADED FIRMWARE.\r\n");
-        				DEBUG_PRINT("***************FIRMWARE UPDATE SUCCESSFUL***************\r\n");
             			bFotaVerificationIsDone = true;
             			bNewFirmwareInstalled = true;
             			FotaMainState = INITIALIZE_TO_DEFAULT_FOTA_SETTINGS;
@@ -820,6 +817,7 @@ static void FotaAppSchedule(void)
                             DEBUG_PRINT("FOTA : Accepted the request for firmware Installation and sent the acknowledgment to Airvantage server");
                             SerialDebugPrint(FotaCommandResponse.response,FotaCommandResponse.length);
                             DEBUG_PRINT("\r\n");
+							DEBUG_PRINT("FOTA : STARTING UP THE FIRMWARE INSTALLATION.\r\n");
                             bNewFirmwareInstalled = true;
                             FotaOperationalMode = FOTA_APP_OPERATIONAL_TX_MODE;
                             FotaMainState = SYSTEM_IS_IN_FIRMWARE_DOWNLOAD_MODE;
