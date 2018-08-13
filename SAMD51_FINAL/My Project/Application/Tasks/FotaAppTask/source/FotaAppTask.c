@@ -658,10 +658,6 @@ static void FotaAppSchedule(void)
 
             	PrevServiceIndicationReceived = serviceIndicationReceived;
         	}
-        	else
-        	{
-        		DEBUG_PRINT("Error: Service Indication Parsing is failed");
-        	}
         }
         break;
 
