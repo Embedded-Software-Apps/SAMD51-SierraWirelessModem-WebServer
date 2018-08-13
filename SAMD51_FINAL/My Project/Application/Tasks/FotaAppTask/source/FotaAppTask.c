@@ -927,12 +927,12 @@ static DEVICE_SERVICE_INDICATION_TYPE getDeviceServiceIndicationType(void)
             }
             else
             {
-                DEBUG_PRINT("Error: Service Indication response is not identified.");
+            	/* Service Indication Response is not verified */
             }
         }
         else
         {
-            DEBUG_PRINT("Error: Failed to read service indication response.");
+        	   /* Read failure from UART Rx Buffer */
         }
 
         vPortFree(responseBuffer);
