@@ -415,7 +415,7 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                         DEBUG_PRINT("EOF Pattern configured");
                         SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
                         DEBUG_PRINT("\r\n");
-                        gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_SET_ACCESS_POINT;
+                        gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_RETRIEVE_APN;
                         gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
 
                         vPortFree(ConnectionResponse.response);
@@ -430,6 +430,74 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                 else
                 {
                     /* Wait untill there is a response received from Rx Task */ 
+                }
+            }
+            else
+            {
+
+            }
+        }
+        break;
+
+        case CONNECT_IN_PROGRESS_RETRIEVE_APN:
+        {
+            if(gHttpConnectOpMode == HTTP_CONNECT_OP_TX_MODE)
+            {
+                if (uxQueueMessagesWaiting(AtTransmitQueue) == 0)
+                {
+                    if(pdPASS == xSemaphoreTake(AtTxQueueLoadSemaphore, 0))
+                    {
+                        TxMsgQueueData.taskID = MODEM_PROCESS_TASK;
+                        TxMsgQueueData.atCmd = CMD_AT_CGDCONT;
+                        TxMsgQueueData.pData = NULL;
+                        TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
+
+                        if(TxQueuePushStatus == pdPASS)
+                        {
+                            xSemaphoreGive(AtTxQueueLoadSemaphore);
+                            gHttpConnectOpMode = HTTP_CONNECT_OP_RX_MODE;
+                            vTaskDelay(TransmitDelayMs);
+                        }
+                        else
+                        {
+                            DEBUG_PRINT("Failed to sent the retrieve APN command to Tx Task");
+                            vTaskDelay(TransmitDelayMs);
+                        }
+                    }
+                    else
+                    {
+                        DEBUG_PRINT("Error : Not able to obtain Tx Semapahore");
+                    }
+                }
+                else
+                {
+                    DEBUG_PRINT("Transmit Queue is not empty");
+                }
+            }
+            else if(gHttpConnectOpMode == HTTP_CONNECT_OP_RX_MODE)
+            {
+                if(pdPASS == xQueueReceive( CmdResponseQueue, &ConnectionResponse, ResponseWaitDelayMs))
+                {
+                    if(ConnectionResponse.atCmd == CMD_AT_CGDCONT)
+                    {
+                        DEBUG_PRINT("Retrieved APN string.");
+                        SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
+                        DEBUG_PRINT("\r\n");
+                        gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_SET_ACCESS_POINT;
+                        gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+
+                        vPortFree(ConnectionResponse.response);
+                    }
+                    else
+                    {
+                        DEBUG_PRINT("Failed to receive connection response in RX mode");
+                        gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+                        vPortFree(ConnectionResponse.response);
+                    }
+                }
+                else
+                {
+                    /* Wait untill there is a response received from Rx Task */
                 }
             }
             else

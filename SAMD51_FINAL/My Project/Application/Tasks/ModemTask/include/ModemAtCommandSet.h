@@ -52,6 +52,7 @@ typedef enum
 	CMD_AT_TERMINATE_HEADER,
 	CMD_AT_KCNX_DOWN,
 	CMD_AT_CGATT,
+	CMD_AT_CGDCONT,
 
 	/* FOTA related Commands */
 	CMD_AT_WDSS_SET_APN,
