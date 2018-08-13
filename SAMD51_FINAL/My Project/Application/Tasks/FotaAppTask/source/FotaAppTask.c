@@ -17,7 +17,7 @@
 #include "Application/Tasks/FotaAppTask/include/FotaAppTask.h"
 #include "Application/Tasks/ModemTask/include/ModemController.h"
 
-#define FOTA_FWDL_CHECK_TIMER_LOAD_VALUE pdMS_TO_TICKS(86400000)
+#define FOTA_FWDL_CHECK_TIMER_LOAD_VALUE pdMS_TO_TICKS(86400000) /* Milli second value corresponds to 24 hours */
 #define SERVICE_INDICATION_RESPONSE_LENGTH (12)
 #define SERVICE_INDICATION_CMD_LENGTH (9)
 
@@ -43,24 +43,19 @@ static DEVICE_SERVICE_INDICATION_TYPE getDeviceServiceIndicationType(void);
 ********************************************************************************/
 static void FotaAppInit(void)
 {
-/*    if(false == initializeFotaFirmwareDownloadCheckTimer())
+    if(false == initializeFotaFirmwareDownloadCheckTimer())
     {
         DEBUG_PRINT("Error: FOTA timer not started. Rebooting the system...");
         requestWatchDogForcedReset();
     }
     else
     {
-        FotaMainState = SET_APN_TO_C0NNECT_WITH_AIRVANTAGE;
+        FotaMainState = INITIALIZE_TO_DEFAULT_FOTA_SETTINGS;
         FotaOperationalMode = FOTA_APP_OPERATIONAL_TX_MODE;
         FotaUserAgreementActivationState = ACTIVATE_USER_AGREEMENT_FOR_FW_DOWNLOAD;
         bFotaVerificationIsDone = false;
-    }*/
-
-    FotaMainState = INITIALIZE_TO_DEFAULT_FOTA_SETTINGS;
-    FotaOperationalMode = FOTA_APP_OPERATIONAL_TX_MODE;
-    FotaUserAgreementActivationState = ACTIVATE_USER_AGREEMENT_FOR_FW_DOWNLOAD;
-    bFotaVerificationIsDone = false;
-    bNewFirmwareInstalled = false;
+        bNewFirmwareInstalled = false;
+    }
 }
 
 /*******************************************************************************
@@ -108,7 +103,6 @@ static bool initializeFotaFirmwareDownloadCheckTimer(void)
     {
         if(pdPASS == xTimerStart(xAutoReloadFwDlCheckTimer,0))
         {
-            DEBUG_PRINT("FOTA Timer started");
             status = true;
         }
     }
@@ -126,7 +120,8 @@ static bool initializeFotaFirmwareDownloadCheckTimer(void)
 ********************************************************************************/
 static void FotaFwDownloadCheckTImerCallBack(void* param)
 {
-
+	DEBUG_PRINT("FOTA : CHECKING FOR MODEM FIRMWARE UPDATE FROM AIR VANTAGE SERVER.");
+	requestWatchDogForcedReset();
 }
 
 /*******************************************************************************
@@ -563,141 +558,144 @@ static void FotaAppSchedule(void)
 
         case SYSTEM_IS_IN_FIRMWARE_DOWNLOAD_MODE:
         {
-        	serviceIndicationReceived = getDeviceServiceIndicationType();
+            serviceIndicationReceived = getDeviceServiceIndicationType();
 
-        	if(serviceIndicationReceived != SERVICE_INDICATION_ERROR)
-        	{
-            	switch(serviceIndicationReceived)
-            	{
-            		case APN_SET_READY_FOR_DM_SESSION:
-            		{
-            			DEBUG_PRINT("FOTA : APN IS SET. READY FOR DM SESSION.\r\n");
-            		}
-            		break;
+            if(serviceIndicationReceived != SERVICE_INDICATION_ERROR)
+            {
+                switch(serviceIndicationReceived)
+                {
+                    case APN_SET_READY_FOR_DM_SESSION:
+                    {
+                        DEBUG_PRINT("FOTA : APN IS SET. READY FOR DM SESSION.\r\n");
+                    }
+                    break;
 
-            		case AIRVANTAGE_ORIGINATED_DM_SESSION_REQUEST:
-            		{
-            			DEBUG_PRINT("FOTA : AIRVANTAGE ORIGINATED DM SESSION REQUEST.\r\n");
-            		}
-            		break;
+                    case AIRVANTAGE_ORIGINATED_DM_SESSION_REQUEST:
+                    {
+                        DEBUG_PRINT("FOTA : AIRVANTAGE ORIGINATED DM SESSION REQUEST.\r\n");
+                    }
+                    break;
 
-            		case AIRVANTAGE_REQUESTS_FOR_FIRMWARE_DOWNLOAD:
-            		{
-            			DEBUG_PRINT("FOTA : AIRVANTAGE REQUESTS FOR FIRMWARE DOWNLOAD.\r\n");
-            			FotaMainState = ACCEPT_THE_REQUEST_FOR_FIRMWARE_DOWNLOAD;
-            			FotaOperationalMode = FOTA_APP_OPERATIONAL_TX_MODE;
-            		}
-            		break;
+                    case AIRVANTAGE_REQUESTS_FOR_FIRMWARE_DOWNLOAD:
+                    {
+                        DEBUG_PRINT("FOTA : AIRVANTAGE REQUESTS FOR FIRMWARE DOWNLOAD.\r\n");
+                        FotaMainState = ACCEPT_THE_REQUEST_FOR_FIRMWARE_DOWNLOAD;
+                        FotaOperationalMode = FOTA_APP_OPERATIONAL_TX_MODE;
+                    }
+                    break;
 
-            		case AIRVANTAGE_REQUESTS_FOR_FIRMWARE_INSTALLATION:
-            		{
-            			DEBUG_PRINT("FOTA : AIRVANTAGE REQUESTS FOR FIRMWARE INSTALLATION.\r\n");
-            			FotaMainState = ACCEPT_THE_REQUEST_FOR_FIRMWARE_INSTALL;
-            			FotaOperationalMode = FOTA_APP_OPERATIONAL_TX_MODE;
-            		}
-            		break;
+                    case AIRVANTAGE_REQUESTS_FOR_FIRMWARE_INSTALLATION:
+                    {
+                        DEBUG_PRINT("FOTA : AIRVANTAGE REQUESTS FOR FIRMWARE INSTALLATION.\r\n");
+                        FotaMainState = ACCEPT_THE_REQUEST_FOR_FIRMWARE_INSTALL;
+                        FotaOperationalMode = FOTA_APP_OPERATIONAL_TX_MODE;
+                    }
+                    break;
 
-            		case STARTING_UP_THE_DM_SESSION_WITH_AIR_VANTAGE:
-            		{
-            			DEBUG_PRINT("FOTA : STARTING UP THE DM SESSION WITH AIRVANTAGE.\r\n");
-            		}
-            		break;
+                    case STARTING_UP_THE_DM_SESSION_WITH_AIR_VANTAGE:
+                    {
+                        DEBUG_PRINT("FOTA : STARTING UP THE DM SESSION WITH AIRVANTAGE.\r\n");
+                    }
+                    break;
 
-            		case DM_SESSION_STARTED_TRANSACTIONS_OCCURED:
-            		{
-            			DEBUG_PRINT("FOTA : DM SESSION STARTED AND TRANSACTIONS OCCURED.\r\n");
-            		}
-            		break;
+                    case DM_SESSION_STARTED_TRANSACTIONS_OCCURED:
+                    {
+                        DEBUG_PRINT("FOTA : DM SESSION STARTED AND TRANSACTIONS OCCURED.\r\n");
+                    }
+                    break;
 
-            		case DM_SESSION_WITH_AIRVANTAGE_IS_CLOSED:
-            		{
-            			DEBUG_PRINT("FOTA : DM SESSION WITH AIRVANTAGE IS CLOSED.\r\n");
+                    case DM_SESSION_WITH_AIRVANTAGE_IS_CLOSED:
+                    {
+                        DEBUG_PRINT("FOTA : DM SESSION WITH AIRVANTAGE IS CLOSED.\r\n");
 
-            			if((PrevServiceIndicationReceived != DM_SESSION_STARTED_TRANSACTIONS_OCCURED) &&
-            			   (bFotaVerificationIsDone == false))
-            			{
-            				mdmCtrlr_FlushRxBuffer();
-                			bFotaVerificationIsDone = true;
-                			DEBUG_PRINT("FOTA : FIRMWARE UPDATE IS NOT PERFORMED.");
-                			DEBUG_PRINT("FOTA : INSTALLED FIRMWARE MATCHES WITH FIRMWARE FROM AIR VANTAGE SERVER.\r\n");
-            			}
-            			else if((PrevServiceIndicationReceived == DM_SESSION_STARTED_TRANSACTIONS_OCCURED) &&
-            					(bFotaVerificationIsDone == false) &&
-								(bNewFirmwareInstalled == true))
-            			{
-            				mdmCtrlr_FlushRxBuffer();
-            				DEBUG_PRINT("FOTA : SUCCESSFULLY INSTALLED THE DOWNLOADED FIRMWARE.\r\n");
-                			DEBUG_PRINT("FOTA : REBOOTING THE DEVICE AFTER A SUCCESSFUL FIRMWARE INSTALLATION.\r\n");
-            				bNewFirmwareInstalled = false;
-            				bFotaVerificationIsDone = true;
-                			requestWatchDogForcedReset();
-            			}
-            			else
-            			{
-            				/* Please wait for the firmware download to begin */
-            			}
-            		}
-            		break;
+                        if((PrevServiceIndicationReceived != DM_SESSION_STARTED_TRANSACTIONS_OCCURED) &&
+                           (bFotaVerificationIsDone == false))
+                        {
+                            mdmCtrlr_FlushRxBuffer();
+                            bFotaVerificationIsDone = true;
+                            DEBUG_PRINT("FOTA : FIRMWARE UPDATE IS NOT PERFORMED.");
+                            DEBUG_PRINT("FOTA : INSTALLED FIRMWARE MATCHES WITH FIRMWARE FROM AIR VANTAGE SERVER.\r\n");
+                        }
+                        else if((PrevServiceIndicationReceived == DM_SESSION_STARTED_TRANSACTIONS_OCCURED) &&
+                                (bFotaVerificationIsDone == false) &&
+                                (bNewFirmwareInstalled == true))
+                        {
+                            mdmCtrlr_FlushRxBuffer();
+                            DEBUG_PRINT("FOTA : SUCCESSFULLY INSTALLED THE DOWNLOADED FIRMWARE.");
+                            DEBUG_PRINT("\r\n");
+                            DEBUG_PRINT("FOTA : REBOOTING THE DEVICE AFTER A SUCCESSFUL FIRMWARE INSTALLATION.\r\n");
+                            bNewFirmwareInstalled = false;
+                            bFotaVerificationIsDone = true;
+                            requestWatchDogForcedReset();
+                        }
+                        else
+                        {
+                            /* Please wait for the firmware download to begin */
+                        }
+                    }
+                    break;
 
-            		case FIRMWARE_IS_AVAILABLE_FOR_DOWNLOAD:
-            		{
-            			DEBUG_PRINT("FOTA : FIRMWARE IS AVAILABLE FOR DOWNLOAD.\r\n");
-            		}
-            		break;
+                    case FIRMWARE_IS_AVAILABLE_FOR_DOWNLOAD:
+                    {
+                        DEBUG_PRINT("FOTA : FIRMWARE IS AVAILABLE FOR DOWNLOAD.\r\n");
+                    }
+                    break;
 
-            		case FIRMWARE_IS_DOWNLOADED_STORED_IN_FLASH:
-            		{
-            			DEBUG_PRINT("FOTA : FIRMWARE IS DOWNLOADED AND STORED IN FLASH.\r\n");
-            		}
-            		break;
+                    case FIRMWARE_IS_DOWNLOADED_STORED_IN_FLASH:
+                    {
+                        DEBUG_PRINT("FOTA : FIRMWARE IS DOWNLOADED AND STORED IN FLASH.\r\n");
+                    }
+                    break;
 
-            		case DOWNLOADED_PACKAGE_IS_VERIFIED_AS_CERTIFIED:
-            		{
-            			DEBUG_PRINT("FOTA : DOWNLOADED PACKAGE IS VERIFIED AS CERTIFIED.\r\n");
+                    case DOWNLOADED_PACKAGE_IS_VERIFIED_AS_CERTIFIED:
+                    {
+                        DEBUG_PRINT("FOTA : DOWNLOADED PACKAGE IS VERIFIED AS CERTIFIED.\r\n");
                         DEBUG_PRINT("FOTA : INSTALLING THE DOWNLOADED FIRMWARE...PLEASE WAIT...\r\n");
-            		}
-            		break;
+                    }
+                    break;
 
-            		case STARTING_THE_FIRMWARE_UPDATE:
-            		{
-            			DEBUG_PRINT("FOTA : STARTING THE FIRMWARE UPDATE.\r\n");
-            		}
-            		break;
+                    case STARTING_THE_FIRMWARE_UPDATE:
+                    {
+                        DEBUG_PRINT("FOTA : STARTING THE FIRMWARE UPDATE.\r\n");
+                    }
+                    break;
 
-            		case FAILED_TO_UPDATE_THE_FIRMWARE:
-            		{
-            			mdmCtrlr_FlushRxBuffer();
-            			DEBUG_PRINT("FOTA : FAILED TO UPDATE THE FIRMWARE.\r\n");
-            			DEBUG_PRINT("FOTA : REBOOTING THE DEVICE AFTER A FAILED ATTEMPT OF FIRMWARE INSTALLATION.\r\n");
-            			bFotaVerificationIsDone = true;
-            			bNewFirmwareInstalled = false;
-            			requestWatchDogForcedReset();
-            		}
-            		break;
+                    case FAILED_TO_UPDATE_THE_FIRMWARE:
+                    {
+                        mdmCtrlr_FlushRxBuffer();
+                        DEBUG_PRINT("FOTA : FAILED TO UPDATE THE FIRMWARE.");
+                        DEBUG_PRINT("\r\n");
+                        DEBUG_PRINT("FOTA : REBOOTING THE DEVICE AFTER A FAILED ATTEMPT OF FIRMWARE INSTALLATION.\r\n");
+                        bFotaVerificationIsDone = true;
+                        bNewFirmwareInstalled = false;
+                        requestWatchDogForcedReset();
+                    }
+                    break;
 
-            		case FIRMWARE_UPDATED_SUCCESSFULLY:
-            		{
-            			mdmCtrlr_FlushRxBuffer();
-        				DEBUG_PRINT("FOTA : SUCCESSFULLY INSTALLED THE DOWNLOADED FIRMWARE.\r\n");
-            			DEBUG_PRINT("FOTA : REBOOTING THE DEVICE AFTER A SUCCESSFUL FIRMWARE INSTALLATION.\r\n");
-            			bFotaVerificationIsDone = true;
-            			bNewFirmwareInstalled = true;
-            			requestWatchDogForcedReset();
-            		}
-            		break;
+                    case FIRMWARE_UPDATED_SUCCESSFULLY:
+                    {
+                        mdmCtrlr_FlushRxBuffer();
+                        DEBUG_PRINT("FOTA : SUCCESSFULLY INSTALLED THE DOWNLOADED FIRMWARE.");
+                        DEBUG_PRINT("\r\n");
+                        DEBUG_PRINT("FOTA : REBOOTING THE DEVICE AFTER A SUCCESSFUL FIRMWARE INSTALLATION.\r\n");
+                        bFotaVerificationIsDone = true;
+                        bNewFirmwareInstalled = true;
+                        requestWatchDogForcedReset();
+                    }
+                    break;
 
-            		case DOWNLOAD_IN_PROGRESS_IN_PERCENTAGE:
-            		{
-            			DEBUG_PRINT("FOTA : DOWNLOADING THE FIRMWARE FROM AIR VANTAGE SERVER...PLEASE WAIT...\r\n");
-            		}
-            		break;
+                    case DOWNLOAD_IN_PROGRESS_IN_PERCENTAGE:
+                    {
+                        DEBUG_PRINT("FOTA : DOWNLOADING THE FIRMWARE FROM AIR VANTAGE SERVER...PLEASE WAIT...\r\n");
+                    }
+                    break;
 
-            		default:
-            		break;
-            	}
+                    default:
+                    break;
+                }
 
-            	PrevServiceIndicationReceived = serviceIndicationReceived;
-        	}
+                PrevServiceIndicationReceived = serviceIndicationReceived;
+            }
         }
         break;
 
@@ -824,7 +822,7 @@ static void FotaAppSchedule(void)
                             DEBUG_PRINT("FOTA : Accepted the request for firmware Installation and sent the acknowledgment to Airvantage server");
                             SerialDebugPrint(FotaCommandResponse.response,FotaCommandResponse.length);
                             DEBUG_PRINT("\r\n");
-							DEBUG_PRINT("FOTA : STARTING UP THE FIRMWARE INSTALLATION.\r\n");
+                            DEBUG_PRINT("FOTA : STARTING UP THE FIRMWARE INSTALLATION.\r\n");
                             bNewFirmwareInstalled = true;
                             FotaOperationalMode = FOTA_APP_OPERATIONAL_TX_MODE;
                             FotaMainState = SYSTEM_IS_IN_FIRMWARE_DOWNLOAD_MODE;
@@ -935,11 +933,11 @@ static DEVICE_SERVICE_INDICATION_TYPE getDeviceServiceIndicationType(void)
 
     if(mdmCtrlr_GetUnsolicitedResponseLength() > SERVICE_INDICATION_RESPONSE_LENGTH)
     {
-    	unsolicitedResponseLength = mdmCtrlr_GetUnsolicitedResponseLength() - SERVICE_INDICATION_RESPONSE_LENGTH;
+        unsolicitedResponseLength = mdmCtrlr_GetUnsolicitedResponseLength() - SERVICE_INDICATION_RESPONSE_LENGTH;
     }
     else
     {
-    	unsolicitedResponseLength = mdmCtrlr_GetUnsolicitedResponseLength();
+        unsolicitedResponseLength = mdmCtrlr_GetUnsolicitedResponseLength();
     }
 
 
@@ -968,12 +966,12 @@ static DEVICE_SERVICE_INDICATION_TYPE getDeviceServiceIndicationType(void)
             }
             else
             {
-            	/* Service Indication Response is not verified */
+                /* Service Indication Response is not verified */
             }
         }
         else
         {
-        	   /* Read failure from UART Rx Buffer */
+               /* Read failure from UART Rx Buffer */
         }
 
         vPortFree(responseBuffer);
