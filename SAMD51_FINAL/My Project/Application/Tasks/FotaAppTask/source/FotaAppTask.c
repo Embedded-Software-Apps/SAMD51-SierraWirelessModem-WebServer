@@ -26,6 +26,7 @@ static FOTA_MAIN_STATES_T FotaMainState;
 static FOTA_APP_OPERATIONAL_STATE_T FotaOperationalMode;
 static USER_AGREEMENT_ACTIVATION_STATES_T FotaUserAgreementActivationState;
 static bool bFotaVerificationIsDone;
+static bool bNewFirmwareInstalled;
 
 static void FotaFwDownloadCheckTImerCallBack(void* param);
 static void FotaAppInit(void);
@@ -55,10 +56,11 @@ static void FotaAppInit(void)
         bFotaVerificationIsDone = false;
     }*/
 
-    FotaMainState = SET_APN_TO_C0NNECT_WITH_AIRVANTAGE;
+    FotaMainState = INITIALIZE_TO_DEFAULT_FOTA_SETTINGS;
     FotaOperationalMode = FOTA_APP_OPERATIONAL_TX_MODE;
     FotaUserAgreementActivationState = ACTIVATE_USER_AGREEMENT_FOR_FW_DOWNLOAD;
     bFotaVerificationIsDone = false;
+    bNewFirmwareInstalled = false;
 }
 
 /*******************************************************************************
@@ -142,12 +144,21 @@ static void FotaAppSchedule(void)
     const TickType_t startupDelayMs = pdMS_TO_TICKS(6000UL);
     AtTxMsgType TxMsgQueueData;
     BaseType_t TxQueuePushStatus;
-    DEVICE_SERVICE_INDICATION_TYPE serviceIndicationReceived =\
-    		                 SERVICE_INDICATION_ERROR;
+    DEVICE_SERVICE_INDICATION_TYPE serviceIndicationReceived = SERVICE_INDICATION_ERROR;
     static DEVICE_SERVICE_INDICATION_TYPE PrevServiceIndicationReceived = SERVICE_INDICATION_ERROR;
 
     switch(FotaMainState)
     {
+        case INITIALIZE_TO_DEFAULT_FOTA_SETTINGS:
+        {
+            FotaMainState = SET_APN_TO_C0NNECT_WITH_AIRVANTAGE;
+            FotaOperationalMode = FOTA_APP_OPERATIONAL_TX_MODE;
+            FotaUserAgreementActivationState = ACTIVATE_USER_AGREEMENT_FOR_FW_DOWNLOAD;
+            bFotaVerificationIsDone = false;
+            bNewFirmwareInstalled = false;
+        }
+        break;
+
         case SET_APN_TO_C0NNECT_WITH_AIRVANTAGE:
         {
             if(FotaOperationalMode == FOTA_APP_OPERATIONAL_TX_MODE)
@@ -601,9 +612,27 @@ static void FotaAppSchedule(void)
             		{
             			DEBUG_PRINT("FOTA : DM SESSION WITH AIRVANTAGE IS CLOSED.\r\n");
 
-            			if(PrevServiceIndicationReceived != DM_SESSION_STARTED_TRANSACTIONS_OCCURED)
+            			if((PrevServiceIndicationReceived != DM_SESSION_STARTED_TRANSACTIONS_OCCURED) &&
+            			   (bFotaVerificationIsDone == false))
             			{
                 			bFotaVerificationIsDone = true;
+                			FotaMainState = INITIALIZE_TO_DEFAULT_FOTA_SETTINGS;
+                			DEBUG_PRINT("FOTA : FIRMWARE UPDATE IS NOT PERFORMED.");
+                			DEBUG_PRINT("FOTA : INSTALLED FIRMWARE MATCHES WITH LATEST FIRMWARE FROM AIR VANTAGE SERVER.\r\n");
+            			}
+            			else if((PrevServiceIndicationReceived == DM_SESSION_STARTED_TRANSACTIONS_OCCURED) &&
+            					(bFotaVerificationIsDone == false) &&
+								(bNewFirmwareInstalled == true))
+            			{
+            				bNewFirmwareInstalled = false;
+            				bFotaVerificationIsDone = true;
+            				FotaMainState = INITIALIZE_TO_DEFAULT_FOTA_SETTINGS;
+            				DEBUG_PRINT("FOTA : SUCCESSFULLY INSTALLED THE DOWNLOADED FIRMWARE.\r\n");
+            				DEBUG_PRINT("***************FIRMWARE UPDATE SUCCESSFUL***************\r\n");
+            			}
+            			else
+            			{
+            				/* Please wait for the firmware download to begin */
             			}
             		}
             		break;
@@ -623,6 +652,7 @@ static void FotaAppSchedule(void)
             		case DOWNLOADED_PACKAGE_IS_VERIFIED_AS_CERTIFIED:
             		{
             			DEBUG_PRINT("FOTA : DOWNLOADED PACKAGE IS VERIFIED AS CERTIFIED.\r\n");
+                        DEBUG_PRINT("FOTA : INSTALLING THE DOWNLOADED FIRMWARE...PLEASE WAIT...\r\n");
             		}
             		break;
 
@@ -635,20 +665,26 @@ static void FotaAppSchedule(void)
             		case FAILED_TO_UPDATE_THE_FIRMWARE:
             		{
             			DEBUG_PRINT("FOTA : FAILED TO UPDATE THE FIRMWARE.\r\n");
+            			DEBUG_PRINT("***************FIRMWARE UPDATE FAILED***************\r\n");
             			bFotaVerificationIsDone = true;
+            			bNewFirmwareInstalled = false;
+            			FotaMainState = INITIALIZE_TO_DEFAULT_FOTA_SETTINGS;
             		}
             		break;
 
             		case FIRMWARE_UPDATED_SUCCESSFULLY:
             		{
-            			DEBUG_PRINT("FOTA : FIRMWARE UPDATED SUCCESSFULLY.\r\n");
+        				DEBUG_PRINT("FOTA : SUCCESSFULLY INSTALLED THE DOWNLOADED FIRMWARE.\r\n");
+        				DEBUG_PRINT("***************FIRMWARE UPDATE SUCCESSFUL***************\r\n");
             			bFotaVerificationIsDone = true;
+            			bNewFirmwareInstalled = true;
+            			FotaMainState = INITIALIZE_TO_DEFAULT_FOTA_SETTINGS;
             		}
             		break;
 
             		case DOWNLOAD_IN_PROGRESS_IN_PERCENTAGE:
             		{
-            			DEBUG_PRINT("FOTA : DOWNLOAD IN PROGRESS.\r\n");
+            			DEBUG_PRINT("FOTA : DOWNLOADING THE FIRMWARE FROM AIR VANTAGE SERVER...PLEASE WAIT...\r\n");
             		}
             		break;
 
@@ -704,7 +740,7 @@ static void FotaAppSchedule(void)
                     {
                         if(false != validateCommonCommandResponse(FotaCommandResponse.response))
                         {
-                            DEBUG_PRINT("FOTA : Accepted the request for FW Download and sent the acknowledgment to Airvantage");
+                            DEBUG_PRINT("FOTA : Accepted the request for firmware Download and sent the acknowledgment to Airvantage server");
                             SerialDebugPrint(FotaCommandResponse.response,FotaCommandResponse.length);
                             DEBUG_PRINT("\r\n");
                             FotaOperationalMode = FOTA_APP_OPERATIONAL_TX_MODE;
@@ -781,9 +817,10 @@ static void FotaAppSchedule(void)
                     {
                         if(false != validateCommonCommandResponse(FotaCommandResponse.response))
                         {
-                            DEBUG_PRINT("FOTA : Accepted the request for FW Installation and sent the acknowledgment to Airvantage");
+                            DEBUG_PRINT("FOTA : Accepted the request for firmware Installation and sent the acknowledgment to Airvantage server");
                             SerialDebugPrint(FotaCommandResponse.response,FotaCommandResponse.length);
                             DEBUG_PRINT("\r\n");
+                            bNewFirmwareInstalled = true;
                             FotaOperationalMode = FOTA_APP_OPERATIONAL_TX_MODE;
                             FotaMainState = SYSTEM_IS_IN_FIRMWARE_DOWNLOAD_MODE;
                         }

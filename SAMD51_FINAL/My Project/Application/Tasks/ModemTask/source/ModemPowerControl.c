@@ -118,7 +118,7 @@ void modemPowerSchedule(void)
 
                 case MDM_PWR_ON_COMPLETED:
                 {
-                    //DEBUG_PRINT("Modem Powered On");
+                    DEBUG_PRINT("Host Processor and Modem are successfully initialized...\r\n");
                     ModemPwrState = MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS;
                 }
                 break;

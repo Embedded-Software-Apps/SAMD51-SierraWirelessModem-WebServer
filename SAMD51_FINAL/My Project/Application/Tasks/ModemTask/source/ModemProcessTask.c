@@ -89,7 +89,7 @@ static bool initializeModemTimers(void)
     	if((pdPASS == xTimerStart(xAutoReloadHourlyTimer,0)) &&
 		   (pdPASS == xTimerStart(xPacketSendPeriodicTimer,0)))
     	{
-    		DEBUG_PRINT("Modem timers are started");
+    		//DEBUG_PRINT("Modem timers are started");
     		status = true;
     	}
     }
