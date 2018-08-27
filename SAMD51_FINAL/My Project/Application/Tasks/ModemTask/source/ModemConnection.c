@@ -341,7 +341,7 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                             DEBUG_PRINT("\r\n");
 
                             gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
-                            gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_SET_EOF_PATTERN;
+                            gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_SET_MAIN_ANTENNA_LTE;
                         }
                         else
                         {
@@ -362,6 +362,85 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                 else
                 {
                     /* Wait untill there is a response received from Rx Task */ 
+                }
+            }
+            else
+            {
+
+            }
+        }
+        break;
+
+        case CONNECT_IN_PROGRESS_SET_MAIN_ANTENNA_LTE:
+        {
+            if(gHttpConnectOpMode == HTTP_CONNECT_OP_TX_MODE)
+            {
+                if (uxQueueMessagesWaiting(AtTransmitQueue) == 0)
+                {
+                    if(pdPASS == xSemaphoreTake(AtTxQueueLoadSemaphore, 0))
+                    {
+                        TxMsgQueueData.taskID = MODEM_PROCESS_TASK;
+                        TxMsgQueueData.atCmd = CMD_AT_WMANTSEL;
+                        TxMsgQueueData.pData = NULL;
+                        TxQueuePushStatus = xQueueSendToBack(AtTransmitQueue, &TxMsgQueueData, QueuePushDelayMs);
+
+                        if(TxQueuePushStatus == pdPASS)
+                        {
+                            xSemaphoreGive(AtTxQueueLoadSemaphore);
+                            gHttpConnectOpMode = HTTP_CONNECT_OP_RX_MODE;
+                            gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_SET_MAIN_ANTENNA_LTE;
+                            vTaskDelay(TransmitDelayMs);
+                        }
+                        else
+                        {
+                            DEBUG_PRINT("Failed to sent set anetenna request to Tx Task");
+                            vTaskDelay(TransmitDelayMs);
+                        }
+                    }
+                    else
+                    {
+                        DEBUG_PRINT("Error : Not able to obtain Tx Semapahore");
+                    }
+                }
+                else
+                {
+                    DEBUG_PRINT("Transmit Queue is not empty");
+                }
+            }
+            else if(gHttpConnectOpMode == HTTP_CONNECT_OP_RX_MODE)
+            {
+                if(pdPASS == xQueueReceive( CmdResponseQueue, &ConnectionResponse, ResponseWaitDelayMs))
+                {
+                    if(ConnectionResponse.atCmd == CMD_AT_WMANTSEL)
+                    {
+                        if(false != validateCommonCommandResponse(ConnectionResponse.response))
+                        {
+                            DEBUG_PRINT("Set the MAIN antenna for LTE");
+                            SerialDebugPrint(ConnectionResponse.response,ConnectionResponse.length);
+                            DEBUG_PRINT("\r\n");
+
+                            gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+                            gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_SET_EOF_PATTERN;
+                        }
+                        else
+                        {
+                            DEBUG_PRINT("Expected Response Not Received...");
+                            DEBUG_PRINT("\r\n");
+                            gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+                            performForcedRebootOfModem();
+                        }
+                        vPortFree(ConnectionResponse.response);
+                    }
+                    else
+                    {
+                        DEBUG_PRINT("Failed to receive connection response in RX mode");
+                        gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+                        vPortFree(ConnectionResponse.response);
+                    }
+                }
+                else
+                {
+                    /* Wait untill there is a response received from Rx Task */
                 }
             }
             else

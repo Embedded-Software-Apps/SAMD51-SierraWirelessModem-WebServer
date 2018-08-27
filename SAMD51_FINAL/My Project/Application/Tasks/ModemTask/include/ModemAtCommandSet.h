@@ -53,6 +53,7 @@ typedef enum
 	CMD_AT_KCNX_DOWN,
 	CMD_AT_CGATT,
 	CMD_AT_CGDCONT,
+	CMD_AT_WMANTSEL,
 
 	/* FOTA related Commands */
 	CMD_AT_WDSS_SET_APN,

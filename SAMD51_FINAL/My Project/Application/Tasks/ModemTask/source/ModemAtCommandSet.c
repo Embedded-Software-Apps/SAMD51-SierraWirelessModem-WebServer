@@ -326,6 +326,18 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 	},
 
 	{
+		CMD_AT_WMANTSEL,
+		AT_CMD_SET_CONNECTION,
+		"AT+WMANTSEL=1\r",
+		INT_FOURTEEN,
+		INT_TWO,
+		modemResponseHandler,
+		(INT_FOURTEEN + INT_TWO + CRLF_CHAR_LEN)
+	},
+
+	/* FOTA Commands */
+
+	{
 		CMD_AT_WDSS_SET_APN,
 		AT_CMD_SET_FOTA_APP,
 		"AT+WDSS=0,\"VZWINTERNET\"\r",
