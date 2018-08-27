@@ -638,7 +638,7 @@ Disassembly of section .text:
      7ce:	f884 8003 	strb.w	r8, [r4, #3]
      7d2:	e73e      	b.n	652 <FotaAppTask+0x10e>
      7d4:	0000050d 	.word	0x0000050d
-     7d8:	0007a3ae 	.word	0x0007a3ae
+     7d8:	05265c00 	.word	0x05265c00
      7dc:	00006559 	.word	0x00006559
      7e0:	000055dd 	.word	0x000055dd
      7e4:	00004d25 	.word	0x00004d25

@@ -17,7 +17,13 @@
 #include "Application/Tasks/FotaAppTask/include/FotaAppTask.h"
 #include "Application/Tasks/ModemTask/include/ModemController.h"
 
-#define FOTA_FWDL_CHECK_TIMER_LOAD_VALUE pdMS_TO_TICKS(86400000) /* Milli second value corresponds to 24 hours */
+/*
+ * Do not use pdMS_TO_TICKS() macro for this timer load value alone,
+ * as it will cause overflow for 32bit integer.
+ * Use the millisecond value directly as the use of pdMS_TO_TICKS()
+ * doesn't have an effect because frequency is 1 KHz.
+ */
+#define FOTA_FWDL_CHECK_TIMER_LOAD_VALUE (86400000) /* Milli second value corresponds to 24 hours */
 #define SERVICE_INDICATION_RESPONSE_LENGTH (12)
 #define SERVICE_INDICATION_CMD_LENGTH (9)
 
