@@ -146,7 +146,40 @@ Application/LedControl/source/ledControl.d \
  ../hal/include/hpl_timer.h ../hal/include/hal_timer.h \
  ../hal/utils/include/utils_list.h ../hpl/tcc/hpl_tcc.h \
  ../hal/include/hal_wdt.h ../hal/include/hpl_wdt.h \
- ../hal/utils/include/utils.h ../atmel_start_pins.h
+ ../hal/utils/include/utils.h ../atmel_start_pins.h \
+ ../Application/Common/Common.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h \
+ ../Config/FreeRTOSConfig.h ../Config/peripheral_clk_config.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/portable.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/deprecated_definitions.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/portmacro.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/mpu_wrappers.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/timers.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
+ ../Application/Tasks/ModemTask/include/ModemAtCommandSet.h \
+ ../Application/SerialDebug/SerialDebug.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h \
+ ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include-fixed\limits.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include-fixed\syslimits.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\limits.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\newlib.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\cdefs.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\config.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\ieeefp.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\reent.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_types.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\_types.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\lock.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h
 
 ../Application/LedControl/include/ledConfig.h:
 
@@ -535,3 +568,71 @@ F:\Software_Installations\Atmel_Studio_7\7.0\Packs\atmel\SAMD51_DFP\1.0.70\inclu
 ../hal/utils/include/utils.h:
 
 ../atmel_start_pins.h:
+
+../Application/Common/Common.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h:
+
+../Config/FreeRTOSConfig.h:
+
+../Config/peripheral_clk_config.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/portable.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/deprecated_definitions.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/portable/GCC/ARM_CM4F/portmacro.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/mpu_wrappers.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/list.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/timers.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h:
+
+../Application/Tasks/ModemTask/include/ModemAtCommandSet.h:
+
+../Application/SerialDebug/SerialDebug.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/semphr.h:
+
+../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h:
+
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include-fixed\limits.h:
+
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include-fixed\syslimits.h:
+
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\limits.h:
+
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\newlib.h:
+
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\cdefs.h:
+
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h:
+
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h:
+
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\config.h:
+
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\ieeefp.h:
+
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\reent.h:
+
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h:
+
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_types.h:
+
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\_types.h:
+
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\lock.h:
+
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h:
+
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h:

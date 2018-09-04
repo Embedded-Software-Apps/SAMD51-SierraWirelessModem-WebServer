@@ -32,7 +32,8 @@ static WDT_FORCED_RESET_TYPE ForcedResetRequested = WDT_FORCED_RESET_OFF;
 void atmel_start_init(void)
 {
     system_init();
-    delay_ms(1000);
+    led_Initialise();
+    delay_ms(500);
     ForcedResetRequested = WDT_FORCED_RESET_OFF;
     /* Enable the WDT with 10 second timeout as of now */
     enableWatchDogTimer();

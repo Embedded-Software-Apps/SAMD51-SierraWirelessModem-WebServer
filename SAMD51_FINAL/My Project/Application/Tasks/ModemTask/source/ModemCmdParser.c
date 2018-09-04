@@ -40,7 +40,6 @@ void mdmParser_SendCommandToModem(AT_CMD_TYPE atCmd)
 	mdmCtrlr_FlushRxBuffer();
 	mdmCtrlr_SendDataToModem(ModemCmdData.AtString,ModemCmdData.CmdLength);
 	lastSendATCommand = atCmd;
-	delay_ms(1000);
 }
 
 /*============================================================================

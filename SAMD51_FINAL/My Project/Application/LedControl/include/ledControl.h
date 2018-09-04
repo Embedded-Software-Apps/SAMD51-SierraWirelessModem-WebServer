@@ -19,5 +19,7 @@
 void led_Initialise(void);
 void led_PeformLedTest(void);
 void led_SetPwmOutput(LED_TYPE_T ledColor,uint32_t period,uint32_t dutyCycle);
+void led_SetConnectionEstablishedIndication(void);
+void led_SetConnectionInProgressIndication(void);
 
 #endif /* LEDCONTROL_H_ */

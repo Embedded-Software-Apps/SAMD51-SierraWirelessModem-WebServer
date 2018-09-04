@@ -90,18 +90,6 @@ void MdmConnect_HttpConnectionSchedule(void)
         }
         break;
 
-        case MDM_HTTP_DISCONNECTION_IN_PROGRESS:
-        {
-
-        }
-        break;
-
-        case MDM_HTTP_CONNECTION_FAULT:
-        {
-
-        }
-        break;
-
         default:
         break;
     }
@@ -122,6 +110,8 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
     const TickType_t TransmitDelayMs = pdMS_TO_TICKS(500UL);
     const TickType_t ResponseWaitDelayMs = pdMS_TO_TICKS(4000UL);
     const TickType_t PacketTransmitDelayMs = pdMS_TO_TICKS(100UL);
+
+    led_SetConnectionInProgressIndication();
 
     switch (gHttpConnectionInProgressSubstate)
     {
@@ -911,6 +901,7 @@ static void MdmCnct_ConnectedSubStateMachine(void)
     {
         case CONNECTED_INITIALIZE_TRANSMISSION:
         {
+            led_SetConnectionEstablishedIndication();
             mdmCtrlr_FlushRxBuffer();
             gHttpConnectedSubState = CONNECTED_IDLE_MONITOR_CONNECTION;
         }
@@ -1033,6 +1024,7 @@ static void MdmCnct_ConnectedSubStateMachine(void)
             gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
             DEBUG_PRINT("\r\nConnection interrupted...Performing the Error Recovery....\r\n");
             DEBUG_PRINT("Closing the active connection");
+            led_SetConnectionInProgressIndication();
             //vTaskDelay(QueuePushDelayMs);
         }
         break;
@@ -1085,6 +1077,7 @@ static bool MdmCnct_PeformErrorRecovery(void)
     const TickType_t TransmitDelayMs = pdMS_TO_TICKS(500UL);
     const TickType_t ResponseWaitDelayMs = pdMS_TO_TICKS(4000UL);
     const TickType_t QueuePushDelayMs = pdMS_TO_TICKS(500UL);
+    led_SetConnectionInProgressIndication();
 
     switch(gErrorRecoveryState)
     {
