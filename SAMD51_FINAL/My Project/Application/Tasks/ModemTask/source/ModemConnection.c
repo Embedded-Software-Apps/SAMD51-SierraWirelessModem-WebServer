@@ -909,6 +909,7 @@ static void MdmCnct_ConnectedSubStateMachine(void)
 
         case CONNECTED_IDLE_MONITOR_CONNECTION:
         {
+			led_SetConnectionEstablishedIndication();
             if(false != isPacketTransmitTimerExpired())
             {
             	gHttpConnectedSubState = CONNECTED_PERIODIC_6SEC_TIMER_EXPIRED;
@@ -918,6 +919,7 @@ static void MdmCnct_ConnectedSubStateMachine(void)
 
         case CONNECTED_PERIODIC_6SEC_TIMER_EXPIRED:
         {
+			led_SetConnectionEstablishedIndication();
         	xSemaphoreGive(SensorScanSemaphore);
         	gHttpConnectedSubState = CONNECTED_WAIT_FOR_DATA_FROM_SENSOR_TASK;
         }
@@ -925,12 +927,14 @@ static void MdmCnct_ConnectedSubStateMachine(void)
 
         case CONNECTED_WAIT_FOR_DATA_FROM_SENSOR_TASK:
         {
+			led_SetConnectionEstablishedIndication();
 			gHttpConnectedSubState = CONNECTED_BUILD_DATA_PACKET_TO_SERVER;
         }
         break;
 
         case CONNECTED_BUILD_DATA_PACKET_TO_SERVER:
         {
+			led_SetConnectionEstablishedIndication();
             buildDataPacketsToServer();
             gHttpConnectedSubState = CONNECTED_SEND_DATA_PACKETS_TO_SERVER;
         }
@@ -938,6 +942,7 @@ static void MdmCnct_ConnectedSubStateMachine(void)
 
         case CONNECTED_SEND_DATA_PACKETS_TO_SERVER:
         {
+			led_SetConnectionEstablishedIndication();
             if (uxQueueMessagesWaiting(AtTransmitQueue) == 0)
             {
                 if(pdPASS == xSemaphoreTake(AtTxQueueLoadSemaphore, 0))
@@ -973,6 +978,7 @@ static void MdmCnct_ConnectedSubStateMachine(void)
 
         case CONNECTED_RECEIVE_RESPONSE_FROM_SERVER:
         {
+			led_SetConnectionEstablishedIndication();
             if(pdPASS == xQueueReceive( CmdResponseQueue, &ConnectionResponse, ResponseWaitDelayMs))
             {
                 if(ConnectionResponse.atCmd == CMD_AT_KHTTP_GET)

@@ -37,6 +37,7 @@ void atmel_start_init(void)
     ForcedResetRequested = WDT_FORCED_RESET_OFF;
     /* Enable the WDT with 10 second timeout as of now */
     enableWatchDogTimer();
+	led_SetConnectionInProgressIndication();
 }
 
 /*******************************************************************************

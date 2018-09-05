@@ -610,6 +610,14 @@ static void FotaAppSchedule(void)
                     }
                     break;
 
+                    case CONNECTION_ERROR_WITH_DM_SERVER_OCCURED:
+                    {
+                        DEBUG_PRINT("FOTA : CONNECTION ERROR OCCURED WHILE CONNECTING TO AIR VANTAGE SERVER.\r\n");
+                        DEBUG_PRINT("FOTA: TRYING TO ESTABLISH THE CONNECTION TO DM SERVER...PLEASE WAIT...\r\n");
+                        FotaMainState = START_DM_SESSION_WITH_AIR_VANTAGE;
+                    }
+                    break;
+
                     case DM_SESSION_WITH_AIRVANTAGE_IS_CLOSED:
                     {
                         DEBUG_PRINT("FOTA : DM SESSION WITH AIRVANTAGE IS CLOSED.\r\n");
@@ -637,6 +645,7 @@ static void FotaAppSchedule(void)
                         else
                         {
                             /* Please wait for the firmware download to begin */
+                        	DEBUG_PRINT("FOTA : WAITING FOR THE FIRMWARE PACKETS FROM AIR VANTAGE SERVER.\r\n");
                         }
                     }
                     break;
