@@ -770,6 +770,7 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                             DEBUG_PRINT("\r\n");
                             gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
                             gHttpConnectedSubState = CONNECTED_FAULT_IN_PACKET_TRANSMISSION;
+                            led_SetConnectionInProgressIndication();
                             gHttpConnectionState =  MDM_HTTP_CONNECTED;
                         }
                         vPortFree(ConnectionResponse.response);
@@ -844,6 +845,7 @@ void MdmCnct_ConnectInProgressSubStateMachine(void)
                             gHttpConnectionInProgressSubstate = CONNECT_IN_PROGRESS_CLOSE_CONNECTION;
                             gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
                             gHttpConnectionState = MDM_HTTP_CONNECTED;
+                            led_SetConnectionEstablishedIndication();
                             gHttpConnectedSubState = CONNECTED_INITIALIZE_TRANSMISSION;
                             DEBUG_PRINT("\r\n");
                             vTaskDelay(PacketTransmitDelayMs);
@@ -995,11 +997,13 @@ static void MdmCnct_ConnectedSubStateMachine(void)
                         else
                         {
                             gHttpConnectedSubState = CONNECTED_FAULT_IN_PACKET_TRANSMISSION;
+                            led_SetConnectionInProgressIndication();
                         }                       
                     }
                     else
                     {
                         gHttpConnectedSubState = CONNECTED_FAULT_IN_PACKET_TRANSMISSION;
+                        led_SetConnectionInProgressIndication();
                     }
 
                     vPortFree(ConnectionResponse.response);
@@ -1009,6 +1013,7 @@ static void MdmCnct_ConnectedSubStateMachine(void)
                 {
                     DEBUG_PRINT("Failed to receive connection response in RX mode");
                     gHttpConnectedSubState = CONNECTED_FAULT_IN_PACKET_TRANSMISSION;
+                    led_SetConnectionInProgressIndication();
                     vPortFree(ConnectionResponse.response);
                     vTaskDelay(reTransmissionDelayMs);
                 }
@@ -1017,6 +1022,7 @@ static void MdmCnct_ConnectedSubStateMachine(void)
             {
                 /* Response for the data packet is not received on time */
                 gHttpConnectedSubState = CONNECTED_FAULT_IN_PACKET_TRANSMISSION;
+                led_SetConnectionInProgressIndication();
                 vTaskDelay(reTransmissionDelayMs);
             }
         }

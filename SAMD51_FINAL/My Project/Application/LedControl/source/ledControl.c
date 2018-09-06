@@ -101,9 +101,13 @@ void led_PeformLedTest(void)
 void led_SetConnectionEstablishedIndication(void)
 {
 	/* Turn on the green LED */
-	gpio_set_pin_level(RED_LED, true);
-	gpio_set_pin_level(GREEN_LED, false);
-	gpio_set_pin_level(BLUE_LED, true);
+
+	/* Write Logic HIGH on GREEN LED Pin */
+	gpio_set_pin_level(GREEN_LED, true);
+
+	/* Write Logic LOW on RED & BLUE Pins */
+	gpio_set_pin_level(RED_LED, false);
+	gpio_set_pin_level(BLUE_LED, false);
 }
 
 /*============================================================================
@@ -117,7 +121,11 @@ void led_SetConnectionEstablishedIndication(void)
 void led_SetConnectionInProgressIndication(void)
 {
 	/* Turn on the red LED */
-	gpio_set_pin_level(RED_LED, false);
-	gpio_set_pin_level(GREEN_LED, true);
-	gpio_set_pin_level(BLUE_LED, true);
+
+	/* Write Logic HIGH on RED LED Pin */
+	gpio_set_pin_level(RED_LED, true);
+
+	/* Write Logic LOW on GREEN & BLUE Pins */
+	gpio_set_pin_level(GREEN_LED, false);
+	gpio_set_pin_level(BLUE_LED, false);
 }
