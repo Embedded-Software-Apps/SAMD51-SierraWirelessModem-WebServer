@@ -61,6 +61,8 @@ static void FotaAppInit(void)
         FotaUserAgreementActivationState = ACTIVATE_USER_AGREEMENT_FOR_FW_DOWNLOAD;
         bFotaVerificationIsDone = false;
         bNewFirmwareInstalled = false;
+
+        bFotaVerificationIsDone = true;
     }
 }
 

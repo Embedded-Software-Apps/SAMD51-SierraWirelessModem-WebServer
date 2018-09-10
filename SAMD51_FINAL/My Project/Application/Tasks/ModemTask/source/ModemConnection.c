@@ -34,7 +34,6 @@ static bool validateCommonCommandResponse(uint8_t* response);
 static void MdmCnct_ConnectedSubStateMachine(void);
 static bool MdmCnct_validateServerResponse(uint8_t* response);
 static bool MdmCnct_PeformErrorRecovery(void);
-static void clearFaultStrategyParameters(void);
 static bool FaultCountersWithinLimit(void);
 /*============================================================================
 **
@@ -1049,7 +1048,7 @@ static void MdmCnct_ConnectedSubStateMachine(void)
                 DEBUG_PRINT("\r\nConnection interrupted...Performing the Error Recovery....\r\n");
                 DEBUG_PRINT("Closing the active connection");
             }
-            else
+            else if (faultStrategyParam.retryCount <= MAX_VALUE_FOR_FAULT_RETRY_COUNT)
             {
                 DEBUG_PRINT("\r\nConnection interrupted...\r\n");
                 DEBUG_PRINT("Maximum number of retries exceeded...\r\n");
@@ -1066,12 +1065,29 @@ static void MdmCnct_ConnectedSubStateMachine(void)
                 	requestWatchDogForcedReset();
                 }
             }
+            else
+            {
+            	DEBUG_PRINT("\r\nMaximum number of retries allowed per hour exceeded.\r\n");
+            	DEBUG_PRINT("New connection will be initiated after an hour...Please wait...");
+            	gHttpConnectedSubState = CONNECTED_WAIT_FOR_HOURLY_TIMER_EXPIRY;
+            }
+        }
+        break;
+
+        case CONNECTED_WAIT_FOR_HOURLY_TIMER_EXPIRY:
+        {
+        	/* Do Nothing. Wait for hourly system restart */
         }
         break;
 
         case CONNECTED_WAITING_FOR_FAULT_TIMER_EXPIRY:
         {
-
+        	if(faultStrategyParam.faultTimerExpired != false)
+        	{
+        		gHttpConnectedSubState = CONNECTED_PEFORM_ERROR_RECOVERY;
+        		faultStrategyParam.retrySubCount = 0;
+        		faultStrategyParam.faultTimerExpired = false;
+        	}
         }
         break;
 
@@ -1403,7 +1419,7 @@ static bool MdmCnct_PeformErrorRecovery(void)
                 }
                 else
                 {
-                    if(forcedModemRebootCnt <= 3)
+/*                    if(forcedModemRebootCnt <= 3)
                     {
                     	DEBUG_PRINT("Problem in Auto Recovery.");
                     	DEBUG_PRINT("Trying to re-establish the connection through a modem restart....\r\n");
@@ -1416,7 +1432,7 @@ static bool MdmCnct_PeformErrorRecovery(void)
                     	DEBUG_PRINT("Trying to re-establish the connection through a whole system restart....\r\n");
                     	forcedModemRebootCnt = 0;
                     	requestWatchDogForcedReset();
-                    }
+                    }*/
                 }
             }
             else
@@ -1685,10 +1701,11 @@ void performForcedErrorRecovery(void)
 ** Description:        Flushes the Rx Ring Buffer
 **
 **===========================================================================*/
-static void clearFaultStrategyParameters(void)
+void clearFaultStrategyParameters(void)
 {
     faultStrategyParam.retryCount = 0;
     faultStrategyParam.retrySubCount = 0;
+    faultStrategyParam.faultTimerExpired = false;
 }
 
 /*============================================================================
@@ -1726,5 +1743,5 @@ static bool FaultCountersWithinLimit(void)
 void ConnectionFaultTimerCallBack(void* param)
 {
 	DEBUG_PRINT("\r\nFault wait timer expired...New connection will be initiated soon...\r\n");
-	faultStrategyParam.retrySubCount = 0;
+	faultStrategyParam.faultTimerExpired = true;
 }

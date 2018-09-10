@@ -149,5 +149,6 @@ bool isPacketTransmitTimerExpired(void)
 static void SystemAutoRestartTimerCallBack(void* param)
 {
 	DEBUG_PRINT("Hourly System Restart timer expired. Rebooting the system.\r\n");
+	clearFaultStrategyParameters();
 	requestWatchDogForcedReset();
 }

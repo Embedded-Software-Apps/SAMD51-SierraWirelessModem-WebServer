@@ -49,6 +49,7 @@ typedef enum
 	CONNECTED_RECEIVE_RESPONSE_FROM_SERVER,
 	CONNECTED_FAULT_IN_PACKET_TRANSMISSION,
 	CONNECTED_WAITING_FOR_FAULT_TIMER_EXPIRY,
+	CONNECTED_WAIT_FOR_HOURLY_TIMER_EXPIRY,
 	CONNECTED_PEFORM_ERROR_RECOVERY
 }HTTP_CONNECTED_SUBSTATES_T;
 
@@ -89,5 +90,6 @@ void MdmConnect_HttpConnectionSchedule(void);
 void MdmConnect_HttpConnectionInit(void);
 void performForcedErrorRecovery(void);
 void ConnectionFaultTimerCallBack(void* param);
+void clearFaultStrategyParameters(void);
 
 #endif /* MODEMCONNECTION_H_ */
