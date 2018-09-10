@@ -1048,7 +1048,8 @@ static void MdmCnct_ConnectedSubStateMachine(void)
                 DEBUG_PRINT("\r\nConnection interrupted...Performing the Error Recovery....\r\n");
                 DEBUG_PRINT("Closing the active connection");
             }
-            else if (faultStrategyParam.retryCount <= MAX_VALUE_FOR_FAULT_RETRY_COUNT)
+            else if ((faultStrategyParam.retryCount <= MAX_VALUE_FOR_FAULT_RETRY_COUNT) &&
+            		(faultStrategyParam.retrySubCount >= MAX_VALUE_FOR_FAULT_RETRY_SUB_COUNT))
             {
                 DEBUG_PRINT("\r\nConnection interrupted...\r\n");
                 DEBUG_PRINT("Maximum number of retries exceeded...\r\n");
@@ -1217,20 +1218,20 @@ static bool MdmCnct_PeformErrorRecovery(void)
                 }
                 else
                 {
-                    if(forcedModemRebootCnt <= 3)
-                    {
-                    	DEBUG_PRINT("Problem in Auto Recovery.");
-                    	DEBUG_PRINT("Trying to re-establish the connection through a modem restart....\r\n");
-                    	forcedModemRebootCnt++;
-                    	performForcedRebootOfModem();
-                    }
-                    else
-                    {
-                    	DEBUG_PRINT("Maximum retry count for auto recovery is expired.");
-                    	DEBUG_PRINT("Trying to re-establish the connection through a whole system restart....\r\n");
-                    	forcedModemRebootCnt = 0;
-                    	requestWatchDogForcedReset();
-                    }
+//                    if(forcedModemRebootCnt <= 3)
+//                    {
+//                    	DEBUG_PRINT("Problem in Auto Recovery.");
+//                    	DEBUG_PRINT("Trying to re-establish the connection through a modem restart....\r\n");
+//                    	forcedModemRebootCnt++;
+//                    	performForcedRebootOfModem();
+//                    }
+//                    else
+//                    {
+//                    	DEBUG_PRINT("Maximum retry count for auto recovery is expired.");
+//                    	DEBUG_PRINT("Trying to re-establish the connection through a whole system restart....\r\n");
+//                    	forcedModemRebootCnt = 0;
+//                    	requestWatchDogForcedReset();
+//                    }
                 }
             }
             else
@@ -1309,20 +1310,20 @@ static bool MdmCnct_PeformErrorRecovery(void)
                 }
                 else
                 {
-                    if(forcedModemRebootCnt <= 3)
-                    {
-                    	DEBUG_PRINT("Problem in Auto Recovery.");
-                    	DEBUG_PRINT("Trying to re-establish the connection through a modem restart....\r\n");
-                    	forcedModemRebootCnt++;
-                    	performForcedRebootOfModem();
-                    }
-                    else
-                    {
-                    	DEBUG_PRINT("Maximum retry count for auto recovery is expired.");
-                    	DEBUG_PRINT("Trying to re-establish the connection through a whole system restart....\r\n");
-                    	forcedModemRebootCnt = 0;
-                    	requestWatchDogForcedReset();
-                    }
+//                    if(forcedModemRebootCnt <= 3)
+//                    {
+//                    	DEBUG_PRINT("Problem in Auto Recovery.");
+//                    	DEBUG_PRINT("Trying to re-establish the connection through a modem restart....\r\n");
+//                    	forcedModemRebootCnt++;
+//                    	performForcedRebootOfModem();
+//                    }
+//                    else
+//                    {
+//                    	DEBUG_PRINT("Maximum retry count for auto recovery is expired.");
+//                    	DEBUG_PRINT("Trying to re-establish the connection through a whole system restart....\r\n");
+//                    	forcedModemRebootCnt = 0;
+//                    	requestWatchDogForcedReset();
+//                    }
                 }
             }
             else
@@ -1389,16 +1390,16 @@ static bool MdmCnct_PeformErrorRecovery(void)
                             DEBUG_PRINT("Error Recovery Completed\r\n");
                             DEBUG_PRINT("=================================================\r\n");
                             DEBUG_PRINT("Establishing a new connection with server");
-                            errorRecoveryCnt++;
+                           // errorRecoveryCnt++;
                             vPortFree(ConnectionResponse.response);
 
-                            if(errorRecoveryCnt >=3)
-                            {
-                                DEBUG_PRINT("System is auto recovered for more than 3 times.");
-                                DEBUG_PRINT("Performing a system restart....................\r\n");
-                                errorRecoveryCnt = 0;
-                                requestWatchDogForcedReset();
-                            }
+//                            if(errorRecoveryCnt >=3)
+//                            {
+//                                DEBUG_PRINT("System is auto recovered for more than 3 times.");
+//                                DEBUG_PRINT("Performing a system restart....................\r\n");
+//                                errorRecoveryCnt = 0;
+//                                requestWatchDogForcedReset();
+//                            }
                         }
                         else
                         {
@@ -1719,8 +1720,8 @@ static bool FaultCountersWithinLimit(void)
 {
     bool status = false;
 
-    if((faultStrategyParam.retryCount <= MAX_VALUE_FOR_FAULT_RETRY_COUNT) &&
-       (faultStrategyParam.retrySubCount <= MAX_VALUE_FOR_FAULT_RETRY_SUB_COUNT))
+    if((faultStrategyParam.retryCount < MAX_VALUE_FOR_FAULT_RETRY_COUNT) &&
+       (faultStrategyParam.retrySubCount < MAX_VALUE_FOR_FAULT_RETRY_SUB_COUNT))
     {
         status = true;
     }

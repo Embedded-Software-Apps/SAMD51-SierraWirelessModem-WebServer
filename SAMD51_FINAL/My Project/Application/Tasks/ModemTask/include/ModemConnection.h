@@ -83,7 +83,7 @@ TimerHandle_t xConnectionFaultTimer;
 #define SESSION_ID_POS_IN_GET_REQ (12)
 #define MAX_VALUE_FOR_FAULT_RETRY_COUNT     (12)
 #define MAX_VALUE_FOR_FAULT_RETRY_SUB_COUNT (2)
-#define CONNECTION_FAULT_TIMER_LOAD_VALUE pdMS_TO_TICKS(10000)
+#define CONNECTION_FAULT_TIMER_LOAD_VALUE pdMS_TO_TICKS(600000)
 
 void MdmCnct_ConnectInProgressSubStateMachine(void);
 void MdmConnect_HttpConnectionSchedule(void);
