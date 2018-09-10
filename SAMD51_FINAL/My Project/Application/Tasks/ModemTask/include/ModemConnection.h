@@ -10,6 +10,7 @@
 #define MODEMCONNECTION_H_
 
 #include "Application/SerialDebug/SerialDebug.h"
+#include "Application/Common/Common.h"
 
 /* Main states for Modem Connection */
 typedef enum
@@ -47,6 +48,7 @@ typedef enum
 	CONNECTED_SEND_DATA_PACKETS_TO_SERVER,
 	CONNECTED_RECEIVE_RESPONSE_FROM_SERVER,
 	CONNECTED_FAULT_IN_PACKET_TRANSMISSION,
+	CONNECTED_WAITING_FOR_FAULT_TIMER_EXPIRY,
 	CONNECTED_PEFORM_ERROR_RECOVERY
 }HTTP_CONNECTED_SUBSTATES_T;
 
@@ -64,15 +66,28 @@ typedef enum
 	PDP_PERFORM_PS_CONNECTION_DETACH
 }CONNECTION_ERROR_RECOVERY_STATE_T;
 
+typedef struct
+{
+	uint8_t retryCount;
+	uint8_t retrySubCount;
+	bool faultTimerExpired;
+}FAULT_STRATEGY_PARAMETERS;
+
+TimerHandle_t xConnectionFaultTimer;
+
 #define MAX_ACTIVE_SESSION_ID     (10)
 #define SESSION_ID_POSITION       (11)
 #define CONNECT_STATUS_POSITION   (55)
 #define SESSION_ID_POS_IN_HEADER  (15)
 #define SESSION_ID_POS_IN_GET_REQ (12)
+#define MAX_VALUE_FOR_FAULT_RETRY_COUNT     (12)
+#define MAX_VALUE_FOR_FAULT_RETRY_SUB_COUNT (2)
+#define CONNECTION_FAULT_TIMER_LOAD_VALUE pdMS_TO_TICKS(10000)
 
 void MdmCnct_ConnectInProgressSubStateMachine(void);
 void MdmConnect_HttpConnectionSchedule(void);
 void MdmConnect_HttpConnectionInit(void);
 void performForcedErrorRecovery(void);
+void ConnectionFaultTimerCallBack(void* param);
 
 #endif /* MODEMCONNECTION_H_ */

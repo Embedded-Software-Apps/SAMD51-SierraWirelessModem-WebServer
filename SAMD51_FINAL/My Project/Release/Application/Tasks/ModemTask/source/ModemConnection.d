@@ -10,11 +10,9 @@ Application/Tasks/ModemTask/source/ModemConnection.d \
  f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_newlib_version.h \
  f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_intsup.h \
  f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_stdint.h \
- ../Application/Tasks/ModemTask/include/ModemCmdParser.h \
- f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stddef.h \
- f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdbool.h \
  ../Application/Common/Common.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stddef.h \
  ../Config/FreeRTOSConfig.h ../Config/peripheral_clk_config.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/portable.h \
@@ -27,7 +25,9 @@ Application/Tasks/ModemTask/source/ModemConnection.d \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/timers.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/task.h \
  ../hal/include/hal_gpio.h ../hal/include/hpl_gpio.h \
- ../hal/utils/include/compiler.h ../hal/utils/include/parts.h \
+ ../hal/utils/include/compiler.h \
+ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdbool.h \
+ ../hal/utils/include/parts.h \
  F:\Software_Installations\Atmel_Studio_7\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/samd51.h \
  F:\Software_Installations\Atmel_Studio_7\7.0\Packs\atmel\SAMD51_DFP\1.0.70\include/samd51j20a.h \
  F:\Software_Installations\Atmel_Studio_7\7.0\Packs\arm\cmsis\5.0.1\CMSIS\Include/core_cm4.h \
@@ -160,6 +160,7 @@ Application/Tasks/ModemTask/source/ModemConnection.d \
  f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\lock.h \
  f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h \
  f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h \
+ ../Application/Tasks/ModemTask/include/ModemCmdParser.h \
  ../Application/Tasks/ModemTask/include/ModemConnectionConfig.h
 
 ../Application/Tasks/ModemTask/include/ModemConnection.h:
@@ -180,15 +181,11 @@ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm
 
 f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_stdint.h:
 
-../Application/Tasks/ModemTask/include/ModemCmdParser.h:
-
-f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stddef.h:
-
-f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdbool.h:
-
 ../Application/Common/Common.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/FreeRTOS.h:
+
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stddef.h:
 
 ../Config/FreeRTOSConfig.h:
 
@@ -219,6 +216,8 @@ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib
 ../hal/include/hpl_gpio.h:
 
 ../hal/utils/include/compiler.h:
+
+f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdbool.h:
 
 ../hal/utils/include/parts.h:
 
@@ -535,5 +534,7 @@ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm
 f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h:
 
 f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h:
+
+../Application/Tasks/ModemTask/include/ModemCmdParser.h:
 
 ../Application/Tasks/ModemTask/include/ModemConnectionConfig.h:

@@ -13,6 +13,7 @@
 #include "Application/SerialDebug/SerialDebug.h"
 #include "Application/Common/Common.h"
 #include "Application/Tasks/ModemTask/include/ModemPowerControl.h"
+#include "Application/Tasks/ModemTask/include/ModemConnection.h"
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/queue.h"
 #include "thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h"
 
@@ -82,14 +83,15 @@ static bool initializeModemTimers(void)
 
     xAutoReloadHourlyTimer   = xTimerCreate("HourlySystemRestartTimer",HOURLY_RESTART_TIMER_LOAD_VALUE,pdTRUE,0,SystemAutoRestartTimerCallBack);
     xPacketSendPeriodicTimer = xTimerCreate("PacketTransmitPeriodicTimer",PACKET_SEND_TIMER_LOAD_VALUE,pdTRUE,0,packetTransmitPeriodicTimerCallBack);
+    xConnectionFaultTimer    = xTimerCreate("ConnectionFaultOneShotTimer",CONNECTION_FAULT_TIMER_LOAD_VALUE,pdFALSE,0,ConnectionFaultTimerCallBack); /* One shot timer */
 
     if((xPacketSendPeriodicTimer != NULL) &&
-       (xAutoReloadHourlyTimer != NULL))
+       (xAutoReloadHourlyTimer != NULL) &&
+	   (xConnectionFaultTimer != NULL))
     {
     	if((pdPASS == xTimerStart(xAutoReloadHourlyTimer,0)) &&
 		   (pdPASS == xTimerStart(xPacketSendPeriodicTimer,0)))
     	{
-    		//DEBUG_PRINT("Modem timers are started");
     		status = true;
     	}
     }

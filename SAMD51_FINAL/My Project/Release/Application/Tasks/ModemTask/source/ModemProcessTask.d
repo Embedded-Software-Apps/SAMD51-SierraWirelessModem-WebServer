@@ -174,6 +174,7 @@ Application/Tasks/ModemTask/source/ModemProcessTask.d \
  f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include-fixed\syslimits.h \
  f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\limits.h \
  ../Application/Tasks/ModemTask/include/ModemPowerControl.h \
+ ../Application/Tasks/ModemTask/include/ModemConnection.h \
  ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h
 
 ../hal/include/hal_delay.h:
@@ -581,5 +582,7 @@ f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\lib
 f:\software_installations\atmel_studio_7\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\limits.h:
 
 ../Application/Tasks/ModemTask/include/ModemPowerControl.h:
+
+../Application/Tasks/ModemTask/include/ModemConnection.h:
 
 ../thirdparty/RTOS/freertos/FreeRTOSV10.0.0/Source/include/projdefs.h:

@@ -22,6 +22,7 @@ static uint8_t sessionIdCount = 0;
 static CmdResponseType ConnectionResponse;
 static uint8_t currentSessionId;
 static uint8_t connectionStatus;
+static FAULT_STRATEGY_PARAMETERS faultStrategyParam;
 
 static void MdmCnct_CloseActiveConnections(void);
 static AT_CMD_TYPE getCloseActiveSessionCmd(uint8_t sessionID);
@@ -33,6 +34,8 @@ static bool validateCommonCommandResponse(uint8_t* response);
 static void MdmCnct_ConnectedSubStateMachine(void);
 static bool MdmCnct_validateServerResponse(uint8_t* response);
 static bool MdmCnct_PeformErrorRecovery(void);
+static void clearFaultStrategyParameters(void);
+static bool FaultCountersWithinLimit(void);
 /*============================================================================
 **
 ** Function Name:      mdmCtrlr_FlushRxBuffer
@@ -54,6 +57,8 @@ void MdmConnect_HttpConnectionInit(void)
     ConnectionResponse.response = NULL;
 
     currentSessionId = '0';
+
+    clearFaultStrategyParameters();
 }
 /*============================================================================
 **
@@ -1030,14 +1035,43 @@ static void MdmCnct_ConnectedSubStateMachine(void)
 
         case CONNECTED_FAULT_IN_PACKET_TRANSMISSION:
         {
-            gHttpConnectedSubState = CONNECTED_PEFORM_ERROR_RECOVERY;
-            gErrorRecoveryState = CLOSE_ALL_EXISTING_CONNECIONS;
-            sessionIdCount = 5;
-            gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
-            DEBUG_PRINT("\r\nConnection interrupted...Performing the Error Recovery....\r\n");
-            DEBUG_PRINT("Closing the active connection");
-            led_SetConnectionInProgressIndication();
-            //vTaskDelay(QueuePushDelayMs);
+            /* Perform the error recovery only if the fault counters are within the limit */
+            if(FaultCountersWithinLimit() != false)
+            {
+                /* Proceed with the error recovery as the fault counters are within limit */
+                faultStrategyParam.retryCount++;
+                faultStrategyParam.retrySubCount++;
+
+                gHttpConnectedSubState = CONNECTED_PEFORM_ERROR_RECOVERY;
+                gErrorRecoveryState = CLOSE_ALL_EXISTING_CONNECIONS;
+                sessionIdCount = 5;
+                gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+                DEBUG_PRINT("\r\nConnection interrupted...Performing the Error Recovery....\r\n");
+                DEBUG_PRINT("Closing the active connection");
+            }
+            else
+            {
+                DEBUG_PRINT("\r\nConnection interrupted...\r\n");
+                DEBUG_PRINT("Maximum number of retries exceeded...\r\n");
+                DEBUG_PRINT("System will initiate a new connection after 10 minutes...\r\n");
+
+                if (pdPASS == xTimerStart(xConnectionFaultTimer,0))
+                {
+                	DEBUG_PRINT("Connection fault timer Started...Please Wait...\r\n");
+                    gHttpConnectedSubState = CONNECTED_WAITING_FOR_FAULT_TIMER_EXPIRY;
+                }
+                else
+                {
+                	DEBUG_PRINT("Connection fault timer cannot be Started...Performing a whole system restart...\r\n");
+                	requestWatchDogForcedReset();
+                }
+            }
+        }
+        break;
+
+        case CONNECTED_WAITING_FOR_FAULT_TIMER_EXPIRY:
+        {
+
         }
         break;
 
@@ -1642,4 +1676,55 @@ void performForcedErrorRecovery(void)
 
 	/* Reset the modem connection States */
 	MdmConnect_HttpConnectionInit();
+}
+
+/*============================================================================
+**
+** Function Name:      mdmCtrlr_FlushRxBuffer
+**
+** Description:        Flushes the Rx Ring Buffer
+**
+**===========================================================================*/
+static void clearFaultStrategyParameters(void)
+{
+    faultStrategyParam.retryCount = 0;
+    faultStrategyParam.retrySubCount = 0;
+}
+
+/*============================================================================
+**
+** Function Name:      mdmCtrlr_FlushRxBuffer
+**
+** Description:        Flushes the Rx Ring Buffer
+**
+**===========================================================================*/
+static bool FaultCountersWithinLimit(void)
+{
+    bool status = false;
+
+    if((faultStrategyParam.retryCount <= MAX_VALUE_FOR_FAULT_RETRY_COUNT) &&
+       (faultStrategyParam.retrySubCount <= MAX_VALUE_FOR_FAULT_RETRY_SUB_COUNT))
+    {
+        status = true;
+    }
+    else
+    {
+        status = false;
+    }
+
+    return status;
+}
+
+/*******************************************************************************
+*
+* NAME       : getModemPowerState
+*
+* DESCRIPTION: This function converts a given signed integer(16-bit or 32-bit)
+*               into a string and returns the string.
+*
+********************************************************************************/
+void ConnectionFaultTimerCallBack(void* param)
+{
+	DEBUG_PRINT("\r\nFault wait timer expired...New connection will be initiated soon...\r\n");
+	faultStrategyParam.retrySubCount = 0;
 }
