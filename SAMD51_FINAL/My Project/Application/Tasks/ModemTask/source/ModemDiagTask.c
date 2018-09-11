@@ -206,6 +206,7 @@ static void ModemDiagSchedule(void)
             {
                 case MODEM_DIAG_TEST_AT:
                 {
+					vTaskDelay(4000);
                     TxMsgQueueData.taskID = MODEM_DIAG_TASK;
                     TxMsgQueueData.atCmd = CMD_AT;
                     TxMsgQueueData.pData = NULL;

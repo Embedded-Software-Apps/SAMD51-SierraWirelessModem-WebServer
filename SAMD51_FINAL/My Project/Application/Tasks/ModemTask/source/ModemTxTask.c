@@ -78,9 +78,27 @@ static void ModemTxTaskSchedule(void)
 **===========================================================================*/
 static void ModemTx_SendCommandToModem(AT_CMD_TYPE atCmd)
 {
+	uint8_t apnCmdLength = 0;
+	uint8_t index = 0;
+
 	getModemCommandData(atCmd, &ModemCmdData);
 	mdmCtrlr_FlushRxBuffer();
-	mdmCtrlr_SendDataToModem(ModemCmdData.AtString,ModemCmdData.CmdLength);
+
+	if(atCmd == CMD_AT_KCNXCFG)
+	{
+		/* Find length */
+		while(ModemCmdData.AtString[apnCmdLength] != '@')
+		{
+			apnCmdLength++;
+		}
+
+		mdmCtrlr_SendDataToModem(ModemCmdData.AtString,apnCmdLength);
+	}
+	else
+	{
+		mdmCtrlr_SendDataToModem(ModemCmdData.AtString,ModemCmdData.CmdLength);
+	}
+
 	mdmParser_SetLastSentAtCommand(atCmd);
 	mdmParser_SetLastCmdProcessed(false);
 }

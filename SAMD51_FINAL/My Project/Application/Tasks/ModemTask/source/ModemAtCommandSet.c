@@ -19,14 +19,12 @@ static uint8_t kHttpGetString[INT_FIFTEEN] = {'A','T','+','K','H','T','T','P','G
 
 static uint8_t kHttpGetCompleteData[60] = {0};
 
-static uint8_t kHttpAPNDefaultString[INT_THIRTY_FIVE] = {0};
+static uint8_t kHttpAPNDefaultString[INT_FOURTY] = {0};
 
 static const uint8_t kHttp_VZWINTERNET_String[INT_THIRTY_FIVE] = "AT+KCNXCFG=3, \"GPRS\",\"VZWINTERNET\"\r";
 
 static const uint8_t kHttp_ApnStringFirstPart[INT_TWENTY_TWO] = "AT+KCNXCFG=3, \"GPRS\",\"";
 static const uint8_t kHttp_ApnStringSecondPart[INT_TWO] = "\"\r";
-
-static uint8_t* GeneratedAPNString = NULL;
 
 
 /* Data structure for storing command parameters */
@@ -259,7 +257,7 @@ static const MODEM_CMD_DATA ModemCmdData[TOTAL_MODEM_CMDS] = \
 		INT_THIRTY_FIVE,
 		INT_TWO,
 		modemResponseHandler,
-		(INT_THIRTY_FIVE + INT_TWO + CRLF_CHAR_LEN)
+		(26+2+4)
 	},
 
 	{
@@ -559,18 +557,24 @@ void buildDataPacketsToServer(void)
 **===========================================================================*/
 void retrieveAPNStringFromResponse(uint8_t* cfgResponse)
 {
-	uint8_t SourceStartIndex = 0;
-	uint8_t SourceStartIndexCopy = 0;
+	static uint8_t SourceStartIndex = 0;
+	static uint8_t SourceStartIndexCopy = 0;
 	bool parseStatus = false;
-	uint8_t* pApnString = NULL;
-	uint8_t apnStringLength = 0;
-	uint8_t apnStringCopyIndex = 0;
-	uint8_t apnIndex = 0;
+	static uint8_t* pApnString = NULL;
+	static uint8_t apnStringLength = 0;
+	static uint8_t apnStringCopyIndex = 0;
+	static uint8_t apnIndex = 0;
+	static apnStringEndIndex = 0;
+	uint8_t apnStringRetrieved[20] = {0};
 
-	if(GeneratedAPNString != NULL)
-	{
-		vPortFree(GeneratedAPNString);
-	}
+	SourceStartIndex = 0;
+	SourceStartIndexCopy = 0;
+	apnStringLength = 0;
+	apnStringCopyIndex = 0;
+	apnIndex = 0;
+	apnStringEndIndex = 0;
+	pApnString = NULL;
+	memset(apnStringRetrieved,0,20);
 
 	/* Finding the end of first line in APN response */
 	while(cfgResponse[SourceStartIndex] != '\r')
@@ -625,17 +629,17 @@ void retrieveAPNStringFromResponse(uint8_t* cfgResponse)
 
 			SourceStartIndexCopy = 0;
 
-			/* Allocate memory for copying the APN string */
-			pApnString = (uint8_t*)pvPortMalloc((apnStringLength)*(sizeof(uint8_t)));
-
-			if(pApnString != NULL)
+			if(1)
 			{
 				/* Copy the APN string */
-				while(cfgResponse[SourceStartIndex] != '"')
+				apnStringCopyIndex = 0;
+				apnStringEndIndex = (SourceStartIndex + apnStringLength);
+
+				while((SourceStartIndex) < (apnStringEndIndex))
 				{
-					pApnString[apnStringCopyIndex] = cfgResponse[SourceStartIndex];
-					SourceStartIndex++;
+					apnStringRetrieved[apnStringCopyIndex] = cfgResponse[SourceStartIndex];
 					apnStringCopyIndex++;
+					SourceStartIndex++;
 				}
 
 				if(apnStringCopyIndex != apnStringLength)
@@ -645,17 +649,17 @@ void retrieveAPNStringFromResponse(uint8_t* cfgResponse)
 
 
 				/* Copy the the retrieved APN string */
-				if(memcmp(pApnString,"VZWINTERNET",11) == STRING_EQUAL)
+				if(memcmp(apnStringRetrieved,"VZWINTERNET",11) == STRING_EQUAL)
 				{
-					DEBUG_PRINT("Retrieved APN - ");
-					SerialDebugPrint(pApnString,11);
+					SerialDebugPrint("Retrieved APN - ",16);
+					SerialDebugPrint(apnStringRetrieved,11);
 					clearAPNString();
 					memcpy(kHttpAPNDefaultString,kHttp_VZWINTERNET_String,35);
 				}
 				else
 				{
-					DEBUG_PRINT("Retrieved APN - ");
-					SerialDebugPrint(pApnString,apnStringLength);
+					SerialDebugPrint("Retrieved APN - ",16);
+					SerialDebugPrint(apnStringRetrieved,apnStringLength);
 
 					clearAPNString();
 					apnStringCopyIndex = 0;
@@ -666,20 +670,26 @@ void retrieveAPNStringFromResponse(uint8_t* cfgResponse)
 					{
 						kHttpAPNDefaultString[apnIndex] = kHttp_ApnStringFirstPart[apnIndex];
 					}
+					SerialDebugPrint(kHttpAPNDefaultString,22);
 
 					/* Copy the APN string */
-					strncat(kHttpAPNDefaultString,pApnString,apnStringLength);
+					for(apnIndex = 0;apnIndex<apnStringLength;apnIndex++)
+					{
+						kHttpAPNDefaultString[apnIndex+22] = apnStringRetrieved[apnIndex];
+					}
+					SerialDebugPrint(kHttpAPNDefaultString,25);
 
 					/* Copy the remaining part */
-					strncat(kHttpAPNDefaultString,kHttp_ApnStringSecondPart,2);
+					for(apnIndex = 0;apnIndex<2;apnIndex++)
+					{
+						kHttpAPNDefaultString[apnIndex+22+apnStringLength] = kHttp_ApnStringSecondPart[apnIndex];
+					}
 
-					/* Deallocate APN string */
-					vPortFree(pApnString);
+					//strncat(kHttpAPNDefaultString,kHttp_ApnStringSecondPart,2);
+
+					SerialDebugPrint(kHttpAPNDefaultString,27);
+
 				}
-			}
-			else
-			{
-				DEBUG_PRINT("Dynamic Allocation Failed\r\n");
 			}
 
 		}
@@ -688,8 +698,6 @@ void retrieveAPNStringFromResponse(uint8_t* cfgResponse)
 			DEBUG_PRINT("APN string parsing failed in second line.\r\n");
 			parseStatus = false;
 		}
-
-
 	}
 	else
 	{
@@ -697,13 +705,8 @@ void retrieveAPNStringFromResponse(uint8_t* cfgResponse)
 		parseStatus = false;
 	}
 
-
-
-
-
 	DEBUG_PRINT("\r\n");
 }
-
 
 /*============================================================================
 **
@@ -716,8 +719,8 @@ void clearAPNString(void)
 {
 	uint8_t index = 0;
 
-	for(index = 0; index < 35; index++)
+	for(index = 0; index < 40; index++)
 	{
-		kHttpAPNDefaultString[index] = 0;
+		kHttpAPNDefaultString[index] = '@';
 	}
 }

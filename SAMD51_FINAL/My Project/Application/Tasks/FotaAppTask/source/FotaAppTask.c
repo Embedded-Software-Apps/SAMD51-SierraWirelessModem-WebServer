@@ -75,7 +75,7 @@ static void FotaAppInit(void)
 ********************************************************************************/
 void FotaAppTask( void *FotaTaskParam)
 {
-    const TickType_t xDelayMs = pdMS_TO_TICKS(600UL);
+    const TickType_t xDelayMs = pdMS_TO_TICKS(200UL);
     const TickType_t xDebugPrintDelayMs = pdMS_TO_TICKS(500UL);
 
     FotaAppInit();
@@ -83,11 +83,11 @@ void FotaAppTask( void *FotaTaskParam)
     while(1)
     {
         if((getModemPowerStatus() == MDM_PWR_OPERATIONAL_READY_FOR_AT_CMDS) &&
-           (false == isFotaVerificationDone()))
+        (false == isFotaVerificationDone()))
         {
-            FotaAppSchedule();
-            kickWatchDog();
-            vTaskDelay(xDelayMs);
+	        FotaAppSchedule();
+	        kickWatchDog();
+	        vTaskDelay(xDelayMs);
         }
     }
 }
@@ -144,7 +144,7 @@ static void FotaAppSchedule(void)
     const TickType_t QueuePushDelayMs = pdMS_TO_TICKS(500UL);
     const TickType_t TransmitDelayMs = pdMS_TO_TICKS(500UL);
     const TickType_t ResponseWaitDelayMs = pdMS_TO_TICKS(4000UL);
-    const TickType_t startupDelayMs = pdMS_TO_TICKS(6000UL);
+    const TickType_t startupDelayMs = pdMS_TO_TICKS(4000UL);
     AtTxMsgType TxMsgQueueData;
     BaseType_t TxQueuePushStatus;
     DEVICE_SERVICE_INDICATION_TYPE serviceIndicationReceived = SERVICE_INDICATION_ERROR;
