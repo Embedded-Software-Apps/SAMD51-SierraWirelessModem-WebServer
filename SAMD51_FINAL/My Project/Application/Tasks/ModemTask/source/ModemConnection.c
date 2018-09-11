@@ -1041,12 +1041,26 @@ static void MdmCnct_ConnectedSubStateMachine(void)
                 faultStrategyParam.retryCount++;
                 faultStrategyParam.retrySubCount++;
 
-                gHttpConnectedSubState = CONNECTED_PEFORM_ERROR_RECOVERY;
-                gErrorRecoveryState = CLOSE_ALL_EXISTING_CONNECIONS;
-                sessionIdCount = 5;
-                gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
-                DEBUG_PRINT("\r\nConnection interrupted...Performing the Error Recovery....\r\n");
-                DEBUG_PRINT("Closing the active connection");
+                if(faultStrategyParam.retrySubCount == 1)
+                {
+                    gHttpConnectedSubState = CONNECTED_PEFORM_ERROR_RECOVERY;
+                    gErrorRecoveryState = CLOSE_ALL_EXISTING_CONNECIONS;
+                    sessionIdCount = 5;
+                    gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+                    DEBUG_PRINT("\r\nConnection interrupted...Performing the Error Recovery now....\r\n");
+                }
+                else if(faultStrategyParam.retrySubCount == 2)
+                {
+                    gHttpConnectedSubState = CONNECTED_PEFORM_ERROR_RECOVERY;
+                    gErrorRecoveryState = CLOSE_ALL_EXISTING_CONNECIONS;
+                    sessionIdCount = 5;
+                    gHttpConnectOpMode = HTTP_CONNECT_OP_TX_MODE;
+                    DEBUG_PRINT("\r\nConnection interrupted...Error recovery will be performed after a modem reboot....\r\n");
+                    DEBUG_PRINT("\r\nModem is rebooting...Please wait...\r\n");
+
+                	/* Perform a physical modem restart */
+                	modemPowerStateInit();
+                }
             }
             else if ((faultStrategyParam.retryCount <= MAX_VALUE_FOR_FAULT_RETRY_COUNT) &&
             		(faultStrategyParam.retrySubCount >= MAX_VALUE_FOR_FAULT_RETRY_SUB_COUNT))
