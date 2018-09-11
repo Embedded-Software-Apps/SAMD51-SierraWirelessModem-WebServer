@@ -58,6 +58,7 @@ void MdmConnect_HttpConnectionInit(void)
     currentSessionId = '0';
 
     clearFaultStrategyParameters();
+    clearAPNString();
 }
 /*============================================================================
 **

@@ -19,7 +19,14 @@ static uint8_t kHttpGetString[INT_FIFTEEN] = {'A','T','+','K','H','T','T','P','G
 
 static uint8_t kHttpGetCompleteData[60] = {0};
 
-static uint8_t kHttpAPNDefaultString[INT_THIRTY_FIVE] = "AT+KCNXCFG=3, \"GPRS\",\"VZWINTERNET\"\r";
+static uint8_t kHttpAPNDefaultString[INT_THIRTY_FIVE] = {0};
+
+static const uint8_t kHttp_VZWINTERNET_String[INT_THIRTY_FIVE] = "AT+KCNXCFG=3, \"GPRS\",\"VZWINTERNET\"\r";
+
+static const uint8_t kHttp_ApnStringFirstPart[INT_TWENTY_TWO] = "AT+KCNXCFG=3, \"GPRS\",\"";
+static const uint8_t kHttp_ApnStringSecondPart[INT_TWO] = "\"\r";
+
+static uint8_t* GeneratedAPNString = NULL;
 
 
 /* Data structure for storing command parameters */
@@ -517,6 +524,32 @@ void buildDataPacketsToServer(void)
 	strncat(kHttpGetCompleteData,"\"?i=359998070228764&d=A1Y52XA2Y36&b=36&s=2\"\r",44);
 }
 
+
+///*============================================================================
+//**
+//** Function Name:      mdmCtrlr_FlushRxBuffer
+//**
+//** Description:        Flushes the Rx Ring Buffer
+//**
+//**===========================================================================*/
+//void retrieveAPNStringFromResponse(uint8_t* cfgResponse)
+//{
+//	uint8_t SourceStartIndex = 116;
+//	uint8_t SourceEndIndex = 126+1;
+//	uint8_t DestStartIndex = 22;
+//	uint8_t DestEndIndex = 32 + 1;
+//	uint8_t apnString[11] = {0};
+//
+//	for(SourceStartIndex = 116; SourceStartIndex < SourceEndIndex; SourceStartIndex++)
+//	{
+//		kHttpAPNDefaultString[(DestStartIndex)+(SourceStartIndex-116)] = cfgResponse[SourceStartIndex];
+//		apnString[SourceStartIndex - 116] = cfgResponse[SourceStartIndex];
+//	}
+//
+//	SerialDebugPrint(apnString,11);
+//	DEBUG_PRINT("\r\n");
+//}
+
 /*============================================================================
 **
 ** Function Name:      mdmCtrlr_FlushRxBuffer
@@ -526,18 +559,165 @@ void buildDataPacketsToServer(void)
 **===========================================================================*/
 void retrieveAPNStringFromResponse(uint8_t* cfgResponse)
 {
-	uint8_t SourceStartIndex = 116;
-	uint8_t SourceEndIndex = 126+1;
-	uint8_t DestStartIndex = 22;
-	uint8_t DestEndIndex = 32 + 1;
-	uint8_t apnString[11] = {0};
+	uint8_t SourceStartIndex = 0;
+	uint8_t SourceStartIndexCopy = 0;
+	bool parseStatus = false;
+	uint8_t* pApnString = NULL;
+	uint8_t apnStringLength = 0;
+	uint8_t apnStringCopyIndex = 0;
+	uint8_t apnIndex = 0;
 
-	for(SourceStartIndex = 116; SourceStartIndex < SourceEndIndex; SourceStartIndex++)
+	if(GeneratedAPNString != NULL)
 	{
-		kHttpAPNDefaultString[(DestStartIndex)+(SourceStartIndex-116)] = cfgResponse[SourceStartIndex];
-		apnString[SourceStartIndex - 116] = cfgResponse[SourceStartIndex];
+		vPortFree(GeneratedAPNString);
 	}
 
-	SerialDebugPrint(apnString,11);
+	/* Finding the end of first line in APN response */
+	while(cfgResponse[SourceStartIndex] != '\r')
+	{
+		SourceStartIndex++;
+	}
+
+	SourceStartIndex++;
+
+	if(cfgResponse[SourceStartIndex] == '\n')
+	{
+		/* Jump to second line */
+		SourceStartIndex = SourceStartIndex + 3;
+
+		/* Finding the end of second line in APN response */
+		while(cfgResponse[SourceStartIndex] != '\r')
+		{
+			SourceStartIndex++;
+		}
+
+		/* End of second line found */
+		SourceStartIndex++;
+
+		if(cfgResponse[SourceStartIndex] == '\n')
+		{
+			/* Jump to third line */
+			SourceStartIndex = SourceStartIndex + 3;
+
+			/*
+			 * *** APN STRING IS EXTRACTED HERE ***
+			 */
+
+			/* Find the context 3 character */
+			while(cfgResponse[SourceStartIndex] != '3')
+			{
+				SourceStartIndex++;
+			}
+
+			/*
+			 * Identified the context 3.
+			 * Move to the starting position of APN string.
+			 */
+			SourceStartIndex = SourceStartIndex + 8;
+			SourceStartIndexCopy = SourceStartIndex;
+
+			/* Find the length of APN string */
+			while(cfgResponse[SourceStartIndexCopy] != '"')
+			{
+				SourceStartIndexCopy++;
+				apnStringLength++;
+			}
+
+			SourceStartIndexCopy = 0;
+
+			/* Allocate memory for copying the APN string */
+			pApnString = (uint8_t*)pvPortMalloc((apnStringLength)*(sizeof(uint8_t)));
+
+			if(pApnString != NULL)
+			{
+				/* Copy the APN string */
+				while(cfgResponse[SourceStartIndex] != '"')
+				{
+					pApnString[apnStringCopyIndex] = cfgResponse[SourceStartIndex];
+					SourceStartIndex++;
+					apnStringCopyIndex++;
+				}
+
+				if(apnStringCopyIndex != apnStringLength)
+				{
+					DEBUG_PRINT("APN String copy failed\r\n");
+				}
+
+
+				/* Copy the the retrieved APN string */
+				if(memcmp(pApnString,"VZWINTERNET",11) == STRING_EQUAL)
+				{
+					DEBUG_PRINT("Retrieved APN - ");
+					SerialDebugPrint(pApnString,11);
+					clearAPNString();
+					memcpy(kHttpAPNDefaultString,kHttp_VZWINTERNET_String,35);
+				}
+				else
+				{
+					DEBUG_PRINT("Retrieved APN - ");
+					SerialDebugPrint(pApnString,apnStringLength);
+
+					clearAPNString();
+					apnStringCopyIndex = 0;
+					apnIndex = 0;
+
+					/* Copy the const part */
+					for(apnIndex = 0;apnIndex<22;apnIndex++)
+					{
+						kHttpAPNDefaultString[apnIndex] = kHttp_ApnStringFirstPart[apnIndex];
+					}
+
+					/* Copy the APN string */
+					strncat(kHttpAPNDefaultString,pApnString,apnStringLength);
+
+					/* Copy the remaining part */
+					strncat(kHttpAPNDefaultString,kHttp_ApnStringSecondPart,2);
+
+					/* Deallocate APN string */
+					vPortFree(pApnString);
+				}
+			}
+			else
+			{
+				DEBUG_PRINT("Dynamic Allocation Failed\r\n");
+			}
+
+		}
+		else
+		{
+			DEBUG_PRINT("APN string parsing failed in second line.\r\n");
+			parseStatus = false;
+		}
+
+
+	}
+	else
+	{
+		DEBUG_PRINT("APN string parsing failed in first line.\r\n");
+		parseStatus = false;
+	}
+
+
+
+
+
 	DEBUG_PRINT("\r\n");
+}
+
+
+/*============================================================================
+**
+** Function Name:      mdmCtrlr_FlushRxBuffer
+**
+** Description:        Flushes the Rx Ring Buffer
+**
+**===========================================================================*/
+void clearAPNString(void)
+{
+	uint8_t index = 0;
+
+	for(index = 0; index < 35; index++)
+	{
+		kHttpAPNDefaultString[index] = 0;
+	}
 }

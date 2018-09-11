@@ -195,6 +195,7 @@ SemaphoreHandle_t SensorScanSemaphore;
 #define MAX_TX_QUEUE_SIZE (1)
 #define MAX_RX_QUEUE_SIZE (1)
 #define MAX_CMD_RESP_QUEUE_SIZE (1)
+#define STRING_EQUAL (1)
 
 typedef enum
 {
